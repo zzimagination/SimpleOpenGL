@@ -1,17 +1,17 @@
 #pragma once
 
-class ProjectSetting
+ class ProjectSetting
 {
 public:
 
-	static int GetScreenWidth();
+	static int GetWindowWidth();
 
-	static int GetScreenHeight();
+	static int GetWindowHeight();
 
 private:
 
-	static int screenWidth;
+	static int windowWidth;
 
-	static int screenHeight;
+	static int windowHeight;
 };
 

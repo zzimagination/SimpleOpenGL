@@ -1,7 +1,19 @@
-#include "pch.h"
-#include"shader.h"
+#include <glad/glad.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+
+#include "shader.h"
 
 using namespace std;
+
+Shader::Shader(std::string name, const char* vertexPath, const char* fragmentPath, const char* geometryPath)
+{
+	this->name = name;
+	Shader(vertexPath, fragmentPath, geometryPath);
+}
+
 Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath)
 {
 	// 1. 从文件路径中获取顶点/片段着色器
@@ -119,6 +131,7 @@ void Shader::setBool(const std::string& name, bool value) const
 {
 	glUniform1i(glGetUniformLocation(ID, name.c_str()), (int)value);
 }
+
 void Shader::setInt(const std::string& name, int value) const
 {
 	glUniform1i(glGetUniformLocation(ID, name.c_str()), value);

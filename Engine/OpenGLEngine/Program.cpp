@@ -36,16 +36,18 @@ unsigned int loadTexture(char const* path, bool gamma);
 
 int main()
 {
-	int screenWidth = ProjectSetting::GetScreenWidth();
-	int screenHeight = ProjectSetting::GetScreenHeight();
+	int screenWidth = ProjectSetting::GetWindowWidth();
+	int screenHeight = ProjectSetting::GetWindowHeight();
 	GameWindow::CreateGameWindow(screenWidth, screenHeight);
+
+
+
 
 	TestScene(GameWindow::gameWindow);
 	//ForwardScene(GameWindow::gameWindow);
 	//DefferedRender(GameWindow::gameWindow);
 
 	GameWindow::TerminateGameWindow();
-
 	return 0;
 }
 

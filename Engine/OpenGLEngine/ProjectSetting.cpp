@@ -1,15 +1,15 @@
 #include "ProjectSetting.h"
 
-int ProjectSetting::screenWidth = 1920;
+int ProjectSetting::windowWidth = 1920;
 
-int ProjectSetting::screenHeight = 1080;
+int ProjectSetting::windowHeight = 1080;
 
-int ProjectSetting::GetScreenWidth()
+int ProjectSetting::GetWindowWidth()
 {
-	return screenWidth;
+	return windowWidth;
 }
 
-int ProjectSetting::GetScreenHeight()
+int ProjectSetting::GetWindowHeight()
 {
-	return screenHeight;
+	return windowHeight;
 }
