@@ -28,9 +28,6 @@
     <ClCompile Include="Reference\stb_image.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="GameWindow.cpp">
-      <Filter>Windows</Filter>
-    </ClCompile>
     <ClCompile Include="ProjectSetting.cpp">
       <Filter>Project</Filter>
     </ClCompile>
@@ -47,6 +44,24 @@
       <Filter>Render</Filter>
     </ClCompile>
     <ClCompile Include="shader.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="GameWindow.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseRenderPipeline.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLoop.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryProcess.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderBatch.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="BatchManager.cpp">
       <Filter>Render</Filter>
     </ClCompile>
   </ItemGroup>
@@ -75,9 +90,6 @@
     <ClInclude Include="Reference\stb_image.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="GameWindow.h">
-      <Filter>Windows</Filter>
-    </ClInclude>
     <ClInclude Include="ProjectSetting.h">
       <Filter>Project</Filter>
     </ClInclude>
@@ -96,6 +108,24 @@
     <ClInclude Include="shader.h">
       <Filter>Render</Filter>
     </ClInclude>
+    <ClInclude Include="GameWindow.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLoop.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryProcess.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseRenderPipeline.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderBatch.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="BatchManager.h">
+      <Filter>Render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="头文件">
@@ -108,14 +138,14 @@
       <Extensions>
       </Extensions>
     </Filter>
-    <Filter Include="Windows">
-      <UniqueIdentifier>{48f50471-8707-4321-9166-1d36e29c5cd5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Project">
       <UniqueIdentifier>{3106f0be-a40e-41f0-9bd6-888a31519efa}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
     </Filter>
     <Filter Include="Render">
       <UniqueIdentifier>{702683c2-edd7-4fb3-92af-2dc2b8275239}</UniqueIdentifier>
+      <Extensions>.cpp;.h;</Extensions>
     </Filter>
     <Filter Include="Scene">
       <UniqueIdentifier>{2aaba05f-c792-4436-984b-ec8b27634ee4}</UniqueIdentifier>

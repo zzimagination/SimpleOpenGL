@@ -145,9 +145,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BaseRenderPipeline.h" />
+    <ClInclude Include="BatchManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="FrameRuntime.h" />
+    <ClInclude Include="GameLoop.h" />
     <ClInclude Include="GameWindow.h" />
+    <ClInclude Include="GeometryProcess.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Primitive.h" />
@@ -155,6 +159,7 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="ProjectSetting.h" />
     <ClInclude Include="Reference\stb_image.h" />
+    <ClInclude Include="RenderBatch.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="ShaderManager.h" />
@@ -162,9 +167,13 @@
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BaseRenderPipeline.cpp" />
+    <ClCompile Include="BatchManager.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="FrameRuntime.cpp" />
+    <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameWindow.cpp" />
+    <ClCompile Include="GeometryProcess.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Primitive.cpp" />
@@ -173,6 +182,7 @@
     <ClCompile Include="ProjectSetting.cpp" />
     <ClCompile Include="Reference\glad.c" />
     <ClCompile Include="Reference\stb_image.cpp" />
+    <ClCompile Include="RenderBatch.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="ShaderManager.cpp" />

@@ -8,11 +8,7 @@
 
 using namespace std;
 
-Shader::Shader(std::string name, const char* vertexPath, const char* fragmentPath, const char* geometryPath)
-{
-	this->name = name;
-	Shader(vertexPath, fragmentPath, geometryPath);
-}
+Shader::Shader(){}
 
 Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath)
 {

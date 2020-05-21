@@ -9,6 +9,10 @@
 #include "FrameRuntime.h"
 #include "Time.h"
 
+#include "GameLoop.h"
+#include "ShaderManager.h"
+
+
 using namespace glm;
 using namespace std;
 // camera
@@ -40,10 +44,11 @@ int main()
 	int screenHeight = ProjectSetting::GetWindowHeight();
 	GameWindow::CreateGameWindow(screenWidth, screenHeight);
 
+	ShaderManager::CompileShader();
 
+	GameLoop::MainLoop();
 
-
-	TestScene(GameWindow::gameWindow);
+	//TestScene(GameWindow::gameWindow);
 	//ForwardScene(GameWindow::gameWindow);
 	//DefferedRender(GameWindow::gameWindow);
 

@@ -3,7 +3,7 @@
 class GameLoop
 {
 public:
-
-	void MainLoop();
+	
+	static void MainLoop();
 };
 
