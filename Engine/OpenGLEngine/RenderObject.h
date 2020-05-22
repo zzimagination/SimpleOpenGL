@@ -13,8 +13,6 @@ public:
 
 	std::vector<float> points;
 
-	std::vector<glm::vec3> points;
-
 	std::vector<unsigned int> indices;
 
 	Shader* shader;
