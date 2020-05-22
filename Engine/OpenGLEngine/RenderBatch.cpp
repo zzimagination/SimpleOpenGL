@@ -12,6 +12,9 @@ void RenderBatch::DrawCall()
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 	_shader->use();
+	_shader->setVec3("color", glm::vec3(1,0,0));
 	glBindVertexArray(_VAO);
-	glDrawArrays(_glMode, glFirtst, _glCount);
+	//glDrawArrays(_glMode, glFirtst, _glCount);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	glBindVertexArray(0);
 }

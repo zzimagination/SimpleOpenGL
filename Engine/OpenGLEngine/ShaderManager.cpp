@@ -5,9 +5,8 @@ std::map<std::string, Shader> ShaderManager::shaderMap;
 
 void ShaderManager::CompileShader()
 {
-	std::string nameStr("Geometry");
-	Shader GeometryShader("Shader/Geometry.vs", "Shader/Geometry.fs", "Shader/Geometry.gs");
-	GeometryShader.name = nameStr;
+	Shader GeometryShader("Shader/GL.vs", "Shader/GL.fs");
+	GeometryShader.name = "GL";
 
 	shaderMap.insert(std::pair<std::string, Shader>(GeometryShader.name, GeometryShader));
 }

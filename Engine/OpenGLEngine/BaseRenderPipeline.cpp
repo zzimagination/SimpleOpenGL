@@ -3,20 +3,26 @@
 #include "GeometryProcess.h"
 #include "BaseRenderPipeline.h"
 #include "BatchManager.h"
+#include "RenderObject.h"
+#include "RenderObjectManager.h"
+#include "ShaderManager.h"
 
 void BaseRenderPipeline::Render()
 {
-	GeometryProcess::BindVertexArray();
-
 	int windowWidth = ProjectSetting::GetWindowWidth();
 	int windowHeight = ProjectSetting::GetWindowHeight();
+
+	RenderObjectManager::GenerateRenderObjects();
+
+	GeometryProcess::BindVertexArray();
+
+	BatchManager::GenerateBatchs();
 
 	glViewport(0, 0, windowWidth, windowHeight);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	for (int i = 0; i < BatchManager::batchList.size(); i++)
-	{
-		BatchManager::batchList[i].DrawCall();
-	}
-	BatchManager::batchList.clear();
+	BatchManager::DrawBatchs();
+
+	BatchManager::ClearBatchs();
+	RenderObjectManager::ClearRenderObjects();
 }

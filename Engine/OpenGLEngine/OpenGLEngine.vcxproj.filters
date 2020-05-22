@@ -64,6 +64,15 @@
     <ClCompile Include="BatchManager.cpp">
       <Filter>Render</Filter>
     </ClCompile>
+    <ClCompile Include="RenderObject.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshObject.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderObjectManager.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -126,6 +135,15 @@
     <ClInclude Include="BatchManager.h">
       <Filter>Render</Filter>
     </ClInclude>
+    <ClInclude Include="RenderObject.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshObject.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderObjectManager.h">
+      <Filter>Render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="头文件">
@@ -145,7 +163,7 @@
     </Filter>
     <Filter Include="Render">
       <UniqueIdentifier>{702683c2-edd7-4fb3-92af-2dc2b8275239}</UniqueIdentifier>
-      <Extensions>.cpp;.h;</Extensions>
+      <Extensions>cpp;h;</Extensions>
     </Filter>
     <Filter Include="Scene">
       <UniqueIdentifier>{2aaba05f-c792-4436-984b-ec8b27634ee4}</UniqueIdentifier>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,22 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{749E1D81-A35C-45C3-972B-C9141950CC30}</ProjectGuid>
-    <RootNamespace>OpenGLLight</RootNamespace>
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{EE5D06D6-209E-43AE-B095-0B19FA6700C8}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>TestConsoleApplication</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -47,7 +48,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -71,10 +72,6 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\Library;$(LibraryPath)</LibraryPath>
-    <ReferencePath>$(ReferencePath)</ReferencePath>
-    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -87,24 +84,27 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc130-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -114,11 +114,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -130,7 +133,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
@@ -145,55 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BaseRenderPipeline.h" />
-    <ClInclude Include="BatchManager.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="FrameRuntime.h" />
-    <ClInclude Include="GameLoop.h" />
-    <ClInclude Include="GameWindow.h" />
-    <ClInclude Include="GeometryProcess.h" />
-    <ClInclude Include="MeshObject.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="Primitive.h" />
-    <ClInclude Include="Light.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="ProjectSetting.h" />
-    <ClInclude Include="Reference\stb_image.h" />
-    <ClInclude Include="RenderBatch.h" />
-    <ClInclude Include="RenderObject.h" />
-    <ClInclude Include="RenderObjectManager.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="shader.h" />
-    <ClInclude Include="ShaderManager.h" />
-    <ClInclude Include="SkyBox.h" />
-    <ClInclude Include="Time.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="BaseRenderPipeline.cpp" />
-    <ClCompile Include="BatchManager.cpp" />
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="FrameRuntime.cpp" />
-    <ClCompile Include="GameLoop.cpp" />
-    <ClCompile Include="GameWindow.cpp" />
-    <ClCompile Include="GeometryProcess.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="MeshObject.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="Primitive.cpp" />
-    <ClCompile Include="Light.cpp" />
-    <ClCompile Include="Program.cpp" />
-    <ClCompile Include="ProjectSetting.cpp" />
-    <ClCompile Include="Reference\glad.c" />
-    <ClCompile Include="Reference\stb_image.cpp" />
-    <ClCompile Include="RenderBatch.cpp" />
-    <ClCompile Include="RenderObject.cpp" />
-    <ClCompile Include="RenderObjectManager.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="shader.cpp" />
-    <ClCompile Include="ShaderManager.cpp" />
-    <ClCompile Include="SkyBox.cpp" />
-    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="TestConsoleApplication.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
