@@ -4,36 +4,23 @@
 #include <iostream>
 
 using namespace std;
-class MyClass
-{
+
+
+class Testa {
+
 public:
-	MyClass(){}
-	~MyClass(){}
-
-	int v;
-
-
-private:
-
+	string str;
 };
+
 int main()
 {
-	MyClass* m1 = new MyClass();
-	m1->v = 10;
-	MyClass* m2 = new MyClass();
-	m2->v = 10;
-	MyClass* m3 = new MyClass();
-	m3->v = 10;
-	vector<MyClass*> a = { m1,m2,m3 };
+	int nums[] = { 1,2,3,4 };
+	char str[] = "asdasdasd";
+	char* s = str;
+	cout << *(nums+2) << endl;
+	//cout <<&t1<<" " << t1->str.c_str()<<"  " << &t1->str << endl;
+	//cout <<&t2<<" "<< t2->str.c_str()<<"  "<< &t2->str << endl;
 
-	for (vector<MyClass*>::iterator it = a.begin(); it != a.end(); it++)
-	{
-		MyClass* i = *it;
-		cout << i->v << endl;
-	}
-
-	int l;
-	std::cin >> l;
 	return 0;
 }
 

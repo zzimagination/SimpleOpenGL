@@ -16,7 +16,7 @@
 using namespace glm;
 using namespace std;
 // camera
-Camera camera(vec3(0.0f, 0.0f, 3.0f));
+Camera camera(vec3(0.0f, 1.0f, 3.0f));
 
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
@@ -236,8 +236,6 @@ void TestScene(GLFWwindow* window)
 		glfwPollEvents();
 	}
 }
-
-
 
 void ForwardScene(GLFWwindow* window)
 {

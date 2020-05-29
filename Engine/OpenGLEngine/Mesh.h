@@ -17,7 +17,7 @@ public:
     glm::vec3 Bitangent;
 };
 
-struct Texture {
+struct MeshTexture {
 public:
     unsigned int id;
     string type;
@@ -29,10 +29,10 @@ public:
     /*  网格数据  */
     vector<Vertex> vertices;
     vector<unsigned int> indices;
-    vector<Texture> textures;
+    vector<MeshTexture> textures;
     unsigned int VAO;
     /*  函数  */
-	Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures);
+	Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<MeshTexture> textures);
 	void Draw(Shader shader);
   
 private:

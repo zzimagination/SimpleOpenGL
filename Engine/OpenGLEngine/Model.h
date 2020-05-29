@@ -6,7 +6,7 @@ using namespace std;
 class Model {
 public:
     /*  Model Data */
-    vector<Texture> textures_loaded;
+    vector<MeshTexture> textures_loaded;
     vector<Mesh> meshes;
     string directory;
     bool gammaCorrection;
@@ -23,7 +23,7 @@ private:
 
 	Mesh processMesh(aiMesh* mesh, const aiScene* scene);
 
-	vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName);
+	vector<MeshTexture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName);
 
 };
 #endif

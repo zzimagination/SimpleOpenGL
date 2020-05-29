@@ -1,14 +1,18 @@
 #include "ShaderManager.h"
 
+using namespace std;
 
 std::map<std::string, Shader> ShaderManager::shaderMap;
 
 void ShaderManager::CompileShader()
 {
-	Shader GeometryShader("Shader/GL.vs", "Shader/GL.fs");
-	GeometryShader.name = "GL";
+	Shader unlit("Resources/Shader/Unlit.vs", "Resources/Shader/Unlit.fs");
+	unlit.name = "Unlit";
+	shaderMap.insert(std::pair<std::string, Shader>(unlit.name, unlit));
 
-	shaderMap.insert(std::pair<std::string, Shader>(GeometryShader.name, GeometryShader));
+	Shader unlitTexture("Resources/Shader/Unlit.vs", "Resources/Shader/UnlitTexture.fs");
+	unlitTexture.name = "UnlitTexture";
+	shaderMap.insert(pair<string, Shader>(unlitTexture.name, unlitTexture));
 }
 
 Shader* ShaderManager::GetShader(std::string name)

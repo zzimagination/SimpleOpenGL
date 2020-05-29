@@ -1,11 +1,15 @@
 #include<glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+
 #include "Camera.h"
 
-Camera::Camera(glm::vec3 position , glm::vec3 up, float yaw, float pitch ) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
+using namespace glm;
+
+Camera *Camera::mainCamera = nullptr;
+
+Camera::Camera() {}
+
+Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
 {
 	Position = position;
 	WorldUp = up;
@@ -52,7 +56,7 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 }
 
 // Processes input received from a mouse input system. Expects the offset value in both the x and y direction.
-void Camera::ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch)
+void Camera::ProcessMouseMovement(float xoffset, float yoffset, bool constrainPitch)
 {
 	xoffset *= MouseSensitivity;
 	yoffset *= MouseSensitivity;
@@ -82,6 +86,30 @@ void Camera::ProcessMouseScroll(float yoffset)
 		Zoom = 1.0f;
 	if (Zoom >= 45.0f)
 		Zoom = 45.0f;
+}
+
+void Camera::CalculateVectors()
+{
+	Front = vec3(0, 0, 1);
+	Right = normalize(glm::cross(vec3(0,1,0), Front));
+	Up = normalize(glm::cross(Front, Right));
+
+	worldToViewMatrix = mat4(
+		vec4(Right, 0),
+		vec4(Up, 0),
+		vec4(Front, 0),
+		vec4(-Position, 1)
+	);
+
+	switch (projection)
+	{
+	case Orthographic:
+		projectionMatrix = glm::ortho(-5.0f, 5.0f, -5.0f, 5.0f, 0.1f, 100.0f);
+		break;
+	case Perspective:
+		projectionMatrix = glm::perspective(radians(60.0f), 1.5f, 0.1f, 100.0f);
+		break;
+	}
 }
 
 void Camera::updateCameraVectors()

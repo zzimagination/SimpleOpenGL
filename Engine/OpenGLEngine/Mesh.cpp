@@ -8,7 +8,7 @@
 #include "shader.h"
 #include"Mesh.h"
 
-Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures)
+Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<MeshTexture> textures)
 {
 	this->vertices = vertices;
 	this->indices = indices;

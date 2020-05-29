@@ -15,7 +15,6 @@ void GameWindow::CreateGameWindow(int width, int height)
 		throw "Failed to create GLFW window";
 		glfwTerminate();
 	}
-
 	glfwMakeContextCurrent(gameWindow);
 	glfwSetInputMode(gameWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 

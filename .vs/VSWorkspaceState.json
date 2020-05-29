@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Engine",
-    "\\Include\\glm"
+    "\\Engine\\OpenGLEngine",
+    "\\Engine\\OpenGLEngine\\Reference"
   ],
-  "SelectedNode": "\\Engine\\OpenGLEngine.sln",
+  "SelectedNode": "\\Engine\\OpenGLEngine\\Reference\\stb_image.cpp",
   "PreviewInSolutionExplorer": false
 }

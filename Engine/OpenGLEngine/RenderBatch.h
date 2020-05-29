@@ -7,20 +7,20 @@ class RenderBatch
 {
 public:
 
-	RenderBatch(Shader* shader, unsigned int VAO, GLenum mode, GLsizei count);
+	std::vector<unsigned int> glTextures;
+
+	void (*func_shader)(Shader* shader);
+
+	RenderBatch(Shader* shader, unsigned int VAO, GLsizei count);
 
 	void DrawCall();
 
 private:
 
-	const int glFirtst = 0;
-
 	Shader* _shader;
 
 	unsigned int _VAO;
-	//(GLenum mode, GLint first, GLsizei count);
-	GLenum _glMode;
 
-	GLsizei _glCount;
+	int _glCount;
 };
 

@@ -8,8 +8,9 @@ void BatchManager::GenerateBatchs()
 	for (size_t i = 0; i < RenderObjectManager::renderObjects.size(); i++)
 	{
 		RenderObject* ptr= RenderObjectManager::renderObjects[i];
-		int count = ptr->indices.size();
-		RenderBatch batch(ptr->shader, ptr->VAO, GL_TRIANGLES, count);
+		int count =(int) ptr->indices.size();
+		RenderBatch batch(ptr->shader, ptr->VAO, count);
+		batch.func_shader = ptr->func_shader;
 		batchList.push_back(batch);
 	}
 }

@@ -1,4 +1,6 @@
 #include <ctime>
+#include <thread>
+#include <Windows.h>
 #include "Time.h"
 #include "FrameRuntime.h"
 
@@ -13,3 +15,14 @@ void FrameRuntime::BeginFrame()
 	lastClock_t = current;
 }
 
+
+void FrameRuntime::EndFrame()
+{
+	long end = clock();
+	long interval = end - lastClock_t;
+	long waitTime =  1000.0/FRAMERATE -interval;
+	if (waitTime > 0)
+	{
+		Sleep(waitTime);
+	}
+}
