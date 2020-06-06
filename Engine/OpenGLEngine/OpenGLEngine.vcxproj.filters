@@ -31,53 +31,74 @@
     <ClCompile Include="FrameRuntime.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="ShaderManager.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
-    <ClCompile Include="shader.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
     <ClCompile Include="GameWindow.cpp">
       <Filter>Project</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseRenderPipeline.cpp">
-      <Filter>Render</Filter>
     </ClCompile>
     <ClCompile Include="GameLoop.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="GeometryProcess.cpp">
-      <Filter>Render</Filter>
+    <ClCompile Include="Reference\stb_image.cpp">
+      <Filter>2D</Filter>
     </ClCompile>
-    <ClCompile Include="RenderBatch.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
-    <ClCompile Include="BatchManager.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderObject.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshObject.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderObjectManager.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
+    <ClCompile Include="Camera\Camera.cpp">
       <Filter>Camera</Filter>
     </ClCompile>
-    <ClCompile Include="Reference\stb_image.cpp">
-      <Filter>Texture</Filter>
+    <ClCompile Include="Math\Mathz.cpp">
+      <Filter>Math</Filter>
     </ClCompile>
-    <ClCompile Include="TextureUtility.cpp">
-      <Filter>Texture</Filter>
+    <ClCompile Include="Component\Component.cpp">
+      <Filter>Component</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Texture</Filter>
+    <ClCompile Include="Component\Renderer.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\BuildInData.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Cube.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\GameObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\BaseRenderPipeline.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\BatchManager.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\GeometryProcess.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\MeshObject.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\RenderBatch.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\RenderObject.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\RenderObjectManager.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\shader.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\ShaderManager.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="2D\Texture.cpp">
+      <Filter>2D</Filter>
+    </ClCompile>
+    <ClCompile Include="2D\TextureUtility.cpp">
+      <Filter>2D</Filter>
+    </ClCompile>
+    <ClCompile Include="World\World.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\WorldManager.cpp">
+      <Filter>World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -108,56 +129,83 @@
     <ClInclude Include="FrameRuntime.h">
       <Filter>Project</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderManager.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="shader.h">
-      <Filter>Render</Filter>
-    </ClInclude>
     <ClInclude Include="GameWindow.h">
       <Filter>Project</Filter>
     </ClInclude>
     <ClInclude Include="GameLoop.h">
       <Filter>Project</Filter>
     </ClInclude>
-    <ClInclude Include="GeometryProcess.h">
-      <Filter>Render</Filter>
+    <ClInclude Include="Reference\stb_image.h">
+      <Filter>2D</Filter>
     </ClInclude>
-    <ClInclude Include="BaseRenderPipeline.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderBatch.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="BatchManager.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderObject.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshObject.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderObjectManager.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
+    <ClInclude Include="Camera\Camera.h">
       <Filter>Camera</Filter>
     </ClInclude>
-    <ClInclude Include="Reference\stb_image.h">
-      <Filter>Texture</Filter>
+    <ClInclude Include="Math\Mathz.h">
+      <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="TextureUtility.h">
-      <Filter>Texture</Filter>
+    <ClInclude Include="Component\Component.h">
+      <Filter>Component</Filter>
     </ClInclude>
-    <ClInclude Include="TextureType.h">
-      <Filter>Texture</Filter>
+    <ClInclude Include="Component\Components.h">
+      <Filter>Component</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Texture</Filter>
+    <ClInclude Include="Component\Renderer.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\BuildInData.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\BuildInMesh.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Cube.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\GameObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\BaseRenderPipeline.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\BatchManager.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\GeometryProcess.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\MeshObject.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\RenderBatch.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\RenderObject.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\RenderObjectManager.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\shader.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\ShaderManager.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="2D\Texture.h">
+      <Filter>2D</Filter>
+    </ClInclude>
+    <ClInclude Include="2D\TextureType.h">
+      <Filter>2D</Filter>
+    </ClInclude>
+    <ClInclude Include="2D\TextureUtility.h">
+      <Filter>2D</Filter>
+    </ClInclude>
+    <ClInclude Include="World\World.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\WorldManager.h">
+      <Filter>World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -181,13 +229,22 @@
       <Extensions>
       </Extensions>
     </Filter>
-    <Filter Include="Scene">
-      <UniqueIdentifier>{2aaba05f-c792-4436-984b-ec8b27634ee4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Camera">
       <UniqueIdentifier>{29db5c31-2ad4-45d9-9105-ba6d5933422e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Texture">
+    <Filter Include="Object">
+      <UniqueIdentifier>{6ad4ca4a-dff0-479b-9c97-8d28b378fe8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="World">
+      <UniqueIdentifier>{77ed67e5-1566-4b85-acb4-9d36d8bec654}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component">
+      <UniqueIdentifier>{8a83e296-1391-4c56-9c35-fa33ac688ef4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{39606d9c-726b-4a51-abbe-cc3951ddabf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2D">
       <UniqueIdentifier>{06f4dae4-2273-4830-81ce-d0bbb6a2231e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

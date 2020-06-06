@@ -4,6 +4,8 @@ class GameLoop
 {
 public:
 	
+	static void StartBeforeLoop();
+
 	static void MainLoop();
 };
 

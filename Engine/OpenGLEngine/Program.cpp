@@ -1,6 +1,5 @@
 #include"pch.h"
-#include "Camera.h"
-#include "shader.h"
+#include "Camera/Camera.h"
 #include "SkyBox.h"
 #include "Light.h"
 #include "Primitive.h"
@@ -10,7 +9,7 @@
 #include "Time.h"
 
 #include "GameLoop.h"
-#include "ShaderManager.h"
+#include "Render/ShaderManager.h"
 
 
 using namespace glm;
@@ -44,8 +43,7 @@ int main()
 	int screenHeight = ProjectSetting::GetWindowHeight();
 	GameWindow::CreateGameWindow(screenWidth, screenHeight);
 
-	ShaderManager::CompileShader();
-
+	GameLoop::StartBeforeLoop();
 	GameLoop::MainLoop();
 
 	//TestScene(GameWindow::gameWindow);

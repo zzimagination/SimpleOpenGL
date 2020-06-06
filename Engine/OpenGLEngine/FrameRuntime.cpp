@@ -20,7 +20,7 @@ void FrameRuntime::EndFrame()
 {
 	long end = clock();
 	long interval = end - lastClock_t;
-	long waitTime =  1000.0/FRAMERATE -interval;
+	long waitTime =  1000/FRAMERATE -interval;
 	if (waitTime > 0)
 	{
 		Sleep(waitTime);

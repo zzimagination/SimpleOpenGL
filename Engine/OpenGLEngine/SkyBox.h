@@ -1,5 +1,6 @@
 #ifndef SKYBOX_H
 #define SKYBOX_H
+#include "Render/shader.h"
 
 using namespace std;
 using namespace glm;
