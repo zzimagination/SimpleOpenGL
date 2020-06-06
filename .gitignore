@@ -157,3 +157,4 @@ $RECYCLE.BIN/
 /Engine/.vs
 /Engine/OpenGLEngine/.vs
 /.vs
+/CppProperties.json
