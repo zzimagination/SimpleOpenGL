@@ -1,4 +1,6 @@
 #include "GameWindow.h"
+#include "GameLoop.h"
+#include "FrameRuntime.h"
 
 GLFWwindow* GameWindow::gameWindow = nullptr;
 
@@ -22,15 +24,34 @@ void GameWindow::CreateGameWindow(int width, int height)
 	glfwSetCursorPosCallback(gameWindow, mouse_callback);
 	glfwSetScrollCallback(gameWindow, scroll_callback);
 
+
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
 		throw("Failed to initialize GLAD");
 	}
+	glViewport(0, 0, width, height);
 }
 
-void GameWindow::TerminateGameWindow() 
+void GameWindow::TerminateGameWindow()
 {
 	glfwTerminate();
+}
+
+void GameWindow::WindowLoop()
+{
+	GameLoop::StartBeforeLoop();
+
+	while (!glfwWindowShouldClose(gameWindow))
+	{
+		FrameRuntime::BeginFrame();
+
+		GameLoop::MainLoop();
+
+		glfwSwapBuffers(gameWindow);
+		glfwPollEvents();
+
+		FrameRuntime::EndFrame();
+	}
 }
 
 void GameWindow::framebuffer_size_callback(GLFWwindow * window, int width, int height)

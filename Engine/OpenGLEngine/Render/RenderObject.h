@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include "shader.h"
 #include "MeshObject.h"
 #include "../Math/Mathz.h"
@@ -37,7 +38,9 @@ public:
 
 	vector<vec2> uvs;
 
-	std::vector<Texture*> textures;
+	vector<Texture*> textures;
+
+	map<string, vec3> vec3Map;
 
 	Shader* shader;
 
@@ -51,13 +54,16 @@ public:
 
 	void ClearGeometry();
 
+	void AddVec3Value(string name, vec3 color);
+
 private:
 
 	bool isSetup;
 
-	std::vector<GLTexture> glTextures;
+	vector<GLTexture> glTextures;
 
 	void SetupVertexArray();
+
 
 	void SetupTextures();
 

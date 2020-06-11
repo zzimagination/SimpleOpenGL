@@ -46,7 +46,7 @@ private:
 
 	static vector<RendererPair> rendererPairs;
 
-	static bool ContainRenderer(Renderer* renderer);
+	static int ContainRenderer(Renderer* renderer);
 
 	static void DeleteRenderObject(RenderObject* object);
 };

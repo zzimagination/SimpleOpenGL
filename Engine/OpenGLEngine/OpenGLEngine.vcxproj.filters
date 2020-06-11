@@ -19,9 +19,6 @@
     <ClCompile Include="Model.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Reference\glad.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="ProjectSetting.cpp">
       <Filter>Project</Filter>
     </ClCompile>
@@ -99,6 +96,18 @@
     </ClCompile>
     <ClCompile Include="World\WorldManager.cpp">
       <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLogic\GameInit.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLogic\Player.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="2D\spng.c">
+      <Filter>2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Reference\glad.c">
+      <Filter>Render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +216,15 @@
     <ClInclude Include="World\WorldManager.h">
       <Filter>World</Filter>
     </ClInclude>
+    <ClInclude Include="GameLogic\GameInit.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLogic\Player.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="2D\spng.h">
+      <Filter>2D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="头文件">
@@ -246,6 +264,9 @@
     </Filter>
     <Filter Include="2D">
       <UniqueIdentifier>{06f4dae4-2273-4830-81ce-d0bbb6a2231e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic">
+      <UniqueIdentifier>{ee4e0d89-ced1-4bc5-9fac-ec48b34404cc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

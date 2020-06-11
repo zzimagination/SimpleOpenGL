@@ -10,12 +10,10 @@ void BatchManager::GenerateBatchs()
 		RenderObject* ptr= RenderObjectManager::renderObjects[i];
 		int count =(int) ptr->indices.size();
 		RenderBatch batch(ptr->shader, ptr->VAO, count);
-
 		batch.modelMat = ptr->modelMatrix;
 		batch.viewMat = ptr->viewMatrix;
 		batch.projectionMat = ptr->projectionMatrix;
-
-		batch.func_shader = ptr->func_shader;
+		batch.vec3Map = ptr->vec3Map;
 		batchList.push_back(batch);
 	}
 }

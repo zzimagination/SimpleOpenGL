@@ -43,8 +43,7 @@ int main()
 	int screenHeight = ProjectSetting::GetWindowHeight();
 	GameWindow::CreateGameWindow(screenWidth, screenHeight);
 
-	GameLoop::StartBeforeLoop();
-	GameLoop::MainLoop();
+	GameWindow::WindowLoop();
 
 	//TestScene(GameWindow::gameWindow);
 	//ForwardScene(GameWindow::gameWindow);

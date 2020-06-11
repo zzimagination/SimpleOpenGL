@@ -86,16 +86,25 @@ void Camera::ProcessMouseScroll(float yoffset)
 
 void Camera::CalculateVectors()
 {
-	Front = vec3(0, 0, 1);
+	vec4 x = vec4(1, 0, 0, 0);
+	vec4 z = vec4(0, 0, 1, 0);
+	vec4 y = vec4(0, 1, 0, 0);
+	vec4 center = vec4(-Position, 1);
 
-	Right = normalize(glm::cross(vec3(0, 1, 0), Front));
-	Up = normalize(glm::cross(Front, Right));
 
+	mat4 rat = mat4(1);
+	rat = rotate(rat, radians(-eulerAngle.x), vec3(1, 0, 0));
+	rat = rotate(rat, radians(-eulerAngle.y), vec3(0, 1, 0));
+	rat = rotate(rat, radians(-eulerAngle.z), vec3(0, 0, 1));
+	x = normalize(rat*x);
+	y = normalize(rat*y);
+	z = normalize(rat*z);
+	center = rat * center;
 	worldToViewMatrix = mat4(
-		vec4(Right, 0),
-		vec4(Up, 0),
-		vec4(Front, 0),
-		vec4(-Position, 1)
+		x,
+		y,
+		z,
+		center
 	);//∞¥¡–≈≈¡–
 
 	float scale = 1;
@@ -106,7 +115,7 @@ void Camera::CalculateVectors()
 		projectionMatrix = glm::ortho(-size * scale, size*scale, -size, size, 0.1f, 100.0f);
 		break;
 	case Perspective:
-		projectionMatrix = glm::perspective(radians(60.0f), 1.5f, 0.1f, 100.0f);
+		projectionMatrix = glm::perspective(radians(75.0f), 1.5f, 0.1f, 100.0f);
 		break;
 	}
 }

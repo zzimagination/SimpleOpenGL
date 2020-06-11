@@ -1,5 +1,18 @@
 #include "GameObject.h"
+#include "../Component/Component.h"
 #include <iostream>
+
+
+void GameObject::Start()
+{
+	cout << "start" << endl;
+}
+
+void GameObject::Update()
+{
+
+}
+
 GameObject::GameObject()
 {
 	transform.rotation.w = 1;
@@ -30,7 +43,6 @@ GameObject::GameObject(string name)
 	transform.scale = vec3(1);
 }
 
-
 void GameObject::AddComponent(Component* com)
 {
 	com->gameObject = this;
@@ -49,23 +61,12 @@ void GameObject::RemoveComponent(Component * com)
 	}
 }
 
-void GameObject::Start()
-{
-	
-}
-
-void GameObject::Update()
-{
-
-}
-
 void GameObject::Start_Internal()
 {
 	for (int i = 0; i < components.size(); i++)
 	{
 		components[i]->Start();
 	}
-	
 }
 
 void GameObject::Update_Internal()
@@ -74,6 +75,16 @@ void GameObject::Update_Internal()
 	{
 		components[i]->Update();
 	}
+}
+
+void GameObject::StartObject()
+{
+	_isStart = true;
+}
+
+bool GameObject::IsStart()
+{
+	return _isStart;
 }
 
 mat4 GameObject::Transform::GetModelMatrix()

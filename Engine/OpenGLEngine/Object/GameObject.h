@@ -2,16 +2,19 @@
 #include <string>
 #include <vector>
 #include "../Math/Mathz.h"
-#include "../Component/Components.h"
-
 
 using namespace glm;
 using namespace std;
 
-class World;
+class Component;
 
 class GameObject
 {
+public:
+
+	virtual void Start();
+
+	virtual void Update();
 
 public:
 	struct Transform
@@ -46,20 +49,17 @@ public:
 
 	void RemoveComponent(Component* com);
 
-	void Start();
+	void Start_Internal();
 
-	void Update();
+	void Update_Internal();
+
+	void StartObject();
+
+	bool IsStart();
 
 private:
 
 	bool _isStart;
 
-	void Start_Internal();
-
-	void Update_Internal();
-
-private:
-
-	friend class World;
 };
 

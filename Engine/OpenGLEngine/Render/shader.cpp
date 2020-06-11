@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Shader::Shader(){}
+Shader::Shader() {}
 
 Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath)
 {
@@ -18,34 +18,29 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 	vShaderFile.exceptions(ifstream::failbit | ifstream::badbit);
 	fShaderFile.exceptions(ifstream::failbit | ifstream::badbit);
 	gShaderFile.exceptions(ifstream::failbit | ifstream::badbit);
-	try
+
+	// 打开文件
+	vShaderFile.open(vertexPath);
+	fShaderFile.open(fragmentPath);
+	stringstream vShaderStream, fShaderStream;
+	// 读取文件的缓冲内容到数据流中
+	vShaderStream << vShaderFile.rdbuf();
+	fShaderStream << fShaderFile.rdbuf();
+	// 关闭文件处理器
+	vShaderFile.close();
+	fShaderFile.close();
+	// 转换数据流到string
+	vertexCode = vShaderStream.str();
+	fragmentCode = fShaderStream.str();
+	if (geometryPath != nullptr)
 	{
-		// 打开文件
-		vShaderFile.open(vertexPath);
-		fShaderFile.open(fragmentPath);
-		stringstream vShaderStream, fShaderStream;
-		// 读取文件的缓冲内容到数据流中
-		vShaderStream << vShaderFile.rdbuf();
-		fShaderStream << fShaderFile.rdbuf();
-		// 关闭文件处理器
-		vShaderFile.close();
-		fShaderFile.close();
-		// 转换数据流到string
-		vertexCode = vShaderStream.str();
-		fragmentCode = fShaderStream.str();
-		if (geometryPath != nullptr)
-		{
-			gShaderFile.open(geometryPath);
-			std::stringstream gShaderStream;
-			gShaderStream << gShaderFile.rdbuf();
-			gShaderFile.close();
-			geometryCode = gShaderStream.str();
-		}
+		gShaderFile.open(geometryPath);
+		std::stringstream gShaderStream;
+		gShaderStream << gShaderFile.rdbuf();
+		gShaderFile.close();
+		geometryCode = gShaderStream.str();
 	}
-	catch (std::ifstream::failure e)
-	{
-		std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
-	}
+
 	const char* vShaderCode = vertexCode.c_str();
 	const char* fShaderCode = fragmentCode.c_str();
 
@@ -110,7 +105,9 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 	glDeleteShader(vertex);
 	glDeleteShader(fragment);
 	if (geometryPath != nullptr)
+	{
 		glDeleteShader(geometry);
+	}
 }
 
 void Shader::use()
@@ -138,11 +135,6 @@ void Shader::setFloat4(const std::string& name, float x, float y, float z, float
 	glUniform4f(v4, x, y, z, w);
 }
 
-void Shader::setMat4f(const std::string& name, glm::mat4 trans) const {
-	unsigned int transformLoc = glGetUniformLocation(ID, name.c_str());
-	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
-}
-
 void Shader::setVec2(const std::string& name, const glm::vec2& value) const
 {
 	glUniform2fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
@@ -165,7 +157,7 @@ void Shader::setVec4(const std::string& name, const glm::vec4& value) const
 {
 	glUniform4fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
 }
-void Shader::setVec4(const std::string& name, float x, float y, float z, float w)
+void Shader::setVec4(const std::string& name, float x, float y, float z, float w) const
 {
 	glUniform4f(glGetUniformLocation(ID, name.c_str()), x, y, z, w);
 }

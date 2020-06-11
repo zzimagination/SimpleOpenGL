@@ -25,9 +25,11 @@ public:
 
 	~Texture();
 
-	void LoadTexture();
+	void LoadTexture(string path);
 
 private:
+
+	
 
 };
 

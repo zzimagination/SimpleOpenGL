@@ -34,9 +34,9 @@ void World::Live()
 
 void World::CheckingGameObject(GameObject* gameObject)
 {
-	if (!gameObject->_isStart)
+	if (!gameObject->IsStart())
 	{
-		gameObject->_isStart = true;
+		gameObject->StartObject();
 		gameObject->Start();
 		gameObject->Start_Internal();
 		return;

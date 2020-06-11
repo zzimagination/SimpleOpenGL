@@ -13,5 +13,6 @@ public:
 	static void CompileShader();
 
 	static Shader* GetShader(std::string name);
+
 };
 

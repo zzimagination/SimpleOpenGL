@@ -81,6 +81,11 @@ void RenderObject::SetupVertexArray()
 	glBindVertexArray(0);
 }
 
+void RenderObject::AddVec3Value(string name, vec3 color)
+{
+	vec3Map[name] = color;
+}
+
 void RenderObject::SetupTextures()
 {
 	for (int i = 0; i < textures.size(); i++)
@@ -135,21 +140,21 @@ unsigned int RenderObject::SetupBaseTexture(int width, int height, int nrCompone
 	glGenTextures(1, &textureID);
 
 	GLenum format, internalFormal;
-	if (nrComponents == 1)
-	{
-		format = GL_RED;
-		internalFormal = GL_RED;
-	}
-	else if (nrComponents == 3)
-	{
-		format = GL_RGB;
-		internalFormal = GL_RGB;
-	}
-	else if (nrComponents == 4)
-	{
+	//if (nrComponents == 1)
+	//{
+	//	format = GL_RED;
+	//	internalFormal = GL_RED;
+	//}
+	//else if (nrComponents == 3)
+	//{
+	//	format = GL_RGB;
+	//	internalFormal = GL_RGB;
+	//}
+	//else if (nrComponents == 4)
+	//{
 		format = GL_RGBA;
 		internalFormal = GL_RGBA;
-	}
+	//}
 
 	glBindTexture(GL_TEXTURE_2D, textureID);
 	glTexImage2D(GL_TEXTURE_2D, 0, internalFormal, width, height, 0, format, GL_UNSIGNED_BYTE, data);

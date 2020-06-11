@@ -97,7 +97,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc130-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc130-mtd.lib;zlibwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="2D\spng.h" />
     <ClInclude Include="2D\Texture.h" />
     <ClInclude Include="2D\TextureType.h" />
     <ClInclude Include="2D\TextureUtility.h" />
@@ -153,6 +154,8 @@
     <ClInclude Include="Component\Components.h" />
     <ClInclude Include="Component\Renderer.h" />
     <ClInclude Include="FrameRuntime.h" />
+    <ClInclude Include="GameLogic\GameInit.h" />
+    <ClInclude Include="GameLogic\Player.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="Math\Mathz.h" />
@@ -182,12 +185,15 @@
     <ClInclude Include="World\WorldManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="2D\spng.c" />
     <ClCompile Include="2D\Texture.cpp" />
     <ClCompile Include="2D\TextureUtility.cpp" />
     <ClCompile Include="Camera\Camera.cpp" />
     <ClCompile Include="Component\Component.cpp" />
     <ClCompile Include="Component\Renderer.cpp" />
     <ClCompile Include="FrameRuntime.cpp" />
+    <ClCompile Include="GameLogic\GameInit.cpp" />
+    <ClCompile Include="GameLogic\Player.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="Math\Mathz.cpp" />

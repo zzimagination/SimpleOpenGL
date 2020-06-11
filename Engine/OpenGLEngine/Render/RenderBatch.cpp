@@ -13,14 +13,17 @@ void RenderBatch::DrawCall()
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 	_shader->use();
-	_shader->setMat4("_model", modelMat);
-	_shader->setMat4("_view", viewMat);
-	_shader->setMat4("_projection", projectionMat);
+	_shader->setMat4(MODEL_MATRIX, modelMat);
+	_shader->setMat4(VIEW_MATRIX, viewMat);
+	_shader->setMat4(PROJECTION_MARIX, projectionMat);
 
-	if (func_shader != nullptr)
+	for (auto i = vec3Map.begin(); i != vec3Map.end(); i++)
 	{
-			func_shader(_shader);
+		string name = i->first;
+		vec3 val = i->second;
+		_shader->setVec3(name, val);
 	}
+
 	for (int i = 0; i < glTextures.size(); i++)
 	{
 		glActiveTexture(GL_TEXTURE0 + i);

@@ -1,5 +1,6 @@
 #include "Renderer.h"
 #include "../Render/RenderObjectManager.h"
+#include "../Object/GameObject.h"
 
 Renderer * Renderer::GetType()
 {
@@ -8,11 +9,19 @@ Renderer * Renderer::GetType()
 
 void Renderer::Start()
 {
+	SetModelMatrix(gameObject->transform.GetModelMatrix());
 	RenderObjectManager::AddRenderer(this);
 }
 
 void Renderer::Update()
 {
+	SetModelMatrix(gameObject->transform.GetModelMatrix());
+	RenderObjectManager::UpdateRenderer(this);
+}
+
+void Renderer::SetModelMatrix(mat4 model)
+{
+	modelMatrix = model;
 }
 
 void Renderer::AddTexture(Texture * tex)
