@@ -128,7 +128,7 @@ void RenderObject::SetupTextures()
 			GLTexture tex;
 			tex.ID = id;
 			tex.path = textures[i]->path;
-
+			
 			glTextures.push_back(tex);
 		}
 	}

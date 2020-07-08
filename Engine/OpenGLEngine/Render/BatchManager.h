@@ -9,7 +9,5 @@ public:
 	static void GenerateBatchs();
 
 	static void DrawBatchs();
-
-	static void ClearBatchs();
 };
 
