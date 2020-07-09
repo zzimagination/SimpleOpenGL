@@ -1,5 +1,5 @@
 #include <glad/glad.h>
-#include "../ProjectSetting.h"
+#include "ProjectSetting.h"
 #include "GeometryProcess.h"
 #include "BaseRenderPipeline.h"
 #include "BatchManager.h"

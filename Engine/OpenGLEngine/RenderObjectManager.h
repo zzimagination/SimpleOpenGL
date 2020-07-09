@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "RenderObject.h"
-#include "../Component/Renderer.h"
+#include "Renderer.h"
 
 using namespace std;
 

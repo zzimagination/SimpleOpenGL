@@ -1,6 +1,6 @@
 #include "Renderer.h"
-#include "../Render/RenderObjectManager.h"
-#include "../Object/GameObject.h"
+#include "RenderObjectManager.h"
+#include "GameObject.h"
 
 Renderer * Renderer::GetType()
 {

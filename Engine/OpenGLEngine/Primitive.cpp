@@ -6,7 +6,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "Render/shader.h"
+#include "shader.h"
 #include "Primitive.h"
 
 using namespace glm;

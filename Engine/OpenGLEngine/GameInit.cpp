@@ -1,7 +1,7 @@
-#include "../World/WorldManager.h"
-#include "../Render/ShaderManager.h"
-#include "../2D/Texture.h"
-#include "../Component/Components.h"
+#include "WorldManager.h"
+#include "ShaderManager.h"
+#include "Texture.h"
+#include "Components.h"
 #include "GameInit.h"
 #include "Player.h"
 

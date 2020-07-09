@@ -1,5 +1,5 @@
 #include"pch.h"
-#include "Camera/Camera.h"
+#include "Camera.h"
 #include "SkyBox.h"
 #include "Light.h"
 #include "Primitive.h"
@@ -9,7 +9,7 @@
 #include "Time.h"
 
 #include "GameLoop.h"
-#include "Render/ShaderManager.h"
+#include "ShaderManager.h"
 
 
 using namespace glm;
@@ -262,26 +262,26 @@ void ForwardScene(GLFWwindow* window)
 	quadVAO = GetQuad(quadVBO);
 
 	vector<string> faces = {
-		"skybox/right.jpg",
-		"skybox/left.jpg",
-		"skybox/top.jpg",
-		"skybox/bottom.jpg",
-		"skybox/front.jpg",
-		"skybox/back.jpg"
+		"Resources/Textures/skybox/right.jpg",
+		"Resources/Textures/skybox/left.jpg",
+		"Resources/Textures/skybox/top.jpg",
+		"Resources/Textures/skybox/bottom.jpg",
+		"Resources/Textures/skybox/front.jpg",
+		"Resources/Textures/skybox/back.jpg"
 	};
 	SkyBox skybox;
 	skybox.loadCubemap(faces);
 
-	unsigned int whiteTex = loadTexture("Texture/White.tga", false);
-	unsigned int blackTex = loadTexture("Texture/Black.tga", false);
-	unsigned int bumpTex = loadTexture("Texture/Bump.tga", false);
-	unsigned int irregularD = loadTexture("Texture/irregular_triangle_curtain_wall_tiles_Base_Color.jpg", true);
-	unsigned int irregularN = loadTexture("Texture/irregular_triangle_curtain_wall_tiles_Normal.jpg", false);
-	unsigned int woodD = loadTexture("Texture/american_walnut_crown_cut_Base_Color.jpg", true);
-	unsigned int woodN = loadTexture("Texture/american_walnut_crown_cut_Normal.jpg", false);
-	unsigned int wallD = loadTexture("Texture/Soi_RedBricks_Base_Color.jpg", true);
-	unsigned int wallN = loadTexture("Texture/Soi_RedBricks_Normal.jpg", false);
-	unsigned int bg0 = loadTexture("Texture/bg1.png", true);
+	unsigned int whiteTex = loadTexture("Resources/Textures/Texture/White.tga", false);
+	unsigned int blackTex = loadTexture("Resources/Textures/Texture/Black.tga", false);
+	unsigned int bumpTex = loadTexture("Resources/Textures/Texture/Bump.tga", false);
+	unsigned int irregularD = loadTexture("Resources/Textures/Texture/irregular_triangle_curtain_wall_tiles_Base_Color.jpg", true);
+	unsigned int irregularN = loadTexture("Resources/Textures/Texture/irregular_triangle_curtain_wall_tiles_Normal.jpg", false);
+	unsigned int woodD = loadTexture("Resources/Textures/Texture/american_walnut_crown_cut_Base_Color.jpg", true);
+	unsigned int woodN = loadTexture("Resources/Textures/Texture/american_walnut_crown_cut_Normal.jpg", false);
+	unsigned int wallD = loadTexture("Resources/Textures/Texture/Soi_RedBricks_Base_Color.jpg", true);
+	unsigned int wallN = loadTexture("Resources/Textures/Texture/Soi_RedBricks_Normal.jpg", false);
+	unsigned int bg0 = loadTexture("Resources/Textures/Texture/bg1.png", true);
 
 
 	unsigned int uboMatrices;
@@ -291,11 +291,11 @@ void ForwardScene(GLFWwindow* window)
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 	glBindBufferRange(GL_UNIFORM_BUFFER, 0, uboMatrices, 0, 2 * sizeof(glm::mat4));
 
-	Shader unlit("Shader/Unlit.vs", "Shader/Unlit.fs");
+	Shader unlit("Shader/Shader/Unlit.vs", "Shader/Shader/Unlit.fs");
 	unsigned int unlitMatrices = glGetUniformBlockIndex(unlit.ID, "Matrices");
 	glUniformBlockBinding(unlit.ID, unlitMatrices, 0);
 
-	Shader lit("Shader/BlinnPhong.vs", "Shader/BlinnPhong.fs");
+	Shader lit("Shader/Shader/BlinnPhong.vs", "Shader/Shader/BlinnPhong.fs");
 	unsigned int litMatrices = glGetUniformBlockIndex(lit.ID, "Matrices");
 	glUniformBlockBinding(lit.ID, litMatrices, 0);
 	unsigned int DirLightInfo = glGetUniformBlockIndex(lit.ID, "DirLightInfo");
@@ -305,26 +305,26 @@ void ForwardScene(GLFWwindow* window)
 	unsigned int SpotLightInfo = glGetUniformBlockIndex(lit.ID, "SpotLightInfo");
 	glUniformBlockBinding(lit.ID, SpotLightInfo, 3);
 
-	Shader reflectShader("Shader/reflect.vs", "Shader/reflect.fs");
+	Shader reflectShader("Shader/Shader/reflect.vs", "Shader/Shader/reflect.fs");
 	unsigned int reflectShaderMatrices = glGetUniformBlockIndex(reflectShader.ID, "Matrices");
 	glUniformBlockBinding(reflectShader.ID, reflectShaderMatrices, 0);
 
-	Shader refractShader("Shader/refract.vs", "Shader/refract.fs");
+	Shader refractShader("Shader/Shader/refract.vs", "Shader/Shader/refract.fs");
 	unsigned int refractShaderMatrices = glGetUniformBlockIndex(refractShader.ID, "Matrices");
 	glUniformBlockBinding(refractShader.ID, refractShaderMatrices, 0);
 
 
 
-	Shader hdrFrameBuffer("Shader/Vertex.vs", "Shader/HDRColor.fs");
-	Shader skyboxShader("Shader/skybox.vs", "Shader/skybox.fs");
-	Shader simpleDepthShader("Shader/dir_shadow_mapping_depth.vs", "Shader/dir_shadow_mapping_depth.fs");
-	Shader cubeMapDepthShader("Shader/point_shadows_depth.vs", "Shader/point_shadows_depth.fs", "Shader/point_shadows_depth.gs");
+	Shader hdrFrameBuffer("Shader/Shader/Vertex.vs", "Shader/Shader/HDRColor.fs");
+	Shader skyboxShader("Shader/Shader/skybox.vs", "Shader/Shader/skybox.fs");
+	Shader simpleDepthShader("Shader/Shader/dir_shadow_mapping_depth.vs", "Shader/Shader/dir_shadow_mapping_depth.fs");
+	Shader cubeMapDepthShader("Shader/Shader/point_shadows_depth.vs", "Shader/Shader/point_shadows_depth.fs", "Shader/Shader/point_shadows_depth.gs");
 
-	Shader Gaussian_blur_hori("Shader/Vertex.vs", "Shader/Gaussian_blur_hori.fs");
-	Shader Gaussian_blur_vert("Shader/Vertex.vs", "Shader/Gaussian_blur_vert.fs");
-	Shader Bloom("Shader/Vertex.vs", "Shader/Bloom.fs");
+	Shader Gaussian_blur_hori("Shader/Shader/Vertex.vs", "Shader/Shader/Gaussian_blur_hori.fs");
+	Shader Gaussian_blur_vert("Shader/Shader/Vertex.vs", "Shader/Shader/Gaussian_blur_vert.fs");
+	Shader Bloom("Shader/Shader/Vertex.vs", "Shader/Shader/Bloom.fs");
 
-	Shader Debug("Shader/Vertex.vs", "Shader/Fragment.fs");
+	Shader Debug("Shader/Shader/Vertex.vs", "Shader/Shader/Fragment.fs");
 
 	Light dirLight(LightType::direction);
 	dirLight.position = vec3(5.0f, 7.0f, 5.0f);

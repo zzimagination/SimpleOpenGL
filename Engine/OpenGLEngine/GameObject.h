@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "../Math/Mathz.h"
+#include "Mathz.h"
 
 using namespace glm;
 using namespace std;

@@ -1,6 +1,6 @@
 #include<glad/glad.h>
 
-#include "../Reference/stb_image.h"
+#include "stb_image.h"
 #include "RenderObject.h"
 
 RenderObject::RenderObject()

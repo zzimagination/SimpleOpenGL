@@ -1,4 +1,4 @@
-#include "../ProjectSetting.h"
+#include "ProjectSetting.h"
 #include "Camera.h"
 
 using namespace glm;

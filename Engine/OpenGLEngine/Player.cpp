@@ -1,6 +1,6 @@
 #include "Player.h"
-#include "../Math/Mathz.h"
-#include "../Time.h"
+#include "Mathz.h"
+#include "Time.h"
 #include <iostream>
 
 Player::Player()

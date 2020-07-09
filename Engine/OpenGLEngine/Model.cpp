@@ -9,10 +9,10 @@
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
-#include "Reference/stb_image.h"
-#include "Render/shader.h"
+#include "stb_image.h"
+#include "shader.h"
 #include "Mesh.h"
-#include"model.h"
+#include "model.h"
 
 Model::Model(const char* path)
 {

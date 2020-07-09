@@ -1,6 +1,6 @@
 #ifndef CAMERA_H
 #define CAMERA_H
-#include "../Math/Mathz.h"
+#include "Mathz.h"
 
 using namespace glm;
 

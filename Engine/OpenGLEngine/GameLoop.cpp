@@ -1,13 +1,13 @@
 #include<glad/glad.h>
 #include "GameLoop.h"
-#include "Math/Mathz.h"
-#include "Render/BaseRenderPipeline.h"
-#include "Camera/Camera.h"
-#include "World/WorldManager.h"
-#include "Render/ShaderManager.h"
-#include "Component/Components.h"
-#include "2D/Texture.h"
-#include "GameLogic/GameInit.h"
+#include "Mathz.h"
+#include "BaseRenderPipeline.h"
+#include "Camera.h"
+#include "WorldManager.h"
+#include "ShaderManager.h"
+#include "Components.h"
+#include "Texture.h"
+#include "GameInit.h"
 
 void GameLoop::StartBeforeLoop()
 {

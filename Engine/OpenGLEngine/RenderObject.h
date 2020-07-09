@@ -2,8 +2,8 @@
 #include <map>
 #include "shader.h"
 #include "MeshObject.h"
-#include "../Math/Mathz.h"
-#include "../2D/Texture.h"
+#include "Mathz.h"
+#include "Texture.h"
 
 using namespace std;
 using namespace glm;

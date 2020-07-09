@@ -2,7 +2,7 @@
 #include <vector>
 #include <map>
 #include <glad/glad.h>
-#include "../Math/Mathz.h"
+#include "Mathz.h"
 #include "shader.h"
 
 using namespace glm;

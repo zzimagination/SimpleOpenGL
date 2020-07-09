@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
-#include "../Object/BuildInData.h"
-#include "../Camera/Camera.h"
-#include "../Object/GameObject.h"
+#include "BuildInData.h"
+#include "Camera.h"
+#include "GameObject.h"
 
 using namespace std;
 

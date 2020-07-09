@@ -1,10 +1,10 @@
 #pragma once
 #include <vector>
 #include <map>
-#include "../Render/shader.h"
-#include "../Object/BuildInMesh.h"
+#include "shader.h"
+#include "BuildInMesh.h"
 #include "Component.h"
-#include "../2D/Texture.h"
+#include "Texture.h"
 
 using namespace std;
 

@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "../Math/Mathz.h"
+#include "Mathz.h"
 #include "BuildInData.h"
 
 using namespace glm;

@@ -1,5 +1,5 @@
 #include "GameObject.h"
-#include "../Component/Component.h"
+#include "Component.h"
 #include <iostream>
 
 

@@ -1,8 +1,8 @@
 #include "RenderObjectManager.h"
 #include "ShaderManager.h"
-#include "../Camera/Camera.h"
-#include "../Object/BuildInMesh.h"
-#include "../World/WorldManager.h"
+#include "Camera.h"
+#include "BuildInMesh.h"
+#include "WorldManager.h"
 
 
 using namespace std;

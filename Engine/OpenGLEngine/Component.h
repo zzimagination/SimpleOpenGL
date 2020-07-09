@@ -1,5 +1,5 @@
 #pragma once
-#include "../Object/GameObject.h"
+#include "GameObject.h"
 
 class Component
 {

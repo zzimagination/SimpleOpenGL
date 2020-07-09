@@ -24,7 +24,7 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
-#include "Reference/stb_image.h"
+#include "stb_image.h"
 
 #define SCR_WIDTH  1920
 #define SCR_HEIGHT  1080
