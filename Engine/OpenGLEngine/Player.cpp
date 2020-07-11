@@ -1,7 +1,8 @@
 #include "Player.h"
-#include "Mathz.h"
+#include "Mathz.hpp"
 #include "Time.h"
 #include <iostream>
+#include "Mathz.hpp"
 
 Player::Player()
 {
@@ -9,7 +10,6 @@ Player::Player()
 
 Player::Player(string name):GameObject(name)
 {
-
 }
 
 Player::~Player()
@@ -18,7 +18,7 @@ Player::~Player()
 
 void Player::Start()
 {
-	
+
 }
 
 void Player::Update()

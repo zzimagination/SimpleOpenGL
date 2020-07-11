@@ -2,7 +2,7 @@
 #include <map>
 #include "shader.h"
 #include "MeshObject.h"
-#include "Mathz.h"
+#include "Mathz.hpp"
 #include "Texture.h"
 
 using namespace std;

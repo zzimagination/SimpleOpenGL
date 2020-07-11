@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "Mathz.h"
+#include "Transform.h"
+#include "Mathz.hpp"
 
 using namespace glm;
 using namespace std;
@@ -16,21 +17,6 @@ public:
 
 	virtual void Update();
 
-public:
-	struct Transform
-	{
-
-	public:
-		vec3 position;
-
-		vec3 eulerAngle;
-
-		quat rotation;
-
-		vec3 scale;
-
-		mat4 GetModelMatrix();
-	};
 public:
 
 	Transform transform;

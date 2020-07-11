@@ -5,7 +5,7 @@
 #include <sstream>
 #include <iostream>
 #include <string>
-#include "Mathz.h"
+#include "Mathz.hpp"
 
 
 #define MODEL_MATRIX "_model"

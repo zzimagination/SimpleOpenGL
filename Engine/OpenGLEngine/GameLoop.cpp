@@ -1,6 +1,6 @@
 #include<glad/glad.h>
 #include "GameLoop.h"
-#include "Mathz.h"
+#include "Mathz.hpp"
 #include "BaseRenderPipeline.h"
 #include "Camera.h"
 #include "WorldManager.h"
