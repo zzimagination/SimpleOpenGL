@@ -3,7 +3,7 @@
 #include <map>
 #include <glad/glad.h>
 #include "Mathz.hpp"
-#include "shader.h"
+#include "ShaderProgram.h"
 
 using namespace glm;
 using namespace std;
@@ -22,15 +22,15 @@ public:
 
 	std::vector<unsigned int> glTextures;
 
-	void (*func_shader)(Shader* shader);
+	void (*func_shader)(ShaderProgram* shader);
 
-	RenderBatch(Shader* shader, unsigned int VAO, GLsizei count);
+	RenderBatch(ShaderProgram* shader, unsigned int VAO, GLsizei count);
 
 	void DrawCall();
 
 private:
 
-	Shader* _shader;
+	ShaderProgram* _shader;
 
 	unsigned int _VAO;
 

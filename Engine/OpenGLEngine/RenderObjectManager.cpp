@@ -165,7 +165,7 @@ void RenderObjectManager::RemoveRenderer(Renderer * renderer)
 //
 //		robj->textures.push_back(tex);
 //		robj->shader = ShaderManager::GetShader("UnlitTexture");
-//		robj->func_shader = [](Shader* ss) {
+//		robj->func_shader = [](ShaderProgram* ss) {
 //			Camera* camera = WorldManager::active->camera;
 //			ss->setVec3("_color", glm::vec3(1.0f, 1.0f, 1.0f));
 //			ss->setMat4("_projection", camera->projectionMatrix);

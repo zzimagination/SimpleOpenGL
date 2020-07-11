@@ -29,6 +29,8 @@ void GameWindow::CreateGameWindow(int width, int height)
 	{
 		throw("Failed to initialize GLAD");
 	}
+	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glViewport(0, 0, width, height);
 }
 
@@ -37,21 +39,19 @@ void GameWindow::TerminateGameWindow()
 	glfwTerminate();
 }
 
-void GameWindow::WindowLoop()
+bool GameWindow::WindowShouldClose()
 {
-	GameLoop::StartBeforeLoop();
+	return glfwWindowShouldClose(gameWindow);
+}
 
-	while (!glfwWindowShouldClose(gameWindow))
-	{
-		FrameRuntime::BeginFrame();
+void GameWindow::SwapFrameBuffers()
+{
+	glfwSwapBuffers(gameWindow);
+}
 
-		GameLoop::MainLoop();
-
-		glfwSwapBuffers(gameWindow);
-		glfwPollEvents();
-
-		FrameRuntime::EndFrame();
-	}
+void GameWindow::PollWindowEvent()
+{
+	glfwPollEvents();
 }
 
 void GameWindow::framebuffer_size_callback(GLFWwindow * window, int width, int height)

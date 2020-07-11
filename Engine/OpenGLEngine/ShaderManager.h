@@ -1,6 +1,6 @@
 #pragma once
 #include <map>
-#include "shader.h"
+#include "ShaderProgram.h"
 
 using namespace std;
 
@@ -8,11 +8,11 @@ using namespace std;
 {
 public:
 
-	static map<string, Shader> shaderMap;
+	static map<string, ShaderProgram> shaderMap;
 
 	static void CompileShader();
 
-	static Shader* GetShader(std::string name);
+	static ShaderProgram* GetShader(std::string name);
 
 };
 

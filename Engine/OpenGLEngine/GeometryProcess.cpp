@@ -2,7 +2,7 @@
 #include "GeometryProcess.h"
 #include "RenderBatch.h"
 #include "ShaderManager.h"
-#include "shader.h"
+#include "ShaderProgram.h"
 #include "BatchManager.h"
 #include "RenderObjectManager.h"
 

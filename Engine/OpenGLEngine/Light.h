@@ -38,7 +38,7 @@ public:
 	Light(LightType type);
 	~Light();
 
-	void SetShaderInfo(Shader shader);
+	void SetShaderInfo(ShaderProgram shader);
 	void SetShaderUBO();
 	std::vector<mat4> GetCubeShadowTransforms();
 	mat4 GetDirLightSpaceMatrix();

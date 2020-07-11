@@ -16,14 +16,14 @@ Vector2 Vector2::operator-()
 	return Vector2(-x, -y);
 }
 
-Vector2 Vector2::operator+(const Vector2 b)
+Vector2 Vector2::operator+(const Vector2& b)
 {
 	float x = this->x + b.x;
 	float y = this->y + b.y;
 	return Vector2(x, y);
 }
 
-Vector2 Vector2::operator-(const Vector2 b)
+Vector2 Vector2::operator-(const Vector2& b)
 {
 	float x = this->x - b.x;
 	float y = this->y - b.y;

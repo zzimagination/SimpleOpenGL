@@ -7,7 +7,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "stb_image.h"
-#include "shader.h"
+#include "ShaderProgram.h"
 #include "Camera.h"
 #include "SkyBox.h"
 
@@ -77,7 +77,7 @@ SkyBox::~SkyBox()
 	glDeleteBuffers(1, &skyBoxVBO);
 }
 
-void SkyBox::DrawSkyBox(Shader shader,Camera camera,glm::mat4 project)
+void SkyBox::DrawSkyBox(ShaderProgram shader,Camera camera,glm::mat4 project)
 {
 	shader.use();
 	glm::mat4 view = glm::mat4(glm::mat3(camera.GetViewMatrix()));

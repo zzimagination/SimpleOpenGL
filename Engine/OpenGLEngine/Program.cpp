@@ -8,9 +8,9 @@
 #include "FrameRuntime.h"
 #include "Time.h"
 
+#include "GameStart.h"
 #include "GameLoop.h"
 #include "ShaderManager.h"
-
 
 using namespace glm;
 using namespace std;
@@ -42,9 +42,9 @@ int main()
 	int screenWidth = ProjectSetting::GetWindowWidth();
 	int screenHeight = ProjectSetting::GetWindowHeight();
 	GameWindow::CreateGameWindow(screenWidth, screenHeight);
-
-	GameWindow::WindowLoop();
-
+	GameStart::Start();
+	GameLoop::StartBeforeLoop();
+	GameLoop::MainLoop();
 	//TestScene(GameWindow::gameWindow);
 	//ForwardScene(GameWindow::gameWindow);
 	//DefferedRender(GameWindow::gameWindow);
@@ -193,8 +193,8 @@ void TestScene(GLFWwindow* window)
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 
-	Shader screen("Shader/GL.vs", "Shader/GL.fs");
-	Shader GeometryShader("Shader/Geometry.vs", "Shader/Geometry.fs", "Shader/Geometry.gs");
+	ShaderProgram screen("Shader/GL.vs", "Shader/GL.fs");
+	ShaderProgram GeometryShader("Shader/Geometry.vs", "Shader/Geometry.fs", "Shader/Geometry.gs");
 	float points[] = {
 		-0.5f,  0.5f, 1.0f, 0.0f, 0.0f, // вСио
 		 0.5f,  0.5f, 0.0f, 1.0f, 0.0f, // срио
@@ -291,11 +291,11 @@ void ForwardScene(GLFWwindow* window)
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 	glBindBufferRange(GL_UNIFORM_BUFFER, 0, uboMatrices, 0, 2 * sizeof(glm::mat4));
 
-	Shader unlit("Shader/Shader/Unlit.vs", "Shader/Shader/Unlit.fs");
+	ShaderProgram unlit("Shader/Shader/Unlit.vs", "Shader/Shader/Unlit.fs");
 	unsigned int unlitMatrices = glGetUniformBlockIndex(unlit.ID, "Matrices");
 	glUniformBlockBinding(unlit.ID, unlitMatrices, 0);
 
-	Shader lit("Shader/Shader/BlinnPhong.vs", "Shader/Shader/BlinnPhong.fs");
+	ShaderProgram lit("Shader/Shader/BlinnPhong.vs", "Shader/Shader/BlinnPhong.fs");
 	unsigned int litMatrices = glGetUniformBlockIndex(lit.ID, "Matrices");
 	glUniformBlockBinding(lit.ID, litMatrices, 0);
 	unsigned int DirLightInfo = glGetUniformBlockIndex(lit.ID, "DirLightInfo");
@@ -305,26 +305,26 @@ void ForwardScene(GLFWwindow* window)
 	unsigned int SpotLightInfo = glGetUniformBlockIndex(lit.ID, "SpotLightInfo");
 	glUniformBlockBinding(lit.ID, SpotLightInfo, 3);
 
-	Shader reflectShader("Shader/Shader/reflect.vs", "Shader/Shader/reflect.fs");
+	ShaderProgram reflectShader("Shader/Shader/reflect.vs", "Shader/Shader/reflect.fs");
 	unsigned int reflectShaderMatrices = glGetUniformBlockIndex(reflectShader.ID, "Matrices");
 	glUniformBlockBinding(reflectShader.ID, reflectShaderMatrices, 0);
 
-	Shader refractShader("Shader/Shader/refract.vs", "Shader/Shader/refract.fs");
+	ShaderProgram refractShader("Shader/Shader/refract.vs", "Shader/Shader/refract.fs");
 	unsigned int refractShaderMatrices = glGetUniformBlockIndex(refractShader.ID, "Matrices");
 	glUniformBlockBinding(refractShader.ID, refractShaderMatrices, 0);
 
 
 
-	Shader hdrFrameBuffer("Shader/Shader/Vertex.vs", "Shader/Shader/HDRColor.fs");
-	Shader skyboxShader("Shader/Shader/skybox.vs", "Shader/Shader/skybox.fs");
-	Shader simpleDepthShader("Shader/Shader/dir_shadow_mapping_depth.vs", "Shader/Shader/dir_shadow_mapping_depth.fs");
-	Shader cubeMapDepthShader("Shader/Shader/point_shadows_depth.vs", "Shader/Shader/point_shadows_depth.fs", "Shader/Shader/point_shadows_depth.gs");
+	ShaderProgram hdrFrameBuffer("Shader/Shader/Vertex.vs", "Shader/Shader/HDRColor.fs");
+	ShaderProgram skyboxShader("Shader/Shader/skybox.vs", "Shader/Shader/skybox.fs");
+	ShaderProgram simpleDepthShader("Shader/Shader/dir_shadow_mapping_depth.vs", "Shader/Shader/dir_shadow_mapping_depth.fs");
+	ShaderProgram cubeMapDepthShader("Shader/Shader/point_shadows_depth.vs", "Shader/Shader/point_shadows_depth.fs", "Shader/Shader/point_shadows_depth.gs");
 
-	Shader Gaussian_blur_hori("Shader/Shader/Vertex.vs", "Shader/Shader/Gaussian_blur_hori.fs");
-	Shader Gaussian_blur_vert("Shader/Shader/Vertex.vs", "Shader/Shader/Gaussian_blur_vert.fs");
-	Shader Bloom("Shader/Shader/Vertex.vs", "Shader/Shader/Bloom.fs");
+	ShaderProgram Gaussian_blur_hori("Shader/Shader/Vertex.vs", "Shader/Shader/Gaussian_blur_hori.fs");
+	ShaderProgram Gaussian_blur_vert("Shader/Shader/Vertex.vs", "Shader/Shader/Gaussian_blur_vert.fs");
+	ShaderProgram Bloom("Shader/Shader/Vertex.vs", "Shader/Shader/Bloom.fs");
 
-	Shader Debug("Shader/Shader/Vertex.vs", "Shader/Shader/Fragment.fs");
+	ShaderProgram Debug("Shader/Shader/Vertex.vs", "Shader/Shader/Fragment.fs");
 
 	Light dirLight(LightType::direction);
 	dirLight.position = vec3(5.0f, 7.0f, 5.0f);
@@ -785,16 +785,16 @@ void DefferedRender(GLFWwindow* window)
 	unsigned int wallN = loadTexture("Texture/Soi_RedBricks_Normal.jpg", false);
 	unsigned int bg0 = loadTexture("Texture/bg1.png", true);
 
-	Shader g_buffer("Shader/G_Buffer.vs", "Shader/G_Buffer.fs");
+	ShaderProgram g_buffer("Shader/G_Buffer.vs", "Shader/G_Buffer.fs");
 	unsigned int gbufferMatrices = glGetUniformBlockIndex(g_buffer.ID, "Matrices");
 	glUniformBlockBinding(g_buffer.ID, gbufferMatrices, 0);
-	Shader singleColor("Shader/Unlit.vs", "Shader/Unlit.fs");
+	ShaderProgram singleColor("Shader/Unlit.vs", "Shader/Unlit.fs");
 	unsigned int singleColorMatrices = glGetUniformBlockIndex(singleColor.ID, "Matrices");
 	glUniformBlockBinding(singleColor.ID, singleColorMatrices, 0);
-	Shader reflectShader("Shader/reflect.vs", "Shader/reflect.fs");
+	ShaderProgram reflectShader("Shader/reflect.vs", "Shader/reflect.fs");
 	unsigned int reflectShaderMatrices = glGetUniformBlockIndex(reflectShader.ID, "Matrices");
 	glUniformBlockBinding(reflectShader.ID, reflectShaderMatrices, 0);
-	Shader refractShader("Shader/refract.vs", "Shader/refract.fs");
+	ShaderProgram refractShader("Shader/refract.vs", "Shader/refract.fs");
 	unsigned int refractShaderMatrices = glGetUniformBlockIndex(refractShader.ID, "Matrices");
 	glUniformBlockBinding(refractShader.ID, refractShaderMatrices, 0);
 	unsigned int uboMatrices;
@@ -804,20 +804,20 @@ void DefferedRender(GLFWwindow* window)
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 	glBindBufferRange(GL_UNIFORM_BUFFER, 0, uboMatrices, 0, 2 * sizeof(glm::mat4));
 
-	Shader LightingPass("Shader/Vertex.vs", "Shader/LightingPass.fs");
+	ShaderProgram LightingPass("Shader/Vertex.vs", "Shader/LightingPass.fs");
 	unsigned int gbufferDirLight = glGetUniformBlockIndex(LightingPass.ID, "DirLightInfo");
 	glUniformBlockBinding(LightingPass.ID, gbufferDirLight, 1);
 	unsigned int gbufferPointLight = glGetUniformBlockIndex(LightingPass.ID, "PointLightInfo");
 	glUniformBlockBinding(LightingPass.ID, gbufferPointLight, 2);
-	Shader skyboxShader("Shader/skybox.vs", "Shader/skybox.fs");
-	Shader dirDepthShader("Shader/dir_shadow_mapping_depth.vs", "Shader/dir_shadow_mapping_depth.fs");
-	Shader pointDepthShader("Shader/point_shadows_depth.vs", "Shader/point_shadows_depth.fs", "Shader/point_shadows_depth.gs");
+	ShaderProgram skyboxShader("Shader/skybox.vs", "Shader/skybox.fs");
+	ShaderProgram dirDepthShader("Shader/dir_shadow_mapping_depth.vs", "Shader/dir_shadow_mapping_depth.fs");
+	ShaderProgram pointDepthShader("Shader/point_shadows_depth.vs", "Shader/point_shadows_depth.fs", "Shader/point_shadows_depth.gs");
 
-	Shader HDRShader("Shader/Vertex.vs", "Shader/HDRColor.fs");
-	Shader Gaussian_blur_hori("Shader/Vertex.vs", "Shader/Gaussian_blur_hori.fs");
-	Shader Gaussian_blur_vert("Shader/Vertex.vs", "Shader/Gaussian_blur_vert.fs");
-	Shader BloomShader("Shader/Vertex.vs", "Shader/Bloom.fs");
-	Shader debugShader("Shader/Vertex.vs", "Shader/Fragment.fs");
+	ShaderProgram HDRShader("Shader/Vertex.vs", "Shader/HDRColor.fs");
+	ShaderProgram Gaussian_blur_hori("Shader/Vertex.vs", "Shader/Gaussian_blur_hori.fs");
+	ShaderProgram Gaussian_blur_vert("Shader/Vertex.vs", "Shader/Gaussian_blur_vert.fs");
+	ShaderProgram BloomShader("Shader/Vertex.vs", "Shader/Bloom.fs");
+	ShaderProgram debugShader("Shader/Vertex.vs", "Shader/Fragment.fs");
 
 
 

@@ -12,7 +12,11 @@ public:
 
 	static void TerminateGameWindow();
 
-	static void WindowLoop();
+	static bool WindowShouldClose();
+
+	static void SwapFrameBuffers();
+
+	static void PollWindowEvent();
 
 private:
 	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);

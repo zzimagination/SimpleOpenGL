@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "shader.h"
+#include "ShaderProgram.h"
 #include "Mesh.h"
 
 Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<MeshTexture> textures)
@@ -17,7 +17,7 @@ Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<MeshTex
 	// now that we have all the required data, set the vertex buffers and its attribute pointers.
 	setupMesh();
 }
-void Mesh::Draw(Shader shader)
+void Mesh::Draw(ShaderProgram shader)
 {
 	// bind appropriate textures
 	unsigned int diffuseNr = 1;

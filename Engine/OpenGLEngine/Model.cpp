@@ -10,7 +10,7 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include "stb_image.h"
-#include "shader.h"
+#include "ShaderProgram.h"
 #include "Mesh.h"
 #include "model.h"
 
@@ -18,7 +18,7 @@ Model::Model(const char* path)
 {
 	loadModel(path);
 }
-void Model::Draw(Shader shader)
+void Model::Draw(ShaderProgram shader)
 {
 	for (unsigned int i = 0; i < meshes.size(); i++)
 		meshes[i].Draw(shader);

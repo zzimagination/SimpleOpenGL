@@ -1,6 +1,6 @@
 #pragma once
 #include <map>
-#include "shader.h"
+#include "ShaderProgram.h"
 #include "MeshObject.h"
 #include "Mathz.hpp"
 #include "Texture.h"
@@ -42,13 +42,13 @@ public:
 
 	map<string, vec3> vec3Map;
 
-	Shader* shader;
+	ShaderProgram* shader;
 
 	RenderObject();
 
 	~RenderObject();
 
-	void(*func_shader)(Shader* shader);
+	void(*func_shader)(ShaderProgram* shader);
 
 	void SetupGeometry();
 

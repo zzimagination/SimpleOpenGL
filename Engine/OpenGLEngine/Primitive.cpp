@@ -6,7 +6,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "shader.h"
+#include "ShaderProgram.h"
 #include "Primitive.h"
 
 using namespace glm;
@@ -218,7 +218,7 @@ void Primitive::CalculateTangent(Vertex v[]) {
 	}
 }
 
-void Primitive::Draw(Shader shader)
+void Primitive::Draw(ShaderProgram shader)
 {
 	shader.setMat4("_model", modelMat4);
 	glBindVertexArray(VAO);

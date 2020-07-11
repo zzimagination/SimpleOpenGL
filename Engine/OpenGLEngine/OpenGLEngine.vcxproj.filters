@@ -103,9 +103,6 @@
     <ClCompile Include="ShaderManager.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="shader.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
     <ClCompile Include="Vector2.cpp">
       <Filter>Math</Filter>
     </ClCompile>
@@ -116,6 +113,15 @@
       <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="Matrix4x4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStart.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector4.cpp">
       <Filter>Math</Filter>
     </ClCompile>
   </ItemGroup>
@@ -228,9 +234,6 @@
     <ClInclude Include="ShaderManager.h">
       <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="shader.h">
-      <Filter>Render</Filter>
-    </ClInclude>
     <ClInclude Include="Vector2.h">
       <Filter>Math</Filter>
     </ClInclude>
@@ -244,6 +247,15 @@
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="Matrix4x4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStart.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4.h">
       <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>

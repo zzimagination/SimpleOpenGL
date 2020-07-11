@@ -8,7 +8,7 @@ public:
 
 	Matrix4x4();
 
-	Matrix4x4(Vector3 r0, Vector3 r1, Vector3 r2, Vector3 r3);
+	Matrix4x4(Vector3& r0, Vector3& r1, Vector3& r2, Vector3& r3);
 
 	Matrix4x4(float r0c0, float r0c1, float r0c2, float r0c3,
 		float r1c0, float r1c1, float r1c2, float r1c3,

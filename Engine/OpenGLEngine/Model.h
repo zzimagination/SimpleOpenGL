@@ -12,7 +12,7 @@ public:
     bool gammaCorrection;
 
 	Model(const char* path);
-	void Draw(Shader shader);
+	void Draw(ShaderProgram shader);
 
 private:
 	unsigned int TextureFromFile(const char* path, const string& directory, bool gamma = false);

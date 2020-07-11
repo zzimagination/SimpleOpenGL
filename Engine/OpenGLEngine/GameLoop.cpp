@@ -8,19 +8,30 @@
 #include "Components.h"
 #include "Texture.h"
 #include "GameInit.h"
+#include "GameWindow.h"
+#include "FrameRuntime.h"
+
+bool GameLoop::isLooping = true;
 
 void GameLoop::StartBeforeLoop()
 {
-	ShaderManager::CompileShader();
-
 	GameInit::Init();
+	isLooping = true;
 }
 
 void GameLoop::MainLoop()
 {
-
-	WorldManager::active->Live();
-
-	BaseRenderPipeline::Render();
-
+	while (isLooping) 
+	{
+		if (GameWindow::WindowShouldClose())
+		{
+			break;
+		}
+		GameWindow::PollWindowEvent();
+		FrameRuntime::BeginFrame();
+		WorldManager::active->Live();
+		BaseRenderPipeline::Render();
+		FrameRuntime::EndFrame();
+		GameWindow::SwapFrameBuffers();
+	}
 }

@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "shader.h"
+#include "ShaderProgram.h"
 #include "Light.h"
 
 int Light::lightID = 0;
@@ -113,7 +113,7 @@ void Light::SetShaderUBO()
 
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }
-void Light::SetShaderInfo(Shader shader)
+void Light::SetShaderInfo(ShaderProgram shader)
 {
 	switch (lightType)
 	{

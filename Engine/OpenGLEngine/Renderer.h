@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <map>
-#include "shader.h"
+#include "ShaderProgram.h"
 #include "BuildInMesh.h"
 #include "Component.h"
 #include "Texture.h"
@@ -18,7 +18,7 @@ public:
 
 	mat4 modelMatrix;
 
-	Shader *shader;
+	ShaderProgram *shader;
 
 	map<string, vec3> vec3Map;
 

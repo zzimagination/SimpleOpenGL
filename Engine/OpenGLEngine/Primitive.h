@@ -18,7 +18,7 @@ public:
 	glm::mat4 modelMat4;
 	Primitive(ObjType c);
 	~Primitive();
-	void Draw(Shader shader);
+	void Draw(ShaderProgram shader);
 	void SetTransform(glm::vec3 position=vec3(0), glm::vec3 eularAngle=vec3(0), glm::vec3 scale=vec3(1));
 private:
 	struct Vertex

@@ -2,22 +2,22 @@
 
 using namespace std;
 
-map<string, Shader> ShaderManager::shaderMap;
+map<string, ShaderProgram> ShaderManager::shaderMap;
 
 void ShaderManager::CompileShader()
 {
-	Shader unlit("Shader/Unlit.vs", "Shader/Unlit.fs");
+	ShaderProgram unlit("Shader/Unlit.vs", "Shader/Unlit.fs");
 	unlit.name = "Unlit";
-	shaderMap.insert(std::pair<std::string, Shader>(unlit.name, unlit));
+	shaderMap.insert(std::pair<std::string, ShaderProgram>(unlit.name, unlit));
 
-	Shader unlitTexture("Shader/Unlit.vs", "Shader/UnlitTexture.fs");
+	ShaderProgram unlitTexture("Shader/Unlit.vs", "Shader/UnlitTexture.fs");
 	unlitTexture.name = "UnlitTexture";
-	shaderMap.insert(pair<string, Shader>(unlitTexture.name, unlitTexture));
+	shaderMap.insert(pair<string, ShaderProgram>(unlitTexture.name, unlitTexture));
 }
 
-Shader* ShaderManager::GetShader(string name)
+ShaderProgram* ShaderManager::GetShader(string name)
 {
-	Shader* s= &shaderMap[name];
+	ShaderProgram* s= &shaderMap[name];
 	if (s == nullptr)
 	{
 		throw "no shader" + name;
