@@ -8,11 +8,15 @@ using namespace std;
 {
 public:
 
+	static ShaderProgram *defaultShader;
+
 	static map<string, ShaderProgram> shaderMap;
+
+public:
 
 	static void CompileShader();
 
-	static ShaderProgram* GetShader(std::string name);
+	static ShaderProgram* GetShader(string name);
 
 };
 

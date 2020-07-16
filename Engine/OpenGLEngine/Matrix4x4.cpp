@@ -71,3 +71,8 @@ float* Matrix4x4::operator[](int i)
 {
 	return points[i];
 }
+
+const float* Matrix4x4::operator[](int i) const
+{
+	return points[i];
+}

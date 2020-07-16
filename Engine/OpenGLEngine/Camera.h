@@ -44,8 +44,8 @@ public:
 
 	float size;
 
-	glm::mat4 worldToViewMatrix;
-	glm::mat4 projectionMatrix;
+	Matrix4x4 worldToViewMatrix;
+	Matrix4x4 projectionMatrix;
 	Projection projection;
 
 	// Euler Angles

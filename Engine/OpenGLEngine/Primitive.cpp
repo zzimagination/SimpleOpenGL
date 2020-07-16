@@ -220,7 +220,7 @@ void Primitive::CalculateTangent(Vertex v[]) {
 
 void Primitive::Draw(ShaderProgram shader)
 {
-	shader.setMat4("_model", modelMat4);
+	//shader.setMat4("_model", modelMat4);
 	glBindVertexArray(VAO);
 	switch (type)
 	{

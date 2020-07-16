@@ -19,7 +19,7 @@ void Renderer::Update()
 	RenderObjectManager::UpdateRenderer(this);
 }
 
-void Renderer::SetModelMatrix(mat4 model)
+void Renderer::SetModelMatrix(Matrix4x4 model)
 {
 	modelMatrix = model;
 }

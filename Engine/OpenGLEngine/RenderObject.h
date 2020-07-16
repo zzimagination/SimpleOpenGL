@@ -24,11 +24,11 @@ public:
 
 	size_t dataSize;
 
-	mat4 modelMatrix;
+	Matrix4x4 modelMatrix;
 
-	mat4 viewMatrix;
+	Matrix4x4 viewMatrix;
 
-	mat4 projectionMatrix;
+	Matrix4x4 projectionMatrix;
 
 	std::vector<float> points;
 	

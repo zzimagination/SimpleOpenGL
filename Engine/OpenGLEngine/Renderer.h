@@ -16,7 +16,7 @@ public:
 
 	Cube cube;
 
-	mat4 modelMatrix;
+	Matrix4x4 modelMatrix;
 
 	ShaderProgram *shader;
 
@@ -30,7 +30,7 @@ public:
 
 	virtual void Update();
 
-	void SetModelMatrix(mat4 model);
+	void SetModelMatrix(Matrix4x4 model);
 
 	void AddTexture(Texture* tex);
 

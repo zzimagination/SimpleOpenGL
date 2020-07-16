@@ -16,7 +16,7 @@ public:
 
 	vec3 scale;
 
-	mat4 GetModelMatrix();
+	Matrix4x4 GetModelMatrix();
 };
 #endif // !TRANSFORM
 

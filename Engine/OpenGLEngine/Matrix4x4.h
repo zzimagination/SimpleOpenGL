@@ -25,6 +25,8 @@ private:
 public:
 
 	float* operator[](int i);
+	
+	const float* operator[](int i) const;
 };
 #endif 
 

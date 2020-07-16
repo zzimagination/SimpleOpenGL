@@ -119,17 +119,17 @@ void Light::SetShaderInfo(ShaderProgram shader)
 	{
 	case direction:
 		//直线光
-		shader.setVec3("_dirLight.direction", direct);
-		shader.setVec3("_dirLight.ambient", ambient*intensity);
-		shader.setVec3("_dirLight.diffuse", diffuse*intensity);
-		shader.setVec3("_dirLight.specular", specular*intensity);
-		shader.setMat4("_dirLightSpaceMatrix", dirLightSpaceMatrix);
+		//shader.setVec3("_dirLight.direction", direct);
+		//shader.setVec3("_dirLight.ambient", ambient*intensity);
+		//shader.setVec3("_dirLight.diffuse", diffuse*intensity);
+		//shader.setVec3("_dirLight.specular", specular*intensity);
+		//shader.setMat4("_dirLightSpaceMatrix", dirLightSpaceMatrix);
 		break;
 	case point:
 		//点光源
-		shader.setVec3("_pointLight.position", position);
-		shader.setVec3("_pointLight.diffuse", diffuse*intensity);
-		shader.setVec3("_pointLight.specular", specular*intensity);
+		//shader.setVec3("_pointLight.position", position);
+		//shader.setVec3("_pointLight.diffuse", diffuse*intensity);
+		//shader.setVec3("_pointLight.specular", specular*intensity);
 		shader.setFloat("_pointLight.constant", constant);
 		shader.setFloat("_pointLight.linear", linear);
 		shader.setFloat("_pointLight.quadratic", quadratic);
@@ -137,10 +137,10 @@ void Light::SetShaderInfo(ShaderProgram shader)
 		break;
 	case spot:
 		//聚光灯
-		shader.setVec3("_spotLight.position", position);
-		shader.setVec3("_spotLight.direction", direct);
-		shader.setVec3("_spotLight.diffuse", diffuse*intensity);
-		shader.setVec3("_spotLight.specular", specular*intensity);
+		//shader.setVec3("_spotLight.position", position);
+		//shader.setVec3("_spotLight.direction", direct);
+		//shader.setVec3("_spotLight.diffuse", diffuse*intensity);
+		//shader.setVec3("_spotLight.specular", specular*intensity);
 		shader.setFloat("_spotLight.constant", constant);
 		shader.setFloat("_spotLight.linear", linear);
 		shader.setFloat("_spotLight.quadratic", quadratic);

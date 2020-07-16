@@ -12,11 +12,11 @@ class RenderBatch
 {
 public:
 
-	mat4 modelMat;
+	Matrix4x4 modelMat;
 
-	mat4 viewMat;
+	Matrix4x4 viewMat;
 
-	mat4 projectionMat;
+	Matrix4x4 projectionMat;
 
 	map<string, vec3> vec3Map;
 

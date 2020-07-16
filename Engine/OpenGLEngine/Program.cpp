@@ -562,7 +562,7 @@ void ForwardScene(GLFWwindow* window)
 		glViewport(0, 0, dirLight.shadow_width, dirLight.shadow_height);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		simpleDepthShader.use();
-		simpleDepthShader.setMat4("_dirLightSpaceMatrix", dirLight.GetDirLightSpaceMatrix());
+		//simpleDepthShader.setMat4("_dirLightSpaceMatrix", dirLight.GetDirLightSpaceMatrix());
 		plane.Draw(simpleDepthShader);
 		cube1.Draw(simpleDepthShader);
 		cube2.Draw(simpleDepthShader);
@@ -574,10 +574,10 @@ void ForwardScene(GLFWwindow* window)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		cubeMapDepthShader.use();
-		for (unsigned int i = 0; i < pointLight.cubeShadowTransforms.size(); ++i)
-			cubeMapDepthShader.setMat4("_shadowMatrices[" + std::to_string(i) + "]", pointLight.cubeShadowTransforms[i]);
+		/*for (unsigned int i = 0; i < pointLight.cubeShadowTransforms.size(); ++i)
+			cubeMapDepthShader.setMat4("_shadowMatrices[" + std::to_string(i) + "]", pointLight.cubeShadowTransforms[i]);*/
 		cubeMapDepthShader.setFloat("_far_plane", pointLight.far_plane);
-		cubeMapDepthShader.setVec3("_lightPos", pointLight.position);
+		cubeMapDepthShader.setVec3("_lightPos", Vector3(pointLight.position.x, pointLight.position.y, pointLight.position.z));
 		plane.Draw(cubeMapDepthShader);
 		cube1.Draw(cubeMapDepthShader);
 		cube2.Draw(cubeMapDepthShader);
@@ -596,7 +596,7 @@ void ForwardScene(GLFWwindow* window)
 		glBindBuffer(GL_UNIFORM_BUFFER, 0);
 
 		lit.use();
-		lit.setVec3("_viewPos", camera.Position);
+		lit.setVec3("_viewPos", Vector3(camera.Position.x, camera.Position.y, camera.Position.z));
 		lit.setInt("_dirDepthMap", 0);
 		lit.setInt("_pointDepthMap", 1);
 		lit.setInt("_material.diffuseTex", 2);
@@ -604,7 +604,7 @@ void ForwardScene(GLFWwindow* window)
 		lit.setInt("_material.roughnessTex", 4);
 		lit.setFloat("_material.shininess", 64);
 		lit.setFloat("_material.specularStrength", 1.0f);
-		lit.setVec3("_color", vec3(1, 1, 1));
+		lit.setVec3("_color", Vector3(1, 1, 1));
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, dirDepthMap);
@@ -622,7 +622,7 @@ void ForwardScene(GLFWwindow* window)
 		glBindTexture(GL_TEXTURE_2D, irregularD);
 		glActiveTexture(GL_TEXTURE3);
 		glBindTexture(GL_TEXTURE_2D, irregularN);
-		lit.setVec3("_color", vec3(1.0f));
+		lit.setVec3("_color", Vector3(1,1,1));
 		lit.setFloat("_material.shininess", 32);
 
 		cube1.Draw(lit);
@@ -634,14 +634,14 @@ void ForwardScene(GLFWwindow* window)
 		cube2.Draw(lit);
 
 		reflectShader.use();
-		reflectShader.setVec3("cameraPos", camera.Position);
+		reflectShader.setVec3("cameraPos", Vector3(camera.Position.x, camera.Position.y, camera.Position.z));
 		reflectShader.setInt("skybox", 0);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_CUBE_MAP, skybox.cubeMap);
 		cube3.Draw(reflectShader);
 
 		refractShader.use();
-		refractShader.setVec3("cameraPos", camera.Position);
+		refractShader.setVec3("cameraPos",Vector3( camera.Position.x,camera.Position.y,camera.Position.z));
 		refractShader.setInt("skybox", 0);
 		cube4.Draw(reflectShader);
 
@@ -655,16 +655,18 @@ void ForwardScene(GLFWwindow* window)
 		glDepthMask(GL_TRUE);
 
 		unlit.use();
-		unlit.setVec3("_color", dirLight.diffuse*3.0f);
+		vec3 midDl = dirLight.diffuse*3.0f;
+		unlit.setVec3("_color", Vector3(midDl.x,midDl.y,midDl.z));
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, whiteTex);
 		lightCube.SetTransform(dirLight.position, glm::vec3(0), glm::vec3(0.1f));
 		lightCube.Draw(unlit);
-		unlit.setVec3("_color", pointLight.diffuse*3.0f);
+		vec3 midPl = pointLight.diffuse*3.0f;
+		unlit.setVec3("_color", Vector3(midPl.x,midPl.y,midPl.z));
 		lightCube.SetTransform(pointLight.position, glm::vec3(0), glm::vec3(0.1f));
 		lightCube.Draw(unlit);
-
-		unlit.setVec3("_color", spotLight.diffuse*3.0f);
+		vec3 midSpot = spotLight.diffuse*3.0f;
+		unlit.setVec3("_color", Vector3(midSpot.x,midSpot.y,midSpot.z));
 		lightCube.SetTransform(spotLight.position, glm::vec3(0), glm::vec3(0.1f));
 		lightCube.Draw(unlit);
 
@@ -1071,7 +1073,7 @@ void DefferedRender(GLFWwindow* window)
 		glViewport(0, 0, dirLight.shadow_width, dirLight.shadow_height);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		dirDepthShader.use();
-		dirDepthShader.setMat4("_dirLightSpaceMatrix", dirLight.GetDirLightSpaceMatrix());
+		//dirDepthShader.setMat4("_dirLightSpaceMatrix", dirLight.GetDirLightSpaceMatrix());
 		plane.Draw(dirDepthShader);
 		cube1.Draw(dirDepthShader);
 		cube2.Draw(dirDepthShader);
@@ -1082,10 +1084,10 @@ void DefferedRender(GLFWwindow* window)
 		glViewport(0, 0, pointLight.shadow_width, pointLight.shadow_height);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		pointDepthShader.use();
-		for (unsigned int i = 0; i < pointLight.cubeShadowTransforms.size(); ++i)
-			pointDepthShader.setMat4("_shadowMatrices[" + std::to_string(i) + "]", pointLight.cubeShadowTransforms[i]);
+		/*for (unsigned int i = 0; i < pointLight.cubeShadowTransforms.size(); ++i)
+			pointDepthShader.setMat4("_shadowMatrices[" + std::to_string(i) + "]", pointLight.cubeShadowTransforms[i]);*/
 		pointDepthShader.setFloat("_far_plane", pointLight.far_plane);
-		pointDepthShader.setVec3("_lightPos", pointLight.position);
+		pointDepthShader.setVec3("_lightPos", Vector3(pointLight.position.x, pointLight.position.y, pointLight.position.z));
 		plane.Draw(pointDepthShader);
 		cube1.Draw(pointDepthShader);
 		cube2.Draw(pointDepthShader);
@@ -1130,7 +1132,7 @@ void DefferedRender(GLFWwindow* window)
 		LightingPass.setInt("_gPosition", 0);
 		LightingPass.setInt("_gNormal", 1);
 		LightingPass.setInt("_gAlbedoSpec", 2);
-		LightingPass.setVec3("_viewPos", camera.Position);
+		LightingPass.setVec3("_viewPos", Vector3(camera.Position.x, camera.Position.y, camera.Position.z));
 		LightingPass.setInt("_dirDepthMap", 3);
 		LightingPass.setInt("_pointDepthMap", 4);
 
@@ -1156,20 +1158,21 @@ void DefferedRender(GLFWwindow* window)
 		glBlitFramebuffer(0, 0, SCR_WIDTH, SCR_HEIGHT, 0, 0, SCR_WIDTH, SCR_HEIGHT, GL_DEPTH_BUFFER_BIT, GL_NEAREST);
 
 		reflectShader.use();
-		reflectShader.setVec3("cameraPos", camera.Position);
+		reflectShader.setVec3("cameraPos", Vector3(camera.Position.x, camera.Position.y, camera.Position.z));
 		reflectShader.setInt("skybox", 0);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_CUBE_MAP, skybox.cubeMap);
 		cube3.Draw(reflectShader);
 		refractShader.use();
-		refractShader.setVec3("cameraPos", camera.Position);
+		refractShader.setVec3("cameraPos", Vector3(camera.Position.x, camera.Position.y, camera.Position.z));
 		refractShader.setInt("skybox", 0);
 		cube4.Draw(reflectShader);
 
 		singleColor.use();
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, whiteTex);
-		singleColor.setVec3("_color", pointLight.diffuse*3.0f);
+		vec3 mid = pointLight.diffuse*3.0f;
+		singleColor.setVec3("_color", Vector3(mid.x, mid.y, mid.z));
 		lightCube.SetTransform(pointLight.position, vec3(0), vec3(0.1f));
 		lightCube.Draw(singleColor);
 

@@ -21,7 +21,7 @@ void RenderBatch::DrawCall()
 	{
 		string name = i->first;
 		vec3 val = i->second;
-		_shader->setVec3(name, val);
+		_shader->setVec3(name, Vector3(val.x,val.y,val.z));
 	}
 
 	for (int i = 0; i < glTextures.size(); i++)

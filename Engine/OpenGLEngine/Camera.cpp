@@ -13,7 +13,7 @@ Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch) : Front
 	Pitch = pitch;
 	updateCameraVectors();
 }
-// Constructor with scalar values
+
 Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch)
 {
 	Position = glm::vec3(posX, posY, posZ);
@@ -23,7 +23,6 @@ Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float u
 	updateCameraVectors();
 }
 
-// Returns the view matrix calculated using Euler Angles and the LookAt Matrix
 glm::mat4 Camera::GetViewMatrix()
 {
 	return glm::lookAt(Position, Position + Front, Up);
@@ -100,22 +99,40 @@ void Camera::CalculateVectors()
 	y = normalize(rat*y);
 	z = normalize(rat*z);
 	center = rat * center;
-	worldToViewMatrix = mat4(
-		x,
-		y,
-		z,
-		center
-	);//按列排列
+	//worldToViewMatrix = mat4(
+	//	x,
+	//	y,
+	//	z,
+	//	center
+	//);//按列排列
+	worldToViewMatrix = Matrix4x4(
+		x.x, y.x, z.x, center.x,
+		x.y, y.y, z.y, center.y,
+		x.z, y.z, z.z, center.z,
+		x.w, y.w, z.w, center.w
+	);
 
 	float scale = 1;
 	switch (projection)
 	{
 	case Orthographic:
 		scale = (float)ProjectSetting::GetWindowWidth() / ProjectSetting::GetWindowHeight();
-		projectionMatrix = glm::ortho(-size * scale, size*scale, -size, size, 0.1f, 100.0f);
+		mat4  o = glm::ortho(-size * scale, size*scale, -size, size, 0.1f, 100.0f);
+		projectionMatrix = Matrix4x4(
+			o[0][0], o[1][0], o[2][0], o[3][0],
+			o[0][1], o[1][1], o[2][1], o[3][1],
+			o[0][2], o[1][2], o[2][2], o[3][2],
+			o[0][3], o[1][3], o[2][3], o[3][3]
+		);
 		break;
 	case Perspective:
-		projectionMatrix = glm::perspective(radians(75.0f), 1.5f, 0.1f, 100.0f);
+		mat4 p = glm::perspective(radians(75.0f), 1.5f, 0.1f, 100.0f);
+		projectionMatrix = Matrix4x4(
+			p[0][0], p[1][0], p[2][0], p[3][0],
+			p[0][1], p[1][1], p[2][1], p[3][1],
+			p[0][2], p[1][2], p[2][2], p[3][2],
+			p[0][3], p[1][3], p[2][3], p[3][3]
+		);
 		break;
 	}
 }
