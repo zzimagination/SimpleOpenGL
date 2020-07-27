@@ -11,6 +11,10 @@ vector<RenderObject*> RenderObjectManager::renderObjects;
 
 vector<RenderObjectManager::RendererPair> RenderObjectManager::rendererPairs;
 
+void RenderObjectManager::Culling(Camera * camera)
+{
+}
+
 void RenderObjectManager::AddRenderer(Renderer* renderer)
 {
 	if (renderer == nullptr)

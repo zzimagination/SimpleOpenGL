@@ -19,3 +19,11 @@ World * WorldManager::CreateWorld(string name)
 	active = w;
 	return w;
 }
+
+void WorldManager::LiveWorld()
+{
+	if (active != nullptr)
+	{
+		active->Live();
+	}
+}

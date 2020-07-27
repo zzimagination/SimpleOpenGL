@@ -15,7 +15,7 @@
 using namespace glm;
 using namespace std;
 // camera
-Camera camera(vec3(0.0f, 1.0f, 3.0f));
+//Camera camera(vec3(0.0f, 1.0f, 3.0f));
 
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
@@ -27,15 +27,15 @@ float lastFrame = 0.0f; // 上一帧的时间
 
 float heightScale = 0.5f;
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow* window);
-void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-
-void TestScene(GLFWwindow* window);
-void ForwardScene(GLFWwindow* window);
-void DefferedRender(GLFWwindow* window);
-unsigned int loadTexture(char const* path, bool gamma);
+//void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+//void processInput(GLFWwindow* window);
+//void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+//void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+//
+//void TestScene(GLFWwindow* window);
+//void ForwardScene(GLFWwindow* window);
+//void DefferedRender(GLFWwindow* window);
+//unsigned int loadTexture(char const* path, bool gamma);
 
 int main()
 {
@@ -43,7 +43,7 @@ int main()
 	int screenHeight = ProjectSetting::GetWindowHeight();
 	GameWindow::CreateGameWindow(screenWidth, screenHeight);
 	GameStart::Start();
-	GameLoop::StartBeforeLoop();
+	GameLoop::BeforeLoop();
 	GameLoop::MainLoop();
 	//TestScene(GameWindow::gameWindow);
 	//ForwardScene(GameWindow::gameWindow);
@@ -59,135 +59,136 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	glViewport(0, 0, width, height);
 }
 
-void processInput(GLFWwindow* window)
-{
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-		glfwSetWindowShouldClose(window, true);
+//void processInput(GLFWwindow* window)
+//{
+//	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+//		glfwSetWindowShouldClose(window, true);
+//
+//	float cameraSpeed = 2.5f * deltaTime; // adjust accordingly
+//	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+//		camera.ProcessKeyboard(FORWARD, deltaTime);
+//	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+//		camera.ProcessKeyboard(BACKWARD, deltaTime);
+//	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+//		camera.ProcessKeyboard(LEFT, deltaTime);
+//	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+//		camera.ProcessKeyboard(RIGHT, deltaTime);
+//	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+//	{
+//		camera.ProcessKeyboard(UP, deltaTime);
+//	}
+//	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
+//		camera.ProcessKeyboard(DOWN, deltaTime);
+//	}
+//	if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS) {
+//		heightScale += 0.001f;
+//	}
+//	if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS) {
+//		heightScale -= 0.001f;
+//	}
+//}
+//
+//void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
+//
+//	float x = (float)xpos;
+//	float y = (float)ypos;
+//
+//	if (firstMouse)
+//	{
+//		lastX = x;
+//		lastY = y;
+//		firstMouse = false;
+//	}
+//
+//
+//	float xoffset = x - lastX;
+//	float yoffset = lastY - y; // 注意这里是相反的，因为y坐标是从底部往顶部依次增大的
+//	lastX = x;
+//	lastY = y;
+//
+//	camera.ProcessMouseMovement(xoffset, yoffset);
+//}
+//
+//void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+//{
+//	camera.ProcessMouseScroll((float)yoffset);
+//}
+//
+//unsigned int loadTexture(char const* path, bool gamma)
+//{
+//	unsigned int textureID;
+//	glGenTextures(1, &textureID);
+//
+//	int width, height, nrComponents;
+//	unsigned char* data = stbi_load(path, &width, &height, &nrComponents, 0);
+//	if (data)
+//	{
+//		GLenum format, internalFormal;
+//		if (nrComponents == 1)
+//		{
+//			format = GL_RED;
+//			internalFormal = GL_RED;
+//		}
+//		else if (nrComponents == 3)
+//		{
+//			format = GL_RGB;
+//			internalFormal = gamma ? GL_SRGB : GL_RGB;
+//		}
+//		else if (nrComponents == 4)
+//		{
+//			format = GL_RGBA;
+//			internalFormal = gamma ? GL_SRGB_ALPHA : GL_RGBA;
+//		}
+//
+//		glBindTexture(GL_TEXTURE_2D, textureID);
+//		glTexImage2D(GL_TEXTURE_2D, 0, internalFormal, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+//		glGenerateMipmap(GL_TEXTURE_2D);
+//
+//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//		stbi_image_free(data);
+//	}
+//	else
+//	{
+//		std::cout << "Texture failed to load at path: " << path << std::endl;
+//		stbi_image_free(data);
+//	}
+//
+//	return textureID;
+//}
+//
+//unsigned int GetQuad(unsigned int &VBO)
+//{
+//	float quadVertices[] = { // vertex attributes for a quad that fills the entire screen in Normalized Device Coordinates.
+//	// positions   // texCoords
+//	-1.0f,  1.0f,  0.0f, 1.0f,
+//	-1.0f, -1.0f,  0.0f, 0.0f,
+//	 1.0f, -1.0f,  1.0f, 0.0f,
+//
+//	-1.0f,  1.0f,  0.0f, 1.0f,
+//	 1.0f, -1.0f,  1.0f, 0.0f,
+//	 1.0f,  1.0f,  1.0f, 1.0f
+//	};
+//	unsigned int quadVAO, quadVBO;
+//	glGenVertexArrays(1, &quadVAO);
+//	glGenBuffers(1, &quadVBO);
+//	glBindVertexArray(quadVAO);
+//	glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices, GL_STATIC_DRAW);
+//	glEnableVertexAttribArray(0);
+//	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
+//	glEnableVertexAttribArray(1);
+//	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
+//	glBindVertexArray(0);
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	VBO = quadVBO;
+//	return quadVAO;
+//}
 
-	float cameraSpeed = 2.5f * deltaTime; // adjust accordingly
-	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-		camera.ProcessKeyboard(FORWARD, deltaTime);
-	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-		camera.ProcessKeyboard(BACKWARD, deltaTime);
-	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-		camera.ProcessKeyboard(LEFT, deltaTime);
-	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-		camera.ProcessKeyboard(RIGHT, deltaTime);
-	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
-	{
-		camera.ProcessKeyboard(UP, deltaTime);
-	}
-	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-		camera.ProcessKeyboard(DOWN, deltaTime);
-	}
-	if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS) {
-		heightScale += 0.001f;
-	}
-	if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS) {
-		heightScale -= 0.001f;
-	}
-}
-
-void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
-
-	float x = (float)xpos;
-	float y = (float)ypos;
-
-	if (firstMouse)
-	{
-		lastX = x;
-		lastY = y;
-		firstMouse = false;
-	}
-
-
-	float xoffset = x - lastX;
-	float yoffset = lastY - y; // 注意这里是相反的，因为y坐标是从底部往顶部依次增大的
-	lastX = x;
-	lastY = y;
-
-	camera.ProcessMouseMovement(xoffset, yoffset);
-}
-
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
-{
-	camera.ProcessMouseScroll((float)yoffset);
-}
-
-unsigned int loadTexture(char const* path, bool gamma)
-{
-	unsigned int textureID;
-	glGenTextures(1, &textureID);
-
-	int width, height, nrComponents;
-	unsigned char* data = stbi_load(path, &width, &height, &nrComponents, 0);
-	if (data)
-	{
-		GLenum format, internalFormal;
-		if (nrComponents == 1)
-		{
-			format = GL_RED;
-			internalFormal = GL_RED;
-		}
-		else if (nrComponents == 3)
-		{
-			format = GL_RGB;
-			internalFormal = gamma ? GL_SRGB : GL_RGB;
-		}
-		else if (nrComponents == 4)
-		{
-			format = GL_RGBA;
-			internalFormal = gamma ? GL_SRGB_ALPHA : GL_RGBA;
-		}
-
-		glBindTexture(GL_TEXTURE_2D, textureID);
-		glTexImage2D(GL_TEXTURE_2D, 0, internalFormal, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-		stbi_image_free(data);
-	}
-	else
-	{
-		std::cout << "Texture failed to load at path: " << path << std::endl;
-		stbi_image_free(data);
-	}
-
-	return textureID;
-}
-
-unsigned int GetQuad(unsigned int &VBO)
-{
-	float quadVertices[] = { // vertex attributes for a quad that fills the entire screen in Normalized Device Coordinates.
-	// positions   // texCoords
-	-1.0f,  1.0f,  0.0f, 1.0f,
-	-1.0f, -1.0f,  0.0f, 0.0f,
-	 1.0f, -1.0f,  1.0f, 0.0f,
-
-	-1.0f,  1.0f,  0.0f, 1.0f,
-	 1.0f, -1.0f,  1.0f, 0.0f,
-	 1.0f,  1.0f,  1.0f, 1.0f
-	};
-	unsigned int quadVAO, quadVBO;
-	glGenVertexArrays(1, &quadVAO);
-	glGenBuffers(1, &quadVBO);
-	glBindVertexArray(quadVAO);
-	glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices, GL_STATIC_DRAW);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
-	glBindVertexArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	VBO = quadVBO;
-	return quadVAO;
-}
-
+/*
 void TestScene(GLFWwindow* window)
 {
 	glEnable(GL_DEPTH_TEST);
@@ -574,8 +575,8 @@ void ForwardScene(GLFWwindow* window)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		cubeMapDepthShader.use();
-		/*for (unsigned int i = 0; i < pointLight.cubeShadowTransforms.size(); ++i)
-			cubeMapDepthShader.setMat4("_shadowMatrices[" + std::to_string(i) + "]", pointLight.cubeShadowTransforms[i]);*/
+		//for (unsigned int i = 0; i < pointLight.cubeShadowTransforms.size(); ++i)
+		//	cubeMapDepthShader.setMat4("_shadowMatrices[" + std::to_string(i) + "]", pointLight.cubeShadowTransforms[i]);
 		cubeMapDepthShader.setFloat("_far_plane", pointLight.far_plane);
 		cubeMapDepthShader.setVec3("_lightPos", Vector3(pointLight.position.x, pointLight.position.y, pointLight.position.z));
 		plane.Draw(cubeMapDepthShader);
@@ -740,8 +741,6 @@ void ForwardScene(GLFWwindow* window)
 	glDeleteFramebuffers(1, &pointLightDepthMap);
 
 }
-
-
 
 void DefferedRender(GLFWwindow* window)
 {
@@ -1084,8 +1083,8 @@ void DefferedRender(GLFWwindow* window)
 		glViewport(0, 0, pointLight.shadow_width, pointLight.shadow_height);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		pointDepthShader.use();
-		/*for (unsigned int i = 0; i < pointLight.cubeShadowTransforms.size(); ++i)
-			pointDepthShader.setMat4("_shadowMatrices[" + std::to_string(i) + "]", pointLight.cubeShadowTransforms[i]);*/
+		//for (unsigned int i = 0; i < pointLight.cubeShadowTransforms.size(); ++i)
+		//	pointDepthShader.setMat4("_shadowMatrices[" + std::to_string(i) + "]", pointLight.cubeShadowTransforms[i]);
 		pointDepthShader.setFloat("_far_plane", pointLight.far_plane);
 		pointDepthShader.setVec3("_lightPos", Vector3(pointLight.position.x, pointLight.position.y, pointLight.position.z));
 		plane.Draw(pointDepthShader);
@@ -1248,7 +1247,7 @@ void DefferedRender(GLFWwindow* window)
 }
 
 
-
+*/
 
 
 unsigned int genQuad()

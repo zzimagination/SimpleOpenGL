@@ -1,78 +1,135 @@
 #include "Matrix4x4.h"
+#include "Vector4.h"
+#include <math.h>
+
+Matrix4x4 Matrix4x4::identity = Matrix4x4();
+
+Matrix4x4 Matrix4x4::Translate(Vector3 v)
+{
+	Matrix4x4 m;
+	m.w0 += v.x;
+	m.w1 += v.y;
+	m.w2 += v.z;
+	return m;
+}
+
+Matrix4x4 Matrix4x4::Rotate(Vector3 angle)
+{
+	Matrix4x4 x;
+	x.y1 = cos(angle.x);
+	x.z1 = -sin(angle.x);
+	x.y2 = sin(angle.x);
+	x.z2 = cos(angle.x);
+
+	Matrix4x4 y;
+	y.x0 = cos(angle.y);
+	y.z0 = sin(angle.y);
+	y.x2 = -sin(angle.y);
+	y.z2 = cos(angle.y);
+
+	Matrix4x4 z;
+	z.x0 = cos(angle.z);
+	z.y0 = -sin(angle.z);
+	z.x1 = sin(angle.z);
+	z.y1 = cos(angle.z);
+
+	return z * x * y;
+}
+
+Matrix4x4 Matrix4x4::Scale(Vector3 v)
+{
+	Matrix4x4 m;
+	m.x0 = v.x;
+	m.y1 = v.y;
+	m.z2 = v.z;
+	return m;
+}
 
 Matrix4x4::Matrix4x4()
 {
-	for (size_t i = 0; i < 4; i++)
-	{
-		for (size_t j = 0; j < 4; j++)
-		{
-			points[i][j] = 0;
-		}
-	}
+	x0 = 1; y0 = 0; z0 = 0; w0 = 0;
+	x1 = 0; y1 = 1; z1 = 0; w1 = 0;
+	x2 = 0; y2 = 0; z2 = 1; w2 = 0;
+	x3 = 0; y3 = 0; z3 = 0; w3 = 1;
 }
 
-Matrix4x4::Matrix4x4(Vector3& r0, Vector3& r1, Vector3& r2, Vector3& r3)
+Matrix4x4::Matrix4x4(Vector4& r0, Vector4& r1, Vector4& r2, Vector4& r3)
 {
-	row0 = r0;
-	row1 = r1;
-	row2 = r2;
-	row3 = r3;
-
-	points[0][0] = r0.x;
-	points[0][1] = r0.y;
-	points[0][2] = r0.z;
-	points[0][3] = 0;
-
-	points[1][0] = r1.x;
-	points[1][1] = r1.y;
-	points[1][2] = r1.z;
-	points[1][3] = 0;
-
-	points[2][0] = r2.x;
-	points[2][1] = r2.y;
-	points[2][2] = r2.z;
-	points[2][3] = 0;
-
-	points[3][0] = r3.x;
-	points[3][1] = r3.y;
-	points[3][2] = r3.z;
-	points[3][3] = 0;
+	x0 = r0.x; y0 = r0.y; z0 = r0.z; w0 = r0.w;
+	x1 = r1.x; y1 = r1.y; z1 = r1.z; w0 = r1.w;
+	x2 = r2.x; y2 = r2.y; z2 = r2.z; w2 = r2.w;
+	x3 = r3.x; y3 = r3.y; z3 = r3.z; w3 = r3.w;
 }
 
 Matrix4x4::Matrix4x4(float r0c0, float r0c1, float r0c2, float r0c3, float r1c0, float r1c1, float r1c2, float r1c3, float r2c0, float r2c1, float r2c2, float r2c3, float r3c0, float r3c1, float r3c2, float r3c3)
 {
-	row0 = { r0c0,r0c1,r0c2 };
-	row1 = { r1c0,r1c1,r1c2 };
-	row2 = { r2c0,r2c1,r2c2 };
-	row3 = { r3c0,r3c1,r3c2 };
-
-	points[0][0] = r0c0;
-	points[0][1] = r0c1;
-	points[0][2] = r0c2;
-	points[0][3] = r0c3;
-
-	points[1][0] = r1c0;
-	points[1][1] = r1c1;
-	points[1][2] = r1c2;
-	points[1][3] = r1c3;
-
-	points[2][0] = r2c0;
-	points[2][1] = r2c1;
-	points[2][2] = r2c2;
-	points[2][3] = r2c3;
-
-	points[3][0] = r3c0;
-	points[3][1] = r3c1;
-	points[3][2] = r3c2;
-	points[3][3] = r3c3;
+	x0 = r0c0; y0 = r0c1; z0 = r0c2; w0 = r0c3;
+	x1 = r1c0; y1 = r1c1; z1 = r1c2; w0 = r1c3;
+	x2 = r2c0; y2 = r2c1; z2 = r2c2; w2 = r2c3;
+	x3 = r3c0; y3 = r3c1; z3 = r3c2; w3 = r3c3;
 }
 
-float* Matrix4x4::operator[](int i)
+Vector4 Matrix4x4::GetRow(int i) const
 {
-	return points[i];
+	if (i == 0)
+	{
+		return Vector4(x0, y0, z0, w0);
+	}
+	else if (i == 1)
+	{
+		return Vector4(x1, y1, z1, w1);
+	}
+	else if (i == 2)
+	{
+		return Vector4(x2, y2, z2, w2);
+	}
+	else if (i == 3)
+	{
+		return Vector4(x3, y3, z3, w3);
+	}
 }
 
-const float* Matrix4x4::operator[](int i) const
+Vector4 Matrix4x4::GetColumn(int i) const
 {
-	return points[i];
+	if (i == 0)
+	{
+		return Vector4(x0, x1, x2, x3);
+	}
+	else if (i == 1)
+	{
+		return Vector4(y0, y1, y2, y3);
+	}
+	else if (i == 2)
+	{
+		return Vector4(z0, z1, z2, z3);
+	}
+	else if (i == 3)
+	{
+		return Vector4(w0, w1, w2, w3);
+	}
+}
+
+Matrix4x4 Matrix4x4::operator*(const Matrix4x4 &b)
+{
+	Matrix4x4 m;
+	m.x0 = this->GetRow(0)*b.GetColumn(0);
+	m.x1 = this->GetRow(1)*b.GetColumn(0);
+	m.x2 = this->GetRow(2)*b.GetColumn(0);
+	m.x3 = this->GetRow(3)*b.GetColumn(0);
+
+	m.y0 = this->GetRow(0)*b.GetColumn(1);
+	m.y1 = this->GetRow(1)*b.GetColumn(1);
+	m.y2 = this->GetRow(2)*b.GetColumn(1);
+	m.y3 = this->GetRow(3)*b.GetColumn(1);
+
+	m.z0 = this->GetRow(0)*b.GetColumn(2);
+	m.z1 = this->GetRow(1)*b.GetColumn(2);
+	m.z2 = this->GetRow(2)*b.GetColumn(2);
+	m.z3 = this->GetRow(3)*b.GetColumn(2);
+
+	m.w0 = this->GetRow(0)*b.GetColumn(3);
+	m.w1 = this->GetRow(1)*b.GetColumn(3);
+	m.w2 = this->GetRow(2)*b.GetColumn(3);
+	m.w3 = this->GetRow(3)*b.GetColumn(3);
+	return m;
 }

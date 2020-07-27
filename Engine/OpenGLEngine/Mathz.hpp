@@ -14,6 +14,8 @@
 #include "Vector4.h"
 #include "Matrix4x4.h"
 
+#define pi 3.1415926//5358979323846264338327950288
+
 class  Math
 {
 public:

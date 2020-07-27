@@ -110,7 +110,7 @@ struct spng_ctx
     size_t data_size;
     size_t bytes_read;
     unsigned char *stream_buf;
-    const unsigned char *data;
+    unsigned char *data;
 
     /* User-defined pointers for streaming */
     spng_read_fn *read_fn;
@@ -473,7 +473,7 @@ static int read_scanline_bytes(spng_ctx *ctx, z_stream *stream, unsigned char *d
     int ret;
     uint32_t bytes_read;
 
-    stream->avail_out = len;
+    stream->avail_out = (uInt)len;
     stream->next_out = dest;
 
     if(!stream->avail_in)
@@ -1393,12 +1393,12 @@ static int read_chunks_before_idat(spng_ctx *ctx)
             if(ctx->splt_list[i].sample_depth == 16)
             {
                 if( (chunk.length - keyword_len - 2) % 10 != 0) return SPNG_ECHUNK_SIZE;
-                ctx->splt_list[i].n_entries = (chunk.length - keyword_len - 2) / 10;
+                ctx->splt_list[i].n_entries =(uint32_t) (chunk.length - keyword_len - 2) / 10;
             }
             else if(ctx->splt_list[i].sample_depth == 8)
             {
                 if( (chunk.length - keyword_len - 2) % 6 != 0) return SPNG_ECHUNK_SIZE;
-                ctx->splt_list[i].n_entries = (chunk.length - keyword_len - 2) / 6;
+                ctx->splt_list[i].n_entries =(uint32_t) (chunk.length - keyword_len - 2) / 6;
             }
             else return SPNG_ESPLT_DEPTH;
 
@@ -2362,7 +2362,7 @@ static int buffer_read_fn(spng_ctx *ctx, void *user, void *data, size_t n)
     return 0;
 }
 
-int spng_set_png_buffer(spng_ctx *ctx, const void *buf, size_t size)
+int spng_set_png_buffer(spng_ctx *ctx, void *buf, size_t size)
 {
     if(ctx == NULL || buf == NULL) return 1;
     if(!ctx->valid_state) return SPNG_EBADSTATE;
@@ -2428,7 +2428,7 @@ int spng_set_chunk_limits(spng_ctx *ctx, size_t chunk_size, size_t cache_limit)
 {
     if(ctx == NULL || chunk_size > png_u32max) return 1;
 
-    ctx->max_chunk_size = chunk_size;
+    ctx->max_chunk_size = (uint32_t)chunk_size;
 
     ctx->chunk_cache_limit = cache_limit;
 

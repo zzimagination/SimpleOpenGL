@@ -1,8 +1,6 @@
 #ifndef MATH_VECTOR4
 #define MATH_VECTOR4
 
-struct Vector3;
-
 struct Vector4
 {
 public:
@@ -29,7 +27,7 @@ public:
 
 	Vector4 operator-(const Vector4& b);
 
-	operator Vector3();
+	float operator*(const Vector4& b);
 };
 #endif // !MATH_VECTOR4
 

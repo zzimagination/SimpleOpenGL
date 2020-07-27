@@ -76,9 +76,6 @@
     <ClCompile Include="World.cpp">
       <Filter>World</Filter>
     </ClCompile>
-    <ClCompile Include="BatchManager.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
     <ClCompile Include="BaseRenderPipeline.cpp">
       <Filter>Render</Filter>
     </ClCompile>
@@ -89,9 +86,6 @@
       <Filter>Render</Filter>
     </ClCompile>
     <ClCompile Include="RenderBatch.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
-    <ClCompile Include="GeometryProcess.cpp">
       <Filter>Render</Filter>
     </ClCompile>
     <ClCompile Include="RenderObjectManager.cpp">
@@ -123,6 +117,15 @@
     </ClCompile>
     <ClCompile Include="Vector4.cpp">
       <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderObjectGenerator.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderBatchManager.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderBatchDrawer.cpp">
+      <Filter>Render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -210,9 +213,6 @@
     <ClInclude Include="World.h">
       <Filter>World</Filter>
     </ClInclude>
-    <ClInclude Include="BatchManager.h">
-      <Filter>Render</Filter>
-    </ClInclude>
     <ClInclude Include="BaseRenderPipeline.h">
       <Filter>Render</Filter>
     </ClInclude>
@@ -220,9 +220,6 @@
       <Filter>Render</Filter>
     </ClInclude>
     <ClInclude Include="RenderBatch.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="GeometryProcess.h">
       <Filter>Render</Filter>
     </ClInclude>
     <ClInclude Include="RenderObjectManager.h">
@@ -256,6 +253,19 @@
       <Filter>Render</Filter>
     </ClInclude>
     <ClInclude Include="Vector4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderObjectGenerator.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderBatchManager.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderBatchDrawer.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Vector.h">
       <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
@@ -301,5 +311,8 @@
     <Filter Include="GameLogic">
       <UniqueIdentifier>{ee4e0d89-ced1-4bc5-9fac-ec48b34404cc}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SemperEngine.rc" />
   </ItemGroup>
 </Project>

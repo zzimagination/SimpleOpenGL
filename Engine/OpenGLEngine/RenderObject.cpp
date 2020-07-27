@@ -25,7 +25,7 @@ void RenderObject::SetupGeometry()
 
 void RenderObject::ClearGeometry()
 {
-	glDeleteBuffers(1, &EBO);
+	glDeleteBuffers(1, &EBO);//注意顺序
 	glDeleteBuffers(1, &VBO);
 	glDeleteVertexArrays(1, &VAO);
 
@@ -55,7 +55,7 @@ void RenderObject::SetupVertexArray()
 	size_t uvSize = ((size_t)sizeof(vec2))*uvs.size();
 	dataSize = vertexSize + uvSize;
 
-	glBufferData(GL_ARRAY_BUFFER, dataSize, 0, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, dataSize, 0, GL_STATIC_DRAW);//首先执行这个
 	int vertexOffset = 0;
 	glBufferSubData(GL_ARRAY_BUFFER, vertexOffset, vertexSize, &vertices[0]);
 	size_t uvOffset = vertexOffset + vertexSize;

@@ -1,9 +1,9 @@
-#include "BatchManager.h"
+#include "RenderBatchManager.h"
 #include "RenderObjectManager.h"
 
-std::vector<RenderBatch> BatchManager::batchList;
+std::vector<RenderBatch> RenderBatchManager::batchList;
 
-void BatchManager::GenerateBatchs()
+void RenderBatchManager::GenerateBatchs()
 {
 	if (batchList.size() > 0)
 	{
@@ -22,7 +22,11 @@ void BatchManager::GenerateBatchs()
 	}
 }
 
-void BatchManager::DrawBatchs()
+void RenderBatchManager::GenerateBatchs(vector<RenderObject*> renderObjects)
+{
+}
+
+void RenderBatchManager::DrawBatchs()
 {
 	for (int i = 0; i < batchList.size(); i++)
 	{

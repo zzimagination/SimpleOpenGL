@@ -8,7 +8,7 @@ private:
 
 public:
 
-	static void StartBeforeLoop();
+	static void BeforeLoop();
 
 	static void MainLoop();
 };

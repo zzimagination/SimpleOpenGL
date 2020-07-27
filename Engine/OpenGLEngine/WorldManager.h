@@ -10,5 +10,7 @@ public:
 	static World* active;
 	
 	static World* CreateWorld(string name);
+
+	static void LiveWorld();
 };
 

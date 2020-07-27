@@ -13,7 +13,7 @@
 
 bool GameLoop::isLooping = true;
 
-void GameLoop::StartBeforeLoop()
+void GameLoop::BeforeLoop()
 {
 	GameInit::Init();
 	isLooping = true;
@@ -29,7 +29,7 @@ void GameLoop::MainLoop()
 		}
 		GameWindow::PollWindowEvent();
 		FrameRuntime::BeginFrame();
-		WorldManager::active->Live();
+		WorldManager::LiveWorld();
 		BaseRenderPipeline::Render();
 		FrameRuntime::EndFrame();
 		GameWindow::SwapFrameBuffers();

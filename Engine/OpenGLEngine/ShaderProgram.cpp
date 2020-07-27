@@ -150,15 +150,29 @@ void ShaderProgram::setVec4(const string& name, const Vector4& value) const
 }
 
 
-void ShaderProgram::setMat4(const string& name,const Matrix4x4& mat) const
+void ShaderProgram::setMat4(const string& name, const Matrix4x4& mat) const
 {
 	float data[4][4];
-	for (int i = 0; i < 4; i++)
-	{
-		for (int j = 0; j < 4; j++)
-		{
-			data[i][j] = mat[j][i];
-		}
-	}
+
+	data[0][0] = mat.x0;
+	data[0][1] = mat.x1;
+	data[0][2] = mat.x2;
+	data[0][3] = mat.x3;
+
+	data[1][0] = mat.y0;
+	data[1][1] = mat.y1;
+	data[1][2] = mat.y2;
+	data[1][3] = mat.y3;
+
+	data[2][0] = mat.z0;
+	data[2][1] = mat.z1;
+	data[2][2] = mat.z2;
+	data[2][3] = mat.z3;
+
+	data[3][0] = mat.w0;
+	data[3][1] = mat.w1;
+	data[3][2] = mat.w2;
+	data[3][3] = mat.w3;
+
 	glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &data[0][0]);
 }

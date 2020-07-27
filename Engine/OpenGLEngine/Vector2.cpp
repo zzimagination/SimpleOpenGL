@@ -29,8 +29,3 @@ Vector2 Vector2::operator-(const Vector2& b)
 	float y = this->y - b.y;
 	return Vector2(x, y);
 }
-
-Vector2::operator Vector3()
-{
-	return Vector3(x, y, 0);
-}

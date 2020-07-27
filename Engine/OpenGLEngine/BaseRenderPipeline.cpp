@@ -1,24 +1,14 @@
-#include <glad/glad.h>
 #include "ProjectSetting.h"
-#include "GeometryProcess.h"
 #include "BaseRenderPipeline.h"
-#include "BatchManager.h"
-#include "RenderObject.h"
+#include "RenderBatchManager.h"
 #include "RenderObjectManager.h"
-#include "ShaderManager.h"
+#include "RenderBatchDrawer.h"
+#include "WorldManager.h"
 
 void BaseRenderPipeline::Render()
 {
-	GeometryProcess::BindVertexArray();
-
-	BatchManager::GenerateBatchs();
-
-	//int windowWidth = ProjectSetting::GetWindowWidth();
-	//int windowHeight = ProjectSetting::GetWindowHeight();
-	//glViewport(0, 0, windowWidth, windowHeight);
-	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	BatchManager::DrawBatchs();
-	//RenderObjectManager::ClearRenderObjects();
+	/*Camera* main = WorldManager::active->camera;
+	RenderObjectManager::Culling(main);
+	RenderBatchManager::GenerateBatchs(RenderObjectManager::prepareObjects);
+	RenderBatchDrawer::DrawBatchs(RenderBatchManager::batchs);*/
 }

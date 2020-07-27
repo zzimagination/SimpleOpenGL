@@ -1,37 +1,53 @@
 #include "ProjectSetting.h"
 #include "Camera.h"
+#include <math.h>
 
-using namespace glm;
-
-Camera::Camera() {}
-
-Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
+Camera::Camera()
 {
-	Position = position;
-	WorldUp = up;
-	Yaw = yaw;
-	Pitch = pitch;
-	updateCameraVectors();
+
 }
 
-Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch)
+Camera::~Camera()
 {
-	Position = glm::vec3(posX, posY, posZ);
-	WorldUp = glm::vec3(upX, upY, upZ);
-	Yaw = yaw;
-	Pitch = pitch;
-	updateCameraVectors();
+
 }
 
-glm::mat4 Camera::GetViewMatrix()
+Matrix4x4 Camera::CalculateProjectionMatrix()
 {
-	return glm::lookAt(Position, Position + Front, Up);
+	Matrix4x4 m;
+	switch (projection)
+	{
+	case Projection::Orthographic:
+		m.x0 = 1 / (aspect*size);
+		m.y1 = 1 / (size);
+		m.z2 = -2 / (farPlane - nearPlane);
+		m.w2 = -(farPlane + nearPlane) / (farPlane - nearPlane);
+		break;
+	case Projection::Perspective:
+		m.x0 = (1 / tan(fov* pi / 180 / 2)) / aspect;
+		m.y1 = 1 / tan(fov*pi / 180 / 2);
+		m.z2 = -(farPlane + nearPlane) / (farPlane - nearPlane);
+		m.z3 = -1;
+		m.w2 = -(2 * nearPlane*farPlane) / (farPlane - nearPlane);
+		m.w3 = 0;
+		break;
+	}
+	return m;
+}
+
+Matrix4x4 Camera::CalculateViewMatrix()
+{
+	Matrix4x4 m;
+	m = m * Matrix4x4::Translate(-position);
+	m = m * Matrix4x4::Rotate(-eulerAngle);
+	worldToViewMatrix = m;
+	return m;
 }
 
 // Processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)
 void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 {
-	float velocity = MovementSpeed * deltaTime;
+	/*float velocity = MovementSpeed * deltaTime;
 	if (direction == FORWARD)
 		Position += Front * velocity;
 	if (direction == BACKWARD)
@@ -47,29 +63,29 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 	if (direction == DOWN)
 	{
 		Position.y -= velocity;
-	}
+	}*/
 }
 
 // Processes input received from a mouse input system. Expects the offset value in both the x and y direction.
 void Camera::ProcessMouseMovement(float xoffset, float yoffset, bool constrainPitch)
 {
-	xoffset *= MouseSensitivity;
-	yoffset *= MouseSensitivity;
+	//xoffset *= MouseSensitivity;
+	//yoffset *= MouseSensitivity;
 
-	Yaw += xoffset;
-	Pitch += yoffset;
+	//Yaw += xoffset;
+	//Pitch += yoffset;
 
-	// Make sure that when pitch is out of bounds, screen doesn't get flipped
-	if (constrainPitch)
-	{
-		if (Pitch > 89.0f)
-			Pitch = 89.0f;
-		if (Pitch < -89.0f)
-			Pitch = -89.0f;
-	}
+	//// Make sure that when pitch is out of bounds, screen doesn't get flipped
+	//if (constrainPitch)
+	//{
+	//	if (Pitch > 89.0f)
+	//		Pitch = 89.0f;
+	//	if (Pitch < -89.0f)
+	//		Pitch = -89.0f;
+	//}
 
-	// Update Front, Right and Up Vectors using the updated Euler angles
-	updateCameraVectors();
+	//// Update Front, Right and Up Vectors using the updated Euler angles
+	//UpdateVectors();
 }
 
 // Processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
@@ -83,68 +99,56 @@ void Camera::ProcessMouseScroll(float yoffset)
 		Zoom = 45.0f;
 }
 
-void Camera::CalculateVectors()
-{
-	vec4 x = vec4(1, 0, 0, 0);
-	vec4 z = vec4(0, 0, 1, 0);
-	vec4 y = vec4(0, 1, 0, 0);
-	vec4 center = vec4(-Position, 1);
-
-
-	mat4 rat = mat4(1);
-	rat = rotate(rat, radians(-eulerAngle.x), vec3(1, 0, 0));
-	rat = rotate(rat, radians(-eulerAngle.y), vec3(0, 1, 0));
-	rat = rotate(rat, radians(-eulerAngle.z), vec3(0, 0, 1));
-	x = normalize(rat*x);
-	y = normalize(rat*y);
-	z = normalize(rat*z);
-	center = rat * center;
-	//worldToViewMatrix = mat4(
-	//	x,
-	//	y,
-	//	z,
-	//	center
-	//);//按列排列
-	worldToViewMatrix = Matrix4x4(
-		x.x, y.x, z.x, center.x,
-		x.y, y.y, z.y, center.y,
-		x.z, y.z, z.z, center.z,
-		x.w, y.w, z.w, center.w
-	);
-
-	float scale = 1;
-	switch (projection)
-	{
-	case Orthographic:
-		scale = (float)ProjectSetting::GetWindowWidth() / ProjectSetting::GetWindowHeight();
-		mat4  o = glm::ortho(-size * scale, size*scale, -size, size, 0.1f, 100.0f);
-		projectionMatrix = Matrix4x4(
-			o[0][0], o[1][0], o[2][0], o[3][0],
-			o[0][1], o[1][1], o[2][1], o[3][1],
-			o[0][2], o[1][2], o[2][2], o[3][2],
-			o[0][3], o[1][3], o[2][3], o[3][3]
-		);
-		break;
-	case Perspective:
-		mat4 p = glm::perspective(radians(75.0f), 1.5f, 0.1f, 100.0f);
-		projectionMatrix = Matrix4x4(
-			p[0][0], p[1][0], p[2][0], p[3][0],
-			p[0][1], p[1][1], p[2][1], p[3][1],
-			p[0][2], p[1][2], p[2][2], p[3][2],
-			p[0][3], p[1][3], p[2][3], p[3][3]
-		);
-		break;
-	}
-}
-
-void Camera::updateCameraVectors()
-{
-	glm::vec3 front;
-	front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
-	front.y = sin(glm::radians(Pitch));
-	front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
-	Front = glm::normalize(front);
-
-	Right = glm::normalize(glm::cross(Front, WorldUp));
-	Up = glm::normalize(glm::cross(Right, Front));
-}
+//void Camera::CalculateVectors()
+//{
+//	vec4 x = vec4(1, 0, 0, 0);
+//	vec4 z = vec4(0, 0, 1, 0);
+//	vec4 y = vec4(0, 1, 0, 0);
+//	vec4 center = vec4(-Position, 1);
+//
+//
+//	mat4 rat = mat4(1);
+//	rat = rotate(rat, radians(-eulerAngle.x), vec3(1, 0, 0));
+//	rat = rotate(rat, radians(-eulerAngle.y), vec3(0, 1, 0));
+//	rat = rotate(rat, radians(-eulerAngle.z), vec3(0, 0, 1));
+//	x = normalize(rat*x);
+//	y = normalize(rat*y);
+//	z = normalize(rat*z);
+//	center = rat * center;
+//	//worldToViewMatrix = mat4(
+//	//	x,
+//	//	y,
+//	//	z,
+//	//	center
+//	//);//按列排列
+//	worldToViewMatrix = Matrix4x4(
+//		x.x, y.x, z.x, center.x,
+//		x.y, y.y, z.y, center.y,
+//		x.z, y.z, z.z, center.z,
+//		x.w, y.w, z.w, center.w
+//	);
+//
+//	float scale = 1;
+//	switch (projection)
+//	{
+//	case Orthographic:
+//		scale = (float)ProjectSetting::GetWindowWidth() / ProjectSetting::GetWindowHeight();
+//		mat4  o = glm::ortho(-size * scale, size*scale, -size, size, 0.1f, 100.0f);
+//		projectionMatrix = Matrix4x4(
+//			o[0][0], o[1][0], o[2][0], o[3][0],
+//			o[0][1], o[1][1], o[2][1], o[3][1],
+//			o[0][2], o[1][2], o[2][2], o[3][2],
+//			o[0][3], o[1][3], o[2][3], o[3][3]
+//		);
+//		break;
+//	case Perspective:
+//		mat4 p = glm::perspective(radians(75.0f), 1.5f, 0.1f, 100.0f);
+//		projectionMatrix = Matrix4x4(
+//			p[0][0], p[1][0], p[2][0], p[3][0],
+//			p[0][1], p[1][1], p[2][1], p[3][1],
+//			p[0][2], p[1][2], p[2][2], p[3][2],
+//			p[0][3], p[1][3], p[2][3], p[3][3]
+//		);
+//		break;
+//	}
+//}

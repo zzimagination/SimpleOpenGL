@@ -2,6 +2,8 @@
 #include <vector>
 #include "RenderObject.h"
 #include "Renderer.h"
+#include "RenderObjectGenerator.h"
+#include "Camera.h"
 
 using namespace std;
 
@@ -30,7 +32,14 @@ private:
 	};
 
 public:
+
+	static vector<RenderObject*> prepareObjects;
+
 	static vector<RenderObject*> renderObjects;
+
+public:
+
+	static void Culling(Camera *camera);
 
 	static void AddRenderer(Renderer* renderer);
 

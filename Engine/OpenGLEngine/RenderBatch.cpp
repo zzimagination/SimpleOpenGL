@@ -1,5 +1,5 @@
 #include "RenderBatch.h"
-#include "BatchManager.h"
+#include "RenderBatchManager.h"
 #include "Camera.h"
 
 RenderBatch::RenderBatch(ShaderProgram* shader, unsigned int VAO, GLsizei count) :

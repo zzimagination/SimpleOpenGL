@@ -36,7 +36,7 @@ Vector4 Vector4::operator-(const Vector4& b)
 	return Vector4(x, y, z, w);
 }
 
-Vector4::operator Vector3()
+float Vector4::operator*(const Vector4 & b)
 {
-	return Vector3(x, y, z);
+	return this->x*b.x + this->y*b.y + this->z*b.z + this->w*b.w;
 }
