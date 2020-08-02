@@ -195,9 +195,6 @@
     <ClInclude Include="Renderer.h">
       <Filter>Component</Filter>
     </ClInclude>
-    <ClInclude Include="Components.h">
-      <Filter>Component</Filter>
-    </ClInclude>
     <ClInclude Include="Component.h">
       <Filter>Component</Filter>
     </ClInclude>
@@ -287,6 +284,9 @@
     </ClInclude>
     <ClInclude Include="TextureData.h">
       <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

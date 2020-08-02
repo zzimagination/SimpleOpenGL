@@ -18,8 +18,6 @@ public:
 
 	Cube cube;
 
-	ShaderProgram *shader;
-
 	Material* material;
 
 public:
@@ -44,13 +42,13 @@ public:
 
 	virtual Matrix4x4 GetModelMatrix();
 
-	virtual vector<Vector3> GetVertices();
+	virtual Vector3* GetVertices();
 
-	virtual vector<int> GetIndex();
+	virtual int GetVertexCount();
 
-	virtual vector<Vector2> GetUV();
+	virtual int* GetIndex();
 
-	virtual vector<Vector3> GetNormal();
+	virtual Vector2* GetUV();
 
 	RenderObject* GetRenderObject();
 

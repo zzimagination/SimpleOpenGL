@@ -22,8 +22,6 @@ public:
 
 	static vector<RenderObject*> GetRenderObject();
 
-	static void BindVertexData();
-
 	static void ClearRenderObject();
 };
 

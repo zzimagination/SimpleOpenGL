@@ -18,15 +18,15 @@ public:
 
 public:
 
-	TextureData();
+	TextureData(vector<Texture*> textures);
 
 	~TextureData();
-
-	void BindData(RenderObject* renderObject);
 
 	void UseData();
 
 private:
+
+	void BindData(vector<Texture*> textures);
 
 	void BindOpenGLTexture(Texture* tex);
 };

@@ -2,6 +2,7 @@
 #define VERTEXDATA
 
 #include <vector>
+#include "Mathz.h"
 
 class RenderObject;
 
@@ -23,15 +24,17 @@ private:
 
 public:
 
-	VertexData();
+	VertexData(Vector3* vertices, int count, int* index, Vector2* uv);
 
 	~VertexData();
 
-	void BindData(RenderObject* renderObject);
-
 	int GetCount();
-	
+
 	void UseData();
+
+private:
+
+	void BindData(Vector3* vertices, int count, int* index, Vector2* uv);
 };
 #endif // !VERTEXDATA
 

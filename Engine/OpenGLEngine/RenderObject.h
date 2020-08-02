@@ -8,46 +8,63 @@
 
 using namespace std;
 
-class VertexData;
-class TextureData;
+class RenderBatch;
 
 class RenderObject
 {
 private:
 
-	struct GLTexture {
-		string path;
+	int vertexCount;
 
-		unsigned int ID;
-	};
+	Vector3* vertexBuffer;
 
-public:
+	int* indexBuffer;
 
-	vector<Vector3> vertexBuffer;
-
-	vector<int> indexBuffer;
-
-	vector<Vector2> uvBuffer;
-
-	vector<Vector3> normalBuffer;
-
-	Matrix4x4 modelMatrix;
+	Vector2* uvBuffer;
 
 	Material *material;
 
-	VertexData* vertexData;
+	Matrix4x4 modelMatrix;
 
-	TextureData* textureData;
+	RenderBatch* batch;
+
+public:
 
 	RenderObject();
 
 	~RenderObject();
 
-	void BindVerticesData();
+	bool HasBatch();
 
-	void BindTextureData();
+	bool IsBreakBatch();
+
+	Vector3* GetVertices();
+
+	int GetVertexCount();
+
+	void SetVertices(Vector3* buffer, int count);
+
+	int* GetIndex();
+
+	void SetIndex(int* buffer);
+
+	Vector2* GetUV();
+
+	void SetUV(Vector2* buffer);
+
+	Material* GetMaterial();
+
+	void SetMaterial(Material* mat);
+
+	Matrix4x4* GetModelMatrix();
+
+	void SetModelMatrix(Matrix4x4 matrix);
+
+	void SetRenderBatch(RenderBatch* renderBatch);
 
 private:
+
+	bool _breakBatch;
 
 };
 

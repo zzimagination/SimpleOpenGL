@@ -1,44 +1,40 @@
 #include "RenderBatchManager.h"
 #include "RenderObject.h"
 #include "RenderBatch.h"
+#include "VertexData.h"
+#include "TextureData.h"
 
-vector<RenderBatch> RenderBatchManager::batchs;
-
-//void RenderBatchManager::GenerateBatchs()
-//{
-//	if (batchList.size() > 0)
-//	{
-//		batchList.clear();
-//	}
-//	for (size_t i = 0; i < RenderObjectManager::renderObjects.size(); i++)
-//	{
-//		RenderObject* ptr = RenderObjectManager::renderObjects[i];
-//		int count = (int)ptr->indices.size();
-//		RenderBatch batch(ptr->shader, ptr->VAO, count);
-//		batch.modelMatrix = ptr->modelMatrix;
-//		batch.viewMat = ptr->viewMatrix;
-//		batch.projectionMat = ptr->projectionMatrix;
-//		batch.vec3Map = ptr->vec3Map;
-//		batchList.push_back(batch);
-//	}
-//}
+vector<RenderBatch*> RenderBatchManager::batchs;
+vector<RenderObject*> RenderBatchManager::_noBatchObjects;
 
 void RenderBatchManager::GenerateBatchs(vector<RenderObject*> renderObjects)
 {
+	for (int i = batchs.size() - 1; i >= 0; i--)
+	{
+		if (batchs[i]->IsBreak())
+		{
+			batchs[i]->Break();
+			delete batchs[i];
+			batchs.erase(batchs.begin() + i);
+		}
+	}
 	for (int i = 0; i < renderObjects.size(); i++)
 	{
 		RenderObject* o = renderObjects[i];
-		RenderBatch b;
-		b.vertexData = o->vertexData;
-		b.textureData = o->textureData;
-		b.material = o->material;
-		b.modelMatrix = &o->modelMatrix;
-		batchs.push_back(b);
+		if (!o->HasBatch())
+		{
+			_noBatchObjects.push_back(o);
+		}
 	}
+	GenerateNewBatchs();
 }
 
 void RenderBatchManager::ClearBatchs()
 {
+	for (int i = 0; i < batchs.size(); i++)
+	{
+		delete batchs[i];
+	}
 	batchs.clear();
 }
 
@@ -46,7 +42,31 @@ void RenderBatchManager::DrawBatchs(Camera* camera)
 {
 	for (int i = 0; i < batchs.size(); i++)
 	{
-		batchs[i].DrawCall(camera);
+		batchs[i]->DrawCall(camera);
 	}
+}
+
+void RenderBatchManager::GenerateNewBatchs()
+{
+	for (int i = 0; i < _noBatchObjects.size(); i++)
+	{
+		RenderObject* o = _noBatchObjects[i];
+		RenderBatch* b = new RenderBatch();
+		VertexData* vertex = new VertexData(
+			o->GetVertices(),
+			o->GetVertexCount(),
+			o->GetIndex(),
+			o->GetUV());
+		b->vertexData = vertex;
+
+		TextureData* texture = new TextureData(o->GetMaterial()->textures);
+		b->textureData = texture;
+
+		b->material = o->GetMaterial();
+		b->modelMatrix = o->GetModelMatrix();
+		batchs.push_back(b);
+		o->SetRenderBatch(b);
+	}
+	_noBatchObjects.clear();
 }
 

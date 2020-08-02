@@ -3,9 +3,9 @@
 #include "VertexData.h"
 #include "RenderObject.h"
 
-
-VertexData::VertexData()
+VertexData::VertexData(Vector3 * vertices, int count, int * index, Vector2 * uv)
 {
+	BindData(vertices, count, index, uv);
 }
 
 VertexData::~VertexData()
@@ -15,26 +15,29 @@ VertexData::~VertexData()
 	glDeleteVertexArrays(1, &VAO);
 }
 
-void VertexData::BindData(RenderObject * renderObject)
+void VertexData::BindData(Vector3* vertices, int count, int* index, Vector2* uv)
 {
-	_pointCount = (int)renderObject->indexBuffer.size();
+	if (count >= 4)
+	{
+		_pointCount = count / 4 * 6;
+		if (count / 4 * 6 != _pointCount)
+		{
+			throw "indexSize is not match indexSize vertexData";
+		}
+	}
+	else
+	{
+		_pointCount = count;
+	}
 
-	int verticesSize = (int)renderObject->vertexBuffer.size() * sizeof(Vector3);
-	int uvSize = (int)renderObject->uvBuffer.size() * sizeof(Vector2);
-	int indexSize = (int)renderObject->indexBuffer.size() * sizeof(int);
+	int verticesSize = count * sizeof(Vector3);
+	int uvSize = count * sizeof(Vector2);
+	int indexSize = _pointCount * sizeof(int);
 	int totalSize = verticesSize + uvSize + indexSize;
 
 	if (verticesSize == 0 || indexSize == 0)
 	{
 		throw "vertexData is null";
-	}
-
-	if (renderObject->vertexBuffer.size() >= 4)
-	{
-		if (renderObject->vertexBuffer.size() / 4 * 6 != renderObject->indexBuffer.size())
-		{
-			throw "indexSize is not match indexSize vertexData";
-		}
 	}
 
 	glGenVertexArrays(1, &VAO);
@@ -47,14 +50,14 @@ void VertexData::BindData(RenderObject * renderObject)
 
 	glBufferData(GL_ARRAY_BUFFER, totalSize, 0, GL_STATIC_DRAW);//首先执行这个
 	int offset = 0;
-	glBufferSubData(GL_ARRAY_BUFFER, offset, verticesSize, renderObject->vertexBuffer.data());
+	glBufferSubData(GL_ARRAY_BUFFER, offset, verticesSize, vertices);
 	offset += verticesSize;
 	if (uvSize > 0) {
-		glBufferSubData(GL_ARRAY_BUFFER, offset, uvSize, renderObject->uvBuffer.data());
+		glBufferSubData(GL_ARRAY_BUFFER, offset, uvSize, uv);
 		offset += uvSize;
 	}
 
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexSize, renderObject->indexBuffer.data(), GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexSize, index, GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vector3), (void*)0);

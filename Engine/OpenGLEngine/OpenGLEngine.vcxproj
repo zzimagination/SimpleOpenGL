@@ -147,11 +147,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseRenderPipeline.h" />
+    <ClInclude Include="Components.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="RenderBatchManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
-    <ClInclude Include="Components.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="FrameRuntime.h" />
     <ClInclude Include="GameInit.h" />

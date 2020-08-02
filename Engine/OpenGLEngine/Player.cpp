@@ -8,14 +8,12 @@
 Player::Player():GameObject()
 {
 	Renderer* renderer = new Renderer();
-	renderer->material = new Material("Debug");
 	AddComponent(renderer);
 }
 
 Player::Player(string name):GameObject(name)
 {
 	Renderer* renderer = new Renderer();
-	renderer->material = new Material("Debug");
 	AddComponent(renderer);
 }
 
@@ -34,7 +32,6 @@ void Player::Start()
 
 void Player::Update()
 {
-	float y = Time::GetDeltaTime() + transform.eulerAngle.y;
+	float y = Time::GetDeltaTime() * times + transform.eulerAngle.y;
 	transform.eulerAngle.y = y;
-
 }

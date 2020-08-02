@@ -14,12 +14,7 @@ void BaseRenderPipeline::Render()
 	RenderDraw::SetClear(ClearMode::Color | ClearMode::Depth, Vector4(0.2f, 0.2f, 0.2f, 1));
 	RenderObjectManager::AddRenderObject(RenderCollector::GetRenderObjects());
 	RenderObjectManager::Culling(mainCamera);
-	RenderObjectManager::BindVertexData();
 	RenderBatchManager::GenerateBatchs(RenderObjectManager::GetRenderObject());
-	RenderObjectManager::ClearRenderObject();
 	RenderBatchManager::DrawBatchs(mainCamera);
-	RenderBatchManager::ClearBatchs();
-
-
-	RenderBatchManager::ClearBatchs();
+	RenderObjectManager::ClearRenderObject();
 }

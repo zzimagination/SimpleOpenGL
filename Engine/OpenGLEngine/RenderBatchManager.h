@@ -13,7 +13,11 @@ class RenderBatchManager
 {
 public:
 
-	static vector<RenderBatch> batchs;
+	static vector<RenderBatch*> batchs;
+
+private:
+
+	static vector<RenderObject*> _noBatchObjects;
 
 public:
 
@@ -22,6 +26,10 @@ public:
 	static void ClearBatchs();
 
 	static void DrawBatchs(Camera* camera);
+
+private:
+
+	static void GenerateNewBatchs();
 };
 
 

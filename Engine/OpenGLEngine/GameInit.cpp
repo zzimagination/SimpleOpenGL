@@ -16,8 +16,8 @@ void GameInit::Init()
 
 	Player* player = new Player("xiao ming");
 	world->AddGameObject(player);
+	player->times = 1;
 	auto renderer = player->GetComponent<Renderer*>();
-	delete renderer->material;
 	renderer->material = new Material("UnlitTexture");
 	renderer->material->SetVector3(Vector3(1, 1, 1), "_color");
 	Texture* tex = new Texture();
@@ -26,13 +26,17 @@ void GameInit::Init()
 
 	Player* target = new Player("xiao hong");
 	world->AddGameObject(target);
+	target->times = 2;
 	target->transform.position = Vector3(-4, 4, 0);
 	auto renderer1 = target->GetComponent<Renderer*>();
+	renderer1->material = new Material("Debug");
 	renderer1->material->SetVector3(Vector3(1, 0, 0), "Color");
 
 	Player* viewer = new Player("zhang san");
 	world->AddGameObject(viewer);
+	viewer->times = 0.5f;
 	viewer->transform.position = Vector3(4, 4, 0);
 	auto renderer2 = viewer->GetComponent<Renderer*>();
+	renderer2->material = new Material("Debug");
 	renderer2->material->SetVector3(Vector3(0, 0, 1), "Color");
 }

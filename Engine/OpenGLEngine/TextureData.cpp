@@ -4,8 +4,9 @@
 
 
 
-TextureData::TextureData()
+TextureData::TextureData(vector<Texture*> textures)
 {
+	BindData(textures);
 }
 
 TextureData::~TextureData()
@@ -16,16 +17,15 @@ TextureData::~TextureData()
 	}
 }
 
-void TextureData::BindData(RenderObject* renderObject)
+void TextureData::BindData(vector<Texture*> textures)
 {
-	auto mat = renderObject->material;
-	if (mat->textures.size() >= MAX_TEXTURE_COUNT)
+	if (textures.size() >= MAX_TEXTURE_COUNT)
 	{
 		throw "texture more than max";
 	}
-	for (int i = 0; i < mat->textures.size(); i++)
+	for (int i = 0; i < textures.size(); i++)
 	{
-		BindOpenGLTexture(mat->textures[i]);
+		BindOpenGLTexture(textures[i]);
 	}
 }
 

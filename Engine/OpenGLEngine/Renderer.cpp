@@ -10,8 +10,8 @@ Renderer::Renderer()
 
 Renderer::~Renderer()
 {
+	Drop();
 	DeleteRenderObject();
-	delete material;
 }
 
 void Renderer::Start()
@@ -40,27 +40,24 @@ Matrix4x4 Renderer::GetModelMatrix()
 	return gameObject->transform.GetModelMatrix();
 }
 
-vector<Vector3> Renderer::GetVertices()
+Vector3* Renderer::GetVertices()
 {
-	vector<Vector3> vertices(cube.vertices, cube.vertices + sizeof(cube.vertices)/sizeof(Vector3));
-	return vertices;
+	return cube.vertices;
 }
 
-vector<int> Renderer::GetIndex()
+int Renderer::GetVertexCount()
 {
-	vector<int> index(cube.indices, cube.indices + sizeof(cube.indices) / sizeof(int));
-	return index;
+	return sizeof(cube.vertices) / sizeof(Vector3);
 }
 
-vector<Vector2> Renderer::GetUV()
+int* Renderer::GetIndex()
 {
-	vector<Vector2> uv(cube.uvs, cube.uvs + sizeof(cube.uvs) / sizeof(Vector2));
-	return uv;
+	return cube.indices;
 }
 
-vector<Vector3> Renderer::GetNormal()
+Vector2* Renderer::GetUV()
 {
-	return vector<Vector3>();
+	return cube.uvs;
 }
 
 RenderObject * Renderer::GetRenderObject()
@@ -71,17 +68,16 @@ RenderObject * Renderer::GetRenderObject()
 void Renderer::GenerateRenderObject()
 {
 	_renderObject = new RenderObject();
-	_renderObject->vertexBuffer = GetVertices();
-	_renderObject->uvBuffer = GetUV();
-	_renderObject->indexBuffer = GetIndex();
-	_renderObject->normalBuffer = GetNormal();
-	_renderObject->material = material;
-	_renderObject->modelMatrix = GetModelMatrix();
+	_renderObject->SetVertices(GetVertices(), GetVertexCount());
+	_renderObject->SetUV(GetUV());
+	_renderObject->SetIndex(GetIndex());
+	_renderObject->SetMaterial(material);
+	_renderObject->SetModelMatrix(GetModelMatrix());
 }
 
 void Renderer::UpdateRenderObject()
 {
-	_renderObject->modelMatrix = GetModelMatrix();
+	_renderObject->SetModelMatrix(GetModelMatrix());
 }
 
 void Renderer::DeleteRenderObject()

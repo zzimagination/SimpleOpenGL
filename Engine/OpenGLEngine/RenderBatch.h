@@ -2,12 +2,12 @@
 #define RENDERBATCH
 
 #include <vector>
-#include <map>
 #include "Mathz.h"
 #include "VertexData.h"
-#include "Material.h"
 #include "TextureData.h"
+#include "Material.h"
 
+class RenderObject;
 class ShaderProgram;
 class Camera;
 
@@ -26,9 +26,17 @@ public:
 
 	Material* material;
 
+	vector<RenderObject*> renderObjects;
+
 public:
 
+	~RenderBatch();
+
 	void DrawCall(Camera* camera);
+
+	bool IsBreak();
+
+	void Break();
 
 private:
 

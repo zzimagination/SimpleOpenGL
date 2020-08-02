@@ -13,55 +13,27 @@ void RenderObjectManager::Culling(Camera * camera)
 
 }
 
-void RenderObjectManager::AddRenderObject(RenderObject* object)
+void RenderObjectManager::AddRenderObject(RenderObject * object)
 {
 	if (object == nullptr)
 	{
-		throw "renderer is null";
+		throw "Null";
 	}
 	renderObjects.push_back(object);
-	/*RenderObject* object = new RenderObject();
-	auto t = sizeof(renderer->cube.vertices);
-	object->vertices.assign(renderer->cube.vertices, renderer->cube.vertices + sizeof(renderer->cube.vertices) / sizeof(renderer->cube.vertices[0]));
-	object->indices.assign(renderer->cube.indices, renderer->cube.indices + sizeof(renderer->cube.indices) / sizeof(renderer->cube.indices[0]));
-	object->uvs.assign(renderer->cube.uvs, renderer->cube.uvs + sizeof(renderer->cube.uvs) / sizeof(renderer->cube.uvs[0]));
-
-	object->shader = renderer->shader;
-	object->modelMatrix = renderer->modelMatrix;
-	object->viewMatrix = WorldManager::active->camera->worldToViewMatrix;
-	object->projectionMatrix = WorldManager::active->camera->projectionMatrix;
-
-	object->AddVec3Value("_color", vec3(1.0f));
-	object->textures.assign(renderer->textures.begin(), renderer->textures.end());
-
-	renderObjects.push_back(object);
-
-	RendererPair pair;
-	pair.object = object;
-	pair.renderers.push_back(renderer);
-	rendererPairs.push_back(pair);*/
 }
 
 void RenderObjectManager::AddRenderObject(vector<RenderObject*> objects)
 {
-	for (int i = 0; i < objects.size(); i++)
+	if (objects.size() == 0)
 	{
-		AddRenderObject(objects[i]);
+		return;
 	}
+	renderObjects.assign(objects.begin(), objects.end());
 }
 
 vector<RenderObject*> RenderObjectManager::GetRenderObject()
 {
 	return renderObjects;
-}
-
-void RenderObjectManager::BindVertexData()
-{
-	for (int i = 0; i < renderObjects.size(); i++)
-	{
-		renderObjects[i]->BindVerticesData();
-		renderObjects[i]->BindTextureData();
-	}
 }
 
 void RenderObjectManager::ClearRenderObject()
