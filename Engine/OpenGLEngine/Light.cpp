@@ -130,10 +130,10 @@ void Light::SetShaderInfo(ShaderProgram shader)
 		//shader.setVec3("_pointLight.position", position);
 		//shader.setVec3("_pointLight.diffuse", diffuse*intensity);
 		//shader.setVec3("_pointLight.specular", specular*intensity);
-		shader.setFloat("_pointLight.constant", constant);
+		/*shader.setFloat("_pointLight.constant", constant);
 		shader.setFloat("_pointLight.linear", linear);
 		shader.setFloat("_pointLight.quadratic", quadratic);
-		shader.setFloat("_pointLight.far_plane", far_plane);
+		shader.setFloat("_pointLight.far_plane", far_plane);*/
 		break;
 	case spot:
 		//¾Û¹âµÆ
@@ -141,11 +141,11 @@ void Light::SetShaderInfo(ShaderProgram shader)
 		//shader.setVec3("_spotLight.direction", direct);
 		//shader.setVec3("_spotLight.diffuse", diffuse*intensity);
 		//shader.setVec3("_spotLight.specular", specular*intensity);
-		shader.setFloat("_spotLight.constant", constant);
-		shader.setFloat("_spotLight.linear", linear);
-		shader.setFloat("_spotLight.quadratic", quadratic);
-		shader.setFloat("_spotLight.cutOff", cutOff);
-		shader.setFloat("_spotLight.outerCutOff", cutOff + outerCutOff + 0.001f);
+		//shader.setFloat("_spotLight.constant", constant);
+		//shader.setFloat("_spotLight.linear", linear);
+		//shader.setFloat("_spotLight.quadratic", quadratic);
+		//shader.setFloat("_spotLight.cutOff", cutOff);
+		//shader.setFloat("_spotLight.outerCutOff", cutOff + outerCutOff + 0.001f);
 		break;
 	default:
 		break;

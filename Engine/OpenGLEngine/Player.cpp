@@ -1,27 +1,40 @@
 #include "Player.h"
-#include "Mathz.hpp"
+#include "Mathz.h"
 #include "Time.h"
 #include <iostream>
-#include "Mathz.hpp"
+#include "Renderer.h"
+#include "ShaderManager.h"
 
-Player::Player()
+Player::Player():GameObject()
 {
+	Renderer* renderer = new Renderer();
+	renderer->material = new Material("Debug");
+	AddComponent(renderer);
 }
 
 Player::Player(string name):GameObject(name)
 {
+	Renderer* renderer = new Renderer();
+	renderer->material = new Material("Debug");
+	AddComponent(renderer);
 }
 
 Player::~Player()
 {
+	for (int i = 0; i < components.size(); i++)
+	{
+		delete components[i];
+	}
+	components.clear();
 }
 
 void Player::Start()
 {
-
 }
 
 void Player::Update()
 {
-	cout << "player" << endl;
+	float y = Time::GetDeltaTime() + transform.eulerAngle.y;
+	transform.eulerAngle.y = y;
+
 }

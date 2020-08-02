@@ -4,6 +4,7 @@
 struct Vector3
 {
 public:
+
 	static Vector3 left;
 
 	static Vector3 up;
@@ -11,11 +12,13 @@ public:
 	static Vector3 forward;
 
 public:
+
 	float x = 0;
 
 	float y = 0;
 
 	float z = 0;
+
 public:
 
 	Vector3();

@@ -10,7 +10,19 @@ ShaderProgram::~ShaderProgram()
 	//glDeleteProgram(ID);
 }
 
-ShaderProgram::ShaderProgram(const char* vertexPath, const char* fragmentPath, const char* geometryPath)
+ShaderProgram::ShaderProgram(string vertexPath, string fragmentPath, string geometryPath)
+{
+	_vertexShaderPath = vertexPath;
+	_fragmentShaderPath = fragmentPath;
+	_geometryShaderPath = geometryPath;
+}
+
+void ShaderProgram::Use()
+{
+	glUseProgram(ID);
+}
+
+void ShaderProgram::Apply()
 {
 	// 1. 从文件路径中获取顶点/片段着色器
 	string vertexCode;
@@ -25,8 +37,8 @@ ShaderProgram::ShaderProgram(const char* vertexPath, const char* fragmentPath, c
 	gShaderFile.exceptions(ifstream::failbit | ifstream::badbit);
 
 	// 打开文件
-	vShaderFile.open(vertexPath);
-	fShaderFile.open(fragmentPath);
+	vShaderFile.open(_vertexShaderPath);
+	fShaderFile.open(_fragmentShaderPath);
 	stringstream vShaderStream, fShaderStream;
 	// 读取文件的缓冲内容到数据流中
 	vShaderStream << vShaderFile.rdbuf();
@@ -37,9 +49,9 @@ ShaderProgram::ShaderProgram(const char* vertexPath, const char* fragmentPath, c
 	// 转换数据流到string
 	vertexCode = vShaderStream.str();
 	fragmentCode = fShaderStream.str();
-	if (geometryPath != nullptr)
+	if (_geometryShaderPath != "")
 	{
-		gShaderFile.open(geometryPath);
+		gShaderFile.open(_geometryShaderPath);
 		std::stringstream gShaderStream;
 		gShaderStream << gShaderFile.rdbuf();
 		gShaderFile.close();
@@ -77,7 +89,7 @@ ShaderProgram::ShaderProgram(const char* vertexPath, const char* fragmentPath, c
 		std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
 	}
 	unsigned int geometry;
-	if (geometryPath != nullptr)
+	if (_geometryShaderPath != "")
 	{
 		const char * gShaderCode = geometryCode.c_str();
 		geometry = glCreateShader(GL_GEOMETRY_SHADER);
@@ -94,7 +106,7 @@ ShaderProgram::ShaderProgram(const char* vertexPath, const char* fragmentPath, c
 	ID = glCreateProgram();
 	glAttachShader(ID, vertex);
 	glAttachShader(ID, fragment);
-	if (geometryPath != nullptr)
+	if (_geometryShaderPath != "")
 		glAttachShader(ID, geometry);
 	glLinkProgram(ID);
 
@@ -109,48 +121,52 @@ ShaderProgram::ShaderProgram(const char* vertexPath, const char* fragmentPath, c
 	// 删除着色器，它们已经链接到我们的程序中了，已经不再需要了
 	glDeleteShader(vertex);
 	glDeleteShader(fragment);
-	if (geometryPath != nullptr)
+	if (_geometryShaderPath != "")
 	{
 		glDeleteShader(geometry);
 	}
 }
 
-void ShaderProgram::use()
+void ShaderProgram::SetValue(const string& name, bool value) const
 {
-	glUseProgram(ID);
+	auto local = glGetUniformLocation(ID, name.c_str());
+	glUniform1i(local, (int)value);
 }
 
-void ShaderProgram::setBool(const string& name, bool value) const
+void ShaderProgram::SetValue(const string& name, int value) const
 {
-	glUniform1i(glGetUniformLocation(ID, name.c_str()), (int)value);
-}
-void ShaderProgram::setInt(const string& name, int value) const
-{
-	glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
-}
-void ShaderProgram::setFloat(const string& name, float value) const
-{
-	glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
+	auto local = glGetUniformLocation(ID, name.c_str());
+	glUniform1i(local, value);
 }
 
-void ShaderProgram::setVec2(const string& name, const Vector2& value) const
+void ShaderProgram::SetValue(const string& name, float value) const
+{
+	auto local = glGetUniformLocation(ID, name.c_str());
+	glUniform1f(local, value);
+}
+
+void ShaderProgram::SetValue(const string& name, const Vector2& value) const
 {
 	float data[2] = { value.x,value.y };
-	glUniform2fv(glGetUniformLocation(ID, name.c_str()), 1, data);
+	auto local = glGetUniformLocation(ID, name.c_str());
+	glUniform2fv(local, 1, data);
 }
-void ShaderProgram::setVec3(const string& name, const Vector3& value) const
+
+void ShaderProgram::SetValue(const string& name, const Vector3& value) const
 {
 	float data[3] = { value.x, value.y,value.z };
-	glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, data);
+	auto local = glGetUniformLocation(ID, name.c_str());
+	glUniform3fv(local, 1, data);
 }
-void ShaderProgram::setVec4(const string& name, const Vector4& value) const
+
+void ShaderProgram::SetValue(const string& name, const Vector4& value) const
 {
 	float data[4] = { value.x,value.y,value.z,value.w };
-	glUniform4fv(glGetUniformLocation(ID, name.c_str()), 1, data);
+	auto local = glGetUniformLocation(ID, name.c_str());
+	glUniform4fv(local, 1, data);
 }
 
-
-void ShaderProgram::setMat4(const string& name, const Matrix4x4& mat) const
+void ShaderProgram::SetValue(const string& name, const Matrix4x4& mat) const
 {
 	float data[4][4];
 
@@ -173,6 +189,6 @@ void ShaderProgram::setMat4(const string& name, const Matrix4x4& mat) const
 	data[3][1] = mat.w1;
 	data[3][2] = mat.w2;
 	data[3][3] = mat.w3;
-
-	glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &data[0][0]);
+	auto local = glGetUniformLocation(ID, name.c_str());
+	glUniformMatrix4fv(local, 1, GL_FALSE, &data[0][0]);
 }

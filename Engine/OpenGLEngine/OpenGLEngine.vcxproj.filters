@@ -52,23 +52,14 @@
     <ClCompile Include="Renderer.cpp">
       <Filter>Component</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>GameLogic</Filter>
-    </ClCompile>
     <ClCompile Include="GameInit.cpp">
       <Filter>GameLogic</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>Object</Filter>
+      <Filter>GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Cube.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
-    <ClCompile Include="BuildInData.cpp">
-      <Filter>Object</Filter>
+      <Filter>GameObject</Filter>
     </ClCompile>
     <ClCompile Include="WorldManager.cpp">
       <Filter>World</Filter>
@@ -91,9 +82,6 @@
     <ClCompile Include="RenderObjectManager.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="RenderObject.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
     <ClCompile Include="ShaderManager.cpp">
       <Filter>Render</Filter>
     </ClCompile>
@@ -104,7 +92,7 @@
       <Filter>Math</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
-      <Filter>Object</Filter>
+      <Filter>GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Matrix4x4.cpp">
       <Filter>Math</Filter>
@@ -118,13 +106,37 @@
     <ClCompile Include="Vector4.cpp">
       <Filter>Math</Filter>
     </ClCompile>
-    <ClCompile Include="RenderObjectGenerator.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
     <ClCompile Include="RenderBatchManager.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="RenderBatchDrawer.cpp">
+    <ClCompile Include="RenderCollector.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Test.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderObject.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderDraw.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexData.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>GameLogic\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathz.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProperty.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureData.cpp">
       <Filter>Render</Filter>
     </ClCompile>
   </ItemGroup>
@@ -189,23 +201,14 @@
     <ClInclude Include="Component.h">
       <Filter>Component</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>GameLogic</Filter>
-    </ClInclude>
     <ClInclude Include="GameInit.h">
       <Filter>GameLogic</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>Object</Filter>
+      <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Cube.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="BuildInMesh.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="BuildInData.h">
-      <Filter>Object</Filter>
+      <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="WorldManager.h">
       <Filter>World</Filter>
@@ -225,23 +228,17 @@
     <ClInclude Include="RenderObjectManager.h">
       <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="RenderObject.h">
-      <Filter>Render</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderManager.h">
       <Filter>Render</Filter>
     </ClInclude>
     <ClInclude Include="Vector2.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="Mathz.hpp">
-      <Filter>Math</Filter>
-    </ClInclude>
     <ClInclude Include="Vector3.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
-      <Filter>Object</Filter>
+      <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Matrix4x4.h">
       <Filter>Math</Filter>
@@ -255,18 +252,41 @@
     <ClInclude Include="Vector4.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="RenderObjectGenerator.h">
-      <Filter>Render</Filter>
-    </ClInclude>
     <ClInclude Include="RenderBatchManager.h">
       <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="RenderBatchDrawer.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Vector.h">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderCollector.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Test.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderObject.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderDraw.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexData.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>GameLogic\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Mathz.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProperty.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureData.h">
+      <Filter>Render</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -293,9 +313,6 @@
     <Filter Include="Camera">
       <UniqueIdentifier>{29db5c31-2ad4-45d9-9105-ba6d5933422e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object">
-      <UniqueIdentifier>{6ad4ca4a-dff0-479b-9c97-8d28b378fe8a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="World">
       <UniqueIdentifier>{77ed67e5-1566-4b85-acb4-9d36d8bec654}</UniqueIdentifier>
     </Filter>
@@ -311,8 +328,14 @@
     <Filter Include="GameLogic">
       <UniqueIdentifier>{ee4e0d89-ced1-4bc5-9fac-ec48b34404cc}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="SemperEngine.rc" />
+    <Filter Include="Test">
+      <UniqueIdentifier>{29de764b-d9af-4816-9c79-927d25c26cdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{6ad4ca4a-dff0-479b-9c97-8d28b378fe8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic\GameObject">
+      <UniqueIdentifier>{a6f74b75-e941-426a-b05a-0070057294cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

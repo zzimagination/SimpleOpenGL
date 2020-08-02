@@ -1,16 +1,19 @@
 #include "GameWindow.h"
 #include "GameLoop.h"
 #include "FrameRuntime.h"
+#include "ProjectSetting.h"
 
 GLFWwindow* GameWindow::gameWindow = nullptr;
 
-void GameWindow::CreateGameWindow(int width, int height)
+void GameWindow::CreateGameWindow()
 {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+	int width = ProjectSetting::GetWindowWidth();
+	int height = ProjectSetting::GetWindowHeight();
 	gameWindow = glfwCreateWindow(width, height, "LearnOpenGL", NULL, NULL);
 	if (gameWindow == NULL)
 	{
@@ -29,9 +32,10 @@ void GameWindow::CreateGameWindow(int width, int height)
 	{
 		throw("Failed to initialize GLAD");
 	}
+	glViewport(0, 0, width, height);
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glViewport(0, 0, width, height);
+	SwapFrameBuffers();
 }
 
 void GameWindow::TerminateGameWindow()
@@ -56,6 +60,8 @@ void GameWindow::PollWindowEvent()
 
 void GameWindow::framebuffer_size_callback(GLFWwindow * window, int width, int height)
 {
+	ProjectSetting::windowWidth = width;
+	ProjectSetting::windowHeight = height;
 	glViewport(0, 0, width, height);
 }
 

@@ -1,12 +1,17 @@
-#ifndef RENDEROBJECT_GENERATOR
-#define RENDEROBJECT_GENERATOR
+#ifndef RENDEROBJECTGENERATOR
+#define RENDEROBJECTGENERATOR
+
+class RenderObject;
+
 class RenderObjectGenerator
 {
 public:
 
-	static void Generate();
+	virtual RenderObject* Generate() {
+		return nullptr;
+	}
 };
-#endif // !RENDEROBJECT_GENERATOR
 
+#endif // !RENDEROBJECTGENERATOR
 
 

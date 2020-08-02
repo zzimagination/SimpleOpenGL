@@ -4,30 +4,23 @@
 #include "BuildInMesh.h"
 #include "WorldManager.h"
 
-
 using namespace std;
 
 vector<RenderObject*> RenderObjectManager::renderObjects;
 
-vector<RenderObjectManager::RendererPair> RenderObjectManager::rendererPairs;
-
 void RenderObjectManager::Culling(Camera * camera)
 {
+
 }
 
-void RenderObjectManager::AddRenderer(Renderer* renderer)
+void RenderObjectManager::AddRenderObject(RenderObject* object)
 {
-	if (renderer == nullptr)
+	if (object == nullptr)
 	{
-		throw "renderer is not renderer";
+		throw "renderer is null";
 	}
-
-	if (ContainRenderer(renderer) >= 0)
-	{
-		throw "renderer is exist";
-	}
-
-	RenderObject* object = new RenderObject();
+	renderObjects.push_back(object);
+	/*RenderObject* object = new RenderObject();
 	auto t = sizeof(renderer->cube.vertices);
 	object->vertices.assign(renderer->cube.vertices, renderer->cube.vertices + sizeof(renderer->cube.vertices) / sizeof(renderer->cube.vertices[0]));
 	object->indices.assign(renderer->cube.indices, renderer->cube.indices + sizeof(renderer->cube.indices) / sizeof(renderer->cube.indices[0]));
@@ -46,78 +39,82 @@ void RenderObjectManager::AddRenderer(Renderer* renderer)
 	RendererPair pair;
 	pair.object = object;
 	pair.renderers.push_back(renderer);
-	rendererPairs.push_back(pair);
+	rendererPairs.push_back(pair);*/
 }
 
-void RenderObjectManager::UpdateRenderer(Renderer * renderer)
+void RenderObjectManager::AddRenderObject(vector<RenderObject*> objects)
 {
-	if (renderer == nullptr)
+	for (int i = 0; i < objects.size(); i++)
 	{
-		throw "renderer is not renderer";
+		AddRenderObject(objects[i]);
 	}
-
-	int idx = ContainRenderer(renderer);
-	if (idx < 0)
-	{
-		throw "renderer is not exist";
-	}
-
-	RenderObject* object = rendererPairs[idx].object;
-
-	object->vertices.clear();
-	vec3* start = renderer->cube.vertices;
-	vec3* end = start + sizeof(renderer->cube.vertices) / sizeof(vec3);
-	object->vertices.assign(start, end);
-
-	object->indices.clear();
-	int* startIndex = renderer->cube.indices;
-	int* endIndex = startIndex + sizeof(renderer->cube.indices) / sizeof(int);
-	object->indices.assign(startIndex, endIndex);
-
-	object->uvs.clear();
-	vec2* startUV = renderer->cube.uvs;
-	vec2* endUV = startUV + sizeof(renderer->cube.uvs) / sizeof(vec2);
-	object->uvs.assign(startUV, endUV);
-
-	object->shader = renderer->shader;
-
-	object->modelMatrix = renderer->modelMatrix;
-	object->viewMatrix = WorldManager::active->camera->worldToViewMatrix;
-	object->projectionMatrix = WorldManager::active->camera->projectionMatrix;
-
-	
-	object->vec3Map.clear();
-	for (auto i = renderer->vec3Map.begin() ; i != renderer->vec3Map.end(); i++)
-	{
-		object->AddVec3Value((*i).first, (*i).second);
-	}
-
-	object->textures.clear();
-	object->textures.assign(renderer->textures.begin(), renderer->textures.end());
 }
 
-void RenderObjectManager::RemoveRenderer(Renderer * renderer)
+vector<RenderObject*> RenderObjectManager::GetRenderObject()
 {
-	if (renderer == nullptr)
-	{
-		return;
-	}
-
-	if (!ContainRenderer(renderer))
-	{
-		return;
-	}
-
-	for (auto i = rendererPairs.begin(); i != rendererPairs.end(); i++)
-	{
-		if ((*i).Contain(renderer))
-		{
-			DeleteRenderObject((*i).object);
-			rendererPairs.erase(i);
-		}
-	}
-
+	return renderObjects;
 }
+
+void RenderObjectManager::BindVertexData()
+{
+	for (int i = 0; i < renderObjects.size(); i++)
+	{
+		renderObjects[i]->BindVerticesData();
+		renderObjects[i]->BindTextureData();
+	}
+}
+
+void RenderObjectManager::ClearRenderObject()
+{
+	renderObjects.clear();
+}
+
+//void RenderObjectManager::UpdateRenderer(Renderer * renderer)
+//{
+//	if (renderer == nullptr)
+//	{
+//		throw "renderer is not renderer";
+//	}
+//
+//	int idx = ContainRenderer(renderer);
+//	if (idx < 0)
+//	{
+//		throw "renderer is not exist";
+//	}
+//
+//	RenderObject* object = rendererPairs[idx].object;
+//
+//	object->vertices.clear();
+//	vec3* start = renderer->cube.vertices;
+//	vec3* end = start + sizeof(renderer->cube.vertices) / sizeof(vec3);
+//	object->vertices.assign(start, end);
+//
+//	object->indices.clear();
+//	int* startIndex = renderer->cube.indices;
+//	int* endIndex = startIndex + sizeof(renderer->cube.indices) / sizeof(int);
+//	object->indices.assign(startIndex, endIndex);
+//
+//	object->uvs.clear();
+//	vec2* startUV = renderer->cube.uvs;
+//	vec2* endUV = startUV + sizeof(renderer->cube.uvs) / sizeof(vec2);
+//	object->uvs.assign(startUV, endUV);
+//
+//	object->shader = renderer->shader;
+//
+//	object->modelMatrix = renderer->modelMatrix;
+//	object->viewMatrix = WorldManager::active->camera->worldToViewMatrix;
+//	object->projectionMatrix = WorldManager::active->camera->projectionMatrix;
+//
+//	
+//	object->vec3Map.clear();
+//	for (auto i = renderer->vec3Map.begin() ; i != renderer->vec3Map.end(); i++)
+//	{
+//		object->AddVec3Value((*i).first, (*i).second);
+//	}
+//
+//	object->textures.clear();
+//	object->textures.assign(renderer->textures.begin(), renderer->textures.end());
+//}
 
 //void RenderObjectManager::GenerateRenderObjects()
 //{
@@ -197,29 +194,4 @@ void RenderObjectManager::RemoveRenderer(Renderer * renderer)
 //		}
 //	}
 //}
-
-
-int RenderObjectManager::ContainRenderer(Renderer* renderer)
-{
-	for (int i = 0; i < rendererPairs.size(); i++)
-	{
-		if (rendererPairs[i].Contain(renderer))
-		{
-			return i;
-		}
-	}
-	return -1;
-}
-
-void RenderObjectManager::DeleteRenderObject(RenderObject * object)
-{
-	for (auto i = renderObjects.begin(); i != renderObjects.end(); i++)
-	{
-		if (*i == object)
-		{
-			renderObjects.erase(i);
-			delete object;
-		}
-	}
-}
 

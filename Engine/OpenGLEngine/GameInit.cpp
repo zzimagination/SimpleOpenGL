@@ -4,52 +4,35 @@
 #include "Components.h"
 #include "GameInit.h"
 #include "Player.h"
-#include "Mathz.hpp"
+#include "Mathz.h"
 
 void GameInit::Init()
 {
 	World* world = WorldManager::CreateWorld("main");
 
 	Camera* main = new Camera();
-	main->position = Vector3(0, 1, -10);
-	main->aspect = 16.0f / 9.0f;
-	main->size = 5;
-	main->fov = 65;
-	main->nearPlane = 1;
-	main->farPlane = 100;
-	main->projection = Projection::Orthographic;
+	main->position = Vector3(0, 2, 10);
+	world->camera = main;
 
-	Matrix4x4 view = main->CalculateViewMatrix();
-	cout << view.x0 << " " << view.y0 << " " << view.z0 << " " << view.w0 << endl;
-	cout << view.x1 << " " << view.y1 << " " << view.z1 << " " << view.w1 << endl;
-	cout << view.x2 << " " << view.y2 << " " << view.z2 << " " << view.w2 << endl;
-	cout << view.x3 << " " << view.y3 << " " << view.z3 << " " << view.w3 << endl;
-	view = main->CalculateProjectionMatrix();
-	cout << view.x0 << " " << view.y0 << " " << view.z0 << " " << view.w0 << endl;
-	cout << view.x1 << " " << view.y1 << " " << view.z1 << " " << view.w1 << endl;
-	cout << view.x2 << " " << view.y2 << " " << view.z2 << " " << view.w2 << endl;
-	cout << view.x3 << " " << view.y3 << " " << view.z3 << " " << view.w3 << endl;
-	//main->Position = glm::vec3(0.0f, 2.0f, 6.0f);
-	//main->eulerAngle = glm::vec3(-15, 0, 0);
-	//main->projection = Camera::Projection::Perspective;
-	//main->size = 2.5f;
-	//main->CalculateVectors();
-	//world->camera = main;
+	Player* player = new Player("xiao ming");
+	world->AddGameObject(player);
+	auto renderer = player->GetComponent<Renderer*>();
+	delete renderer->material;
+	renderer->material = new Material("UnlitTexture");
+	renderer->material->SetVector3(Vector3(1, 1, 1), "_color");
+	Texture* tex = new Texture();
+	tex->LoadFile("Resources/Textures/test.png");
+	renderer->material->SetTexture(tex);
 
-	//Texture* tex = new Texture();
-	//tex->textureType = BASE_TEXTURE;
-	//tex->LoadTexture("Resources/Textures/test.png");
+	Player* target = new Player("xiao hong");
+	world->AddGameObject(target);
+	target->transform.position = Vector3(-4, 4, 0);
+	auto renderer1 = target->GetComponent<Renderer*>();
+	renderer1->material->SetVector3(Vector3(1, 0, 0), "Color");
 
-	//Player* player = new Player("xiao ming");
-	//player->transform.position = glm::vec3(0, 0, 0);
-	//player->transform.eulerAngle = glm::vec3(0, 0, 0);
-
-	//Renderer* renderer = new Renderer();
-	//renderer->modelMatrix = player->transform.GetModelMatrix();
-	//renderer->vec3Map["_color"] = glm::vec3(1, 1, 1);
-	//renderer->AddTexture(tex);
-	//renderer->shader = ShaderManager::GetShader("UnlitTexture");
-	//player->AddComponent(renderer);
-
-	//world->AddGameObject(player);
+	Player* viewer = new Player("zhang san");
+	world->AddGameObject(viewer);
+	viewer->transform.position = Vector3(4, 4, 0);
+	auto renderer2 = viewer->GetComponent<Renderer*>();
+	renderer2->material->SetVector3(Vector3(0, 0, 1), "Color");
 }

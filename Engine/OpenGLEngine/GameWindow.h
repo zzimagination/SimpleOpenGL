@@ -8,7 +8,7 @@ class GameWindow
 public:
 	static GLFWwindow* gameWindow;
 
-	static void CreateGameWindow(int width, int height);
+	static void CreateGameWindow();
 
 	static void TerminateGameWindow();
 

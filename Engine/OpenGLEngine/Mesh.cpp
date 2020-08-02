@@ -44,7 +44,7 @@ void Mesh::Draw(ShaderProgram shader)
 		// and finally bind the texture
 		glBindTexture(GL_TEXTURE_2D, textures[i].id);
 	}
-	shader.setFloat("material.shininess", 0.5f);
+	//shader.setFloat("material.shininess", 0.5f);
 	// draw mesh
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, (GLsizei)indices.size(), GL_UNSIGNED_INT, 0);

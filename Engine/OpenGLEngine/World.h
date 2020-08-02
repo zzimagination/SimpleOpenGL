@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include "BuildInData.h"
 #include "Camera.h"
 #include "GameObject.h"
 
@@ -13,6 +12,8 @@ public:
 	string name;
 
 	Camera* camera;
+
+	vector<GameObject*> newGameObjects;
 
 	vector<GameObject*> gameObjects;
 
@@ -28,6 +29,5 @@ private:
 
 	bool isStart;
 
-	void CheckingGameObject(GameObject* gameObject);
 };
 

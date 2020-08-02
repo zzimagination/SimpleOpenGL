@@ -147,10 +147,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseRenderPipeline.h" />
-    <ClInclude Include="RenderBatchDrawer.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="RenderBatchManager.h" />
-    <ClInclude Include="BuildInData.h" />
-    <ClInclude Include="BuildInMesh.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Components.h" />
@@ -161,7 +159,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameStart.h" />
     <ClInclude Include="GameWindow.h" />
-    <ClInclude Include="Mathz.hpp" />
+    <ClInclude Include="Mathz.h" />
     <ClInclude Include="Matrix4x4.h" />
     <ClInclude Include="MeshObject.h" />
     <ClInclude Include="Model.h" />
@@ -172,17 +170,20 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="ProjectSetting.h" />
     <ClInclude Include="RenderBatch.h" />
+    <ClInclude Include="RenderDraw.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RenderCollector.h" />
     <ClInclude Include="RenderObject.h" />
-    <ClInclude Include="RenderObjectGenerator.h" />
     <ClInclude Include="RenderObjectManager.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="ShaderManager.h" />
+    <ClInclude Include="ShaderProperty.h" />
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="spng.h" />
     <ClInclude Include="stb_image.h" />
+    <ClInclude Include="Test.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureData.h" />
     <ClInclude Include="TextureType.h" />
     <ClInclude Include="TextureUtility.h" />
     <ClInclude Include="Time.h" />
@@ -191,16 +192,16 @@
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
+    <ClInclude Include="VertexData.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="WorldManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseRenderPipeline.cpp" />
-    <ClCompile Include="RenderBatchDrawer.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Mathz.cpp" />
     <ClCompile Include="RenderBatchManager.cpp" />
-    <ClCompile Include="BuildInData.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Component.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="FrameRuntime.cpp" />
     <ClCompile Include="GameInit.cpp" />
@@ -219,27 +220,29 @@
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ProjectSetting.cpp" />
     <ClCompile Include="RenderBatch.cpp" />
+    <ClCompile Include="RenderDraw.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="RenderCollector.cpp" />
     <ClCompile Include="RenderObject.cpp" />
-    <ClCompile Include="RenderObjectGenerator.cpp" />
     <ClCompile Include="RenderObjectManager.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
+    <ClCompile Include="ShaderProperty.cpp" />
     <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="spng.c" />
     <ClCompile Include="stb_image.cpp" />
+    <ClCompile Include="Test.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureData.cpp" />
     <ClCompile Include="TextureUtility.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Vector4.cpp" />
+    <ClCompile Include="VertexData.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldManager.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="SemperEngine.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

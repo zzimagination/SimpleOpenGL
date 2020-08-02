@@ -1,12 +1,15 @@
-#pragma once
+#ifndef RRENDEROBJECT
+#define RRENDEROBJECT
+
 #include <map>
-#include "ShaderProgram.h"
-#include "MeshObject.h"
-#include "Mathz.hpp"
+#include "Mathz.h"
 #include "Texture.h"
+#include "Material.h"
 
 using namespace std;
-using namespace glm;
+
+class VertexData;
+class TextureData;
 
 class RenderObject
 {
@@ -20,55 +23,33 @@ private:
 
 public:
 
-	unsigned int VAO, VBO, EBO;
+	vector<Vector3> vertexBuffer;
 
-	size_t dataSize;
+	vector<int> indexBuffer;
+
+	vector<Vector2> uvBuffer;
+
+	vector<Vector3> normalBuffer;
 
 	Matrix4x4 modelMatrix;
 
-	Matrix4x4 viewMatrix;
+	Material *material;
 
-	Matrix4x4 projectionMatrix;
+	VertexData* vertexData;
 
-	std::vector<float> points;
-	
-	vector<vec3> vertices;
-
-	std::vector<unsigned int> indices;
-
-	vector<vec2> uvs;
-
-	vector<Texture*> textures;
-
-	map<string, vec3> vec3Map;
-
-	ShaderProgram* shader;
+	TextureData* textureData;
 
 	RenderObject();
 
 	~RenderObject();
 
-	void(*func_shader)(ShaderProgram* shader);
+	void BindVerticesData();
 
-	void SetupGeometry();
-
-	void ClearGeometry();
-
-	void AddVec3Value(string name, vec3 color);
+	void BindTextureData();
 
 private:
 
-	bool isSetup;
-
-	vector<GLTexture> glTextures;
-
-	void SetupVertexArray();
-
-
-	void SetupTextures();
-
-	unsigned int SetupBaseTexture(int width, int height, int nrComponents, unsigned char* data);
-
-	unsigned int SetupNormalTexture(int width, int height, unsigned char* data);
 };
 
+
+#endif // !RRENDEROBJECT

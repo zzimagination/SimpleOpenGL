@@ -16,22 +16,22 @@ Matrix4x4 Matrix4x4::Translate(Vector3 v)
 Matrix4x4 Matrix4x4::Rotate(Vector3 angle)
 {
 	Matrix4x4 x;
-	x.y1 = cos(angle.x);
-	x.z1 = -sin(angle.x);
-	x.y2 = sin(angle.x);
-	x.z2 = cos(angle.x);
+	x.y1 = (float)cos(angle.x);
+	x.z1 = -(float)sin(angle.x);
+	x.y2 = (float)sin(angle.x);
+	x.z2 = (float)cos(angle.x);
 
 	Matrix4x4 y;
-	y.x0 = cos(angle.y);
-	y.z0 = sin(angle.y);
-	y.x2 = -sin(angle.y);
-	y.z2 = cos(angle.y);
+	y.x0 = (float)cos(angle.y);
+	y.z0 = (float)sin(angle.y);
+	y.x2 = -(float)sin(angle.y);
+	y.z2 = (float)cos(angle.y);
 
 	Matrix4x4 z;
-	z.x0 = cos(angle.z);
-	z.y0 = -sin(angle.z);
-	z.x1 = sin(angle.z);
-	z.y1 = cos(angle.z);
+	z.x0 = (float)cos(angle.z);
+	z.y0 = -(float)sin(angle.z);
+	z.x1 = (float)sin(angle.z);
+	z.y1 = (float)cos(angle.z);
 
 	return z * x * y;
 }
@@ -83,7 +83,7 @@ Vector4 Matrix4x4::GetRow(int i) const
 	{
 		return Vector4(x2, y2, z2, w2);
 	}
-	else if (i == 3)
+	else 
 	{
 		return Vector4(x3, y3, z3, w3);
 	}
@@ -103,7 +103,7 @@ Vector4 Matrix4x4::GetColumn(int i) const
 	{
 		return Vector4(z0, z1, z2, z3);
 	}
-	else if (i == 3)
+	else 
 	{
 		return Vector4(w0, w1, w2, w3);
 	}

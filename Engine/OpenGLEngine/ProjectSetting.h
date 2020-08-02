@@ -1,6 +1,9 @@
-#pragma once
+#ifndef PROJECT_SETTING
+#define PROJECT_SETTING
 
- class ProjectSetting
+class GameWindow;
+
+class ProjectSetting
 {
 public:
 
@@ -13,5 +16,12 @@ private:
 	static int windowWidth;
 
 	static int windowHeight;
+
+	friend GameWindow;
 };
+#endif // !PROJECT_SETTING
+
+
+
+
 

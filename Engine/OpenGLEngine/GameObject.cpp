@@ -2,26 +2,13 @@
 #include "Component.h"
 #include <iostream>
 
-
-void GameObject::Start()
-{
-	cout << "start" << endl;
-}
-
-void GameObject::Update()
-{
-
-}
-
 GameObject::GameObject()
 {
-	transform.rotation.w = 1;
-	transform.rotation.x = 0;
-	transform.rotation.y = 0;
-	transform.rotation.z = 0;
+	name = "New GameObject";
+}
 
-	transform.scale = vec3(1);
-
+GameObject::GameObject(string name): name(name)
+{
 }
 
 GameObject::~GameObject()
@@ -32,16 +19,14 @@ GameObject::~GameObject()
 	}
 }
 
-GameObject::GameObject(string name)
+void GameObject::Start()
 {
-	this->name = name;
-	transform.rotation.w = 1;
-	transform.rotation.x = 0;
-	transform.rotation.y = 0;
-	transform.rotation.z = 0;
-
-	transform.scale = vec3(1);
 }
+
+void GameObject::Update()
+{
+}
+
 
 void GameObject::AddComponent(Component* com)
 {
@@ -75,15 +60,5 @@ void GameObject::Update_Internal()
 	{
 		components[i]->Update();
 	}
-}
-
-void GameObject::StartObject()
-{
-	_isStart = true;
-}
-
-bool GameObject::IsStart()
-{
-	return _isStart;
 }
 

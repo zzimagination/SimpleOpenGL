@@ -14,6 +14,12 @@ public:
 
 	virtual void Update();
 
+public:
+
+	float times;
+
+	float color;
+
 private:
 
 };

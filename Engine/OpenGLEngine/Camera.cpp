@@ -1,6 +1,7 @@
 #include "ProjectSetting.h"
 #include "Camera.h"
 #include <math.h>
+#include "ProjectSetting.h"
 
 Camera::Camera()
 {
@@ -12,23 +13,79 @@ Camera::~Camera()
 
 }
 
+float Camera::GetSize()
+{
+	return _size;
+}
+
+void Camera::SetSize(float size)
+{
+	_size = Math::Clamp(0.1f, 100.0f, size);
+}
+
+float Camera::GetFar()
+{
+	return _farPlane;
+}
+
+void Camera::SetFar(float l)
+{
+	_farPlane = Math::Clamp(_nearPlane + 0.1f, l, l);
+}
+
+float Camera::GetNear()
+{
+	return _nearPlane;
+}
+
+void Camera::SetNear(float l)
+{
+	if (l <= 0)
+	{
+		_nearPlane = 0.01f;
+	}
+	else
+	{
+		_nearPlane = l;
+	}
+	if (_nearPlane > _farPlane)
+	{
+		_farPlane = _nearPlane + 0.01f;
+	}
+}
+
+float Camera::GetFov()
+{
+	return _fov;
+}
+
+void Camera::SetFov(float fov)
+{
+	_fov = Math::Clamp(0.1f, 100.0f, fov);
+}
+
+float Camera::GetAspect()
+{
+	return (float)ProjectSetting::GetWindowWidth() / ProjectSetting::GetWindowHeight();
+}
+
 Matrix4x4 Camera::CalculateProjectionMatrix()
 {
 	Matrix4x4 m;
 	switch (projection)
 	{
 	case Projection::Orthographic:
-		m.x0 = 1 / (aspect*size);
-		m.y1 = 1 / (size);
-		m.z2 = -2 / (farPlane - nearPlane);
-		m.w2 = -(farPlane + nearPlane) / (farPlane - nearPlane);
+		m.x0 = 1 / (GetAspect()*GetSize());
+		m.y1 = 1 / (GetSize());
+		m.z2 = -2 / (GetFar() - GetNear());
+		m.w2 = -(GetFar() + GetNear()) / (GetFar() - GetNear());
 		break;
 	case Projection::Perspective:
-		m.x0 = (1 / tan(fov* pi / 180 / 2)) / aspect;
-		m.y1 = 1 / tan(fov*pi / 180 / 2);
-		m.z2 = -(farPlane + nearPlane) / (farPlane - nearPlane);
+		m.x0 = (1 / tan(GetFov()* Math::pi / 180 / 2)) / GetAspect();
+		m.y1 = 1 / tan(GetFov()*Math::pi / 180 / 2);
+		m.z2 = -(GetFar() + GetNear()) / (GetFar() - GetNear());
 		m.z3 = -1;
-		m.w2 = -(2 * nearPlane*farPlane) / (farPlane - nearPlane);
+		m.w2 = -(2 * GetNear()*GetFar()) / (GetFar() - GetNear());
 		m.w3 = 0;
 		break;
 	}

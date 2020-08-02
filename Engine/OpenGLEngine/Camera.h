@@ -1,8 +1,8 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 #include<vector>
-#include "Mathz.hpp"
-using namespace glm;
+#include "Mathz.h"
+
 using namespace std;
 
 enum  Camera_Movement {
@@ -13,12 +13,6 @@ enum  Camera_Movement {
 	UP,
 	DOWN
 };
-// Default camera values
-const float YAW = -90.0f;
-const float PITCH = 0.0f;
-const float SPEED = 2.5f;
-const float SENSITIVITY = 0.1f;
-const float ZOOM = 45.0f;
 
 enum Projection
 {
@@ -36,27 +30,11 @@ public:
 
 	Vector3 eulerAngle;
 
-	Vector3 front;
-
-	Vector3 up;
-
-	Vector3 right;
-	
-	float size;
-
 	Matrix4x4 worldToViewMatrix;
 
 	Matrix4x4 projectionMatrix;
 
-	Projection projection;
-
-	float farPlane;
-
-	float nearPlane;
-
-	float fov;
-
-	float aspect;
+	Projection projection = Projection::Perspective;
 
 	// Euler Angles
 	float Yaw;
@@ -66,6 +44,18 @@ public:
 	float MouseSensitivity;
 	float Zoom;
 
+private:
+
+	float _size = 5;
+
+	float _farPlane = 1000;
+
+	float _nearPlane = 1;
+
+	float _fov = 75;
+
+	float _aspect = 1.777778f;
+
 public:
 
 	Camera();
@@ -73,6 +63,24 @@ public:
 	~Camera();
 
 public:
+
+	float GetSize();
+
+	void SetSize(float size);
+
+	float GetFar();
+
+	void SetFar(float l);
+
+	float GetNear();
+
+	void SetNear(float l);
+
+	float GetFov();
+
+	void SetFov(float fov);
+
+	float GetAspect();
 
 	Matrix4x4 CalculateProjectionMatrix();
 

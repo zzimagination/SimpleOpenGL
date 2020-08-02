@@ -1,3 +1,5 @@
+//#define UNIT_TEST
+
 #include"pch.h"
 #include "Camera.h"
 #include "SkyBox.h"
@@ -11,6 +13,10 @@
 #include "GameStart.h"
 #include "GameLoop.h"
 #include "ShaderManager.h"
+
+#ifdef UNIT_TEST
+#include "Test.h"
+#endif // UNIT_TEST
 
 using namespace glm;
 using namespace std;
@@ -39,9 +45,11 @@ float heightScale = 0.5f;
 
 int main()
 {
-	int screenWidth = ProjectSetting::GetWindowWidth();
-	int screenHeight = ProjectSetting::GetWindowHeight();
-	GameWindow::CreateGameWindow(screenWidth, screenHeight);
+#ifdef UNIT_TEST
+	Test::UnitTesting();
+#else
+
+	GameWindow::CreateGameWindow();
 	GameStart::Start();
 	GameLoop::BeforeLoop();
 	GameLoop::MainLoop();
@@ -50,6 +58,8 @@ int main()
 	//DefferedRender(GameWindow::gameWindow);
 
 	GameWindow::TerminateGameWindow();
+
+#endif // UNIT_TEST
 	return 0;
 }
 

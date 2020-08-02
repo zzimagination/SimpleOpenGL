@@ -79,7 +79,7 @@ SkyBox::~SkyBox()
 
 void SkyBox::DrawSkyBox(ShaderProgram shader,Camera camera,glm::mat4 project)
 {
-	shader.use();
+	shader.Use();
 	//glm::mat4 view = glm::mat4(glm::mat3(camera.GetViewMatrix()));
 	glm::mat4 model = glm::mat4(1.0f);
 	//shader.setMat4("view", view);

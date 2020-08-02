@@ -1,5 +1,7 @@
-#pragma once
-#include "GameObject.h"
+#ifndef COMPONENT
+#define COMPONENT
+
+class GameObject;
 
 class Component
 {
@@ -7,10 +9,16 @@ public:
 
 	GameObject* gameObject;
 
-	virtual void Start();
+protected:
 
-	virtual void Update();
+public:
 
-	virtual Component* GetType();
+	virtual void Start() = 0;
+
+	virtual void Update() = 0;
+
 };
+
+#endif // !COMPONENT
+
 

@@ -1,22 +1,24 @@
-#pragma once
 #ifndef TRANSFORM
 #define TRANSFORM
-#include "Mathz.hpp"
-
-using namespace glm;
+#include "Mathz.h"
 
 class Transform
 {
 public:
-	vec3 position;
 
-	vec3 eulerAngle;
+	Vector3 position;
 
-	quat rotation;
+	Vector3 eulerAngle;
 
-	vec3 scale;
+	Vector3 scale = Vector3(1, 1, 1);
+
+public:
 
 	Matrix4x4 GetModelMatrix();
+
+private:
+
+	Matrix4x4 _modelMatrix;
 };
 #endif // !TRANSFORM
 

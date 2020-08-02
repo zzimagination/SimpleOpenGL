@@ -1,5 +1,4 @@
 #include "Texture.h"
-#include "stb_image.h"
 #include "spng.h"
 #include <fstream>
 #include <iostream>
@@ -11,12 +10,12 @@ Texture::Texture()
 
 Texture::~Texture()
 {
-	delete data;
+	delete[] data;
+	data = nullptr;
 }
 
-void Texture::LoadTexture(string path)
+void Texture::LoadFile(string path)
 {
-	this->path = path;
 	/*data = stbi_load(path.c_str(), &width, &height, &channels, 0);
 	if (data == nullptr) {
 		stbi_image_free(data);
@@ -24,14 +23,18 @@ void Texture::LoadTexture(string path)
 	}*/
 
 	ifstream image(path,ios::binary);
-
 	image.seekg(0, ios_base::end);
 	long inputSize = image.tellg();
 	image.seekg(0);
-
 	char *buf = new char[inputSize];
 	image.read(buf, inputSize);
 	image.close();
+
+	if (this->data != nullptr)
+	{
+		delete[] this->data;
+		this->data = nullptr;
+	}
 
 	spng_ctx *ctx = spng_ctx_new(0);
 	int r = spng_set_crc_action(ctx, SPNG_CRC_USE, SPNG_CRC_USE);
@@ -39,7 +42,7 @@ void Texture::LoadTexture(string path)
 	if (r)
 	{
 		cout << "load texture error " << r << endl;
-		abort();
+		throw;
 	}
 
 	struct spng_ihdr ihdr;
@@ -47,10 +50,10 @@ void Texture::LoadTexture(string path)
 	if (r)
 	{
 		cout << "load texture error " << spng_strerror(r) << endl;
-		abort();
+		throw;
 	}
-	width = ihdr.width;
-	height = ihdr.height;
+	this->width = ihdr.width;
+	this->height = ihdr.height;
 	int t= ihdr.color_type;
 	//const char *clr_type_str;
 	//if (ihdr.color_type == SPNG_COLOR_TYPE_GRAYSCALE)
@@ -78,12 +81,7 @@ void Texture::LoadTexture(string path)
 	r = spng_decoded_image_size(ctx, SPNG_FMT_RGBA8, &out_size);
 	unsigned char *out = new unsigned char[out_size];
 	r = spng_decode_image(ctx, out, out_size, SPNG_FMT_RGBA8, 0);
-	if (data != nullptr)
-	{
-		delete[] data;
-		data = nullptr;
-	}
-	data = out;
+	this->data = out;
 
 	delete[] buf;
 	spng_ctx_free(ctx);

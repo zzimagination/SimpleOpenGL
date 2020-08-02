@@ -1,39 +1,41 @@
-#pragma once
+#ifndef RENDERBATCH
+#define RENDERBATCH
+
 #include <vector>
 #include <map>
-#include <glad/glad.h>
-#include "Mathz.hpp"
-#include "ShaderProgram.h"
+#include "Mathz.h"
+#include "VertexData.h"
+#include "Material.h"
+#include "TextureData.h"
 
-using namespace glm;
+class ShaderProgram;
+class Camera;
+
+
 using namespace std;
 
 class RenderBatch
 {
 public:
 
-	Matrix4x4 modelMat;
+	VertexData *vertexData;
 
-	Matrix4x4 viewMat;
+	TextureData *textureData;
 
-	Matrix4x4 projectionMat;
+	Matrix4x4 *modelMatrix;
 
-	map<string, vec3> vec3Map;
+	Material* material;
 
-	std::vector<unsigned int> glTextures;
+public:
 
-	void (*func_shader)(ShaderProgram* shader);
-
-	RenderBatch(ShaderProgram* shader, unsigned int VAO, GLsizei count);
-
-	void DrawCall();
+	void DrawCall(Camera* camera);
 
 private:
 
-	ShaderProgram* _shader;
-
-	unsigned int _VAO;
-
-	int _glCount;
 };
+
+#endif // !RENDERBATCH
+
+
+
 
