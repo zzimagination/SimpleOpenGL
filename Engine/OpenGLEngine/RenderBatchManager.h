@@ -5,19 +5,19 @@
 
 using namespace std;
 
-class RenderBatch;
 class RenderObject;
+class Texture;
+class RenderVertex;
+class RenderBatch;
 class Camera;
+class TextureData;
+class VertexData;
 
 class RenderBatchManager
 {
 public:
 
-	static vector<RenderBatch*> batchs;
-
-private:
-
-	static vector<RenderObject*> _noBatchObjects;
+	static vector<RenderBatch> batchs;
 
 public:
 
@@ -29,7 +29,10 @@ public:
 
 private:
 
-	static void GenerateNewBatchs();
+	static VertexData* GetVertexData(RenderVertex* v);
+
+	static vector<TextureData*> GetTextureData(vector<Texture*> tex);
+
 };
 
 

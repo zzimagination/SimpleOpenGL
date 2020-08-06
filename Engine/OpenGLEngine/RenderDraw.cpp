@@ -10,6 +10,7 @@ Matrix4x4 RenderDraw::model;
 Matrix4x4 RenderDraw::view;
 Matrix4x4 RenderDraw::projection;
 int RenderDraw::drawCount;
+int RenderDraw::textureIndex;
 
 void RenderDraw::SetClear(int mode, Vector4 color)
 {
@@ -92,47 +93,54 @@ void RenderDraw::SetCullFace(bool cull, CullFace mode)
 	}
 }
 
-void RenderDraw::SetShader(Material* material)
+void RenderDraw::SetShader(ShaderProgram * shader,
+	vector<ShaderProperty<float>> floatv,
+	vector<ShaderProperty<Vector2>> vector2,
+	vector<ShaderProperty<Vector3>> vector3,
+	vector<ShaderProperty<Vector4>> vector4,
+	vector<ShaderProperty<Matrix4x4>> matrix)
 {
-	material->shader->Use();
-	for (int i = 0; i < material->floatProperty.Size(); i++)
+	shader->Use();
+	shader->SetValue(MODEL_MATRIX, model);
+	shader->SetValue(VIEW_MATRIX, view);
+	shader->SetValue(PROJECTION_MARIX, projection);
+
+	for (int i = 0; i < floatv.size(); i++)
 	{
-		string name = material->floatProperty.GetName(i);
-		float value = material->floatProperty.GetValue(i);
-		material->shader->SetValue(name, value);
+		string name = floatv[i].name;
+		float value = floatv[i].value;
+		shader->SetValue(name, value);
 	}
 
-	for (int i = 0; i < material->vector2Property.Size(); i++)
+	for (int i = 0; i < vector2.size(); i++)
 	{
-		string name = material->vector2Property.GetName(i);
-		Vector2 value = material->vector2Property.GetValue(i);
-		material->shader->SetValue(name, value);
+		string name = vector2[i].name;
+		Vector2 value = vector2[i].value;
+		shader->SetValue(name, value);
 	}
 
-	for (int i = 0; i < material->vector3Property.Size(); i++)
+	for (int i = 0; i < vector3.size(); i++)
 	{
-		string name = material->vector3Property.GetName(i);
-		Vector3 value = material->vector3Property.GetValue(i);
-		material->shader->SetValue(name, value);
+		string name = vector3[i].name;
+		Vector3 value = vector3[i].value;
+		shader->SetValue(name, value);
 	}
 
-	for (int i = 0; i < material->vector4Property.Size(); i++)
+	for (int i = 0; i < vector4.size(); i++)
 	{
-		string name = material->vector4Property.GetName(i);
-		Vector4 value = material->vector4Property.GetValue(i);
-		material->shader->SetValue(name, value);
+		string name = vector4[i].name;
+		Vector4 value = vector4[i].value;
+		shader->SetValue(name, value);
 	}
 
-	for (int i = 0; i < material->matrixProperty.Size(); i++)
+	for (int i = 0; i < matrix.size(); i++)
 	{
-		string name = material->matrixProperty.GetName(i);
-		Matrix4x4 value = material->matrixProperty.GetValue(i);
-		material->shader->SetValue(name, value);
+		string name = matrix[i].name;
+		Matrix4x4 value = matrix[i].value;
+		shader->SetValue(name, value);
 	}
 
-	material->shader->SetValue(MODEL_MATRIX, model);
-	material->shader->SetValue(VIEW_MATRIX, view);
-	material->shader->SetValue(PROJECTION_MARIX, projection);
+	textureIndex = GL_TEXTURE0;
 }
 
 void RenderDraw::SetTransform(Matrix4x4 model, Matrix4x4 view, Matrix4x4 projection)
@@ -144,13 +152,19 @@ void RenderDraw::SetTransform(Matrix4x4 model, Matrix4x4 view, Matrix4x4 project
 
 void RenderDraw::SetVertexData(VertexData* data)
 {
-	data->UseData();
+	glBindVertexArray(data->VAO);
 	drawCount = data->GetCount();
 }
 
 void RenderDraw::SetTextureData(TextureData * data)
 {
-	data->UseData();
+	if (textureIndex > MAX_TEXTURE_COUNT)
+	{
+		return;
+	}
+	glActiveTexture(textureIndex);
+	glBindTexture(GL_TEXTURE_2D, textureIndex);
+	textureIndex++;
 }
 
 void RenderDraw::Draw()

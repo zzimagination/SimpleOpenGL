@@ -12,21 +12,24 @@ using namespace std;
 
 class TextureData
 {
-public:
-
-	vector<unsigned int> textures;
 
 public:
 
-	TextureData(vector<Texture*> textures);
-
-	~TextureData();
-
-	void UseData();
+	unsigned int textureId;
 
 private:
 
-	void BindData(vector<Texture*> textures);
+	Texture* _texture;
+
+public:
+
+	TextureData(Texture* textures);
+
+	~TextureData();
+
+private:
+
+	void BindData(Texture* textures);
 
 	void BindOpenGLTexture(Texture* tex);
 };

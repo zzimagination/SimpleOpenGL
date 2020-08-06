@@ -4,38 +4,19 @@
 
 
 
-TextureData::TextureData(vector<Texture*> textures)
+TextureData::TextureData(Texture* textures)
 {
 	BindData(textures);
 }
 
 TextureData::~TextureData()
 {
-	for (int i = 0; i < textures.size(); i++)
-	{
-		glDeleteTextures(1, &textures[i]);
-	}
+	glDeleteTextures(1, &textureId);
 }
 
-void TextureData::BindData(vector<Texture*> textures)
+void TextureData::BindData(Texture* textures)
 {
-	if (textures.size() >= MAX_TEXTURE_COUNT)
-	{
-		throw "texture more than max";
-	}
-	for (int i = 0; i < textures.size(); i++)
-	{
-		BindOpenGLTexture(textures[i]);
-	}
-}
-
-void TextureData::UseData()
-{
-	for (int i = 0; i < textures.size(); i++)
-	{
-		glActiveTexture(GL_TEXTURE0 + i);
-		glBindTexture(GL_TEXTURE_2D, textures[i]);
-	}
+	BindOpenGLTexture(textures);
 }
 
 void TextureData::BindOpenGLTexture(Texture* tex)
@@ -51,5 +32,5 @@ void TextureData::BindOpenGLTexture(Texture* tex)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
 	glTexImage2D(GL_TEXTURE_2D, 0, internalFormal, tex->width, tex->height, 0, format, GL_UNSIGNED_BYTE, tex->data);
-	this->textures.push_back(textureID);
+	this->textureId = textureID;
 }

@@ -1,10 +1,10 @@
-#pragma once
 #include <vector>
 #include "Mathz.h"
+#include "RenderVertex.h"
 
 using namespace std;
 
-class Cube 
+class Cube :public RenderVertex
 {
 public:
 
@@ -34,5 +34,11 @@ public:
 		16,17,18,18,19,16,
 		20,21,22,22,23,20
 	};
+
+	// Í¨¹ý RenderVertex ¼Ì³Ð
+	virtual int VertexCount() override;
+	virtual Vector3 * GetVertices() override;
+	virtual Vector2 *GetUV() override;
+	virtual int *GetIndices() override;
 };
 

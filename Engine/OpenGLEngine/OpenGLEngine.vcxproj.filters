@@ -58,9 +58,6 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="Cube.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="WorldManager.cpp">
       <Filter>World</Filter>
     </ClCompile>
@@ -121,9 +118,6 @@
     <ClCompile Include="RenderDraw.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="VertexData.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>GameLogic\GameObject</Filter>
     </ClCompile>
@@ -133,11 +127,26 @@
     <ClCompile Include="Material.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderProperty.cpp">
-      <Filter>Render</Filter>
+    <ClCompile Include="RenderVertex.cpp">
+      <Filter>Render\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>Render\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexData.cpp">
+      <Filter>Render\RenderData</Filter>
     </ClCompile>
     <ClCompile Include="TextureData.cpp">
-      <Filter>Render</Filter>
+      <Filter>Render\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProperty.cpp">
+      <Filter>Render\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexDataList.cpp">
+      <Filter>Render\RenderData</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureDataList.cpp">
+      <Filter>Render\RenderData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -204,9 +213,6 @@
     <ClInclude Include="GameObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="Cube.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="WorldManager.h">
       <Filter>World</Filter>
     </ClInclude>
@@ -267,26 +273,38 @@
     <ClInclude Include="RenderDraw.h">
       <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="VertexData.h">
-      <Filter>Render</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>GameLogic\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Mathz.h">
       <Filter>Math</Filter>
     </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderVertex.h">
+      <Filter>Render\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Render\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexData.h">
+      <Filter>Render\RenderData</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureData.h">
+      <Filter>Render\RenderData</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProperty.h">
+      <Filter>Render\RenderData</Filter>
+    </ClInclude>
     <ClInclude Include="Material.h">
       <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderProperty.h">
-      <Filter>Render</Filter>
+    <ClInclude Include="VertexDataList.h">
+      <Filter>Render\RenderData</Filter>
     </ClInclude>
-    <ClInclude Include="TextureData.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Components.h">
-      <Filter>Component</Filter>
+    <ClInclude Include="TextureDataList.h">
+      <Filter>Render\RenderData</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -336,6 +354,12 @@
     </Filter>
     <Filter Include="GameLogic\GameObject">
       <UniqueIdentifier>{a6f74b75-e941-426a-b05a-0070057294cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render\Model">
+      <UniqueIdentifier>{f2b45a3d-5c21-4a87-b7b0-5631ee7f4697}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render\RenderData">
+      <UniqueIdentifier>{4c9bb5c4-2579-4cd1-af07-1fb43586d0eb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

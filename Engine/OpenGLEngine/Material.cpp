@@ -16,27 +16,27 @@ Material::Material(ShaderProgram * shader) :shader(shader)
 
 void Material::SetFloat(float value, string name)
 {
-	floatProperty.Add(name, value);
+	floatProperty.push_back(ShaderProperty<float>(name, value));
 }
 
 void Material::SetVector2(Vector2 value, string name)
 {
-	vector2Property.Add(name, value);
+	vector2Property.push_back(ShaderProperty<Vector2>(name, value));
 }
 
 void Material::SetVector3(Vector3 value, string name)
 {
-	vector3Property.Add(name, value);
+	vector3Property.push_back(ShaderProperty<Vector3>(name, value));
 }
 
 void Material::SetVector4(Vector4 value, string name)
 {
-	vector4Property.Add(name, value);
+	vector4Property.push_back(ShaderProperty<Vector4>(name, value));
 }
 
 void Material::SetMatrix(Matrix4x4 value, string name)
 {
-	matrixProperty.Add(name, value);
+	matrixProperty.push_back(ShaderProperty<Matrix4x4>(name, value));
 }
 
 void Material::SetTexture(Texture* tex)

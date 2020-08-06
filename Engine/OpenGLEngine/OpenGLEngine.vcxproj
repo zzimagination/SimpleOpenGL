@@ -175,6 +175,7 @@
     <ClInclude Include="RenderCollector.h" />
     <ClInclude Include="RenderObject.h" />
     <ClInclude Include="RenderObjectManager.h" />
+    <ClInclude Include="RenderVertex.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="ShaderProperty.h" />
@@ -184,6 +185,7 @@
     <ClInclude Include="Test.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureData.h" />
+    <ClInclude Include="TextureDataList.h" />
     <ClInclude Include="TextureType.h" />
     <ClInclude Include="TextureUtility.h" />
     <ClInclude Include="Time.h" />
@@ -193,6 +195,7 @@
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
     <ClInclude Include="VertexData.h" />
+    <ClInclude Include="VertexDataList.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="WorldManager.h" />
   </ItemGroup>
@@ -225,6 +228,7 @@
     <ClCompile Include="RenderCollector.cpp" />
     <ClCompile Include="RenderObject.cpp" />
     <ClCompile Include="RenderObjectManager.cpp" />
+    <ClCompile Include="RenderVertex.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="ShaderProperty.cpp" />
@@ -234,6 +238,7 @@
     <ClCompile Include="Test.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureData.cpp" />
+    <ClCompile Include="TextureDataList.cpp" />
     <ClCompile Include="TextureUtility.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -241,6 +246,7 @@
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Vector4.cpp" />
     <ClCompile Include="VertexData.cpp" />
+    <ClCompile Include="VertexDataList.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldManager.cpp" />
   </ItemGroup>

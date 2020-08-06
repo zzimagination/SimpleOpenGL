@@ -5,37 +5,18 @@
 
 RenderBatch::~RenderBatch()
 {
-	delete vertexData;
-	delete textureData;
 }
 
 void RenderBatch::DrawCall(Camera* camera)
 {
 	RenderDraw::SetCullFace(CullFace::Front);
 	RenderDraw::SetDepthTest(true);
-	RenderDraw::SetTransform(*modelMatrix, camera->CalculateViewMatrix(), camera->CalculateProjectionMatrix());
-	RenderDraw::SetShader(material);
 	RenderDraw::SetVertexData(vertexData);
-	RenderDraw::SetTextureData(textureData);
+	RenderDraw::SetTransform(modelMatrix, camera->CalculateViewMatrix(), camera->CalculateProjectionMatrix());
+	RenderDraw::SetShader(shader, floatProperty, vector2Property, vector3Property, vector4Property, matrixProperty);
+	for (int i = 0; i < textureDatas.size(); i++)
+	{
+		RenderDraw::SetTextureData(textureDatas[i]);
+	}
 	RenderDraw::Draw();
-}
-
-bool RenderBatch::IsBreak()
-{
-	for (int i = 0; i < renderObjects.size(); i++)
-	{
-		if (renderObjects[i]->IsBreakBatch())
-		{
-			return true;
-		}
-	}
-	return false;
-}
-
-void RenderBatch::Break()
-{
-	for (int i = 0; i < renderObjects.size(); i++)
-	{
-		renderObjects[i]->SetRenderBatch(nullptr);
-	}
 }

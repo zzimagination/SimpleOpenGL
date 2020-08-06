@@ -5,15 +5,15 @@
 #include "Renderer.h"
 #include "ShaderManager.h"
 
-Player::Player():GameObject()
+Player::Player() :GameObject()
 {
-	Renderer* renderer = new Renderer();
+	Renderer *renderer = new Renderer();
 	AddComponent(renderer);
 }
 
-Player::Player(string name):GameObject(name)
+Player::Player(string name) :GameObject(name)
 {
-	Renderer* renderer = new Renderer();
+	Renderer *renderer = new Renderer();
 	AddComponent(renderer);
 }
 
@@ -28,6 +28,7 @@ Player::~Player()
 
 void Player::Start()
 {
+
 }
 
 void Player::Update()

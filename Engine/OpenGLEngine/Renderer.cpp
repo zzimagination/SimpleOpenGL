@@ -6,6 +6,7 @@
 
 Renderer::Renderer()
 {
+	
 }
 
 Renderer::~Renderer()
@@ -16,8 +17,8 @@ Renderer::~Renderer()
 
 void Renderer::Start()
 {
-	GenerateRenderObject();
 	Collect();
+	GenerateRenderObject();
 }
 
 void Renderer::Update()
@@ -35,29 +36,14 @@ void Renderer::Drop()
 	RenderCollector::DropRenderer(this);
 }
 
-Matrix4x4 Renderer::GetModelMatrix()
+Material * Renderer::GetMaterial()
 {
-	return gameObject->transform.GetModelMatrix();
+	return _material;
 }
 
-Vector3* Renderer::GetVertices()
+void Renderer::SetMaterial(Material * material)
 {
-	return cube.vertices;
-}
-
-int Renderer::GetVertexCount()
-{
-	return sizeof(cube.vertices) / sizeof(Vector3);
-}
-
-int* Renderer::GetIndex()
-{
-	return cube.indices;
-}
-
-Vector2* Renderer::GetUV()
-{
-	return cube.uvs;
+	this->_material = material;
 }
 
 RenderObject * Renderer::GetRenderObject()
@@ -68,16 +54,20 @@ RenderObject * Renderer::GetRenderObject()
 void Renderer::GenerateRenderObject()
 {
 	_renderObject = new RenderObject();
-	_renderObject->SetVertices(GetVertices(), GetVertexCount());
-	_renderObject->SetUV(GetUV());
-	_renderObject->SetIndex(GetIndex());
-	_renderObject->SetMaterial(material);
-	_renderObject->SetModelMatrix(GetModelMatrix());
+	UpdateRenderObject();
 }
 
 void Renderer::UpdateRenderObject()
 {
-	_renderObject->SetModelMatrix(GetModelMatrix());
+	_renderObject->renderVertex = &cube;
+	_renderObject->modelMatrix = gameObject->transform.GetModelMatrix();
+	_renderObject->shader = _material->shader;
+	_renderObject->floatProperty = _material->floatProperty;
+	_renderObject->vector2Property = _material->vector2Property;
+	_renderObject->vector3Property = _material->vector3Property;
+	_renderObject->vector4Property = _material->vector4Property;
+	_renderObject->matrixProperty = _material->matrixProperty;
+	_renderObject->textures = _material->textures;
 }
 
 void Renderer::DeleteRenderObject()

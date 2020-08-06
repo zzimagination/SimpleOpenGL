@@ -17,15 +17,15 @@ public:
 
 	ShaderProgram* shader;
 
-	ShaderProperty<float> floatProperty;
+	vector<ShaderProperty<float>> floatProperty;
 
-	ShaderProperty<Vector2> vector2Property;
+	vector<ShaderProperty<Vector2>> vector2Property;
 
-	ShaderProperty<Vector3> vector3Property;
+	vector<ShaderProperty<Vector3>> vector3Property;
 
-	ShaderProperty<Vector4> vector4Property;
+	vector<ShaderProperty<Vector4>> vector4Property;
 
-	ShaderProperty<Matrix4x4> matrixProperty;
+	vector<ShaderProperty<Matrix4x4>> matrixProperty;
 
 	vector<Texture*> textures;
 

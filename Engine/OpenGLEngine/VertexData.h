@@ -5,6 +5,7 @@
 #include "Mathz.h"
 
 class RenderObject;
+class RenderVertex;
 
 using namespace std;
 
@@ -24,7 +25,7 @@ private:
 
 public:
 
-	VertexData(Vector3* vertices, int count, int* index, Vector2* uv);
+	VertexData(RenderVertex* renderVertex);
 
 	~VertexData();
 

@@ -8,59 +8,30 @@ using namespace std;
 template<class T>
 class ShaderProperty
 {
-private:
+public:
 
-	vector<T> data;
+	string name;
 
-	vector<string> name;
+	T value;
 
 public:
 
-	void Add(string name, T value)
-	{
-		for (int i = 0; i < data.size(); i++)
-		{
-			if (this->name[i] == name)
-			{
-				data[i] = value;
-				return;
-			}
-		}
-		this->name.push_back(name);
-		this->data.push_back(value);
+	ShaderProperty(string name, T value) {
+		this->name = name;
+		this->value = value;
 	}
 
-	void Remove(string name, T value)
-	{
-		for (int i = 0; i < data.size(); i++)
-		{
-			if (this->name[i] == name)
-			{
-				this->name.erase(this.name.begin() + i);
-				this->data.erase(data.begin() + i);
-				return;
-			}
-		}
-		throw "don't have " + name;
+	T GetValue() {
+		return value;
 	}
 
-	string GetName(int i)
-	{
-		return name[i];
+	void SetValue(T value) {
+		this->value = value;
 	}
 
-	T GetValue(int i)
+	bool IsEqual(ShaderProperty<T> property)
 	{
-		return data[i];
-	}
-
-	int Size()
-	{
-		if (name.size() != data.size())
-		{
-			throw "value error";
-		}
-		return (int)name.size();
+		return property.name == this->name &&property.value == this->value;
 	}
 };
 

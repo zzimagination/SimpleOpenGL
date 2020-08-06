@@ -14,7 +14,7 @@ private:
 
 public:
 
-	static void Culling(Camera *camera);
+	static void Culling(Camera *camera, vector<RenderObject*> &objects);
 
 	static void AddRenderObject(RenderObject* object);
 

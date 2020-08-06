@@ -14,11 +14,11 @@ using namespace std;
 
 class Renderer : public Component
 {
-public:
+private:
 
 	Cube cube;
 
-	Material* material;
+	Material* _material;
 
 public:
 
@@ -40,15 +40,9 @@ public:
 
 	void Drop();
 
-	virtual Matrix4x4 GetModelMatrix();
+	virtual Material* GetMaterial();
 
-	virtual Vector3* GetVertices();
-
-	virtual int GetVertexCount();
-
-	virtual int* GetIndex();
-
-	virtual Vector2* GetUV();
+	virtual void SetMaterial(Material *material);
 
 	RenderObject* GetRenderObject();
 
@@ -63,6 +57,3 @@ private:
 
 
 #endif // !RENDER
-
-
-

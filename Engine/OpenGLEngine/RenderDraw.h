@@ -60,17 +60,11 @@ public:
 
 	static Matrix4x4 projection;
 
-	static vector<Vector3> *vertices;
-
-	static vector<int> *index;
-
-	static vector<Vector2> *uv;
-
-	static vector<Vector3> *normal;
-
 private:
 
 	static int drawCount;
+
+	static int textureIndex;
 
 public:
 
@@ -84,7 +78,12 @@ public:
 
 	static void SetCullFace(bool cull, CullFace mode);
 
-	static void SetShader(Material* material);
+	static void SetShader(ShaderProgram* shader,
+		vector<ShaderProperty<float>> f,
+		vector<ShaderProperty<Vector2>> vector2,
+		vector<ShaderProperty<Vector3>> vector3,
+		vector<ShaderProperty<Vector4>> vector4,
+		vector<ShaderProperty<Matrix4x4>> matrix); 
 
 	static void SetTransform(Matrix4x4 model, Matrix4x4 view, Matrix4x4 projection);
 

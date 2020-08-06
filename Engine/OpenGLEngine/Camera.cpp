@@ -89,7 +89,8 @@ Matrix4x4 Camera::CalculateProjectionMatrix()
 		m.w3 = 0;
 		break;
 	}
-	return m;
+	projectionMatrix = m;
+	return projectionMatrix;
 }
 
 Matrix4x4 Camera::CalculateViewMatrix()
@@ -98,7 +99,7 @@ Matrix4x4 Camera::CalculateViewMatrix()
 	m = m * Matrix4x4::Translate(-position);
 	m = m * Matrix4x4::Rotate(-eulerAngle);
 	worldToViewMatrix = m;
-	return m;
+	return worldToViewMatrix;
 }
 
 // Processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)

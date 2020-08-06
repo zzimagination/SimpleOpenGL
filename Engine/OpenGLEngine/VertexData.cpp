@@ -2,10 +2,14 @@
 
 #include "VertexData.h"
 #include "RenderObject.h"
+#include "RenderVertex.h"
 
-VertexData::VertexData(Vector3 * vertices, int count, int * index, Vector2 * uv)
+VertexData::VertexData(RenderVertex* renderVertex)
 {
-	BindData(vertices, count, index, uv);
+	BindData(renderVertex->GetVertices(),
+		renderVertex->VertexCount(),
+		renderVertex->GetIndices(),
+		renderVertex->GetUV());
 }
 
 VertexData::~VertexData()

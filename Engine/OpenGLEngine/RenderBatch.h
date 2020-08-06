@@ -20,11 +20,21 @@ public:
 
 	VertexData *vertexData;
 
-	TextureData *textureData;
+	vector<TextureData*> textureDatas;
 
-	Matrix4x4 *modelMatrix;
+	Matrix4x4 modelMatrix;
 
-	Material* material;
+	ShaderProgram* shader;
+
+	vector<ShaderProperty<float>> floatProperty;
+
+	vector<ShaderProperty<Vector2>> vector2Property;
+
+	vector < ShaderProperty<Vector3>> vector3Property;
+
+	vector < ShaderProperty<Vector4>> vector4Property;
+
+	vector < ShaderProperty<Matrix4x4>> matrixProperty;
 
 	vector<RenderObject*> renderObjects;
 
@@ -33,10 +43,6 @@ public:
 	~RenderBatch();
 
 	void DrawCall(Camera* camera);
-
-	bool IsBreak();
-
-	void Break();
 
 private:
 

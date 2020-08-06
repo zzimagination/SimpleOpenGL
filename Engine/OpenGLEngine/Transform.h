@@ -6,9 +6,9 @@ class Transform
 {
 public:
 
-	Vector3 position;
+	Vector3 position = Vector3(0,0,0);
 
-	Vector3 eulerAngle;
+	Vector3 eulerAngle = Vector3(0, 0, 0);
 
 	Vector3 scale = Vector3(1, 1, 1);
 
