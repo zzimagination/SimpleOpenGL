@@ -1,14 +1,26 @@
 #include "GameObject.h"
 #include "Component.h"
+#include "World.h"
 #include <iostream>
+
+void GameObject::Destory(GameObject* gameObjcet)
+{
+	gameObjcet->myWorld->RemoveGameObject(gameObjcet);
+	gameObjcet->OnDesory_Internal();
+	gameObjcet->OnDestory();
+	delete gameObjcet;
+}
+
 
 GameObject::GameObject()
 {
 	name = "New GameObject";
+	transform = new Transform();
 }
 
 GameObject::GameObject(string name): name(name)
 {
+	transform = new Transform();
 }
 
 GameObject::~GameObject()
@@ -24,6 +36,10 @@ void GameObject::Start()
 }
 
 void GameObject::Update()
+{
+}
+
+void GameObject::OnDestory()
 {
 }
 
@@ -61,4 +77,14 @@ void GameObject::Update_Internal()
 		components[i]->Update();
 	}
 }
+
+void GameObject::OnDesory_Internal()
+{
+	for (int i = 0; i < components.size(); i++)
+	{
+		components[i]->OnDestory();
+	}
+}
+
+
 

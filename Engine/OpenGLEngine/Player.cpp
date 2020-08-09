@@ -5,7 +5,7 @@
 #include "Renderer.h"
 #include "ShaderManager.h"
 
-Player::Player() :GameObject()
+Player::Player()
 {
 	Renderer *renderer = new Renderer();
 	AddComponent(renderer);
@@ -33,6 +33,10 @@ void Player::Start()
 
 void Player::Update()
 {
-	float y = Time::GetDeltaTime() * times + transform.eulerAngle.y;
-	transform.eulerAngle.y = y;
+	float y = Time::GetDeltaTime() * times + transform->eulerAngle.y;
+	transform->eulerAngle.y = y;
+}
+
+void Player::OnDestory()
+{
 }

@@ -30,6 +30,8 @@ public:
 
 	virtual void Update() override;
 
+	virtual void OnDestory() override;
+
 private:
 
 	RenderObject* _renderObject;

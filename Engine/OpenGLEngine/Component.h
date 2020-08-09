@@ -17,6 +17,8 @@ public:
 
 	virtual void Update() = 0;
 
+	virtual void OnDestory() = 0;
+
 };
 
 #endif // !COMPONENT

@@ -1,12 +1,12 @@
-#pragma once
-
-#include<glad/glad.h>
-#include <GLFW/glfw3.h>
+#ifndef GAMEWINDOW
+#define GAMEWINDOW
+#include "GWindow.h"
 
 class GameWindow
 {
 public:
-	static GLFWwindow* gameWindow;
+
+	static GWindow* window;
 
 	static void CreateGameWindow();
 
@@ -18,11 +18,14 @@ public:
 
 	static void PollWindowEvent();
 
-private:
-	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+	static void OnSizeChanged(int width, int height);
 
-	static void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+	static void OnMouse(double xpos, double ypos);
 
-	static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+	static void OnScroll(double xoffset, double yoffset);
+
 };
+
+#endif // !GAMEWINDOW
+
 

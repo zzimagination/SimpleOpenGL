@@ -28,9 +28,6 @@
     <ClCompile Include="FrameRuntime.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="GameWindow.cpp">
-      <Filter>Project</Filter>
-    </ClCompile>
     <ClCompile Include="GameLoop.cpp">
       <Filter>Project</Filter>
     </ClCompile>
@@ -148,6 +145,15 @@
     <ClCompile Include="TextureDataList.cpp">
       <Filter>Render\RenderData</Filter>
     </ClCompile>
+    <ClCompile Include="GameWindow.cpp">
+      <Filter>Project\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32Window.cpp">
+      <Filter>Project\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="GWindow.cpp">
+      <Filter>Project\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Light.h">
@@ -175,9 +181,6 @@
       <Filter>Project</Filter>
     </ClInclude>
     <ClInclude Include="FrameRuntime.h">
-      <Filter>Project</Filter>
-    </ClInclude>
-    <ClInclude Include="GameWindow.h">
       <Filter>Project</Filter>
     </ClInclude>
     <ClInclude Include="GameLoop.h">
@@ -306,6 +309,15 @@
     <ClInclude Include="TextureDataList.h">
       <Filter>Render\RenderData</Filter>
     </ClInclude>
+    <ClInclude Include="GameWindow.h">
+      <Filter>Project\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32Window.h">
+      <Filter>Project\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="GWindow.h">
+      <Filter>Project\Windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="头文件">
@@ -360,6 +372,12 @@
     </Filter>
     <Filter Include="Render\RenderData">
       <UniqueIdentifier>{4c9bb5c4-2579-4cd1-af07-1fb43586d0eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EventSystem">
+      <UniqueIdentifier>{f5075df4-7f92-45ad-b858-dadb4bf028f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Windows">
+      <UniqueIdentifier>{94b3bf07-6d83-4bcc-95ac-2544e04f03b8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

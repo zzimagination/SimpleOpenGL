@@ -10,6 +10,7 @@
 using namespace std;
 
 class Component;
+class World;
 
 class GameObject
 {
@@ -19,13 +20,21 @@ public:
 
 	virtual void Update();
 
+	virtual void OnDestory();
+
 public:
 
 	string name;
 
-	Transform transform;
+	Transform* transform;
 
 	vector<Component*> components;
+
+	World* myWorld;
+
+public:
+
+	 static void Destory(GameObject* gameObject);
 
 public:
 
@@ -54,6 +63,8 @@ public:
 	void Start_Internal();
 
 	void Update_Internal();
+
+	void OnDesory_Internal();
 
 private:
 

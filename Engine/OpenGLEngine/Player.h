@@ -10,9 +10,11 @@ public:
 
 	~Player();
 
-	virtual void Start();
+	virtual void Start() override;
 
-	virtual void Update();
+	virtual void Update() override;
+
+	virtual void OnDestory() override;
 
 public:
 

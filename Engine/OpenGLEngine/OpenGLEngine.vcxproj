@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="BaseRenderPipeline.h" />
     <ClInclude Include="Components.h" />
+    <ClInclude Include="GWindow.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="RenderBatchManager.h" />
     <ClInclude Include="Camera.h" />
@@ -196,11 +197,13 @@
     <ClInclude Include="Vector4.h" />
     <ClInclude Include="VertexData.h" />
     <ClInclude Include="VertexDataList.h" />
+    <ClInclude Include="Win32Window.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="WorldManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseRenderPipeline.cpp" />
+    <ClCompile Include="GWindow.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Mathz.cpp" />
     <ClCompile Include="RenderBatchManager.cpp" />
@@ -247,6 +250,7 @@
     <ClCompile Include="Vector4.cpp" />
     <ClCompile Include="VertexData.cpp" />
     <ClCompile Include="VertexDataList.cpp" />
+    <ClCompile Include="Win32Window.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldManager.cpp" />
   </ItemGroup>

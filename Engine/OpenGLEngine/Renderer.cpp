@@ -11,8 +11,6 @@ Renderer::Renderer()
 
 Renderer::~Renderer()
 {
-	Drop();
-	DeleteRenderObject();
 }
 
 void Renderer::Start()
@@ -24,6 +22,12 @@ void Renderer::Start()
 void Renderer::Update()
 {
 	UpdateRenderObject();
+}
+
+void Renderer::OnDestory()
+{
+	Drop();
+	DeleteRenderObject();
 }
 
 void Renderer::Collect()
@@ -60,7 +64,7 @@ void Renderer::GenerateRenderObject()
 void Renderer::UpdateRenderObject()
 {
 	_renderObject->renderVertex = &cube;
-	_renderObject->modelMatrix = gameObject->transform.GetModelMatrix();
+	_renderObject->modelMatrix = gameObject->transform->GetModelMatrix();
 	_renderObject->shader = _material->shader;
 	_renderObject->floatProperty = _material->floatProperty;
 	_renderObject->vector2Property = _material->vector2Property;
