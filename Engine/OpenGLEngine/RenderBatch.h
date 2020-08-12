@@ -10,7 +10,7 @@
 class RenderObject;
 class ShaderProgram;
 class Camera;
-
+class Texture;
 
 using namespace std;
 
@@ -18,11 +18,15 @@ class RenderBatch
 {
 public:
 
-	VertexData *vertexData;
+	RenderVertex *vertexData;
 
-	vector<TextureData*> textureDatas;
+	vector<Texture*> textureDatas;
 
 	Matrix4x4 modelMatrix;
+
+	Matrix4x4 viewMatrix;
+
+	Matrix4x4 projectionMatrix;
 
 	ShaderProgram* shader;
 
@@ -37,14 +41,6 @@ public:
 	vector < ShaderProperty<Matrix4x4>> matrixProperty;
 
 	vector<RenderObject*> renderObjects;
-
-public:
-
-	~RenderBatch();
-
-	void DrawCall(Camera* camera);
-
-private:
 
 };
 

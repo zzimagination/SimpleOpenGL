@@ -6,6 +6,9 @@
 
 VertexData::VertexData(RenderVertex* renderVertex)
 {
+	VAO = 0;
+	VBO = 0;
+	EBO = 0;
 	BindData(renderVertex->GetVertices(),
 		renderVertex->VertexCount(),
 		renderVertex->GetIndices(),

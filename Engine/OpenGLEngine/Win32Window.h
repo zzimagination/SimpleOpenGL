@@ -20,6 +20,8 @@ public:
 
 	static LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
+	static void(*OnSizeChanged)(int, int);
+
 public:
 
 	Win32Window();

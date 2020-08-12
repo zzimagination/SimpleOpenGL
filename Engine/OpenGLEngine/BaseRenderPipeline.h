@@ -7,6 +7,7 @@ class BaseRenderPipeline
 public:
 
 	static void Render();
+
 };
 
 #endif // !BASE_RENDER_PIPLINE

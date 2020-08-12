@@ -6,10 +6,9 @@
 using namespace std;
 
 //#define WIN32_WIN
+
 #ifndef WIN32_WIN
-
 #define GLFW
-
 #endif // !WIN32
 
 

@@ -1,21 +1,21 @@
 #include "RenderBatchManager.h"
 #include "RenderObject.h"
 #include "RenderBatch.h"
-#include "VertexData.h"
-#include "TextureData.h"
-#include "VertexDataList.h"
-#include "TextureDataList.h"
+#include "Camera.h"
 
-vector<RenderBatch> RenderBatchManager::batchs;
+vector<RenderBatch> *RenderBatchManager::frontBatchs;
 
-void RenderBatchManager::GenerateBatchs(vector<RenderObject*> renderObjects)
+vector<RenderBatch> *RenderBatchManager::backBatchs;
+
+void RenderBatchManager::GenerateBatchs(vector<RenderObject*> renderObjects, Camera* camera)
 {
+	vector<RenderBatch> *batchs = new vector<RenderBatch>();
 	for (int i = 0; i < renderObjects.size(); i++)
 	{
 		RenderObject *object = renderObjects[i];
 		RenderBatch batch;
-		batch.vertexData = GetVertexData(object->renderVertex);
-		batch.textureDatas = GetTextureData(object->textures);
+		batch.vertexData = object->renderVertex;
+		batch.textureDatas = object->textures;
 		batch.shader = object->shader;
 		batch.floatProperty = object->floatProperty;
 		batch.vector2Property = object->vector2Property;
@@ -23,35 +23,23 @@ void RenderBatchManager::GenerateBatchs(vector<RenderObject*> renderObjects)
 		batch.vector4Property = object->vector4Property;
 		batch.matrixProperty = object->matrixProperty;
 		batch.modelMatrix = object->modelMatrix;
-		batchs.push_back(batch);
+		batch.viewMatrix = camera->CalculateViewMatrix();
+		batch.projectionMatrix = camera->CalculateProjectionMatrix();
+
+		batchs->push_back(batch);
 	}
+
+	backBatchs = batchs;
+}
+
+void RenderBatchManager::SwapBuffer()
+{
+	delete frontBatchs;
+	frontBatchs = backBatchs;
 }
 
 void RenderBatchManager::ClearBatchs()
 {
-	batchs.clear();
-}
 
-void RenderBatchManager::DrawBatchs(Camera* camera)
-{
-	for (int i = 0; i < batchs.size(); i++)
-	{
-		batchs[i].DrawCall(camera);
-	}
-}
-
-VertexData * RenderBatchManager::GetVertexData(RenderVertex * v)
-{
-	return VertexDataList::GetVertexData(v);
-}
-
-vector<TextureData*> RenderBatchManager::GetTextureData(vector<Texture*> tex)
-{
-	vector<TextureData*> data;
-	for (int i = 0; i < tex.size(); i++)
-	{
-		data.push_back(TextureDataList::GetData(tex[i]));
-	}
-	return data;
 }
 

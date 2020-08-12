@@ -43,7 +43,7 @@ void GameWindow::OnSizeChanged(int width, int height)
 
 void GameWindow::OnMouse(double xpos, double ypos)
 {
-	cout << "x:" << xpos << " y:" << ypos << endl;
+	
 }
 
 void GameWindow::OnScroll(double xoffset, double yoffset)

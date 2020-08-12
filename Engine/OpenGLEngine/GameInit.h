@@ -1,5 +1,7 @@
 #ifndef GAMEINIT
 #define GAMEINIT
+
+
 class GameInit
 {
 public:

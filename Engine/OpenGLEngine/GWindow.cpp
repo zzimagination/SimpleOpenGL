@@ -20,6 +20,7 @@ GWindow* GWindow::Create(int width, int height, string title)
 	gwindow->window->Create(r.c_str(), WS_OVERLAPPEDWINDOW , 0, 0, 0, width, height);
 	gladLoadGLLoader((GLADloadproc)wglGetProcAddress);
 	gladLoadGL();
+	gwindow->window->OnSizeChanged = &GWindow::OnSizeChanged;
 #endif // WIN32_WIN
 
 
@@ -107,9 +108,23 @@ void GWindow::PollEvent()
 #endif // GLFW
 }
 
-
 #ifdef WIN32_WIN
 
+void GWindow::OnSizeChanged(int width, int height)
+{
+	glViewport(0, 0, width, height);
+	GameWindow::OnSizeChanged(width, height);
+}
+
+void GWindow::OnMouse(double xpos, double ypos)
+{
+	GameWindow::OnMouse(xpos, ypos);
+}
+
+void GWindow::OnScroll(double xoffset, double yoffset)
+{
+	GameWindow::OnScroll(xoffset, yoffset);
+}
 
 
 #endif // WIN32_WIN

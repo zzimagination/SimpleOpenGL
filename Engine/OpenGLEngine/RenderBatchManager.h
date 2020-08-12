@@ -17,21 +17,17 @@ class RenderBatchManager
 {
 public:
 
-	static vector<RenderBatch> batchs;
+	static vector<RenderBatch> *frontBatchs;
+
+	static vector<RenderBatch> *backBatchs;
 
 public:
 
-	static void GenerateBatchs(vector<RenderObject*> renderObjects);
+	static void GenerateBatchs(vector<RenderObject*> renderObjects, Camera *camera);
+
+	static void SwapBuffer();
 
 	static void ClearBatchs();
-
-	static void DrawBatchs(Camera* camera);
-
-private:
-
-	static VertexData* GetVertexData(RenderVertex* v);
-
-	static vector<TextureData*> GetTextureData(vector<Texture*> tex);
 
 };
 

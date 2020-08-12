@@ -28,9 +28,6 @@
     <ClCompile Include="FrameRuntime.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="GameLoop.cpp">
-      <Filter>Project</Filter>
-    </ClCompile>
     <ClCompile Include="spng.c">
       <Filter>2D</Filter>
     </ClCompile>
@@ -90,9 +87,6 @@
     </ClCompile>
     <ClCompile Include="Matrix4x4.cpp">
       <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="GameStart.cpp">
-      <Filter>Project</Filter>
     </ClCompile>
     <ClCompile Include="ShaderProgram.cpp">
       <Filter>Render</Filter>
@@ -154,6 +148,18 @@
     <ClCompile Include="GWindow.cpp">
       <Filter>Project\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="GameLoop.cpp">
+      <Filter>Project\Loop</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStart.cpp">
+      <Filter>Project\Loop</Filter>
+    </ClCompile>
+    <ClCompile Include="CompletedSignal.cpp">
+      <Filter>Project\Loop</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicRender.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Light.h">
@@ -181,9 +187,6 @@
       <Filter>Project</Filter>
     </ClInclude>
     <ClInclude Include="FrameRuntime.h">
-      <Filter>Project</Filter>
-    </ClInclude>
-    <ClInclude Include="GameLoop.h">
       <Filter>Project</Filter>
     </ClInclude>
     <ClInclude Include="spng.h">
@@ -248,9 +251,6 @@
     </ClInclude>
     <ClInclude Include="Matrix4x4.h">
       <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="GameStart.h">
-      <Filter>Project</Filter>
     </ClInclude>
     <ClInclude Include="ShaderProgram.h">
       <Filter>Render</Filter>
@@ -318,6 +318,18 @@
     <ClInclude Include="GWindow.h">
       <Filter>Project\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="GameLoop.h">
+      <Filter>Project\Loop</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStart.h">
+      <Filter>Project\Loop</Filter>
+    </ClInclude>
+    <ClInclude Include="CompletedSignal.h">
+      <Filter>Project\Loop</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicRender.h">
+      <Filter>Render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="头文件">
@@ -378,6 +390,9 @@
     </Filter>
     <Filter Include="Project\Windows">
       <UniqueIdentifier>{94b3bf07-6d83-4bcc-95ac-2544e04f03b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Loop">
+      <UniqueIdentifier>{26a0ad8a-dcf3-4edf-89aa-cd978117fc51}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

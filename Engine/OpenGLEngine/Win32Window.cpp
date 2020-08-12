@@ -3,7 +3,9 @@
 #include <gl/GLU.h>
 #include <gl/glext.h>
 #include <gl/wglext.h>
+#include <iostream>
 
+void(*Win32Window::OnSizeChanged)(int, int);
 
 LRESULT Win32Window::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
@@ -12,6 +14,10 @@ LRESULT Win32Window::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 	{
 		CREATESTRUCT* pCreate = (CREATESTRUCT*)lParam;
 		pThis = (Win32Window*)pCreate->lpCreateParams;
+		if (pThis == nullptr)
+		{
+			return DefWindowProc(hwnd, uMsg, wParam, lParam);
+		}
 		SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)pThis);
 		pThis->m_hwnd = hwnd;
 	}
@@ -57,7 +63,7 @@ BOOL Win32Window::Create(PCWSTR lpWindowName, DWORD dwStyle, DWORD dwExStyle, in
 
 	HWND fakeHwnd = CreateWindowEx(
 		dwExStyle, ClassName(), lpWindowName, dwStyle, x, y,
-		nWidth, nHeight, hWndParent, hMenu, instance, this
+		nWidth, nHeight, hWndParent, hMenu, instance, nullptr
 	);
 	if (!fakeHwnd)
 	{
@@ -164,7 +170,7 @@ BOOL Win32Window::Create(PCWSTR lpWindowName, DWORD dwStyle, DWORD dwExStyle, in
 	ShowWindow(m_hwnd, SW_SHOW);
 
 
-	
+
 	return (m_hwnd ? TRUE : FALSE);
 }
 
@@ -193,6 +199,15 @@ void Win32Window::PollWindowEvent()
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 	}
+	else if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+	{
+		if (msg.message == WM_QUIT)
+		{
+			shouldClose = true;
+		}
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
+	}
 }
 
 HWND Win32Window::Window() const
@@ -212,10 +227,11 @@ LRESULT Win32Window::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam)
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
-		//case WM_SIZE:
-		//	//glviewport(0, 0, loword(lparam), hiword(lparam));
-		//	//postmessage(m_hwnd, wm_paint, 0, 0);
-		//	return 0;
+	case WM_SIZE:
+		if (OnSizeChanged != nullptr) {
+			OnSizeChanged(LOWORD(lParam), HIWORD(lParam));
+		}
+		return 0;
 	default:
 		return DefWindowProc(m_hwnd, uMsg, wParam, lParam);
 	}
