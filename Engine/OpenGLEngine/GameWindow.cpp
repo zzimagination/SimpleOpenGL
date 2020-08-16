@@ -1,51 +1,54 @@
 #include "GameWindow.h"
-#include "GameLoop.h"
-#include "FrameRuntime.h"
-#include "ProjectSetting.h"
+#include "GWindow.h"
 #include <iostream>
+#include "ProjectSetting.h"
+#include <string>
 
-GWindow* GameWindow::window = nullptr;
+namespace SemperEngine {
 
-void GameWindow::CreateGameWindow()
-{
-	int width = ProjectSetting::GetWindowWidth();
-	int height = ProjectSetting::GetWindowHeight();
+	GWindow* GameWindow::window = nullptr;
 
-	window = GWindow::Create(width, height, "SemperEngine");
-}
+	void GameWindow::CreateGameWindow()
+	{
+		int width = ProjectSetting::GetWindowWidth();
+		int height = ProjectSetting::GetWindowHeight();
 
-void GameWindow::TerminateGameWindow()
-{
-	window->Terminate();
-	delete window;
-}
+		window = GWindow::Create(width, height, L"SemperEngine");
+	}
 
-bool GameWindow::WindowShouldClose()
-{
-	return window->ShouldClose();
-}
+	void GameWindow::TerminateGameWindow()
+	{
+		window->Terminate();
+		delete window;
+	}
 
-void GameWindow::SwapFrameBuffers()
-{
-	return window->SwapFrameBuffers();
-}
+	bool GameWindow::WindowShouldClose()
+	{
+		return window->ShouldClose();
+	}
 
-void GameWindow::PollWindowEvent()
-{
-	window->PollEvent();
-}
+	void GameWindow::SwapFrameBuffers()
+	{
+		return window->SwapFrameBuffers();
+	}
 
-void GameWindow::OnSizeChanged(int width, int height)
-{
-	ProjectSetting::windowWidth = width;
-	ProjectSetting::windowHeight = height;
-}
+	void GameWindow::PollWindowEvent()
+	{
+		window->PollEvent();
+	}
 
-void GameWindow::OnMouse(double xpos, double ypos)
-{
-	
-}
+	void GameWindow::OnSizeChanged(int width, int height)
+	{
+		ProjectSetting::windowWidth = width;
+		ProjectSetting::windowHeight = height;
+	}
 
-void GameWindow::OnScroll(double xoffset, double yoffset)
-{
+	void GameWindow::OnMouse(double xpos, double ypos)
+	{
+
+	}
+
+	void GameWindow::OnScroll(double xoffset, double yoffset)
+	{
+	}
 }

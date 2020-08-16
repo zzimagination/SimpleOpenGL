@@ -1,14 +1,14 @@
 #ifndef GAMEINIT
 #define GAMEINIT
+namespace SemperEngine {
 
+	class GameInit
+	{
+	public:
 
-class GameInit
-{
-public:
+		static void Init();
 
-	static void Init();
-
-};
-
+	};
+}
 #endif // !GAMEINIT
 

@@ -1,70 +1,73 @@
 #ifndef GWINDOW
 #define GWINDOW
-
 #include <string>
-
-using namespace std;
-
-//#define WIN32_WIN
-
-#ifndef WIN32_WIN
-#define GLFW
-#endif // !WIN32
-
-
-#ifdef WIN32_WIN
-#include "Win32Window.h"
-typedef Win32Window* WindowClass;
-
-#endif // WIN32_WIN
+#include "EngineDef.h"
 
 #ifdef GLFW
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-typedef GLFWwindow* WindowClass;
+#endif
 
+#ifdef WIN32_WIN
+#include "Win32Window.h"
+#include <glad/glad.h>
+#endif // GLFW
+
+namespace SemperEngine {
+
+	using namespace std;
+
+#ifdef WIN32_WIN
+	typedef Win32Window* WindowClass;
+#endif
+#ifdef GLFW
+	typedef GLFWwindow* WindowClass;
 #endif // GLFW
 
 
 
-class GWindow
-{
-private:
+	class GWindow
+	{
+	private:
 
-	WindowClass window;
+		WindowClass window;
 
-public:
+	public:
 
-	static GWindow* Create(int width, int height, string title);
+		static GWindow* Create(int width, int height, wstring title);
 
-public:
+	public:
 
-	void SwapFrameBuffers();
+		void SwapFrameBuffers();
 
-	void Terminate();
+		void Terminate();
 
-	bool ShouldClose();
+		bool ShouldClose();
 
-	void PollEvent();
+		void PollEvent();
 
-private:
+	private:
 
 #ifdef WIN32_WIN
-	static void OnSizeChanged(int width, int height);
+		static void OnSizeChanged(int width, int height);
 
-	static void OnMouse(double xpos, double ypos);
+		static void OnMouse(double xpos, double ypos);
 
-	static void OnScroll(double xoffset, double yoffset);
+		static void OnScroll(double xoffset, double yoffset);
 #endif // WIN32_WIN
 
 #ifdef GLFW
-	static void OnSizeChanged(GLFWwindow* window, int width, int height);
+		static void OnSizeChanged(GLFWwindow* window, int width, int height);
 
-	static void OnMouse(GLFWwindow* window, double xpos, double ypos);
+		static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 
-	static void OnScroll(GLFWwindow* window, double xoffset, double yoffset);
+		static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
+
+		static void OnScroll(GLFWwindow* window, double xoffset, double yoffset);
+
+		static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 #endif // GLFW
 
-};
-
+	};
+}
 #endif // !GWINDOW

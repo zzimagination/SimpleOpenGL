@@ -4,39 +4,42 @@
 #include "BuildInMesh.h"
 #include "WorldManager.h"
 
-using namespace std;
+namespace SemperEngine {
 
-vector<RenderObject*> RenderObjectManager::renderObjects;
+	using namespace std;
 
-void RenderObjectManager::Culling(Camera * camera, vector<RenderObject*> &objects)
-{
+	vector<RenderObject*> RenderObjectManager::renderObjects;
 
-}
-
-void RenderObjectManager::AddRenderObject(RenderObject * object)
-{
-	if (object == nullptr)
+	void RenderObjectManager::Culling(Camera * camera, vector<RenderObject*> &objects)
 	{
-		throw "Null";
-	}
-	renderObjects.push_back(object);
-}
 
-void RenderObjectManager::AddRenderObject(vector<RenderObject*> objects)
-{
-	if (objects.size() == 0)
+	}
+
+	void RenderObjectManager::AddRenderObject(RenderObject * object)
 	{
-		return;
+		if (object == nullptr)
+		{
+			throw "Null";
+		}
+		renderObjects.push_back(object);
 	}
-	renderObjects.assign(objects.begin(), objects.end());
-}
 
-vector<RenderObject*> RenderObjectManager::GetRenderObject()
-{
-	return renderObjects;
-}
+	void RenderObjectManager::AddRenderObject(vector<RenderObject*> objects)
+	{
+		if (objects.size() == 0)
+		{
+			return;
+		}
+		renderObjects.assign(objects.begin(), objects.end());
+	}
 
-void RenderObjectManager::ClearRenderObject()
-{
-	renderObjects.clear();
+	vector<RenderObject*> RenderObjectManager::GetRenderObject()
+	{
+		return renderObjects;
+	}
+
+	void RenderObjectManager::ClearRenderObject()
+	{
+		renderObjects.clear();
+	}
 }

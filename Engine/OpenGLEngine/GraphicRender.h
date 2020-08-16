@@ -4,21 +4,21 @@
 #include <vector>
 #include "VertexData.h"
 #include "TextureData.h"
+namespace SemperEngine {
+	using namespace std;
 
-using namespace std;
+	class RenderVertex;
+	class Texture;
 
-class RenderVertex;
-class Texture;
+	class GraphicRender
+	{
+	public:
 
-class GraphicRender
-{
-public:
+		static void Render();
 
-	static void Render();
+		static VertexData * GetVertexData(RenderVertex * v);
 
-	static VertexData * GetVertexData(RenderVertex * v);
-
-	static vector<TextureData*> GetTextureData(vector<Texture*> tex);
-};
-
+		static vector<TextureData*> GetTextureData(vector<Texture*> tex);
+	};
+}
 #endif // !GraphicRender

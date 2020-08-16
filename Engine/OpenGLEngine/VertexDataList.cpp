@@ -1,17 +1,18 @@
 #include "VertexDataList.h"
+namespace SemperEngine {
+	map<RenderVertex*, VertexData*> VertexDataList::dataMap;
 
-map<RenderVertex*, VertexData*> VertexDataList::dataMap;
-
-VertexData * VertexDataList::GetVertexData(RenderVertex * value)
-{
-	if (dataMap.count(value))
+	VertexData * VertexDataList::GetVertexData(RenderVertex * value)
 	{
-		return dataMap[value];
-	}
-	else
-	{
-		VertexData* data = new VertexData(value);
-		dataMap[value] = data;
-		return data;
+		if (dataMap.count(value))
+		{
+			return dataMap[value];
+		}
+		else
+		{
+			VertexData* data = new VertexData(value);
+			dataMap[value] = data;
+			return data;
+		}
 	}
 }

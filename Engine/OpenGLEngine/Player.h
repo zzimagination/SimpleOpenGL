@@ -1,27 +1,35 @@
+#ifndef PLAYER
+#define PLAYER
 #include "GameObject.h"
 
-class Player :public GameObject
-{
-public:
-	
-	Player();
+namespace SemperEngine {
 
-	Player(string name);
+	class Player :public GameObject
+	{
+	public:
 
-	~Player();
+		Player();
 
-	virtual void Start() override;
+		Player(string name);
 
-	virtual void Update() override;
+		~Player();
 
-	virtual void OnDestory() override;
+		virtual void Start() override;
 
-public:
+		virtual void Update() override;
 
-	float times;
+		virtual void OnDestory() override;
 
-	float color;
+	public:
 
-private:
+		float times;
 
-};
+		float color;
+
+	private:
+
+	};
+}
+#endif // !PLAYER
+
+

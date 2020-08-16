@@ -2,26 +2,30 @@
 #define GAMELOOP
 
 #include "CompletedSignal.h"
+namespace SemperEngine {
+	class GameLoop
+	{
+	private:
 
-class GameLoop
-{
-private:
+		static bool _isLooping;
 
-	static bool isLooping;
+		static CompletedSignal loopSignal;
 
-	static CompletedSignal mainSignal;
+		static CompletedSignal mainSignal;
 
-	static CompletedSignal logicSignal;
+		static CompletedSignal logicSignal;
 
-public:
+	public:
 
-	static void BeforeLoop();
+		static void BeforeLoop();
 
-	static void MainLoop();
+		static void MainLoop();
 
-private:
+	private:
 
-	static void LogicLoop();
-};
+		static void LogicLoop();
 
+		static bool ExitLoop();
+	};
+}
 #endif // !GAMELOOP

@@ -3,40 +3,41 @@
 
 #include <vector>
 #include "Mathz.h"
+namespace SemperEngine {
+	class RenderObject;
+	class RenderVertex;
 
-class RenderObject;
-class RenderVertex;
+	using namespace std;
 
-using namespace std;
+	class VertexData
+	{
+	public:
 
-class VertexData
-{
-public:
+		unsigned int VAO;
 
-	unsigned int VAO;
+	private:
 
-private:
+		unsigned int VBO;
 
-	unsigned int VBO;
+		unsigned int EBO;
 
-	unsigned int EBO;
+		int _pointCount;
 
-	int _pointCount;
+	public:
 
-public:
+		VertexData(RenderVertex* renderVertex);
 
-	VertexData(RenderVertex* renderVertex);
+		~VertexData();
 
-	~VertexData();
+		int GetCount();
 
-	int GetCount();
+		void UseData();
 
-	void UseData();
+	private:
 
-private:
-
-	void BindData(Vector3* vertices, int count, int* index, Vector2* uv);
-};
+		void BindData(Vector3* vertices, int count, int* index, Vector2* uv);
+	};
+}
 #endif // !VERTEXDATA
 
 

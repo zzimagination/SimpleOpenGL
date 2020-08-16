@@ -2,36 +2,36 @@
 #define TEXTUREDATA
 #include <vector>
 #include "Texture.h"
-
+namespace SemperEngine {
 #define MAX_TEXTURE_COUNT  32
 
-class Material;
-class RenderObject;
+	class Material;
+	class RenderObject;
 
-using namespace std;
+	using namespace std;
 
-class TextureData
-{
+	class TextureData
+	{
 
-public:
+	public:
 
-	unsigned int textureId;
+		unsigned int textureId;
 
-private:
+	private:
 
-	Texture* _texture;
+		Texture* _texture;
 
-public:
+	public:
 
-	TextureData(Texture* textures);
+		TextureData(Texture* textures);
 
-	~TextureData();
+		~TextureData();
 
-private:
+	private:
 
-	void BindData(Texture* textures);
+		void BindData(Texture* textures);
 
-	void BindOpenGLTexture(Texture* tex);
-};
-
+		void BindOpenGLTexture(Texture* tex);
+	};
+}
 #endif // !TEXTUREDATA

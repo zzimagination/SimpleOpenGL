@@ -1,26 +1,28 @@
 #ifndef COMPONENT
 #define COMPONENT
 
-class GameObject;
+namespace SemperEngine {
 
-class Component
-{
-public:
+	class GameObject;
 
-	GameObject* gameObject;
+	class Component
+	{
+	public:
 
-protected:
+		GameObject* gameObject = nullptr;
 
-public:
+	protected:
 
-	virtual void Start() = 0;
+	public:
 
-	virtual void Update() = 0;
+		virtual void Start() = 0;
 
-	virtual void OnDestory() = 0;
+		virtual void Update() = 0;
 
-};
+		virtual void OnDestory() = 0;
 
+	};
+}
 #endif // !COMPONENT
 
 

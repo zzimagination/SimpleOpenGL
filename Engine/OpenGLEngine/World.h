@@ -2,32 +2,33 @@
 #include <vector>
 #include "Camera.h"
 #include "GameObject.h"
+namespace SemperEngine {
+	using namespace std;
 
-using namespace std;
+	class World
+	{
+	public:
 
-class World
-{
-public:
-	
-	string name;
+		string name;
 
-	Camera* camera;
+		Camera* camera;
 
-	vector<GameObject*> newGameObjects;
+		vector<GameObject*> newGameObjects;
 
-	vector<GameObject*> gameObjects;
+		vector<GameObject*> gameObjects;
 
-	~World();
+		~World();
 
-	void AddGameObject(GameObject* gameObject);
+		void AddGameObject(GameObject* gameObject);
 
-	void RemoveGameObject(GameObject* gameObject);
+		void RemoveGameObject(GameObject* gameObject);
 
-	void Live();
+		void Live();
 
-private:
+	private:
 
-	bool isStart;
+		bool isStart;
 
-};
+	};
 
+}

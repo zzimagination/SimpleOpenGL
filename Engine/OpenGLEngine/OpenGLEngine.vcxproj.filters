@@ -1,22 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Light.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Primitive.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="SkyBox.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Program.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Model.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ProjectSetting.cpp">
@@ -32,12 +17,6 @@
       <Filter>2D</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
-      <Filter>2D</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureUtility.cpp">
-      <Filter>2D</Filter>
-    </ClCompile>
-    <ClCompile Include="stb_image.cpp">
       <Filter>2D</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
@@ -109,17 +88,11 @@
     <ClCompile Include="RenderDraw.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>GameLogic\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="Mathz.cpp">
       <Filter>Math</Filter>
     </ClCompile>
     <ClCompile Include="Material.cpp">
       <Filter>Render</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderVertex.cpp">
-      <Filter>Render\Model</Filter>
     </ClCompile>
     <ClCompile Include="Cube.cpp">
       <Filter>Render\Model</Filter>
@@ -154,30 +127,42 @@
     <ClCompile Include="GameStart.cpp">
       <Filter>Project\Loop</Filter>
     </ClCompile>
-    <ClCompile Include="CompletedSignal.cpp">
-      <Filter>Project\Loop</Filter>
-    </ClCompile>
     <ClCompile Include="GraphicRender.cpp">
       <Filter>Render</Filter>
     </ClCompile>
+    <ClCompile Include="CompletedSignal.cpp">
+      <Filter>Project\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="MathBase.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="EventSystem.cpp">
+      <Filter>EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyEvent.cpp">
+      <Filter>EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="TestComponent.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="EventRecorder.cpp">
+      <Filter>EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugOutput.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugFile.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Light.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Primitive.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="SkyBox.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="pch.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Model.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ProjectSetting.h">
@@ -193,15 +178,6 @@
       <Filter>2D</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>2D</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureType.h">
-      <Filter>2D</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureUtility.h">
-      <Filter>2D</Filter>
-    </ClInclude>
-    <ClInclude Include="stb_image.h">
       <Filter>2D</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
@@ -276,14 +252,8 @@
     <ClInclude Include="RenderDraw.h">
       <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>GameLogic\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="Mathz.h">
       <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Components.h">
-      <Filter>Component</Filter>
     </ClInclude>
     <ClInclude Include="RenderVertex.h">
       <Filter>Render\Model</Filter>
@@ -324,11 +294,56 @@
     <ClInclude Include="GameStart.h">
       <Filter>Project\Loop</Filter>
     </ClInclude>
-    <ClInclude Include="CompletedSignal.h">
-      <Filter>Project\Loop</Filter>
-    </ClInclude>
     <ClInclude Include="GraphicRender.h">
       <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="CompletedSignal.h">
+      <Filter>Project\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="SemperEngine.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineDef.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="MathBase.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyIdentity.h">
+      <Filter>Project\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSystem.h">
+      <Filter>EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyEvent.h">
+      <Filter>EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="TestComponent.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseButtonEvent.h">
+      <Filter>EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyDef.h">
+      <Filter>EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EventRecorder.h">
+      <Filter>EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="ILog.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugOutput.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugFile.h">
+      <Filter>Debug</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -376,9 +391,6 @@
     <Filter Include="GameObject">
       <UniqueIdentifier>{6ad4ca4a-dff0-479b-9c97-8d28b378fe8a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameLogic\GameObject">
-      <UniqueIdentifier>{a6f74b75-e941-426a-b05a-0070057294cf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Render\Model">
       <UniqueIdentifier>{f2b45a3d-5c21-4a87-b7b0-5631ee7f4697}</UniqueIdentifier>
     </Filter>
@@ -393,6 +405,12 @@
     </Filter>
     <Filter Include="Project\Loop">
       <UniqueIdentifier>{26a0ad8a-dcf3-4edf-89aa-cd978117fc51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Tools">
+      <UniqueIdentifier>{7a5e7748-c51d-4a1b-90f7-f54d77ffb5d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debug">
+      <UniqueIdentifier>{0978051b-1908-419e-aa4a-9f6831c93d5a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

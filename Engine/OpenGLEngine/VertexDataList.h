@@ -3,17 +3,17 @@
 #include <map>
 #include "RenderVertex.h"
 #include "VertexData.h"
+namespace SemperEngine {
+	class VertexDataList {
 
-class VertexDataList {
+	private:
 
-private:
+		static map<RenderVertex*, VertexData*> dataMap;
 
-	static map<RenderVertex*, VertexData*> dataMap;
+	public:
 
-public:
+		static VertexData* GetVertexData(RenderVertex* value);
 
-	static VertexData* GetVertexData(RenderVertex* value);
-
-};
-
+	};
+}
 #endif // !VERTEXDATA_LIST

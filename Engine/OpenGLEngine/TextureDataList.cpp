@@ -1,18 +1,19 @@
 #include "TextureDataList.h"
 #include "TextureData.h"
 #include "Texture.h"
+namespace SemperEngine {
+	map<Texture*, TextureData*> TextureDataList::dataMap;
 
-map<Texture*, TextureData*> TextureDataList::dataMap;
-
-TextureData * TextureDataList::GetData(Texture * tex)
-{
-	if (dataMap.count(tex))
+	TextureData * TextureDataList::GetData(Texture * tex)
 	{
-		return dataMap[tex];
-	}
-	else {
-		TextureData* data = new TextureData(tex);
-		dataMap[tex] = data;
-		return data;
+		if (dataMap.count(tex))
+		{
+			return dataMap[tex];
+		}
+		else {
+			TextureData* data = new TextureData(tex);
+			dataMap[tex] = data;
+			return data;
+		}
 	}
 }

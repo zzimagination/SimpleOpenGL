@@ -5,23 +5,37 @@
 #include <thread>
 #include <condition_variable>
 
-using namespace std;
+namespace SemperEngine {
 
-class CompletedSignal {
+	constexpr int Normal = 1;
 
-private:
+	constexpr int Exit = 2;
 
-	condition_variable _con;
+	typedef int WaitCode;
 
-	mutex _mutex;
+	using namespace std;
 
-	bool _ready;
+	class CompletedSignal {
 
-public:
+	public:
 
-	void Wait();
+		WaitCode _code;
 
-	void Send();
-};
+	private:
 
+		condition_variable _con;
+
+		mutex _mutex;
+
+		bool _ready = false;
+
+	public:
+
+		WaitCode Wait();
+
+		void Send();
+
+		void Send(WaitCode code);
+	};
+}
 #endif // !COMPLETEDSIGNAL

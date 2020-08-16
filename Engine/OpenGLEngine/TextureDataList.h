@@ -2,22 +2,23 @@
 #define TEXTUREDATA_LIST
 
 #include <map>
-class Texture;
-class TextureData;
+namespace SemperEngine {
+	class Texture;
+	class TextureData;
 
-using namespace std;
+	using namespace std;
 
-class TextureDataList
-{
-private:
+	class TextureDataList
+	{
+	private:
 
-	static map<Texture*, TextureData*> dataMap;
+		static map<Texture*, TextureData*> dataMap;
 
-public:
+	public:
 
-	static TextureData* GetData(Texture* tex);
-};
-
+		static TextureData* GetData(Texture* tex);
+	};
+}
 
 #endif // !TEXTUREDATA_LIST
 

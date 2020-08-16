@@ -1,61 +1,59 @@
 #ifndef RENDERER
 #define RENDERER
-#include <vector>
-#include <map>
-#include "ShaderProgram.h"
-#include "BuildInMesh.h"
+#include "Cube.h"
 #include "Component.h"
-#include "Texture.h"
-#include "Material.h"
 
-class RenderObject;
+namespace SemperEngine {
 
-using namespace std;
+	class RenderObject;
+	class Material;
 
-class Renderer : public Component
-{
-private:
+	using namespace std;
 
-	Cube cube;
+	class Renderer : public Component
+	{
+	private:
 
-	Material* _material;
+		Cube cube;
 
-public:
+		Material* _material;
 
-	Renderer();
+	public:
 
-	~ Renderer();
+		Renderer();
 
-	virtual void Start() override;
+		~Renderer();
 
-	virtual void Update() override;
+		virtual void Start() override;
 
-	virtual void OnDestory() override;
+		virtual void Update() override;
 
-private:
+		virtual void OnDestory() override;
 
-	RenderObject* _renderObject;
+	private:
 
-public:
+		RenderObject* _renderObject;
 
-	void Collect();
+	public:
 
-	void Drop();
+		void Collect();
 
-	virtual Material* GetMaterial();
+		void Drop();
 
-	virtual void SetMaterial(Material *material);
+		virtual Material* GetMaterial();
 
-	RenderObject* GetRenderObject();
+		virtual void SetMaterial(Material *material);
 
-private:
+		RenderObject* GetRenderObject();
 
-	virtual void GenerateRenderObject();
+	private:
 
-	virtual void UpdateRenderObject();
+		virtual void GenerateRenderObject();
 
-	virtual void DeleteRenderObject();
-};
+		virtual void UpdateRenderObject();
 
+		virtual void DeleteRenderObject();
+	};
+}
 
 #endif // !RENDER

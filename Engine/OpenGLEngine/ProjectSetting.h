@@ -1,24 +1,28 @@
 #ifndef PROJECT_SETTING
 #define PROJECT_SETTING
 
-class GameWindow;
+namespace SemperEngine {
+	class GameWindow;
 
-class ProjectSetting
-{
-public:
+	class ProjectSetting
+	{
+	private:
 
-	static int GetWindowWidth();
+		static int windowWidth;
 
-	static int GetWindowHeight();
+		static int windowHeight;
 
-private:
+		friend GameWindow;
 
-	static int windowWidth;
+	public:
 
-	static int windowHeight;
+		static void LoadConfig();
 
-	friend GameWindow;
-};
+		static int GetWindowWidth();
+
+		static int GetWindowHeight();
+	};
+}
 #endif // !PROJECT_SETTING
 
 

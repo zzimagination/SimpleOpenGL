@@ -1,99 +1,101 @@
 #ifndef RENDER_DRAW
 #define RENDER_DRAW
 
-#define OPENGL
-
 #include <vector>
-#include "Mathz.h"
+#include "SemperEngine.h"
+
 #include "Material.h"
 #include "ShaderProgram.h"
+
+
+namespace SemperEngine {
 
 #define MODEL_MATRIX "_model"
 #define VIEW_MATRIX "_view"
 #define PROJECTION_MARIX "_projection"
 
-class VertexData;
-class TextureData;
-using namespace std;
+	class VertexData;
+	class TextureData;
+	using namespace std;
 
-enum DepthTestFunc
-{
-	Never,
+	enum DepthTestFunc
+	{
+		Never,
 
-	Less,
+		Less,
 
-	Equal,
+		Equal,
 
-	LEqual,
+		LEqual,
 
-	Greater,
+		Greater,
 
-	GEqual,
+		GEqual,
 
-	NotEqual,
+		NotEqual,
 
-	Always
-};
+		Always
+	};
 
-enum ClearMode 
-{
+	enum ClearMode
+	{
 
-	Color = 1,
+		Color = 1,
 
-	Depth = 2,
+		Depth = 2,
 
-	Stencil = 4
-};
+		Stencil = 4
+	};
 
-enum CullFace {
-	Front,
-	Back
-};
+	enum CullFace {
+		Front,
+		Back
+	};
 
-class RenderDraw
-{
-public:
+	class RenderDraw
+	{
+	public:
 
-	static Matrix4x4 model;
+		static Matrix4x4 model;
 
-	static Matrix4x4 view;
+		static Matrix4x4 view;
 
-	static Matrix4x4 projection;
+		static Matrix4x4 projection;
 
-private:
+	private:
 
-	static int drawCount;
+		static int drawCount;
 
-	static int textureIndex;
+		static int textureIndex;
 
-public:
+	public:
 
-	static void SetClear(int mode, Vector4 color );
+		static void SetClear(int mode, Vector4 color);
 
-	static void SetDepthTest(bool test);
+		static void SetDepthTest(bool test);
 
-	static void SetDepthTest(bool test, DepthTestFunc f);
+		static void SetDepthTest(bool test, DepthTestFunc f);
 
-	static void SetCullFace(bool cull);
+		static void SetCullFace(bool cull);
 
-	static void SetCullFace(bool cull, CullFace mode);
+		static void SetCullFace(bool cull, CullFace mode);
 
-	static void SetShader(ShaderProgram* shader,
-		vector<ShaderProperty<float>> f,
-		vector<ShaderProperty<Vector2>> vector2,
-		vector<ShaderProperty<Vector3>> vector3,
-		vector<ShaderProperty<Vector4>> vector4,
-		vector<ShaderProperty<Matrix4x4>> matrix); 
+		static void SetShader(ShaderProgram* shader,
+			vector<ShaderProperty<float>> f,
+			vector<ShaderProperty<Vector2>> vector2,
+			vector<ShaderProperty<Vector3>> vector3,
+			vector<ShaderProperty<Vector4>> vector4,
+			vector<ShaderProperty<Matrix4x4>> matrix);
 
-	static void SetTransform(Matrix4x4 model, Matrix4x4 view, Matrix4x4 projection);
+		static void SetTransform(Matrix4x4 model, Matrix4x4 view, Matrix4x4 projection);
 
-	static void SetVertexData(VertexData* data);
+		static void SetVertexData(VertexData* data);
 
-	static void SetTextureData(TextureData* data);
+		static void SetTextureData(TextureData* data);
 
-	static void Draw();
+		static void Draw();
 
-};
-
+	};
+}
 #endif // !RENDER_DRAW
 

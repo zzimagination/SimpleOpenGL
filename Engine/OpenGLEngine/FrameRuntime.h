@@ -1,15 +1,20 @@
-#pragma once
+#ifndef FRAMERUNTIME
+#define FRAMERUNTIME
 
+#include "EngineDef.h"
 
-#define FRAMERATE 60
+namespace SemperEngine {
 
- class FrameRuntime
-{
-public:
-	static void BeginFrame();
+	class FrameRuntime
+	{
+	public:
+		static void BeginFrame();
 
-	static void EndFrame();
-private:
-	static long lastClock_t;
-};
+		static void EndFrame();
+	private:
+		static long lastClock_t;
+	};
+
+}
+#endif // !FRAMERUNTIME
 

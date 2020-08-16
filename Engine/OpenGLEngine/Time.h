@@ -1,17 +1,24 @@
-#pragma once
-class Time
-{
-public:
-	static float GetTime();
+#ifndef TIME
+#define TIME
+namespace SemperEngine {
 
-	static float GetDeltaTime();
+	class Time
+	{
+	public:
+		static float GetTime();
 
-private:
-	static float time;
+		static float GetDeltaTime();
 
-	static float deltaTime;
+	private:
+		static float time;
 
-	friend class FrameRuntime;
+		static float deltaTime;
 
-};
+		friend class FrameRuntime;
+
+	};
+
+}
+
+#endif // !TIME
 

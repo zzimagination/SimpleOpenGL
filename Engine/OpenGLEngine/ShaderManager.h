@@ -1,22 +1,23 @@
 #pragma once
 #include <map>
 #include "ShaderProgram.h"
+namespace SemperEngine {
+	using namespace std;
 
-using namespace std;
+	class ShaderManager
+	{
+	public:
 
- class ShaderManager
-{
-public:
+		static ShaderProgram *defaultShader;
 
-	static ShaderProgram *defaultShader;
+		static map<string, ShaderProgram> shaderMap;
 
-	static map<string, ShaderProgram> shaderMap;
+	public:
 
-public:
+		static void CompileShader();
 
-	static void CompileShader();
+		static ShaderProgram* GetShader(string name);
 
-	static ShaderProgram* GetShader(string name);
+	};
 
-};
-
+}

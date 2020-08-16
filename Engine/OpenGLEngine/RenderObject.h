@@ -6,54 +6,54 @@
 #include "Texture.h"
 #include "Material.h"
 #include "RenderVertex.h"
+namespace SemperEngine {
+	using namespace std;
 
-using namespace std;
+	class RenderBatch;
 
-class RenderBatch;
+	class RenderObject
+	{
+	public:
 
-class RenderObject
-{
-public:
+		RenderVertex* renderVertex;
 
-	RenderVertex* renderVertex;
+		Matrix4x4 modelMatrix;
 
-	Matrix4x4 modelMatrix;
+		ShaderProgram* shader;
 
-	ShaderProgram* shader;
+		vector<ShaderProperty<float>> floatProperty;
 
-	vector<ShaderProperty<float>> floatProperty;
+		vector<ShaderProperty<Vector2>> vector2Property;
 
-	vector<ShaderProperty<Vector2>> vector2Property;
+		vector<ShaderProperty<Vector3>> vector3Property;
 
-	vector<ShaderProperty<Vector3>> vector3Property;
+		vector<ShaderProperty<Vector4>> vector4Property;
 
-	vector<ShaderProperty<Vector4>> vector4Property;
+		vector<ShaderProperty<Matrix4x4>> matrixProperty;
 
-	vector<ShaderProperty<Matrix4x4>> matrixProperty;
+		vector<Texture*> textures;
 
-	vector<Texture*> textures;
+		RenderBatch* batch;
 
-	RenderBatch* batch;
+	public:
 
-public:
+		RenderObject();
 
-	RenderObject();
+		~RenderObject();
 
-	~RenderObject();
+		bool HasBatch();
 
-	bool HasBatch();
+		bool IsBreakBatch();
 
-	bool IsBreakBatch();
+		void BreakBatch();
 
-	void BreakBatch();
+		void SetRenderBatch(RenderBatch* renderBatch);
 
-	void SetRenderBatch(RenderBatch* renderBatch);
+	private:
 
-private:
+		bool _breakBatch;
 
-	bool _breakBatch;
+	};
 
-};
-
-
+}
 #endif // !RRENDEROBJECT

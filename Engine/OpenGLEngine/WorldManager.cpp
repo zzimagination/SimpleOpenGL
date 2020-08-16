@@ -1,29 +1,30 @@
 #include "WorldManager.h"
+namespace SemperEngine {
+	vector<World*> WorldManager::worlds;
 
-vector<World*> WorldManager::worlds;
+	World* WorldManager::active;
 
-World* WorldManager::active;
-
-World * WorldManager::CreateWorld(string name)
-{
-	for (int i = 0; i < worlds.size(); i++)
+	World * WorldManager::CreateWorld(string name)
 	{
-		if (worlds[i]->name == name)
+		for (int i = 0; i < worlds.size(); i++)
 		{
-			throw "had same name world";
+			if (worlds[i]->name == name)
+			{
+				throw "had same name world";
+			}
 		}
-	}
-	
-	World* w = new World();
-	worlds.push_back(w);
-	active = w;
-	return w;
-}
 
-void WorldManager::LiveWorld()
-{
-	if (active != nullptr)
+		World* w = new World();
+		worlds.push_back(w);
+		active = w;
+		return w;
+	}
+
+	void WorldManager::LiveWorld()
 	{
-		active->Live();
+		if (active != nullptr)
+		{
+			active->Live();
+		}
 	}
 }

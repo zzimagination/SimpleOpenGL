@@ -1,42 +1,42 @@
 #include "Player.h"
-#include "Mathz.h"
-#include "Time.h"
 #include <iostream>
-#include "Renderer.h"
-#include "ShaderManager.h"
+#include "SemperEngine.h"
 
-Player::Player()
-{
-	Renderer *renderer = new Renderer();
-	AddComponent(renderer);
-}
+namespace SemperEngine {
 
-Player::Player(string name) :GameObject(name)
-{
-	Renderer *renderer = new Renderer();
-	AddComponent(renderer);
-}
-
-Player::~Player()
-{
-	for (int i = 0; i < components.size(); i++)
+	Player::Player()
 	{
-		delete components[i];
+		Renderer *renderer = new Renderer();
+		AddComponent(renderer);
 	}
-	components.clear();
-}
 
-void Player::Start()
-{
+	Player::Player(string name) :GameObject(name)
+	{
+		Renderer *renderer = new Renderer();
+		AddComponent(renderer);
+	}
 
-}
+	Player::~Player()
+	{
+		for (int i = 0; i < components.size(); i++)
+		{
+			delete components[i];
+		}
+		components.clear();
+	}
 
-void Player::Update()
-{
-	float y = Time::GetDeltaTime() * times + transform->eulerAngle.y;
-	transform->eulerAngle.y = y;
-}
+	void Player::Start()
+	{
 
-void Player::OnDestory()
-{
+	}
+
+	void Player::Update()
+	{
+		float y = Time::GetDeltaTime() * times + transform->eulerAngle.y;
+		transform->eulerAngle.y = y;
+	}
+
+	void Player::OnDestory()
+	{
+	}
 }

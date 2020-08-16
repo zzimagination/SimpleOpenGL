@@ -1,71 +1,85 @@
+#include "GameLoop.h"
 #include "BaseRenderPipeline.h"
 #include "Mathz.h"
-#include "GameLoop.h"
 #include "WorldManager.h"
 #include "GameInit.h"
 #include "GameWindow.h"
 #include "FrameRuntime.h"
-#include "CompletedSignal.h"
 #include "GraphicRender.h"
 #include "RenderBatchManager.h"
+#include "EventSystem.h"
 #include <thread>
+#include <iostream>
 
-bool GameLoop::isLooping = true;
+namespace SemperEngine {
+	bool GameLoop::_isLooping = true;
 
-CompletedSignal GameLoop::mainSignal;
+	CompletedSignal GameLoop::loopSignal;
 
-CompletedSignal GameLoop::logicSignal;
+	CompletedSignal GameLoop::mainSignal;
 
-void GameLoop::BeforeLoop()
-{
-	GameInit::Init();
-	isLooping = true;
-}
+	CompletedSignal GameLoop::logicSignal;
 
-void GameLoop::MainLoop()
-{
-	thread logic(LogicLoop);
-
-	while (isLooping) 
+	void GameLoop::BeforeLoop()
 	{
-		if (GameWindow::WindowShouldClose())
-		{
-			break;
-		}
-
-		FrameRuntime::BeginFrame();
-		GameWindow::PollWindowEvent();
-
-		
-		GraphicRender::Render();
-		GameWindow::SwapFrameBuffers();
-
-		logicSignal.Wait();
-
-		RenderBatchManager::SwapBuffer();
-		FrameRuntime::EndFrame();
-
-		mainSignal.Send();
+		GameInit::Init();
+		_isLooping = true;
 	}
 
-	logic.join();
-}
-
-void GameLoop::LogicLoop()
-{
-	
-	while (isLooping)
+	void GameLoop::MainLoop()
 	{
-		if (GameWindow::WindowShouldClose())
+		thread logic(LogicLoop);
+		while (_isLooping)
 		{
-			break;
+			if (ExitLoop())
+			{
+				logic.join();
+				break;
+			}
+			loopSignal.Send();
+
+			FrameRuntime::BeginFrame();
+			GameWindow::PollWindowEvent();
+			EventSystem::ProcessEvent();
+
+			mainSignal.Send();
+
+			GraphicRender::Render();
+			GameWindow::SwapFrameBuffers();
+
+			logicSignal.Wait();
+
+			EventSystem::EndEvents();
+			RenderBatchManager::SwapBuffer();
+			FrameRuntime::EndFrame();
 		}
 
-		
-		WorldManager::LiveWorld();
-		BaseRenderPipeline::Render();
+	}
 
-		logicSignal.Send();
-		mainSignal.Wait();
+	void GameLoop::LogicLoop()
+	{
+		while (_isLooping)
+		{
+			if (loopSignal.Wait() == Exit)
+			{
+				break;
+			}
+
+			mainSignal.Wait();
+			WorldManager::LiveWorld();
+			BaseRenderPipeline::Render();
+
+			logicSignal.Send();
+		}
+	}
+
+	bool GameLoop::ExitLoop()
+	{
+		bool isExit = GameWindow::WindowShouldClose();
+		_isLooping = !isExit;
+		if (isExit) {
+			loopSignal.Send(Exit);
+		}
+		return isExit;
 	}
 }

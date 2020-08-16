@@ -2,24 +2,28 @@
 #define TRANSFORM
 #include "Mathz.h"
 
-class Transform
-{
-public:
+namespace SemperEngine {
 
-	Vector3 position = Vector3(0,0,0);
+	class Transform
+	{
+	public:
 
-	Vector3 eulerAngle = Vector3(0, 0, 0);
+		Vector3 position = Vector3(0, 0, 0);
 
-	Vector3 scale = Vector3(1, 1, 1);
+		Vector3 eulerAngle = Vector3(0, 0, 0);
 
-public:
+		Vector3 scale = Vector3(1, 1, 1);
 
-	Matrix4x4 GetModelMatrix();
+	public:
 
-private:
+		Matrix4x4 GetModelMatrix();
 
-	Matrix4x4 _modelMatrix;
-};
+	private:
+
+		Matrix4x4 _modelMatrix;
+	};
+
+}
 #endif // !TRANSFORM
 
 

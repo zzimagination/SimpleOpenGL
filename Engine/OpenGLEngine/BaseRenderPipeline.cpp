@@ -1,5 +1,5 @@
-#include "ProjectSetting.h"
 #include "BaseRenderPipeline.h"
+#include "ProjectSetting.h"
 #include "RenderBatchManager.h"
 #include "RenderObjectManager.h"
 #include "RenderCollector.h"
@@ -7,12 +7,15 @@
 #include "RenderDraw.h"
 #include "WorldManager.h"
 
-void BaseRenderPipeline::Render()
-{
-	Camera* mainCamera = WorldManager::active->camera;
+namespace SemperEngine {
 
-	vector<RenderObject*> startRenderObjects = RenderCollector::GetRenderObjects();
-	RenderObjectManager::Culling(mainCamera, startRenderObjects);
-	RenderBatchManager::GenerateBatchs(startRenderObjects, mainCamera);
+	void BaseRenderPipeline::Render()
+	{
+		Camera* mainCamera = WorldManager::active->camera;
 
+		vector<RenderObject*> startRenderObjects = RenderCollector::GetRenderObjects();
+		RenderObjectManager::Culling(mainCamera, startRenderObjects);
+		RenderBatchManager::GenerateBatchs(startRenderObjects, mainCamera);
+
+	}
 }

@@ -1,20 +1,31 @@
 #include "CompletedSignal.h"
 
 
-
-void CompletedSignal::Wait()
-{
-	unique_lock<mutex> locker(_mutex);
-	while (!_ready)
+namespace SemperEngine {
+	WaitCode CompletedSignal::Wait()
 	{
-		_con.wait(locker);
+		unique_lock<mutex> locker(_mutex);
+		while (!_ready)
+		{
+			_con.wait(locker);
+		}
+		_ready = false;
+		return _code;
 	}
-	_ready = false;
-}
 
-void CompletedSignal::Send()
-{
-	unique_lock<mutex> locker(_mutex);
-	_con.notify_one();
-	_ready = true;
+	void CompletedSignal::Send()
+	{
+		unique_lock<mutex> locker(_mutex);
+		_con.notify_one();
+		_ready = true;
+		_code = Normal;
+	}
+
+	void CompletedSignal::Send(WaitCode code)
+	{
+		unique_lock<mutex> locker(_mutex);
+		_con.notify_one();
+		_ready = true;
+		_code = code;
+	}
 }

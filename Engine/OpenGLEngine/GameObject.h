@@ -1,74 +1,73 @@
 #ifndef GAMEOBJECT
 #define GAMEOBJECT
 
-#include <string>
 #include <vector>
-#include "Transform.h"
-#include "Mathz.h"
-#include <typeinfo>
 
-using namespace std;
+namespace SemperEngine {
 
-class Component;
-class World;
+	using namespace std;
 
-class GameObject
-{
-public:
+	class World;
+	class Component;
+	class Transform;
 
-	virtual void Start();
+	class GameObject
+	{
+	public:
 
-	virtual void Update();
+		virtual void Start();
 
-	virtual void OnDestory();
+		virtual void Update();
 
-public:
+		virtual void OnDestory();
 
-	string name;
+	public:
 
-	Transform* transform;
+		string name;
 
-	vector<Component*> components;
+		Transform* transform;
 
-	World* myWorld;
+		vector<Component*> components;
 
-public:
+		World* myWorld;
 
-	 static void Destory(GameObject* gameObject);
+	public:
 
-public:
+		static void Destory(GameObject* gameObject);
 
-	GameObject();
+	public:
 
-	GameObject(string name);
+		GameObject();
 
-	~GameObject();
+		GameObject(string name);
 
-	void AddComponent(Component* com);
+		~GameObject();
 
-	void RemoveComponent(Component* com);
+		void AddComponent(Component* com);
 
-	template<typename T>
-	T GetComponent() {
-		for (int i = 0; i < components.size(); i++)
-		{
-			if ((T)(components[i]) != nullptr)
+		void RemoveComponent(Component* com);
+
+		template<typename T>
+		T GetComponent() {
+			for (int i = 0; i < components.size(); i++)
 			{
-				return (T)components[i];
+				if ((T)(components[i]) != nullptr)
+				{
+					return (T)components[i];
+				}
 			}
+			throw "don't have component";
 		}
-		throw "don't have component";
-	}
 
-	void Start_Internal();
+		void Start_Internal();
 
-	void Update_Internal();
+		void Update_Internal();
 
-	void OnDesory_Internal();
+		void OnDesory_Internal();
 
-private:
+	private:
 
-};
+	};
 
-
+}
 #endif // !GAMEOBJECT

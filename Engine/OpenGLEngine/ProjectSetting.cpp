@@ -1,15 +1,23 @@
 #include "ProjectSetting.h"
+#include "EngineDef.h"
 
-int ProjectSetting::windowWidth = 1920;
+namespace SemperEngine {
 
-int ProjectSetting::windowHeight = 1080;
+	int ProjectSetting::windowWidth = Window_Width;
 
-int ProjectSetting::GetWindowWidth()
-{
-	return windowWidth;
-}
+	int ProjectSetting::windowHeight = Window_Height;
 
-int ProjectSetting::GetWindowHeight()
-{
-	return windowHeight;
+	void ProjectSetting::LoadConfig()
+	{
+	}
+
+	int ProjectSetting::GetWindowWidth()
+	{
+		return windowWidth;
+	}
+
+	int ProjectSetting::GetWindowHeight()
+	{
+		return windowHeight;
+	}
 }

@@ -1,57 +1,64 @@
 #ifndef WIN32_WINDOW
 #define WIN32_WINDOW
 
+#include "EngineDef.h"
+#ifdef WIN32_WIN
+
 #include <Windows.h>
 
-class Win32Window {
-public:
+namespace SemperEngine {
 
-	bool shouldClose;
+	class Win32Window {
+	public:
 
-private:
+		bool shouldClose;
 
-	HWND m_hwnd;
+	private:
 
-	HDC hDC;
+		HWND m_hwnd;
 
-	HGLRC hRC;
+		HDC hDC;
 
-public:
+		HGLRC hRC;
 
-	static LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+	public:
 
-	static void(*OnSizeChanged)(int, int);
+		static LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
-public:
+		static void(*OnSizeChanged)(int, int);
 
-	Win32Window();
+	public:
 
-	~Win32Window();
+		Win32Window();
 
-	BOOL Create(
-		PCWSTR lpWindowName,
-		DWORD dwStyle,
-		DWORD dwExStyle = 0,
-		int x = CW_USEDEFAULT,
-		int y = CW_USEDEFAULT,
-		int nWidth = CW_USEDEFAULT,
-		int nHeight = CW_USEDEFAULT,
-		HWND hWndParent = 0,
-		HMENU hMenu = 0
-	);
+		~Win32Window();
 
-	void Destory();
+		BOOL Create(
+			PCWSTR lpWindowName,
+			DWORD dwStyle,
+			DWORD dwExStyle = 0,
+			int x = CW_USEDEFAULT,
+			int y = CW_USEDEFAULT,
+			int nWidth = CW_USEDEFAULT,
+			int nHeight = CW_USEDEFAULT,
+			HWND hWndParent = 0,
+			HMENU hMenu = 0
+		);
 
-	void SwapWindowBuffers();
+		void Destory();
 
-	void PollWindowEvent();
+		void SwapWindowBuffers();
 
-	HWND Window() const;
+		void PollWindowEvent();
 
-	PCWSTR  ClassName();
+		HWND Window() const;
 
-	LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam);
+		PCWSTR  ClassName();
 
-};
+		LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+	};
+}
+#endif // WIN32_WIN
 
 #endif // !WIN32_WINDOW

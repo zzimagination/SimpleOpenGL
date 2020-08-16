@@ -1,21 +1,25 @@
 #include "Cube.h"
 
-int Cube::VertexCount()
-{
-	return sizeof(vertices) / sizeof(Vector3);
-}
+namespace SemperEngine {
 
-Vector3 * Cube::GetVertices()
-{
-	return vertices;
-}
 
-Vector2* Cube::GetUV()
-{
-	return uvs;
-}
+	int Cube::VertexCount()
+	{
+		return sizeof(vertices) / sizeof(Vector3);
+	}
 
-int* Cube::GetIndices()
-{
-	return indices;
+	Vector3 * Cube::GetVertices()
+	{
+		return vertices;
+	}
+
+	Vector2* Cube::GetUV()
+	{
+		return uvs;
+	}
+
+	int* Cube::GetIndices()
+	{
+		return indices;
+	}
 }

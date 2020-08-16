@@ -1,31 +1,34 @@
 #ifndef GAMEWINDOW
 #define GAMEWINDOW
-#include "GWindow.h"
 
-class GameWindow
-{
-public:
+namespace SemperEngine {
 
-	static GWindow* window;
+	class GWindow;
 
-	static void CreateGameWindow();
+	class GameWindow
+	{
+	public:
 
-	static void TerminateGameWindow();
+		static GWindow* window;
 
-	static bool WindowShouldClose();
+		static void CreateGameWindow();
 
-	static void SwapFrameBuffers();
+		static void TerminateGameWindow();
 
-	static void PollWindowEvent();
+		static bool WindowShouldClose();
 
-	static void OnSizeChanged(int width, int height);
+		static void SwapFrameBuffers();
 
-	static void OnMouse(double xpos, double ypos);
+		static void PollWindowEvent();
 
-	static void OnScroll(double xoffset, double yoffset);
+		static void OnSizeChanged(int width, int height);
 
-};
+		static void OnMouse(double xpos, double ypos);
 
+		static void OnScroll(double xoffset, double yoffset);
+
+	};
+}
 #endif // !GAMEWINDOW
 
 

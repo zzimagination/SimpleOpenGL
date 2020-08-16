@@ -1,31 +1,35 @@
-#pragma once
+#ifndef TEXTURE
+#define TEXTURE
+
 #include <vector>
-#include <string>
-#include "TextureType.h"
 
-using namespace std;
+namespace SemperEngine {
 
-class Texture
-{
-public:
+	using namespace std;
 
-	int width;
+	class Texture
+	{
+	public:
 
-	int height;
+		int width;
 
-	int channels;
+		int height;
 
-	unsigned char* data;
+		int channels;
 
-	Texture();
+		unsigned char* data;
 
-	~Texture();
+		Texture();
 
-	void LoadFile(string path);
+		~Texture();
 
-private:
+		void LoadFile(string path);
 
-	
+	private:
 
-};
 
+
+	};
+
+}
+#endif // !TEXTURE

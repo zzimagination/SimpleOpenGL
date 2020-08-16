@@ -1,39 +1,40 @@
 #include "RenderObject.h"
-
-RenderObject::RenderObject()
-{
-}
-
-RenderObject::~RenderObject()
-{
-}
-
-bool RenderObject::HasBatch()
-{
-	return batch != nullptr;
-}
-
-bool RenderObject::IsBreakBatch()
-{
-	if (_breakBatch)
+namespace SemperEngine {
+	RenderObject::RenderObject()
 	{
-
-		return true;
 	}
-	else
+
+	RenderObject::~RenderObject()
 	{
-		return false;
 	}
-}
 
-void RenderObject::BreakBatch()
-{
-	_breakBatch = true;
-}
+	bool RenderObject::HasBatch()
+	{
+		return batch != nullptr;
+	}
+
+	bool RenderObject::IsBreakBatch()
+	{
+		if (_breakBatch)
+		{
+
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	void RenderObject::BreakBatch()
+	{
+		_breakBatch = true;
+	}
 
 
-void RenderObject::SetRenderBatch(RenderBatch * renderBatch)
-{
-	_breakBatch = false;
-	this->batch = renderBatch;
+	void RenderObject::SetRenderBatch(RenderBatch * renderBatch)
+	{
+		_breakBatch = false;
+		this->batch = renderBatch;
+	}
 }

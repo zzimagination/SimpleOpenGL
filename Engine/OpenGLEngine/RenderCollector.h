@@ -2,30 +2,30 @@
 #define RENDERER_COLLECTOR
 
 #include <vector>
+namespace SemperEngine {
+	using namespace std;
 
-using namespace std;
+	class Renderer;
+	class RenderObject;
 
-class Renderer;
-class RenderObject;
+	class RenderCollector
+	{
+	public:
 
-class RenderCollector
-{
-public:
+		static vector<Renderer*> renderers;
 
-	static vector<Renderer*> renderers;
+	public:
 
-public:
+		static void CollectRenderer(Renderer* renderer);
 
-	static void CollectRenderer(Renderer* renderer);
+		static void DropRenderer(Renderer* renderer);
 
-	static void DropRenderer(Renderer* renderer);
+		static vector<RenderObject*> GetRenderObjects();
 
-	static vector<RenderObject*> GetRenderObjects();
+	private:
 
-private:
-
-	static bool HasRenderer(Renderer* renderer);
-};
-
+		static bool HasRenderer(Renderer* renderer);
+	};
+}
 #endif // !RENDERER_COLLECTOR
 
