@@ -32,7 +32,7 @@ namespace SemperEngine {
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		
+
 		gwindow->window = glfwCreateWindowEX(width, height, L"SemperEngine", NULL, NULL);
 		if (gwindow->window == NULL)
 		{
@@ -68,6 +68,15 @@ namespace SemperEngine {
 #endif // WIN32_WIN
 
 #ifdef GLFW
+
+		if (project_vsync == vsync)
+		{
+			glfwSwapInterval(1);
+		}
+		else if (project_vsync == helf)
+		{
+			glfwSwapInterval(2);
+		}
 		glfwSwapBuffers(window);
 #endif // GLFW
 
@@ -84,7 +93,7 @@ namespace SemperEngine {
 		glfwTerminate();
 #endif // GLFW
 
-	}
+}
 
 	bool GWindow::ShouldClose()
 	{
@@ -142,7 +151,7 @@ namespace SemperEngine {
 
 	void GWindow::cursor_position_callback(GLFWwindow * window, double xpos, double ypos)
 	{
-		EventRecorder::RecordCursorPosition(xpos, ypos);
+		EventRecorder::RecordCursorPosition((int)xpos, (int)ypos);
 	}
 
 	void GWindow::mouse_button_callback(GLFWwindow * window, int button, int action, int mods)
@@ -159,4 +168,4 @@ namespace SemperEngine {
 		EventRecorder::RecordKeyEvent(key, action);
 	}
 #endif // GLFW
-}
+	}

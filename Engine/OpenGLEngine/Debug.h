@@ -1,5 +1,5 @@
-#ifndef DEBUG_TOOL
-#define DEBUG_TOOL
+#ifndef DEBUG_SCRIPT
+#define DEBUG_SCRIPT
 
 #include <string>
 
@@ -21,11 +21,8 @@ namespace SemperEngine {
 
 		static void Log(char message);
 
-		static void Log(const char* message);
-
 		static void Log(std::string message);
 
-		static void Log(std::wstring message);
 	};
 
 }

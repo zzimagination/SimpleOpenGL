@@ -130,9 +130,6 @@
     <ClCompile Include="GraphicRender.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="CompletedSignal.cpp">
-      <Filter>Project\Tools</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
@@ -158,6 +155,21 @@
       <Filter>Debug</Filter>
     </ClCompile>
     <ClCompile Include="DebugFile.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugSystem.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEnd.cpp">
+      <Filter>Project\Loop</Filter>
+    </ClCompile>
+    <ClCompile Include="StringEncoding.cpp">
+      <Filter>Tools\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="CompletedSignal.cpp">
+      <Filter>Tools\MultiThread</Filter>
+    </ClCompile>
+    <ClCompile Include="LogItem.cpp">
       <Filter>Debug</Filter>
     </ClCompile>
   </ItemGroup>
@@ -297,9 +309,6 @@
     <ClInclude Include="GraphicRender.h">
       <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="CompletedSignal.h">
-      <Filter>Project\Tools</Filter>
-    </ClInclude>
     <ClInclude Include="SemperEngine.h">
       <Filter>Project</Filter>
     </ClInclude>
@@ -336,13 +345,25 @@
     <ClInclude Include="Debug.h">
       <Filter>Debug</Filter>
     </ClInclude>
-    <ClInclude Include="ILog.h">
-      <Filter>Debug</Filter>
-    </ClInclude>
     <ClInclude Include="DebugOutput.h">
       <Filter>Debug</Filter>
     </ClInclude>
     <ClInclude Include="DebugFile.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugSystem.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEnd.h">
+      <Filter>Project\Loop</Filter>
+    </ClInclude>
+    <ClInclude Include="StringEncoding.h">
+      <Filter>Tools\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="CompletedSignal.h">
+      <Filter>Tools\MultiThread</Filter>
+    </ClInclude>
+    <ClInclude Include="LogItem.h">
       <Filter>Debug</Filter>
     </ClInclude>
   </ItemGroup>
@@ -406,11 +427,17 @@
     <Filter Include="Project\Loop">
       <UniqueIdentifier>{26a0ad8a-dcf3-4edf-89aa-cd978117fc51}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Project\Tools">
-      <UniqueIdentifier>{7a5e7748-c51d-4a1b-90f7-f54d77ffb5d3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Debug">
       <UniqueIdentifier>{0978051b-1908-419e-aa4a-9f6831c93d5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{9464c1f2-46ea-4b0e-955a-86dd17a57920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Text">
+      <UniqueIdentifier>{2137ed17-9cf9-427c-95ed-2681c264531d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\MultiThread">
+      <UniqueIdentifier>{3868821b-476b-4570-a3be-8371f71fcccc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

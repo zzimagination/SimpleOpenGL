@@ -90,10 +90,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,15 +152,17 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="DebugFile.h" />
     <ClInclude Include="DebugOutput.h" />
+    <ClInclude Include="DebugSystem.h" />
     <ClInclude Include="EngineDef.h" />
     <ClInclude Include="EventRecorder.h" />
     <ClInclude Include="EventSystem.h" />
+    <ClInclude Include="GameEnd.h" />
     <ClInclude Include="GraphicRender.h" />
     <ClInclude Include="GWindow.h" />
-    <ClInclude Include="ILog.h" />
     <ClInclude Include="KeyDef.h" />
     <ClInclude Include="KeyEvent.h" />
     <ClInclude Include="KeyIdentity.h" />
+    <ClInclude Include="LogItem.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MathBase.h" />
     <ClInclude Include="MouseButtonEvent.h" />
@@ -191,6 +194,7 @@
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="ShaderProperty.h" />
     <ClInclude Include="spng.h" />
+    <ClInclude Include="StringEncoding.h" />
     <ClInclude Include="Test.h" />
     <ClInclude Include="TestComponent.h" />
     <ClInclude Include="Texture.h" />
@@ -214,11 +218,14 @@
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="DebugFile.cpp" />
     <ClCompile Include="DebugOutput.cpp" />
+    <ClCompile Include="DebugSystem.cpp" />
     <ClCompile Include="EventRecorder.cpp" />
     <ClCompile Include="EventSystem.cpp" />
+    <ClCompile Include="GameEnd.cpp" />
     <ClCompile Include="GraphicRender.cpp" />
     <ClCompile Include="GWindow.cpp" />
     <ClCompile Include="KeyEvent.cpp" />
+    <ClCompile Include="LogItem.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MathBase.cpp" />
     <ClCompile Include="Mathz.cpp" />
@@ -247,6 +254,7 @@
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="ShaderProperty.cpp" />
     <ClCompile Include="spng.c" />
+    <ClCompile Include="StringEncoding.cpp" />
     <ClCompile Include="Test.cpp" />
     <ClCompile Include="TestComponent.cpp" />
     <ClCompile Include="Texture.cpp" />

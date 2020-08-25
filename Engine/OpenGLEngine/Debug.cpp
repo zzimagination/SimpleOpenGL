@@ -1,33 +1,50 @@
 #include "Debug.h"
+#include "DebugOutput.h"
+#include <iostream>
 
-void SemperEngine::Debug::Log(int message)
+namespace SemperEngine
 {
-}
+	using namespace std;
 
-void SemperEngine::Debug::Log(float message)
-{
-}
+	void Debug::Log(int message)
+	{
+		LogItem item;
+		item.info = to_string(message);
+		DebugOutput::InputLog(item);
+	}
 
-void SemperEngine::Debug::Log(double message)
-{
-}
+	void Debug::Log(float message)
+	{
+		LogItem item;
+		item.info = to_string(message);
+		DebugOutput::InputLog(item);
+	}
 
-void SemperEngine::Debug::Log(bool message)
-{
-}
+	void Debug::Log(double message)
+	{
+		LogItem item;
+		item.info = to_string(message);
+		DebugOutput::InputLog(item);
+	}
 
-void SemperEngine::Debug::Log(char message)
-{
-}
+	void Debug::Log(bool message)
+	{
+		LogItem item;
+		item.info = to_string(message);
+		DebugOutput::InputLog(item);
+	}
 
-void SemperEngine::Debug::Log(const char * message)
-{
-}
+	void Debug::Log(char message)
+	{
+		LogItem item;
+		item.info = to_string(message);
+		DebugOutput::InputLog(item);
+	}
 
-void SemperEngine::Debug::Log(std::string message)
-{
-}
-
-void SemperEngine::Debug::Log(std::wstring message)
-{
+	void Debug::Log(std::string message)
+	{
+		LogItem item;
+		item.info = message;
+		DebugOutput::InputLog(item);
+	}
 }

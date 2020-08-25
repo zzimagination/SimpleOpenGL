@@ -13,9 +13,16 @@
 
 namespace SemperEngine {
 
+	enum Vsync {
+		vsync,
+		helf,
+	};
+
 	constexpr int Window_Width = 1920;
+
 	constexpr int Window_Height = 1080;
-	constexpr int FRAMERATE = 60;
+
+	constexpr Vsync project_vsync = vsync;
 }
 
 #endif // !ENGINEDEF

@@ -2,6 +2,11 @@
 
 #include"pch.h"
 #include "SemperEngine.h"
+#include "GameWindow.h"
+#include "GameStart.h"
+#include "GameEnd.h"
+#include "GameLoop.h"
+#include "DebugSystem.h"
 
 #ifdef UNIT_TEST
 #include "Test.h"
@@ -11,16 +16,19 @@ using namespace SemperEngine;
 
 int main()
 {
+	setlocale(LC_CTYPE, "");
 #ifdef UNIT_TEST
 	Test::UnitTesting();
 #else
+	DebugSystem::Initialization();
 	ProjectSetting::LoadConfig();
 	GameWindow::CreateGameWindow();
 	GameStart::Start();
 	GameLoop::BeforeLoop();
 	GameLoop::MainLoop();
+	GameEnd::End();
 	GameWindow::TerminateGameWindow();
-
+	DebugSystem::Dispose();
 #endif // UNIT_TEST
 	return 0;
 }

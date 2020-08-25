@@ -10,8 +10,10 @@
 #include "EventSystem.h"
 #include <thread>
 #include <iostream>
+#include "DebugSystem.h"
 
 namespace SemperEngine {
+
 	bool GameLoop::_isLooping = true;
 
 	CompletedSignal GameLoop::loopSignal;
@@ -33,10 +35,13 @@ namespace SemperEngine {
 		{
 			if (ExitLoop())
 			{
-				logic.join();
+				loopSignal.Send(Exit);
 				break;
 			}
-			loopSignal.Send();
+			else
+			{
+				loopSignal.Send();
+			}
 
 			FrameRuntime::BeginFrame();
 			GameWindow::PollWindowEvent();
@@ -53,7 +58,7 @@ namespace SemperEngine {
 			RenderBatchManager::SwapBuffer();
 			FrameRuntime::EndFrame();
 		}
-
+		logic.join();
 	}
 
 	void GameLoop::LogicLoop()
@@ -66,6 +71,7 @@ namespace SemperEngine {
 			}
 
 			mainSignal.Wait();
+
 			WorldManager::LiveWorld();
 			BaseRenderPipeline::Render();
 
@@ -77,9 +83,6 @@ namespace SemperEngine {
 	{
 		bool isExit = GameWindow::WindowShouldClose();
 		_isLooping = !isExit;
-		if (isExit) {
-			loopSignal.Send(Exit);
-		}
 		return isExit;
 	}
 }

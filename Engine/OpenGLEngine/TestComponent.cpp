@@ -1,5 +1,7 @@
 #include "TestComponent.h"
 #include <iostream>
+#include "Debug.h"
+#include <string>
 
 using namespace SemperEngine;
 
@@ -32,6 +34,14 @@ void TestComponent::Update()
 		moveDelt.x += Time::GetDeltaTime() * 10;
 	}
 	gameObject->transform->position = gameObject->transform->position + moveDelt;
+
+	if (EventSystem::GetKeyAction(Key::p, Action::press))
+	{
+		std::string a = "ƒ„∫√ ¿ΩÁ";
+		Debug::Log(a);
+		Debug::Log(1 / Time::GetDeltaTime());
+	}
+	
 }
 
 void TestComponent::OnDestory()

@@ -5,10 +5,7 @@
 
 #include "Mathz.h"
 #include "ProjectSetting.h"
-#include "GameWindow.h"
 #include "Time.h"
-#include "GameStart.h"
-#include "GameLoop.h"
 #include "EventSystem.h"
 
 #include "ShaderManager.h"
