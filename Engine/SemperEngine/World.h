@@ -7,19 +7,20 @@
 
 namespace SemperEngine {
 
+	using namespace std;
+
 	class Camera;
 
 	class GameObject;
 
-	class WorldManager;
-
-	using namespace std;
-
-
+	namespace Core
+	{
+		class WorldStorageCenter;
+	}
 
 	class World
 	{
-	private:
+	protected:
 
 		enum class WorldState
 		{
@@ -30,15 +31,15 @@ namespace SemperEngine {
 			EW_Loading,
 
 			EW_Unloading
-		} ;
+		};
 
 	public:
 
-		string name;
-
 		Camera* camera;
 
-	private:
+	protected:
+
+		string _name;
 
 		WorldState _myState;
 
@@ -46,23 +47,33 @@ namespace SemperEngine {
 
 		GameObjectCollection _nostartGameObjects;
 
+		std::vector<GameObject*> _gameObjectList;
+
 	public:
+
+		World(std::string name);
 
 		~World();
 
-		void AddGameObject(GameObject* gameObject);
+		std::string Name();
 
-		void RemoveGameObject(GameObject* gameObject);
+		virtual void AddGameObject(GameObject* gameObject) = 0;
 
-	private:
+		virtual void RemoveGameObject(GameObject* gameObject) = 0;
 
-		void Active();
+		vector<GameObject*> GameObjectList();
 
-		void UnActive();
+	protected:
 
-		void Update();
+		virtual void Active() = 0;
 
-		friend class WorldManager;
+		virtual void UnActive() = 0;
+
+		virtual void Start() = 0;
+
+		virtual void Update() = 0;
+
+		virtual void End() = 0;
 
 	};
 

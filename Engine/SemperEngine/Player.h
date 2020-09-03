@@ -8,11 +8,7 @@ namespace SemperEngine {
 	{
 	public:
 
-		Player();
-
 		Player(std::string name);
-
-		~Player();
 
 		virtual void Start() override;
 

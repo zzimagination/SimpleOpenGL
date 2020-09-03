@@ -13,11 +13,11 @@ namespace SemperEngine {
 
 	public:
 
-		float x = 0;
+		float x ;
 
-		float y = 0;
+		float y ;
 
-		float z = 0;
+		float z ;
 
 	public:
 

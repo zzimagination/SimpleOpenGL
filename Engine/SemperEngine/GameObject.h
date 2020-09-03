@@ -13,6 +13,11 @@ namespace SemperEngine {
 
 	class Transform;
 
+	namespace Core
+	{
+		class WorldInternal;
+	}
+
 	class GameObject
 	{
 	private:
@@ -37,6 +42,8 @@ namespace SemperEngine {
 
 		ComponentCollection _noStartComponents;
 
+		std::vector<Component* > _componentList;
+
 	public:
 
 		std::string name;
@@ -53,30 +60,31 @@ namespace SemperEngine {
 
 		~GameObject();
 
-		void AddComponent(Component* com);
+
+		template<typename T>
+		T* AddComponent()
+		{
+			static_assert(std::is_base_of<Component, T>::value, "error");
+			auto com = new T();
+			AddComponentInternal(com);
+			return com;
+		}
 
 		void RemoveComponent(Component* com);
 
-		/*template<typename T>
-		T GetComponent() {
-			for (int i = 0; i < ComponentCount(); i++)
+		template<typename T>
+		T* GetComponent() {
+			static_assert(std::is_base_of<Component, T>::value, "error");
+			
+			for (int i = 0; i < _componentList.size(); i++)
 			{
-				if ((T)(components[i]) != nullptr)
+				if (typeid(T*) == typeid(_componentList[i]))
 				{
-					return (T)components[i];
+					return (T*)_componentList[i];
 				}
 			}
-
-			_noStartComponents.Size();
-			while (true)
-			{
-
-			}
-
 			throw "don't have component";
-		}*/
-
-		int ComponentCount();
+		}
 
 	private:
 
@@ -92,9 +100,11 @@ namespace SemperEngine {
 
 		void WorldEnd(World* world);
 
+		void AddComponentInternal(Component* com);
+
 	private:
 
-		friend class World;
+		friend class Core::WorldInternal;
 	};
 
 }

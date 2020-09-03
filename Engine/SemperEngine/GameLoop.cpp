@@ -13,6 +13,8 @@
 #include "DebugSystem.h"
 #include "Debug.h"
 #include <string>
+#include "WorldStorageCenter.h"
+
 
 namespace SemperEngine {
 
@@ -27,6 +29,9 @@ namespace SemperEngine {
 	void GameLoop::BeforeLoop()
 	{
 		GameInit::Init();
+		Core::WorldStorageCenter::Init();
+		BaseRenderPipeline::Render();
+		RenderBatchManager::SwapBatches();
 		_isLooping = true;
 	}
 
@@ -74,7 +79,7 @@ namespace SemperEngine {
 
 			mainSignal.Wait();
 
-			WorldManager::UpdateWorld();
+			Core::WorldStorageCenter::Loop();
 			BaseRenderPipeline::Render();
 			
 			logicSignal.Send();

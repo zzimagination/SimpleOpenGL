@@ -5,9 +5,9 @@ namespace SemperEngine {
 	{
 	public:
 
-		float x = 0;
+		float x ;
 
-		float y = 0;
+		float y ;
 
 	public:
 

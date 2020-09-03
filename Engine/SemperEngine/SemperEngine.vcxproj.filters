@@ -175,6 +175,15 @@
     <ClCompile Include="ComponentCollection.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="WorldInitializer.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldStorageCenter.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldInternal.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -368,6 +377,15 @@
     </ClInclude>
     <ClInclude Include="ComponentCollection.h">
       <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldInitializer.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldStorageCenter.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldInternal.h">
+      <Filter>World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

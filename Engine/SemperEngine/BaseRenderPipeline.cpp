@@ -5,6 +5,7 @@
 #include "RenderCollector.h"
 #include "RenderObjectGenerator.h"
 #include "WorldManager.h"
+#include "World.h"
 
 namespace SemperEngine {
 

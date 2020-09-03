@@ -210,7 +210,10 @@
     <ClInclude Include="GraphicVertexData.h" />
     <ClInclude Include="Win32Window.h" />
     <ClInclude Include="World.h" />
+    <ClInclude Include="WorldInitializer.h" />
+    <ClInclude Include="WorldInternal.h" />
     <ClInclude Include="WorldManager.h" />
+    <ClInclude Include="WorldStorageCenter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseRenderPipeline.cpp" />
@@ -270,7 +273,10 @@
     <ClCompile Include="GraphicVertexData.cpp" />
     <ClCompile Include="Win32Window.cpp" />
     <ClCompile Include="World.cpp" />
+    <ClCompile Include="WorldInitializer.cpp" />
+    <ClCompile Include="WorldInternal.cpp" />
     <ClCompile Include="WorldManager.cpp" />
+    <ClCompile Include="WorldStorageCenter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

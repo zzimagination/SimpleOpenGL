@@ -2,34 +2,28 @@
 #define WORLD_MANAGER
 
 #include <vector>
-#include "World.h"
+
 namespace SemperEngine {
+
+	class World;
+
 	class WorldManager
 	{
 	private:
 
-		static World* _active;
-
-		static bool _changeActive;
-
-		static int _changeActiveIndex;
-
 	public:
-		static vector<World*> worlds;
-
-		static World* CreateWorld(std::string name);
-
-		static void DestroyWorld(std::string name);
 
 		static World* GetActive();
 
+		static World* Get(std::string name);
+
+		static World* Get(int id);
+
 		static void SetActive(std::string name);
 
-		static void UpdateWorld();
+		static void SetActive(int id);
 
-	private:
-
-		static int HasWorld(std::string name);
+		static void SetActive(World* world);
 	};
 
 }

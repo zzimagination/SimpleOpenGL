@@ -1,97 +1,55 @@
 #include "WorldManager.h"
+#include "World.h"
+#include "SemperEngine.h"
+#include "TestComponent.h"
+#include "WorldStorageCenter.h"
+
 namespace SemperEngine {
-	vector<World*> WorldManager::worlds;
 
-	World* WorldManager::_active = nullptr;
-
-	bool WorldManager::_changeActive = false;
-
-	int WorldManager::_changeActiveIndex = -1;
-
-	World * WorldManager::CreateWorld(string name)
-	{
-		auto index = HasWorld(name);
-		if (index >= 0)
-		{
-			return worlds[index];
-		}
-
-		World* w = new World();
-		w->name = name;
-		worlds.push_back(w);
-
-		if (_active == nullptr)
-		{
-			_active = w;
-			_active->Active();
-		}
-		return w;
-	}
-
-	void WorldManager::DestroyWorld(std::string name)
-	{
-		if (name == _active->name)
-		{
-			throw "don't destroy active world";
-		}
-		auto index = HasWorld(name);
-		if (index < 0)
-		{
-			throw "doesn't have this world";
-		}
-		auto world = worlds[index];
-		worlds.erase(worlds.begin() + index);
-		delete world;
-	}
+	using namespace Core;
 
 	World * WorldManager::GetActive()
 	{
-		return _active;
+		return (World*)WorldStorageCenter::GetActive();
+	}
+
+	World * WorldManager::Get(std::string name)
+	{
+		return (World*)WorldStorageCenter::GetWorld(name);
+	}
+
+	World * WorldManager::Get(int id)
+	{
+		return (World*)WorldStorageCenter::GetWorld(id);
 	}
 
 	void WorldManager::SetActive(string name)
 	{
-		auto index = HasWorld(name);
-		if (index < 0)
+		auto world = WorldStorageCenter::GetWorld(name);
+		if (world == nullptr)
 		{
-			throw "doesn't have this world";
+			throw "don't have the world";
 		}
-		if (name == _active->name)
-		{
-			_changeActive = false;
-			_changeActiveIndex = -1;
-			return;
-		}
-		_changeActive = true;
-		_changeActiveIndex = index;
+		WorldStorageCenter::SetNextActive(world);
 	}
 
-	void WorldManager::UpdateWorld()
+	void WorldManager::SetActive(int id)
 	{
-		if (_changeActive)
+		auto world = WorldStorageCenter::GetWorld(id);
+		if (world == nullptr)
 		{
-			_changeActive = false;
-			_changeActiveIndex = -1;
-			_active->UnActive();
-			_active = worlds[_changeActiveIndex];
-			_active->Active();
-			return;
+			throw "don't have the world";
 		}
-		if (_active != nullptr)
-		{
-			_active->Update();
-		}
+		WorldStorageCenter::SetNextActive(world);
 	}
 
-	int WorldManager::HasWorld(std::string name)
+	void WorldManager::SetActive(World * world)
 	{
-		for (int i = 0; i < worlds.size(); i++)
+		if ((WorldInternal*)world == nullptr)
 		{
-			if (worlds[i]->name == name)
-			{
-				return i;
-			}
+			throw "don't have the world";
 		}
-		return -1;
+		WorldStorageCenter::SetNextActive((WorldInternal*)world);
 	}
+
 }

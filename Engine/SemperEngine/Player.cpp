@@ -6,20 +6,10 @@ namespace SemperEngine {
 
 	using namespace std;
 
-	Player::Player():GameObject()
-	{
-		//Renderer *renderer = new Renderer();
-		//AddComponent(renderer);
-	}
-
 	Player::Player(string name) :GameObject(name)
 	{
 		//Renderer *renderer = new Renderer();
 		//AddComponent(renderer);
-	}
-
-	Player::~Player()
-	{
 	}
 
 	void Player::Start()

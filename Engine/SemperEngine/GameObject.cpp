@@ -31,12 +31,6 @@ namespace SemperEngine {
 		}
 	}
 
-	int GameObject::ComponentCount()
-	{
-
-		return _noStartComponents.Size() + _startedComponents.Size();
-	}
-
 	void GameObject::Start()
 	{
 	}
@@ -49,107 +43,47 @@ namespace SemperEngine {
 	{
 	}
 
-	void GameObject::AddComponent(Component* com)
+	void GameObject::AddComponentInternal(Component* com)
 	{
-		switch (_myState)
-		{
-		case GameObjectState::EG_Start:
-		case GameObjectState::EG_Ending:
-		case GameObjectState::EG_Update:
-			_startedComponents.Add(com);
-			com->GameObjectStart(this);
-			return;
-		case GameObjectState::EG_Ended:
-			_noStartComponents.Add(com);
-			return;
-		default:
-			break;
-		}
+		_componentList.push_back(com);
 	}
 
 	void GameObject::RemoveComponent(Component * com)
 	{
-		switch (_myState)
+		for (int i = 0; i < _componentList.size(); i++)
 		{
-		case GameObjectState::EG_Start:
-		case GameObjectState::EG_Ending:
-			if (_noStartComponents.Contain(com))
+			if (_componentList[i] == com)
 			{
-				_noStartComponents.Remove(com);
+				_componentList.erase(_componentList.begin() + i);
+				break;
 			}
-			else if (_startedComponents.Contain(com))
-			{
-				_startedComponents.Remove(com);
-				com->GameObjectEnd(this);
-			}
-			else
-			{
-				throw "don't have this component";
-			}
-		case GameObjectState::EG_Update:
-			_startedComponents.Remove(com);
-			com->GameObjectEnd(this);
-			return;
-		case GameObjectState::EG_Ended:
-			_noStartComponents.Remove(com);
-			return;
-		default:
-			return;
 		}
 	}
 
 	void GameObject::WorldStart(World* world)
 	{
-		_myState = GameObjectState::EG_Start;
-		myWorld = world;
-		_noStartComponents.Reset();
-		while (true)
+		for (int i = 0; i < _componentList.size(); i++)
 		{
-			auto com = _noStartComponents.Next();
-			if (com == nullptr)
-			{
-				break;
-			}
-			_noStartComponents.Remove(com);
-			_startedComponents.Add(com);
-			com->GameObjectStart(this);
+			_componentList[i]->GameObjectStart(this);
 		}
 		Start();
 	}
 
 	void GameObject::WorldUpdate(World* world)
 	{
-		_myState = GameObjectState::EG_Update;
-		_startedComponents.Reset();
-		while (true)
+		for (int i = 0; i < _componentList.size(); i++)
 		{
-			auto com = _startedComponents.Next();
-			if (com == nullptr)
-			{
-				break;
-			}
-			com->GameObjectUpdate(this);
+			_componentList[i]->GameObjectUpdate(this);
 		}
 		Update();
 	}
 
 	void GameObject::WorldEnd(World* world)
 	{
-		_myState = GameObjectState::EG_Ending;
-		_startedComponents.Reset();
-		while (true)
+		for (int i = 0; i < _componentList.size(); i++)
 		{
-			auto com = _startedComponents.Next();
-			if (com == nullptr)
-			{
-				break;
-			}
-			_startedComponents.Remove(com);
-			_noStartComponents.Add(com);
-			com->GameObjectEnd(this);
+			_componentList[i]->GameObjectEnd(this);
 		}
 		End();
-		myWorld = nullptr;
-		_myState = GameObjectState::EG_Ended;
 	}
 }

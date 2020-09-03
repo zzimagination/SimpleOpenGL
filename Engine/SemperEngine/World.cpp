@@ -4,6 +4,17 @@
 
 namespace SemperEngine {
 
+	using namespace std;
+
+	World::World(string name)
+	{
+		if (name == "")
+		{
+			throw "NULL";
+		}
+		this->_name = name;
+	}
+
 	World::~World()
 	{
 		_nostartGameObjects.Reset();
@@ -18,108 +29,14 @@ namespace SemperEngine {
 		}
 	}
 
-	void World::AddGameObject(GameObject * gameObject)
+	vector<GameObject*> World::GameObjectList()
 	{
-		switch (_myState)
-		{
-		case WorldState::EW_UnActive:
-			_nostartGameObjects.Add(gameObject);
-			break;
-		case WorldState::EW_Active:
-			_startedGameObjects.Add(gameObject);
-			gameObject->WorldStart(this);
-			break;
-		case WorldState::EW_Loading:
-		case WorldState::EW_Unloading:
-			_startedGameObjects.Add(gameObject);
-			gameObject->WorldStart(this);
-			break;
-		default:
-			break;
-		}
+		return _gameObjectList;
 	}
 
-	void World::RemoveGameObject(GameObject * gameObject)
+	std::string World::Name()
 	{
-		switch (_myState)
-		{
-		case WorldState::EW_UnActive:
-			_nostartGameObjects.Remove(gameObject);
-			return;
-		case WorldState::EW_Active:
-			_startedGameObjects.Remove(gameObject);
-			gameObject->WorldEnd(this);
-			return;
-		case WorldState::EW_Loading:
-		case WorldState::EW_Unloading:
-			if (_startedGameObjects.Contain(gameObject))
-			{
-				gameObject->WorldEnd(this);
-				_startedGameObjects.Remove(gameObject);
-			}
-			else if (_nostartGameObjects.Contain(gameObject))
-			{
-				_nostartGameObjects.Remove(gameObject);
-			}
-			else
-			{
-				throw "don't has this gameObject";
-			}
-			return;
-		default:
-			return;
-		}
+		return _name;
 	}
 
-	void World::Active()
-	{
-		_myState = WorldState::EW_Loading;
-		_nostartGameObjects.Reset();
-		while (true)
-		{
-			auto obj = _nostartGameObjects.Next();
-			if (obj == nullptr)
-			{
-				break;
-			}
-			_nostartGameObjects.Remove(obj);
-			_startedGameObjects.Add(obj);
-			obj->WorldStart(this);
-		}
-		_nostartGameObjects.Clear();
-	}
-
-	void World::UnActive()
-	{
-		_myState = WorldState::EW_Unloading;
-		_startedGameObjects.Reset();
-		while (true)
-		{
-			auto obj = _startedGameObjects.Next();
-			if (obj == nullptr)
-			{
-				break;
-			}
-			_startedGameObjects.Remove(obj);
-			_nostartGameObjects.Add(obj);
-			obj->WorldEnd(this);
-		}
-		_startedGameObjects.Clear();
-		_myState = WorldState::EW_UnActive;
-	}
-
-	void World::Update()
-	{
-		_myState = WorldState::EW_Active;
-		_startedGameObjects.Reset();
-		while (true)
-		{
-			auto obj = _startedGameObjects.Next();
-			if (obj == nullptr)
-			{
-				break;
-			}
-			obj->WorldUpdate(this);
-		}
-	}
 }
