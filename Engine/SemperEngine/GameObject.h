@@ -2,8 +2,9 @@
 #define GAMEOBJECT
 
 #include <vector>
-#include <type_traits>
-#include "ComponentCollection.h"
+#include <typeinfo>
+#include "ObjectCollection.h"
+
 
 namespace SemperEngine {
 
@@ -15,42 +16,29 @@ namespace SemperEngine {
 
 	namespace Core
 	{
-		class WorldInternal;
+		class WorldInstance;
 	}
 
 	class GameObject
 	{
-	private:
 
-		enum class GameObjectState {
-
-			EG_Ended,
-
-			EG_Ending,
-
-			EG_Start,
-
-			EG_Update
-
-		} ;
-
-	private:
-
-		GameObjectState _myState;
-
-		ComponentCollection _startedComponents;
-
-		ComponentCollection _noStartComponents;
-
-		std::vector<Component* > _componentList;
+		typedef Collection::ObjectCollection<Component> ComponentCollection;
 
 	public:
 
 		std::string name;
 
-		Transform* transform;
+	private:
 
-		World* myWorld;
+		bool _isStart;
+
+		Transform* _transform;
+
+		ComponentCollection _startedComponents;
+
+		ComponentCollection _noStartComponents;
+
+		std::vector<Component*> _componentList;
 
 	public:
 
@@ -60,31 +48,13 @@ namespace SemperEngine {
 
 		~GameObject();
 
+		void AddComponent(Component* com);
 
-		template<typename T>
-		T* AddComponent()
-		{
-			static_assert(std::is_base_of<Component, T>::value, "error");
-			auto com = new T();
-			AddComponentInternal(com);
-			return com;
-		}
+		Component* GetComponent(const std::type_info & type);
 
 		void RemoveComponent(Component* com);
 
-		template<typename T>
-		T* GetComponent() {
-			static_assert(std::is_base_of<Component, T>::value, "error");
-			
-			for (int i = 0; i < _componentList.size(); i++)
-			{
-				if (typeid(T*) == typeid(_componentList[i]))
-				{
-					return (T*)_componentList[i];
-				}
-			}
-			throw "don't have component";
-		}
+		Transform* GetTransform();
 
 	private:
 
@@ -100,12 +70,12 @@ namespace SemperEngine {
 
 		void WorldEnd(World* world);
 
-		void AddComponentInternal(Component* com);
-
 	private:
 
-		friend class Core::WorldInternal;
+		friend class Core::WorldInstance;
+
 	};
 
 }
+
 #endif // !GAMEOBJECT

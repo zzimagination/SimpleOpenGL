@@ -16,14 +16,8 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Camera</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Component</Filter>
-    </ClCompile>
     <ClCompile Include="GameInit.cpp">
       <Filter>GameLogic</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>GameObject</Filter>
     </ClCompile>
     <ClCompile Include="WorldManager.cpp">
       <Filter>World</Filter>
@@ -70,9 +64,6 @@
     <ClCompile Include="GameStart.cpp">
       <Filter>Project\Loop</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="MathBase.cpp">
       <Filter>Math</Filter>
     </ClCompile>
@@ -81,9 +72,6 @@
     </ClCompile>
     <ClCompile Include="KeyEvent.cpp">
       <Filter>EventSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="TestComponent.cpp">
-      <Filter>Component</Filter>
     </ClCompile>
     <ClCompile Include="EventRecorder.cpp">
       <Filter>EventSystem</Filter>
@@ -184,6 +172,18 @@
     <ClCompile Include="WorldInternal.cpp">
       <Filter>World</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="TestComponent.cpp">
+      <Filter>Component\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Component\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>GameObject\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -200,9 +200,6 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>Component</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
       <Filter>Component</Filter>
@@ -264,9 +261,6 @@
     <ClInclude Include="SemperEngine.h">
       <Filter>Project</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="EngineDef.h">
       <Filter>Project</Filter>
     </ClInclude>
@@ -281,9 +275,6 @@
     </ClInclude>
     <ClInclude Include="KeyEvent.h">
       <Filter>EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="TestComponent.h">
-      <Filter>Component</Filter>
     </ClInclude>
     <ClInclude Include="MouseButtonEvent.h">
       <Filter>EventSystem</Filter>
@@ -387,6 +378,21 @@
     <ClInclude Include="WorldInternal.h">
       <Filter>World</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectCollection.h">
+      <Filter>Tools\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectCollection.hpp">
+      <Filter>Tools\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="TestComponent.h">
+      <Filter>Component\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Component\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>GameObject\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="头文件">
@@ -480,6 +486,15 @@
     </Filter>
     <Filter Include="2D\Texture\ThirdParty">
       <UniqueIdentifier>{071638b5-510e-41cc-9afd-4501be4380e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Collection">
+      <UniqueIdentifier>{7a3d9c93-c102-4875-a804-5a778e89fc3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Components">
+      <UniqueIdentifier>{f98196c5-c848-45df-ac2f-2328564e6271}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\GameObjects">
+      <UniqueIdentifier>{0438b22a-0dbf-458b-999f-b044d4d180e4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

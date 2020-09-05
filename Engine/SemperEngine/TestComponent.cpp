@@ -34,7 +34,7 @@ void TestComponent::Update()
 	{
 		moveDelt.x += Time::GetDeltaTime() * 10;
 	}
-	gameObject->transform->position = gameObject->transform->position + moveDelt;
+	gameObject->GetTransform()->position = gameObject->GetTransform()->position + moveDelt;
 
 	if (EventSystem::GetKeyAction(Key::p, Action::press))
 	{

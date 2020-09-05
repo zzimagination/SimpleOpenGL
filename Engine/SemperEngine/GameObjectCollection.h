@@ -6,17 +6,18 @@ namespace SemperEngine
 {
 	class GameObject;
 
-	struct WGObjectItem
-	{
-		GameObject* object;
-
-		bool isRemove;
-
-	};
-
-
 	class GameObjectCollection
 	{
+	private:
+
+		struct WGObjectItem
+		{
+			GameObject* object;
+
+			bool isRemove;
+
+		};
+
 	private:
 
 		std::vector<WGObjectItem> _objects;

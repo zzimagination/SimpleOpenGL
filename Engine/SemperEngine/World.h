@@ -4,10 +4,10 @@
 
 #include <vector>
 #include "GameObjectCollection.h"
+#include "ObjectCollection.h"
+
 
 namespace SemperEngine {
-
-	using namespace std;
 
 	class Camera;
 
@@ -20,18 +20,8 @@ namespace SemperEngine {
 
 	class World
 	{
-	protected:
 
-		enum class WorldState
-		{
-			EW_UnActive,
-
-			EW_Active,
-
-			EW_Loading,
-
-			EW_Unloading
-		};
+		typedef Collection::ObjectCollection<GameObject> GameObjectList;
 
 	public:
 
@@ -39,15 +29,13 @@ namespace SemperEngine {
 
 	protected:
 
-		string _name;
+		std::string _name;
 
-		WorldState _myState;
+		bool _isActive;
 
-		GameObjectCollection _startedGameObjects;
+		GameObjectList _startedList;
 
-		GameObjectCollection _nostartGameObjects;
-
-		std::vector<GameObject*> _gameObjectList;
+		GameObjectList _noStartList;
 
 	public:
 
@@ -61,13 +49,13 @@ namespace SemperEngine {
 
 		virtual void RemoveGameObject(GameObject* gameObject) = 0;
 
-		vector<GameObject*> GameObjectList();
+		bool IsActive();
 
 	protected:
 
-		virtual void Active() = 0;
+		virtual void Active();
 
-		virtual void UnActive() = 0;
+		virtual void UnActive();
 
 		virtual void Start() = 0;
 

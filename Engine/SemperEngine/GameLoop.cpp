@@ -1,4 +1,7 @@
 #include "GameLoop.h"
+#include <thread>
+#include <iostream>
+#include <string>
 #include "BaseRenderPipeline.h"
 #include "Mathz.h"
 #include "WorldManager.h"
@@ -8,11 +11,7 @@
 #include "GraphicRender.h"
 #include "RenderBatchManager.h"
 #include "EventSystem.h"
-#include <thread>
-#include <iostream>
-#include "DebugSystem.h"
 #include "Debug.h"
-#include <string>
 #include "WorldStorageCenter.h"
 
 
@@ -28,8 +27,8 @@ namespace SemperEngine {
 
 	void GameLoop::BeforeLoop()
 	{
-		GameInit::Init();
 		Core::WorldStorageCenter::Init();
+		GameInit::Init();
 		BaseRenderPipeline::Render();
 		RenderBatchManager::SwapBatches();
 		_isLooping = true;

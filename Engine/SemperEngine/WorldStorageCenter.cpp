@@ -15,7 +15,7 @@ namespace SemperEngine
 
 		void(*WorldStorageCenter::_worldAction)() = nullptr;
 
-		void WorldStorageCenter::Add(WorldInternal * world)
+		void WorldStorageCenter::Add(WorldInstance * world)
 		{
 			if (world == nullptr)
 			{
@@ -32,7 +32,7 @@ namespace SemperEngine
 			worldList.push_back(item);
 		}
 
-		WorldInternal* WorldStorageCenter::GetWorld(std::string name)
+		WorldInstance* WorldStorageCenter::GetWorld(std::string name)
 		{
 			for (int i = 0; i < worldList.size(); i++)
 			{
@@ -44,7 +44,7 @@ namespace SemperEngine
 			throw "don't have this world";
 		}
 
-		WorldInternal* WorldStorageCenter::GetWorld(int id)
+		WorldInstance* WorldStorageCenter::GetWorld(int id)
 		{
 			if (worldList.size() <= id)
 			{
@@ -53,12 +53,12 @@ namespace SemperEngine
 			return worldList[id].world;
 		}
 
-		WorldInternal * WorldStorageCenter::GetActive()
+		WorldInstance * WorldStorageCenter::GetActive()
 		{
 			return _active.world;
 		}
 
-		void WorldStorageCenter::SetNextActive(WorldInternal * world)
+		void WorldStorageCenter::SetNextActive(WorldInstance * world)
 		{
 			if (world == nullptr)
 			{

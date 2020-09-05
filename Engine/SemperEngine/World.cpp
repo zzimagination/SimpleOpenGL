@@ -17,26 +17,49 @@ namespace SemperEngine {
 
 	World::~World()
 	{
-		_nostartGameObjects.Reset();
+		_startedList.Reset();
 		while (true)
 		{
-			auto obj = _nostartGameObjects.Next();
+			auto obj = _startedList.Next();
 			if (obj == nullptr)
 			{
 				break;
 			}
 			delete obj;
 		}
-	}
+		_startedList.Clear();
 
-	vector<GameObject*> World::GameObjectList()
-	{
-		return _gameObjectList;
+		_noStartList.Reset();
+		while (true)
+		{
+			auto obj = _noStartList.Next();
+			if (obj == nullptr)
+			{
+				break;
+			}
+			delete obj;
+		}
+		_noStartList.Clear();
 	}
 
 	std::string World::Name()
 	{
 		return _name;
+	}
+
+	bool World::IsActive()
+	{
+		return _isActive;
+	}
+
+	void World::Active()
+	{
+		_isActive = true;
+	}
+
+	void World::UnActive()
+	{
+		_isActive = false;
 	}
 
 }

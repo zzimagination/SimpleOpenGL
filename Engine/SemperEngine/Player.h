@@ -10,6 +10,8 @@ namespace SemperEngine {
 
 		Player(std::string name);
 
+		Player();
+
 		virtual void Start() override;
 
 		virtual void Update() override;

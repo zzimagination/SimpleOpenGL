@@ -9,7 +9,6 @@ namespace SemperEngine {
 
 	Renderer::Renderer()
 	{
-
 	}
 
 	Renderer::~Renderer()
@@ -67,7 +66,7 @@ namespace SemperEngine {
 	void Renderer::UpdateRenderObject()
 	{
 		_renderObject->renderVertex = &cube;
-		_renderObject->modelMatrix = gameObject->transform->GetModelMatrix();
+		_renderObject->modelMatrix = gameObject->GetTransform()->GetModelMatrix();
 		_renderObject->shader = _material->shader;
 		_renderObject->floatProperty = _material->floatProperty;
 		_renderObject->vector2Property = _material->vector2Property;

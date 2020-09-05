@@ -9,18 +9,17 @@
 #include "DebugSystem.h"
 #include <fstream>
 
-#ifdef UNIT_TEST
 #include "Test.h"
-#endif // UNIT_TEST
+
 
 using namespace SemperEngine;
 
 int main()
 {
 	setlocale(LC_CTYPE, "");
-#ifdef UNIT_TEST
+
 	Test::UnitTesting();
-#else
+
 	DebugSystem::Initialization();
 	ProjectSetting::LoadConfig();
 	GameWindow::CreateGameWindow();
@@ -30,7 +29,7 @@ int main()
 	GameEnd::End();
 	GameWindow::TerminateGameWindow();
 	DebugSystem::Dispose();
-#endif // UNIT_TEST
+
 	return 0;
 }
 

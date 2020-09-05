@@ -7,7 +7,7 @@ namespace SemperEngine
 
 	namespace Core
 	{
-		class WorldInternal;
+		class WorldInstance;
 
 		class WorldInitializer
 		{
@@ -17,11 +17,11 @@ namespace SemperEngine
 
 		private:
 
-			static WorldInternal* CreateWorld_1();
+			static WorldInstance* CreateWorld_1();
 
-			static WorldInternal* CreateWorld_2();
+			static WorldInstance* CreateWorld_2();
 
-			static WorldInternal* CreateWorld_3();
+			static WorldInstance* CreateWorld_3();
 		};
 	}
 }

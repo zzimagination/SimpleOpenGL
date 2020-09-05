@@ -8,7 +8,7 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		class WorldInternal;
+		class WorldInstance;
 
 		class WorldStorageCenter
 		{
@@ -20,9 +20,9 @@ namespace SemperEngine
 
 				int id;
 
-				WorldInternal* world;
+				WorldInstance* world;
 
-				WorldItem(std::string _name, int _id, WorldInternal* _world)
+				WorldItem(std::string _name, int _id, WorldInstance* _world)
 				{
 					name = _name;
 					id = _id;
@@ -46,15 +46,15 @@ namespace SemperEngine
 
 		public:
 
-			static void Add(WorldInternal* world);
+			static void Add(WorldInstance* world);
 
-			static WorldInternal* GetWorld(std::string name);
+			static WorldInstance* GetWorld(std::string name);
 
-			static WorldInternal* GetWorld(int id);
+			static WorldInstance* GetWorld(int id);
 
-			static WorldInternal* GetActive();
+			static WorldInstance* GetActive();
 
-			static void SetNextActive(WorldInternal* world);
+			static void SetNextActive(WorldInstance* world);
 
 			static void Init();
 

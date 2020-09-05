@@ -10,13 +10,17 @@ namespace SemperEngine
 	{
 		class WorldStorageCenter;
 
-		class WorldInternal : public World
+		class WorldInstance : public World
 		{
+		protected:
+
+			bool _isStart;
+
 		public:
 
-			WorldInternal(std::string name);
+			WorldInstance(std::string name);
 
-			~WorldInternal();
+			~WorldInstance();
 
 			virtual void AddGameObject(GameObject * gameObject) override;
 			
@@ -24,10 +28,6 @@ namespace SemperEngine
 			
 		protected:
 
-			virtual void Active() override;
-			
-			virtual void UnActive() override;
-			
 			virtual void Start() override;
 
 			virtual void Update() override;

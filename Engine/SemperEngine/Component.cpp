@@ -9,10 +9,12 @@ namespace SemperEngine
 	}
 	void Component::GameObjectUpdate(GameObject * parent)
 	{
+		gameObject = parent;
 		Update();
 	}
 	void Component::GameObjectEnd(GameObject * parent)
 	{
+		gameObject = parent;
 		End();
 		gameObject = nullptr;
 	}

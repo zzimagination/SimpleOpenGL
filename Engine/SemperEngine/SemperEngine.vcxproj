@@ -169,6 +169,8 @@
     <ClInclude Include="Material.h" />
     <ClInclude Include="MathBase.h" />
     <ClInclude Include="MouseButtonEvent.h" />
+    <ClInclude Include="ObjectCollection.h" />
+    <ClInclude Include="ObjectCollection.hpp" />
     <ClInclude Include="RenderBatchManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />

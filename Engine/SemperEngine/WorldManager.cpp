@@ -45,11 +45,11 @@ namespace SemperEngine {
 
 	void WorldManager::SetActive(World * world)
 	{
-		if ((WorldInternal*)world == nullptr)
+		if ((WorldInstance*)world == nullptr)
 		{
 			throw "don't have the world";
 		}
-		WorldStorageCenter::SetNextActive((WorldInternal*)world);
+		WorldStorageCenter::SetNextActive((WorldInstance*)world);
 	}
 
 }

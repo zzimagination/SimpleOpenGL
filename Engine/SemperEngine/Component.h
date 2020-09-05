@@ -7,12 +7,11 @@ namespace SemperEngine {
 
 	class Component
 	{
-	private:
-
-
 	public:
 
 		GameObject* gameObject = nullptr;
+
+	public:
 
 		virtual void Start() = 0;
 

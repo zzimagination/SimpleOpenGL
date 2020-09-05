@@ -1,58 +1,104 @@
 #include "WorldInternal.h"
 #include "Camera.h"
 #include "GameObject.h"
+#include "ObjectCollection.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
-		WorldInternal::WorldInternal(std::string name) :World(name)
+		WorldInstance::WorldInstance(std::string name) :World(name)
+		{
+
+		}
+
+		WorldInstance::~WorldInstance()
 		{
 		}
 
-		WorldInternal::~WorldInternal()
+		void WorldInstance::AddGameObject(GameObject * gameObject)
 		{
-		}
-
-		void WorldInternal::AddGameObject(GameObject * gameObject)
-		{
-			_gameObjectList.push_back(gameObject);
-		}
-
-		void WorldInternal::RemoveGameObject(GameObject * gameObject)
-		{
-		}
-
-		void WorldInternal::Active()
-		{
-		}
-
-		void WorldInternal::UnActive()
-		{
-		}
-
-		void WorldInternal::Start()
-		{
-			for (int i = 0; i < _gameObjectList.size(); i++)
+			if (_isStart)
 			{
-				_gameObjectList[i]->WorldStart(this);
+				_startedList.Add(gameObject);
+				gameObject->WorldStart(this);
+			}
+			else
+			{
+				_noStartList.Add(gameObject);
 			}
 		}
 
-		void WorldInternal::Update()
+		void WorldInstance::RemoveGameObject(GameObject * gameObject)
 		{
-			for (int i = 0; i < _gameObjectList.size(); i++)
+			if (_isStart)
 			{
-				_gameObjectList[i]->WorldUpdate(this);
+				if (_startedList.Contain(gameObject))
+				{
+					_startedList.Remove(gameObject);
+					gameObject->WorldEnd(this);
+					return;
+				}
+				else if (_noStartList.Contain(gameObject))
+				{
+					_noStartList.Remove(gameObject);
+					return;
+				}
+			}
+			else
+			{
+				_noStartList.Remove(gameObject);
+				return;
+			}
+			throw "don't have this gameObject";
+		}
+
+		void WorldInstance::Start()
+		{
+			_isStart = true;
+			_noStartList.Reset();
+			while (true)
+			{
+				auto gameObject = _noStartList.Next();
+				if (gameObject == nullptr)
+				{
+					break;
+				}
+				_noStartList.Remove(gameObject);
+				_startedList.Add(gameObject);
+				gameObject->WorldStart(this);
 			}
 		}
 
-		void WorldInternal::End()
+		void WorldInstance::Update()
 		{
-			for (int i = 0; i < _gameObjectList.size(); i++)
+			_startedList.Reset();
+			while (true)
 			{
-				_gameObjectList[i]->WorldEnd(this);
+				auto gameObject = _startedList.Next();
+				if (gameObject == nullptr)
+				{
+					break;
+				}
+				gameObject->WorldUpdate(this);
 			}
+		}
+
+		void WorldInstance::End()
+		{
+			_startedList.Reset();
+			while (true)
+			{
+				auto gameObject = _startedList.Next();
+				if (gameObject == nullptr)
+				{
+					break;
+				}
+				gameObject->WorldEnd(this);
+				_startedList.Remove(gameObject);
+				_noStartList.Add(gameObject);
+			}
+			_isStart = false;
 		}
 	}
 }
