@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include "spng.h"
+#include "GraphicCommandManager.h"
 
 namespace SemperEngine {
 
@@ -14,16 +15,11 @@ namespace SemperEngine {
 	{
 		delete[] data;
 		data = nullptr;
+		Core::GraphicCommandManager::ClearTextureBuffer(this);
 	}
 
 	void Texture::LoadFile(string path)
 	{
-		/*data = stbi_load(path.c_str(), &width, &height, &channels, 0);
-		if (data == nullptr) {
-			stbi_image_free(data);
-			throw "Load Texture error";
-		}*/
-
 		ifstream image(path, ios::binary);
 		image.seekg(0, ios_base::end);
 		long inputSize = image.tellg();
@@ -87,5 +83,7 @@ namespace SemperEngine {
 
 		delete[] buf;
 		spng_ctx_free(ctx);
+
+		Core::GraphicCommandManager::AddTextureBuffer(this);
 	}
 }

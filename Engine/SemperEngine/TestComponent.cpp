@@ -4,48 +4,59 @@
 #include <string>
 #include <Windows.h>
 
-using namespace SemperEngine;
-
-void TestComponent::Start()
+namespace SemperEngine
 {
-}
+	using namespace std;
 
-void TestComponent::Update()
-{
-	auto es = SemperEngine::EventSystem::GetKeyEvents();
+	TestComponent::TestComponent()
+	{
+	}
 
-	Vector3 moveDelt;
-	typedef SemperEngine::EventSystem EventSystem;
-	typedef SemperEngine::Event::Key Key;
-	typedef SemperEngine::Event::ButtonAction Action;
-	if (EventSystem::GetKeyAction(Key::up, Action::keep) || EventSystem::GetKeyAction(Key::w, Action::keep))
+	void TestComponent::Start()
 	{
-		moveDelt.y += Time::GetDeltaTime() * 10;
+		string log = "";
+		log.append("Component Start");
+		Debug::Log(log);
 	}
-	if (EventSystem::GetKeyAction(Key::down, Action::keep) || EventSystem::GetKeyAction(Key::s, Action::keep))
-	{
-		moveDelt.y -= Time::GetDeltaTime() * 10;
-	}
-	if (EventSystem::GetKeyAction(Key::left, Action::keep) || EventSystem::GetKeyAction(Key::a, Action::keep))
-	{
-		moveDelt.x -= Time::GetDeltaTime() * 10;
-	}
-	if (EventSystem::GetKeyAction(Key::right, Action::keep) || EventSystem::GetKeyAction(Key::d, Action::keep))
-	{
-		moveDelt.x += Time::GetDeltaTime() * 10;
-	}
-	gameObject->GetTransform()->position = gameObject->GetTransform()->position + moveDelt;
 
-	if (EventSystem::GetKeyAction(Key::p, Action::press))
+	void TestComponent::Update()
 	{
-		auto a = TEXT("你好世界");
-		Debug::Log(a);
-		Debug::Log(1 / Time::GetDeltaTime());
-	}
-	
-}
+		//auto es = SemperEngine::EventSystem::GetKeyEvents();
 
-void TestComponent::End()
-{
-	
+		//Vector3 moveDelt;
+		//typedef SemperEngine::EventSystem EventSystem;
+		//typedef SemperEngine::Event::Key Key;
+		//typedef SemperEngine::Event::ButtonAction Action;
+		//if (EventSystem::GetKeyAction(Key::up, InputAction::keep) || EventSystem::GetKeyAction(Key::w, InputAction::keep))
+		//{
+		//	moveDelt.y += Time::GetDeltaTime() * 10;
+		//}
+		//if (EventSystem::GetKeyAction(Key::down, InputAction::keep) || EventSystem::GetKeyAction(Key::s, InputAction::keep))
+		//{
+		//	moveDelt.y -= Time::GetDeltaTime() * 10;
+		//}
+		//if (EventSystem::GetKeyAction(Key::left, InputAction::keep) || EventSystem::GetKeyAction(Key::a, InputAction::keep))
+		//{
+		//	moveDelt.x -= Time::GetDeltaTime() * 10;
+		//}
+		//if (EventSystem::GetKeyAction(Key::right, InputAction::keep) || EventSystem::GetKeyAction(Key::d, InputAction::keep))
+		//{
+		//	moveDelt.x += Time::GetDeltaTime() * 10;
+		//}
+		//_gameObject->GetTransform()->position = _gameObject->GetTransform()->position + moveDelt;
+
+		//if (EventSystem::GetKeyAction(Key::p, InputAction::press))
+		//{
+		//	auto a = TEXT("你好世界");
+		//	Debug::Log(a);
+		//	Debug::Log(1 / Time::GetDeltaTime());
+		//}
+	}
+
+	void TestComponent::End()
+	{
+		string log = "";
+		log.append("Component End");
+		Debug::Log(log);
+	}
 }

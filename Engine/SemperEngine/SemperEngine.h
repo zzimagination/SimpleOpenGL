@@ -5,8 +5,9 @@
 
 #include "Mathz.h"
 #include "Time.h"
-#include "ProjectSetting.h"
+#include "Application.h"
 #include "EventSystem.h"
+#include "DebugSystem.h"
 
 #include "Texture.h"
 #include "Material.h"
@@ -18,7 +19,8 @@
 
 #include "GameObject.h"
 #include "Transform.h"
-#include "Player.h"
+#include "Cube.h"
+
 
 #include "Renderer.h"
 

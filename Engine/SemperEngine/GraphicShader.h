@@ -6,15 +6,16 @@
 #include <string>
 #include "Mathz.h"
 namespace SemperEngine {
-#define MODEL_MATRIX "_model"
-#define VIEW_MATRIX "_view"
-#define PROJECTION_MARIX "_projection"
 
 	using namespace std;
 
+	constexpr const char* MODEL_MATRIX = "_model";
+	constexpr const char* VIEW_MATRIX = "_view";
+	constexpr const char* PROJECTION_MARIX = "_projection";
+	constexpr const char* MAINCOLOR = "_color";
+
 	class GraphicShader
 	{
-
 	public:
 
 		string name;

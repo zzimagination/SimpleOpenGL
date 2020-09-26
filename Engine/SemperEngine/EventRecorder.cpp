@@ -1,12 +1,9 @@
 #include "EventRecorder.h"
-#include "Mathz.h"
 #include "KeyIdentity.h"
 #include "Time.h"
 #include <iostream>
 
 namespace SemperEngine {
-
-	using namespace Event;
 
 	vector<KeyEvent> EventRecorder::keyEvents;
 	vector<KeyKeeper> EventRecorder::pressedKeys;
@@ -22,377 +19,378 @@ namespace SemperEngine {
 		switch (key)
 		{
 		case KEY_SPACE:
-			e.value = Key::space;
+			e.value = Keyboard::Key::space;
 			break;
 		case KEY_APOSTROPHE:
-			e.value = Key::apostrophe;
+			e.value = Keyboard::Key::apostrophe;
 			break;
 		case KEY_COMMA:
-			e.value = Key::comma;
+			e.value = Keyboard::Key::comma;
 			break;
 		case KEY_MINUS:
-			e.value = Key::minus;
+			e.value = Keyboard::Key::minus;
 			break;
 		case KEY_PERIOD:
-			e.value = Key::space;
+			e.value = Keyboard::Key::space;
 			break;
 		case KEY_SLASH:
-			e.value = Key::slash;
+			e.value = Keyboard::Key::slash;
 			break;
 		case KEY_0:
-			e.value = Key::number0;
+			e.value = Keyboard::Key::number0;
 			break;
 		case KEY_1:
-			e.value = Key::number1;
+			e.value = Keyboard::Key::number1;
 			break;
 		case KEY_2:
-			e.value = Key::number2;
+			e.value = Keyboard::Key::number2;
 			break;
 		case KEY_3:
-			e.value = Key::number3;
+			e.value = Keyboard::Key::number3;
 			break;
 		case KEY_4:
-			e.value = Key::number4;
+			e.value = Keyboard::Key::number4;
 			break;
 		case KEY_5:
-			e.value = Key::number5;
+			e.value = Keyboard::Key::number5;
 			break;
 		case KEY_6:
-			e.value = Key::number6;
+			e.value = Keyboard::Key::number6;
 			break;
 		case KEY_7:
-			e.value = Key::number7;
+			e.value = Keyboard::Key::number7;
 			break;
 		case KEY_8:
-			e.value = Key::number8;
+			e.value = Keyboard::Key::number8;
 			break;
 		case KEY_9:
-			e.value = Key::number9;
+			e.value = Keyboard::Key::number9;
 			break;
 		case KEY_SEMICOLON:
-			e.value = Key::semicolon;
+			e.value = Keyboard::Key::semicolon;
 			break;
 		case KEY_EQUAL:
-			e.value = Key::equal;
+			e.value = Keyboard::Key::equal;
 			break;
 		case KEY_A:
-			e.value = Key::a;
+			e.value = Keyboard::Key::a;
 			break;
 		case KEY_B:
-			e.value = Key::b;
+			e.value = Keyboard::Key::b;
 			break;
 		case KEY_C:
-			e.value = Key::c;
+			e.value = Keyboard::Key::c;
 			break;
 		case KEY_D:
-			e.value = Key::d;
+			e.value = Keyboard::Key::d;
 			break;
 		case KEY_E:
-			e.value = Key::e;
+			e.value = Keyboard::Key::e;
 			break;
 		case KEY_F:
-			e.value = Key::f;
+			e.value = Keyboard::Key::f;
 			break;
 		case KEY_G:
-			e.value = Key::g;
+			e.value = Keyboard::Key::g;
 			break;
 		case KEY_H:
-			e.value = Key::h;
+			e.value = Keyboard::Key::h;
 			break;
 		case KEY_I:
-			e.value = Key::i;
+			e.value = Keyboard::Key::i;
 			break;
 		case KEY_J:
-			e.value = Key::j;
+			e.value = Keyboard::Key::j;
 			break;
 		case KEY_K:
-			e.value = Key::k;
+			e.value = Keyboard::Key::k;
 			break;
 		case KEY_L:
-			e.value = Key::l;
+			e.value = Keyboard::Key::l;
 			break;
 		case KEY_M:
-			e.value = Key::m;
+			e.value = Keyboard::Key::m;
 			break;
 		case KEY_N:
-			e.value = Key::n;
+			e.value = Keyboard::Key::n;
 			break;
 		case KEY_O:
-			e.value = Key::o;
+			e.value = Keyboard::Key::o;
 			break;
 		case KEY_P:
-			e.value = Key::p;
+			e.value = Keyboard::Key::p;
 			break;
 		case KEY_Q:
-			e.value = Key::q;
+			e.value = Keyboard::Key::q;
 			break;
 		case KEY_R:
-			e.value = Key::r;
+			e.value = Keyboard::Key::r;
 			break;
 		case KEY_S:
-			e.value = Key::s;
+			e.value = Keyboard::Key::s;
 			break;
 		case KEY_T:
-			e.value = Key::t;
+			e.value = Keyboard::Key::t;
 			break;
 		case KEY_U:
-			e.value = Key::u;
+			e.value = Keyboard::Key::u;
 			break;
 		case KEY_V:
-			e.value = Key::v;
+			e.value = Keyboard::Key::v;
 			break;
 		case KEY_W:
-			e.value = Key::w;
+			e.value = Keyboard::Key::w;
 			break;
 		case KEY_X:
-			e.value = Key::x;
+			e.value = Keyboard::Key::x;
 			break;
 		case KEY_Y:
-			e.value = Key::y;
+			e.value = Keyboard::Key::y;
 			break;
 		case KEY_Z:
-			e.value = Key::z;
+			e.value = Keyboard::Key::z;
 			break;
 		case KEY_LEFT_BRACKET:
-			e.value = Key::left_bracket;
+			e.value = Keyboard::Key::left_bracket;
 			break;
 		case KEY_BACKSLASH:
-			e.value = Key::backslash;
+			e.value = Keyboard::Key::backslash;
 			break;
 		case KEY_RIGHT_BRACKET:
-			e.value = Key::right_bracket;
+			e.value = Keyboard::Key::right_bracket;
 			break;
 		case KEY_GRAVE_ACCENT:
-			e.value = Key::grave_accent;
+			e.value = Keyboard::Key::grave_accent;
 			break;
 		case KEY_WORLD_1:
-			e.value = Key::world_1;
+			e.value = Keyboard::Key::world_1;
 			break;
 		case KEY_WORLD_2:
-			e.value = Key::world_2;
+			e.value = Keyboard::Key::world_2;
 			break;
 		case KEY_ESCAPE:
-			e.value = Key::escape;
+			e.value = Keyboard::Key::escape;
 			break;
 		case KEY_ENTER:
-			e.value = Key::enter;
+			e.value = Keyboard::Key::enter;
 			break;
 		case KEY_TAB:
-			e.value = Key::tab;
+			e.value = Keyboard::Key::tab;
 			break;
 		case KEY_BACKSPACE:
-			e.value = Key::backspace;
+			e.value = Keyboard::Key::backspace;
 			break;
 		case KEY_INSERT:
-			e.value = Key::insert;
+			e.value = Keyboard::Key::insert;
 			break;
 		case KEY_DELETE:
-			e.value = Key::kp_delete;
+			e.value = Keyboard::Key::kp_delete;
 			break;
 		case KEY_RIGHT:
-			e.value = Key::right;
+			e.value = Keyboard::Key::right;
 			break;
 		case KEY_LEFT:
-			e.value = Key::left;
+			e.value = Keyboard::Key::left;
 			break;
 		case KEY_DOWN:
-			e.value = Key::down;
+			e.value = Keyboard::Key::down;
 			break;
 		case KEY_UP:
-			e.value = Key::up;
+			e.value = Keyboard::Key::up;
 			break;
 		case KEY_PAGE_UP:
-			e.value = Key::page_up;
+			e.value = Keyboard::Key::page_up;
 			break;
 		case KEY_PAGE_DOWN:
-			e.value = Key::page_down;
+			e.value = Keyboard::Key::page_down;
 			break;
 		case KEY_HOME:
-			e.value = Key::home;
+			e.value = Keyboard::Key::home;
 			break;
 		case KEY_END:
-			e.value = Key::end;
+			e.value = Keyboard::Key::end;
 			break;
 		case KEY_CAPS_LOCK:
-			e.value = Key::caps_lock;
+			e.value = Keyboard::Key::caps_lock;
 			break;
 		case KEY_SCROLL_LOCK:
-			e.value = Key::scroll_lock;
+			e.value = Keyboard::Key::scroll_lock;
 			break;
 		case KEY_NUM_LOCK:
-			e.value = Key::num_lock;
+			e.value = Keyboard::Key::num_lock;
 			break;
 		case KEY_PRINT_SCREEN:
-			e.value = Key::print_screen;
+			e.value = Keyboard::Key::print_screen;
 			break;
 		case KEY_PAUSE:
-			e.value = Key::pause;
+			e.value = Keyboard::Key::pause;
 			break;
 		case KEY_F1:
-			e.value = Key::f1;
+			e.value = Keyboard::Key::f1;
 			break;
 		case KEY_F2:
-			e.value = Key::f2;
+			e.value = Keyboard::Key::f2;
 			break;
 		case KEY_F3:
-			e.value = Key::f3;
+			e.value = Keyboard::Key::f3;
 			break;
 		case KEY_F4:
-			e.value = Key::f4;
+			e.value = Keyboard::Key::f4;
 			break;
 		case KEY_F5:
-			e.value = Key::f5;
+			e.value = Keyboard::Key::f5;
 			break;
 		case KEY_F6:
-			e.value = Key::f6;
+			e.value = Keyboard::Key::f6;
 			break;
 		case KEY_F7:
-			e.value = Key::f7;
+			e.value = Keyboard::Key::f7;
 			break;
 		case KEY_F8:
-			e.value = Key::f8;
+			e.value = Keyboard::Key::f8;
 			break;
 		case KEY_F9:
-			e.value = Key::f9;
+			e.value = Keyboard::Key::f9;
 			break;
 		case KEY_F10:
-			e.value = Key::f10;
+			e.value = Keyboard::Key::f10;
 			break;
 		case KEY_F11:
-			e.value = Key::f11;
+			e.value = Keyboard::Key::f11;
 			break;
 		case KEY_F12:
-			e.value = Key::f12;
+			e.value = Keyboard::Key::f12;
 			break;
 		case KEY_F13:
-			e.value = Key::f13;
+			e.value = Keyboard::Key::f13;
 			break;
 		case KEY_F14:
-			e.value = Key::f14;
+			e.value = Keyboard::Key::f14;
 			break;
 		case KEY_F15:
-			e.value = Key::f15;
+			e.value = Keyboard::Key::f15;
 			break;
 		case KEY_F16:
-			e.value = Key::f16;
+			e.value = Keyboard::Key::f16;
 			break;
 		case KEY_F17:
-			e.value = Key::f17;
+			e.value = Keyboard::Key::f17;
 			break;
 		case KEY_F18:
-			e.value = Key::f18;
+			e.value = Keyboard::Key::f18;
 			break;
 		case KEY_F19:
-			e.value = Key::f19;
+			e.value = Keyboard::Key::f19;
 			break;
 		case KEY_F20:
-			e.value = Key::f20;
+			e.value = Keyboard::Key::f20;
 			break;
 		case KEY_F21:
-			e.value = Key::f21;
+			e.value = Keyboard::Key::f21;
 			break;
 		case KEY_F22:
-			e.value = Key::f22;
+			e.value = Keyboard::Key::f22;
 			break;
 		case KEY_F23:
-			e.value = Key::f23;
+			e.value = Keyboard::Key::f23;
 			break;
 		case KEY_F24:
-			e.value = Key::f24;
+			e.value = Keyboard::Key::f24;
 			break;
 		case KEY_F25:
-			e.value = Key::f25;
+			e.value = Keyboard::Key::f25;
 			break;
 		case KEY_KP_0:
-			e.value = Key::kp_0;
+			e.value = Keyboard::Key::kp_0;
 			break;
 		case KEY_KP_1:
-			e.value = Key::kp_1;
+			e.value = Keyboard::Key::kp_1;
 			break;
 		case KEY_KP_2:
-			e.value = Key::kp_2;
+			e.value = Keyboard::Key::kp_2;
 			break;
 		case KEY_KP_3:
-			e.value = Key::kp_3;
+			e.value = Keyboard::Key::kp_3;
 			break;
 		case KEY_KP_4:
-			e.value = Key::kp_4;
+			e.value = Keyboard::Key::kp_4;
 			break;
 		case KEY_KP_5:
-			e.value = Key::kp_5;
+			e.value = Keyboard::Key::kp_5;
 			break;
 		case KEY_KP_6:
-			e.value = Key::kp_6;
+			e.value = Keyboard::Key::kp_6;
 			break;
 		case KEY_KP_7:
-			e.value = Key::kp_7;
+			e.value = Keyboard::Key::kp_7;
 			break;
 		case KEY_KP_8:
-			e.value = Key::kp_8;
+			e.value = Keyboard::Key::kp_8;
 			break;
 		case KEY_KP_9:
-			e.value = Key::kp_9;
+			e.value = Keyboard::Key::kp_9;
 			break;
 		case KEY_KP_DECIMAL:
-			e.value = Key::kp_decimal;
+			e.value = Keyboard::Key::kp_decimal;
 			break;
 		case KEY_KP_DIVIDE:
-			e.value = Key::kp_divide;
+			e.value = Keyboard::Key::kp_divide;
 			break;
 		case KEY_KP_MULTIPLY:
-			e.value = Key::kp_multiply;
+			e.value = Keyboard::Key::kp_multiply;
 			break;
 		case KEY_KP_SUBTRACT:
-			e.value = Key::kp_subtract;
+			e.value = Keyboard::Key::kp_subtract;
 			break;
 		case KEY_KP_ADD:
-			e.value = Key::kp_add;
+			e.value = Keyboard::Key::kp_add;
 			break;
 		case KEY_KP_ENTER:
-			e.value = Key::kp_enter;
+			e.value = Keyboard::Key::kp_enter;
 			break;
 		case KEY_KP_EQUAL:
-			e.value = Key::kp_equal;
+			e.value = Keyboard::Key::kp_equal;
 			break;
 		case KEY_LEFT_SHIFT:
-			e.value = Key::left_shift;
+			e.value = Keyboard::Key::left_shift;
 			break;
 		case KEY_LEFT_CONTROL:
-			e.value = Key::left_control;
+			e.value = Keyboard::Key::left_control;
 			break;
 		case KEY_LEFT_ALT:
-			e.value = Key::left_alt;
+			e.value = Keyboard::Key::left_alt;
 			break;
 		case KEY_LEFT_SUPER:
-			e.value = Key::left_super;
+			e.value = Keyboard::Key::left_super;
 			break;
 		case KEY_RIGHT_SHIFT:
-			e.value = Key::right_shift;
+			e.value = Keyboard::Key::right_shift;
 			break;
 		case KEY_RIGHT_CONTROL:
-			e.value = Key::right_control;
+			e.value = Keyboard::Key::right_control;
 			break;
 		case KEY_RIGHT_ALT:
-			e.value = Key::right_alt;
+			e.value = Keyboard::Key::right_alt;
 			break;
 		case KEY_RIGHT_SUPER:
-			e.value = Key::right_super;
+			e.value = Keyboard::Key::right_super;
 			break;
 		case KEY_MENU:
-			e.value = Key::menu;
+			e.value = Keyboard::Key::menu;
 			break;
 		default:
 			return;
 		}
+
 		keeper.key = e.value;
 		switch (action)
 		{
 		case PRESS:
-			e.action = ButtonAction::press;
+			e.action = InputAction::Button::press;
 			pressedKeys.push_back(keeper);
 			break;
 		case RELEASE:
-			e.action = ButtonAction::release;
+			e.action = InputAction::Button::release;
 			for (int i = 0; i < pressedKeys.size(); i++)
 			{
 				if (pressedKeys[i].key == e.value)
@@ -423,28 +421,28 @@ namespace SemperEngine {
 		switch (button)
 		{
 		case MOUSE_BUTTON_LEFT:
-			e.value = MouseButton::mouse_left;
+			e.value = Mouse::Button::left;
 			break;
 		case MOUSE_BUTTON_RIGHT:
-			e.value = MouseButton::mouse_right;
+			e.value = Mouse::Button::right;
 			break;
 		case MOUSE_BUTTON_MIDDLE:
-			e.value = MouseButton::mouse_middle;
+			e.value = Mouse::Button::middle;
 			break;
 		case MOUSE_BUTTON_4:
-			e.value = MouseButton::mouse_button_4;
+			e.value = Mouse::Button::button_4;
 			break;
 		case MOUSE_BUTTON_5:
-			e.value = MouseButton::mouse_button_5;
+			e.value = Mouse::Button::button_5;
 			break;
 		case MOUSE_BUTTON_6:
-			e.value = MouseButton::mouse_button_6;
+			e.value = Mouse::Button::button_6;
 			break;
 		case MOUSE_BUTTON_7:
-			e.value = MouseButton::mouse_button_7;
+			e.value = Mouse::Button::button_7;
 			break;
 		case MOUSE_BUTTON_8:
-			e.value = MouseButton::mouse_button_8;
+			e.value = Mouse::Button::button_8;
 			break;
 		default:
 			return;
@@ -453,11 +451,11 @@ namespace SemperEngine {
 		switch (action)
 		{
 		case PRESS:
-			e.action = ButtonAction::press;
+			e.action = InputAction::Button::press;
 			mouseButtons.push_back(keeper);
 			break;
 		case RELEASE:
-			e.action = ButtonAction::release;
+			e.action = InputAction::Button::release;
 			for (int i = 0; i < mouseButtons.size(); i++)
 			{
 				if (mouseButtons[i].button == e.value)

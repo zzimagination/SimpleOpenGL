@@ -1,55 +1,63 @@
 #include "WorldManager.h"
-#include "World.h"
-#include "SemperEngine.h"
-#include "TestComponent.h"
-#include "WorldStorageCenter.h"
+#include "WorldMap.h"
+#include "WorldTree.h"
 
 namespace SemperEngine {
 
+	using namespace std;
 	using namespace Core;
 
-	World * WorldManager::GetActive()
+	World* WorldManager::currentWorld;
+
+	World *WorldManager::_active;
+
+	World *WorldManager::_inside;
+
+	NextWorld WorldManager::_next(1);
+
+	void WorldManager::Initialize()
 	{
-		return (World*)WorldStorageCenter::GetActive();
+		_inside = WorldMap::LoadWorld(0);
+		_active = WorldMap::LoadWorld(1);
 	}
 
-	World * WorldManager::Get(std::string name)
+	World* WorldManager::GetInside()
 	{
-		return (World*)WorldStorageCenter::GetWorld(name);
+		return _inside;
 	}
 
-	World * WorldManager::Get(int id)
+	World* WorldManager::GetActive()
 	{
-		return (World*)WorldStorageCenter::GetWorld(id);
+		return _active;
 	}
 
 	void WorldManager::SetActive(string name)
 	{
-		auto world = WorldStorageCenter::GetWorld(name);
-		if (world == nullptr)
-		{
-			throw "don't have the world";
-		}
-		WorldStorageCenter::SetNextActive(world);
+		auto id = WorldMap::GetWorldID(name);
+		SetActive(id);
 	}
 
 	void WorldManager::SetActive(int id)
 	{
-		auto world = WorldStorageCenter::GetWorld(id);
-		if (world == nullptr)
+		if (WorldMap::Contain(id))
 		{
-			throw "don't have the world";
+			_next.SetID(id);
 		}
-		WorldStorageCenter::SetNextActive(world);
+		else
+		{
+			throw "arguments error";
+		}
+
 	}
 
-	void WorldManager::SetActive(World * world)
+	void WorldManager::WorldAfterLoop()
 	{
-		if ((WorldInstance*)world == nullptr)
+		if (_next.isChange)
 		{
-			throw "don't have the world";
+			WorldMap::UnloadWorld(_active);
+			_active = WorldMap::LoadWorld(_next.GetID());
+			_next.Reset();
 		}
-		WorldStorageCenter::SetNextActive((WorldInstance*)world);
 	}
 
 }

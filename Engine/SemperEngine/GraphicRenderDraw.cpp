@@ -1,6 +1,9 @@
 #include "GraphicRenderDraw.h"
 #include "GraphicVertexData.h"
 #include "GraphicTextureData.h"
+#include "GraphicShader.h"
+#include "RenderVertexData.h"
+#include "Texture.h"
 
 #ifdef OPENGL
 #include <glad/glad.h>
@@ -95,50 +98,57 @@ namespace SemperEngine {
 		}
 	}
 
-	void GraphicRenderDraw::SetShader(GraphicShader * shader,
-		vector<ShaderProperty<float>> floatv,
-		vector<ShaderProperty<Vector2>> vector2,
-		vector<ShaderProperty<Vector3>> vector3,
-		vector<ShaderProperty<Vector4>> vector4,
-		vector<ShaderProperty<Matrix4x4>> matrix)
+	void GraphicRenderDraw::SetShader(Material* material)
 	{
+		auto shader = material->shader;
+		auto floatProperty = material->floatProperty;
+		auto vector2Property = material->vector2Property;
+		auto vector3Property = material->vector3Property;
+		auto vector4Property = material->vector4Property;
+		auto matrix4x4Property = material->matrix4x4Property;
+
 		shader->Use();
 		shader->SetValue(MODEL_MATRIX, model);
 		shader->SetValue(VIEW_MATRIX, view);
 		shader->SetValue(PROJECTION_MARIX, projection);
 
-		for (int i = 0; i < floatv.size(); i++)
+		auto floatValues = floatProperty.GetKeyValues();
+		for (int i = 0; i < floatValues.size(); i++)
 		{
-			string name = floatv[i].name;
-			float value = floatv[i].value;
+			string name = floatValues[i].first;
+			float value = floatValues[i].second;
 			shader->SetValue(name, value);
 		}
 
-		for (int i = 0; i < vector2.size(); i++)
+		auto vector2Values = vector2Property.GetKeyValues();
+		for (int i = 0; i < vector2Values.size(); i++)
 		{
-			string name = vector2[i].name;
-			Vector2 value = vector2[i].value;
+			string name = vector2Values[i].first;
+			Vector2 value = vector2Values[i].second;
 			shader->SetValue(name, value);
 		}
 
-		for (int i = 0; i < vector3.size(); i++)
+		auto vector3Values = vector3Property.GetKeyValues();
+		for (int i = 0; i < vector3Values.size(); i++)
 		{
-			string name = vector3[i].name;
-			Vector3 value = vector3[i].value;
+			string name = vector3Values[i].first;
+			Vector3 value = vector3Values[i].second;
 			shader->SetValue(name, value);
 		}
 
-		for (int i = 0; i < vector4.size(); i++)
+		auto vector4Values = vector4Property.GetKeyValues();
+		for (int i = 0; i < vector4Values.size(); i++)
 		{
-			string name = vector4[i].name;
-			Vector4 value = vector4[i].value;
+			string name = vector4Values[i].first;
+			Vector4 value = vector4Values[i].second;
 			shader->SetValue(name, value);
 		}
 
-		for (int i = 0; i < matrix.size(); i++)
+		auto matrix4x4 = matrix4x4Property.GetKeyValues();
+		for (int i = 0; i < matrix4x4.size(); i++)
 		{
-			string name = matrix[i].name;
-			Matrix4x4 value = matrix[i].value;
+			string name = matrix4x4[i].first;
+			Matrix4x4 value = matrix4x4[i].second;
 			shader->SetValue(name, value);
 		}
 
@@ -155,7 +165,7 @@ namespace SemperEngine {
 	void GraphicRenderDraw::SetVertexData(GraphicVertexData* data)
 	{
 		glBindVertexArray(data->VAO);
-		drawCount = data->GetCount();
+		drawCount = data->pointCount;
 	}
 
 	void GraphicRenderDraw::SetTextureData(GraphicTextureData * data)
@@ -172,5 +182,101 @@ namespace SemperEngine {
 	void GraphicRenderDraw::Draw()
 	{
 		glDrawElements(GL_TRIANGLES, drawCount, GL_UNSIGNED_INT, 0);
+	}
+
+	GraphicVertexData * GraphicRenderDraw::AddVertexData(RenderVertexData* data)
+	{
+		unsigned VAO = 0, VBO = 0, EBO = 0, pointCount = 0;
+		auto vertices = data->GetVertices();
+		auto uv = data->GetUV();
+		auto index = data->GetIndices();
+		auto count = data->VertexCount();
+
+		if (count >= 4)
+		{
+			pointCount = count / 4 * 6;
+			if (count / 4 * 6 != pointCount)
+			{
+				throw "indexSize is not match indexSize vertexData";
+			}
+		}
+		else
+		{
+			pointCount = count;
+		}
+
+		int verticesSize = count * sizeof(Vector3);
+		int uvSize = count * sizeof(Vector2);
+		int indexSize = pointCount * sizeof(int);
+		int totalSize = verticesSize + uvSize + indexSize;
+
+		if (verticesSize == 0 || indexSize == 0)
+		{
+			throw "vertexData is null";
+		}
+
+		glGenVertexArrays(1, &VAO);
+		glGenBuffers(1, &VBO);
+		glGenBuffers(1, &EBO);
+
+		glBindVertexArray(VAO);
+		glBindBuffer(GL_ARRAY_BUFFER, VBO);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+
+		glBufferData(GL_ARRAY_BUFFER, totalSize, 0, GL_STATIC_DRAW);//首先执行这个
+		int offset = 0;
+		glBufferSubData(GL_ARRAY_BUFFER, offset, verticesSize, vertices);
+		offset += verticesSize;
+		if (uvSize > 0) {
+			glBufferSubData(GL_ARRAY_BUFFER, offset, uvSize, uv);
+			offset += uvSize;
+		}
+
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexSize, index, GL_STATIC_DRAW);
+
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vector3), (void*)0);
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vector2), (void*)verticesSize);
+
+		// note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		// remember: do NOT unbind the EBO while a VAO is active as the bound element buffer object IS stored in the VAO; keep the EBO bound.
+		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
+		// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
+		glBindVertexArray(0);
+
+		auto result = new GraphicVertexData(data, VAO, VBO, EBO, pointCount);
+		return result;
+	}
+
+	GraphicTextureData * GraphicRenderDraw::AddTextureData(Texture * data)
+	{
+		unsigned int textureID;
+		glGenTextures(1, &textureID);
+		GLenum format, internalFormal;
+		format = GL_RGBA;
+		internalFormal = GL_RGBA;
+		glBindTexture(GL_TEXTURE_2D, textureID);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+		glTexImage2D(GL_TEXTURE_2D, 0, internalFormal, data->width, data->height, 0, format, GL_UNSIGNED_BYTE, data->data);
+		auto result = new GraphicTextureData(data, textureID);
+		return result;
+	}
+
+	void GraphicRenderDraw::ClearVertexData(GraphicVertexData * data)
+	{
+		glDeleteBuffers(1, &data->EBO);//注意顺序
+		glDeleteBuffers(1, &data->VBO);
+		glDeleteVertexArrays(1, &data->VAO);
+	}
+
+	void GraphicRenderDraw::ClearTextureData(GraphicTextureData * data)
+	{
+		glDeleteTextures(1, &data->textureId);
 	}
 }

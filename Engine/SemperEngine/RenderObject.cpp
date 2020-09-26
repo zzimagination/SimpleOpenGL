@@ -1,40 +1,18 @@
 #include "RenderObject.h"
+#include "RenderCollection.h"
+
 namespace SemperEngine {
-	RenderObject::RenderObject()
-	{
-	}
 
-	RenderObject::~RenderObject()
+	namespace Core
 	{
-	}
-
-	bool RenderObject::HasBatch()
-	{
-		return batch != nullptr;
-	}
-
-	bool RenderObject::IsBreakBatch()
-	{
-		if (_breakBatch)
+		RenderObject::RenderObject()
 		{
-
-			return true;
 		}
-		else
+
+		RenderObject::~RenderObject()
 		{
-			return false;
+			*mylife.life = false;
 		}
-	}
 
-	void RenderObject::BreakBatch()
-	{
-		_breakBatch = true;
-	}
-
-
-	void RenderObject::SetRenderBatch(RenderBatch * renderBatch)
-	{
-		_breakBatch = false;
-		this->batch = renderBatch;
 	}
 }

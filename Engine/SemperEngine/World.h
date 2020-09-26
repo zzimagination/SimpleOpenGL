@@ -3,68 +3,48 @@
 #define WORLD_SCRIPT
 
 #include <vector>
-#include "GameObjectCollection.h"
-#include "ObjectCollection.h"
-
 
 namespace SemperEngine {
 
-	class Camera;
-
-	class GameObject;
-
 	namespace Core
 	{
-		class WorldStorageCenter;
+		class WorldMachine;
 	}
+
+
 
 	class World
 	{
-
-		typedef Collection::ObjectCollection<GameObject> GameObjectList;
-
 	public:
 
-		Camera* camera;
+		unsigned int treeID;
 
-	protected:
+	private:
 
 		std::string _name;
 
-		bool _isActive;
-
-		GameObjectList _startedList;
-
-		GameObjectList _noStartList;
+		int _id;
 
 	public:
 
-		World(std::string name);
+		World();
+
+		World(std::string name, int id);
 
 		~World();
 
 		std::string Name();
 
-		virtual void AddGameObject(GameObject* gameObject) = 0;
+		int ID();
 
-		virtual void RemoveGameObject(GameObject* gameObject) = 0;
+		bool operator== (const World &world);
 
-		bool IsActive();
-
-	protected:
-
-		virtual void Active();
-
-		virtual void UnActive();
-
-		virtual void Start() = 0;
-
-		virtual void Update() = 0;
-
-		virtual void End() = 0;
-
+		bool operator!= ( const World &world);
 	};
 
-}
 
+
+
+
+}
 #endif // !WORLD_SCRIPT

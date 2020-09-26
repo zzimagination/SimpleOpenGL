@@ -1,21 +1,15 @@
 #include "Component.h"
+#include "GameObject.h"
 
 namespace SemperEngine
 {
-	void Component::GameObjectStart(GameObject * parent)
+	Component::Component()
 	{
-		gameObject = parent;
-		Start();
 	}
-	void Component::GameObjectUpdate(GameObject * parent)
+
+	Component::~Component()
 	{
-		gameObject = parent;
-		Update();
+		(*life.life) = false;
 	}
-	void Component::GameObjectEnd(GameObject * parent)
-	{
-		gameObject = parent;
-		End();
-		gameObject = nullptr;
-	}
+
 }

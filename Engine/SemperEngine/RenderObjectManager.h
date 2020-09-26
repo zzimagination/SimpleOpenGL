@@ -15,7 +15,7 @@ namespace SemperEngine {
 
 	public:
 
-		static void Culling(Camera *camera, vector<RenderObject*> &objects);
+		static void Culling(Camera *camera, vector<RenderObject*> & objects);
 
 		static void AddRenderObject(RenderObject* object);
 

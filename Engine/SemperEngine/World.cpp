@@ -6,60 +6,56 @@ namespace SemperEngine {
 
 	using namespace std;
 
-	World::World(string name)
+	World::World()
 	{
-		if (name == "")
+		this->_name = "";
+		this->_id = -1;
+		this->treeID = -1;
+	}
+
+	World::World(std::string name, int id)
+	{
+		if (name == "" || id < 0)
 		{
-			throw "NULL";
+			throw "arguments error";
 		}
 		this->_name = name;
+		this->_id = id;
+		this->treeID = -1;
 	}
 
 	World::~World()
 	{
-		_startedList.Reset();
-		while (true)
-		{
-			auto obj = _startedList.Next();
-			if (obj == nullptr)
-			{
-				break;
-			}
-			delete obj;
-		}
-		_startedList.Clear();
-
-		_noStartList.Reset();
-		while (true)
-		{
-			auto obj = _noStartList.Next();
-			if (obj == nullptr)
-			{
-				break;
-			}
-			delete obj;
-		}
-		_noStartList.Clear();
 	}
 
 	std::string World::Name()
 	{
+		if (_name == "")
+		{
+			throw "error world";
+		}
 		return _name;
 	}
 
-	bool World::IsActive()
+	int World::ID()
 	{
-		return _isActive;
+		if (_id < 0)
+		{
+			throw "error world";
+		}
+		return _id;
 	}
 
-	void World::Active()
+	bool World::operator==(const World & world)
 	{
-		_isActive = true;
+		bool result = this->_name == world._name;
+		result &= this->_id == world._id;
+		return result;
 	}
 
-	void World::UnActive()
+	bool World::operator!=(const World & world)
 	{
-		_isActive = false;
+		return !(*this == world);
 	}
 
 }

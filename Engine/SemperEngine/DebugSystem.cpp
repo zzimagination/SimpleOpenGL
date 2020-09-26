@@ -11,16 +11,13 @@ namespace SemperEngine {
 
 	bool DebugSystem::_isOpen = false;
 
+	std::chrono::milliseconds DebugSystem::_time;
+
 	void DebugSystem::Initialization()
 	{
+		_time = chrono::milliseconds(100);
 		_isOpen = true;
 		_debugThread = thread(Start);
-	}
-
-	void DebugSystem::Dispose()
-	{
-		_isOpen = false;
-		_debugThread.join();
 	}
 
 	void DebugSystem::Start()
@@ -29,9 +26,8 @@ namespace SemperEngine {
 		while (_isOpen)
 		{
 			Update();
-			this_thread::sleep_for(chrono::milliseconds(100));
+			this_thread::sleep_for(_time);
 		}
-		DebugFile::Close();
 	}
 
 	void DebugSystem::Update()
@@ -51,5 +47,25 @@ namespace SemperEngine {
 			}
 		}
 		DebugFile::Flush();
+	}
+	void DebugSystem::Close()
+	{
+		_isOpen = false;
+		_debugThread.join();
+		while (DebugOutput::HasLog())
+		{
+			LogItem item = DebugOutput::OutputLog();
+			if (item.info != "")
+			{
+				DebugFile::Write(item.info);
+				std::cout << item.info << std::endl;
+			}
+			else
+			{
+				DebugFile::Write(item.winfo);
+				std::wcout << item.winfo << std::endl;
+			}
+		}
+		DebugFile::Close();
 	}
 }

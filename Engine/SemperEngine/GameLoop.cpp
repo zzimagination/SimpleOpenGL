@@ -4,7 +4,6 @@
 #include <string>
 #include "BaseRenderPipeline.h"
 #include "Mathz.h"
-#include "WorldManager.h"
 #include "GameInit.h"
 #include "GameWindow.h"
 #include "FrameRuntime.h"
@@ -12,83 +11,97 @@
 #include "RenderBatchManager.h"
 #include "EventSystem.h"
 #include "Debug.h"
-#include "WorldStorageCenter.h"
-
+#include "GraphicDataCenter.h"
+#include "GraphicCommandManager.h"
+#include "WorldLoop.h"
+#include "GameObjectLoop.h"
 
 namespace SemperEngine {
 
-	bool GameLoop::_isLooping = true;
+	namespace Core {
 
-	CompletedSignal GameLoop::loopSignal;
+		bool GameLoop::_isLooping = true;
 
-	CompletedSignal GameLoop::mainSignal;
+		CompletedSignal GameLoop::loopSignal;
 
-	CompletedSignal GameLoop::logicSignal;
+		CompletedSignal GameLoop::mainSignal;
 
-	void GameLoop::BeforeLoop()
-	{
-		Core::WorldStorageCenter::Init();
-		GameInit::Init();
-		BaseRenderPipeline::Render();
-		RenderBatchManager::SwapBatches();
-		_isLooping = true;
-	}
+		CompletedSignal GameLoop::logicSignal;
 
-	void GameLoop::MainLoop()
-	{
-		thread logic(LogicLoop);
-		while (_isLooping)
+		void GameLoop::BeforeLoop()
 		{
-			if (ExitLoop())
-			{
-				loopSignal.Send(Exit);
-				break;
-			}
-			else
-			{
-				loopSignal.Send();
-			}
-
-			FrameRuntime::BeginFrame();
-			GameWindow::PollWindowEvent();
-			EventSystem::ProcessEvent();
-
-			mainSignal.Send();
-
-			GraphicRender::Render();
-			GameWindow::SwapFrameBuffers();
-
-			logicSignal.Wait();
-
-			EventSystem::EndEvents();
-			RenderBatchManager::SwapBatches();
-			FrameRuntime::EndFrame();
-		}
-		logic.join();
-	}
-
-	void GameLoop::LogicLoop()
-	{
-		while (_isLooping)
-		{
-			if (loopSignal.Wait() == Exit)
-			{
-				break;
-			}
-
-			mainSignal.Wait();
-
-			Core::WorldStorageCenter::Loop();
+			GameInit::Init();
+			WorldLoop::BeforeLoop();
 			BaseRenderPipeline::Render();
-			
-			logicSignal.Send();
+			GraphicCommandManager::SwapCommands();
+			_isLooping = true;
 		}
-	}
 
-	bool GameLoop::ExitLoop()
-	{
-		bool isExit = GameWindow::WindowShouldClose();
-		_isLooping = !isExit;
-		return isExit;
+		void GameLoop::MainLoop()
+		{
+			thread logic(LogicLoop);
+			while (_isLooping)
+			{
+				/*检测是否继续循环*/
+				if (ExitLoop())
+				{
+					loopSignal.Send(Exit);
+					break;
+				}
+				else
+				{
+					loopSignal.Send();
+				}
+				/*帧前处理*/
+				FrameRuntime::BeginFrame();
+				GameWindow::PollWindowEvent();
+				/*发送开始命令*/
+				mainSignal.Send();
+				/*主线程执行*/
+
+				GraphicRender::Render();
+				GameWindow::SwapFrameBuffers();
+				/*等待其他线程执行完毕*/
+				logicSignal.Wait();
+				/*帧后处理*/
+
+				GraphicCommandManager::SwapCommands();
+				FrameRuntime::EndFrame();
+			}
+			logic.join();
+		}
+
+		void GameLoop::AfterLoop()
+		{
+			WorldLoop::AfterLoop();
+		}
+
+		void GameLoop::LogicLoop()
+		{
+			while (_isLooping)
+			{
+				/*检测是否继续循环*/
+				if (loopSignal.Wait() == Exit)
+				{
+					break;
+				}
+				/*等待开始命令*/
+				mainSignal.Wait();
+				/*处理游戏逻辑*/
+				EventSystem::ProcessEvent();
+				WorldLoop::Loop();
+				BaseRenderPipeline::Render();
+				EventSystem::EndEvents();
+				/*发送完毕命令*/
+				logicSignal.Send();
+			}
+		}
+
+		bool GameLoop::ExitLoop()
+		{
+			bool isExit = GameWindow::WindowShouldClose();
+			_isLooping = !isExit;
+			return isExit;
+		}
 	}
 }

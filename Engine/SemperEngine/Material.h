@@ -1,8 +1,11 @@
 #ifndef MATERIAL
 #define MATERIAL
+
 #include <vector>
 #include "Mathz.h"
 #include "ShaderProperty.h"
+#include "GraphicShader.h"
+
 namespace SemperEngine {
 
 	class GraphicShader;
@@ -19,21 +22,23 @@ namespace SemperEngine {
 
 		GraphicShader* shader;
 
-		vector<ShaderProperty<float>> floatProperty;
+		ShaderProperty<float> floatProperty;
 
-		vector<ShaderProperty<Vector2>> vector2Property;
+		ShaderProperty<Vector2> vector2Property;
 
-		vector<ShaderProperty<Vector3>> vector3Property;
+		ShaderProperty<Vector3> vector3Property;
 
-		vector<ShaderProperty<Vector4>> vector4Property;
+		ShaderProperty<Vector4> vector4Property;
 
-		vector<ShaderProperty<Matrix4x4>> matrixProperty;
+		ShaderProperty<Matrix4x4> matrix4x4Property;
 
 		vector<Texture*> textures;
 
 	public:
 
 		Material(string shader);
+
+		void SetMainColor(Vector4 color);
 
 		void SetFloat(float value, string name);
 

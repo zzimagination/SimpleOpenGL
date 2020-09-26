@@ -1,46 +1,43 @@
 #include "RenderBatchManager.h"
-#include "RenderObject.h"
-#include "RenderBatch.h"
-#include "Camera.h"
+#include "GraphicCommandManager.h"
+
 namespace SemperEngine {
-	vector<RenderBatch> *RenderBatchManager::frontBatchs;
 
-	vector<RenderBatch> *RenderBatchManager::backBatchs;
-
-	void RenderBatchManager::GenerateBatchs(vector<RenderObject*> renderObjects, Camera* camera)
+	namespace Core
 	{
-		vector<RenderBatch> *batchs = new vector<RenderBatch>();
-		for (int i = 0; i < renderObjects.size(); i++)
-		{
-			RenderObject *object = renderObjects[i];
-			RenderBatch batch;
-			batch.vertexData = object->renderVertex;
-			batch.textureDatas = object->textures;
-			batch.shader = object->shader;
-			batch.floatProperty = object->floatProperty;
-			batch.vector2Property = object->vector2Property;
-			batch.vector3Property = object->vector3Property;
-			batch.vector4Property = object->vector4Property;
-			batch.matrixProperty = object->matrixProperty;
-			batch.modelMatrix = object->modelMatrix;
-			batch.viewMatrix = camera->CalculateViewMatrix();
-			batch.projectionMatrix = camera->CalculateProjectionMatrix();
+		using namespace std;
 
-			batchs->push_back(batch);
+
+		vector<RenderBatch> RenderBatchManager::batchs;
+
+		void RenderBatchManager::GenerateBatchs(Camera* camera, vector<RenderObject*>  renderObjects)
+		{
+			for (int i = 0; i < renderObjects.size(); i++)
+			{
+				RenderObject *object = renderObjects[i];
+				RenderBatch batch;
+				batch.vertexData = object->renderVertex;
+				batch.modelMatrix = object->modelMatrix;
+				batch.material = object->material;
+				batch.viewMatrix = camera->CalculateViewMatrix();
+				batch.projectionMatrix = camera->CalculateProjectionMatrix();
+
+				batchs.push_back(batch);
+			}
 		}
 
-		backBatchs = batchs;
+		void RenderBatchManager::GenerateGraphicCommands()
+		{
+			for (int i = 0; i < batchs.size(); i++)
+			{
+				Core::GraphicCommandManager::Draw(batchs[i]);
+			}
+		}
+
+		void RenderBatchManager::Clear()
+		{
+			batchs.clear();
+		}
+
 	}
-
-	void RenderBatchManager::SwapBatches()
-	{
-		delete frontBatchs;
-		frontBatchs = backBatchs;
-	}
-
-	void RenderBatchManager::ClearBatchs()
-	{
-
-	}
-
 }

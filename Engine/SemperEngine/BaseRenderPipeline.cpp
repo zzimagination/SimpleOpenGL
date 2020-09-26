@@ -1,21 +1,31 @@
 #include "BaseRenderPipeline.h"
-#include "ProjectSetting.h"
 #include "RenderBatchManager.h"
 #include "RenderObjectManager.h"
-#include "RenderCollector.h"
+#include "RenderCollection.h"
 #include "RenderObjectGenerator.h"
 #include "WorldManager.h"
 #include "World.h"
+#include "CameraCollection.h"
 
-namespace SemperEngine {
-
-	void BaseRenderPipeline::Render()
+namespace SemperEngine
+{
+	namespace Core
 	{
-		Camera* mainCamera = WorldManager::GetActive()->camera;
+		void BaseRenderPipeline::Render()
+		{
+			auto cameras = CameraCollection::GetCameras();
+			auto renderObjects = RenderCollection::GetRenderObjects();
 
-		vector<RenderObject*> startRenderObjects = RenderCollector::GetRenderObjects();
-		RenderObjectManager::Culling(mainCamera, startRenderObjects);
-		RenderBatchManager::GenerateBatchs(startRenderObjects, mainCamera);
+			for (int i = 0; i < cameras.size(); i++)
+			{
+				auto camera = cameras[i];
+				RenderBatchManager::GenerateBatchs(camera, renderObjects);
+			}
 
+			RenderBatchManager::GenerateGraphicCommands();
+			RenderBatchManager::Clear();
+			RenderCollection::ClearRenders();
+			CameraCollection::ClearCameras();
+		}
 	}
 }

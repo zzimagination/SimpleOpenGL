@@ -4,9 +4,6 @@
     <ClCompile Include="Program.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ProjectSetting.cpp">
-      <Filter>Project</Filter>
-    </ClCompile>
     <ClCompile Include="Time.cpp">
       <Filter>Project</Filter>
     </ClCompile>
@@ -14,16 +11,16 @@
       <Filter>Project</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Camera</Filter>
+      <Filter>Object\GameObject\Camera</Filter>
     </ClCompile>
     <ClCompile Include="GameInit.cpp">
       <Filter>GameLogic</Filter>
     </ClCompile>
     <ClCompile Include="WorldManager.cpp">
-      <Filter>World</Filter>
+      <Filter>Object\World</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp">
-      <Filter>World</Filter>
+      <Filter>Object\World</Filter>
     </ClCompile>
     <ClCompile Include="Vector2.cpp">
       <Filter>Math</Filter>
@@ -32,7 +29,7 @@
       <Filter>Math</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
-      <Filter>GameObject</Filter>
+      <Filter>Object\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Matrix4x4.cpp">
       <Filter>Math</Filter>
@@ -46,17 +43,14 @@
     <ClCompile Include="Mathz.cpp">
       <Filter>Math</Filter>
     </ClCompile>
-    <ClCompile Include="Cube.cpp">
-      <Filter>3D\Model</Filter>
-    </ClCompile>
     <ClCompile Include="GameWindow.cpp">
-      <Filter>Project\Windows</Filter>
+      <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="Win32Window.cpp">
-      <Filter>Project\Windows</Filter>
+      <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="GWindow.cpp">
-      <Filter>Project\Windows</Filter>
+      <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="GameLoop.cpp">
       <Filter>Project\Loop</Filter>
@@ -68,9 +62,6 @@
       <Filter>Math</Filter>
     </ClCompile>
     <ClCompile Include="EventSystem.cpp">
-      <Filter>EventSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="KeyEvent.cpp">
       <Filter>EventSystem</Filter>
     </ClCompile>
     <ClCompile Include="EventRecorder.cpp">
@@ -109,15 +100,6 @@
     <ClCompile Include="Material.cpp">
       <Filter>Render\GameRender</Filter>
     </ClCompile>
-    <ClCompile Include="RenderBatch.cpp">
-      <Filter>Render\GameRender</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderBatchManager.cpp">
-      <Filter>Render\GameRender</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderCollector.cpp">
-      <Filter>Render\GameRender</Filter>
-    </ClCompile>
     <ClCompile Include="RenderObject.cpp">
       <Filter>Render\GameRender</Filter>
     </ClCompile>
@@ -154,43 +136,112 @@
     <ClCompile Include="GraphicShaderManager.cpp">
       <Filter>Render\GraphicRender</Filter>
     </ClCompile>
-    <ClCompile Include="GameObjectCollection.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
     <ClCompile Include="Component.cpp">
-      <Filter>Component</Filter>
-    </ClCompile>
-    <ClCompile Include="ComponentCollection.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldInitializer.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldStorageCenter.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldInternal.cpp">
-      <Filter>World</Filter>
+      <Filter>Object\Component</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>GameObject</Filter>
+      <Filter>Object\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="TestComponent.cpp">
-      <Filter>Component\Components</Filter>
+      <Filter>Object\Component\Components</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>Component\Components</Filter>
+      <Filter>Object\Component\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>GameObject\GameObjects</Filter>
+    <ClCompile Include="GraphicDraw.cpp">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicVertexBuffer.cpp">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicVertexBufferClear.cpp">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicTextureBuffer.cpp">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicTextureBufferClear.cpp">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicCommandManager.cpp">
+      <Filter>Render\GraphicRender</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderCollection.cpp">
+      <Filter>Render\GameRender</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderBatchManager.cpp">
+      <Filter>Render\GameRender</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderBatch.cpp">
+      <Filter>Render\GameRender</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeData.cpp">
+      <Filter>3D\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>Object\GameObject\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldLoop.cpp">
+      <Filter>Object\World</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectLoop.cpp">
+      <Filter>Object\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="TestWorld.cpp">
+      <Filter>Object\World\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldMap.cpp">
+      <Filter>Object\World</Filter>
+    </ClCompile>
+    <ClCompile Include="InsideWorld.cpp">
+      <Filter>Object\World\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="NextWorld.cpp">
+      <Filter>Object\World</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldTree.cpp">
+      <Filter>Object\World</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldContainer.cpp">
+      <Filter>Object\World</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldAction.cpp">
+      <Filter>Object\World\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="InsideWorldAction.cpp">
+      <Filter>Object\World\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="TestWorldAction.cpp">
+      <Filter>Object\World\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondWorldAction.cpp">
+      <Filter>Object\World\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondWorld.cpp">
+      <Filter>Object\World\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldFruit.cpp">
+      <Filter>Object\World</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectCreator.cpp">
+      <Filter>Object\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraCollection.cpp">
+      <Filter>Object\GameObject\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectContainer.cpp">
+      <Filter>Object\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentCreator.cpp">
+      <Filter>Object\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ProjectSetting.h">
-      <Filter>Project</Filter>
     </ClInclude>
     <ClInclude Include="Time.h">
       <Filter>Project</Filter>
@@ -199,22 +250,22 @@
       <Filter>Project</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Camera</Filter>
+      <Filter>Object\GameObject\Camera</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>Component</Filter>
+      <Filter>Object\Component</Filter>
     </ClInclude>
     <ClInclude Include="GameInit.h">
       <Filter>GameLogic</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>GameObject</Filter>
+      <Filter>Object\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="WorldManager.h">
-      <Filter>World</Filter>
+      <Filter>Object\World</Filter>
     </ClInclude>
     <ClInclude Include="World.h">
-      <Filter>World</Filter>
+      <Filter>Object\World</Filter>
     </ClInclude>
     <ClInclude Include="Vector2.h">
       <Filter>Math</Filter>
@@ -223,7 +274,7 @@
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
-      <Filter>GameObject</Filter>
+      <Filter>Object\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Matrix4x4.h">
       <Filter>Math</Filter>
@@ -240,17 +291,14 @@
     <ClInclude Include="Mathz.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="Cube.h">
-      <Filter>3D\Model</Filter>
-    </ClInclude>
     <ClInclude Include="GameWindow.h">
-      <Filter>Project\Windows</Filter>
+      <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="Win32Window.h">
-      <Filter>Project\Windows</Filter>
+      <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="GWindow.h">
-      <Filter>Project\Windows</Filter>
+      <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="GameLoop.h">
       <Filter>Project\Loop</Filter>
@@ -268,18 +316,9 @@
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="KeyIdentity.h">
-      <Filter>Project\Windows</Filter>
+      <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="EventSystem.h">
-      <Filter>EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyEvent.h">
-      <Filter>EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="MouseButtonEvent.h">
-      <Filter>EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyDef.h">
       <Filter>EventSystem</Filter>
     </ClInclude>
     <ClInclude Include="EventRecorder.h">
@@ -318,15 +357,6 @@
     <ClInclude Include="Material.h">
       <Filter>Render\GameRender</Filter>
     </ClInclude>
-    <ClInclude Include="RenderBatch.h">
-      <Filter>Render\GameRender</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderBatchManager.h">
-      <Filter>Render\GameRender</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderCollector.h">
-      <Filter>Render\GameRender</Filter>
-    </ClInclude>
     <ClInclude Include="RenderObject.h">
       <Filter>Render\GameRender</Filter>
     </ClInclude>
@@ -363,21 +393,6 @@
     <ClInclude Include="GraphicShaderManager.h">
       <Filter>Render\GraphicRender</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjectCollection.h">
-      <Filter>World</Filter>
-    </ClInclude>
-    <ClInclude Include="ComponentCollection.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldInitializer.h">
-      <Filter>World</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldStorageCenter.h">
-      <Filter>World</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldInternal.h">
-      <Filter>World</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectCollection.h">
       <Filter>Tools\Collection</Filter>
     </ClInclude>
@@ -385,13 +400,121 @@
       <Filter>Tools\Collection</Filter>
     </ClInclude>
     <ClInclude Include="TestComponent.h">
-      <Filter>Component\Components</Filter>
+      <Filter>Object\Component\Components</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>Component\Components</Filter>
+      <Filter>Object\Component\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>GameObject\GameObjects</Filter>
+    <ClInclude Include="GraphicCommand.h">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicDraw.h">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicVertexBuffer.h">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicVertexBufferClear.h">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicTextureBuffer.h">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicTextureBufferClear.h">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicCommandManager.h">
+      <Filter>Render\GraphicRender</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderCollection.h">
+      <Filter>Render\GameRender</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderBatchManager.h">
+      <Filter>Render\GameRender</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderBatch.h">
+      <Filter>Render\GameRender</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeData.h">
+      <Filter>3D\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Object\GameObject\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldLoop.h">
+      <Filter>Object\World</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectLoop.h">
+      <Filter>Object\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="TestWorld.h">
+      <Filter>Object\World\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldMap.h">
+      <Filter>Object\World</Filter>
+    </ClInclude>
+    <ClInclude Include="InsideWorld.h">
+      <Filter>Object\World\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="NextWorld.h">
+      <Filter>Object\World</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldTree.h">
+      <Filter>Object\World</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldContainer.h">
+      <Filter>Object\World</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldBuilder.h">
+      <Filter>Object\World\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldBuilderList.h">
+      <Filter>Object\World\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldAction.h">
+      <Filter>Object\World\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="InsideWorldAction.h">
+      <Filter>Object\World\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="TestWorldAction.h">
+      <Filter>Object\World\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondWorldAction.h">
+      <Filter>Object\World\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondWorld.h">
+      <Filter>Object\World\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldActionList.h">
+      <Filter>Object\World\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldFruit.h">
+      <Filter>Object\World</Filter>
+    </ClInclude>
+    <ClInclude Include="EventDefination.h">
+      <Filter>EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInputEvent.h">
+      <Filter>EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectCreator.h">
+      <Filter>Object\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraCollection.h">
+      <Filter>Object\GameObject\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectContainer.h">
+      <Filter>Object\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentCreator.h">
+      <Filter>Object\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="LifeContainer.h">
+      <Filter>Tools\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -415,15 +538,6 @@
       <Extensions>
       </Extensions>
     </Filter>
-    <Filter Include="Camera">
-      <UniqueIdentifier>{29db5c31-2ad4-45d9-9105-ba6d5933422e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="World">
-      <UniqueIdentifier>{77ed67e5-1566-4b85-acb4-9d36d8bec654}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Component">
-      <UniqueIdentifier>{8a83e296-1391-4c56-9c35-fa33ac688ef4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Math">
       <UniqueIdentifier>{39606d9c-726b-4a51-abbe-cc3951ddabf9}</UniqueIdentifier>
     </Filter>
@@ -436,14 +550,8 @@
     <Filter Include="Test">
       <UniqueIdentifier>{29de764b-d9af-4816-9c79-927d25c26cdb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject">
-      <UniqueIdentifier>{6ad4ca4a-dff0-479b-9c97-8d28b378fe8a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="EventSystem">
       <UniqueIdentifier>{f5075df4-7f92-45ad-b858-dadb4bf028f4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Project\Windows">
-      <UniqueIdentifier>{94b3bf07-6d83-4bcc-95ac-2544e04f03b8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Project\Loop">
       <UniqueIdentifier>{26a0ad8a-dcf3-4edf-89aa-cd978117fc51}</UniqueIdentifier>
@@ -490,11 +598,41 @@
     <Filter Include="Tools\Collection">
       <UniqueIdentifier>{7a3d9c93-c102-4875-a804-5a778e89fc3b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Component\Components">
+    <Filter Include="Render\GraphicRender\Command">
+      <UniqueIdentifier>{9b033068-97cc-4484-b37d-d61b07272808}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{0348e011-0140-41b7-8452-82008fe2c81c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\World">
+      <UniqueIdentifier>{77ed67e5-1566-4b85-acb4-9d36d8bec654}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\GameObject">
+      <UniqueIdentifier>{6ad4ca4a-dff0-479b-9c97-8d28b378fe8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\GameObject\GameObjects">
+      <UniqueIdentifier>{0438b22a-0dbf-458b-999f-b044d4d180e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Component">
+      <UniqueIdentifier>{8a83e296-1391-4c56-9c35-fa33ac688ef4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Component\Components">
       <UniqueIdentifier>{f98196c5-c848-45df-ac2f-2328564e6271}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\GameObjects">
-      <UniqueIdentifier>{0438b22a-0dbf-458b-999f-b044d4d180e4}</UniqueIdentifier>
+    <Filter Include="Object\World\Builders">
+      <UniqueIdentifier>{1bc35231-a605-4f7a-86fa-9cb46c4d6e32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\World\Actions">
+      <UniqueIdentifier>{455dd877-472c-41f0-ae35-93b9b64031b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Base">
+      <UniqueIdentifier>{022e4208-76a3-46a9-81ca-e0e9f6f86d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows">
+      <UniqueIdentifier>{94b3bf07-6d83-4bcc-95ac-2544e04f03b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\GameObject\Camera">
+      <UniqueIdentifier>{29db5c31-2ad4-45d9-9105-ba6d5933422e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

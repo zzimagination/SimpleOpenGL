@@ -6,13 +6,13 @@
 
 namespace SemperEngine
 {
-	constexpr const char* logFolder = "Debug/";
-
-	constexpr const char* logPath = "Debug/log.text";
-
 	class DebugFile
 	{
 	private:
+
+		static const char* logFolder;
+
+		static const char* logPath;
 
 		static std::fstream _file;
 

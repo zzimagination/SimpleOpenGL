@@ -1,5 +1,5 @@
 #include "GWindow.h"
-#include "ProjectSetting.h"
+#include "Application.h"
 #include "GameWindow.h"
 #include "KeyIdentity.h"
 #include "EventRecorder.h"

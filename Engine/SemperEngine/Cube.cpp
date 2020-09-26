@@ -1,25 +1,49 @@
 #include "Cube.h"
+#include "Time.h"
+#include "World.h"
+#include "RenderCollection.h"
+#include "GraphicCommandManager.h"
+#include "GameObjectCreator.h"
 
-namespace SemperEngine {
+namespace SemperEngine
+{
+	using namespace std;
+	using namespace Core;
 
-
-	int Cube::VertexCount()
+	Cube::Cube()
 	{
-		return sizeof(vertices) / sizeof(Vector3);
+		_renderObject = unique_ptr<RenderObject>(new RenderObject());
+		_material= shared_ptr<Material>(new Material("Unlit"));
 	}
 
-	Vector3 * Cube::GetVertices()
+	Cube::~Cube()
 	{
-		return vertices;
 	}
 
-	Vector2* Cube::GetUV()
+	void Cube::Start()
 	{
-		return uvs;
+		GraphicCommandManager::AddVertexBuffer(&_cubeData);
+		_renderObject->modelMatrix = transform.GetModelMatrix();
+		_renderObject->material = _material.get();
+		_renderObject->renderVertex = &_cubeData;
+
 	}
 
-	int* Cube::GetIndices()
+	void Cube::Update()
 	{
-		return indices;
+		_renderObject->modelMatrix = transform.GetModelMatrix();
+		_renderObject->material = _material.get();
+		Core::RenderCollection::AddRenderObject(_renderObject->mylife);
 	}
+
+	void Cube::End()
+	{
+		GraphicCommandManager::ClearVertexBuffer(&_cubeData);
+	}
+
+	void Cube::SetMaterial(std::shared_ptr<Material> material)
+	{
+		_material = material;
+	}
+
 }

@@ -1,13 +1,9 @@
 #version 330 core
 layout (location = 0) out vec4 FragColor;
 
-in vec2 TexCoords;
-
-uniform vec3 _color;
+uniform vec4 _color;
 
 void main()
 {             
-    vec3 col = _color;
-	FragColor=vec4(col,1.0);
-	//FragColor = worldPos;
+	FragColor=vec4(_color.rgb,1.0);
 }

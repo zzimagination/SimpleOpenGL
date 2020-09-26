@@ -22,7 +22,7 @@ namespace SemperEngine
 			{
 				throw "already have this object";
 			}
-			Item item = { object, false };
+			Packing item = { object, false };
 			_objects.push_back(item);
 		}
 
@@ -89,6 +89,20 @@ namespace SemperEngine
 		inline bool ObjectCollection<T>::Contain(T* object)
 		{
 			return ItemIndex(object) >= 0;
+		}
+
+		template<class T>
+		inline void ObjectCollection<T>::Dispose()
+		{
+			for (int i = 0; i < _objects.size(); i++)
+			{
+				if (!_objects[i].isRemoved)
+				{
+					continue;
+				}
+				delete _objects[i].object;
+				_objects[i].object = nullptr;
+			}
 		}
 
 		template<class T>

@@ -5,48 +5,33 @@
 #include "RenderVertexData.h"
 #include "Texture.h"
 #include "GraphicDataCenter.h"
+#include "GraphicCommandManager.h"
 
 namespace SemperEngine {
 
 	void GraphicRender::Render()
 	{
+		auto commands = Core::GraphicCommandManager::front_CollectResource;
+		for (int i = 0; i < commands.size(); i++)
+		{
+			commands[i]->Excute();
+			delete commands[i];
+		}
+
+		commands = Core::GraphicCommandManager::front_AddResource;
+		for (int i = 0; i < commands.size(); i++)
+		{
+			commands[i]->Excute();
+			delete commands[i];
+		}
+
 		GraphicRenderDraw::SetClear(ClearMode::Color | ClearMode::Depth, Vector4(0.0f, 0.0f, 0.0f, 1));
 
-		vector<RenderBatch>* batchs = RenderBatchManager::frontBatchs;
-		if (batchs != nullptr)
+		commands = Core::GraphicCommandManager::front_DrawCommands;
+		for (int i = 0; i < commands.size(); i++)
 		{
-			for (int i = 0; i < batchs->size(); i++)
-			{
-				RenderBatch batch = (*batchs)[i];
-				GraphicVertexData *vertexData = GetVertexData(batch.vertexData);
-				vector<GraphicTextureData*> textureDatas = GetTextureData(batch.textureDatas);
-
-				GraphicRenderDraw::SetCullFace(CullFace::Front);
-				GraphicRenderDraw::SetDepthTest(true);
-				GraphicRenderDraw::SetVertexData(vertexData);
-				GraphicRenderDraw::SetTransform(batch.modelMatrix, batch.viewMatrix, batch.projectionMatrix);
-				GraphicRenderDraw::SetShader(batch.shader, batch.floatProperty, batch.vector2Property, batch.vector3Property, batch.vector4Property, batch.matrixProperty);
-				for (int i = 0; i < textureDatas.size(); i++)
-				{
-					GraphicRenderDraw::SetTextureData(textureDatas[i]);
-				}
-				GraphicRenderDraw::Draw();
-			}
+			commands[i]->Excute();
+			delete commands[i];
 		}
-	}
-
-	GraphicVertexData * GraphicRender::GetVertexData(RenderVertexData * v)
-	{
-		return GraphicDataCenter::GetVertexData(v);
-	}
-
-	vector<GraphicTextureData*> GraphicRender::GetTextureData(vector<Texture*> tex)
-	{
-		vector<GraphicTextureData*> data;
-		for (int i = 0; i < tex.size(); i++)
-		{
-			data.push_back(GraphicDataCenter::GetTextureData(tex[i]));
-		}
-		return data;
 	}
 }

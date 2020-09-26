@@ -1,5 +1,5 @@
-#include "Win32Window.h"
 #ifdef WIN32_WIN
+#include "Win32Window.h"
 
 
 #include <gl/GL.h>

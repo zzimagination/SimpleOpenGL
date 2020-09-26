@@ -1,6 +1,8 @@
 #ifndef COMPONENT
 #define COMPONENT
 
+#include "LifeContainer.h"
+
 namespace SemperEngine {
 
 	class GameObject;
@@ -9,7 +11,9 @@ namespace SemperEngine {
 	{
 	public:
 
-		GameObject* gameObject = nullptr;
+		GameObject* gameObject;
+
+		Core::LifeContainer<Component> life = Core::LifeContainer<Component>(this);
 
 	public:
 
@@ -19,15 +23,12 @@ namespace SemperEngine {
 
 		virtual void End() = 0;
 
-		void GameObjectStart(GameObject* parent);
+	public:
 
-		void GameObjectUpdate(GameObject* parent);
+		Component();
 
-		void GameObjectEnd(GameObject* parent);
+		~Component();
 
-	private:
-
-		friend class GameObject;
 	};
 }
 #endif // !COMPONENT

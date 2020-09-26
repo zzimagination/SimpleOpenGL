@@ -1,6 +1,6 @@
+#ifdef WIN32_WIN
 #include "EngineDef.h"
 
-#ifdef WIN32_WIN
 
 #ifndef WIN32_WINDOW
 #define WIN32_WINDOW

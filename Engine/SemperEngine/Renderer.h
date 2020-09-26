@@ -1,7 +1,10 @@
 #ifndef RENDERER
 #define RENDERER
-#include "Cube.h"
+
+#include <vector>
+#include "Mathz.h"
 #include "Component.h"
+#include "Material.h"
 
 namespace SemperEngine {
 
@@ -10,15 +13,11 @@ namespace SemperEngine {
 	class GameObject;
 	class Transform;
 
-	using namespace std;
-
 	class Renderer : public Component
 	{
-	private:
+	protected:
 
-		Cube cube;
-
-		Material* _material;
+		std::vector<RenderObject*> _renderObjects;
 
 	public:
 
@@ -26,35 +25,21 @@ namespace SemperEngine {
 
 		~Renderer();
 
-		virtual void Start() override;
-
-		virtual void Update() override;
-
-		virtual void End() override;
-
-	private:
-
-		RenderObject* _renderObject;
-
 	public:
 
-		void Collect();
+		std::vector<RenderObject*> GetRenderObjects();
 
-		void Drop();
+	protected:
 
-		virtual Material* GetMaterial();
+		void AddToCollection();
 
-		virtual void SetMaterial(Material *material);
+		void RemoveFromCollection();
 
-		RenderObject* GetRenderObject();
+		virtual void GenerateRenderObject() = 0;
 
-	private:
+		virtual void UpdateRenderObject() = 0;
 
-		virtual void GenerateRenderObject();
-
-		virtual void UpdateRenderObject();
-
-		virtual void DeleteRenderObject();
+		virtual void DeleteRenderObject() = 0;
 	};
 }
 

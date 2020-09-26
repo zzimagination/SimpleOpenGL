@@ -3,42 +3,33 @@
 
 #include <vector>
 #include <typeinfo>
-#include "ObjectCollection.h"
+#include "Component.h"
+#include "Transform.h"
+#include "GameObjectContainer.h"
+#include "LifeContainer.h"
 
-
-namespace SemperEngine {
-
-	class World;
-
-	class Component;
-
-	class Transform;
-
-	namespace Core
-	{
-		class WorldInstance;
-	}
-
+namespace SemperEngine
+{
 	class GameObject
 	{
-
-		typedef Collection::ObjectCollection<Component> ComponentCollection;
 
 	public:
 
 		std::string name;
 
-	private:
+		Transform transform;
 
-		bool _isStart;
+		Core::LifeContainer<GameObject> life = Core::LifeContainer<GameObject>(this);
 
-		Transform* _transform;
+		Core::GameObjectContainer container;
 
-		ComponentCollection _startedComponents;
+	public:
 
-		ComponentCollection _noStartComponents;
+		virtual void Start();
 
-		std::vector<Component*> _componentList;
+		virtual void Update();
+
+		virtual void End();
 
 	public:
 
@@ -48,34 +39,6 @@ namespace SemperEngine {
 
 		~GameObject();
 
-		void AddComponent(Component* com);
-
-		Component* GetComponent(const std::type_info & type);
-
-		void RemoveComponent(Component* com);
-
-		Transform* GetTransform();
-
-	private:
-
-		virtual void Start();
-
-		virtual void Update();
-
-		virtual void End();
-
-		void WorldStart(World* world);
-
-		void WorldUpdate(World* world);
-
-		void WorldEnd(World* world);
-
-	private:
-
-		friend class Core::WorldInstance;
-
 	};
-
 }
-
 #endif // !GAMEOBJECT

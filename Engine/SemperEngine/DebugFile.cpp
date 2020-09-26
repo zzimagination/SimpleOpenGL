@@ -8,6 +8,10 @@ namespace SemperEngine {
 	using namespace std;
 	using namespace std::filesystem;
 
+	const char* DebugFile::logFolder = "Log/";
+
+	const char* DebugFile::logPath = "Log/log.text";
+
 	fstream DebugFile::_file;
 
 	bool DebugFile::isOpen = false;

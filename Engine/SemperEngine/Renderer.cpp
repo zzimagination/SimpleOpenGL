@@ -1,5 +1,5 @@
 #include "Renderer.h"
-#include "RenderCollector.h"
+#include "RenderCollection.h"
 #include "RendererGenerator.h"
 #include "RenderObject.h"
 #include "GameObject.h"
@@ -7,7 +7,9 @@
 
 namespace SemperEngine {
 
-	Renderer::Renderer()
+	using namespace std;
+
+	Renderer::Renderer() :Component()
 	{
 	}
 
@@ -15,71 +17,16 @@ namespace SemperEngine {
 	{
 	}
 
-	void Renderer::Start()
+	std::vector<RenderObject*> Renderer::GetRenderObjects()
 	{
-		Collect();
-		GenerateRenderObject();
+		return _renderObjects;
 	}
 
-	void Renderer::Update()
+	void Renderer::AddToCollection()
 	{
-		UpdateRenderObject();
 	}
 
-	void Renderer::End()
+	void Renderer::RemoveFromCollection()
 	{
-		Drop();
-		DeleteRenderObject();
 	}
-
-	void Renderer::Collect()
-	{
-		RenderCollector::CollectRenderer(this);
-	}
-
-	void Renderer::Drop()
-	{
-		RenderCollector::DropRenderer(this);
-	}
-
-	Material * Renderer::GetMaterial()
-	{
-		return _material;
-	}
-
-	void Renderer::SetMaterial(Material * material)
-	{
-		this->_material = material;
-	}
-
-	RenderObject * Renderer::GetRenderObject()
-	{
-		return _renderObject;
-	}
-
-	void Renderer::GenerateRenderObject()
-	{
-		_renderObject = new RenderObject();
-		UpdateRenderObject();
-	}
-
-	void Renderer::UpdateRenderObject()
-	{
-		_renderObject->renderVertex = &cube;
-		_renderObject->modelMatrix = gameObject->GetTransform()->GetModelMatrix();
-		_renderObject->shader = _material->shader;
-		_renderObject->floatProperty = _material->floatProperty;
-		_renderObject->vector2Property = _material->vector2Property;
-		_renderObject->vector3Property = _material->vector3Property;
-		_renderObject->vector4Property = _material->vector4Property;
-		_renderObject->matrixProperty = _material->matrixProperty;
-		_renderObject->textures = _material->textures;
-	}
-
-	void Renderer::DeleteRenderObject()
-	{
-		delete _renderObject;
-		_renderObject = nullptr;
-	}
-
 }

@@ -3,29 +3,35 @@
 
 #include "CompletedSignal.h"
 namespace SemperEngine {
-	class GameLoop
+
+	namespace Core
 	{
-	private:
+		class GameLoop
+		{
+		private:
 
-		static bool _isLooping;
+			static bool _isLooping;
 
-		static CompletedSignal loopSignal;
+			static CompletedSignal loopSignal;
 
-		static CompletedSignal mainSignal;
+			static CompletedSignal mainSignal;
 
-		static CompletedSignal logicSignal;
+			static CompletedSignal logicSignal;
 
-	public:
+		public:
 
-		static void BeforeLoop();
+			static void BeforeLoop();
 
-		static void MainLoop();
+			static void MainLoop();
 
-	private:
+			static void AfterLoop();
 
-		static void LogicLoop();
+		private:
 
-		static bool ExitLoop();
-	};
+			static void LogicLoop();
+
+			static bool ExitLoop();
+		};
+	}
 }
 #endif // !GAMELOOP

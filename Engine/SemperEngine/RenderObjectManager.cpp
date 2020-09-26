@@ -9,7 +9,7 @@ namespace SemperEngine {
 
 	vector<RenderObject*> RenderObjectManager::renderObjects;
 
-	void RenderObjectManager::Culling(Camera * camera, vector<RenderObject*> &objects)
+	void RenderObjectManager::Culling(Camera * camera, vector<RenderObject*> & objects)
 	{
 
 	}

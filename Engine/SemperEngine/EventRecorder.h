@@ -2,8 +2,7 @@
 #define EVENTRECORDER
 #include <vector>
 #include "Mathz.h"
-#include "KeyEvent.h"
-#include "MouseButtonEvent.h"
+#include "UserInputEvent.h"
 
 namespace SemperEngine {
 
@@ -13,13 +12,13 @@ namespace SemperEngine {
 	{
 	public:
 
-		static vector<Event::KeyEvent> keyEvents;
+		static vector<KeyEvent> keyEvents;
 
-		static vector<Event::KeyKeeper> pressedKeys;
+		static vector<KeyKeeper> pressedKeys;
 
-		static vector<Event::MouseButtonEvent> mouseButtonEvents;
+		static vector<MouseButtonEvent> mouseButtonEvents;
 
-		static vector<Event::MouseButtonKeeper> mouseButtons;
+		static vector<MouseButtonKeeper> mouseButtons;
 
 		static Vector2 mousePosition;
 

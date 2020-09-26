@@ -1,4 +1,5 @@
 #ifndef KEYIDENTITY
+#define KEYIDENTITY
 
 #include "EngineDef.h"
 

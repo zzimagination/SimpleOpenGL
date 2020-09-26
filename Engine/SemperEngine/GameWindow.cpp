@@ -1,7 +1,7 @@
 #include "GameWindow.h"
 #include "GWindow.h"
 #include <iostream>
-#include "ProjectSetting.h"
+#include "Application.h"
 #include <string>
 
 namespace SemperEngine {
@@ -10,8 +10,8 @@ namespace SemperEngine {
 
 	void GameWindow::CreateGameWindow()
 	{
-		int width = ProjectSetting::GetWindowWidth();
-		int height = ProjectSetting::GetWindowHeight();
+		int width = Application::GetWindowWidth();
+		int height = Application::GetWindowHeight();
 
 		window = GWindow::Create(width, height, L"SemperEngine");
 	}
@@ -39,8 +39,8 @@ namespace SemperEngine {
 
 	void GameWindow::OnSizeChanged(int width, int height)
 	{
-		ProjectSetting::windowWidth = width;
-		ProjectSetting::windowHeight = height;
+		Application::windowWidth = width;
+		Application::windowHeight = height;
 	}
 
 	void GameWindow::OnMouse(double xpos, double ypos)

@@ -12,13 +12,13 @@ namespace SemperEngine
 		{
 		private:
 
-			struct Item
+			struct Packing
 			{
 				T* object;
 
 				bool isRemoved;
 
-				bool operator == (const Item & value) const
+				bool operator == (const Packing & value) const
 				{
 					bool result = this->object == value.object;
 					result = result && (this->isRemoved == value.isRemoved);
@@ -28,7 +28,7 @@ namespace SemperEngine
 
 		private:
 
-			std::vector<Item> _objects;
+			std::vector<Packing> _objects;
 
 			int _current;
 
@@ -50,10 +50,11 @@ namespace SemperEngine
 
 			bool Contain(T *object);
 
+			void Dispose();
+
 		private:
 
 			int ItemIndex(T* item);
-
 
 			void RealRemove();
 		};

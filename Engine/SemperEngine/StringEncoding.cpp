@@ -13,17 +13,15 @@ namespace SemperEngine
 
 	string StringEncoding::UnicodeToUTF8(const wstring & wstr)
 	{
-		
 		//wstring_convert<codecvt_utf8<wchar_t>> convert;
 		//string result = convert.to_bytes(wstr);
 		
 		const wchar_t* data = wstr.data();
 		size_t size = wstr.size();
 		size_t bufferSize = WideCharToMultiByte(CP_UTF8, WC_NO_BEST_FIT_CHARS, data, -1, nullptr, 0, NULL, NULL);
-		char *buffer = new char[bufferSize];
-		WideCharToMultiByte(CP_UTF8, WC_NO_BEST_FIT_CHARS, data, -1, buffer, bufferSize, NULL, NULL);
-		string result = buffer;
-		delete[] buffer;
+		unique_ptr<char> buffer2(new char[bufferSize]);
+		WideCharToMultiByte(CP_UTF8, WC_NO_BEST_FIT_CHARS, data, -1, buffer2.get(), bufferSize, NULL, NULL);
+		string result = buffer2.get();
 		return result;
 	}
 
@@ -35,10 +33,9 @@ namespace SemperEngine
 		const char* data = str.data();
 		size_t size = str.size();
 		size_t bufferSize = MultiByteToWideChar(CP_UTF8, WC_NO_BEST_FIT_CHARS, data, -1, nullptr, 0);
-		wchar_t* buffer = new wchar_t[bufferSize];
-		MultiByteToWideChar(CP_UTF8, WC_NO_BEST_FIT_CHARS, data, -1, buffer, bufferSize);
-		wstring result = buffer;
-		delete[] buffer;
+		unique_ptr<wchar_t> buffer2(new wchar_t[bufferSize]);
+		MultiByteToWideChar(CP_UTF8, WC_NO_BEST_FIT_CHARS, data, -1, buffer2.get(), bufferSize);
+		wstring result = buffer2.get();
 		return result;
 	}
 
@@ -46,21 +43,19 @@ namespace SemperEngine
 	{
 		const wchar_t * p = wstr.data();
 		mbstate_t mbs = {};
-		size_t* size = new size_t;
-		if (wcsrtombs_s(size, nullptr, 0, &p, 0, &mbs) != 0)
+
+		unique_ptr<size_t> size2(new size_t);
+		if (wcsrtombs_s(size2.get(), nullptr, 0, &p, 0, &mbs) != 0)
 		{
 			return string();
 		}
 
-		char *buffer = new char[*size + 1];
-		if (wcsrtombs_s(size, buffer, *size + 1, &p, *size, &mbs) != 0)
+		unique_ptr<char> buffer2(new char[*size2.get() + 1]);
+		if (wcsrtombs_s(size2.get(), buffer2.get(), *size2.get() + 1, &p, *size2.get(), &mbs) != 0)
 		{
 			return string();
 		}
-		string result = buffer;
-
-		delete[] buffer;
-		delete size;
+		string result = buffer2.get(); 
 		return result;
 	}
 
@@ -69,21 +64,19 @@ namespace SemperEngine
 		//setlocale(LC_CTYPE, "");
 		const char* p = str.data();
 		mbstate_t mbs = {};
-		size_t* size = new size_t;
-		if (mbsrtowcs_s(size, nullptr, 0, &p, 0, &mbs) != 0)
+
+		unique_ptr<size_t> size2(new size_t);
+		if (mbsrtowcs_s(size2.get(), nullptr, 0, &p, 0, &mbs) != 0)
 		{
 			return wstring();
 		}
 
-		wchar_t* buffer = new wchar_t[*size + 1];
-		if (mbsrtowcs_s(size, buffer, *size+1, &p, *size, &mbs) != 0)
+		unique_ptr<wchar_t> buffer2(new wchar_t[*size2.get() + 1]);
+		if (mbsrtowcs_s(size2.get(), buffer2.get(), *size2.get()+1, &p, *size2.get(), &mbs) != 0)
 		{
 			return wstring();
 		}
-		wstring result = buffer;
-
-		delete[] buffer;
-		delete size;
+		wstring result = buffer2.get();
 		return result;
 	}
 }

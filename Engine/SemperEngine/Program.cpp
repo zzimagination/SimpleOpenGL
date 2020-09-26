@@ -11,24 +11,19 @@
 
 #include "Test.h"
 
-
 using namespace SemperEngine;
 
 int main()
 {
 	setlocale(LC_CTYPE, "");
 
-	Test::UnitTesting();
+	//Test::UnitTesting();
 
-	DebugSystem::Initialization();
-	ProjectSetting::LoadConfig();
-	GameWindow::CreateGameWindow();
 	GameStart::Start();
-	GameLoop::BeforeLoop();
-	GameLoop::MainLoop();
+	Core::GameLoop::BeforeLoop();
+	Core::GameLoop::MainLoop();
+	Core::GameLoop::AfterLoop();
 	GameEnd::End();
-	GameWindow::TerminateGameWindow();
-	DebugSystem::Dispose();
 
 	return 0;
 }

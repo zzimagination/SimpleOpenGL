@@ -2,17 +2,22 @@
 #define TEST_COMPONENT
 
 #include "SemperEngine.h"
+#include "GameObject.h"
 
-class TestComponent : public SemperEngine::Component {
+namespace SemperEngine
+{
+	class TestComponent : public SemperEngine::Component {
 
-public:
-	// 通过 Component 继承
-	virtual void Start() override;
+	public:
 
-	virtual void Update() override;
+		TestComponent();
+		// 通过 Component 继承
+		virtual void Start() override;
 
-	virtual void End() override;
+		virtual void Update() override;
 
-};
+		virtual void End() override;
 
+	};
+}
 #endif // !TEST_COMPONENT

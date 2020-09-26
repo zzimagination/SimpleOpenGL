@@ -1,13 +1,10 @@
 #ifndef EVENTSYSTEM
 #define EVENTSYSTEM
 #include <vector>
-#include "KeyEvent.h"
-#include "MouseButtonEvent.h"
 #include "Mathz.h"
+#include "UserInputEvent.h"
 
 namespace SemperEngine {
-
-	using namespace std;
 
 	class EventSystem
 	{
@@ -19,17 +16,17 @@ namespace SemperEngine {
 
 		static void ProcessEvent();
 
-		static vector<Event::KeyEvent> GetKeyEvents();
+		static std::vector<KeyEvent> GetKeyEvents();
 
-		static vector<Event::MouseButtonEvent> GetMouseButtonEvents();
+		static std::vector<MouseButtonEvent> GetMouseButtonEvents();
 
 		static Vector2 GetMousePosition();
 
 		static void EndEvents();
 
-		static bool GetKeyAction(Event::Key key, Event::ButtonAction action);
+		static bool GetKeyAction(Keyboard::Key key, InputAction::Button action);
 
-		static bool GetMouseButtonAction(Event::MouseButton button, Event::ButtonAction action);
+		static bool GetMouseButtonAction(Mouse::Button button, InputAction::Button action);
 	};
 }
 #endif

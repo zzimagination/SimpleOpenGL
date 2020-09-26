@@ -5,7 +5,6 @@
 #include <iostream>
 namespace SemperEngine {
 
-	using namespace Event;
 
 	float EventSystem::keepInterval = 0.01f;
 
@@ -17,7 +16,7 @@ namespace SemperEngine {
 		{
 			if ((*mouseButtons)[i].pressTime > keepInterval)
 			{
-				MouseButtonEvent e = { (*mouseButtons)[i].button, ButtonAction::keep };
+				MouseButtonEvent e = { (*mouseButtons)[i].button, InputAction::Button::keep };
 				mouseButtonEvents->push_back(e);
 			}
 			(*mouseButtons)[i].pressTime += Time::GetDeltaTime();
@@ -28,7 +27,7 @@ namespace SemperEngine {
 		{
 			if ((*pressedKeys)[i].pressTime > keepInterval)
 			{
-				KeyEvent e = { (*pressedKeys)[i].key, ButtonAction::keep };
+				KeyEvent e = { (*pressedKeys)[i].key, InputAction::Button::keep };
 				keyEvents->push_back(e);
 			}
 			(*pressedKeys)[i].pressTime += Time::GetDeltaTime();
@@ -39,7 +38,7 @@ namespace SemperEngine {
 	{
 		return EventRecorder::keyEvents;
 	}
-	vector<Event::MouseButtonEvent> EventSystem::GetMouseButtonEvents()
+	vector<MouseButtonEvent> EventSystem::GetMouseButtonEvents()
 	{
 		return EventRecorder::mouseButtonEvents;
 	}
@@ -53,7 +52,7 @@ namespace SemperEngine {
 		EventRecorder::Clear();
 	}
 
-	bool EventSystem::GetKeyAction(Event::Key key, Event::ButtonAction action)
+	bool EventSystem::GetKeyAction(Keyboard::Key key, InputAction::Button action)
 	{
 		auto events = GetKeyEvents();
 		for (int i = 0; i < events.size(); i++)
@@ -66,7 +65,7 @@ namespace SemperEngine {
 		return false;
 	}
 
-	bool EventSystem::GetMouseButtonAction(Event::MouseButton button, Event::ButtonAction action)
+	bool EventSystem::GetMouseButtonAction(Mouse::Button button, InputAction::Button action)
 	{
 		auto events = GetMouseButtonEvents();
 		for (int i = 0; i < events.size(); i++)

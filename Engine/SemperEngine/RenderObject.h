@@ -1,59 +1,34 @@
 #ifndef RRENDEROBJECT
 #define RRENDEROBJECT
 
-#include <map>
 #include "Mathz.h"
-#include "Texture.h"
 #include "Material.h"
 #include "RenderVertexData.h"
+#include "LifeContainer.h"
+
 namespace SemperEngine {
-	using namespace std;
 
-	class RenderBatch;
-
-	class RenderObject
+	namespace Core
 	{
-	public:
+		class RenderObject
+		{
+		public:
 
-		RenderVertexData* renderVertex;
+			RenderVertexData* renderVertex;
 
-		Matrix4x4 modelMatrix;
+			Matrix4x4 modelMatrix;
 
-		GraphicShader* shader;
+			Material* material;
 
-		vector<ShaderProperty<float>> floatProperty;
+			LifeContainer<RenderObject> mylife = LifeContainer<RenderObject>(this);
 
-		vector<ShaderProperty<Vector2>> vector2Property;
+		public:
 
-		vector<ShaderProperty<Vector3>> vector3Property;
+			RenderObject();
 
-		vector<ShaderProperty<Vector4>> vector4Property;
+			~RenderObject();
 
-		vector<ShaderProperty<Matrix4x4>> matrixProperty;
-
-		vector<Texture*> textures;
-
-		RenderBatch* batch;
-
-	public:
-
-		RenderObject();
-
-		~RenderObject();
-
-		bool HasBatch();
-
-		bool IsBreakBatch();
-
-		void BreakBatch();
-
-		void SetRenderBatch(RenderBatch* renderBatch);
-
-	private:
-
-		bool _breakBatch;
-
-	};
-
+		};
+	}
 }
 #endif // !RRENDEROBJECT

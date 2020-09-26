@@ -2,34 +2,29 @@
 #define RENDERBATCH_MANAGER
 
 #include <vector>
+#include "RenderBatch.h"
+#include "RenderObject.h"
+#include "Camera.h"
+
 namespace SemperEngine {
-	using namespace std;
 
-	class RenderObject;
-	class Texture;
-	class RenderVertexData;
-	class RenderBatch;
-	class Camera;
-	class GraphicTextureData;
-	class GraphicVertexData;
+	namespace Core {
 
-	class RenderBatchManager
-	{
-	public:
+		class RenderBatchManager
+		{
+		public:
 
-		static vector<RenderBatch> *frontBatchs;
+			static std::vector<RenderBatch> batchs;
 
-		static vector<RenderBatch> *backBatchs;
+		public:
 
-	public:
+			static void GenerateBatchs(Camera* camera, std::vector<RenderObject*> renderObjects);
 
-		static void GenerateBatchs(vector<RenderObject*> renderObjects, Camera *camera);
+			static void GenerateGraphicCommands();
 
-		static void SwapBatches();
-
-		static void ClearBatchs();
-
-	};
+			static void Clear();
+		};
+	}
 }
 
 #endif // !RENDERBATCH_MANAGER

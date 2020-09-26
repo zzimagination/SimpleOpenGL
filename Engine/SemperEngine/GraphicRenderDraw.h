@@ -2,21 +2,18 @@
 #define RENDER_DRAW
 
 #include <vector>
-#include "SemperEngine.h"
-
+#include "EngineDef.h"
+#include "Mathz.h"
 #include "Material.h"
-#include "GraphicShaderManager.h"
-
+#include "ShaderProperty.h"
 
 namespace SemperEngine {
 
-#define MODEL_MATRIX "_model"
-#define VIEW_MATRIX "_view"
-#define PROJECTION_MARIX "_projection"
-
+	class GraphicShader;
+	class RenderVertexData;
+	class Texture;
 	class GraphicVertexData;
 	class GraphicTextureData;
-	using namespace std;
 
 	enum DepthTestFunc
 	{
@@ -80,12 +77,7 @@ namespace SemperEngine {
 
 		static void SetCullFace(bool cull, CullFace mode);
 
-		static void SetShader(GraphicShader* shader,
-			vector<ShaderProperty<float>> f,
-			vector<ShaderProperty<Vector2>> vector2,
-			vector<ShaderProperty<Vector3>> vector3,
-			vector<ShaderProperty<Vector4>> vector4,
-			vector<ShaderProperty<Matrix4x4>> matrix);
+		static void SetShader(Material* material);
 
 		static void SetTransform(Matrix4x4 model, Matrix4x4 view, Matrix4x4 projection);
 
@@ -94,6 +86,14 @@ namespace SemperEngine {
 		static void SetTextureData(GraphicTextureData* data);
 
 		static void Draw();
+
+		static GraphicVertexData* AddVertexData(RenderVertexData* data);
+
+		static GraphicTextureData* AddTextureData(Texture* data);
+
+		static void ClearVertexData(GraphicVertexData* data);
+
+		static void ClearTextureData(GraphicTextureData* data);
 
 	};
 }

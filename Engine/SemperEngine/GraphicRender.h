@@ -16,9 +16,6 @@ namespace SemperEngine {
 
 		static void Render();
 
-		static GraphicVertexData * GetVertexData(RenderVertexData * v);
-
-		static vector<GraphicTextureData*> GetTextureData(vector<Texture*> tex);
 	};
 }
 #endif // !GraphicRender

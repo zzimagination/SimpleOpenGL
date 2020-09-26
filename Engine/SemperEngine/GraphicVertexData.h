@@ -13,29 +13,22 @@ namespace SemperEngine {
 	{
 	public:
 
-		unsigned int VAO;
+		RenderVertexData* gameData;
 
-	private:
+		unsigned int VAO;
 
 		unsigned int VBO;
 
 		unsigned int EBO;
 
-		int _pointCount;
+		int pointCount;
 
 	public:
 
-		GraphicVertexData(RenderVertexData* renderVertex);
+		GraphicVertexData(RenderVertexData *gameData, unsigned int vao, unsigned int vbo, unsigned int ebo, int pointCount);
 
 		~GraphicVertexData();
 
-		int GetCount();
-
-		void UseData();
-
-	private:
-
-		void BindData(Vector3* vertices, int count, int* index, Vector2* uv);
 	};
 }
 #endif // !VERTEXDATA
