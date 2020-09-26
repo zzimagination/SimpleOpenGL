@@ -125,10 +125,10 @@
       <Filter>Render\GraphicRender</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
-      <Filter>2D\Texture</Filter>
+      <Filter>Resources\Texture</Filter>
     </ClCompile>
     <ClCompile Include="spng.c">
-      <Filter>2D\Texture\ThirdParty</Filter>
+      <Filter>Resources\Texture\ThirdParty</Filter>
     </ClCompile>
     <ClCompile Include="GraphicShader.cpp">
       <Filter>Render\GraphicRender</Filter>
@@ -176,7 +176,7 @@
       <Filter>Render\GameRender</Filter>
     </ClCompile>
     <ClCompile Include="CubeData.cpp">
-      <Filter>3D\Model</Filter>
+      <Filter>Resources\Model</Filter>
     </ClCompile>
     <ClCompile Include="Cube.cpp">
       <Filter>Object\GameObject\GameObjects</Filter>
@@ -186,9 +186,6 @@
     </ClCompile>
     <ClCompile Include="WorldLoop.cpp">
       <Filter>Object\World</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObjectLoop.cpp">
-      <Filter>Object\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="TestWorld.cpp">
       <Filter>Object\World\Builders</Filter>
@@ -237,6 +234,12 @@
     </ClCompile>
     <ClCompile Include="ComponentCreator.cpp">
       <Filter>Object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexDataCenter.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexData.cpp">
+      <Filter>Resources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -382,10 +385,10 @@
       <Filter>Render\GraphicRender</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>2D\Texture</Filter>
+      <Filter>Resources\Texture</Filter>
     </ClInclude>
     <ClInclude Include="spng.h">
-      <Filter>2D\Texture\ThirdParty</Filter>
+      <Filter>Resources\Texture\ThirdParty</Filter>
     </ClInclude>
     <ClInclude Include="GraphicShader.h">
       <Filter>Render\GraphicRender</Filter>
@@ -436,7 +439,7 @@
       <Filter>Render\GameRender</Filter>
     </ClInclude>
     <ClInclude Include="CubeData.h">
-      <Filter>3D\Model</Filter>
+      <Filter>Resources\Model</Filter>
     </ClInclude>
     <ClInclude Include="Cube.h">
       <Filter>Object\GameObject\GameObjects</Filter>
@@ -446,9 +449,6 @@
     </ClInclude>
     <ClInclude Include="WorldLoop.h">
       <Filter>Object\World</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObjectLoop.h">
-      <Filter>Object\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="TestWorld.h">
       <Filter>Object\World\Builders</Filter>
@@ -516,6 +516,15 @@
     <ClInclude Include="LifeContainer.h">
       <Filter>Tools\Base</Filter>
     </ClInclude>
+    <ClInclude Include="BeautifulWorld.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexDataCenter.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexData.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="头文件">
@@ -540,9 +549,6 @@
     </Filter>
     <Filter Include="Math">
       <UniqueIdentifier>{39606d9c-726b-4a51-abbe-cc3951ddabf9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="2D">
-      <UniqueIdentifier>{06f4dae4-2273-4830-81ce-d0bbb6a2231e}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameLogic">
       <UniqueIdentifier>{ee4e0d89-ced1-4bc5-9fac-ec48b34404cc}</UniqueIdentifier>
@@ -583,18 +589,6 @@
     <Filter Include="Render\GraphicRender\ThirdParty">
       <UniqueIdentifier>{6e277f16-e3fa-4d6a-92b8-4328f913d059}</UniqueIdentifier>
     </Filter>
-    <Filter Include="3D">
-      <UniqueIdentifier>{b05dff9a-ac01-432a-9c70-209c6bb1e390}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="3D\Model">
-      <UniqueIdentifier>{f2b45a3d-5c21-4a87-b7b0-5631ee7f4697}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="2D\Texture">
-      <UniqueIdentifier>{249a390d-587b-4d12-b97c-0a53ef9ab8c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="2D\Texture\ThirdParty">
-      <UniqueIdentifier>{071638b5-510e-41cc-9afd-4501be4380e1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Tools\Collection">
       <UniqueIdentifier>{7a3d9c93-c102-4875-a804-5a778e89fc3b}</UniqueIdentifier>
     </Filter>
@@ -633,6 +627,18 @@
     </Filter>
     <Filter Include="Object\GameObject\Camera">
       <UniqueIdentifier>{29db5c31-2ad4-45d9-9105-ba6d5933422e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{0cc2f298-98df-4ecb-ad7b-5226f98a010f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Model">
+      <UniqueIdentifier>{f2b45a3d-5c21-4a87-b7b0-5631ee7f4697}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Texture">
+      <UniqueIdentifier>{249a390d-587b-4d12-b97c-0a53ef9ab8c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Texture\ThirdParty">
+      <UniqueIdentifier>{071638b5-510e-41cc-9afd-4501be4380e1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

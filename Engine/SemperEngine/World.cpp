@@ -10,7 +10,6 @@ namespace SemperEngine {
 	{
 		this->_name = "";
 		this->_id = -1;
-		this->treeID = -1;
 	}
 
 	World::World(std::string name, int id)
@@ -21,7 +20,6 @@ namespace SemperEngine {
 		}
 		this->_name = name;
 		this->_id = id;
-		this->treeID = -1;
 	}
 
 	World::~World()

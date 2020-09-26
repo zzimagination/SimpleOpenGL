@@ -21,11 +21,11 @@ namespace SemperEngine
 
 		public:
 
-			static World* AddWorld(World world, WorldAction* action);
+			static World AddWorld(World world, WorldAction* action, std::vector<GameObject*> gameObjects);
 
-			static void RemoveWorld(World* world);
+			static void RemoveWorld(World world);
 
-			static WorldFruit* GetFruit(World* world);
+			static WorldFruit* GetFruit(World world);
 
 			static void Fall();
 		};

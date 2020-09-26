@@ -15,7 +15,7 @@ namespace SemperEngine
 		{
 		public:
 
-			std::unique_ptr<World> world;
+			World world;
 
 			std::unique_ptr<WorldAction> action;
 

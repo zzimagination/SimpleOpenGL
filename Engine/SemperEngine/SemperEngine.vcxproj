@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseRenderPipeline.h" />
+    <ClInclude Include="BeautifulWorld.h" />
     <ClInclude Include="CameraCollection.h" />
     <ClInclude Include="CompletedSignal.h" />
     <ClInclude Include="ComponentCreator.h" />
@@ -163,7 +164,6 @@
     <ClInclude Include="GameEnd.h" />
     <ClInclude Include="GameObjectContainer.h" />
     <ClInclude Include="GameObjectCreator.h" />
-    <ClInclude Include="GameObjectLoop.h" />
     <ClInclude Include="GraphicCommandManager.h" />
     <ClInclude Include="GraphicTextureBuffer.h" />
     <ClInclude Include="GraphicTextureBufferClear.h" />
@@ -227,6 +227,8 @@
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
     <ClInclude Include="GraphicVertexData.h" />
+    <ClInclude Include="VertexData.h" />
+    <ClInclude Include="VertexDataCenter.h" />
     <ClInclude Include="Win32Window.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="WorldAction.h" />
@@ -256,7 +258,6 @@
     <ClCompile Include="GameEnd.cpp" />
     <ClCompile Include="GameObjectContainer.cpp" />
     <ClCompile Include="GameObjectCreator.cpp" />
-    <ClCompile Include="GameObjectLoop.cpp" />
     <ClCompile Include="GraphicCommandManager.cpp" />
     <ClCompile Include="GraphicTextureBuffer.cpp" />
     <ClCompile Include="GraphicTextureBufferClear.cpp" />
@@ -311,6 +312,8 @@
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Vector4.cpp" />
     <ClCompile Include="GraphicVertexData.cpp" />
+    <ClCompile Include="VertexData.cpp" />
+    <ClCompile Include="VertexDataCenter.cpp" />
     <ClCompile Include="Win32Window.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldAction.cpp" />

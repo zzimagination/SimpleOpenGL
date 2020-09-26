@@ -19,11 +19,11 @@ namespace SemperEngine
 
 			static void BuildWorld();
 
-			static World* LoadWorld(int id );
+			static World LoadWorld(int id );
 
-			static World* LoadWorld(std::string id );
+			static World LoadWorld(std::string id );
 
-			static void UnloadWorld(World* world);
+			static void UnloadWorld(World world);
 
 			static int GetWorldID(std::string name);
 

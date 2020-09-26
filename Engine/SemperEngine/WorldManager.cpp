@@ -7,11 +7,11 @@ namespace SemperEngine {
 	using namespace std;
 	using namespace Core;
 
-	World* WorldManager::currentWorld;
+	World WorldManager::currentWorld;
 
-	World *WorldManager::_active;
+	World WorldManager::_active;
 
-	World *WorldManager::_inside;
+	World WorldManager::_inside;
 
 	NextWorld WorldManager::_next(1);
 
@@ -21,12 +21,12 @@ namespace SemperEngine {
 		_active = WorldMap::LoadWorld(1);
 	}
 
-	World* WorldManager::GetInside()
+	World WorldManager::GetInside()
 	{
 		return _inside;
 	}
 
-	World* WorldManager::GetActive()
+	World WorldManager::GetActive()
 	{
 		return _active;
 	}

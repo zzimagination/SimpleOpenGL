@@ -3,6 +3,7 @@
 #define WORLD_SCRIPT
 
 #include <vector>
+#include <memory>
 
 namespace SemperEngine {
 
@@ -17,7 +18,7 @@ namespace SemperEngine {
 	{
 	public:
 
-		unsigned int treeID;
+		std::shared_ptr<unsigned int> treeIndex;
 
 	private:
 

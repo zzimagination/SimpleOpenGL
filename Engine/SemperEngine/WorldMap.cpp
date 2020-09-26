@@ -23,29 +23,24 @@ namespace SemperEngine
 			AddBuilder(second);
 		}
 
-		World* WorldMap::LoadWorld(int id)
+		World WorldMap::LoadWorld(int id)
 		{
 			auto builder = GetBuilder(id);
-		 	auto world = builder->Build(); 
+		 	auto worldTemplate = builder->Build(); 
 			auto action = builder->GetAction();
-
-			auto worldPtr = WorldTree::AddWorld(world, action);
-			auto fruit = WorldTree::GetFruit(worldPtr);
 			auto gameObjects = builder->GetGameObjects();
-			for (int i = 0; i < gameObjects.size(); i++)
-			{
-				fruit->container.AddGameObject(gameObjects[i]);
-			}
-			return worldPtr;
+
+			auto world = WorldTree::AddWorld(worldTemplate, action, gameObjects);
+			return world;
 		}
 
-		World* WorldMap::LoadWorld(std::string name)
+		World WorldMap::LoadWorld(std::string name)
 		{
 			auto id = GetWorldID(name);
 			return LoadWorld(id);
 		}
 
-		void WorldMap::UnloadWorld(World* world)
+		void WorldMap::UnloadWorld(World world)
 		{
 			WorldTree::RemoveWorld(world);
 		}

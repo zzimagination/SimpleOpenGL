@@ -11,42 +11,47 @@ namespace SemperEngine
 
 		std::vector<WorldFruit*> WorldTree::worldFruits;
 
-		World* WorldTree::AddWorld(World world, WorldAction* action)
+		World WorldTree::AddWorld(World world, WorldAction* action, vector<GameObject*> gameObjects)
 		{
 			WorldFruit* fruit = new WorldFruit();
-			fruit->world.reset(new World(world));
-			fruit->world->treeID = worldFruits.size() + newWorldFruits.size();
+			fruit->world = world;
+			fruit->world.treeIndex.reset(new unsigned int(worldFruits.size() + newWorldFruits.size()));
 			fruit->action.reset(action);
+			for (int i = 0; i < gameObjects.size(); i++)
+			{
+				fruit->container.AddGameObject(gameObjects[i]);
+			}
+
 			newWorldFruits.push_back(fruit);
-			return fruit->world.get();
+			return fruit->world;
 		}
 
-		void WorldTree::RemoveWorld(World* world)
+		void WorldTree::RemoveWorld(World world)
 		{
 			WorldFruit* fruit;
-			if (world->treeID < worldFruits.size())
+			if ( *world.treeIndex < worldFruits.size())
 			{
-				fruit = worldFruits[world->treeID];
+				fruit = worldFruits[*world.treeIndex];
 			}
 			else
 			{
-				fruit = newWorldFruits[world->treeID - worldFruits.size()];
+				fruit = newWorldFruits[*world.treeIndex - worldFruits.size()];
 			}
 			fruit->container.EndGameObjects();
 			fruit->action->End();
 			fruit->bad = true;
 		}
 
-		WorldFruit* WorldTree::GetFruit(World* world)
+		WorldFruit* WorldTree::GetFruit(World world)
 		{
 			WorldFruit* fruit;
-			if (world->treeID < worldFruits.size())
+			if (*world.treeIndex < worldFruits.size())
 			{
-				fruit = worldFruits[world->treeID];
+				fruit = worldFruits[*world.treeIndex];
 			}
 			else
 			{
-				fruit = newWorldFruits[world->treeID - worldFruits.size()];
+				fruit = newWorldFruits[*world.treeIndex - worldFruits.size()];
 			}
 			return fruit;
 		}
@@ -62,7 +67,7 @@ namespace SemperEngine
 					delete fruit;
 					continue;
 				}
-				fruit->world->treeID = newVector.size();
+				*fruit->world.treeIndex = newVector.size();
 				newVector.push_back(fruit);
 			}
 			worldFruits = newVector;

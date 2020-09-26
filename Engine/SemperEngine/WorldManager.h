@@ -11,13 +11,13 @@ namespace SemperEngine {
 	{
 	public:
 
-		static World* currentWorld;
+		static World currentWorld;
 
 	private:
 
-		static World* _active;
+		static World _active;
 
-		static World* _inside;
+		static World _inside;
 
 		static Core::NextWorld _next;
 
@@ -25,9 +25,9 @@ namespace SemperEngine {
 
 		static void Initialize();
 
-		static World* GetInside();
+		static World GetInside();
 
-		static World* GetActive();
+		static World GetActive();
 
 		static void SetActive(std::string name);
 

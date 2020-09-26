@@ -14,11 +14,11 @@ namespace SemperEngine {
 		{
 			for (int i = 0; i < renderObjects.size(); i++)
 			{
-				RenderObject *object = renderObjects[i];
+				auto robject = renderObjects[i];
 				RenderBatch batch;
-				batch.vertexData = object->renderVertex;
-				batch.modelMatrix = object->modelMatrix;
-				batch.material = object->material;
+				batch.vertexData = robject->renderVertex;
+				batch.modelMatrix = robject->modelMatrix;
+				batch.material = robject->material;
 				batch.viewMatrix = camera->CalculateViewMatrix();
 				batch.projectionMatrix = camera->CalculateProjectionMatrix();
 
