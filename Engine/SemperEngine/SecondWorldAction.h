@@ -10,13 +10,11 @@ namespace SemperEngine
 	{
 	public:
 
-		SecondWorldAction(World world);
+		virtual void Start() override;
 
-		virtual void Start();
+		virtual void Update() override;
 
-		virtual void Update();
-
-		virtual void End();
+		virtual void End() override;
 	};
 }
 

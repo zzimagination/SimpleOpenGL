@@ -7,9 +7,6 @@
 
 namespace SemperEngine
 {
-	TestWorldAction::TestWorldAction(World world) :WorldAction(world)
-	{
-	}
 	void TestWorldAction::Start()
 	{
 		Debug::Log("Start Test World");

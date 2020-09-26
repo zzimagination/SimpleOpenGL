@@ -17,6 +17,7 @@ namespace SemperEngine
 			fruit->world = world;
 			fruit->world.treeIndex.reset(new unsigned int(worldFruits.size() + newWorldFruits.size()));
 			fruit->action.reset(action);
+			fruit->action->world = fruit->world;
 			for (int i = 0; i < gameObjects.size(); i++)
 			{
 				fruit->container.AddGameObject(gameObjects[i]);

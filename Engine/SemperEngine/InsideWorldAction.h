@@ -10,13 +10,13 @@ namespace SemperEngine
 	{
 	public:
 
-		InsideWorldAction(World world);
+		int count;
 
-		virtual void Start();
+		virtual void Start() override;
 
-		virtual void Update();
+		virtual void Update() override;
 
-		virtual void End();
+		virtual void End() override;
 	};
 }
 

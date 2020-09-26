@@ -3,10 +3,6 @@
 
 namespace SemperEngine
 {
-	WorldAction::WorldAction(World world)
-	{
-		this->_world = world;
-	}
 	void WorldAction::Start()
 	{
 	}

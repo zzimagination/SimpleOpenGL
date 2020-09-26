@@ -14,7 +14,7 @@ namespace SemperEngine
 	World InsideWorld::Build()
 	{
 		auto world = World(name, id);
-		AddAction(new InsideWorldAction(world));
+		AddAction(new InsideWorldAction());
 		return world;
 	}
 

@@ -5,9 +5,6 @@
 
 namespace SemperEngine
 {
-	SecondWorldAction::SecondWorldAction(World world) : WorldAction(world)
-	{
-	}
 	void SecondWorldAction::Start()
 	{
 		Debug::Log("Start Second World");

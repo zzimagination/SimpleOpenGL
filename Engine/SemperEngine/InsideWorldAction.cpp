@@ -5,9 +5,7 @@
 
 namespace SemperEngine
 {
-	InsideWorldAction::InsideWorldAction(World world): WorldAction(world)
-	{
-	}
+
 	void InsideWorldAction::Start()
 	{
 		Debug::Log("Start Inside World");
@@ -16,7 +14,8 @@ namespace SemperEngine
 	{
 		if (EventSystem::GetKeyAction(Keyboard::Key::number1, InputAction::Button::press))
 		{
-			Debug::Log("Inside");
+			Debug::Log(count);
+			count++;
 		}
 
 	}

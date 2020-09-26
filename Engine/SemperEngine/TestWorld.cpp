@@ -61,7 +61,7 @@ namespace SemperEngine
 
 
 		auto world = World(name, id);
-		AddAction(new TestWorldAction(world));
+		AddAction(new TestWorldAction());
 		auto A = new GameObject("A");
 		ComponentCreator::Create(new TestComponent(), A);
 		AddGameObject(A);

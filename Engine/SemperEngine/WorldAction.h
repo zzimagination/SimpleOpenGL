@@ -9,13 +9,11 @@ namespace SemperEngine
 
 	class WorldAction
 	{
-	protected:
-
-		World _world;
-
 	public:
 
-		WorldAction(World world);
+		World world;
+
+	public:
 
 		virtual void Start();
 
