@@ -1,14 +1,10 @@
 #ifndef MATH_VECTOR4
 #define MATH_VECTOR4
+
 namespace SemperEngine {
-	struct Vector4
+
+	class Vector4
 	{
-	public:
-
-		Vector4();
-
-		Vector4(float x, float y, float z, float w);
-
 	public:
 
 		float x;
@@ -18,6 +14,12 @@ namespace SemperEngine {
 		float z;
 
 		float w;
+
+	public:
+
+		Vector4();
+
+		Vector4(float x, float y, float z, float w);
 
 	public:
 

@@ -3,6 +3,8 @@
 
 #define MATH_GLM
 
+#include <math.h>
+
 namespace SemperEngine {
 
 	class  Math
@@ -11,10 +13,6 @@ namespace SemperEngine {
 
 		static const float pi;
 		//3.14159265358979323846264338327950288
-
-#ifdef  MATH_GLM
-
-#endif //  MATH_GLM
 
 	public:
 
@@ -31,6 +29,11 @@ namespace SemperEngine {
 		static int Ceil(float f);
 
 		static float Remainder(float a, float b);
+
+		static float Max(float a, float b);
+
+		static float Min(float a, float b);
+
 	};
 }
 

@@ -2,6 +2,10 @@
 #ifndef GRAPHICCOMMAND
 #define GRAPHICCOMMAND
 
+#include <vector>
+#include <memory>
+#include "Mathz.h"
+
 namespace SemperEngine
 {
 	namespace Core
@@ -14,5 +18,9 @@ namespace SemperEngine
 		};
 	}
 }
+
+#include "GraphicVertexBuffer.h"
+#include "GraphicVertexBufferClear.h"
+#include "GraphicDraw.h"
 
 #endif

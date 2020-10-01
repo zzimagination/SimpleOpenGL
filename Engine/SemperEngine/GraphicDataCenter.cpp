@@ -1,55 +1,65 @@
 #include "GraphicDataCenter.h"
+#include "GraphicCommandManager.h"
 
 namespace SemperEngine
 {
-	using namespace std;
-
-	std::map<RenderVertexData*, GraphicVertexData*> GraphicDataCenter::verticesData;
-
-	std::map<Texture*, GraphicTextureData*> GraphicDataCenter::texturesData;
-
-	GraphicVertexData * GraphicDataCenter::GetVertexData(RenderVertexData* data)
+	namespace Core
 	{
-		auto result = verticesData[data];
-		return result;
-	}
+		using namespace std;
 
-	GraphicTextureData * GraphicDataCenter::GetTextureData(Texture* tex)
-	{
-		auto result = texturesData[tex];
-		return result;
-	}
+		std::map<Texture*, GraphicTextureData*> GraphicDataCenter::texturesData;
 
-	std::vector<GraphicTextureData*> GraphicDataCenter::GetTexturesData(std::vector<Texture*> tex)
-	{
-		vector<GraphicTextureData*> result;
-		for (int i = 0; i < tex.size(); i++)
+		std::vector< shared_ptr<GraphicDataCenter::Vertex>> GraphicDataCenter::vertexDatas;
+
+		void GraphicDataCenter::AddVertexData(ResourcePackage<VertexData> package)
 		{
-			result.push_back(GetTextureData(tex[i]));
+			typedef GraphicDataCenter::Vertex Vertex;
+			int id = vertexDatas.size();
+			shared_ptr<Vertex> data = shared_ptr<Vertex>(new Vertex);
+			data->package = package;
+			*data->package.graphicCenterID = id;
+			GraphicCommandManager::AddVertexBuffer(data);
+			vertexDatas.push_back(data);
 		}
-		return result;
-	}
 
-	void GraphicDataCenter::AddVertexData(GraphicVertexData * data)
-	{
-		verticesData[data->gameData] = data;
-	}
+		void GraphicDataCenter::RemoveVertexData(ResourcePackage<VertexData> package)
+		{
+			auto id = *package.graphicCenterID;
+			auto data = vertexDatas[id];
+			GraphicCommandManager::ClearVertexBuffer(data);
+			vertexDatas.erase(vertexDatas.begin() + id);
+			for (int i = id; i < vertexDatas.size(); i++)
+			{
+				*vertexDatas[i]->package.graphicCenterID = i;
+			}
+		}
 
-	void GraphicDataCenter::AddTextureDate(GraphicTextureData * data)
-	{
-		texturesData[data->gameData] = data;
-	}
+		GraphicTextureData * GraphicDataCenter::GetTextureData(Texture* tex)
+		{
+			auto result = texturesData[tex];
+			return result;
+		}
 
-	GraphicVertexData * GraphicDataCenter::PopVertexData(RenderVertexData * data)
-	{
-		auto result = verticesData[data];
-		verticesData.erase(data);
-		return result;
-	}
-	GraphicTextureData * GraphicDataCenter::PopTextureData(Texture * data)
-	{
-		auto result = texturesData[data];
-		texturesData.erase(data);
-		return result;
+		std::vector<GraphicTextureData*> GraphicDataCenter::GetTexturesData(std::vector<Texture*> tex)
+		{
+			vector<GraphicTextureData*> result;
+			for (int i = 0; i < tex.size(); i++)
+			{
+				result.push_back(GetTextureData(tex[i]));
+			}
+			return result;
+		}
+
+		void GraphicDataCenter::AddTextureDate(GraphicTextureData * data)
+		{
+			texturesData[data->gameData] = data;
+		}
+
+		GraphicTextureData * GraphicDataCenter::PopTextureData(Texture * data)
+		{
+			auto result = texturesData[data];
+			texturesData.erase(data);
+			return result;
+		}
 	}
 }

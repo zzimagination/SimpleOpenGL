@@ -3,12 +3,10 @@
 #define GRAPHICCMD_BUFFER
 
 #include "GraphicCommand.h"
-#include "Mathz.h"
+#include "GraphicCommandData.h"
 
 namespace SemperEngine
 {
-	class RenderVertexData;
-	class GraphicVertexData;
 
 	namespace Core
 	{
@@ -16,11 +14,11 @@ namespace SemperEngine
 		{
 		public:
 
-			RenderVertexData* gameData;
+			std::shared_ptr<Vertex> data;
 
 		public:
 
-			GraphicVertexBuffer(RenderVertexData* gameData);
+			GraphicVertexBuffer(std::shared_ptr<Vertex> data);
 
 			virtual void Excute() override;
 ;

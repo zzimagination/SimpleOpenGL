@@ -1,7 +1,9 @@
 #ifndef MATH_VECTOR3
 #define MATH_VECTOR3
+
 namespace SemperEngine {
-	struct Vector3
+
+	class Vector3
 	{
 	public:
 
@@ -21,11 +23,19 @@ namespace SemperEngine {
 
 	public:
 
+		static Vector3 Cross(Vector3 a, Vector3 b);
+
+		static float Dot(Vector3 a, Vector3 b);
+
+	public:
+
 		Vector3();
 
 		Vector3(const Vector3& a);
 
 		Vector3(float x, float y, float z);
+
+		Vector3 Normalize();
 
 	public:
 

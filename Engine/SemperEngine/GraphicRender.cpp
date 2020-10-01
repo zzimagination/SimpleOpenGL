@@ -2,7 +2,6 @@
 #include "RenderBatchManager.h"
 #include "RenderBatch.h"
 #include "GraphicRenderDraw.h"
-#include "RenderVertexData.h"
 #include "Texture.h"
 #include "GraphicDataCenter.h"
 #include "GraphicCommandManager.h"
@@ -33,5 +32,8 @@ namespace SemperEngine {
 			commands[i]->Excute();
 			delete commands[i];
 		}
+
+
+		//GraphicRenderDraw::TestRender();
 	}
 }

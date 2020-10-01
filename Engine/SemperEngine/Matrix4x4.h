@@ -1,5 +1,6 @@
 #ifndef MATH_MATRIX4X4
 #define MATH_MATRIX4X4
+
 #include "Vector3.h"
 #include "Vector4.h"
 
@@ -8,16 +9,10 @@ namespace SemperEngine {
 	{
 	public:
 
-		static Matrix4x4 identity;
-
-	public:
-
 		float x0, y0, z0, w0,
-			x1, y1, z1, w1,
-			x2, y2, z2, w2,
-			x3, y3, z3, w3;
-
-	private:
+			  x1, y1, z1, w1,
+			  x2, y2, z2, w2,
+			  x3, y3, z3, w3;
 
 	public:
 
@@ -27,6 +22,8 @@ namespace SemperEngine {
 
 		static Matrix4x4 Scale(Vector3 v);
 
+		static Matrix4x4 Identity();
+			
 	public:
 
 		Matrix4x4();
@@ -45,6 +42,8 @@ namespace SemperEngine {
 	public:
 
 		Matrix4x4 operator*(const Matrix4x4 &b);
+
+		Vector3 operator*(const Vector3 &right);
 
 	private:
 

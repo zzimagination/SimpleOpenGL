@@ -16,7 +16,7 @@ namespace SemperEngine {
 			{
 				auto robject = renderObjects[i];
 				RenderBatch batch;
-				batch.vertexData = robject->renderVertex;
+				batch.vertexData = robject->vertexData;
 				batch.modelMatrix = robject->modelMatrix;
 				batch.material = robject->material;
 				batch.viewMatrix = camera->CalculateViewMatrix();
@@ -30,7 +30,7 @@ namespace SemperEngine {
 		{
 			for (int i = 0; i < batchs.size(); i++)
 			{
-				Core::GraphicCommandManager::Draw(batchs[i]);
+				GraphicCommandManager::Draw(batchs[i]);
 			}
 		}
 

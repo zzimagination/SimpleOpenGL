@@ -1,14 +1,16 @@
-#include<glad/glad.h>
-
 #include "GraphicVertexData.h"
-#include "RenderObject.h"
-#include "RenderVertexData.h"
 
 namespace SemperEngine
 {
-	GraphicVertexData::GraphicVertexData(RenderVertexData* gameData, unsigned int vao, unsigned int vbo, unsigned int ebo, int count)
+	GraphicVertexData::GraphicVertexData()
 	{
-		this->gameData = gameData;
+		this->VAO = 0;
+		this->VBO = 0;
+		this->EBO = 0;
+		this->pointCount = 0;
+	}
+	GraphicVertexData::GraphicVertexData(unsigned int vao, unsigned int vbo, unsigned int ebo, int count)
+	{
 		this->VAO = vao;
 		this->VBO = vbo;
 		this->EBO = ebo;

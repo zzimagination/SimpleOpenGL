@@ -1,13 +1,18 @@
 #ifndef MATH_VECTOR2
 #define MATH_VECTOR2
 namespace SemperEngine {
-	struct Vector2
+
+	class Vector2
 	{
 	public:
 
 		float x ;
 
 		float y ;
+
+	public:
+
+		static float Dot(Vector2 a, Vector2 b);
 
 	public:
 

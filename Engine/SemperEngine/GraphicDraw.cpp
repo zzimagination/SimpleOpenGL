@@ -1,15 +1,19 @@
 #include "GraphicDraw.h"
 #include "GraphicDataCenter.h"
 #include "GraphicRenderDraw.h"
-#include "RenderBatch.h"
+#include "GraphicShaderManager.h"
+#include "CubeData.h"
+
+
+#include <glad/glad.h>
 
 namespace SemperEngine
 {
 	namespace Core
 	{
-		GraphicDraw::GraphicDraw(RenderBatch  batch)
+		GraphicDraw::GraphicDraw(RenderBatch batch)
 		{
-			this->vertexData = batch.vertexData;
+			this->vertexData = GraphicDataCenter::vertexDatas[*batch.vertexData.graphicCenterID];
 			this->modelMatrix = batch.modelMatrix;
 			this->viewMatrix = batch.viewMatrix;
 			this->projectionMatrix = batch.projectionMatrix;
@@ -18,18 +22,12 @@ namespace SemperEngine
 
 		void GraphicDraw::Excute()
 		{
-			GraphicVertexData *gvdata = GraphicDataCenter::GetVertexData(vertexData);
-			vector<GraphicTextureData*> texturesData = GraphicDataCenter::GetTexturesData(textureList);
-
-			GraphicRenderDraw::SetCullFace(CullFace::Front);
+			GraphicRenderDraw::SetCullFace(true, Back);
 			GraphicRenderDraw::SetDepthTest(true);
-			GraphicRenderDraw::SetVertexData(gvdata);
+
+			GraphicRenderDraw::SetVertexData(vertexData->graphicData);
 			GraphicRenderDraw::SetTransform(modelMatrix, viewMatrix, projectionMatrix);
 			GraphicRenderDraw::SetShader(material);
-			for (int i = 0; i < texturesData.size(); i++)
-			{
-				GraphicRenderDraw::SetTextureData(texturesData[i]);
-			}
 			GraphicRenderDraw::Draw();
 		}
 	}

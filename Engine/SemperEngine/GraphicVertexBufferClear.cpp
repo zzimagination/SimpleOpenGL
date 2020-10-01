@@ -1,20 +1,21 @@
 #include "GraphicVertexBufferClear.h"
-#include "GraphicDataCenter.h"
 #include "GraphicRenderDraw.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
-		GraphicVertexBufferClear::GraphicVertexBufferClear(RenderVertexData * gameData)
+		using namespace std;
+
+		GraphicVertexBufferClear::GraphicVertexBufferClear(shared_ptr<Vertex> data)
 		{
-			this->gameData = gameData;
+			this->data = data;
+			this->data->package.Dispose();
 		}
 
 		void GraphicVertexBufferClear::Excute()
 		{
-			auto graphicData = GraphicDataCenter::PopVertexData(gameData);
-			GraphicRenderDraw::ClearVertexData(graphicData);
+			GraphicRenderDraw::ClearVertexData(data->graphicData);
 		}
 	}
 }

@@ -2,28 +2,21 @@
 #ifndef GRAPHICCMD_DRAW
 #define GRAPHICCMD_DRAW
 
-#include <vector>
-#include "ShaderProperty.h"
 #include "GraphicCommand.h"
-#include "Mathz.h"
+#include "GraphicCommandData.h"
+#include "RenderBatch.h"
 #include "Material.h"
 
 namespace SemperEngine
 {
-	class RenderVertexData;
-	class Texture;
-	class GraphicShader;
-	class RenderBatch;
 
 	namespace Core
 	{
-		class GraphicDraw : public GraphicCommand 
+		class GraphicDraw : public GraphicCommand
 		{
 		public:
 
-			RenderVertexData* vertexData;
-
-			std::vector<Texture*> textureList;
+			std::shared_ptr<Vertex> vertexData;
 
 			Matrix4x4 modelMatrix;
 

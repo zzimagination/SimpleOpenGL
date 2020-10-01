@@ -3,22 +3,23 @@
 #define GRAPHICCMD_VERTEXBUFFERCLEAR
 
 #include "GraphicCommand.h"
+#include "GraphicCommandData.h"
+#include "VertexData.h"
+#include "GraphicVertexData.h"
 
 namespace SemperEngine
 {
-	class RenderVertexData;
-
 	namespace Core
 	{
 		class GraphicVertexBufferClear : public GraphicCommand
 		{
 		public:
 
-			RenderVertexData* gameData;
+			std::shared_ptr<Vertex> data;
 
 		public:
 
-			GraphicVertexBufferClear(RenderVertexData* gameData);
+			GraphicVertexBufferClear(std::shared_ptr<Vertex> data);
 
 			virtual void Excute() override;
 		};

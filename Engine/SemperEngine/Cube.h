@@ -3,7 +3,8 @@
 #define GAMEOBJECT_CUBE
 
 #include <memory>
-#include "CubeData.h"
+#include "VertexData.h"
+#include "ResourcePackage.h"
 #include "RenderObject.h"
 #include "GameObject.h"
 
@@ -13,11 +14,11 @@ namespace SemperEngine
 	{
 	private:
 
-		CubeData _cubeData;
+		Core::ResourcePackage<Core::VertexData> _cube;
 
 		std::unique_ptr<Core::RenderObject> _renderObject;
 
-		std::shared_ptr<Material> _material;
+		std::unique_ptr<Material> _material;
 
 	public:
 
@@ -31,7 +32,6 @@ namespace SemperEngine
 
 		virtual void End() override;
 
-		void SetMaterial(std::shared_ptr<Material> material);
 	};
 }
 

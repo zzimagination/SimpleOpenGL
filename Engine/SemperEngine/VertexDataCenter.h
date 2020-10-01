@@ -4,6 +4,7 @@
 
 #include "CubeData.h"
 #include "VertexData.h"
+#include "ResourcePackage.h"
 
 namespace SemperEngine
 {
@@ -13,15 +14,25 @@ namespace SemperEngine
 		{
 		public:
 
+			static ResourcePackage<VertexData> shareCube;
 
+			static std::vector<ResourcePackage<VertexData>> cubes;
+
+			static std::vector<ResourcePackage<VertexData>> shareResources;
+
+			static std::vector<ResourcePackage<VertexData>> instanceResources;
 
 		public:
 
-			static VertexData* LoadCube();
+			static ResourcePackage<VertexData> LoadCube(bool share);
 
-			static VertexData* LoadCube(bool share);
+			static void UnloadNoUse();
 
+		private:
 
+			static VertexData* CreateCubeData();
+
+			static bool UnloadOnce(ResourcePackage<VertexData> package);
 		};
 	}
 }

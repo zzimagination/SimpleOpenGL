@@ -1,5 +1,4 @@
 #include "MathBase.h"
-#include <math.h>
 
 #ifdef  MATH_GLM
 #include <glm/glm.hpp>
@@ -34,18 +33,29 @@ namespace SemperEngine {
 		return fmod(a, b);
 	}
 
+	float Math::Max(float a, float b)
+	{
+		return std::fmaxf(a, b);
+	}
+
+	float Math::Min(float a, float b)
+	{
+		return std::fminf(a, b);
+	}
+
 	float Math::Cos(float a)
 	{
-		return cosf(a);
+		return cosf(a*pi / 180);
 	}
 
 	float Math::Sin(float a)
 	{
-		return sinf(a);
+		return sinf(a*pi / 180);
 	}
 
 	float Math::Tan(float a)
 	{
-		return tanf(a);
+		return tanf(a*pi / 180);
 	}
+
 }

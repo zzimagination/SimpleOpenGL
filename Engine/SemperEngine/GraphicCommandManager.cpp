@@ -24,7 +24,7 @@ namespace SemperEngine
 			back_DrawCommands.clear();
 		}
 
-		void GraphicCommandManager::AddVertexBuffer(RenderVertexData * data)
+		void GraphicCommandManager::AddVertexBuffer(shared_ptr<Vertex> data)
 		{
 			auto cmd = new  GraphicVertexBuffer(data);
 			back_AddResource.push_back(cmd);
@@ -32,11 +32,11 @@ namespace SemperEngine
 
 		void GraphicCommandManager::AddTextureBuffer(Texture * data)
 		{
-			auto cmd = new GraphicTextureBuffer(data);
-			back_AddResource.push_back(cmd);
+			//auto cmd = new GraphicTextureBuffer(data);
+			//back_AddResource.push_back(cmd);
 		}
 
-		void GraphicCommandManager::ClearVertexBuffer(RenderVertexData * data)
+		void GraphicCommandManager::ClearVertexBuffer(shared_ptr<Vertex> data)
 		{
 			auto cmd = new  GraphicVertexBufferClear(data);
 			back_CollectResource.push_back(cmd);
@@ -44,8 +44,8 @@ namespace SemperEngine
 
 		void GraphicCommandManager::ClearTextureBuffer(Texture * data)
 		{
-			auto cmd = new  GraphicTextureBufferClear(data);
-			back_CollectResource.push_back(cmd);
+			//auto cmd = new  GraphicTextureBufferClear(data);
+			//back_CollectResource.push_back(cmd);
 		}
 
 		void GraphicCommandManager::Draw(RenderBatch  batch)

@@ -55,16 +55,33 @@ namespace SemperEngine
 		//cube3->transform.position = Vector3(4, 4, 0);
 		//gameObjects.push_back(cube3);
 
-		//Camera* camera = new Camera();
-		//camera->transform.position = Vector3(0, 0, 10);
-		//gameObjects.push_back(camera);
-
-
 		auto world = World(name, id);
 		AddAction(new TestWorldAction());
+
+		Camera* camera = new Camera();
+		/*camera->projection = Camera::Projection::Orthographic;*/
+		camera->transform.position = Vector3(0, 1, 10);
+		camera->transform.eulerAngle = Vector3(0, 10, 0);
+		AddGameObject(camera);
+
 		auto A = new GameObject("A");
 		ComponentCreator::Create(new TestComponent(), A);
 		AddGameObject(A);
+		
+		auto cube = new Cube();
+		cube->name = "cube";
+		//cube->transform.scale = Vector3(2, 10, 2);
+		cube->transform.position = Vector3(0, 0, 0);
+		cube->transform.eulerAngle = Vector3(0, 30, 0);
+		cube->transform.scale = Vector3(1, 1, 1);
+		AddGameObject(cube);
+
+		//auto cube2 = new Cube();
+		//cube2->name = "cube";
+		//cube2->transform.scale = Vector3(10, 2, 2);
+		//cube2->transform.position = Vector3(0, 0, 10);
+		//AddGameObject(cube2);
+
 		return world;
 	}
 

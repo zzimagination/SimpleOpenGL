@@ -1,8 +1,9 @@
 #include "GraphicRenderDraw.h"
 #include "GraphicVertexData.h"
 #include "GraphicTextureData.h"
+#include "GraphicShaderManager.h"
 #include "GraphicShader.h"
-#include "RenderVertexData.h"
+#include "VertexData.h"
 #include "Texture.h"
 
 #ifdef OPENGL
@@ -16,6 +17,37 @@ namespace SemperEngine {
 	Matrix4x4 GraphicRenderDraw::projection;
 	int GraphicRenderDraw::drawCount;
 	int GraphicRenderDraw::textureIndex;
+
+	void GraphicRenderDraw::TestRender()
+	{
+		float vertices[24] = {
+			0.5, 0.5, 0,
+			0.5, -0.5, 0,
+			-0.5, 0.5, 0,
+			-0.5, -0.5, 0,
+			-0.5, 0.5, 0,
+			0.5, -0.5, 0
+		};
+
+		unsigned int VAO, VBO;
+		glGenVertexArrays(1, &VAO);
+		glGenBuffers(1, &VBO);
+		glBindVertexArray(VAO);
+		glBindBuffer(GL_ARRAY_BUFFER, VBO);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 24, vertices, GL_STATIC_DRAW);//首先执行这个
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, (void*)0);
+		auto shader = ShaderManager::GetShader("Debug");
+		shader->SetValue("_projection", Matrix4x4::Identity());
+		shader->SetValue("_view", Matrix4x4::Identity());
+		shader->SetValue("_model", Matrix4x4::Identity());
+		shader->Use();
+
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glDeleteBuffers(1, &VBO);
+		glDeleteVertexArrays(1, &VAO);
+	}
 
 	void GraphicRenderDraw::SetClear(int mode, Vector4 color)
 	{
@@ -162,10 +194,10 @@ namespace SemperEngine {
 		GraphicRenderDraw::projection = projection;
 	}
 
-	void GraphicRenderDraw::SetVertexData(GraphicVertexData* data)
+	void GraphicRenderDraw::SetVertexData(GraphicVertexData &data)
 	{
-		glBindVertexArray(data->VAO);
-		drawCount = data->pointCount;
+		glBindVertexArray(data.VAO);
+		drawCount = data.pointCount;
 	}
 
 	void GraphicRenderDraw::SetTextureData(GraphicTextureData * data)
@@ -184,13 +216,9 @@ namespace SemperEngine {
 		glDrawElements(GL_TRIANGLES, drawCount, GL_UNSIGNED_INT, 0);
 	}
 
-	GraphicVertexData * GraphicRenderDraw::AddVertexData(RenderVertexData* data)
+	GraphicVertexData GraphicRenderDraw::AddVertexData(Vector3* vertices, Vector2* uv, int* index, int count)
 	{
 		unsigned VAO = 0, VBO = 0, EBO = 0, pointCount = 0;
-		auto vertices = data->GetVertices();
-		auto uv = data->GetUV();
-		auto index = data->GetIndices();
-		auto count = data->VertexCount();
 
 		if (count >= 4)
 		{
@@ -239,7 +267,8 @@ namespace SemperEngine {
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vector2), (void*)verticesSize);
 
-		// note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
+		// note that this is allowed, the call to glVertexAttribPointer registered VBO 
+		// as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		// remember: do NOT unbind the EBO while a VAO is active as the bound element buffer object IS stored in the VAO; keep the EBO bound.
 		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -247,7 +276,7 @@ namespace SemperEngine {
 		// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 		glBindVertexArray(0);
 
-		auto result = new GraphicVertexData(data, VAO, VBO, EBO, pointCount);
+		auto result = GraphicVertexData(VAO, VBO, EBO, pointCount);
 		return result;
 	}
 
@@ -268,11 +297,11 @@ namespace SemperEngine {
 		return result;
 	}
 
-	void GraphicRenderDraw::ClearVertexData(GraphicVertexData * data)
+	void GraphicRenderDraw::ClearVertexData(GraphicVertexData& data)
 	{
-		glDeleteBuffers(1, &data->EBO);//注意顺序
-		glDeleteBuffers(1, &data->VBO);
-		glDeleteVertexArrays(1, &data->VAO);
+		glDeleteBuffers(1, &data.EBO);//注意顺序
+		glDeleteBuffers(1, &data.VBO);
+		glDeleteVertexArrays(1, &data.VAO);
 	}
 
 	void GraphicRenderDraw::ClearTextureData(GraphicTextureData * data)

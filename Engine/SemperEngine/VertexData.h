@@ -4,19 +4,26 @@
 
 #include <vector>
 #include "Mathz.h"
+#include "ResourcePackage.h"
 
 namespace SemperEngine
 {
-	class VertexData
+	namespace Core 
 	{
-	public:
+		class VertexData
+		{
+		public:
 
-		std::vector<Vector3> vertices;
+			std::vector<Vector3> vertices;
 
-		std::vector<Vector2> uv;
+			int vertexCount;
 
-		std::vector<int> index;
-	};
+			std::vector<Vector2> uv;
+
+			std::vector<int> index;
+
+		};
+	}
 }
 
 #endif // !VERTEXDATA

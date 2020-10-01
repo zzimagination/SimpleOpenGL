@@ -6,11 +6,12 @@
 #include "Mathz.h"
 #include "Material.h"
 #include "ShaderProperty.h"
+#include "VertexData.h"
+#include "GraphicVertexData.h"
 
 namespace SemperEngine {
 
 	class GraphicShader;
-	class RenderVertexData;
 	class Texture;
 	class GraphicVertexData;
 	class GraphicTextureData;
@@ -67,6 +68,9 @@ namespace SemperEngine {
 
 	public:
 
+		static void TestRender();
+
+
 		static void SetClear(int mode, Vector4 color);
 
 		static void SetDepthTest(bool test);
@@ -81,17 +85,19 @@ namespace SemperEngine {
 
 		static void SetTransform(Matrix4x4 model, Matrix4x4 view, Matrix4x4 projection);
 
-		static void SetVertexData(GraphicVertexData* data);
+		static void SetVertexData(GraphicVertexData &data);
 
 		static void SetTextureData(GraphicTextureData* data);
 
 		static void Draw();
 
-		static GraphicVertexData* AddVertexData(RenderVertexData* data);
+
+
+		static GraphicVertexData AddVertexData(Vector3* vertices, Vector2* uv, int* index, int count);
 
 		static GraphicTextureData* AddTextureData(Texture* data);
 
-		static void ClearVertexData(GraphicVertexData* data);
+		static void ClearVertexData(GraphicVertexData& data);
 
 		static void ClearTextureData(GraphicTextureData* data);
 

@@ -4,39 +4,43 @@
 
 #include <vector>
 #include <map>
+#include "ResourcePackage.h"
+#include "VertexData.h"
+#include "GraphicCommandData.h"
+
 #include "GraphicVertexData.h"
 #include "GraphicTextureData.h"
-#include "RenderVertexData.h"
 #include "Texture.h"
 
 namespace SemperEngine
 {
+	namespace Core {
+		class GraphicDataCenter
+		{
+		public:
 
-	class GraphicDataCenter
-	{
-	public:
+			typedef GraphicCommandData<VertexData, GraphicVertexData> Vertex;
 
-		static std::map<RenderVertexData*, GraphicVertexData*> verticesData;
+			static std::map<Texture*, GraphicTextureData*> texturesData;
 
-		static std::map<Texture*, GraphicTextureData*> texturesData;
+			static std::vector<std::shared_ptr<Vertex>> vertexDatas;
 
-	public:
+		public:
 
-		static GraphicVertexData* GetVertexData(RenderVertexData* data);
+			static void AddVertexData(ResourcePackage<VertexData> package);
 
-		static GraphicTextureData* GetTextureData(Texture* tex);
+			static void RemoveVertexData(ResourcePackage<VertexData> package);
 
-		static std::vector<GraphicTextureData*> GetTexturesData(std::vector<Texture*> tex);
+			static GraphicTextureData* GetTextureData(Texture* tex);
 
-		static void AddVertexData(GraphicVertexData* data);
+			static std::vector<GraphicTextureData*> GetTexturesData(std::vector<Texture*> tex);
 
-		static void AddTextureDate(GraphicTextureData * data);
+			static void AddTextureDate(GraphicTextureData * data);
 
-		static GraphicVertexData* PopVertexData(RenderVertexData* data);
+			static GraphicTextureData* PopTextureData(Texture* data);
 
-		static GraphicTextureData* PopTextureData(Texture* data);
-
-	};
+		};
+	}
 }
 
 #endif // !GRAPHICDATACENTER

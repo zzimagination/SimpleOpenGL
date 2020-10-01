@@ -1,19 +1,15 @@
-#ifndef VERTEXDATA
-#define VERTEXDATA
+#ifndef GRAPHIC_VERTEXDATA
+#define GRAPHIC_VERTEXDATA
 
 #include <vector>
 #include "Mathz.h"
-namespace SemperEngine {
-	class RenderObject;
-	class RenderVertexData;
+#include "VertexData.h"
 
-	using namespace std;
+namespace SemperEngine {
 
 	class GraphicVertexData
 	{
 	public:
-
-		RenderVertexData* gameData;
 
 		unsigned int VAO;
 
@@ -25,7 +21,9 @@ namespace SemperEngine {
 
 	public:
 
-		GraphicVertexData(RenderVertexData *gameData, unsigned int vao, unsigned int vbo, unsigned int ebo, int pointCount);
+		GraphicVertexData();
+
+		GraphicVertexData(unsigned int vao, unsigned int vbo, unsigned int ebo, int pointCount);
 
 		~GraphicVertexData();
 

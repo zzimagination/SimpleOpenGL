@@ -1,10 +1,7 @@
 #include "Matrix4x4.h"
-#include "Vector4.h"
-#include <math.h>
+#include "Mathz.h"
 
 namespace SemperEngine {
-
-	Matrix4x4 Matrix4x4::identity = Matrix4x4();
 
 	Matrix4x4 Matrix4x4::Translate(Vector3 v)
 	{
@@ -18,24 +15,24 @@ namespace SemperEngine {
 	Matrix4x4 Matrix4x4::Rotate(Vector3 angle)
 	{
 		Matrix4x4 x;
-		x.y1 = (float)cos(angle.x);
-		x.z1 = -(float)sin(angle.x);
-		x.y2 = (float)sin(angle.x);
-		x.z2 = (float)cos(angle.x);
+		x.y1 = (float)Math::Cos(angle.x);
+		x.z1 = -(float)Math::Sin(angle.x);
+		x.y2 = (float)Math::Sin(angle.x);
+		x.z2 = (float)Math::Cos(angle.x);
 
 		Matrix4x4 y;
-		y.x0 = (float)cos(angle.y);
-		y.z0 = (float)sin(angle.y);
-		y.x2 = -(float)sin(angle.y);
-		y.z2 = (float)cos(angle.y);
+		y.x0 = (float)Math::Cos(angle.y);
+		y.z0 = (float)Math::Sin(angle.y);
+		y.x2 = -(float)Math::Sin(angle.y);
+		y.z2 = (float)Math::Cos(angle.y);
 
 		Matrix4x4 z;
-		z.x0 = (float)cos(angle.z);
-		z.y0 = -(float)sin(angle.z);
-		z.x1 = (float)sin(angle.z);
-		z.y1 = (float)cos(angle.z);
+		z.x0 = (float)Math::Cos(angle.z);
+		z.y0 = -(float)Math::Sin(angle.z);
+		z.x1 = (float)Math::Sin(angle.z);
+		z.y1 = (float)Math::Cos(angle.z);
 
-		return z * x * y;
+		return x * z * y;
 	}
 
 	Matrix4x4 Matrix4x4::Scale(Vector3 v)
@@ -45,6 +42,11 @@ namespace SemperEngine {
 		m.y1 = v.y;
 		m.z2 = v.z;
 		return m;
+	}
+
+	Matrix4x4 Matrix4x4::Identity()
+	{
+		return Matrix4x4();
 	}
 
 	Matrix4x4::Matrix4x4()
@@ -63,13 +65,13 @@ namespace SemperEngine {
 		x3 = r3.x; y3 = r3.y; z3 = r3.z; w3 = r3.w;
 	}
 
-	Matrix4x4::Matrix4x4(float r0c0, float r0c1, float r0c2, float r0c3, 
-		float r1c0, float r1c1, float r1c2, float r1c3, 
-		float r2c0, float r2c1, float r2c2, float r2c3, 
+	Matrix4x4::Matrix4x4(float r0c0, float r0c1, float r0c2, float r0c3,
+		float r1c0, float r1c1, float r1c2, float r1c3,
+		float r2c0, float r2c1, float r2c2, float r2c3,
 		float r3c0, float r3c1, float r3c2, float r3c3)
 	{
 		x0 = r0c0; y0 = r0c1; z0 = r0c2; w0 = r0c3;
-		x1 = r1c0; y1 = r1c1; z1 = r1c2; w0 = r1c3;
+		x1 = r1c0; y1 = r1c1; z1 = r1c2; w1 = r1c3;
 		x2 = r2c0; y2 = r2c1; z2 = r2c2; w2 = r2c3;
 		x3 = r3c0; y3 = r3c1; z3 = r3c2; w3 = r3c3;
 	}
@@ -137,5 +139,15 @@ namespace SemperEngine {
 		m.w2 = this->GetRow(2)*b.GetColumn(3);
 		m.w3 = this->GetRow(3)*b.GetColumn(3);
 		return m;
+	}
+	Vector3 Matrix4x4::operator*(const Vector3 & right)
+	{
+		Vector4 v(right.x, right.y, right.z, 0);
+
+		float x = this->GetRow(0)*v;
+		float y = this->GetRow(1)*v;
+		float z = this->GetRow(2)*v;
+
+		return Vector3(x, y, z);
 	}
 }

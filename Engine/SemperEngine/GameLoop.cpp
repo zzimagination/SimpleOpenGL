@@ -2,19 +2,16 @@
 #include <thread>
 #include <iostream>
 #include <string>
-#include "BaseRenderPipeline.h"
 #include "Mathz.h"
+#include "Debug.h"
 #include "GameInit.h"
+#include "WorldLoop.h"
 #include "GameWindow.h"
+#include "EventSystem.h"
 #include "FrameRuntime.h"
 #include "GraphicRender.h"
-#include "RenderBatchManager.h"
-#include "EventSystem.h"
-#include "Debug.h"
-#include "GraphicDataCenter.h"
+#include "BaseRenderPipeline.h"
 #include "GraphicCommandManager.h"
-#include "WorldLoop.h"
-#include "GameObjectLoop.h"
 
 namespace SemperEngine {
 

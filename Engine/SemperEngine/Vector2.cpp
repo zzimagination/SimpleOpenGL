@@ -1,7 +1,11 @@
 #include "Vector2.h"
-#include "Vector3.h"
 
 namespace SemperEngine {
+
+	float Vector2::Dot(Vector2 a, Vector2 b)
+	{
+		return (a.x*b.x + a.y*b.y);
+	}
 	Vector2::Vector2()
 	{
 		x = 0; y = 0;

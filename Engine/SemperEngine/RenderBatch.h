@@ -3,24 +3,28 @@
 
 #include <vector>
 #include "Mathz.h"
-#include "RenderVertexData.h"
+#include "ResourcePackage.h"
+#include "VertexData.h"
 #include "Material.h"
 namespace SemperEngine {
 
-	class RenderBatch
+	namespace Core
 	{
-	public:
+		class RenderBatch
+		{
+		public:
 
-		RenderVertexData *vertexData;
+			ResourcePackage<VertexData> vertexData;
 
-		Matrix4x4 modelMatrix;
+			Matrix4x4 modelMatrix;
 
-		Matrix4x4 viewMatrix;
+			Matrix4x4 viewMatrix;
 
-		Matrix4x4 projectionMatrix;
+			Matrix4x4 projectionMatrix;
 
-		Material* material;
-	};
+			Material* material;
+		};
+	}
 }
 #endif // !RENDERBATCH
 

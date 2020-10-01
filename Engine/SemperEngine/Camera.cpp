@@ -10,14 +10,14 @@ namespace SemperEngine {
 	{
 		_size = 5;
 		_farPlane = 1000;
-		_nearPlane = 1;
+		_nearPlane = 0.2;
 		_fov = 60;
 		_aspect = 1.777778f;
 	}
 
 	Camera::~Camera()
 	{
-		
+
 	}
 
 	void Camera::Start()
@@ -103,11 +103,11 @@ namespace SemperEngine {
 			m.w2 = -(GetFar() + GetNear()) / (GetFar() - GetNear());
 			break;
 		case Projection::Perspective:
-			m.x0 = (1 / tan(GetFov()* Math::pi / 180 / 2)) / GetAspect();
-			m.y1 = 1 / tan(GetFov()*Math::pi / 180 / 2);
+			m.x0 = (1 / tan(GetFov()* Math::pi / 180.0f / 2.0f)) / GetAspect();
+			m.y1 = 1 / tan(GetFov()*Math::pi / 180.0f / 2.0f);
 			m.z2 = -(GetFar() + GetNear()) / (GetFar() - GetNear());
 			m.z3 = -1;
-			m.w2 = -(2 * GetNear()*GetFar()) / (GetFar() - GetNear());
+			m.w2 = -(2.0f * GetNear()*GetFar()) / (GetFar() - GetNear());
 			m.w3 = 0;
 			break;
 		}
@@ -117,65 +117,22 @@ namespace SemperEngine {
 
 	Matrix4x4 Camera::CalculateViewMatrix()
 	{
-		Matrix4x4 m;
-		m = m * Matrix4x4::Translate(-transform.position);
-		m = m * Matrix4x4::Rotate(-transform.eulerAngle);
-		worldToViewMatrix = m;
+		Vector3 zero(0, 0, 0);
+		Vector3 pos = transform.position;
+		Vector3 up(0, 1, 0);
+
+		Vector3 look = (transform.GetModelMatrix()*Vector3(0, 0, 1)).Normalize();
+		Vector3 left = Vector3::Cross(up, look).Normalize();
+		Vector3 top = Vector3::Cross(look, left).Normalize();
+
+		Matrix4x4 view(
+			left.x, left.y, left.z, -Vector3::Dot(left, pos),
+			top.x, top.y, top.z, -Vector3::Dot(top, pos),
+			look.x, look.y, look.z, -Vector3::Dot(look, pos),
+			0, 0, 0, 1
+		);
+
+		worldToViewMatrix = view;
 		return worldToViewMatrix;
 	}
-
-	//// Processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)
-	//void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
-	//{
-	//	/*float velocity = MovementSpeed * deltaTime;
-	//	if (direction == FORWARD)
-	//		Position += Front * velocity;
-	//	if (direction == BACKWARD)
-	//		Position -= Front * velocity;
-	//	if (direction == LEFT)
-	//		Position -= Right * velocity;
-	//	if (direction == RIGHT)
-	//		Position += Right * velocity;
-	//	if (direction == UP)
-	//	{
-	//		Position.y += velocity;
-	//	}
-	//	if (direction == DOWN)
-	//	{
-	//		Position.y -= velocity;
-	//	}*/
-	//}
-
-	//// Processes input received from a mouse input system. Expects the offset value in both the x and y direction.
-	//void Camera::ProcessMouseMovement(float xoffset, float yoffset, bool constrainPitch)
-	//{
-	//	//xoffset *= MouseSensitivity;
-	//	//yoffset *= MouseSensitivity;
-
-	//	//Yaw += xoffset;
-	//	//Pitch += yoffset;
-
-	//	//// Make sure that when pitch is out of bounds, screen doesn't get flipped
-	//	//if (constrainPitch)
-	//	//{
-	//	//	if (Pitch > 89.0f)
-	//	//		Pitch = 89.0f;
-	//	//	if (Pitch < -89.0f)
-	//	//		Pitch = -89.0f;
-	//	//}
-
-	//	//// Update Front, Right and Up Vectors using the updated Euler angles
-	//	//UpdateVectors();
-	//}
-
-	//// Processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
-	//void Camera::ProcessMouseScroll(float yoffset)
-	//{
-	//	//if (Zoom >= 1.0f && Zoom <= 45.0f)
-	//	//	Zoom -= yoffset;
-	//	//if (Zoom <= 1.0f)
-	//	//	Zoom = 1.0f;
-	//	//if (Zoom >= 45.0f)
-	//	//	Zoom = 45.0f;
-	//}
 }

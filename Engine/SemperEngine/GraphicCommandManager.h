@@ -3,13 +3,9 @@
 #define GRAPHICCMD_MANAGER
 
 #include <vector>
+#include <memory>
 #include "GraphicCommand.h"
-#include "GraphicVertexBuffer.h"
-#include "GraphicVertexBufferClear.h"
-#include "GraphicTextureBuffer.h"
-#include "GraphicTextureBufferClear.h"
-#include "GraphicDraw.h"
-#include "RenderBatch.h"
+#include "GraphicCommandData.h"
 
 namespace SemperEngine
 {
@@ -26,7 +22,7 @@ namespace SemperEngine
 			static std::vector<GraphicCommand*> front_AddResource;
 
 			static std::vector<GraphicCommand*> front_CollectResource;
-			
+
 			static std::vector<GraphicCommand*> front_DrawCommands;
 
 			static std::vector<GraphicCommand*> back_AddResource;
@@ -39,11 +35,11 @@ namespace SemperEngine
 
 			static void SwapCommands();
 
-			static void AddVertexBuffer(RenderVertexData* data);
+			static void AddVertexBuffer(std::shared_ptr<Vertex> data);
 
 			static void AddTextureBuffer(Texture* data);
 
-			static void ClearVertexBuffer(RenderVertexData* data);
+			static void ClearVertexBuffer(std::shared_ptr<Vertex> data);
 
 			static void ClearTextureBuffer(Texture* data);
 
