@@ -20,6 +20,10 @@ namespace SemperEngine
 			std::shared_ptr<unsigned int> id;
 
 		public:
+
+			LifeContainer()
+			{}
+
 			LifeContainer(T* self)
 			{
 				this->self = self;

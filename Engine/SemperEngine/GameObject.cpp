@@ -1,12 +1,20 @@
 #include "GameObject.h"
-#include "Component.h"
-#include "Transform.h"
-#include "World.h"
 #include "Debug.h"
 
 namespace SemperEngine {
 
 	using namespace std;
+
+	GameObject::GameObject()
+	{
+		life = Core::LifeContainer<GameObject>(this);
+		this->name = "NewGameObject";
+	}
+
+	GameObject::~GameObject()
+	{
+		*(life.life) = false;
+	}
 
 	void GameObject::Start() 
 	{
@@ -14,9 +22,11 @@ namespace SemperEngine {
 		log.append(" GameObject Start");
 		Debug::Log(log);
 	}
+
 	void GameObject::Update() 
 	{
 	}
+
 	void GameObject::End() 
 	{
 		string log = string(name);
@@ -24,18 +34,4 @@ namespace SemperEngine {
 		Debug::Log(log);
 	}
 
-	GameObject::GameObject():GameObject("NewGameObject")
-	{
-		
-	}
-
-	GameObject::GameObject(std::string name)
-	{
-		this->name = name;
-	}
-
-	GameObject::~GameObject()
-	{
-		(*life.life) = false;
-	}
 }

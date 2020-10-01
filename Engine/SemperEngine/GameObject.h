@@ -2,11 +2,12 @@
 #define GAMEOBJECT
 
 #include <vector>
-#include <typeinfo>
-#include "Component.h"
+#include <memory>
+#include "Mathz.h"
+#include "LifeContainer.h"
 #include "Transform.h"
 #include "GameObjectContainer.h"
-#include "LifeContainer.h"
+#include "ComponentCreator.h"
 
 namespace SemperEngine
 {
@@ -19,9 +20,15 @@ namespace SemperEngine
 
 		Transform transform;
 
-		Core::LifeContainer<GameObject> life = Core::LifeContainer<GameObject>(this);
+		Core::LifeContainer<GameObject> life;
 
 		Core::GameObjectContainer container;
+
+	public:
+
+		GameObject();
+
+		~GameObject();
 
 	public:
 
@@ -30,14 +37,6 @@ namespace SemperEngine
 		virtual void Update();
 
 		virtual void End();
-
-	public:
-
-		GameObject();
-
-		GameObject(std::string name);
-
-		~GameObject();
 
 	};
 }

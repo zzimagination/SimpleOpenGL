@@ -64,7 +64,8 @@ namespace SemperEngine
 		camera->transform.eulerAngle = Vector3(0, 10, 0);
 		AddGameObject(camera);
 
-		auto A = new GameObject("A");
+		auto A = new GameObject();
+		A->name = "A";
 		ComponentCreator::Create(new TestComponent(), A);
 		AddGameObject(A);
 		

@@ -19,7 +19,7 @@ namespace SemperEngine
 		}
 		else if(EventSystem::GetKeyAction(Keyboard::Key::number3, InputAction::Button::press))
 		{
-			mid = GameObjectCreator::Create(new GameObject("Start"));
+			mid = GameObjectCreator::Create(new GameObject());
 		}
 		else if (EventSystem::GetKeyAction(Keyboard::Key::number4, InputAction::Button::press))
 		{

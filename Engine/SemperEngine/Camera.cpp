@@ -13,6 +13,7 @@ namespace SemperEngine {
 		_nearPlane = 0.2;
 		_fov = 60;
 		_aspect = 1.777778f;
+		projection = Projection::Perspective;
 	}
 
 	Camera::~Camera()
@@ -31,7 +32,6 @@ namespace SemperEngine {
 
 	void Camera::End()
 	{
-		*life.life = false;
 	}
 
 	float Camera::GetSize()

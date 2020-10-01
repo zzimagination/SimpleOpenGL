@@ -12,7 +12,8 @@ namespace SemperEngine
 	{
 		auto world = World(name, id);
 		AddAction(new SecondWorldAction());
-		auto B = new GameObject("B");
+		auto B = new GameObject();
+		B->name = "B";
 		ComponentCreator::Create(new TestComponent(), B);
 		AddGameObject(B);
 		return world;

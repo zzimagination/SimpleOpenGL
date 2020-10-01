@@ -7,15 +7,16 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		GraphicVertexBufferClear::GraphicVertexBufferClear(shared_ptr<Vertex> data)
+		GVertexBufferClearCMD::GVertexBufferClearCMD(shared_ptr<Vertex> data)
 		{
 			this->data = data;
 			this->data->package.Dispose();
 		}
 
-		void GraphicVertexBufferClear::Excute()
+		void GVertexBufferClearCMD::Excute()
 		{
-			GraphicRenderDraw::ClearVertexData(data->graphicData);
+			auto gvd = data->graphicData;
+			GraphicRenderDraw::ClearVertexData(gvd.VAO, gvd.VBO, gvd.EBO);
 		}
 	}
 }

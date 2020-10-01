@@ -2,11 +2,10 @@
 #ifndef GAMEOBJECT_CUBE
 #define GAMEOBJECT_CUBE
 
-#include <memory>
+#include "GameObject.h"
 #include "VertexData.h"
 #include "ResourcePackage.h"
 #include "RenderObject.h"
-#include "GameObject.h"
 
 namespace SemperEngine
 {
@@ -25,6 +24,8 @@ namespace SemperEngine
 		Cube();
 
 		~Cube();
+
+	public:
 
 		virtual void Start() override;
 

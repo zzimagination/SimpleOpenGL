@@ -118,9 +118,6 @@
     <ClCompile Include="GraphicTextureData.cpp">
       <Filter>Render\GraphicRender\Data</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicRenderDraw.cpp">
-      <Filter>Render\GraphicRender</Filter>
-    </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>Resources\Texture</Filter>
     </ClCompile>
@@ -245,6 +242,9 @@
       <Filter>Render\GraphicRender</Filter>
     </ClCompile>
     <ClCompile Include="GraphicCommandData.cpp">
+      <Filter>Render\GraphicRender</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicRenderDraw.cpp">
       <Filter>Render\GraphicRender</Filter>
     </ClCompile>
   </ItemGroup>
@@ -378,9 +378,6 @@
     <ClInclude Include="GraphicTextureData.h">
       <Filter>Render\GraphicRender\Data</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicRenderDraw.h">
-      <Filter>Render\GraphicRender</Filter>
-    </ClInclude>
     <ClInclude Include="Texture.h">
       <Filter>Resources\Texture</Filter>
     </ClInclude>
@@ -508,7 +505,7 @@
       <Filter>World\Component</Filter>
     </ClInclude>
     <ClInclude Include="LifeContainer.h">
-      <Filter>Tools\Base</Filter>
+      <Filter>Tools\Custom</Filter>
     </ClInclude>
     <ClInclude Include="BeautifulWorld.h">
       <Filter>World</Filter>
@@ -532,6 +529,9 @@
       <Filter>Render\GraphicRender</Filter>
     </ClInclude>
     <ClInclude Include="GraphicCommandData.h">
+      <Filter>Render\GraphicRender</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicRenderDraw.h">
       <Filter>Render\GraphicRender</Filter>
     </ClInclude>
   </ItemGroup>
@@ -604,9 +604,6 @@
     <Filter Include="Render\GraphicRender\Command">
       <UniqueIdentifier>{9b033068-97cc-4484-b37d-d61b07272808}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Tools\Base">
-      <UniqueIdentifier>{022e4208-76a3-46a9-81ca-e0e9f6f86d2b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Windows">
       <UniqueIdentifier>{94b3bf07-6d83-4bcc-95ac-2544e04f03b8}</UniqueIdentifier>
     </Filter>
@@ -648,6 +645,12 @@
     </Filter>
     <Filter Include="World\Component\Components">
       <UniqueIdentifier>{f98196c5-c848-45df-ac2f-2328564e6271}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render\GraphicRender\OpenGL">
+      <UniqueIdentifier>{2246f91a-9c0e-486a-96c8-a606dcadf677}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Custom">
+      <UniqueIdentifier>{022e4208-76a3-46a9-81ca-e0e9f6f86d2b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

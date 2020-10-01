@@ -2,9 +2,6 @@
 #ifndef CAMERA_COLLECTION
 #define CAMERA_COLLECTION
 
-#include <vector>
-#include <memory>
-#include "LifeContainer.h"
 #include "Camera.h"
 
 namespace SemperEngine

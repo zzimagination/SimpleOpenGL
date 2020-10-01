@@ -11,7 +11,7 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		class GraphicVertexBufferClear : public GraphicCommand
+		class GVertexBufferClearCMD : public GraphicCommand
 		{
 		public:
 
@@ -19,7 +19,7 @@ namespace SemperEngine
 
 		public:
 
-			GraphicVertexBufferClear(std::shared_ptr<Vertex> data);
+			GVertexBufferClearCMD(std::shared_ptr<Vertex> data);
 
 			virtual void Excute() override;
 		};

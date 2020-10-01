@@ -6,5 +6,6 @@
 #include "GameObjectCreator.h"
 #include "WorldManager.h"
 #include "Camera.h"
+#include "Cube.h"
 
 #endif // !BEAUTIFULWORLD

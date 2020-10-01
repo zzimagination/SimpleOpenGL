@@ -297,11 +297,11 @@ namespace SemperEngine {
 		return result;
 	}
 
-	void GraphicRenderDraw::ClearVertexData(GraphicVertexData& data)
+	void GraphicRenderDraw::ClearVertexData(const unsigned int VAO, const unsigned int VBO, const  unsigned int EBO)
 	{
-		glDeleteBuffers(1, &data.EBO);//×¢ÒâË³Ðò
-		glDeleteBuffers(1, &data.VBO);
-		glDeleteVertexArrays(1, &data.VAO);
+		glDeleteBuffers(1, &EBO);//×¢ÒâË³Ðò
+		glDeleteBuffers(1, &VBO);
+		glDeleteVertexArrays(1, &VAO);
 	}
 
 	void GraphicRenderDraw::ClearTextureData(GraphicTextureData * data)

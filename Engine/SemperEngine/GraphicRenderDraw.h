@@ -95,9 +95,9 @@ namespace SemperEngine {
 
 		static GraphicVertexData AddVertexData(Vector3* vertices, Vector2* uv, int* index, int count);
 
-		static GraphicTextureData* AddTextureData(Texture* data);
+		static void ClearVertexData(const unsigned int VAO, const unsigned int VBO, const  unsigned int EBO);
 
-		static void ClearVertexData(GraphicVertexData& data);
+		static GraphicTextureData* AddTextureData(Texture* data);
 
 		static void ClearTextureData(GraphicTextureData* data);
 

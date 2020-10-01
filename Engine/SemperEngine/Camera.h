@@ -1,11 +1,6 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-
-#include <vector>
-#include <memory>
-#include "LifeContainer.h"
-#include "Mathz.h"
 #include "GameObject.h"
 
 namespace SemperEngine {
@@ -27,7 +22,7 @@ namespace SemperEngine {
 
 		Matrix4x4 projectionMatrix;
 
-		Projection projection = Projection::Perspective;
+		Projection projection;
 
 	private:
 

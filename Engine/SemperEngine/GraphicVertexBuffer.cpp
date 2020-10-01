@@ -7,13 +7,13 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		GraphicVertexBuffer::GraphicVertexBuffer(shared_ptr<Vertex> data)
+		GVertexBufferCMD::GVertexBufferCMD(shared_ptr<Vertex> data)
 		{
 			this->data = data;
 			this->data->package.Use(this);
 		}
 
-		void GraphicVertexBuffer::Excute()
+		void GVertexBufferCMD::Excute()
 		{
 			auto vd = data->package.GetResource();
 			auto gvd = GraphicRenderDraw::AddVertexData(vd->vertices.data(), vd->uv.data(), vd->index.data(),vd->vertexCount);
