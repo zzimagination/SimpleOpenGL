@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <memory>
+#include <string>
 #include "Mathz.h"
 #include "LifeContainer.h"
 #include "Transform.h"

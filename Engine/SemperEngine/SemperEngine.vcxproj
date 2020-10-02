@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{749E1D81-A35C-45C3-972B-C9141950CC30}</ProjectGuid>
     <RootNamespace>SemperEngine</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>SemperEngine</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -99,7 +99,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc130-mtd.lib;zlibwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;zlibwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -191,7 +191,6 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="CubeData.h" />
     <ClInclude Include="FrameRuntime.h" />
-    <ClInclude Include="GameInit.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameStart.h" />
@@ -202,7 +201,6 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="RenderBatch.h" />
     <ClInclude Include="GraphicRenderDraw.h" />
-    <ClInclude Include="Renderer.h" />
     <ClInclude Include="RenderCollection.h" />
     <ClInclude Include="RenderObject.h" />
     <ClInclude Include="RenderObjectManager.h" />
@@ -212,7 +210,9 @@
     <ClInclude Include="SemperEngine.h" />
     <ClInclude Include="GraphicShader.h" />
     <ClInclude Include="GraphicShaderManager.h" />
+    <ClInclude Include="ShaderCompiler.h" />
     <ClInclude Include="ShaderProperty.h" />
+    <ClInclude Include="ShaderSource.h" />
     <ClInclude Include="spng.h" />
     <ClInclude Include="StringEncoding.h" />
     <ClInclude Include="Test.h" />
@@ -281,7 +281,6 @@
     <ClCompile Include="RenderBatchManager.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="FrameRuntime.cpp" />
-    <ClCompile Include="GameInit.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameStart.cpp" />
@@ -292,7 +291,6 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="RenderBatch.cpp" />
     <ClCompile Include="GraphicRenderDraw.cpp" />
-    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="RenderCollection.cpp" />
     <ClCompile Include="RenderObject.cpp" />
     <ClCompile Include="RenderObjectManager.cpp" />
@@ -300,6 +298,8 @@
     <ClCompile Include="GraphicShaderManager.cpp" />
     <ClCompile Include="SecondWorld.cpp" />
     <ClCompile Include="SecondWorldAction.cpp" />
+    <ClCompile Include="ShaderCompiler.cpp" />
+    <ClCompile Include="Shaderlibrary.cpp" />
     <ClCompile Include="ShaderProperty.cpp" />
     <ClCompile Include="spng.c" />
     <ClCompile Include="StringEncoding.cpp" />

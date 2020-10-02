@@ -8,6 +8,7 @@ namespace SemperEngine
 		{
 			bad = false;
 			isStarted = false;
+			action = std::unique_ptr<WorldAction>(new WorldAction());
 		}
 		WorldFruit::~WorldFruit()
 		{

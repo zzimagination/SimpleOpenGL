@@ -2,7 +2,7 @@
 #ifndef INSIDE_WORLD_ACTION
 #define INSIDE_WORLD_ACTION
 
-#include "WorldAction.h"
+#include "BeautifulWorld.h"
 
 namespace SemperEngine
 {

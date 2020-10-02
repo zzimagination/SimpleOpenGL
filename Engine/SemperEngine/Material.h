@@ -20,7 +20,7 @@ namespace SemperEngine {
 
 		string name;
 
-		GraphicShader* shader;
+		GraphicShader shader;
 
 		ShaderProperty<float> floatProperty;
 

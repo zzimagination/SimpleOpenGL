@@ -24,6 +24,8 @@ namespace SemperEngine {
 
 	private:
 
+		unsigned int _id;
+
 		string _vertexShaderPath;
 
 		string _fragmentShaderPath;
@@ -31,6 +33,8 @@ namespace SemperEngine {
 		string _geometryShaderPath;
 
 	public:
+
+		GraphicShader(unsigned int id);
 
 		GraphicShader();
 

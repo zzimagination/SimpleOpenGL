@@ -13,9 +13,6 @@
     <ClCompile Include="Camera.cpp">
       <Filter>World\GameObject\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="GameInit.cpp">
-      <Filter>GameLogic</Filter>
-    </ClCompile>
     <ClCompile Include="WorldManager.cpp">
       <Filter>World\World</Filter>
     </ClCompile>
@@ -124,23 +121,11 @@
     <ClCompile Include="spng.c">
       <Filter>Resources\Texture\ThirdParty</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicShader.cpp">
-      <Filter>Render\GraphicRender</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicShaderManager.cpp">
-      <Filter>Render\GraphicRender</Filter>
-    </ClCompile>
     <ClCompile Include="Component.cpp">
       <Filter>World\Component</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>World\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="TestComponent.cpp">
-      <Filter>World\Component\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>World\Component\Components</Filter>
     </ClCompile>
     <ClCompile Include="GraphicDraw.cpp">
       <Filter>Render\GraphicRender\Command</Filter>
@@ -175,14 +160,8 @@
     <ClCompile Include="WorldLoop.cpp">
       <Filter>World\World</Filter>
     </ClCompile>
-    <ClCompile Include="TestWorld.cpp">
-      <Filter>World\World\Builders</Filter>
-    </ClCompile>
     <ClCompile Include="WorldMap.cpp">
       <Filter>World\World</Filter>
-    </ClCompile>
-    <ClCompile Include="InsideWorld.cpp">
-      <Filter>World\World\Builders</Filter>
     </ClCompile>
     <ClCompile Include="NextWorld.cpp">
       <Filter>World\World</Filter>
@@ -192,21 +171,6 @@
     </ClCompile>
     <ClCompile Include="WorldContainer.cpp">
       <Filter>World\World</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldAction.cpp">
-      <Filter>World\World\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="InsideWorldAction.cpp">
-      <Filter>World\World\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="TestWorldAction.cpp">
-      <Filter>World\World\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="SecondWorldAction.cpp">
-      <Filter>World\World\Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="SecondWorld.cpp">
-      <Filter>World\World\Builders</Filter>
     </ClCompile>
     <ClCompile Include="WorldFruit.cpp">
       <Filter>World\World</Filter>
@@ -247,6 +211,42 @@
     <ClCompile Include="GraphicRenderDraw.cpp">
       <Filter>Render\GraphicRender</Filter>
     </ClCompile>
+    <ClCompile Include="InsideWorld.cpp">
+      <Filter>GameLogic\WorldBuilder</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondWorld.cpp">
+      <Filter>GameLogic\WorldBuilder</Filter>
+    </ClCompile>
+    <ClCompile Include="TestWorld.cpp">
+      <Filter>GameLogic\WorldBuilder</Filter>
+    </ClCompile>
+    <ClCompile Include="InsideWorldAction.cpp">
+      <Filter>GameLogic\WorldAction</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondWorldAction.cpp">
+      <Filter>GameLogic\WorldAction</Filter>
+    </ClCompile>
+    <ClCompile Include="TestWorldAction.cpp">
+      <Filter>GameLogic\WorldAction</Filter>
+    </ClCompile>
+    <ClCompile Include="TestComponent.cpp">
+      <Filter>GameLogic\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldAction.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicShaderManager.cpp">
+      <Filter>Render\GraphicRender\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicShader.cpp">
+      <Filter>Render\GraphicRender\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaderlibrary.cpp">
+      <Filter>Render\GraphicRender\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderCompiler.cpp">
+      <Filter>Render\GraphicRender\Shader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -263,9 +263,6 @@
     </ClInclude>
     <ClInclude Include="Component.h">
       <Filter>World\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="GameInit.h">
-      <Filter>GameLogic</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>World\GameObject</Filter>
@@ -384,23 +381,11 @@
     <ClInclude Include="spng.h">
       <Filter>Resources\Texture\ThirdParty</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicShader.h">
-      <Filter>Render\GraphicRender</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicShaderManager.h">
-      <Filter>Render\GraphicRender</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectCollection.h">
       <Filter>Tools\Collection</Filter>
     </ClInclude>
     <ClInclude Include="ObjectCollection.hpp">
       <Filter>Tools\Collection</Filter>
-    </ClInclude>
-    <ClInclude Include="TestComponent.h">
-      <Filter>World\Component\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>World\Component\Components</Filter>
     </ClInclude>
     <ClInclude Include="GraphicCommand.h">
       <Filter>Render\GraphicRender\Command</Filter>
@@ -441,14 +426,8 @@
     <ClInclude Include="WorldLoop.h">
       <Filter>World\World</Filter>
     </ClInclude>
-    <ClInclude Include="TestWorld.h">
-      <Filter>World\World\Builders</Filter>
-    </ClInclude>
     <ClInclude Include="WorldMap.h">
       <Filter>World\World</Filter>
-    </ClInclude>
-    <ClInclude Include="InsideWorld.h">
-      <Filter>World\World\Builders</Filter>
     </ClInclude>
     <ClInclude Include="NextWorld.h">
       <Filter>World\World</Filter>
@@ -458,30 +437,6 @@
     </ClInclude>
     <ClInclude Include="WorldContainer.h">
       <Filter>World\World</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldBuilder.h">
-      <Filter>World\World\Builders</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldBuilderList.h">
-      <Filter>World\World\Builders</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldAction.h">
-      <Filter>World\World\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="InsideWorldAction.h">
-      <Filter>World\World\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="TestWorldAction.h">
-      <Filter>World\World\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="SecondWorldAction.h">
-      <Filter>World\World\Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="SecondWorld.h">
-      <Filter>World\World\Builders</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldActionList.h">
-      <Filter>World\World\Actions</Filter>
     </ClInclude>
     <ClInclude Include="WorldFruit.h">
       <Filter>World\World</Filter>
@@ -533,6 +488,51 @@
     </ClInclude>
     <ClInclude Include="GraphicRenderDraw.h">
       <Filter>Render\GraphicRender</Filter>
+    </ClInclude>
+    <ClInclude Include="InsideWorld.h">
+      <Filter>GameLogic\WorldBuilder</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondWorld.h">
+      <Filter>GameLogic\WorldBuilder</Filter>
+    </ClInclude>
+    <ClInclude Include="TestWorld.h">
+      <Filter>GameLogic\WorldBuilder</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldBuilder.h">
+      <Filter>GameLogic\WorldBuilder</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldBuilderList.h">
+      <Filter>GameLogic\WorldBuilder</Filter>
+    </ClInclude>
+    <ClInclude Include="TestWorldAction.h">
+      <Filter>GameLogic\WorldAction</Filter>
+    </ClInclude>
+    <ClInclude Include="InsideWorldAction.h">
+      <Filter>GameLogic\WorldAction</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondWorldAction.h">
+      <Filter>GameLogic\WorldAction</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldActionList.h">
+      <Filter>GameLogic\WorldAction</Filter>
+    </ClInclude>
+    <ClInclude Include="TestComponent.h">
+      <Filter>GameLogic\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldAction.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicShaderManager.h">
+      <Filter>Render\GraphicRender\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicShader.h">
+      <Filter>Render\GraphicRender\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderSource.h">
+      <Filter>Render\GraphicRender\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderCompiler.h">
+      <Filter>Render\GraphicRender\Shader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -625,12 +625,6 @@
     <Filter Include="World\World">
       <UniqueIdentifier>{77ed67e5-1566-4b85-acb4-9d36d8bec654}</UniqueIdentifier>
     </Filter>
-    <Filter Include="World\World\Builders">
-      <UniqueIdentifier>{1bc35231-a605-4f7a-86fa-9cb46c4d6e32}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="World\World\Actions">
-      <UniqueIdentifier>{455dd877-472c-41f0-ae35-93b9b64031b8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="World\GameObject">
       <UniqueIdentifier>{6ad4ca4a-dff0-479b-9c97-8d28b378fe8a}</UniqueIdentifier>
     </Filter>
@@ -643,14 +637,26 @@
     <Filter Include="World\Component">
       <UniqueIdentifier>{8a83e296-1391-4c56-9c35-fa33ac688ef4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="World\Component\Components">
-      <UniqueIdentifier>{f98196c5-c848-45df-ac2f-2328564e6271}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Render\GraphicRender\OpenGL">
       <UniqueIdentifier>{2246f91a-9c0e-486a-96c8-a606dcadf677}</UniqueIdentifier>
     </Filter>
     <Filter Include="Tools\Custom">
       <UniqueIdentifier>{022e4208-76a3-46a9-81ca-e0e9f6f86d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic\WorldBuilder">
+      <UniqueIdentifier>{8909a09a-2484-43a8-9172-fd4eb3c5d594}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic\WorldAction">
+      <UniqueIdentifier>{60a3f350-9cdd-42a8-b5a4-885bcf44d65a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic\GameObjects">
+      <UniqueIdentifier>{5fb8297d-6cfd-4138-8f07-f35705c74098}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic\Components">
+      <UniqueIdentifier>{96559047-5a86-4eaf-9ae6-d25323431744}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render\GraphicRender\Shader">
+      <UniqueIdentifier>{562d20ac-4cf2-4dcd-83d5-3491459c5a12}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

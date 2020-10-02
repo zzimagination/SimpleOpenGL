@@ -2,6 +2,7 @@
 #define TEXTURE
 
 #include <vector>
+#include <string>
 
 namespace SemperEngine {
 

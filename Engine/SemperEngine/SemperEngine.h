@@ -22,6 +22,4 @@
 #include "Cube.h"
 
 
-#include "Renderer.h"
-
 #endif // !SEMPERENGINE

@@ -9,7 +9,7 @@ namespace SemperEngine
 		void GameObjectContainer::AddComponent(LifeContainer<Component> com)
 		{
 			auto id = _components.size() + _newComponents.size();
-			*com.id = id;
+			*com.id = (unsigned int)id;
 			_newComponents.push_back(com);
 		}
 
@@ -48,7 +48,7 @@ namespace SemperEngine
 				{
 					continue;
 				}
-				*com.id = next.size();
+				*com.id = (unsigned int)next.size();
 				next.push_back(com);
 			}
 			_components = next;

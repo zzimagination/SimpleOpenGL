@@ -38,10 +38,10 @@ namespace SemperEngine {
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, (void*)0);
 		auto shader = ShaderManager::GetShader("Debug");
-		shader->SetValue("_projection", Matrix4x4::Identity());
-		shader->SetValue("_view", Matrix4x4::Identity());
-		shader->SetValue("_model", Matrix4x4::Identity());
-		shader->Use();
+		shader.SetValue("_projection", Matrix4x4::Identity());
+		shader.SetValue("_view", Matrix4x4::Identity());
+		shader.SetValue("_model", Matrix4x4::Identity());
+		shader.Use();
 
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -139,17 +139,17 @@ namespace SemperEngine {
 		auto vector4Property = material->vector4Property;
 		auto matrix4x4Property = material->matrix4x4Property;
 
-		shader->Use();
-		shader->SetValue(MODEL_MATRIX, model);
-		shader->SetValue(VIEW_MATRIX, view);
-		shader->SetValue(PROJECTION_MARIX, projection);
+		shader.Use();
+		shader.SetValue(MODEL_MATRIX, model);
+		shader.SetValue(VIEW_MATRIX, view);
+		shader.SetValue(PROJECTION_MARIX, projection);
 
 		auto floatValues = floatProperty.GetKeyValues();
 		for (int i = 0; i < floatValues.size(); i++)
 		{
 			string name = floatValues[i].first;
 			float value = floatValues[i].second;
-			shader->SetValue(name, value);
+			shader.SetValue(name, value);
 		}
 
 		auto vector2Values = vector2Property.GetKeyValues();
@@ -157,7 +157,7 @@ namespace SemperEngine {
 		{
 			string name = vector2Values[i].first;
 			Vector2 value = vector2Values[i].second;
-			shader->SetValue(name, value);
+			shader.SetValue(name, value);
 		}
 
 		auto vector3Values = vector3Property.GetKeyValues();
@@ -165,7 +165,7 @@ namespace SemperEngine {
 		{
 			string name = vector3Values[i].first;
 			Vector3 value = vector3Values[i].second;
-			shader->SetValue(name, value);
+			shader.SetValue(name, value);
 		}
 
 		auto vector4Values = vector4Property.GetKeyValues();
@@ -173,7 +173,7 @@ namespace SemperEngine {
 		{
 			string name = vector4Values[i].first;
 			Vector4 value = vector4Values[i].second;
-			shader->SetValue(name, value);
+			shader.SetValue(name, value);
 		}
 
 		auto matrix4x4 = matrix4x4Property.GetKeyValues();
@@ -181,7 +181,7 @@ namespace SemperEngine {
 		{
 			string name = matrix4x4[i].first;
 			Matrix4x4 value = matrix4x4[i].second;
-			shader->SetValue(name, value);
+			shader.SetValue(name, value);
 		}
 
 		textureIndex = GL_TEXTURE0;
@@ -252,20 +252,20 @@ namespace SemperEngine {
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
 		glBufferData(GL_ARRAY_BUFFER, totalSize, 0, GL_STATIC_DRAW);//首先执行这个
-		int offset = 0;
-		glBufferSubData(GL_ARRAY_BUFFER, offset, verticesSize, vertices);
-		offset += verticesSize;
+		GLintptr voffset = 0;
+		glBufferSubData(GL_ARRAY_BUFFER, voffset, verticesSize, vertices);
+		GLintptr uvoffset = verticesSize;
 		if (uvSize > 0) {
-			glBufferSubData(GL_ARRAY_BUFFER, offset, uvSize, uv);
-			offset += uvSize;
+			glBufferSubData(GL_ARRAY_BUFFER, uvoffset, uvSize, uv);
 		}
 
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexSize, index, GL_STATIC_DRAW);
 
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vector3), (void*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vector3), (void*)voffset);
+
 		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vector2), (void*)verticesSize);
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vector2), (void*)uvoffset);
 
 		// note that this is allowed, the call to glVertexAttribPointer registered VBO 
 		// as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind

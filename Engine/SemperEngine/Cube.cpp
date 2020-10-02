@@ -23,7 +23,7 @@ namespace SemperEngine
 		_cube = VertexDataCenter::LoadCube(true);
 		_renderObject = unique_ptr<RenderObject>(new RenderObject());
 		_material = unique_ptr<Material>(new Material("Unlit"));
-		_material->SetVector4(Vector4(0.8, 0.2, 0.2, 1), "_color");
+		_material->SetVector4(Vector4(0.8f, 0.2f, 0.2f, 1), "_color");
 		_renderObject->modelMatrix = transform.GetModelMatrix();
 		_renderObject->material = _material.get();
 		_renderObject->vertexData = this->_cube;

@@ -20,6 +20,7 @@ namespace SemperEngine {
 		}
 		this->_name = name;
 		this->_id = id;
+		this->treeIndex = std::shared_ptr<unsigned int>(new unsigned int(0));
 	}
 
 	World::~World()

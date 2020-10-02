@@ -10,7 +10,7 @@ namespace SemperEngine {
 	{
 		_size = 5;
 		_farPlane = 1000;
-		_nearPlane = 0.2;
+		_nearPlane = 0.2f;
 		_fov = 60;
 		_aspect = 1.777778f;
 		projection = Projection::Perspective;

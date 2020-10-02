@@ -2,17 +2,10 @@
 #ifndef WORLD_ACTION
 #define WORLD_ACTION
 
-#include "World.h"
-
 namespace SemperEngine
 {
-
 	class WorldAction
 	{
-	public:
-
-		World world;
-
 	public:
 
 		virtual void Start();

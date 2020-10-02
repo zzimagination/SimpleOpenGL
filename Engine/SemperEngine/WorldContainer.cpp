@@ -12,8 +12,8 @@ namespace SemperEngine
 		}
 		void WorldContainer::AddGameObject(LifeContainer<GameObject> gameObject)
 		{
-			unsigned int id = newGameObjects.size() + gameObjects.size();
-			*gameObject.id = id;
+			auto id = newGameObjects.size() + gameObjects.size();
+			*gameObject.id = (unsigned int)id;
 			newGameObjects.push_back(gameObject);
 		}
 
@@ -55,7 +55,7 @@ namespace SemperEngine
 				{
 					continue;
 				}
-				*gameObject.id = nextGameObjects.size();
+				*gameObject.id =(unsigned int) nextGameObjects.size();
 				nextGameObjects.push_back(gameObject);
 			}
 			gameObjects = nextGameObjects;

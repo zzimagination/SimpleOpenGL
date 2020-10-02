@@ -4,7 +4,6 @@
 #include <string>
 #include "Mathz.h"
 #include "Debug.h"
-#include "GameInit.h"
 #include "WorldLoop.h"
 #include "GameWindow.h"
 #include "EventSystem.h"
@@ -27,7 +26,6 @@ namespace SemperEngine {
 
 		void GameLoop::BeforeLoop()
 		{
-			GameInit::Init();
 			WorldLoop::BeforeLoop();
 			BaseRenderPipeline::Render();
 			GraphicCommandManager::SwapCommands();

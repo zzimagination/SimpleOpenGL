@@ -14,7 +14,7 @@ namespace SemperEngine
 		void GraphicDataCenter::AddVertexData(ResourcePackage<VertexData> package)
 		{
 			typedef GraphicDataCenter::Vertex Vertex;
-			int id = vertexDatas.size();
+			int id = (int)vertexDatas.size();
 			shared_ptr<Vertex> data = shared_ptr<Vertex>(new Vertex);
 			data->package = package;
 			*data->package.graphicCenterID = id;

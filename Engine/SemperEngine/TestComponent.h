@@ -1,8 +1,7 @@
 #ifndef TEST_COMPONENT
 #define TEST_COMPONENT
 
-#include "SemperEngine.h"
-#include "GameObject.h"
+#include "BeautifulWorld.h"
 
 namespace SemperEngine
 {

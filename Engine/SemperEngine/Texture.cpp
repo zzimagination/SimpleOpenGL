@@ -8,7 +8,13 @@ namespace SemperEngine {
 
 	Texture::Texture()
 	{
+		width = 0;
 
+		height = 0;
+
+		channels = 0;
+
+		data = nullptr;
 	}
 
 	Texture::~Texture()
@@ -24,7 +30,7 @@ namespace SemperEngine {
 		image.seekg(0, ios_base::end);
 		long inputSize = image.tellg();
 		image.seekg(0);
-		char *buf = new char[inputSize];
+		char* buf = new char[inputSize];
 		image.read(buf, inputSize);
 		image.close();
 
@@ -34,7 +40,7 @@ namespace SemperEngine {
 			this->data = nullptr;
 		}
 
-		spng_ctx *ctx = spng_ctx_new(0);
+		spng_ctx* ctx = spng_ctx_new(0);
 		int r = spng_set_crc_action(ctx, SPNG_CRC_USE, SPNG_CRC_USE);
 		r = spng_set_png_buffer(ctx, buf, inputSize);
 		if (r)
@@ -77,7 +83,7 @@ namespace SemperEngine {
 
 		size_t out_size;
 		r = spng_decoded_image_size(ctx, SPNG_FMT_RGBA8, &out_size);
-		unsigned char *out = new unsigned char[out_size];
+		unsigned char* out = new unsigned char[out_size];
 		r = spng_decode_image(ctx, out, out_size, SPNG_FMT_RGBA8, 0);
 		this->data = out;
 

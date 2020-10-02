@@ -2,7 +2,7 @@
 #ifndef INSIDE_WORLD
 #define INSIDE_WORLD
 
-#include "WorldBuilder.h"
+#include "BeautifulWorld.h"
 
 namespace SemperEngine
 {

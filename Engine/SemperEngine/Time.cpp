@@ -30,7 +30,7 @@ namespace SemperEngine {
 	{
 		auto current = chrono::steady_clock::now();
 		auto interval = current - timePoint;
-		deltaTime = (double)interval.count() / 1000000000;
+		deltaTime = (float)interval.count() / 1000000000;
 		time += deltaTime;
 	}
 }

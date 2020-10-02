@@ -3,7 +3,17 @@
 namespace SemperEngine {
 	using namespace std;
 
-	GraphicShader::GraphicShader() {}
+	GraphicShader::GraphicShader(unsigned int id)
+	{
+		this->_id = id;
+		this->ID = id;
+	}
+
+	GraphicShader::GraphicShader() 
+	{
+		this->ID = 0;
+		this->_id = 0;
+	}
 
 	GraphicShader::~GraphicShader()
 	{
@@ -19,7 +29,7 @@ namespace SemperEngine {
 
 	void GraphicShader::Use()
 	{
-		glUseProgram(ID);
+		glUseProgram(_id);
 	}
 
 	void GraphicShader::Apply()

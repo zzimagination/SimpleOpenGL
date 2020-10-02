@@ -2,8 +2,7 @@
 #ifndef TEST_WORLD_ACTION
 #define TEST_WORLD_ACTION
 
-#include "WorldAction.h"
-#include "GameObject.h"
+#include "BeautifulWorld.h"
 
 namespace SemperEngine
 {
