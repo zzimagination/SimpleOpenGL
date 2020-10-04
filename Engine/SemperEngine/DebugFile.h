@@ -6,30 +6,28 @@
 
 namespace SemperEngine
 {
-	class DebugFile
-	{
-	private:
+	namespace Core {
+		class DebugFile
+		{
+		private:
 
-		static const char* logFolder;
+			static std::fstream _file;
 
-		static const char* logPath;
+			static bool isOpen;
 
-		static std::fstream _file;
+		public:
 
-		static bool isOpen;
+			static void Open();
 
-	public:
+			static void Close();
 
-		static void Open();
+			static void Write(std::string log);
 
-		static void Close();
+			static void Write(std::wstring log);
 
-		static void Write(std::string log);
-
-		static void Write(std::wstring log);
-
-		static void Flush();
-	};
+			static void Flush();
+		};
+	}
 }
 
 #endif // !DEBUG_FILE

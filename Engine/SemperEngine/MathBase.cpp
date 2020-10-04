@@ -1,4 +1,5 @@
 #include "MathBase.h"
+#include <math.h>
 
 #ifdef  MATH_GLM
 #include <glm/glm.hpp>

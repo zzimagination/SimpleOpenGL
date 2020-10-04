@@ -4,26 +4,29 @@
 #include <string>
 #include <mutex>
 #include <queue>
-#include "LogItem.h"
+#include "LogDef.h"
 
 namespace SemperEngine
 {
-	class DebugOutput
+	namespace Core
 	{
-	private:
+		class DebugOutput
+		{
+		private:
 
-		static std::mutex _logLock;
+			static std::mutex _logLock;
 
-		static std::queue<LogItem> _logs;
+			static std::queue<LogItem> _logs;
 
-	public:
+		public:
 
-		static void InputLog(LogItem log);
+			static void InputLog(LogItem log);
 
-		static LogItem OutputLog();
+			static LogItem OutputLog();
 
-		static bool HasLog();
-	};
+			static bool HasLog();
+		};
+	}
 }
 
 #endif // !DEBUG_OUTPUT

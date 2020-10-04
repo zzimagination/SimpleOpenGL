@@ -3,8 +3,6 @@
 
 #define MATH_GLM
 
-#include <math.h>
-
 namespace SemperEngine {
 
 	class  Math

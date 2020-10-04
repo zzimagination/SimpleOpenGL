@@ -1,11 +1,12 @@
 #include "Debug.h"
 #include "DebugOutput.h"
-#include "LogItem.h"
+#include "LogDef.h"
 #include <iostream>
 
 namespace SemperEngine
 {
 	using namespace std;
+	using namespace Core;
 
 	void Debug::Log(int message)
 	{

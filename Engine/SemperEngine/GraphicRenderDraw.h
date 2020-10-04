@@ -11,6 +11,11 @@
 
 namespace SemperEngine {
 
+	constexpr const char* MODEL_MATRIX = "_model";
+	constexpr const char* VIEW_MATRIX = "_view";
+	constexpr const char* PROJECTION_MARIX = "_projection";
+	constexpr const char* MAINCOLOR = "_color";
+
 	class GraphicShader;
 	class Texture;
 	class GraphicVertexData;
@@ -50,58 +55,55 @@ namespace SemperEngine {
 		Back
 	};
 
-	class GraphicRenderDraw
-	{
-	public:
+	namespace Core {
 
-		static Matrix4x4 model;
+		class GraphicRenderDraw
+		{
+		private:
 
-		static Matrix4x4 view;
+			static GraphicVertexData _vertexData;
 
-		static Matrix4x4 projection;
+			static Matrix4x4 _model;
 
-	private:
+			static Matrix4x4 _view;
 
-		static int drawCount;
+			static Matrix4x4 _projection;
 
-		static int textureIndex;
+			static Material* _material;
 
-	public:
+			static int textureIndex;
 
-		static void TestRender();
+		public:
+
+			static void SetClearColor(Vector4 color);
+
+			static void SetClear(int mode);
+
+			static void SetDepthTest(bool enable);
+
+			static void SetDepthTestFunc(int func);
+
+			static void SetCullFace(bool enable);
+
+			static void SetCullMode(int mode);
+
+			static void SetVertexData(GraphicVertexData& data);
+
+			static void SetTransform(Matrix4x4 &model, Matrix4x4 &view, Matrix4x4 &projection);
+
+			static void SetMaterial(Material* material);
+
+			static void SetTextureData(GraphicTextureData* data);
+
+			static void Draw();
 
 
-		static void SetClear(int mode, Vector4 color);
+			static GraphicTextureData* AddTextureData(Texture* data);
 
-		static void SetDepthTest(bool test);
+			static void ClearTextureData(GraphicTextureData* data);
 
-		static void SetDepthTest(bool test, DepthTestFunc f);
-
-		static void SetCullFace(bool cull);
-
-		static void SetCullFace(bool cull, CullFace mode);
-
-		static void SetShader(Material* material);
-
-		static void SetTransform(Matrix4x4 model, Matrix4x4 view, Matrix4x4 projection);
-
-		static void SetVertexData(GraphicVertexData &data);
-
-		static void SetTextureData(GraphicTextureData* data);
-
-		static void Draw();
-
-
-
-		static GraphicVertexData AddVertexData(Vector3* vertices, Vector2* uv, int* index, int count);
-
-		static void ClearVertexData(const unsigned int VAO, const unsigned int VBO, const  unsigned int EBO);
-
-		static GraphicTextureData* AddTextureData(Texture* data);
-
-		static void ClearTextureData(GraphicTextureData* data);
-
-	};
+		};
+	}
 }
 #endif // !RENDER_DRAW
 

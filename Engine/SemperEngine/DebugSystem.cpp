@@ -3,69 +3,72 @@
 #include "DebugOutput.h"
 #include <iostream>
 
-namespace SemperEngine {
-
-	using namespace std;
-
-	thread DebugSystem::_debugThread;
-
-	bool DebugSystem::_isOpen = false;
-
-	std::chrono::milliseconds DebugSystem::_time;
-
-	void DebugSystem::Initialization()
+namespace SemperEngine
+{
+	namespace Core
 	{
-		_time = chrono::milliseconds(100);
-		_isOpen = true;
-		_debugThread = thread(Start);
-	}
+		using namespace std;
 
-	void DebugSystem::Start()
-	{
-		DebugFile::Open();
-		while (_isOpen)
+		thread DebugSystem::_debugThread;
+
+		bool DebugSystem::_isOpen = false;
+
+		std::chrono::milliseconds DebugSystem::_time;
+
+		void DebugSystem::Initialization()
 		{
-			Update();
-			this_thread::sleep_for(_time);
+			_time = chrono::milliseconds(100);
+			_isOpen = true;
+			_debugThread = thread(Start);
 		}
-	}
 
-	void DebugSystem::Update()
-	{
-		while (DebugOutput::HasLog())
+		void DebugSystem::Start()
 		{
-			LogItem item = DebugOutput::OutputLog();
-			if (item.info != "")
+			DebugFile::Open();
+			while (_isOpen)
 			{
-				DebugFile::Write(item.info);
-				std::cout << item.info << std::endl;
-			}
-			else
-			{
-				DebugFile::Write(item.winfo);
-				std::wcout << item.winfo << std::endl;
+				Update();
+				this_thread::sleep_for(_time);
 			}
 		}
-		DebugFile::Flush();
-	}
-	void DebugSystem::Close()
-	{
-		_isOpen = false;
-		_debugThread.join();
-		while (DebugOutput::HasLog())
+
+		void DebugSystem::Update()
 		{
-			LogItem item = DebugOutput::OutputLog();
-			if (item.info != "")
+			while (DebugOutput::HasLog())
 			{
-				DebugFile::Write(item.info);
-				std::cout << item.info << std::endl;
+				LogItem item = DebugOutput::OutputLog();
+				if (item.info != "")
+				{
+					DebugFile::Write(item.info);
+					std::cout << item.info << std::endl;
+				}
+				else
+				{
+					DebugFile::Write(item.winfo);
+					std::wcout << item.winfo << std::endl;
+				}
 			}
-			else
-			{
-				DebugFile::Write(item.winfo);
-				std::wcout << item.winfo << std::endl;
-			}
+			DebugFile::Flush();
 		}
-		DebugFile::Close();
+		void DebugSystem::Close()
+		{
+			_isOpen = false;
+			_debugThread.join();
+			while (DebugOutput::HasLog())
+			{
+				LogItem item = DebugOutput::OutputLog();
+				if (item.info != "")
+				{
+					DebugFile::Write(item.info);
+					std::cout << item.info << std::endl;
+				}
+				else
+				{
+					DebugFile::Write(item.winfo);
+					std::wcout << item.winfo << std::endl;
+				}
+			}
+			DebugFile::Close();
+		}
 	}
 }

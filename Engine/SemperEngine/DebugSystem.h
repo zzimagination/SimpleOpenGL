@@ -5,25 +5,28 @@
 
 namespace SemperEngine {
 
-	class DebugSystem
+	namespace Core
 	{
-	private:
+		class DebugSystem
+		{
+		private:
 
-		static std::thread _debugThread;
+			static std::thread _debugThread;
 
-		static bool _isOpen;
+			static bool _isOpen;
 
-		static std::chrono::milliseconds _time;
+			static std::chrono::milliseconds _time;
 
-	public:
+		public:
 
-		static void Initialization();
+			static void Initialization();
 
-		static void Start();
+			static void Start();
 
-		static void Update();
+			static void Update();
 
-		static void Close();
-	};
+			static void Close();
+		};
+	}
 }
 #endif // !DEBUG_SYSTEM

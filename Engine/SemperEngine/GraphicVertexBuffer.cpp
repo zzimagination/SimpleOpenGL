@@ -1,5 +1,5 @@
 #include "GraphicVertexBuffer.h"
-#include "GraphicRenderDraw.h"
+#include "GraphicResouce.h"
 
 namespace SemperEngine
 {
@@ -15,8 +15,7 @@ namespace SemperEngine
 
 		void GVertexBufferCMD::Excute()
 		{
-			auto vd = data->package.GetResource();
-			auto gvd = GraphicRenderDraw::AddVertexData(vd->vertices.data(), vd->uv.data(), vd->index.data(),vd->vertexCount);
+			auto gvd = GraphicResouce::AddVertexData(data->package.GetResource());
 			this->data->graphicData = gvd;
 		}
 	}

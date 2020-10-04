@@ -8,7 +8,7 @@ namespace SemperEngine {
 
 	void GameStart::Start()
 	{
-		DebugSystem::Initialization();
+		Core::DebugSystem::Initialization();
 		GameWindow::CreateGameWindow();
 		Application::LoadConfig();
 		Core::ShaderCompiler::Compile();

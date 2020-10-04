@@ -15,7 +15,7 @@ namespace SemperEngine {
 
 	void Material::SetMainColor(Vector4 color)
 	{
-		vector4Property.Add(MAINCOLOR, color);
+		
 	}
 
 	void Material::SetFloat(float value, string name)

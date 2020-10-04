@@ -19,8 +19,6 @@ namespace SemperEngine
 		{
 		public:
 
-			typedef GraphicCommandData<VertexData, GraphicVertexData> Vertex;
-
 			static std::map<Texture*, GraphicTextureData*> texturesData;
 
 			static std::vector<std::shared_ptr<Vertex>> vertexDatas;

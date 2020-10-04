@@ -1,5 +1,5 @@
 #include "GraphicVertexBufferClear.h"
-#include "GraphicRenderDraw.h"
+#include "GraphicResouce.h"
 
 namespace SemperEngine
 {
@@ -15,8 +15,7 @@ namespace SemperEngine
 
 		void GVertexBufferClearCMD::Excute()
 		{
-			auto gvd = data->graphicData;
-			GraphicRenderDraw::ClearVertexData(gvd.VAO, gvd.VBO, gvd.EBO);
+			GraphicResouce::ClearVertexData(data->graphicData);
 		}
 	}
 }

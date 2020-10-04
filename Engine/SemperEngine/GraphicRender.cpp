@@ -5,6 +5,7 @@
 #include "Texture.h"
 #include "GraphicDataCenter.h"
 #include "GraphicCommandManager.h"
+#include "GLRendererAPI.h"
 
 namespace SemperEngine {
 
@@ -24,7 +25,9 @@ namespace SemperEngine {
 			delete commands[i];
 		}
 
-		GraphicRenderDraw::SetClear(ClearMode::Color | ClearMode::Depth, Vector4(0.0f, 0.0f, 0.0f, 1));
+		//GraphicRenderDraw::SetClear(ClearMode::Color | ClearMode::Depth, Vector4(0.0f, 0.0f, 0.0f, 1));
+		GraphicAPI::GLRenderAPI::SetClearColor(Vector4(0.0f, 0.0f, 0.0f, 1));
+		GraphicAPI::GLRenderAPI::SetClear(0x0003);
 
 		commands = Core::GraphicCommandManager::front_DrawCommands;
 		for (int i = 0; i < commands.size(); i++)

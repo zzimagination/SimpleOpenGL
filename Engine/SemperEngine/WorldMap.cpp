@@ -13,14 +13,10 @@ namespace SemperEngine
 
 		void WorldMap::BuildWorld()
 		{
-			auto inside = new InsideWorld();
-			AddBuilder(inside);
-
-			auto test = new TestWorld();
-			AddBuilder(test);
-
-			auto second = new SecondWorld();
-			AddBuilder(second);
+			for (int i = 0; i < builders.size(); i++)
+			{
+				AddBuilder(builders[i]);
+			}
 		}
 
 		World WorldMap::LoadWorld(int id)

@@ -31,6 +31,7 @@ namespace SemperEngine
 
 			auto cube = CreateCubeData();
 			auto instance = ResourcePackage<VertexData>(cube);
+			GraphicDataCenter::AddVertexData(instance);
 			cubes.push_back(instance);
 			return instance;
 		}

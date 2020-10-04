@@ -22,6 +22,11 @@ namespace SemperEngine
 
 			std::vector<int> index;
 
+			int* s;
+
+			VertexData();
+
+			~VertexData();
 		};
 	}
 }

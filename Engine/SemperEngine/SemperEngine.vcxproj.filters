@@ -85,9 +85,6 @@
     <ClCompile Include="CompletedSignal.cpp">
       <Filter>Tools\MultiThread</Filter>
     </ClCompile>
-    <ClCompile Include="LogItem.cpp">
-      <Filter>Debug</Filter>
-    </ClCompile>
     <ClCompile Include="BaseRenderPipeline.cpp">
       <Filter>Render\GameRender</Filter>
     </ClCompile>
@@ -108,9 +105,6 @@
     </ClCompile>
     <ClCompile Include="GraphicVertexData.cpp">
       <Filter>Render\GraphicRender\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="glad.c">
-      <Filter>Render\GraphicRender\ThirdParty</Filter>
     </ClCompile>
     <ClCompile Include="GraphicTextureData.cpp">
       <Filter>Render\GraphicRender\Data</Filter>
@@ -247,6 +241,21 @@
     <ClCompile Include="ShaderCompiler.cpp">
       <Filter>Render\GraphicRender\Shader</Filter>
     </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>Render\GraphicRender\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLRendererAPI.cpp">
+      <Filter>Render\GraphicRender\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLResourceAPI.cpp">
+      <Filter>Render\GraphicRender\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicResource.cpp">
+      <Filter>Render\GraphicRender</Filter>
+    </ClCompile>
+    <ClCompile Include="GLShaderAPI.cpp">
+      <Filter>Render\GraphicRender\OpenGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -347,9 +356,6 @@
     </ClInclude>
     <ClInclude Include="CompletedSignal.h">
       <Filter>Tools\MultiThread</Filter>
-    </ClInclude>
-    <ClInclude Include="LogItem.h">
-      <Filter>Debug</Filter>
     </ClInclude>
     <ClInclude Include="BaseRenderPipeline.h">
       <Filter>Render\GameRender</Filter>
@@ -498,9 +504,6 @@
     <ClInclude Include="TestWorld.h">
       <Filter>GameLogic\WorldBuilder</Filter>
     </ClInclude>
-    <ClInclude Include="WorldBuilder.h">
-      <Filter>GameLogic\WorldBuilder</Filter>
-    </ClInclude>
     <ClInclude Include="WorldBuilderList.h">
       <Filter>GameLogic\WorldBuilder</Filter>
     </ClInclude>
@@ -533,6 +536,24 @@
     </ClInclude>
     <ClInclude Include="ShaderCompiler.h">
       <Filter>Render\GraphicRender\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="GLRendererAPI.h">
+      <Filter>Render\GraphicRender\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLResourceAPI.h">
+      <Filter>Render\GraphicRender\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicResouce.h">
+      <Filter>Render\GraphicRender</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldBuilder.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="GLShaderAPI.h">
+      <Filter>Render\GraphicRender\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="LogDef.h">
+      <Filter>Debug</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -594,9 +615,6 @@
     </Filter>
     <Filter Include="Render\GraphicRender\Data">
       <UniqueIdentifier>{82b3e8d2-cf97-40c0-ba34-fe23f1344c97}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Render\GraphicRender\ThirdParty">
-      <UniqueIdentifier>{6e277f16-e3fa-4d6a-92b8-4328f913d059}</UniqueIdentifier>
     </Filter>
     <Filter Include="Tools\Collection">
       <UniqueIdentifier>{7a3d9c93-c102-4875-a804-5a778e89fc3b}</UniqueIdentifier>

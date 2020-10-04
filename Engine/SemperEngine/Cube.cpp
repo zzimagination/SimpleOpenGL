@@ -20,7 +20,7 @@ namespace SemperEngine
 
 	void Cube::Start()
 	{
-		_cube = VertexDataCenter::LoadCube(true);
+		_cube = VertexDataCenter::LoadCube(false);
 		_renderObject = unique_ptr<RenderObject>(new RenderObject());
 		_material = unique_ptr<Material>(new Material("Unlit"));
 		_material->SetVector4(Vector4(0.8f, 0.2f, 0.2f, 1), "_color");

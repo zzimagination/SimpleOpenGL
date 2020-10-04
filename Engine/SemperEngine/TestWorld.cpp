@@ -70,18 +70,17 @@ namespace SemperEngine
 		AddGameObject(A);
 		
 		auto cube = new Cube();
-		cube->name = "cube";
-		//cube->transform.scale = Vector3(2, 10, 2);
+		cube->name = "cube1";
 		cube->transform.position = Vector3(0, 0, 0);
 		cube->transform.eulerAngle = Vector3(0, 30, 0);
 		cube->transform.scale = Vector3(1, 1, 1);
 		AddGameObject(cube);
 
-		//auto cube2 = new Cube();
-		//cube2->name = "cube";
-		//cube2->transform.scale = Vector3(10, 2, 2);
-		//cube2->transform.position = Vector3(0, 0, 10);
-		//AddGameObject(cube2);
+		auto cube2 = new Cube();
+		cube2->name = "cube2";
+		cube2->transform.position = Vector3(-10, 0, 0);
+		cube2->transform.eulerAngle = Vector3(0, 75, 0);
+		AddGameObject(cube2);
 
 		return world;
 	}

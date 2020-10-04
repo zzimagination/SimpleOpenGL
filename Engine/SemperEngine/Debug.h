@@ -5,8 +5,6 @@
 
 namespace SemperEngine {
 
-	class GameObject;
-
 	class Debug
 	{
 	public:

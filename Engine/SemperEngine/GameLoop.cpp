@@ -11,6 +11,7 @@
 #include "GraphicRender.h"
 #include "BaseRenderPipeline.h"
 #include "GraphicCommandManager.h"
+#include "VertexDataCenter.h"
 
 namespace SemperEngine {
 
@@ -86,6 +87,8 @@ namespace SemperEngine {
 				EventSystem::ProcessEvent();
 				WorldLoop::Loop();
 				BaseRenderPipeline::Render();
+				VertexDataCenter::UnloadNoUse();
+			
 				EventSystem::EndEvents();
 				/*·¢ËÍÍê±ÏÃüÁî*/
 				logicSignal.Send();

@@ -9,11 +9,10 @@ namespace SemperEngine
 
 		std::map<Texture*, GraphicTextureData*> GraphicDataCenter::texturesData;
 
-		std::vector< shared_ptr<GraphicDataCenter::Vertex>> GraphicDataCenter::vertexDatas;
+		std::vector< shared_ptr<Vertex>> GraphicDataCenter::vertexDatas;
 
 		void GraphicDataCenter::AddVertexData(ResourcePackage<VertexData> package)
 		{
-			typedef GraphicDataCenter::Vertex Vertex;
 			int id = (int)vertexDatas.size();
 			shared_ptr<Vertex> data = shared_ptr<Vertex>(new Vertex);
 			data->package = package;

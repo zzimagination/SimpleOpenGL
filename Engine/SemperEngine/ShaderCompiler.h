@@ -4,6 +4,7 @@
 
 #include <string>
 #include "ShaderSource.h"
+#include "GraphicShader.h"
 
 namespace SemperEngine
 {
@@ -17,15 +18,10 @@ namespace SemperEngine
 
 		private:
 
-			static unsigned int Shader(Shaderfile file);
+			static GraphicShader Shader(Shaderfile file);
 
 			static std::string ReadCode(std::string fileName);
 
-			static unsigned int Vertex(std::string code);
-
-			static unsigned int Fragment(std::string code);
-
-			static unsigned int Geometry(std::string code);
 		};
 	}
 }

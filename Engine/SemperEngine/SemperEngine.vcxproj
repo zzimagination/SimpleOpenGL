@@ -164,8 +164,12 @@
     <ClInclude Include="GameEnd.h" />
     <ClInclude Include="GameObjectContainer.h" />
     <ClInclude Include="GameObjectCreator.h" />
+    <ClInclude Include="GLRendererAPI.h" />
+    <ClInclude Include="GLResourceAPI.h" />
+    <ClInclude Include="GLShaderAPI.h" />
     <ClInclude Include="GraphicCommandData.h" />
     <ClInclude Include="GraphicCommandManager.h" />
+    <ClInclude Include="GraphicResouce.h" />
     <ClInclude Include="GraphicTextureBuffer.h" />
     <ClInclude Include="GraphicTextureBufferClear.h" />
     <ClInclude Include="GraphicVertexBuffer.h" />
@@ -179,7 +183,7 @@
     <ClInclude Include="InsideWorldAction.h" />
     <ClInclude Include="KeyIdentity.h" />
     <ClInclude Include="LifeContainer.h" />
-    <ClInclude Include="LogItem.h" />
+    <ClInclude Include="LogDef.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MathBase.h" />
     <ClInclude Include="Mesh.h" />
@@ -260,8 +264,12 @@
     <ClCompile Include="GameEnd.cpp" />
     <ClCompile Include="GameObjectContainer.cpp" />
     <ClCompile Include="GameObjectCreator.cpp" />
+    <ClCompile Include="GLRendererAPI.cpp" />
+    <ClCompile Include="GLResourceAPI.cpp" />
+    <ClCompile Include="GLShaderAPI.cpp" />
     <ClCompile Include="GraphicCommandData.cpp" />
     <ClCompile Include="GraphicCommandManager.cpp" />
+    <ClCompile Include="GraphicResource.cpp" />
     <ClCompile Include="GraphicTextureBuffer.cpp" />
     <ClCompile Include="GraphicTextureBufferClear.cpp" />
     <ClCompile Include="GraphicVertexBuffer.cpp" />
@@ -272,7 +280,6 @@
     <ClCompile Include="GWindow.cpp" />
     <ClCompile Include="InsideWorld.cpp" />
     <ClCompile Include="InsideWorldAction.cpp" />
-    <ClCompile Include="LogItem.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MathBase.cpp" />
     <ClCompile Include="Mathz.cpp" />

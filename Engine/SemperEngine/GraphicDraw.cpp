@@ -3,9 +3,7 @@
 #include "GraphicRenderDraw.h"
 #include "GraphicShaderManager.h"
 #include "CubeData.h"
-
-
-#include <glad/glad.h>
+#include "GLRendererAPI.h"
 
 namespace SemperEngine
 {
@@ -22,12 +20,14 @@ namespace SemperEngine
 
 		void GraphicDraw::Excute()
 		{
-			GraphicRenderDraw::SetCullFace(true, Back);
+			GraphicRenderDraw::SetCullMode(1);
+			GraphicRenderDraw::SetCullFace(true);
+			GraphicRenderDraw::SetCullMode(3);
 			GraphicRenderDraw::SetDepthTest(true);
 
 			GraphicRenderDraw::SetVertexData(vertexData->graphicData);
 			GraphicRenderDraw::SetTransform(modelMatrix, viewMatrix, projectionMatrix);
-			GraphicRenderDraw::SetShader(material);
+			GraphicRenderDraw::SetMaterial(material);
 			GraphicRenderDraw::Draw();
 		}
 	}

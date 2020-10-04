@@ -6,6 +6,6 @@ namespace SemperEngine {
 	void GameEnd::End()
 	{
 		GameWindow::TerminateGameWindow();
-		DebugSystem::Close();
+		Core::DebugSystem::Close();
 	}
 }
