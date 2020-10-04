@@ -7,6 +7,8 @@
 
 namespace SemperEngine {
 
+	using namespace Core;
+
 	GWindow* GWindow::Create(int width, int height, wstring title)
 	{
 		GWindow* gwindow = new GWindow();

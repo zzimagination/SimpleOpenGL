@@ -158,9 +158,10 @@
     <ClInclude Include="DebugOutput.h" />
     <ClInclude Include="DebugSystem.h" />
     <ClInclude Include="EngineDef.h" />
-    <ClInclude Include="EventDefination.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="EventDef.h" />
     <ClInclude Include="EventRecorder.h" />
-    <ClInclude Include="EventSystem.h" />
+    <ClInclude Include="EventManager.h" />
     <ClInclude Include="GameEnd.h" />
     <ClInclude Include="GameObjectContainer.h" />
     <ClInclude Include="GameObjectCreator.h" />
@@ -211,7 +212,6 @@
     <ClInclude Include="ResourcePackage.h" />
     <ClInclude Include="SecondWorld.h" />
     <ClInclude Include="SecondWorldAction.h" />
-    <ClInclude Include="SemperEngine.h" />
     <ClInclude Include="GraphicShader.h" />
     <ClInclude Include="GraphicShaderManager.h" />
     <ClInclude Include="ShaderCompiler.h" />
@@ -227,7 +227,6 @@
     <ClInclude Include="GraphicTextureData.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Transform.h" />
-    <ClInclude Include="UserInputEvent.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
@@ -259,8 +258,9 @@
     <ClCompile Include="DebugFile.cpp" />
     <ClCompile Include="DebugOutput.cpp" />
     <ClCompile Include="DebugSystem.cpp" />
+    <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventRecorder.cpp" />
-    <ClCompile Include="EventSystem.cpp" />
+    <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="GameEnd.cpp" />
     <ClCompile Include="GameObjectContainer.cpp" />
     <ClCompile Include="GameObjectCreator.cpp" />

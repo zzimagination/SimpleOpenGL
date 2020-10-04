@@ -6,7 +6,7 @@
 #include "Debug.h"
 #include "WorldLoop.h"
 #include "GameWindow.h"
-#include "EventSystem.h"
+#include "EventManager.h"
 #include "FrameRuntime.h"
 #include "GraphicRender.h"
 #include "BaseRenderPipeline.h"
@@ -84,12 +84,12 @@ namespace SemperEngine {
 				/*等待开始命令*/
 				mainSignal.Wait();
 				/*处理游戏逻辑*/
-				EventSystem::ProcessEvent();
+				EventManager::ProcessEvent();
 				WorldLoop::Loop();
 				BaseRenderPipeline::Render();
 				VertexDataCenter::UnloadNoUse();
 			
-				EventSystem::EndEvents();
+				EventManager::EndEvents();
 				/*发送完毕命令*/
 				logicSignal.Send();
 			}

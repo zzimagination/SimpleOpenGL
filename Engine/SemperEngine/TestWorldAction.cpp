@@ -1,9 +1,8 @@
 #include "TestWorldAction.h"
-#include "Debug.h"
-#include "EventSystem.h"
 #include "WorldManager.h"
 #include "GameObjectCreator.h"
-
+#include "Event.h"
+#include "Debug.h"
 
 namespace SemperEngine
 {
@@ -13,15 +12,15 @@ namespace SemperEngine
 	}
 	void TestWorldAction::Update()
 	{
-		if (EventSystem::GetKeyAction(Keyboard::Key::number2, InputAction::Button::press))
+		if (Event::KeyAction(Keyboard::Key::number2, InputAction::Button::press))
 		{
 			WorldManager::SetActive(2);
 		}
-		else if(EventSystem::GetKeyAction(Keyboard::Key::number3, InputAction::Button::press))
+		else if(Event::KeyAction(Keyboard::Key::number3, InputAction::Button::press))
 		{
 			mid = GameObjectCreator::Create(new GameObject());
 		}
-		else if (EventSystem::GetKeyAction(Keyboard::Key::number4, InputAction::Button::press))
+		else if (Event::KeyAction(Keyboard::Key::number4, InputAction::Button::press))
 		{
 			GameObjectCreator::Destory(mid);
 		}

@@ -1,9 +1,14 @@
 #pragma once
-#ifndef EVENT_DEFINATION
-#define EVENT_DEFINATION
+#ifndef EVENT_DEF
+#define EVENT_DEF
+
+#include <vector>
+#include "Mathz.h"
+#include "Time.h"
 
 namespace SemperEngine
 {
+
 	struct Keyboard
 	{
 		enum struct Key
@@ -161,7 +166,35 @@ namespace SemperEngine
 		};
 	};
 
+	struct KeyEvent {
 
+		Keyboard::Key value;
+
+		InputAction::Button action;
+
+	};
+
+	struct KeyKeeper
+	{
+		Keyboard::Key key;
+
+		float pressTime = 0;
+
+	};
+
+	struct MouseButtonEvent
+	{
+		Mouse::Button value;
+
+		InputAction::Button action;
+	};
+
+	struct MouseButtonKeeper
+	{
+		Mouse::Button button;
+
+		float pressTime = 0;
+	};
 }
 
 

@@ -58,9 +58,6 @@
     <ClCompile Include="MathBase.cpp">
       <Filter>Math</Filter>
     </ClCompile>
-    <ClCompile Include="EventSystem.cpp">
-      <Filter>EventSystem</Filter>
-    </ClCompile>
     <ClCompile Include="EventRecorder.cpp">
       <Filter>EventSystem</Filter>
     </ClCompile>
@@ -256,6 +253,12 @@
     <ClCompile Include="GLShaderAPI.cpp">
       <Filter>Render\GraphicRender\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>EventSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -318,9 +321,6 @@
     <ClInclude Include="GameStart.h">
       <Filter>Project\Loop</Filter>
     </ClInclude>
-    <ClInclude Include="SemperEngine.h">
-      <Filter>Project</Filter>
-    </ClInclude>
     <ClInclude Include="EngineDef.h">
       <Filter>Project</Filter>
     </ClInclude>
@@ -329,9 +329,6 @@
     </ClInclude>
     <ClInclude Include="KeyIdentity.h">
       <Filter>Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="EventSystem.h">
-      <Filter>EventSystem</Filter>
     </ClInclude>
     <ClInclude Include="EventRecorder.h">
       <Filter>EventSystem</Filter>
@@ -447,12 +444,6 @@
     <ClInclude Include="WorldFruit.h">
       <Filter>World\World</Filter>
     </ClInclude>
-    <ClInclude Include="EventDefination.h">
-      <Filter>EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="UserInputEvent.h">
-      <Filter>EventSystem</Filter>
-    </ClInclude>
     <ClInclude Include="GameObjectCreator.h">
       <Filter>World\GameObject</Filter>
     </ClInclude>
@@ -554,6 +545,15 @@
     </ClInclude>
     <ClInclude Include="LogDef.h">
       <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="EventDef.h">
+      <Filter>EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>EventSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 #include "SecondWorldAction.h"
-#include "Debug.h"
-#include "EventSystem.h"
 #include "WorldManager.h"
+#include "Event.h"
+#include "Debug.h"
 
 namespace SemperEngine
 {
@@ -11,7 +11,7 @@ namespace SemperEngine
 	}
 	void SecondWorldAction::Update()
 	{
-		if (EventSystem::GetKeyAction(Keyboard::Key::number2, InputAction::Button::press))
+		if (Event::KeyAction(Keyboard::Key::number2, InputAction::Button::press))
 		{
 			WorldManager::SetActive(1);
 		}

@@ -1,7 +1,6 @@
 //#define UNIT_TEST
 
 #include"pch.h"
-#include "SemperEngine.h"
 #include "GameWindow.h"
 #include "GameStart.h"
 #include "GameEnd.h"
