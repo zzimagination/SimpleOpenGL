@@ -1,25 +1,34 @@
 #pragma once
-#ifndef GL_SHADERAPI
-#define GL_SHADERAPI
+#ifndef __GL_SHADERAPI__
+#define __GL_SHADERAPI__
 
 #include <string>
 #include "GraphicShader.h"
 
 namespace SemperEngine
 {
-	namespace GraphicAPI
+	namespace Core
 	{
-		class GLShaderCompiler
+		namespace GraphicAPI
 		{
-		public:
+			class GLShader
+			{
+			public:
 
-			static GraphicShader Compile(std::string vertexCode, std::string fragmentCode, std::string geometryCode);
+				unsigned int program;
+			};
 
-		private:
+			class GLShaderCompiler
+			{
+			public:
 
-			static unsigned int CompileOne(std::string code, unsigned int type);
-		};
+				static GLShader Compile(std::string vertexCode, std::string fragmentCode, std::string geometryCode);
+
+			private:
+
+				static unsigned int CompileOne(std::string code, unsigned int type);
+			};
+		}
 	}
 }
-
 #endif // !GL_SHADERAPI

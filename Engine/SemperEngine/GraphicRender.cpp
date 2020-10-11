@@ -1,42 +1,44 @@
 #include "GraphicRender.h"
 #include "RenderBatchManager.h"
 #include "RenderBatch.h"
-#include "GraphicRenderDraw.h"
+#include "GraphicRenderAPI.h"
 #include "Texture.h"
 #include "GraphicDataCenter.h"
 #include "GraphicCommandManager.h"
 #include "GLRendererAPI.h"
+#include <iostream>
+#include <map>
+#include <malloc.h>
 
-namespace SemperEngine {
-
-	void GraphicRender::Render()
+namespace SemperEngine
+{
+	namespace Core
 	{
-		auto commands = Core::GraphicCommandManager::front_CollectResource;
-		for (int i = 0; i < commands.size(); i++)
+		void GraphicRender::Render()
 		{
-			commands[i]->Excute();
-			delete commands[i];
+			auto commands = GraphicCommandManager::front_Setting;
+			for (int i = 0; i < commands.size(); i++)
+			{
+				commands[i]->Excute();
+				delete commands[i];
+			}
+
+			commands = Core::GraphicCommandManager::front_DrawCommands;
+			for (int i = 0; i < commands.size(); i++)
+			{
+				commands[i]->Excute();
+				delete commands[i];
+			}
 		}
 
-		commands = Core::GraphicCommandManager::front_AddResource;
-		for (int i = 0; i < commands.size(); i++)
+		void GraphicRender::Resource()
 		{
-			commands[i]->Excute();
-			delete commands[i];
+			auto commands = Core::GraphicCommandManager::resources;
+			for (int i = 0; i < commands.size(); i++)
+			{
+				commands[i]->Excute();
+				delete commands[i];
+			}
 		}
-
-		//GraphicRenderDraw::SetClear(ClearMode::Color | ClearMode::Depth, Vector4(0.0f, 0.0f, 0.0f, 1));
-		GraphicAPI::GLRenderAPI::SetClearColor(Vector4(0.0f, 0.0f, 0.0f, 1));
-		GraphicAPI::GLRenderAPI::SetClear(0x0003);
-
-		commands = Core::GraphicCommandManager::front_DrawCommands;
-		for (int i = 0; i < commands.size(); i++)
-		{
-			commands[i]->Excute();
-			delete commands[i];
-		}
-
-
-		//GraphicRenderDraw::TestRender();
 	}
 }

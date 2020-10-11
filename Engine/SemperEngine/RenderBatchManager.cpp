@@ -7,7 +7,6 @@ namespace SemperEngine {
 	{
 		using namespace std;
 
-
 		vector<RenderBatch> RenderBatchManager::batchs;
 
 		void RenderBatchManager::GenerateBatchs(Camera* camera, vector<RenderObject*>  renderObjects)
@@ -21,7 +20,6 @@ namespace SemperEngine {
 				batch.material = robject->material;
 				batch.viewMatrix = camera->CalculateViewMatrix();
 				batch.projectionMatrix = camera->CalculateProjectionMatrix();
-
 				batchs.push_back(batch);
 			}
 		}

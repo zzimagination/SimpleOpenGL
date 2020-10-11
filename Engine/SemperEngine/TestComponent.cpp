@@ -8,15 +8,13 @@ namespace SemperEngine
 {
 	using namespace std;
 
-	TestComponent::TestComponent()
+	TestComponent::~TestComponent()
 	{
 	}
 
 	void TestComponent::Start()
 	{
-		string log = "";
-		log.append("Component Start");
-		Debug::Log(log);
+		Debug::Log("Component Start");
 	}
 
 	void TestComponent::Update()
@@ -55,8 +53,6 @@ namespace SemperEngine
 
 	void TestComponent::End()
 	{
-		string log = "";
-		log.append("Component End");
-		Debug::Log(log);
+		Debug::Log("Component End");
 	}
 }

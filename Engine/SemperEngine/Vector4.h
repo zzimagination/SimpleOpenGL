@@ -1,5 +1,5 @@
-#ifndef MATH_VECTOR4
-#define MATH_VECTOR4
+#ifndef __MATHZ_VECTOR4__
+#define __MATHZ_VECTOR4__
 
 namespace SemperEngine {
 

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef INSIDE_WORLD_ACTION
-#define INSIDE_WORLD_ACTION
+#ifndef __INSIDE_WORLD_ACTION__
+#define __INSIDE_WORLD_ACTION__
 
 #include "BeautifulWorld.h"
 
@@ -11,6 +11,8 @@ namespace SemperEngine
 	public:
 
 		int count;
+
+		virtual ~InsideWorldAction() override;
 
 		virtual void Start() override;
 

@@ -5,6 +5,7 @@ namespace SemperEngine
 {
 	Component::Component()
 	{
+		life = Core::LifeContainer<Component>(this);
 	}
 
 	Component::~Component()

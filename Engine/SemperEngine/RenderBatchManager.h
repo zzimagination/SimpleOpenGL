@@ -1,5 +1,5 @@
-#ifndef RENDERBATCH_MANAGER
-#define RENDERBATCH_MANAGER
+#ifndef __RENDERBATCH_MANAGER__
+#define __RENDERBATCH_MANAGER__
 
 #include <vector>
 #include "RenderBatch.h"

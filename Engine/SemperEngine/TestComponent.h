@@ -1,5 +1,5 @@
-#ifndef TEST_COMPONENT
-#define TEST_COMPONENT
+#ifndef __TEST_COMPONENT__
+#define __TEST_COMPONENT__
 
 #include "BeautifulWorld.h"
 
@@ -9,7 +9,7 @@ namespace SemperEngine
 
 	public:
 
-		TestComponent();
+		virtual ~TestComponent() override;
 		// Í¨¹ý Component ¼Ì³Ð
 		virtual void Start() override;
 

@@ -1,6 +1,7 @@
-#ifndef COMPONENT
-#define COMPONENT
+#ifndef __COMPONENT__
+#define __COMPONENT__
 
+#include "ObjectIndex.h"
 #include "LifeContainer.h"
 
 namespace SemperEngine {
@@ -13,7 +14,9 @@ namespace SemperEngine {
 
 		GameObject* gameObject;
 
-		Core::LifeContainer<Component> life = Core::LifeContainer<Component>(this);
+		Core::LifeContainer<Component> life;
+
+		Core::ObjectIndex comID;
 
 	public:
 
@@ -27,7 +30,7 @@ namespace SemperEngine {
 
 		Component();
 
-		~Component();
+		virtual ~Component();
 
 	};
 }

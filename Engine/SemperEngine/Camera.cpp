@@ -1,6 +1,7 @@
 #include "Camera.h"
-#include "Application.h"
+#include "GameSetting.h"
 #include "CameraCollection.h"
+#include "Event.h"
 
 namespace SemperEngine {
 
@@ -8,12 +9,15 @@ namespace SemperEngine {
 
 	Camera::Camera()
 	{
-		_size = 5;
-		_farPlane = 1000;
-		_nearPlane = 0.2f;
-		_fov = 60;
-		_aspect = 1.777778f;
-		projection = Projection::Perspective;
+		this->_size = 5;
+		this->_farPlane = 1000;
+		this->_nearPlane = 1;
+		this->_fov = 65;
+		this->_aspect = (float)GameSetting::windowWidth / GameSetting::windowHeight;
+		this->projection = Projection::Perspective;
+		this->clearMode = ClearMode::Color;
+		this->clearColor = Vector4(0.8f, 0.8f, 0.8f, 1);
+		this->renderLayer = { 1 };
 	}
 
 	Camera::~Camera()
@@ -23,10 +27,16 @@ namespace SemperEngine {
 
 	void Camera::Start()
 	{
+		auto look = transform.rotation * Vector3::forward;
+		Vector3 lookp(look.x, 0, look.z);
+		_yaw = Math::ArcCos(Vector3::Dot(lookp, Vector3::forward) / lookp.Length());
+		_pitch = Math::ArcCos(Vector3::Dot(lookp, look) / (look.Length(), lookp.Length()));
 	}
 
 	void Camera::Update()
 	{
+		Move();
+		Rotate();
 		Core::CameraCollection::AddCamera(this->life);
 	}
 
@@ -87,8 +97,12 @@ namespace SemperEngine {
 
 	float Camera::GetAspect()
 	{
-		_aspect = (float)Application::GetWindowWidth() / Application::GetWindowHeight();
 		return _aspect;
+	}
+
+	void Camera::SetAspect(float a)
+	{
+		_aspect = a;
 	}
 
 	Matrix4x4 Camera::CalculateProjectionMatrix()
@@ -97,17 +111,26 @@ namespace SemperEngine {
 		switch (projection)
 		{
 		case Projection::Orthographic:
-			m.x0 = 1 / (GetAspect()*GetSize());
+			m.x0 = 1 / (GetAspect() * GetSize());
 			m.y1 = 1 / (GetSize());
 			m.z2 = -2 / (GetFar() - GetNear());
 			m.w2 = -(GetFar() + GetNear()) / (GetFar() - GetNear());
 			break;
 		case Projection::Perspective:
-			m.x0 = (1 / tan(GetFov()* Math::pi / 180.0f / 2.0f)) / GetAspect();
-			m.y1 = 1 / tan(GetFov()*Math::pi / 180.0f / 2.0f);
-			m.z2 = -(GetFar() + GetNear()) / (GetFar() - GetNear());
+
+			float n = _nearPlane;
+			float f = _farPlane;
+			float tan = Math::Tan(_fov / 2);
+			float t = n * tan;
+			float b = -t;
+			float l = -t * _aspect;
+			float r = -l;
+
+			m.x0 = n / r;
+			m.y1 = n / t;
+			m.z2 = (f + n) / (n - f);
 			m.z3 = -1;
-			m.w2 = -(2.0f * GetNear()*GetFar()) / (GetFar() - GetNear());
+			m.w2 = (2 * f * n) / (n - f);
 			m.w3 = 0;
 			break;
 		}
@@ -121,12 +144,12 @@ namespace SemperEngine {
 		Vector3 pos = transform.position;
 		Vector3 up(0, 1, 0);
 
-		Vector3 look = (transform.GetModelMatrix()*Vector3(0, 0, 1)).Normalize();
-		Vector3 left = Vector3::Cross(up, look).Normalize();
-		Vector3 top = Vector3::Cross(look, left).Normalize();
+		Vector3 look = transform.rotation * Vector3(0, 0, 1);
+		Vector3 right = transform.rotation * Vector3(1, 0, 0);
+		Vector3 top = Vector3::Cross(look, right);
 
 		Matrix4x4 view(
-			left.x, left.y, left.z, -Vector3::Dot(left, pos),
+			right.x, right.y, right.z, -Vector3::Dot(right, pos),
 			top.x, top.y, top.z, -Vector3::Dot(top, pos),
 			look.x, look.y, look.z, -Vector3::Dot(look, pos),
 			0, 0, 0, 1
@@ -134,5 +157,58 @@ namespace SemperEngine {
 
 		worldToViewMatrix = view;
 		return worldToViewMatrix;
+	}
+	void Camera::Move()
+	{
+		typedef Keyboard::Key Key;
+		typedef InputAction::Button BA;
+		Vector3 moveDelta;
+		if (Event::KeyAction(Key::w, BA::press) || Event::KeyAction(Key::w, BA::keep))
+		{
+			moveDelta.z = -Time::GetDeltaTime() * 5;
+		}
+		else if (Event::KeyAction(Key::s, BA::press) || Event::KeyAction(Key::s, BA::keep))
+		{
+			moveDelta.z = Time::GetDeltaTime() * 5;
+		}
+		if (Event::KeyAction(Key::a, BA::press) || Event::KeyAction(Key::a, BA::keep))
+		{
+			moveDelta.x = -Time::GetDeltaTime() * 5;
+		}
+		else if (Event::KeyAction(Key::d, BA::press) || Event::KeyAction(Key::d, BA::keep))
+		{
+			moveDelta.x = Time::GetDeltaTime() * 5;
+		}
+		if (Event::KeyAction(Key::q, BA::press) || Event::KeyAction(Key::q, BA::keep))
+		{
+			moveDelta.y = -Time::GetDeltaTime() * 5;
+		}
+		else if (Event::KeyAction(Key::e, BA::press) || Event::KeyAction(Key::e, BA::keep))
+		{
+			moveDelta.y = Time::GetDeltaTime() * 5;
+		}
+
+		auto forward = transform.rotation * Vector3(0, 0, 1);
+		auto up = Vector3(0, 1, 0);
+		auto left = transform.rotation * Vector3(1, 0, 0);
+		transform.position = transform.position + forward * moveDelta.z + moveDelta.y * up + moveDelta.x * left;
+	}
+	void Camera::Rotate()
+	{
+		typedef Keyboard::Key Key;
+		typedef Mouse::Button MButton;
+		typedef InputAction::Button BA;
+		if (!Event::MouseButtonAction(MButton::right, BA::keep))
+		{
+			_lastMousePos = Event::MousePosition();
+			return;
+		}
+
+		auto nowPos = Event::MousePosition();
+		auto delta = nowPos - _lastMousePos;
+		_lastMousePos = nowPos;
+		_yaw += delta.x * Time::GetDeltaTime() * -5;
+		_pitch += delta.y * Time::GetDeltaTime() * -5;
+		transform.rotation = Quaternion::AngleAxis(_yaw, Vector3(0, 1, 0)) * Quaternion::AngleAxis(_pitch, Vector3(1, 0, 0));
 	}
 }

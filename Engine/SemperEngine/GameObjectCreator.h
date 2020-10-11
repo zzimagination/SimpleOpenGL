@@ -1,6 +1,6 @@
 #pragma once
-#ifndef GAMEOBJECT_CREATER
-#define GAMEOBJECT_CREATER
+#ifndef __GAMEOBJECT_CREATER__
+#define __GAMEOBJECT_CREATER__
 
 #include "GameObject.h"
 

@@ -1,6 +1,4 @@
 #include "Material.h"
-#include "GraphicShaderManager.h"
-#include "Texture.h"
 
 namespace SemperEngine {
 
@@ -8,63 +6,40 @@ namespace SemperEngine {
 
 	Material::Material(string shader)
 	{
-		this->shader = ShaderManager::GetShader(shader);
-		this->name = shader;
-		SetVector4(Vector4(1, 1, 1, 1), "_color");
+		this->shader = shader;
 	}
 
-	void Material::SetMainColor(Vector4 color)
+	Material::Material() :Material("Unlit")
 	{
-		
+		AddShaderProperty("_color", Vector4(1, 1, 1, 1));
 	}
 
-	void Material::SetFloat(float value, string name)
+	void Material::AddShaderProperty(std::string name, float value)
 	{
-		floatProperty.Add(name, value);
+		shaderProperty.Add(name, value);
 	}
 
-	void Material::SetVector2(Vector2 value, string name)
+	void Material::AddShaderProperty(std::string name, Vector2 value)
 	{
-		vector2Property.Add(name, value);
+		shaderProperty.Add(name, value);
 	}
 
-	void Material::SetVector3(Vector3 value, string name)
+	void Material::AddShaderProperty(std::string name, Vector3 value)
 	{
-		vector3Property.Add(name, value);
+		shaderProperty.Add(name, value);
 	}
 
-	void Material::SetVector4(Vector4 value, string name)
+	void Material::AddShaderProperty(std::string name, Vector4 value)
 	{
-		vector4Property.Add(name, value);
+		shaderProperty.Add(name, value);
 	}
 
-	void Material::SetMatrix(Matrix4x4 value, string name)
+	void Material::AddShaderProperty(std::string name, Matrix4x4 value)
 	{
-		matrix4x4Property.Add(name, value);
+		shaderProperty.Add(name, value);
 	}
-
-	void Material::SetTexture(Texture* tex)
+	void Material::AddShaderProperty(std::string name, Color value)
 	{
-		for (int i = 0; i < textures.size(); i++)
-		{
-			if (textures[i] == tex)
-			{
-				return;
-			}
-		}
-		textures.push_back(tex);
-	}
-
-	void Material::RemoveTexture(Texture *tex)
-	{
-		for (int i = 0; i < textures.size(); i++)
-		{
-			if (textures[i] == tex)
-			{
-				textures.erase(textures.begin() + i);
-				return;
-			}
-		}
-		throw "don't have the texture";
+		shaderProperty.Add(name, Vector4(value.R(), value.G(), value.B(), value.A()));
 	}
 }

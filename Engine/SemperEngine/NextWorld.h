@@ -1,6 +1,6 @@
 #pragma once
-#ifndef NEXTWORLD
-#define NEXTWORLD
+#ifndef __NEXTWORLD__
+#define __NEXTWORLD__
 
 namespace SemperEngine
 {
@@ -13,6 +13,8 @@ namespace SemperEngine
 			int _next;
 
 			bool isChange;
+
+			NextWorld();
 
 			NextWorld(int id);
 

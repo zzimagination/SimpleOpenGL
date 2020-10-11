@@ -1,11 +1,16 @@
-#ifndef GAMESTART
-#define GAMESTART
-namespace SemperEngine {
-	class GameStart
+#ifndef __GAME_START__
+#define __GAME_START__
+
+namespace SemperEngine
+{
+	namespace Core
 	{
-	public:
-		static void Start();
-	};
+		class GameStart
+		{
+		public:
+			static void Start();
+		};
+	}
 }
 #endif // !GAMESTART
 

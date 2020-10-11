@@ -1,23 +1,21 @@
-#ifndef STRINGENCODING
-#define STRINGENCODING
+#ifndef __STRINGENCODING__
+#define __STRINGENCODING__
 
 #include <string>
 
-namespace SemperEngine {
-
-	using namespace std;
-
+namespace SemperEngine 
+{
 	class StringEncoding
 	{
 	public:
 
-		static string UnicodeToUTF8(const wstring& wstr);
+		static std::string UnicodeToUTF8(const std::wstring& wstr);
 
-		static wstring UTF8ToUnicode(const string& str);
+		static std::wstring UTF8ToUnicode(const std::string& str);
 
-		static string UnicodeToANSI(const wstring& wstr);
+		static std::string UnicodeToANSI(const std::wstring& wstr);
 
-		static wstring ANSIToUnicode(const string& str);
+		static std::wstring ANSIToUnicode(const std::string& str);
 	};
 }
 #endif // !STRINGENCODING

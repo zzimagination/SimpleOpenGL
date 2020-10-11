@@ -1,6 +1,6 @@
 #pragma once
-#ifndef WORLDBUILDLIST
-#define WORLDBUILDLIST
+#ifndef __WORLDBUILDLIST__
+#define __WORLDBUILDLIST__
 
 #include <vector>
 #include "TestWorld.h"
@@ -9,7 +9,7 @@
 
 namespace SemperEngine 
 {
-	std::vector<WorldBuilder*> builders = {
+	std::vector<WorldBuilder*> worldBuilders = {
 		new InsideWorld(),
 		new TestWorld(),
 		new SecondWorld()

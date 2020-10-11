@@ -1,23 +1,42 @@
 #pragma once
-#ifndef GL_RESOURCEAPI
-#define GL_RESOURCEAPI
+#ifndef __GL_RESOURCEAPI__
+#define __GL_RESOURCEAPI__
 
 #include "Mathz.h"
 #include "GraphicVertexData.h"
 
 namespace SemperEngine
 {
-	namespace GraphicAPI
+	namespace Core
 	{
-		class GLResourceAPI
+		namespace GraphicAPI
 		{
-		public:
+			struct GLVertexData
+			{
+				unsigned int VAO = 0;
 
-			static GraphicVertexData AddVertexData(Vector3* vertices, Vector2* uv, int* index, int count);
+				unsigned int VBO = 0;
 
-			static void ClearVertexData(const unsigned int VAO, const unsigned int VBO, const  unsigned int EBO);
-		};
+				unsigned int EBO = 0;
+
+				unsigned int pointCount = 0;
+
+			};
+
+
+			class GLResourceAPI
+			{
+			public:
+
+				static GLVertexData AddVertexData(Vector3* vertices, Vector2* uv, int* index, int count);
+
+				static GLVertexData AddVertexData(Vector3* vertices, int count);
+
+				static void ClearVertexData(unsigned int VAO, unsigned int VBO, unsigned int EBO);
+
+				static void ClearVertexData(unsigned int VAO, unsigned int VBO);
+			};
+		}
 	}
 }
-
 #endif // !GLRESOURCE

@@ -10,32 +10,6 @@ namespace SemperEngine
 {
 	using namespace std;
 
-	//TestWorld::TestWorld(std::string name, int id) : WorldBuilder(name, id)
-	//{
-	//	/*Camera* main = new Camera();
-	//	main->position = Vector3(0, 2, 10);
-	//	main->projection = Projection::Perspective;
-	//	camera = main;
-
-	//	auto floor = CreateGameObject<Cube>();
-	//	floor->renderer->SetMainColor(Vector4(0.3, 0.3, 0.3, 1));
-	//	floor->GetTransform()->position = Vector3(0, -1.5, 0);
-	//	floor->GetTransform()->scale = Vector3(50, 0.5, 50);
-
-	//	auto player = CreateGameObject<Cube>("xiao ming");
-	//	player->renderer->SetMainColor(Vector4(0.9, 0.9, 0.9, 1));
-	//	player->AddComponent<TestComponent>();
-
-
-	//	auto left = CreateGameObject<Cube>();
-	//	left->GetTransform()->position = Vector3(-4, 0, 0);
-	//	left->renderer->SetMainColor(Vector4(1, 0, 0, 1));
-
-	//	auto right = CreateGameObject<Cube>();
-	//	right->GetTransform()->position = Vector3(4, 0, 0);
-	//	right->renderer->SetMainColor(Vector4(0, 0, 1, 1));*/
-	//}
-
 	TestWorld::TestWorld() :WorldBuilder("test", 1)
 	{
 	}
@@ -43,43 +17,38 @@ namespace SemperEngine
 
 	World TestWorld::Build()
 	{
-		//Cube* cube1 = new Cube();
-		//cube1->transform.position = Vector3(-4, -4, 0);
-		//gameObjects.push_back(cube1);
-
-		//Cube* cube2 = new Cube();
-		//cube2->transform.position = Vector3(-4, 4, 0);
-		//gameObjects.push_back(cube2);
-
-		//Cube* cube3 = new Cube();
-		//cube3->transform.position = Vector3(4, 4, 0);
-		//gameObjects.push_back(cube3);
-
 		auto world = World(name, id);
 		AddAction(new TestWorldAction());
 
 		Camera* camera = new Camera();
-		/*camera->projection = Camera::Projection::Orthographic;*/
-		camera->transform.position = Vector3(0, 1, 10);
-		camera->transform.eulerAngle = Vector3(0, 10, 0);
+		camera->transform.position = Vector3(0, 1, 5);
+		camera->clearColor = Color(0.1f, 0.1f, 0.1f);
 		AddGameObject(camera);
 
 		auto A = new GameObject();
 		A->name = "A";
 		ComponentCreator::Create(new TestComponent(), A);
 		AddGameObject(A);
-		
-		auto cube = new Cube();
-		cube->name = "cube1";
-		cube->transform.position = Vector3(0, 0, 0);
-		cube->transform.eulerAngle = Vector3(0, 30, 0);
-		cube->transform.scale = Vector3(1, 1, 1);
-		AddGameObject(cube);
+
+		auto floor = new Cube();
+		floor->name = "floor";
+		floor->transform.position = Vector3(0, -0.1f, 0);
+		floor->transform.scale = Vector3(50, 0.2f, 50);
+		floor->material->AddShaderProperty("_color", Color::FromHEX24(0xcccccc));
+		AddGameObject(floor);
+
+
+		auto cube1 = new Cube();
+		cube1->name = "cube1";
+		cube1->transform.position = Vector3(0, 0.5f, 0);
+		cube1->transform.rotation = (Quaternion::AngleAxis(45, Vector3(0, 1, 0)) * Quaternion::AngleAxis(45, Vector3(0, 0, 1)));
+		cube1->material->AddShaderProperty("_color", Color(1, 0, 0));
+		AddGameObject(cube1);
 
 		auto cube2 = new Cube();
 		cube2->name = "cube2";
-		cube2->transform.position = Vector3(-10, 0, 0);
-		cube2->transform.eulerAngle = Vector3(0, 75, 0);
+		cube2->transform.position = Vector3(1.0f, 0.5f, -1.5f);
+		cube2->material->AddShaderProperty("_color", Color(0, 1, 0));
 		AddGameObject(cube2);
 
 		return world;

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef COMPONENT_CREATOR
-#define COMPONENT_CREATOR
+#ifndef __COMPONENT_CREATOR__
+#define __COMPONENT_CREATOR__
 
 #include "Component.h"
 #include "GameObject.h"

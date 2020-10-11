@@ -1,6 +1,6 @@
 #pragma once
-#ifndef WORLD_LOOP
-#define WORLD_LOOP
+#ifndef __WORLD_LOOP__
+#define __WORLD_LOOP__
 
 namespace SemperEngine
 {

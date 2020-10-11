@@ -1,11 +1,12 @@
-#ifndef GAMEOBJECT
-#define GAMEOBJECT
+#ifndef __GAMEOBJECT__
+#define __GAMEOBJECT__
 
 #include <vector>
 #include <memory>
 #include <string>
 #include "Mathz.h"
 #include "LifeContainer.h"
+#include "ObjectIndex.h"
 #include "Transform.h"
 #include "GameObjectContainer.h"
 #include "ComponentCreator.h"
@@ -25,11 +26,13 @@ namespace SemperEngine
 
 		Core::GameObjectContainer container;
 
+		Core::ObjectIndex worldID;
+
 	public:
 
 		GameObject();
 
-		~GameObject();
+		virtual ~GameObject();
 
 	public:
 

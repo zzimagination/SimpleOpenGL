@@ -1,6 +1,6 @@
 #pragma once
-#ifndef GRAPHIC_RESOURCECALL
-#define GRAPHIC_RESOURCECALL
+#ifndef __GRAPHIC_RESOURCECALL__
+#define __GRAPHIC_RESOURCECALL__
 
 #include "VertexData.h"
 #include "GraphicVertexData.h"
@@ -10,7 +10,7 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		class GraphicResouce
+		class GraphicResouceAPI
 		{
 		public:
 

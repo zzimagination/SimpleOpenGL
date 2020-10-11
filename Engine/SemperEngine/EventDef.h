@@ -1,6 +1,6 @@
 #pragma once
-#ifndef EVENT_DEF
-#define EVENT_DEF
+#ifndef __EVENT_DEF__
+#define __EVENT_DEF__
 
 #include <vector>
 #include "Mathz.h"

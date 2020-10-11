@@ -11,11 +11,13 @@
 #include "GraphicRender.h"
 #include "BaseRenderPipeline.h"
 #include "GraphicCommandManager.h"
-#include "VertexDataCenter.h"
+#include "ResourceManager.h"
 
-namespace SemperEngine {
-
-	namespace Core {
+namespace SemperEngine 
+{
+	namespace Core 
+	{
+		using namespace std;
 
 		bool GameLoop::_isLooping = true;
 
@@ -29,6 +31,7 @@ namespace SemperEngine {
 		{
 			WorldLoop::BeforeLoop();
 			BaseRenderPipeline::Render();
+			GraphicRender::Resource();
 			GraphicCommandManager::SwapCommands();
 			_isLooping = true;
 		}
@@ -51,16 +54,19 @@ namespace SemperEngine {
 				/*帧前处理*/
 				FrameRuntime::BeginFrame();
 				GameWindow::PollWindowEvent();
+
 				/*发送开始命令*/
 				mainSignal.Send();
-				/*主线程执行*/
 
+				/*主线程执行*/
 				GraphicRender::Render();
 				GameWindow::SwapFrameBuffers();
+
 				/*等待其他线程执行完毕*/
 				logicSignal.Wait();
-				/*帧后处理*/
 
+				/*帧后处理*/
+				GraphicRender::Resource();
 				GraphicCommandManager::SwapCommands();
 				FrameRuntime::EndFrame();
 			}
@@ -83,13 +89,14 @@ namespace SemperEngine {
 				}
 				/*等待开始命令*/
 				mainSignal.Wait();
+
 				/*处理游戏逻辑*/
 				EventManager::ProcessEvent();
 				WorldLoop::Loop();
 				BaseRenderPipeline::Render();
-				VertexDataCenter::UnloadNoUse();
-			
+				ResourceManager::Collection();
 				EventManager::EndEvents();
+
 				/*发送完毕命令*/
 				logicSignal.Send();
 			}

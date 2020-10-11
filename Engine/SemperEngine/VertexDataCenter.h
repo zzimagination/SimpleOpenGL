@@ -1,6 +1,6 @@
 #pragma once
-#ifndef VERTEXDATA_CENTER
-#define VERTEXDATA_CENTER
+#ifndef __VERTEXDATA_CENTER__
+#define __VERTEXDATA_CENTER__
 
 #include "CubeData.h"
 #include "VertexData.h"

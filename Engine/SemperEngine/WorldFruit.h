@@ -1,6 +1,6 @@
 #pragma once
-#ifndef WORLD_FRUIT
-#define WORLD_FRUIT
+#ifndef __WORLD_FRUIT__
+#define __WORLD_FRUIT__
 
 #include <memory>
 #include "World.h"

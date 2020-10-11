@@ -1,12 +1,14 @@
 #pragma once
-#ifndef WORLD_ACTION
-#define WORLD_ACTION
+#ifndef __WORLD_ACTION__
+#define __WORLD_ACTION__
 
 namespace SemperEngine
 {
 	class WorldAction
 	{
 	public:
+
+		virtual ~WorldAction();
 
 		virtual void Start();
 

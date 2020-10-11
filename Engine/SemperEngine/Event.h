@@ -1,6 +1,6 @@
 #pragma once
-#ifndef EVENT_CLASS
-#define EVENT_CLASS
+#ifndef __EVENT_CLASS__
+#define __EVENT_CLASS__
 
 #include "EventDef.h"
 

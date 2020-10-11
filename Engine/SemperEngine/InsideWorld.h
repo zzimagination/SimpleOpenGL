@@ -1,6 +1,6 @@
 #pragma once
-#ifndef INSIDE_WORLD
-#define INSIDE_WORLD
+#ifndef __INSIDE_WORLD__
+#define __INSIDE_WORLD__
 
 #include "BeautifulWorld.h"
 

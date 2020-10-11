@@ -20,8 +20,7 @@ namespace SemperEngine
 			{
 				fruit->container.AddGameObject(gameObjects[i]);
 			}
-			unsigned int id = (unsigned int)(worldFruits.size() + newWorldFruits.size() + 1);
-			*fruit->world.treeIndex = id;
+			EncodeTreeID(fruit->world, (unsigned int)(worldFruits.size() + newWorldFruits.size()));
 			newWorldFruits.push_back(fruit);
 			return fruit->world;
 		}
@@ -29,14 +28,14 @@ namespace SemperEngine
 		void WorldTree::RemoveWorld(World world)
 		{
 			WorldFruit* fruit;
-			auto treeId = *world.treeIndex - 1;
-			if (treeId < worldFruits.size())
+			auto treeID = DecodeTreeID(world);
+			if (treeID < worldFruits.size())
 			{
-				fruit = worldFruits[treeId];
+				fruit = worldFruits[treeID];
 			}
 			else
 			{
-				fruit = newWorldFruits[treeId - worldFruits.size()];
+				fruit = newWorldFruits[treeID - worldFruits.size()];
 			}
 			fruit->container.EndGameObjects();
 			fruit->action->End();
@@ -46,14 +45,14 @@ namespace SemperEngine
 		WorldFruit* WorldTree::GetFruit(World world)
 		{
 			WorldFruit* fruit;
-			auto treeId = *world.treeIndex - 1;
-			if (treeId < worldFruits.size())
+			auto treeID = DecodeTreeID(world);
+			if (treeID < worldFruits.size())
 			{
-				fruit = worldFruits[treeId];
+				fruit = worldFruits[treeID];
 			}
 			else
 			{
-				fruit = newWorldFruits[treeId - worldFruits.size()];
+				fruit = newWorldFruits[treeID - worldFruits.size()];
 			}
 			return fruit;
 		}
@@ -69,10 +68,20 @@ namespace SemperEngine
 					delete fruit;
 					continue;
 				}
-				*fruit->world.treeIndex = (unsigned int)newVector.size() + 1;
+				EncodeTreeID(fruit->world, (unsigned int)newVector.size());
 				newVector.push_back(fruit);
 			}
 			worldFruits = newVector;
+		}
+
+		unsigned int WorldTree::DecodeTreeID(World& w)
+		{
+			auto id = w.treeIndex1.ID() - 1;
+			return id;
+		}
+		void WorldTree::EncodeTreeID(World& w, int i)
+		{
+			w.treeIndex1 = i + 1;
 		}
 	}
 }

@@ -1,11 +1,16 @@
-#ifndef WORLD_MANAGER
-#define WORLD_MANAGER
+#ifndef __WORLD_MANAGER__
+#define __WORLD_MANAGER__
 
 #include <vector>
-#include "NextWorld.h"
 #include "World.h"
 
-namespace SemperEngine {
+namespace SemperEngine 
+{
+
+	namespace Core 
+	{
+		class WorldConverter;
+	}
 
 	class WorldManager
 	{
@@ -19,8 +24,6 @@ namespace SemperEngine {
 
 		static World _inside;
 
-		static Core::NextWorld _next;
-
 	public:
 
 		static void Initialize();
@@ -33,8 +36,9 @@ namespace SemperEngine {
 
 		static void SetActive(int id);
 
-		static void WorldAfterLoop();
+		static bool Inside();
 
+		friend class Core::WorldConverter;
 	};
 
 }

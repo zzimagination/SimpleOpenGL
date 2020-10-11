@@ -57,10 +57,10 @@ namespace SemperEngine {
 		x3 = 0; y3 = 0; z3 = 0; w3 = 1;
 	}
 
-	Matrix4x4::Matrix4x4(Vector4& r0, Vector4& r1, Vector4& r2, Vector4& r3)
+	Matrix4x4::Matrix4x4(Vector4 r0, Vector4 r1, Vector4 r2, Vector4 r3)
 	{
 		x0 = r0.x; y0 = r0.y; z0 = r0.z; w0 = r0.w;
-		x1 = r1.x; y1 = r1.y; z1 = r1.z; w0 = r1.w;
+		x1 = r1.x; y1 = r1.y; z1 = r1.z; w1 = r1.w;
 		x2 = r2.x; y2 = r2.y; z2 = r2.z; w2 = r2.w;
 		x3 = r3.x; y3 = r3.y; z3 = r3.z; w3 = r3.w;
 	}

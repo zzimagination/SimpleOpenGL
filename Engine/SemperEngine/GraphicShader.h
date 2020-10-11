@@ -1,15 +1,11 @@
-#ifndef SHADER_H
-#define SHADER_H
+#ifndef __GRAPHIC_SHADER__
+#define __GRAPHIC_SHADER__
 #include <fstream>
 #include <sstream>
 #include <iostream>
 #include <string>
 #include "Mathz.h"
 namespace SemperEngine {
-
-	using namespace std;
-
-
 
 	class GraphicShader
 	{

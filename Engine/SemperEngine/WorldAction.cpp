@@ -3,6 +3,9 @@
 
 namespace SemperEngine
 {
+	WorldAction::~WorldAction()
+	{
+	}
 	void WorldAction::Start()
 	{
 	}

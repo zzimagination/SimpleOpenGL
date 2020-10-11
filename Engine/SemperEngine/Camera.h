@@ -1,9 +1,14 @@
-#ifndef CAMERA_H
-#define CAMERA_H
+#ifndef __CAMERA__
+#define __CAMERA__
 
 #include "GameObject.h"
+#include <glm\detail\type_float.hpp>
 
 namespace SemperEngine {
+
+	constexpr unsigned int ClearModeColor = 0x01;
+
+	constexpr unsigned int ClearModeDepth = 0x02;
 
 	class Camera : public GameObject
 	{
@@ -16,6 +21,15 @@ namespace SemperEngine {
 			Perspective
 		};
 
+		enum class ClearMode
+		{
+			None,
+
+			Color,
+
+			DepthOnly
+		};
+
 	public:
 
 		Matrix4x4 worldToViewMatrix;
@@ -23,6 +37,12 @@ namespace SemperEngine {
 		Matrix4x4 projectionMatrix;
 
 		Projection projection;
+
+		ClearMode clearMode;
+
+		Color clearColor;
+
+		std::vector<int> renderLayer;
 
 	private:
 
@@ -36,11 +56,17 @@ namespace SemperEngine {
 
 		float _aspect;
 
+		Vector2 _lastMousePos;
+
+		float _yaw;
+
+		float _pitch;
+
 	public:
 
 		Camera();
 
-		~Camera();
+		virtual ~Camera() override;
 
 		virtual void Start() override;
 
@@ -68,10 +94,17 @@ namespace SemperEngine {
 
 		float GetAspect();
 
+		void SetAspect(float a);
+
 		Matrix4x4 CalculateProjectionMatrix();
 
 		Matrix4x4 CalculateViewMatrix();
 
+	private:
+
+		void Move();
+
+		void Rotate();
 	};
 }
 #endif

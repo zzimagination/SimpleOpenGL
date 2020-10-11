@@ -1,17 +1,18 @@
 #include "FrameRuntime.h"
-#include "Time.h"
+#include "TimeManager.h"
 
-namespace SemperEngine {
-
-
-	void FrameRuntime::BeginFrame()
+namespace SemperEngine 
+{
+	namespace Core
 	{
-		Time::StartRecord();
-	}
+		void FrameRuntime::BeginFrame()
+		{
+			TimeManager::StartRecord();
+		}
 
-
-	void FrameRuntime::EndFrame()
-	{
-		Time::EndRecord();
+		void FrameRuntime::EndFrame()
+		{
+			TimeManager::EndRecord();
+		}
 	}
 }

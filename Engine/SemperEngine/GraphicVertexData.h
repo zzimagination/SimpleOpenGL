@@ -1,5 +1,5 @@
-#ifndef GRAPHIC_VERTEXDATA
-#define GRAPHIC_VERTEXDATA
+#ifndef __GRAPHIC_VERTEXDATA__
+#define __GRAPHIC_VERTEXDATA__
 
 #include <vector>
 #include "Mathz.h"

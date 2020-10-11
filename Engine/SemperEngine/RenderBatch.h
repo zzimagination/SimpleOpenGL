@@ -1,11 +1,13 @@
-#ifndef RENDERBATCH
-#define RENDERBATCH
+#ifndef __RENDERBATCH__
+#define __RENDERBATCH__
 
 #include <vector>
+#include <memory>
 #include "Mathz.h"
 #include "ResourcePackage.h"
 #include "VertexData.h"
 #include "Material.h"
+
 namespace SemperEngine {
 
 	namespace Core
@@ -22,7 +24,7 @@ namespace SemperEngine {
 
 			Matrix4x4 projectionMatrix;
 
-			Material* material;
+			std::shared_ptr<Material> material;
 		};
 	}
 }

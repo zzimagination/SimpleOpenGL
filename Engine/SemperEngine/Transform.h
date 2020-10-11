@@ -1,5 +1,5 @@
-#ifndef TRANSFORM
-#define TRANSFORM
+#ifndef __TRANSFORM__
+#define __TRANSFORM__
 #include "Mathz.h"
 
 namespace SemperEngine {
@@ -10,13 +10,15 @@ namespace SemperEngine {
 
 		Vector3 position;
 
-		Vector3 eulerAngle;
+		Quaternion rotation;
 
 		Vector3 scale;
 
 	public:
 
 		Transform();
+
+		Vector3 EulerAngle();
 
 		Matrix4x4 GetModelMatrix();
 

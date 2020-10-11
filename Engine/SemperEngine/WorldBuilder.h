@@ -1,6 +1,6 @@
 #pragma once
-#ifndef WORLD_BUILDER
-#define WORLD_BUILDER
+#ifndef __WORLD_BUILDER__
+#define __WORLD_BUILDER__
 
 #include "GameObject.h"
 #include "World.h"

@@ -1,5 +1,5 @@
-#ifndef DEBUG_SYSTEM
-#define DEBUG_SYSTEM
+#ifndef __DEBUG_SYSTEM__
+#define __DEBUG_SYSTEM__
 
 #include <thread>
 

@@ -1,5 +1,5 @@
-#ifndef DEBUG_OUTPUT
-#define DEBUG_OUTPUT
+#ifndef __DEBUG_OUTPUT__
+#define __DEBUG_OUTPUT__
 
 #include <string>
 #include <mutex>

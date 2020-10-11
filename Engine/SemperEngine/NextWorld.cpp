@@ -4,6 +4,12 @@ namespace SemperEngine
 {
 	namespace Core
 	{
+		NextWorld::NextWorld()
+		{
+			_primitive = -1;
+			_next = -1;
+			isChange = false;
+		}
 		NextWorld::NextWorld(int id)
 		{
 			_primitive = id;

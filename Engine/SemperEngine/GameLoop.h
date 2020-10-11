@@ -1,7 +1,8 @@
-#ifndef GAMELOOP
-#define GAMELOOP
+#ifndef __GAME_LOOP__
+#define __GAME_LOOP__
 
 #include "CompletedSignal.h"
+
 namespace SemperEngine {
 
 	namespace Core

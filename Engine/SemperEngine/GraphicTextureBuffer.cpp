@@ -1,5 +1,5 @@
 #include "GraphicTextureBuffer.h"
-#include "GraphicRenderDraw.h"
+#include "GraphicRenderAPI.h"
 #include "GraphicDataCenter.h"
 
 namespace SemperEngine
@@ -13,7 +13,7 @@ namespace SemperEngine
 
 		void GraphicTextureBuffer::Excute()
 		{
-			auto graphicData= GraphicRenderDraw::AddTextureData(gameData);
+			auto graphicData= GraphicRenderAPI::AddTextureData(gameData);
 			GraphicDataCenter::AddTextureDate(graphicData);
 		}
 	}

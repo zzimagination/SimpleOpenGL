@@ -1,6 +1,6 @@
 #pragma once
-#ifndef LOG_DEF
-#define LOG_DEF
+#ifndef __LOG_DEF__
+#define __LOG_DEF__
 
 #include<string>
 

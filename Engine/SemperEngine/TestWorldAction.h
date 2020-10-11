@@ -1,6 +1,6 @@
 #pragma once
-#ifndef TEST_WORLD_ACTION
-#define TEST_WORLD_ACTION
+#ifndef __TEST_WORLD_ACTION__
+#define __TEST_WORLD_ACTION__
 
 #include "BeautifulWorld.h"
 
@@ -10,9 +10,7 @@ namespace SemperEngine
 	{
 	public:
 
-		GameObject* mid;
-
-	public:
+		virtual ~TestWorldAction() override;
 
 		virtual void Start() override;
 

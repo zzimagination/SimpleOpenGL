@@ -11,7 +11,7 @@ namespace SemperEngine
 
 		void CameraCollection::AddCamera(LifeContainer<GameObject> camera)
 		{
-			if (WorldManager::currentWorld == WorldManager::GetInside())
+			if (WorldManager::Inside())
 			{
 				return;
 			}
@@ -30,6 +30,7 @@ namespace SemperEngine
 			}
 			return result;
 		}
+
 		void CameraCollection::ClearCameras()
 		{
 			_cameras.clear();

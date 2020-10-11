@@ -70,4 +70,13 @@ namespace SemperEngine
 		item.winfo = message;
 		DebugOutput::InputLog(item);
 	}
+	void Debug::Log(initializer_list<string> messages)
+	{
+		string sentence = *messages.begin();
+		for (auto i = messages.begin()+1; i != messages.end(); i++)
+		{
+			sentence.append(*i);
+		}
+		Log(sentence);
+	}
 }

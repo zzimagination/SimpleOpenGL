@@ -1,5 +1,5 @@
-#ifndef MATH_VECTOR3
-#define MATH_VECTOR3
+#ifndef __MATHZ_VECTOR3__
+#define __MATHZ_VECTOR3__
 
 namespace SemperEngine {
 
@@ -7,25 +7,25 @@ namespace SemperEngine {
 	{
 	public:
 
-		static Vector3 left;
+		const static Vector3 right;
 
-		static Vector3 up;
+		const static Vector3 up;
 
-		static Vector3 forward;
-
-	public:
-
-		float x ;
-
-		float y ;
-
-		float z ;
+		const static Vector3 forward;
 
 	public:
 
 		static Vector3 Cross(Vector3 a, Vector3 b);
 
 		static float Dot(Vector3 a, Vector3 b);
+
+	public:
+
+		float x;
+
+		float y;
+
+		float z;
 
 	public:
 
@@ -37,6 +37,8 @@ namespace SemperEngine {
 
 		Vector3 Normalize();
 
+		float Length();
+
 	public:
 
 		Vector3 operator-();
@@ -45,6 +47,9 @@ namespace SemperEngine {
 
 		Vector3 operator-(const Vector3& b);
 
+		Vector3 operator*(const float& right);
+
+		friend Vector3 operator*(const float& left, Vector3 right);
 	};
 }
 #endif // !MATH_VECTOR3

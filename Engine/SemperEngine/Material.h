@@ -1,58 +1,40 @@
-#ifndef MATERIAL
-#define MATERIAL
+#ifndef __MATERIAL__
+#define __MATERIAL__
 
 #include <vector>
+#include <map>
+#include <string>
 #include "Mathz.h"
 #include "ShaderProperty.h"
-#include "GraphicShader.h"
 
-namespace SemperEngine {
+namespace SemperEngine
+{
+	class Material
+	{
+	public:
 
-	class GraphicShader;
+		std::string shader;
 
-	class Texture;
-
-	using namespace std;
-
-	class Material {
+		ShaderProperty shaderProperty;
 
 	public:
 
-		string name;
+		Material();
 
-		GraphicShader shader;
+		Material(std::string shader);
 
-		ShaderProperty<float> floatProperty;
+		void AddShaderProperty(std::string name, float value);
 
-		ShaderProperty<Vector2> vector2Property;
+		void AddShaderProperty(std::string name, Vector2 value);
 
-		ShaderProperty<Vector3> vector3Property;
+		void AddShaderProperty(std::string name, Vector3 value);
 
-		ShaderProperty<Vector4> vector4Property;
+		void AddShaderProperty(std::string name, Vector4 value);
 
-		ShaderProperty<Matrix4x4> matrix4x4Property;
+		void AddShaderProperty(std::string name, Matrix4x4 value);
 
-		vector<Texture*> textures;
+		void AddShaderProperty(std::string name, Color value);
 
-	public:
-
-		Material(string shader);
-
-		void SetMainColor(Vector4 color);
-
-		void SetFloat(float value, string name);
-
-		void SetVector2(Vector2 value, string name);
-
-		void SetVector3(Vector3 value, string name);
-
-		void SetVector4(Vector4 value, string name);
-
-		void SetMatrix(Matrix4x4 value, string name);
-
-		void SetTexture(Texture* tex);
-
-		void RemoveTexture(Texture* tex);
 	};
 }
 #endif // !MATERIAL

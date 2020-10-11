@@ -1,16 +1,20 @@
 #include "GameStart.h"
 #include "ShaderCompiler.h"
 #include "DebugSystem.h"
-#include "Application.h"
+#include "GameSetting.h"
 #include "GameWindow.h"
 
-namespace SemperEngine {
-
-	void GameStart::Start()
+namespace SemperEngine 
+{
+	namespace Core
 	{
-		Core::DebugSystem::Initialization();
-		GameWindow::CreateGameWindow();
-		Application::LoadConfig();
-		Core::ShaderCompiler::Compile();
+		void GameStart::Start()
+		{
+			setlocale(LC_CTYPE, "");
+			DebugSystem::Initialization();
+			GameWindow::CreateGameWindow();
+			ShaderCompiler::Compile();
+			GameSetting::LoadConfig();
+		}
 	}
 }

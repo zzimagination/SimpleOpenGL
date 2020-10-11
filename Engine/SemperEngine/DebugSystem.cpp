@@ -48,7 +48,6 @@ namespace SemperEngine
 					std::wcout << item.winfo << std::endl;
 				}
 			}
-			DebugFile::Flush();
 		}
 		void DebugSystem::Close()
 		{

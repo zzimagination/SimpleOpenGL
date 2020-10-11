@@ -1,20 +1,20 @@
-#ifndef FRAMERUNTIME
-#define FRAMERUNTIME
+#ifndef __FRAMERUNTIME__
+#define __FRAMERUNTIME__
 
-#include "EngineDef.h"
-
-namespace SemperEngine {
-
-	class FrameRuntime
+namespace SemperEngine 
+{
+	namespace Core
 	{
-	public:
+		class FrameRuntime
+		{
+		public:
 
-		static void BeginFrame();
+			static void BeginFrame();
 
-		static void EndFrame();
+			static void EndFrame();
 
-	};
-
+		};
+	}
 }
 #endif // !FRAMERUNTIME
 

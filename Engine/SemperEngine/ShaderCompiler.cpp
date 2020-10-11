@@ -15,12 +15,12 @@ namespace SemperEngine
 
 		void ShaderCompiler::Compile()
 		{
-			auto files = Shaderlibrary::shaderfiles;
+			auto files = shaderfiles;
 			for (int i = 0; i < files.size(); i++)
 			{
 				auto shader = Shader(files[i]);
 				pair<string, GraphicShader> pair(files[i].name, shader);
-				ShaderManager::shaderMap.insert(pair);
+				GraphicShaderManager::shaderMap.insert(pair);
 			}
 		}
 
@@ -29,7 +29,9 @@ namespace SemperEngine
 			auto codev = ReadCode(file.vertex);
 			auto codef = ReadCode(file.fragment);
 			auto codeg = ReadCode(file.geometry);
-			auto result = GLShaderCompiler::Compile(codev, codef, codeg);
+			auto sliver = GLShaderCompiler::Compile(codev, codef, codeg);
+			GraphicShader result;
+			result.opengl_id = sliver.program;
 			return result;
 		}
 

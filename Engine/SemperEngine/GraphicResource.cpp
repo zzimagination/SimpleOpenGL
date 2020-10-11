@@ -8,13 +8,18 @@ namespace SemperEngine
 	{
 		using namespace GraphicAPI;
 
-		GraphicVertexData GraphicResouce::AddVertexData(VertexData* data)
+		GraphicVertexData GraphicResouceAPI::AddVertexData(VertexData* data)
 		{
-			auto result = GLResourceAPI::AddVertexData(data->vertices.data(), data->uv.data(), data->index.data(), data->vertexCount);
+			auto deliver = GLResourceAPI::AddVertexData(data->vertices.data(), data->uv.data(), data->index.data(), data->vertexCount);
+			GraphicVertexData result;
+			result.VAO = deliver.VAO;
+			result.VBO = deliver.VBO;
+			result.EBO = deliver.EBO;
+			result.pointCount = deliver.pointCount;
 			return result;
 		}
 
-		void GraphicResouce::ClearVertexData(GraphicVertexData data)
+		void GraphicResouceAPI::ClearVertexData(GraphicVertexData data)
 		{
 			GLResourceAPI::ClearVertexData(data.VAO, data.VBO, data.EBO);
 		}

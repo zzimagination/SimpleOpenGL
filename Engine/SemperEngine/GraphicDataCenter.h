@@ -1,20 +1,20 @@
 #pragma once
-#ifndef GRAPHICDATACENTER
-#define GRAPHICDATACENTER
+#ifndef __GRAPHIC_DATACENTER__
+#define __GRAPHIC_DATACENTER__
 
 #include <vector>
 #include <map>
 #include "ResourcePackage.h"
 #include "VertexData.h"
-#include "GraphicCommandData.h"
-
+#include "GraphicCommand.h"
 #include "GraphicVertexData.h"
 #include "GraphicTextureData.h"
 #include "Texture.h"
 
 namespace SemperEngine
 {
-	namespace Core {
+	namespace Core 
+	{
 		class GraphicDataCenter
 		{
 		public:
@@ -29,6 +29,8 @@ namespace SemperEngine
 
 			static void RemoveVertexData(ResourcePackage<VertexData> package);
 
+			static std::shared_ptr<Vertex> GetVertexCommandData(ResourcePackage<VertexData> package);
+
 			static GraphicTextureData* GetTextureData(Texture* tex);
 
 			static std::vector<GraphicTextureData*> GetTexturesData(std::vector<Texture*> tex);
@@ -37,6 +39,11 @@ namespace SemperEngine
 
 			static GraphicTextureData* PopTextureData(Texture* data);
 
+		private:
+
+			static unsigned int DecodeResourceID(unsigned int package);
+
+			static unsigned int EncodeResourceID(unsigned int i);
 		};
 	}
 }

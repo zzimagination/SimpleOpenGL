@@ -1,6 +1,6 @@
 #pragma once
-#ifndef SECOND_WORLD_ACTION
-#define SECOND_WORLD_ACTION
+#ifndef __SECOND_WORLD_ACTION__
+#define __SECOND_WORLD_ACTION__
 
 #include "BeautifulWorld.h"
 
@@ -9,6 +9,8 @@ namespace SemperEngine
 	class SecondWorldAction :public WorldAction
 	{
 	public:
+
+		virtual ~SecondWorldAction() override;
 
 		virtual void Start() override;
 

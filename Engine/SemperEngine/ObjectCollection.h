@@ -1,6 +1,6 @@
 #pragma once
-#ifndef OBJECTCOLLECTION
-#define OBJECTCOLLECTION
+#ifndef __OBJECTCOLLECTION__
+#define __OBJECTCOLLECTION__
 #include <vector>
 
 namespace SemperEngine

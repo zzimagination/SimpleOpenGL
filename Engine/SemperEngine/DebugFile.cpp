@@ -62,14 +62,5 @@ namespace SemperEngine {
 			_file.write(u8.data(), u8.size());
 			_file.write("\r", 1);
 		}
-
-		void DebugFile::Flush()
-		{
-			if (!isOpen)
-			{
-				return;
-			}
-			_file.flush();
-		}
 	}
 }

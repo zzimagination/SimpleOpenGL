@@ -1,6 +1,6 @@
 #pragma once
-#ifndef WORLD_CONTAINDER
-#define WORLD_CONTAINDER
+#ifndef __WORLD_CONTAINDER__
+#define __WORLD_CONTAINDER__
 
 #include <vector>
 #include "GameObject.h"
@@ -31,6 +31,12 @@ namespace SemperEngine
 			void UpdateGameObjects();
 
 			void EndGameObjects();
+
+		private:
+
+			unsigned int DecodeWorldID(GameObject* gobject);
+
+			void EncodeWorldID(GameObject* gobject, unsigned int i);
 		};
 	}
 }

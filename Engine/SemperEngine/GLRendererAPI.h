@@ -1,6 +1,6 @@
 #pragma once
-#ifndef GL_RENDERAPI
-#define GL_RENDERAPI
+#ifndef __GL_RENDERAPI__
+#define __GL_RENDERAPI__
 
 #include <vector>
 #include <memory>
@@ -9,49 +9,55 @@
 
 namespace SemperEngine
 {
-	namespace GraphicAPI
+	namespace Core
 	{
-		class GLRenderAPI
+		namespace GraphicAPI
 		{
-		private:
+			class GLRenderAPI
+			{
+			private:
 
-			static unsigned int _shader;
+				static unsigned int _shader;
 
-		public:
+			public:
 
-			static void SetClearColor(Vector4 color);
+				static void SetWireframe(bool enable);
 
-			static void SetClear(int mode);
+				static void SetClearColor(Color color);
 
-			static void SetDepthTest(bool enable);
+				static void SetClear(int mode);
 
-			static void SetDepthTestFunc(int func);
+				static void SetDepthTest(bool enable);
 
-			static void SetCullFace(bool enable);
+				static void SetDepthTestFunc(int func);
 
-			static void SetCullMode(int mode);
+				static void SetCullFace(bool enable);
 
-			static void BindVertexBuffer(unsigned int VAO);
+				static void SetCullMode(int mode);
 
-			static void SetShader(unsigned int program);
+				static void BindVertexBuffer(unsigned int VAO);
 
-			static void SetShaderValue(const std::string& name, bool value);
+				static void SetShader(unsigned int program);
 
-			static void SetShaderValue(const std::string& name, int value);
+				static void SetShaderValue(const std::string& name, bool value);
 
-			static void SetShaderValue(const std::string& name, float value);
+				static void SetShaderValue(const std::string& name, int value);
 
-			static void SetShaderValue(const std::string& name, const Vector2& value);
+				static void SetShaderValue(const std::string& name, float value);
 
-			static void SetShaderValue(const std::string& name, const Vector3& value);
+				static void SetShaderValue(const std::string& name, const Vector2& value);
 
-			static void SetShaderValue(const std::string& name, const Vector4& value);
+				static void SetShaderValue(const std::string& name, const Vector3& value);
 
-			static void SetShaderValue(const std::string& name, const Matrix4x4& mat);
+				static void SetShaderValue(const std::string& name, const Vector4& value);
 
-			static void DrawElements(int count);
-		};
+				static void SetShaderValue(const std::string& name, const Matrix4x4& mat);
+
+				static void DrawElements(int count);
+
+				static void DrawLines(int count);
+			};
+		}
 	}
 }
-
 #endif // !GL_RENDERER

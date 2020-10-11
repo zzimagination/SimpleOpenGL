@@ -1,7 +1,8 @@
-#ifndef DEBUG_SCRIPT
-#define DEBUG_SCRIPT
+#ifndef __DEBUG_SCRIPT__
+#define __DEBUG_SCRIPT__
 
 #include <string>
+#include <initializer_list>
 
 namespace SemperEngine {
 
@@ -27,6 +28,7 @@ namespace SemperEngine {
 
 		static void Log(const wchar_t* message);
 
+		static void Log(std::initializer_list<std::string> messages);
 	};
 
 }

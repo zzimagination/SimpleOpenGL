@@ -1,10 +1,10 @@
-#ifndef RENDERER_COLLECTOR
-#define RENDERER_COLLECTOR
+#ifndef __RENDERER_COLLECTOR__
+#define __RENDERER_COLLECTOR__
 
 #include <vector>
 #include <memory>
-#include "LifeContainer.h"
 #include "RenderObject.h"
+#include "Camera.h"
 
 namespace SemperEngine {
 
@@ -22,7 +22,13 @@ namespace SemperEngine {
 
 			static std::vector<RenderObject*> GetRenderObjects();
 
+			static std::vector<RenderObject*> GetRenderObjects(Camera* camera);
+
 			static void ClearRenders();
+
+		private:
+
+			static bool CheckLayer(std::vector<int> layers, int target);
 
 		};
 	}

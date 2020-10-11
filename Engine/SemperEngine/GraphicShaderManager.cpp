@@ -3,9 +3,9 @@ namespace SemperEngine {
 
 	using namespace std;
 
-	map<string, GraphicShader> ShaderManager::shaderMap;
+	map<string, GraphicShader> GraphicShaderManager::shaderMap;
 
-	GraphicShader ShaderManager::GetShader(string name)
+	GraphicShader GraphicShaderManager::FindShader(string name)
 	{
 		return shaderMap[name];
 	}

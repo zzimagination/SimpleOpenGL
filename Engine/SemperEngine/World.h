@@ -1,10 +1,11 @@
 #pragma once
-#ifndef WORLD_SCRIPT
-#define WORLD_SCRIPT
+#ifndef __WORLD_SCRIPT__
+#define __WORLD_SCRIPT__
 
 #include <vector>
 #include <memory>
 #include <string>
+#include "ObjectIndex.h"
 
 namespace SemperEngine {
 
@@ -19,7 +20,7 @@ namespace SemperEngine {
 	{
 	public:
 
-		std::shared_ptr<unsigned int> treeIndex;
+		Core::ObjectIndex treeIndex1;
 
 	private:
 

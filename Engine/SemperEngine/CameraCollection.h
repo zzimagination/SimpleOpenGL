@@ -1,6 +1,6 @@
 #pragma once
-#ifndef CAMERA_COLLECTION
-#define CAMERA_COLLECTION
+#ifndef __CAMERA_COLLECTION__
+#define __CAMERA_COLLECTION__
 
 #include "Camera.h"
 

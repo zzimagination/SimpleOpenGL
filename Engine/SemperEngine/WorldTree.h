@@ -1,6 +1,6 @@
 #pragma once
-#ifndef WORLD_TREE
-#define WORLD_TREE
+#ifndef __WORLD_TREE__
+#define __WORLD_TREE__
 
 #include <vector>
 #include "WorldFruit.h"
@@ -28,6 +28,12 @@ namespace SemperEngine
 			static WorldFruit* GetFruit(World world);
 
 			static void Fall();
+
+		private:
+
+			static unsigned int DecodeTreeID(World& w);
+
+			static void EncodeTreeID(World &w, int i);
 		};
 	}
 }

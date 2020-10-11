@@ -2,4 +2,7 @@
 
 namespace SemperEngine {
 
+	using namespace std;
+
+
 }

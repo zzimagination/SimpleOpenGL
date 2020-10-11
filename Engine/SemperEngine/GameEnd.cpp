@@ -2,10 +2,14 @@
 #include "DebugSystem.h"
 #include "GameWindow.h"
 
-namespace SemperEngine {
-	void GameEnd::End()
+namespace SemperEngine 
+{
+	namespace Core
 	{
-		GameWindow::TerminateGameWindow();
-		Core::DebugSystem::Close();
+		void GameEnd::End()
+		{
+			GameWindow::TerminateGameWindow();
+			DebugSystem::Close();
+		}
 	}
 }

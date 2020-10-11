@@ -1,7 +1,7 @@
-#ifndef MATH_BASE
-#define MATH_BASE
+#ifndef __MATHZ_BASE__
+#define __MATHZ_BASE__
 
-#define MATH_GLM
+//#define MATH_GLM
 
 namespace SemperEngine {
 
@@ -20,6 +20,14 @@ namespace SemperEngine {
 
 		static float Tan(float a);
 
+		static float Cot(float a);
+
+		static float ArcCos(float a);
+
+		static float ArcSin(float a);
+
+		static float ArcTan(float a);
+
 		static float Clamp(float min, float max, float value);
 
 		static int Floor(float f);
@@ -31,6 +39,10 @@ namespace SemperEngine {
 		static float Max(float a, float b);
 
 		static float Min(float a, float b);
+
+		static float Abs(float a);
+
+		static float Sqrt(float a);
 
 	};
 }

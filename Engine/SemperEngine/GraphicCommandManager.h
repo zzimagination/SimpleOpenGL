@@ -1,17 +1,15 @@
 #pragma once
-#ifndef GRAPHICCMD_MANAGER
-#define GRAPHICCMD_MANAGER
+#ifndef __GRAPHICCMD_MANAGER__
+#define __GRAPHICCMD_MANAGER__
 
 #include <vector>
 #include <memory>
 #include "GraphicCommand.h"
-#include "GraphicCommandData.h"
+#include "RenderBatch.h"
 
 namespace SemperEngine
 {
-	class RenderVertexData;
 	class Texture;
-	class RenderBatch;
 
 	namespace Core
 	{
@@ -19,17 +17,15 @@ namespace SemperEngine
 		{
 		public:
 
-			static std::vector<GraphicCommand*> front_AddResource;
-
-			static std::vector<GraphicCommand*> front_CollectResource;
+			static std::vector<GraphicCommand*> resources;
 
 			static std::vector<GraphicCommand*> front_DrawCommands;
 
-			static std::vector<GraphicCommand*> back_AddResource;
-
-			static std::vector<GraphicCommand*> back_CollectResource;
+			static std::vector<GraphicCommand*> front_Setting;
 
 			static std::vector<GraphicCommand*> back_DrawCommands;
+
+			static std::vector<GraphicCommand*> back_setting;
 
 		public:
 
@@ -43,7 +39,11 @@ namespace SemperEngine
 
 			static void ClearTextureBuffer(Texture* data);
 
-			static void Draw(RenderBatch batch);
+			static void Draw(RenderBatch &batch);
+
+			static void Clear(Color color, int mode);
+
+			static void SetWireframe(bool enable);
 		};
 	}
 }

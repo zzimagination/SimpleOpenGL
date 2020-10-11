@@ -1,41 +1,46 @@
-#ifndef COMPLETEDSIGNAL
-#define COMPLETEDSIGNAL
+#ifndef __COMPLETEDSIGNAL__
+#define __COMPLETEDSIGNAL__
 
 #include <mutex>
 #include <thread>
 #include <condition_variable>
 
-namespace SemperEngine {
+namespace SemperEngine
+{
+	namespace Core
+	{
+		constexpr int Normal = 1;
 
-	constexpr int Normal = 1;
+		constexpr int Exit = 2;
 
-	constexpr int Exit = 2;
+		typedef int WaitCode;
 
-	typedef int WaitCode;
+		class CompletedSignal {
 
-	using namespace std;
+		public:
 
-	class CompletedSignal {
+			WaitCode _code;
 
-	public:
+		private:
 
-		WaitCode _code;
+			std::condition_variable _con;
 
-	private:
+			std::mutex _mutex;
 
-		condition_variable _con;
+			bool _ready = false;
 
-		mutex _mutex;
+		public:
 
-		bool _ready = false;
+			CompletedSignal();
 
-	public:
+			~CompletedSignal();
 
-		WaitCode Wait();
+			WaitCode Wait();
 
-		void Send();
+			void Send();
 
-		void Send(WaitCode code);
-	};
+			void Send(WaitCode code);
+		};
+	}
 }
 #endif // !COMPLETEDSIGNAL

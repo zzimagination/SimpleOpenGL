@@ -1,14 +1,19 @@
-#ifndef GRAPHIC_RENDER
-#define GRAPHIC_RENDER
+#ifndef __GRAPHIC_RENDER__
+#define __GRAPHIC_RENDER__
 
-namespace SemperEngine {
-
-	class GraphicRender
+namespace SemperEngine 
+{
+	namespace Core
 	{
-	public:
+		class GraphicRender
+		{
+		public:
 
-		static void Render();
+			static void Render();
 
-	};
+			static void Resource();
+
+		};
+	}
 }
 #endif // !GraphicRender

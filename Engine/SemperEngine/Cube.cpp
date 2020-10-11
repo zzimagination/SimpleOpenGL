@@ -10,7 +10,10 @@ namespace SemperEngine
 
 	Cube::Cube()
 	{
-		
+		_cube = VertexDataCenter::LoadCube(false);
+		_cube.Use(this);
+		material = shared_ptr<Material>(new Material("Unlit"));
+		material->AddShaderProperty("_color", Vector4(1, 1, 1, 1));
 	}
 
 	Cube::~Cube()
@@ -20,14 +23,10 @@ namespace SemperEngine
 
 	void Cube::Start()
 	{
-		_cube = VertexDataCenter::LoadCube(false);
 		_renderObject = unique_ptr<RenderObject>(new RenderObject());
-		_material = unique_ptr<Material>(new Material("Unlit"));
-		_material->SetVector4(Vector4(0.8f, 0.2f, 0.2f, 1), "_color");
 		_renderObject->modelMatrix = transform.GetModelMatrix();
-		_renderObject->material = _material.get();
+		_renderObject->material = material;
 		_renderObject->vertexData = this->_cube;
-		Debug::Log("Cube Start");
 	}
 
 	void Cube::Update()
@@ -39,6 +38,5 @@ namespace SemperEngine
 	void Cube::End()
 	{
 		_cube.Dispose();
-		Debug::Log("Cube End");
 	}
 }

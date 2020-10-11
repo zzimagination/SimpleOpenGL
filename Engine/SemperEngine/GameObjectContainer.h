@@ -1,6 +1,6 @@
 #pragma once
-#ifndef GAMEOBJECT_CONTAINER
-#define GAMEOBJECT_CONTAINER
+#ifndef __GAMEOBJECT_CONTAINER__
+#define __GAMEOBJECT_CONTAINER__
 
 #include <vector>
 #include <memory>
@@ -28,6 +28,12 @@ namespace SemperEngine
 			void UpdateComponents();
 
 			void EndComponents();
+
+		private:
+
+			unsigned int DecodeComID(Component* com);
+
+			void EncodeComID(Component* com, unsigned int i);
 		};
 	}
 }

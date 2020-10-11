@@ -1,6 +1,6 @@
 #pragma once
-#ifndef MESH
-#define MESH
+#ifndef __MESH__
+#define __MESH__
 
 #include "VertexData.h"
 #include "ResourcePackage.h"

@@ -1,6 +1,7 @@
 #include "WorldManager.h"
 #include "WorldMap.h"
 #include "WorldTree.h"
+#include "WorldConverter.h"
 
 namespace SemperEngine {
 
@@ -13,12 +14,10 @@ namespace SemperEngine {
 
 	World WorldManager::_inside;
 
-	NextWorld WorldManager::_next(1);
-
 	void WorldManager::Initialize()
 	{
-		_inside = WorldMap::LoadWorld(0);
-		_active = WorldMap::LoadWorld(1);
+		_inside = WorldMap::BuildWorld(0);
+		_active = WorldMap::BuildWorld(1);
 	}
 
 	World WorldManager::GetInside()
@@ -33,31 +32,17 @@ namespace SemperEngine {
 
 	void WorldManager::SetActive(string name)
 	{
-		auto id = WorldMap::GetWorldID(name);
-		SetActive(id);
+		WorldConverter::SetNext(name);
 	}
 
 	void WorldManager::SetActive(int id)
 	{
-		if (WorldMap::Contain(id))
-		{
-			_next.SetID(id);
-		}
-		else
-		{
-			throw "arguments error";
-		}
-
+		WorldConverter::SetNext(id);
 	}
 
-	void WorldManager::WorldAfterLoop()
+	bool WorldManager::Inside()
 	{
-		if (_next.isChange)
-		{
-			WorldMap::UnloadWorld(_active);
-			_active = WorldMap::LoadWorld(_next.GetID());
-			_next.Reset();
-		}
+		return currentWorld == _inside;
 	}
 
 }

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef WORLD_MAP
-#define WORLD_MAP
+#ifndef __WORLD_MAP__
+#define __WORLD_MAP__
 
 #include "World.h"
 #include "WorldBuilder.h"
@@ -17,13 +17,11 @@ namespace SemperEngine
 
 		public:
 
-			static void BuildWorld();
+			static void InitWorldBuilder();
 
-			static World LoadWorld(int id );
+			static World BuildWorld(int id );
 
-			static World LoadWorld(std::string id );
-
-			static void UnloadWorld(World world);
+			static World BuildWorld(std::string id );
 
 			static int GetWorldID(std::string name);
 

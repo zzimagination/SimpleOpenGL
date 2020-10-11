@@ -1,14 +1,16 @@
-#ifndef GAMEEND
-#define GAMEEND
+#ifndef __GAME_END__
+#define __GAME_END__
 
 namespace SemperEngine
 {
-	class GameEnd
+	namespace Core
 	{
-	public:
+		class GameEnd
+		{
+		public:
 
-		static void End();
-	};
-
+			static void End();
+		};
+	}
 }
 #endif // !GAMEEND

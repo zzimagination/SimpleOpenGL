@@ -1,10 +1,14 @@
 #pragma once
+#ifndef __SHADER_MANAGER__
+#define __SHADER_MANAGER__
+
 #include <map>
 #include <string>
 #include "GraphicShader.h"
+
 namespace SemperEngine {
 
-	class ShaderManager
+	class GraphicShaderManager
 	{
 	public:
 
@@ -12,8 +16,11 @@ namespace SemperEngine {
 
 	public:
 
-		static GraphicShader GetShader(string name);
+		static GraphicShader FindShader(std::string name);
 
 	};
 
 }
+
+#endif // !SHADER_MANAGER
+

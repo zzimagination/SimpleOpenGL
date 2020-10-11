@@ -1,6 +1,6 @@
 #pragma once
-#ifndef SHADER_SOURCE
-#define SHADER_SOURCE
+#ifndef __SHADER_SOURCE__
+#define __SHADER_SOURCE__
 
 #include <string>
 #include <vector>
@@ -33,12 +33,9 @@ namespace SemperEngine
 
 		};
 
-		class Shaderlibrary
-		{
-		public:
-
-			static std::vector<Shaderfile> shaderfiles;
-
+		const std::vector<Shaderfile> shaderfiles = {
+			Shaderfile("Unlit","Shader/Unlit.vs", "Shader/Unlit.fs"),
+			Shaderfile("Debug", "Shader/Debug.vs", "Shader/Debug.fs")
 		};
 	}
 }

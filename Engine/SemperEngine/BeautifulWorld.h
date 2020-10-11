@@ -1,6 +1,6 @@
 #pragma once
-#ifndef BEAUTIFULWORLD
-#define BEAUTIFULWORLD
+#ifndef __BEAUTIFUL_WORLD__
+#define __BEAUTIFUL_WORLD__
 
 #include "ComponentCreator.h"
 #include "GameObjectCreator.h"

@@ -1,5 +1,5 @@
-#ifndef RENDEROBJECT_MANAGER
-#define RENDEROBJECT_MANAGER
+#ifndef __RENDEROBJECT_MANAGER__
+#define __RENDEROBJECT_MANAGER__
 
 #include <vector>
 #include "RenderObject.h"

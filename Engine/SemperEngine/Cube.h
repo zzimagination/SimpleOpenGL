@@ -1,6 +1,6 @@
 #pragma once
-#ifndef GAMEOBJECT_CUBE
-#define GAMEOBJECT_CUBE
+#ifndef __GAMEOBJECT_CUBE__
+#define __GAMEOBJECT_CUBE__
 
 #include "GameObject.h"
 #include "VertexData.h"
@@ -11,19 +11,21 @@ namespace SemperEngine
 {
 	class Cube : public GameObject
 	{
+	public:
+
+		std::shared_ptr<Material> material;
+
 	private:
 
 		Core::ResourcePackage<Core::VertexData> _cube;
 
 		std::unique_ptr<Core::RenderObject> _renderObject;
 
-		std::unique_ptr<Material> _material;
-
 	public:
 
 		Cube();
 
-		~Cube();
+		virtual ~Cube() override;
 
 	public:
 

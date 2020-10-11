@@ -1,4 +1,4 @@
-#include "GraphicVertexBufferClear.h"
+#include "GraphicCommand.h"
 #include "GraphicResouce.h"
 
 namespace SemperEngine
@@ -10,12 +10,15 @@ namespace SemperEngine
 		GVertexBufferClearCMD::GVertexBufferClearCMD(shared_ptr<Vertex> data)
 		{
 			this->data = data;
-			this->data->package.Dispose();
+		}
+
+		GVertexBufferClearCMD::~GVertexBufferClearCMD()
+		{
 		}
 
 		void GVertexBufferClearCMD::Excute()
 		{
-			GraphicResouce::ClearVertexData(data->graphicData);
+			GraphicResouceAPI::ClearVertexData(data->graphicData);
 		}
 	}
 }

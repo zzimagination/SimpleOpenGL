@@ -1,14 +1,14 @@
 #pragma once
-#ifndef RESOURCE_PACKAGE
-#define RESOURCE_PACKAGE
+#ifndef __RESOURCE_PACKAGE__
+#define __RESOURCE_PACKAGE__
 
 #include<memory>
+#include "ObjectIndex.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
-
 		class VertexDataCenter;
 
 		template<class T>
@@ -16,7 +16,7 @@ namespace SemperEngine
 		{
 		public:
 
-			std::shared_ptr<int> graphicCenterID;
+			ObjectIndex graphicResourceID;
 
 		private:
 
@@ -45,7 +45,6 @@ namespace SemperEngine
 					throw "NULL";
 				}
 				_data = resource;
-				graphicCenterID = std::shared_ptr<int>(new int(0));
 				_useCount = std::shared_ptr<int>(new int(0));
 				_isEmpty = std::shared_ptr<bool>(new bool(false));
 				_isDestroy = false;
@@ -70,7 +69,11 @@ namespace SemperEngine
 
 			void Use(void* user)
 			{
-				if (_user == user)
+				if (_isDestroy)
+				{
+					throw "disposed";
+				}
+				if (_user == user || user == nullptr)
 				{
 					return;
 				}
@@ -86,7 +89,17 @@ namespace SemperEngine
 				}
 				_isDestroy = true;
 				_data = nullptr;
+
+				if (_user == nullptr)
+				{
+					return;
+				}
+				_user = nullptr;
 				*_useCount = *_useCount - 1;
+				if (*_useCount < 0)
+				{
+					throw "count can't less 0";
+				}
 			}
 
 			bool IsEmpty()

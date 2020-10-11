@@ -1,6 +1,6 @@
 #pragma once
-#ifndef SHADER_COMPILER
-#define SHADER_COMPILER
+#ifndef __SHADER_COMPILER__
+#define __SHADER_COMPILER__
 
 #include <string>
 #include "ShaderSource.h"

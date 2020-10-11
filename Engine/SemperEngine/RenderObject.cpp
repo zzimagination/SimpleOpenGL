@@ -7,6 +7,7 @@ namespace SemperEngine {
 	{
 		RenderObject::RenderObject()
 		{
+			mylife = LifeContainer<RenderObject>(this);
 		}
 
 		RenderObject::~RenderObject()

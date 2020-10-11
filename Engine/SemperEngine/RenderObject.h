@@ -1,6 +1,7 @@
-#ifndef RRENDEROBJECT
-#define RRENDEROBJECT
+#ifndef __RENDEROBJECT__
+#define __RENDEROBJECT__
 
+#include <memory>
 #include "Mathz.h"
 #include "Material.h"
 #include "LifeContainer.h"
@@ -19,9 +20,11 @@ namespace SemperEngine {
 
 			Matrix4x4 modelMatrix;
 
-			Material* material;
+			std::shared_ptr<Material> material;
 
-			LifeContainer<RenderObject> mylife = LifeContainer<RenderObject>(this);
+			LifeContainer<RenderObject> mylife;
+
+			int layer;
 
 		public:
 

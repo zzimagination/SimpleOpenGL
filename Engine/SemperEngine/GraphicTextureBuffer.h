@@ -1,6 +1,6 @@
 #pragma once
-#ifndef GRAPHICCMD_TEXTUREBUFFER
-#define GRAPHICCMMD_TEXTUREBUFFER
+#ifndef __GRAPHICCMD_TEXTUREBUFFER__
+#define __GRAPHICCMD_TEXTUREBUFFER__
 
 #include "GraphicCommand.h"
 

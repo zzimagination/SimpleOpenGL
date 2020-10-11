@@ -5,6 +5,9 @@
 
 namespace SemperEngine
 {
+	SecondWorldAction::~SecondWorldAction()
+	{
+	}
 	void SecondWorldAction::Start()
 	{
 		Debug::Log("Start Second World");

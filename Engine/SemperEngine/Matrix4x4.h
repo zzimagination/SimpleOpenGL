@@ -1,5 +1,5 @@
-#ifndef MATH_MATRIX4X4
-#define MATH_MATRIX4X4
+#ifndef __MATHZ_MATRIX4X4__
+#define __MATHZ_MATRIX4X4__
 
 #include "Vector3.h"
 #include "Vector4.h"
@@ -28,7 +28,7 @@ namespace SemperEngine {
 
 		Matrix4x4();
 
-		Matrix4x4(Vector4& r0, Vector4& r1, Vector4& r2, Vector4& r3);
+		Matrix4x4(Vector4 r0, Vector4 r1, Vector4 r2, Vector4 r3);
 
 		Matrix4x4(float r0c0, float r0c1, float r0c2, float r0c3,
 			float r1c0, float r1c1, float r1c2, float r1c3,
@@ -44,8 +44,6 @@ namespace SemperEngine {
 		Matrix4x4 operator*(const Matrix4x4 &b);
 
 		Vector3 operator*(const Vector3 &right);
-
-	private:
 
 	};
 }

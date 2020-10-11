@@ -34,16 +34,10 @@
     <ClCompile Include="Vector4.cpp">
       <Filter>Math</Filter>
     </ClCompile>
-    <ClCompile Include="Test.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
     <ClCompile Include="Mathz.cpp">
       <Filter>Math</Filter>
     </ClCompile>
     <ClCompile Include="GameWindow.cpp">
-      <Filter>Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="Win32Window.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="GWindow.cpp">
@@ -97,9 +91,6 @@
     <ClCompile Include="RenderObjectManager.cpp">
       <Filter>Render\GameRender</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderProperty.cpp">
-      <Filter>Render\GameRender\Data</Filter>
-    </ClCompile>
     <ClCompile Include="GraphicVertexData.cpp">
       <Filter>Render\GraphicRender\Data</Filter>
     </ClCompile>
@@ -118,15 +109,6 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>World\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicDraw.cpp">
-      <Filter>Render\GraphicRender\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicVertexBuffer.cpp">
-      <Filter>Render\GraphicRender\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicVertexBufferClear.cpp">
-      <Filter>Render\GraphicRender\Command</Filter>
-    </ClCompile>
     <ClCompile Include="GraphicTextureBuffer.cpp">
       <Filter>Render\GraphicRender\Command</Filter>
     </ClCompile>
@@ -144,9 +126,6 @@
     </ClCompile>
     <ClCompile Include="Cube.cpp">
       <Filter>World\GameObject\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Application.cpp">
-      <Filter>Project</Filter>
     </ClCompile>
     <ClCompile Include="WorldLoop.cpp">
       <Filter>World\World</Filter>
@@ -168,9 +147,6 @@
     </ClCompile>
     <ClCompile Include="GameObjectCreator.cpp">
       <Filter>World\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraCollection.cpp">
-      <Filter>World\GameObject\Camera</Filter>
     </ClCompile>
     <ClCompile Include="GameObjectContainer.cpp">
       <Filter>World\GameObject</Filter>
@@ -194,12 +170,6 @@
       <Filter>Render\GraphicRender</Filter>
     </ClCompile>
     <ClCompile Include="GraphicDataCenter.cpp">
-      <Filter>Render\GraphicRender</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicCommandData.cpp">
-      <Filter>Render\GraphicRender</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicRenderDraw.cpp">
       <Filter>Render\GraphicRender</Filter>
     </ClCompile>
     <ClCompile Include="InsideWorld.cpp">
@@ -232,16 +202,10 @@
     <ClCompile Include="GraphicShader.cpp">
       <Filter>Render\GraphicRender\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="Shaderlibrary.cpp">
-      <Filter>Render\GraphicRender\Shader</Filter>
-    </ClCompile>
     <ClCompile Include="ShaderCompiler.cpp">
       <Filter>Render\GraphicRender\Shader</Filter>
     </ClCompile>
     <ClCompile Include="glad.c">
-      <Filter>Render\GraphicRender\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="GLRendererAPI.cpp">
       <Filter>Render\GraphicRender\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="GLResourceAPI.cpp">
@@ -258,6 +222,57 @@
     </ClCompile>
     <ClCompile Include="EventManager.cpp">
       <Filter>EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSetting.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
+    <ClCompile Include="GDrawCMD.cpp">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="GVertexBufferClearCMD.cpp">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="GVertexBufferCMD.cpp">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProperty.cpp">
+      <Filter>Render\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="GWinText.cpp">
+      <Filter>Tools\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="GClearCMD.cpp">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="GLRendererAPI.cpp">
+      <Filter>Render\GraphicRender\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSetting.cpp">
+      <Filter>Render\GameRender</Filter>
+    </ClCompile>
+    <ClCompile Include="GWireframeCMD.cpp">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicRenderAPI.cpp">
+      <Filter>Render\GraphicRender</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraCollection.cpp">
+      <Filter>Render\GameRender</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldConverter.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -300,16 +315,10 @@
     <ClInclude Include="Vector4.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="Test.h">
-      <Filter>Test</Filter>
-    </ClInclude>
     <ClInclude Include="Mathz.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="GameWindow.h">
-      <Filter>Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="Win32Window.h">
       <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="GWindow.h">
@@ -321,14 +330,8 @@
     <ClInclude Include="GameStart.h">
       <Filter>Project\Loop</Filter>
     </ClInclude>
-    <ClInclude Include="EngineDef.h">
-      <Filter>Project</Filter>
-    </ClInclude>
     <ClInclude Include="MathBase.h">
       <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyIdentity.h">
-      <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="EventRecorder.h">
       <Filter>EventSystem</Filter>
@@ -369,9 +372,6 @@
     <ClInclude Include="RenderObjectManager.h">
       <Filter>Render\GameRender</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderProperty.h">
-      <Filter>Render\GameRender\Data</Filter>
-    </ClInclude>
     <ClInclude Include="GraphicVertexData.h">
       <Filter>Render\GraphicRender\Data</Filter>
     </ClInclude>
@@ -391,15 +391,6 @@
       <Filter>Tools\Collection</Filter>
     </ClInclude>
     <ClInclude Include="GraphicCommand.h">
-      <Filter>Render\GraphicRender\Command</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicDraw.h">
-      <Filter>Render\GraphicRender\Command</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicVertexBuffer.h">
-      <Filter>Render\GraphicRender\Command</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicVertexBufferClear.h">
       <Filter>Render\GraphicRender\Command</Filter>
     </ClInclude>
     <ClInclude Include="GraphicTextureBuffer.h">
@@ -423,9 +414,6 @@
     <ClInclude Include="Cube.h">
       <Filter>World\GameObject\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Application.h">
-      <Filter>Project</Filter>
-    </ClInclude>
     <ClInclude Include="WorldLoop.h">
       <Filter>World\World</Filter>
     </ClInclude>
@@ -446,9 +434,6 @@
     </ClInclude>
     <ClInclude Include="GameObjectCreator.h">
       <Filter>World\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraCollection.h">
-      <Filter>World\GameObject\Camera</Filter>
     </ClInclude>
     <ClInclude Include="GameObjectContainer.h">
       <Filter>World\GameObject</Filter>
@@ -478,12 +463,6 @@
       <Filter>Render\GraphicRender</Filter>
     </ClInclude>
     <ClInclude Include="GraphicDataCenter.h">
-      <Filter>Render\GraphicRender</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicCommandData.h">
-      <Filter>Render\GraphicRender</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicRenderDraw.h">
       <Filter>Render\GraphicRender</Filter>
     </ClInclude>
     <ClInclude Include="InsideWorld.h">
@@ -555,6 +534,45 @@
     <ClInclude Include="EventManager.h">
       <Filter>EventSystem</Filter>
     </ClInclude>
+    <ClInclude Include="GameSetting.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProperty.h">
+      <Filter>Render\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GWinText.h">
+      <Filter>Tools\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSetting.h">
+      <Filter>Render\GameRender</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyIdentity.h">
+      <Filter>EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectIndex.h">
+      <Filter>Tools\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicRenderAPI.h">
+      <Filter>Render\GraphicRender</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraCollection.h">
+      <Filter>Render\GameRender</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldConverter.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="头文件">
@@ -582,9 +600,6 @@
     </Filter>
     <Filter Include="GameLogic">
       <UniqueIdentifier>{ee4e0d89-ced1-4bc5-9fac-ec48b34404cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Test">
-      <UniqueIdentifier>{29de764b-d9af-4816-9c79-927d25c26cdb}</UniqueIdentifier>
     </Filter>
     <Filter Include="EventSystem">
       <UniqueIdentifier>{f5075df4-7f92-45ad-b858-dadb4bf028f4}</UniqueIdentifier>
@@ -675,6 +690,9 @@
     </Filter>
     <Filter Include="Render\GraphicRender\Shader">
       <UniqueIdentifier>{562d20ac-4cf2-4dcd-83d5-3491459c5a12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render\Base">
+      <UniqueIdentifier>{63ee41a1-c11a-41e6-b360-ceed611c7250}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -11,15 +11,15 @@ namespace SemperEngine
 
 		std::vector<WorldBuilder*> WorldMap::_builders;
 
-		void WorldMap::BuildWorld()
+		void WorldMap::InitWorldBuilder()
 		{
-			for (int i = 0; i < builders.size(); i++)
+			for (int i = 0; i < worldBuilders.size(); i++)
 			{
-				AddBuilder(builders[i]);
+				AddBuilder(worldBuilders[i]);
 			}
 		}
 
-		World WorldMap::LoadWorld(int id)
+		World WorldMap::BuildWorld(int id)
 		{
 			auto builder = GetBuilder(id);
 		 	auto worldTemplate = builder->Build(); 
@@ -30,15 +30,10 @@ namespace SemperEngine
 			return world;
 		}
 
-		World WorldMap::LoadWorld(std::string name)
+		World WorldMap::BuildWorld(std::string name)
 		{
 			auto id = GetWorldID(name);
-			return LoadWorld(id);
-		}
-
-		void WorldMap::UnloadWorld(World world)
-		{
-			WorldTree::RemoveWorld(world);
+			return BuildWorld(id);
 		}
 
 		int WorldMap::GetWorldID(std::string name)

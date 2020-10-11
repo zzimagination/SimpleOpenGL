@@ -1,6 +1,6 @@
 #include "GraphicTextureBufferClear.h"
 #include "GraphicDataCenter.h"
-#include "GraphicRenderDraw.h"
+#include "GraphicRenderAPI.h"
 
 namespace SemperEngine
 {
@@ -14,7 +14,7 @@ namespace SemperEngine
 		void GraphicTextureBufferClear::Excute()
 		{
 			auto graphicData = GraphicDataCenter::PopTextureData(gameData);
-			GraphicRenderDraw::ClearTextureData(graphicData);
+			GraphicRenderAPI::ClearTextureData(graphicData);
 		}
 	}
 }

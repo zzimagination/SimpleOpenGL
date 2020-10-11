@@ -1,6 +1,6 @@
 #pragma once
-#ifndef VERTEXDATA
-#define VERTEXDATA
+#ifndef __VERTEXDATA__
+#define __VERTEXDATA__
 
 #include <vector>
 #include "Mathz.h"

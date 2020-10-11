@@ -1,5 +1,5 @@
-#ifndef DEBUG_FILE
-#define DEBUG_FILE
+#ifndef __DEBUG_FILE__
+#define __DEBUG_FILE__
 #include <string>
 #include <fstream>
 #include <string>
@@ -24,8 +24,6 @@ namespace SemperEngine
 			static void Write(std::string log);
 
 			static void Write(std::wstring log);
-
-			static void Flush();
 		};
 	}
 }

@@ -1,5 +1,6 @@
-#ifndef CUBE
-#define CUBE
+#ifndef __CUBEDATA__
+#define __CUBEDATA__
+
 #include <vector>
 #include "Mathz.h"
 
@@ -17,8 +18,6 @@ namespace SemperEngine {
 
 		static int indices[36];
 	};
-
-
 
 }
 #endif // !CUBE

@@ -1,5 +1,5 @@
-#ifndef EVENTSYSTEM
-#define EVENTSYSTEM
+#ifndef __EVENT_MANAGER__
+#define __EVENT_MANAGER__
 
 #include "EventDef.h"
 

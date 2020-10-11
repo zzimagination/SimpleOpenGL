@@ -2,6 +2,7 @@
 #include "WorldMap.h"
 #include "WorldManager.h"
 #include "WorldTree.h"
+#include "WorldConverter.h"
 
 namespace SemperEngine
 {
@@ -9,14 +10,18 @@ namespace SemperEngine
 	{
 		void WorldLoop::BeforeLoop()
 		{
-			WorldMap::BuildWorld();
+			WorldMap::InitWorldBuilder();
 			WorldManager::Initialize();
 			Once();
+			WorldConverter::Convert();
+			WorldTree::Fall();
 		}
 
 		void WorldLoop::Loop()
 		{
 			Once();
+			WorldConverter::Convert();
+			WorldTree::Fall();
 		}
 
 		void WorldLoop::AfterLoop()
@@ -70,9 +75,6 @@ namespace SemperEngine
 				fruit->container.UpdateGameObjects();
 			}
 			WorldManager::currentWorld = World();
-
-			WorldManager::WorldAfterLoop();
-			WorldTree::Fall();
 		}
 	}
 }

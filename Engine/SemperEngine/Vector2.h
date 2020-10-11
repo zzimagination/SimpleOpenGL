@@ -1,5 +1,6 @@
-#ifndef MATH_VECTOR2
-#define MATH_VECTOR2
+#ifndef __MATHZ_VECTOR2__
+#define __MATHZ_VECTOR2__
+
 namespace SemperEngine {
 
 	class Vector2
