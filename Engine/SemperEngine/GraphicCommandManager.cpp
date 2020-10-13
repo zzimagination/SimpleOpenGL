@@ -25,7 +25,7 @@ namespace SemperEngine
 			resources.clear();
 		}
 
-		void GraphicCommandManager::AddVertexBuffer(shared_ptr<Vertex> data)
+		void GraphicCommandManager::AddVertexBuffer(shared_ptr<VertexCommandData> data)
 		{
 			auto cmd = new  GVertexBufferCMD(data);
 			resources.push_back(cmd);
@@ -37,7 +37,7 @@ namespace SemperEngine
 			//back_AddResource.push_back(cmd);
 		}
 
-		void GraphicCommandManager::ClearVertexBuffer(shared_ptr<Vertex> data)
+		void GraphicCommandManager::ClearVertexBuffer(shared_ptr<VertexCommandData> data)
 		{
 			auto cmd = new  GVertexBufferClearCMD(data);
 			resources.push_back(cmd);

@@ -1,5 +1,6 @@
 #include "ResourceManager.h"
 #include "VertexDataCenter.h"
+#include "TextureDataCenter.h"
 
 namespace SemperEngine
 {
@@ -7,7 +8,8 @@ namespace SemperEngine
 	{
 		void ResourceManager::Collection()
 		{
-			VertexDataCenter::UnloadNoUse();
+			VertexDataCenter::UnloadUnse();
+			TextureDataCenter::UnloadUnuse();
 		}
 	}
 }

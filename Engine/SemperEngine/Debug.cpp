@@ -8,42 +8,42 @@ namespace SemperEngine
 	using namespace std;
 	using namespace Core;
 
-	void Debug::Log(int message)
+	void Debug::Log(int &message)
 	{
 		LogItem item;
 		item.info = to_string(message);
 		DebugOutput::InputLog(item);
 	}
 
-	void Debug::Log(float message)
+	void Debug::Log(float& message)
 	{
 		LogItem item;
 		item.info = to_string(message);
 		DebugOutput::InputLog(item);
 	}
 
-	void Debug::Log(double message)
+	void Debug::Log(double& message)
 	{
 		LogItem item;
 		item.info = to_string(message);
 		DebugOutput::InputLog(item);
 	}
 
-	void Debug::Log(bool message)
+	void Debug::Log(bool& message)
 	{
 		LogItem item;
 		item.info = to_string(message);
 		DebugOutput::InputLog(item);
 	}
 
-	void Debug::Log(char message)
+	void Debug::Log(char& message)
 	{
 		LogItem item;
 		item.info = to_string(message);
 		DebugOutput::InputLog(item);
 	}
 
-	void Debug::Log(std::string message)
+	void Debug::Log(std::string& message)
 	{
 		LogItem item;
 		item.info = message;
@@ -57,7 +57,7 @@ namespace SemperEngine
 		DebugOutput::InputLog(item);
 	}
 
-	void Debug::Log(std::wstring message)
+	void Debug::Log(std::wstring& message)
 	{
 		LogItem item;
 		item.winfo = message;

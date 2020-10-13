@@ -21,9 +21,9 @@ namespace SemperEngine
 
 			static void Close();
 
-			static void Write(std::string log);
+			static void Write(std::string& log);
 
-			static void Write(std::wstring log);
+			static void Write(std::wstring& log);
 		};
 	}
 }

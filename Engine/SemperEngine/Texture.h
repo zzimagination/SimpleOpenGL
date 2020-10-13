@@ -1,12 +1,11 @@
-#ifndef TEXTURE
-#define TEXTURE
+#ifndef __TEXTURE__
+#define __TEXTURE__
 
 #include <vector>
 #include <string>
+#include <memory>
 
 namespace SemperEngine {
-
-	using namespace std;
 
 	class Texture
 	{
@@ -16,20 +15,13 @@ namespace SemperEngine {
 
 		int height;
 
-		int channels;
-
-		unsigned char* data;
+		std::shared_ptr<unsigned char> data;
 
 		Texture();
 
 		~Texture();
 
-		void LoadFile(string path);
-
 	private:
-
-
-
 	};
 
 }

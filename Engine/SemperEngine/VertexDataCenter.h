@@ -26,7 +26,7 @@ namespace SemperEngine
 
 			static ResourcePackage<VertexData> LoadCube(bool share);
 
-			static void UnloadNoUse();
+			static void UnloadUnse();
 
 		private:
 

@@ -10,6 +10,8 @@
 #include "ResourcePackage.h"
 #include "VertexData.h"
 #include "GraphicVertexData.h"
+#include "Texture.h"
+#include "GraphicTextureData.h"
 
 namespace SemperEngine
 {
@@ -30,7 +32,9 @@ namespace SemperEngine
 			~GraphicCommandData() {}
 		};
 
-		typedef GraphicCommandData<VertexData, GraphicVertexData> Vertex;
+		typedef GraphicCommandData<VertexData, GraphicVertexData> VertexCommandData;
+
+		typedef GraphicCommandData<Texture, GraphicTextureData> TextureCommandData;
 
 		class GraphicCommand
 		{
@@ -47,11 +51,11 @@ namespace SemperEngine
 		{
 		public:
 
-			std::shared_ptr<Vertex> data;
+			std::shared_ptr<VertexCommandData> data;
 
 		public:
 
-			GVertexBufferCMD(std::shared_ptr<Vertex> data);
+			GVertexBufferCMD(std::shared_ptr<VertexCommandData> data);
 
 			virtual ~GVertexBufferCMD() override;
 
@@ -62,11 +66,11 @@ namespace SemperEngine
 		{
 		public:
 
-			std::shared_ptr<Vertex> data;
+			std::shared_ptr<VertexCommandData> data;
 
 		public:
 
-			GVertexBufferClearCMD(std::shared_ptr<Vertex> data);
+			GVertexBufferClearCMD(std::shared_ptr<VertexCommandData> data);
 
 			virtual ~GVertexBufferClearCMD() override;
 
@@ -77,7 +81,7 @@ namespace SemperEngine
 		{
 		public:
 
-			std::weak_ptr<Vertex> vertexData;
+			std::weak_ptr<VertexCommandData> vertexData;
 
 			Matrix4x4 modelMatrix;
 
@@ -91,7 +95,7 @@ namespace SemperEngine
 
 		public:
 
-			GDrawCMD(std::shared_ptr<Vertex> v, Matrix4x4 m, Matrix4x4 view, Matrix4x4 p, std::string shader, ShaderProperty& pro);
+			GDrawCMD(std::shared_ptr<VertexCommandData> v, Matrix4x4 m, Matrix4x4 view, Matrix4x4 p, std::string shader, ShaderProperty& pro);
 
 			virtual ~GDrawCMD() override;
 

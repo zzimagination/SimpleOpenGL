@@ -8,13 +8,11 @@ namespace SemperEngine
 	{
 		GraphicTextureBufferClear::GraphicTextureBufferClear(Texture * gameData)
 		{
-			this->gameData = gameData;
 		}
 
 		void GraphicTextureBufferClear::Excute()
 		{
-			auto graphicData = GraphicDataCenter::PopTextureData(gameData);
-			GraphicRenderAPI::ClearTextureData(graphicData);
+
 		}
 	}
 }

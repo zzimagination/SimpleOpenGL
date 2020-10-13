@@ -33,7 +33,7 @@ namespace SemperEngine {
 			glfwSetScrollCallback(gwindow->window, GWindow::OnScroll);
 			glfwSetKeyCallback(gwindow->window, GWindow::key_callback);
 
-			if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+			if (!gladLoadGL())
 			{
 				throw("Failed to initialize GLAD");
 			}

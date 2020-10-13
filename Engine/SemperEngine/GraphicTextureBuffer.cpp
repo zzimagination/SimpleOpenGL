@@ -8,13 +8,10 @@ namespace SemperEngine
 	{
 		GraphicTextureBuffer::GraphicTextureBuffer(Texture * gameData)
 		{
-			this->gameData = gameData;
 		}
 
 		void GraphicTextureBuffer::Excute()
 		{
-			auto graphicData= GraphicRenderAPI::AddTextureData(gameData);
-			GraphicDataCenter::AddTextureDate(graphicData);
 		}
 	}
 }

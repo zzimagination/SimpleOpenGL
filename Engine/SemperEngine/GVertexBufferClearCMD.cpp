@@ -1,5 +1,5 @@
 #include "GraphicCommand.h"
-#include "GraphicResouce.h"
+#include "GraphicResouceAPI.h"
 
 namespace SemperEngine
 {
@@ -7,7 +7,7 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		GVertexBufferClearCMD::GVertexBufferClearCMD(shared_ptr<Vertex> data)
+		GVertexBufferClearCMD::GVertexBufferClearCMD(shared_ptr<VertexCommandData> data)
 		{
 			this->data = data;
 		}

@@ -31,11 +31,11 @@ namespace SemperEngine
 
 			static void SwapCommands();
 
-			static void AddVertexBuffer(std::shared_ptr<Vertex> data);
+			static void AddVertexBuffer(std::shared_ptr<VertexCommandData> data);
 
 			static void AddTextureBuffer(Texture* data);
 
-			static void ClearVertexBuffer(std::shared_ptr<Vertex> data);
+			static void ClearVertexBuffer(std::shared_ptr<VertexCommandData> data);
 
 			static void ClearTextureBuffer(Texture* data);
 

@@ -38,7 +38,7 @@ namespace SemperEngine {
 			}
 		}
 
-		void DebugFile::Write(std::string log)
+		void DebugFile::Write(std::string& log)
 		{
 			if (!isOpen)
 			{
@@ -51,7 +51,7 @@ namespace SemperEngine {
 			_file.write("\r", 1);
 		}
 
-		void DebugFile::Write(std::wstring log)
+		void DebugFile::Write(std::wstring& log)
 		{
 			if (!isOpen)
 			{

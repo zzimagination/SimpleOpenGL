@@ -21,6 +21,11 @@ namespace SemperEngine
 				_id = std::shared_ptr<unsigned int>(new unsigned int(0));
 			}
 
+			ObjectIndex(unsigned int i)
+			{
+				_id = std::shared_ptr<unsigned int>(new unsigned int(i));
+			}
+
 			~ObjectIndex(){}
 			
 			unsigned int ID()

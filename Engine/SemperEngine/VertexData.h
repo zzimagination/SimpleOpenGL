@@ -10,9 +10,13 @@ namespace SemperEngine
 {
 	namespace Core 
 	{
+		
+
 		class VertexData
 		{
 		public:
+
+			typedef unsigned int GPUResourceID;
 
 			std::vector<Vector3> vertices;
 
@@ -22,7 +26,9 @@ namespace SemperEngine
 
 			std::vector<int> index;
 
-			int* s;
+			GPUResourceID gid;
+
+		public:
 
 			VertexData();
 

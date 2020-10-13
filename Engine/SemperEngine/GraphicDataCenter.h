@@ -13,15 +13,18 @@
 
 namespace SemperEngine
 {
-	namespace Core 
+	namespace Core
 	{
 		class GraphicDataCenter
 		{
 		public:
 
-			static std::map<Texture*, GraphicTextureData*> texturesData;
 
-			static std::vector<std::shared_ptr<Vertex>> vertexDatas;
+		private:
+
+			static std::vector<std::shared_ptr<TextureCommandData>> _textureData;
+
+			static std::vector<std::shared_ptr<VertexCommandData>> _vertexData;
 
 		public:
 
@@ -29,21 +32,17 @@ namespace SemperEngine
 
 			static void RemoveVertexData(ResourcePackage<VertexData> package);
 
-			static std::shared_ptr<Vertex> GetVertexCommandData(ResourcePackage<VertexData> package);
+			static std::shared_ptr<VertexCommandData> GetVertexCommandData(ResourcePackage<VertexData> package);
 
-			static GraphicTextureData* GetTextureData(Texture* tex);
+			static void AddTextureData(ResourcePackage<Texture> package);
 
-			static std::vector<GraphicTextureData*> GetTexturesData(std::vector<Texture*> tex);
-
-			static void AddTextureDate(GraphicTextureData * data);
-
-			static GraphicTextureData* PopTextureData(Texture* data);
+			static void RemoveTextureData(ResourcePackage<Texture> package);
 
 		private:
 
-			static unsigned int DecodeResourceID(unsigned int package);
+			static unsigned int DecodeResourceID(unsigned int gid);
 
-			static unsigned int EncodeResourceID(unsigned int i);
+			static unsigned int EncodeResourceID(unsigned int index);
 		};
 	}
 }

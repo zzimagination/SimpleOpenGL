@@ -36,7 +36,7 @@ namespace SemperEngine
 			return instance;
 		}
 
-		void VertexDataCenter::UnloadNoUse()
+		void VertexDataCenter::UnloadUnse()
 		{
 			vector<ResourcePackage<VertexData>> newCubes;
 			for (int i = 0; i < cubes.size(); i++)

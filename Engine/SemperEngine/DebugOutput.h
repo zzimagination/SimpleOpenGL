@@ -20,7 +20,7 @@ namespace SemperEngine
 
 		public:
 
-			static void InputLog(LogItem log);
+			static void InputLog(LogItem& log);
 
 			static LogItem OutputLog();
 

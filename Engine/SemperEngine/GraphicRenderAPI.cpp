@@ -13,6 +13,7 @@ namespace SemperEngine {
 
 	namespace Core {
 
+		using namespace std;
 		using namespace GraphicAPI;
 
 		GraphicVertexData GraphicRenderAPI::_vertexData;

@@ -10,7 +10,7 @@ namespace SemperEngine
 
 		queue<LogItem> DebugOutput::_logs;
 
-		void DebugOutput::InputLog(LogItem log)
+		void DebugOutput::InputLog(LogItem& log)
 		{
 			lock_guard<mutex> lock(_logLock);
 			_logs.push(log);

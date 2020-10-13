@@ -9,7 +9,7 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		GDrawCMD::GDrawCMD(std::shared_ptr<Vertex> v, Matrix4x4 m, Matrix4x4 view, Matrix4x4 p, std::string shader, ShaderProperty& pro)
+		GDrawCMD::GDrawCMD(std::shared_ptr<VertexCommandData> v, Matrix4x4 m, Matrix4x4 view, Matrix4x4 p, std::string shader, ShaderProperty& pro)
 		{
 			this->vertexData = v;
 			this->modelMatrix = m;

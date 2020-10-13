@@ -100,9 +100,6 @@
     <ClCompile Include="Texture.cpp">
       <Filter>Resources\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="spng.c">
-      <Filter>Resources\Texture\ThirdParty</Filter>
-    </ClCompile>
     <ClCompile Include="Component.cpp">
       <Filter>World\Component</Filter>
     </ClCompile>
@@ -154,12 +151,6 @@
     <ClCompile Include="ComponentCreator.cpp">
       <Filter>World\Component</Filter>
     </ClCompile>
-    <ClCompile Include="VertexDataCenter.cpp">
-      <Filter>Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexData.cpp">
-      <Filter>Resources</Filter>
-    </ClCompile>
     <ClCompile Include="CubeData.cpp">
       <Filter>Resources\Model</Filter>
     </ClCompile>
@@ -210,9 +201,6 @@
     </ClCompile>
     <ClCompile Include="GLResourceAPI.cpp">
       <Filter>Render\GraphicRender\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicResource.cpp">
-      <Filter>Render\GraphicRender</Filter>
     </ClCompile>
     <ClCompile Include="GLShaderAPI.cpp">
       <Filter>Render\GraphicRender\OpenGL</Filter>
@@ -273,6 +261,18 @@
     </ClCompile>
     <ClCompile Include="Quaternion.cpp">
       <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicResourceAPI.cpp">
+      <Filter>Render\GraphicRender</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexDataCenter.cpp">
+      <Filter>Resources\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexData.cpp">
+      <Filter>Resources\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureDataCenter.cpp">
+      <Filter>Resources\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -381,9 +381,6 @@
     <ClInclude Include="Texture.h">
       <Filter>Resources\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="spng.h">
-      <Filter>Resources\Texture\ThirdParty</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectCollection.h">
       <Filter>Tools\Collection</Filter>
     </ClInclude>
@@ -447,12 +444,6 @@
     <ClInclude Include="BeautifulWorld.h">
       <Filter>World</Filter>
     </ClInclude>
-    <ClInclude Include="VertexDataCenter.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexData.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
     <ClInclude Include="ResourcePackage.h">
       <Filter>Resources</Filter>
     </ClInclude>
@@ -513,9 +504,6 @@
     <ClInclude Include="GLResourceAPI.h">
       <Filter>Render\GraphicRender\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicResouce.h">
-      <Filter>Render\GraphicRender</Filter>
-    </ClInclude>
     <ClInclude Include="WorldBuilder.h">
       <Filter>World\World</Filter>
     </ClInclude>
@@ -572,6 +560,18 @@
     </ClInclude>
     <ClInclude Include="Quaternion.h">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicResouceAPI.h">
+      <Filter>Render\GraphicRender</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexDataCenter.h">
+      <Filter>Resources\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexData.h">
+      <Filter>Resources\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureDataCenter.h">
+      <Filter>Resources\Texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -649,9 +649,6 @@
     <Filter Include="Resources\Texture">
       <UniqueIdentifier>{249a390d-587b-4d12-b97c-0a53ef9ab8c0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resources\Texture\ThirdParty">
-      <UniqueIdentifier>{071638b5-510e-41cc-9afd-4501be4380e1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="World">
       <UniqueIdentifier>{0348e011-0140-41b7-8452-82008fe2c81c}</UniqueIdentifier>
     </Filter>
@@ -693,6 +690,9 @@
     </Filter>
     <Filter Include="Render\Base">
       <UniqueIdentifier>{63ee41a1-c11a-41e6-b360-ceed611c7250}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Mesh">
+      <UniqueIdentifier>{84560e57-2616-4c20-b0c3-133cc15194fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

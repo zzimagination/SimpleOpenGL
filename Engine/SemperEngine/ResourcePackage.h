@@ -10,13 +10,16 @@ namespace SemperEngine
 	namespace Core
 	{
 		class VertexDataCenter;
+		class TextureDataCenter;
+
+		typedef ObjectIndex GPUResourceID;
 
 		template<class T>
 		class ResourcePackage
 		{
 		public:
 
-			ObjectIndex graphicResourceID;
+			GPUResourceID GID;
 
 		private:
 
@@ -35,6 +38,7 @@ namespace SemperEngine
 			ResourcePackage()
 			{
 				_isEmpty = std::shared_ptr<bool>(new bool(true));
+				_useCount = std::shared_ptr<int>(new int(0));
 				_isDestroy = true;
 			}
 
@@ -48,6 +52,7 @@ namespace SemperEngine
 				_useCount = std::shared_ptr<int>(new int(0));
 				_isEmpty = std::shared_ptr<bool>(new bool(false));
 				_isDestroy = false;
+				GID = GPUResourceID(0);
 			}
 
 			~ResourcePackage()
@@ -121,6 +126,7 @@ namespace SemperEngine
 		public:
 
 			friend class VertexDataCenter;
+			friend class TextureDataCenter;
 		};
 	}
 }
