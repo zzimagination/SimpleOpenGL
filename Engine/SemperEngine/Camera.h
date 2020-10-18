@@ -2,13 +2,9 @@
 #define __CAMERA__
 
 #include "GameObject.h"
-#include <glm\detail\type_float.hpp>
+#include "CameraObject.h"
 
 namespace SemperEngine {
-
-	constexpr unsigned int ClearModeColor = 0x01;
-
-	constexpr unsigned int ClearModeDepth = 0x02;
 
 	class Camera : public GameObject
 	{
@@ -61,6 +57,8 @@ namespace SemperEngine {
 		float _yaw;
 
 		float _pitch;
+
+		std::unique_ptr<Core::CameraObject> _cameraObject;
 
 	public:
 

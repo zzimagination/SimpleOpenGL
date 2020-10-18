@@ -64,7 +64,7 @@ namespace SemperEngine
 		}
 		unsigned int GameObjectContainer::DecodeComID(Component* com)
 		{
-			auto id = com->comID.ID() - 1;
+			auto id = com->comID() - 1;
 			return id;
 		}
 		void GameObjectContainer::EncodeComID(Component* com, unsigned int i)

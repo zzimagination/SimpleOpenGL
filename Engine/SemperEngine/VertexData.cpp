@@ -1,4 +1,5 @@
 #include "VertexData.h"
+#include "Debug.h"
 
 namespace SemperEngine
 {
@@ -13,6 +14,7 @@ namespace SemperEngine
 			vector<Vector2> uv;
 			vector<int> index;
 		}
+
 		VertexData::~VertexData()
 		{
 		}

@@ -7,9 +7,9 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		vector<LifeContainer<GameObject>> CameraCollection::_cameras;
+		vector<LifeContainer<CameraObject>> CameraCollection::_cameras;
 
-		void CameraCollection::AddCamera(LifeContainer<GameObject> camera)
+		void CameraCollection::AddCamera(LifeContainer<CameraObject> camera)
 		{
 			if (WorldManager::Inside())
 			{
@@ -18,14 +18,14 @@ namespace SemperEngine
 			_cameras.push_back(camera);
 		}
 
-		vector<Camera*> CameraCollection::GetCameras()
+		vector<CameraObject*> CameraCollection::GetCameras()
 		{
-			vector<Camera*> result;
+			vector<CameraObject*> result;
 			for (int i = 0; i < _cameras.size(); i++)
 			{
 				if (_cameras[i].life)
 				{
-					result.push_back((Camera*)_cameras[i].self);
+					result.push_back(_cameras[i].self);
 				}
 			}
 			return result;

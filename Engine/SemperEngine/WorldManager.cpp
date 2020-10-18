@@ -8,7 +8,7 @@ namespace SemperEngine {
 	using namespace std;
 	using namespace Core;
 
-	World WorldManager::currentWorld;
+	World* WorldManager::currentWorld;
 
 	World WorldManager::_active;
 
@@ -42,7 +42,7 @@ namespace SemperEngine {
 
 	bool WorldManager::Inside()
 	{
-		return currentWorld == _inside;
+		return *currentWorld == _inside;
 	}
 
 }

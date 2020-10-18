@@ -3,7 +3,7 @@
 #define __GL_RESOURCEAPI__
 
 #include "Mathz.h"
-#include "GraphicVertexData.h"
+#include "GraphicResource.h"
 
 namespace SemperEngine
 {
@@ -23,6 +23,11 @@ namespace SemperEngine
 
 			};
 
+			struct GLTextureData
+			{
+				unsigned int texture;
+			};
+
 
 			class GLResourceAPI
 			{
@@ -35,6 +40,10 @@ namespace SemperEngine
 				static void ClearVertexData(unsigned int VAO, unsigned int VBO, unsigned int EBO);
 
 				static void ClearVertexData(unsigned int VAO, unsigned int VBO);
+
+				static GLTextureData AddTextureData(unsigned char* data, int width, int height);
+
+				static void ClearTextureData(unsigned int texture);
 			};
 		}
 	}

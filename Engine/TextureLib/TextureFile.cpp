@@ -1,4 +1,4 @@
-#include "TextureFile.h"
+#include "TextureLib.h"
 #include <iostream>
 #include <fstream>
 #include "spng.h"

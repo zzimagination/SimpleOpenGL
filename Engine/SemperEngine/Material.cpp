@@ -11,35 +11,39 @@ namespace SemperEngine {
 
 	Material::Material() :Material("Unlit")
 	{
-		AddShaderProperty("_color", Vector4(1, 1, 1, 1));
+		AddProperty("_color", Vector4(1, 1, 1, 1));
 	}
 
-	void Material::AddShaderProperty(std::string name, float value)
+	void Material::AddProperty(std::string name, float value)
 	{
 		shaderProperty.Add(name, value);
 	}
 
-	void Material::AddShaderProperty(std::string name, Vector2 value)
+	void Material::AddProperty(std::string name, Vector2 value)
 	{
 		shaderProperty.Add(name, value);
 	}
 
-	void Material::AddShaderProperty(std::string name, Vector3 value)
+	void Material::AddProperty(std::string name, Vector3 value)
 	{
 		shaderProperty.Add(name, value);
 	}
 
-	void Material::AddShaderProperty(std::string name, Vector4 value)
+	void Material::AddProperty(std::string name, Vector4 value)
 	{
 		shaderProperty.Add(name, value);
 	}
 
-	void Material::AddShaderProperty(std::string name, Matrix4x4 value)
+	void Material::AddProperty(std::string name, Matrix4x4 value)
 	{
 		shaderProperty.Add(name, value);
 	}
-	void Material::AddShaderProperty(std::string name, Color value)
+	void Material::AddProperty(std::string name, Color value)
 	{
 		shaderProperty.Add(name, Vector4(value.R(), value.G(), value.B(), value.A()));
+	}
+	void Material::AddProperty(int id, Core::RsTextureRef value)
+	{
+		shaderProperty.Add(id, value);
 	}
 }

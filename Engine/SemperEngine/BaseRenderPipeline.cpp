@@ -3,6 +3,7 @@
 #include "RenderCollection.h"
 #include "CameraCollection.h"
 #include "GraphicCommandManager.h"
+#include "CameraObject.h"
 
 namespace SemperEngine
 {
@@ -27,7 +28,7 @@ namespace SemperEngine
 			CameraCollection::ClearCameras();
 		}
 
-		void BaseRenderPipeline::CameraClear(Camera* camera)
+		void BaseRenderPipeline::CameraClear(CameraObject* camera)
 		{
 			Color clearColor = camera->clearColor;
 			int clearMode = 0;
@@ -50,7 +51,7 @@ namespace SemperEngine
 			GraphicCommandManager::Clear(Vector4(0, 0, 0, 1), 0x03);
 		}
 
-		void BaseRenderPipeline::RenderCamera(Camera* camera)
+		void BaseRenderPipeline::RenderCamera(CameraObject* camera)
 		{
 			CameraClear(camera);
 			auto renderObjects = RenderCollection::GetRenderObjects(camera);

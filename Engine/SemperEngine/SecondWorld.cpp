@@ -22,13 +22,13 @@ namespace SemperEngine
 		floor->name = "floor";
 		floor->transform.position = Vector3(0, -0.1f, 0);
 		floor->transform.scale = Vector3(50, 0.2f, 50);
-		floor->material->AddShaderProperty("_color", Color(0.9f, 0.6f, 0.0f));
+		floor->material->AddProperty("_color", Color(0.9f, 0.6f, 0.0f));
 		AddGameObject(floor);
 
 		auto cube = new Cube();
 		cube->name = "cube";
 		cube->transform.position = Vector3(0, 0.5f, 0);
-		cube->material->AddShaderProperty("_color", Color(0, 0.4f, 1));
+		cube->material->AddProperty("_color", Color(0, 0.4f, 1));
 		AddGameObject(cube);
 		return world;
 	}

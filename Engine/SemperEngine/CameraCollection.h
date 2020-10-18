@@ -2,7 +2,7 @@
 #ifndef __CAMERA_COLLECTION__
 #define __CAMERA_COLLECTION__
 
-#include "Camera.h"
+#include "CameraObject.h"
 
 namespace SemperEngine
 {
@@ -12,13 +12,13 @@ namespace SemperEngine
 		{
 		private:
 
-			static std::vector<LifeContainer<GameObject>> _cameras;
+			static std::vector<LifeContainer<CameraObject>> _cameras;
 
 		public:
 
-			static void AddCamera(LifeContainer<GameObject> camera);
+			static void AddCamera(LifeContainer<CameraObject> camera);
 
-			static std::vector<Camera*> GetCameras();
+			static std::vector<CameraObject*> GetCameras();
 
 			static void ClearCameras();
 		};

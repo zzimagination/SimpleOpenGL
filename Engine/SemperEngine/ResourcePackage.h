@@ -9,37 +9,39 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		class VertexDataCenter;
-		class TextureDataCenter;
-
 		typedef ObjectIndex GPUResourceID;
+
+		typedef unsigned int ResourceID;
 
 		template<class T>
 		class ResourcePackage
 		{
 		public:
 
-			GPUResourceID GID;
+			GPUResourceID gid;
+
+			ResourceID id;
+
+			typedef void (*OnDestroy)(ResourceID);
+
+			OnDestroy onDestroy;
 
 		private:
 
-			void* _user;
-
 			T* _data;
+
+			void* _user;
 
 			std::shared_ptr<bool> _isEmpty;
 
 			std::shared_ptr<int> _useCount;
 
-			bool _isDestroy;
-
 		public:
 
 			ResourcePackage()
 			{
-				_isEmpty = std::shared_ptr<bool>(new bool(true));
 				_useCount = std::shared_ptr<int>(new int(0));
-				_isDestroy = true;
+				_isEmpty = std::shared_ptr<bool>(new bool(true));
 			}
 
 			ResourcePackage(T* resource)
@@ -51,8 +53,6 @@ namespace SemperEngine
 				_data = resource;
 				_useCount = std::shared_ptr<int>(new int(0));
 				_isEmpty = std::shared_ptr<bool>(new bool(false));
-				_isDestroy = false;
-				GID = GPUResourceID(0);
 			}
 
 			~ResourcePackage()
@@ -61,50 +61,65 @@ namespace SemperEngine
 
 			T* GetResource()
 			{
-				if (_isDestroy)
+				if (IsEmpty())
 				{
-					return nullptr;
-				}
-				if (*_isEmpty)
-				{
-					return nullptr;
+					throw "have destroy";
 				}
 				return _data;
 			}
 
+			void Use()
+			{
+				if (IsEmpty())
+				{
+					throw "have destroy";
+				}
+				*_useCount = *_useCount + 1;
+			}
+
 			void Use(void* user)
 			{
-				if (_isDestroy)
-				{
-					throw "disposed";
-				}
-				if (_user == user || user == nullptr)
+				if (user == _user)
 				{
 					return;
 				}
+				else if (_user != nullptr)
+				{
+					throw "have user";
+				}
 				_user = user;
-				*_useCount = *_useCount + 1;
+				Use();
+			}
+
+			void Dispose(void* user)
+			{
+				if (user != _user)
+				{
+					throw "error user";
+				}
+				Dispose();
 			}
 
 			void Dispose()
 			{
-				if (_isDestroy)
+				if (IsEmpty())
 				{
 					return;
 				}
-				_isDestroy = true;
-				_data = nullptr;
-
-				if (_user == nullptr)
-				{
-					return;
-				}
-				_user = nullptr;
 				*_useCount = *_useCount - 1;
 				if (*_useCount < 0)
 				{
-					throw "count can't less 0";
+					throw "have destroied";
 				}
+				if (*_useCount == 0)
+				{
+					Destory();
+				}
+			}
+
+			int UseCount()
+			{
+				return *_useCount;
 			}
 
 			bool IsEmpty()
@@ -112,21 +127,17 @@ namespace SemperEngine
 				return *_isEmpty;
 			}
 
-
 		private:
 
 			void Destory()
 			{
 				delete _data;
 				*_isEmpty = true;
-				_isDestroy = true;
+				if (onDestroy != nullptr)
+				{
+					onDestroy(id);
+				}
 			}
-
-
-		public:
-
-			friend class VertexDataCenter;
-			friend class TextureDataCenter;
 		};
 	}
 }

@@ -6,29 +6,35 @@
 #include <memory>
 #include <vector>
 #include "Texture.h"
+#include "TextureData.h"
 #include "ResourcePackage.h"
+#include "ResourceReference.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
+
+		typedef std::shared_ptr<ResourceReference<TextureData>> RsTextureRef;
+
 		class TextureDataCenter
 		{
 		public:
 
-			static std::vector<ResourcePackage<Texture>> instances;
+			static std::vector<ResourcePackage<TextureData>> instances;
+
+			static std::vector<ResourceID> unused;
 
 		public:
 
-			static ResourcePackage<Texture> LoadTexture(std::string path);
-
-			static void UnloadUnuse();
+			static RsTextureRef LoadTexture(std::string path);
 
 		private:
 
-			static Texture* CreateTexture(std::string path);
+			static void Unload(ResourceID id);
 
-			static bool UnloadOnce(ResourcePackage<Texture>);
+			static TextureData* CreateTexture(std::string path);
+
 		};
 	}
 }

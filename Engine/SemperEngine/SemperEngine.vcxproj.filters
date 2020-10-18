@@ -82,9 +82,6 @@
     <ClCompile Include="GraphicRender.cpp">
       <Filter>Render\GraphicRender</Filter>
     </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>Render\GameRender</Filter>
-    </ClCompile>
     <ClCompile Include="RenderObject.cpp">
       <Filter>Render\GameRender</Filter>
     </ClCompile>
@@ -150,12 +147,6 @@
     </ClCompile>
     <ClCompile Include="ComponentCreator.cpp">
       <Filter>World\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="CubeData.cpp">
-      <Filter>Resources\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="GraphicCommandManager.cpp">
       <Filter>Render\GraphicRender</Filter>
@@ -274,6 +265,27 @@
     <ClCompile Include="TextureDataCenter.cpp">
       <Filter>Resources\Texture</Filter>
     </ClCompile>
+    <ClCompile Include="CubeData.cpp">
+      <Filter>Resources\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceReference.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Resources\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureData.cpp">
+      <Filter>Resources\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraObject.cpp">
+      <Filter>Render\GameRender</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -363,20 +375,11 @@
     <ClInclude Include="GraphicRender.h">
       <Filter>Render\GraphicRender</Filter>
     </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Render\GameRender</Filter>
-    </ClInclude>
     <ClInclude Include="RenderObject.h">
       <Filter>Render\GameRender</Filter>
     </ClInclude>
     <ClInclude Include="RenderObjectManager.h">
       <Filter>Render\GameRender</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicVertexData.h">
-      <Filter>Render\GraphicRender\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicTextureData.h">
-      <Filter>Render\GraphicRender\Data</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
       <Filter>Resources\Texture</Filter>
@@ -390,12 +393,6 @@
     <ClInclude Include="GraphicCommand.h">
       <Filter>Render\GraphicRender\Command</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicTextureBuffer.h">
-      <Filter>Render\GraphicRender\Command</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicTextureBufferClear.h">
-      <Filter>Render\GraphicRender\Command</Filter>
-    </ClInclude>
     <ClInclude Include="RenderCollection.h">
       <Filter>Render\GameRender</Filter>
     </ClInclude>
@@ -404,9 +401,6 @@
     </ClInclude>
     <ClInclude Include="RenderBatch.h">
       <Filter>Render\GameRender</Filter>
-    </ClInclude>
-    <ClInclude Include="CubeData.h">
-      <Filter>Resources\Model</Filter>
     </ClInclude>
     <ClInclude Include="Cube.h">
       <Filter>World\GameObject\GameObjects</Filter>
@@ -445,9 +439,6 @@
       <Filter>World</Filter>
     </ClInclude>
     <ClInclude Include="ResourcePackage.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
       <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="GraphicCommandManager.h">
@@ -573,6 +564,30 @@
     <ClInclude Include="TextureDataCenter.h">
       <Filter>Resources\Texture</Filter>
     </ClInclude>
+    <ClInclude Include="GraphicResource.h">
+      <Filter>Render\GraphicRender\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeData.h">
+      <Filter>Resources\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceReference.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Resources\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureData.h">
+      <Filter>Resources\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraObject.h">
+      <Filter>Render\GameRender</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="头文件">
@@ -642,9 +657,6 @@
     </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{0cc2f298-98df-4ecb-ad7b-5226f98a010f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Model">
-      <UniqueIdentifier>{f2b45a3d-5c21-4a87-b7b0-5631ee7f4697}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources\Texture">
       <UniqueIdentifier>{249a390d-587b-4d12-b97c-0a53ef9ab8c0}</UniqueIdentifier>

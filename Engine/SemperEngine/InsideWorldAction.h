@@ -10,7 +10,7 @@ namespace SemperEngine
 	{
 	public:
 
-		int count;
+		int count = 0;
 
 		virtual ~InsideWorldAction() override;
 

@@ -12,11 +12,9 @@ namespace SemperEngine
 
 		std::vector<ResourcePackage<VertexData>> VertexDataCenter::cubes;
 
-		std::vector<ResourcePackage<VertexData>> VertexDataCenter::shareResources;
+		vector<int> VertexDataCenter::unuseCube;
 
-		std::vector<ResourcePackage<VertexData>> VertexDataCenter::instanceResources;
-
-		ResourcePackage<VertexData> VertexDataCenter::LoadCube(bool share = false)
+		RsVertexRef VertexDataCenter::LoadCube(bool share = false)
 		{
 			if (share)
 			{
@@ -24,33 +22,47 @@ namespace SemperEngine
 				{
 					auto cube = CreateCubeData();
 					shareCube = ResourcePackage<VertexData>(cube);
+					shareCube.onDestroy = Unload;
+					shareCube.id = 0;
+					shareCube.Use();
 					GraphicDataCenter::AddVertexData(shareCube);
 				}
-				return shareCube;
+				auto instance = new ResourceReference<VertexData>(shareCube);
+				RsVertexRef rs(instance);
+				return rs;
 			}
 
 			auto cube = CreateCubeData();
-			auto instance = ResourcePackage<VertexData>(cube);
-			GraphicDataCenter::AddVertexData(instance);
-			cubes.push_back(instance);
-			return instance;
-		}
-
-		void VertexDataCenter::UnloadUnse()
-		{
-			vector<ResourcePackage<VertexData>> newCubes;
-			for (int i = 0; i < cubes.size(); i++)
+			ResourcePackage<VertexData> package(cube);
+			package.onDestroy = Unload;
+			unsigned int id = 0;
+			if (unuseCube.size() > 0)
 			{
-				if (UnloadOnce(cubes[i]))
-				{
-					continue;
-				}
-				newCubes.push_back(cubes[i]);
+				id = *(unuseCube.end() - 1);
+				unuseCube.pop_back();
+				package.id = id;
+				cubes[id] = package;
 			}
-			cubes = newCubes;
+			else
+			{
+				id = (unsigned int)cubes.size();
+				package.id = id;
+				cubes.push_back(package);
+			}
+			GraphicDataCenter::AddVertexData(package);
+			auto instance = new ResourceReference<VertexData>(package);
+			RsVertexRef rs(instance);
+			return rs;
 		}
 
-		VertexData * VertexDataCenter::CreateCubeData()
+		void VertexDataCenter::Unload(ResourceID id)
+		{
+			auto package = cubes[id];
+			GraphicDataCenter::RemoveVertexData(package);
+			unuseCube.push_back(id);
+		}
+
+		VertexData* VertexDataCenter::CreateCubeData()
 		{
 			auto cube = new VertexData();
 			for (int i = 0; i < CubeData::vertexCount; i++)
@@ -69,15 +81,5 @@ namespace SemperEngine
 			return cube;
 		}
 
-		bool VertexDataCenter::UnloadOnce(ResourcePackage<VertexData> package)
-		{
-			if (*package._useCount > 0)
-			{
-				return false;
-			}
-			GraphicDataCenter::RemoveVertexData(package);
-			package.Destory();
-			return true;
-		}
 	}
 }

@@ -16,7 +16,7 @@ namespace SemperEngine
 	{
 	public:
 
-		static World currentWorld;
+		static World* currentWorld;
 
 	private:
 

@@ -2,5 +2,7 @@
 
 namespace SemperEngine
 {
-	int ShaderProperty::i = 0;
+	namespace Core 
+	{
+	}
 }

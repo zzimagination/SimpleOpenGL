@@ -154,6 +154,7 @@
     <ClInclude Include="BaseRenderPipeline.h" />
     <ClInclude Include="BeautifulWorld.h" />
     <ClInclude Include="CameraCollection.h" />
+    <ClInclude Include="CameraObject.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="CompletedSignal.h" />
     <ClInclude Include="ComponentCreator.h" />
@@ -174,8 +175,7 @@
     <ClInclude Include="GLShaderAPI.h" />
     <ClInclude Include="GraphicCommandManager.h" />
     <ClInclude Include="GraphicResouceAPI.h" />
-    <ClInclude Include="GraphicTextureBuffer.h" />
-    <ClInclude Include="GraphicTextureBufferClear.h" />
+    <ClInclude Include="GraphicResource.h" />
     <ClInclude Include="GraphicCommand.h" />
     <ClInclude Include="GraphicDataCenter.h" />
     <ClInclude Include="GraphicRender.h" />
@@ -212,6 +212,8 @@
     <ClInclude Include="RenderObject.h" />
     <ClInclude Include="RenderObjectManager.h" />
     <ClInclude Include="RenderSetting.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="ResourceReference.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="ResourcePackage.h" />
     <ClInclude Include="SecondWorld.h" />
@@ -226,7 +228,7 @@
     <ClInclude Include="TestWorld.h" />
     <ClInclude Include="TestWorldAction.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="GraphicTextureData.h" />
+    <ClInclude Include="TextureData.h" />
     <ClInclude Include="TextureDataCenter.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="TimeManager.h" />
@@ -234,7 +236,6 @@
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
-    <ClInclude Include="GraphicVertexData.h" />
     <ClInclude Include="VertexData.h" />
     <ClInclude Include="VertexDataCenter.h" />
     <ClInclude Include="GWinText.h" />
@@ -254,6 +255,7 @@
   <ItemGroup>
     <ClCompile Include="BaseRenderPipeline.cpp" />
     <ClCompile Include="CameraCollection.cpp" />
+    <ClCompile Include="CameraObject.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="CompletedSignal.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -312,6 +314,8 @@
     <ClCompile Include="GraphicShader.cpp" />
     <ClCompile Include="GraphicShaderManager.cpp" />
     <ClCompile Include="RenderSetting.cpp" />
+    <ClCompile Include="Resource.cpp" />
+    <ClCompile Include="ResourceReference.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SecondWorld.cpp" />
     <ClCompile Include="SecondWorldAction.cpp" />
@@ -323,6 +327,7 @@
     <ClCompile Include="TestWorldAction.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="GraphicTextureData.cpp" />
+    <ClCompile Include="TextureData.cpp" />
     <ClCompile Include="TextureDataCenter.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="TimeManager.cpp" />

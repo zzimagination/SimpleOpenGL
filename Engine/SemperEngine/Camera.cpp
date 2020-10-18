@@ -6,6 +6,7 @@
 namespace SemperEngine {
 
 	using namespace std;
+	using namespace Core;
 
 	Camera::Camera()
 	{
@@ -18,6 +19,7 @@ namespace SemperEngine {
 		this->clearMode = ClearMode::Color;
 		this->clearColor = Vector4(0.8f, 0.8f, 0.8f, 1);
 		this->renderLayer = { 1 };
+		_cameraObject = unique_ptr<CameraObject>(new CameraObject());
 	}
 
 	Camera::~Camera()
@@ -31,13 +33,24 @@ namespace SemperEngine {
 		Vector3 lookp(look.x, 0, look.z);
 		_yaw = Math::ArcCos(Vector3::Dot(lookp, Vector3::forward) / lookp.Length());
 		_pitch = Math::ArcCos(Vector3::Dot(lookp, look) / (look.Length(), lookp.Length()));
+		_cameraObject->viewMatrix = CalculateViewMatrix();
+		_cameraObject->projectMatrix = CalculateProjectionMatrix();
+		_cameraObject->renderLayer = renderLayer;
+		_cameraObject->clearColor = clearColor;
+		_cameraObject->clearMode = (int)clearMode;
+		CameraCollection::AddCamera(_cameraObject->myLife);
 	}
 
 	void Camera::Update()
 	{
 		Move();
 		Rotate();
-		Core::CameraCollection::AddCamera(this->life);
+		_cameraObject->viewMatrix = CalculateViewMatrix();
+		_cameraObject->projectMatrix = CalculateProjectionMatrix();
+		_cameraObject->renderLayer = renderLayer;
+		_cameraObject->clearColor = clearColor;
+		_cameraObject->clearMode = (int)clearMode;
+		CameraCollection::AddCamera(_cameraObject->myLife);
 	}
 
 	void Camera::End()

@@ -4,12 +4,10 @@
 
 #include <vector>
 #include <map>
-#include "ResourcePackage.h"
-#include "VertexData.h"
+#include "Resource.h"
 #include "GraphicCommand.h"
-#include "GraphicVertexData.h"
-#include "GraphicTextureData.h"
-#include "Texture.h"
+#include "GraphicResource.h"
+
 
 namespace SemperEngine
 {
@@ -22,9 +20,13 @@ namespace SemperEngine
 
 		private:
 
-			static std::vector<std::shared_ptr<TextureCommandData>> _textureData;
+			static std::vector<TextureCommandData> _textureData;
 
-			static std::vector<std::shared_ptr<VertexCommandData>> _vertexData;
+			static std::vector<unsigned int> _unusedTexture;
+
+			static std::vector<VertexCommandData> _vertexData;
+
+			static std::vector<unsigned int> _unusedVertex;
 
 		public:
 
@@ -32,17 +34,19 @@ namespace SemperEngine
 
 			static void RemoveVertexData(ResourcePackage<VertexData> package);
 
-			static std::shared_ptr<VertexCommandData> GetVertexCommandData(ResourcePackage<VertexData> package);
+			static VertexCommandData GetVertexCommandData(ResourcePackage<VertexData> package);
 
-			static void AddTextureData(ResourcePackage<Texture> package);
+			static void AddTextureData(ResourcePackage<TextureData> package);
 
-			static void RemoveTextureData(ResourcePackage<Texture> package);
+			static void RemoveTextureData(ResourcePackage<TextureData> package);
+
+			static TextureCommandData GetTextureCommandData(ResourcePackage<TextureData> package);
 
 		private:
 
-			static unsigned int DecodeResourceID(unsigned int gid);
+			static unsigned int DecodeGID(unsigned int gid);
 
-			static unsigned int EncodeResourceID(unsigned int index);
+			static unsigned int EncodeGID(unsigned int index);
 		};
 	}
 }

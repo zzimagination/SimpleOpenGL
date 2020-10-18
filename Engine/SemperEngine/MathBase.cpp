@@ -31,7 +31,7 @@ namespace SemperEngine {
 
 	float Math::Remainder(float a, float b)
 	{
-		return fmod(a, b);
+		return fmodf(a, b);
 	}
 
 	float Math::Max(float a, float b)

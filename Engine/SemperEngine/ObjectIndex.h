@@ -27,15 +27,6 @@ namespace SemperEngine
 			}
 
 			~ObjectIndex(){}
-			
-			unsigned int ID()
-			{
-				if (*_id == 0)
-				{
-					throw "id is 0";
-				}
-				return *_id;
-			}
 
 			ObjectIndex& operator=(const ObjectIndex& right)
 			{
@@ -52,8 +43,11 @@ namespace SemperEngine
 				*this->_id = right;
 				return *this;
 			}
-
 			
+			unsigned int operator()()
+			{
+				return *_id;
+			}
 		};
 	}
 }

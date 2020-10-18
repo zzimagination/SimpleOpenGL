@@ -24,11 +24,13 @@ namespace SemperEngine
 			{
 				throw "NULL";
 			}
+			struct stat buf;
+			if (stat(tfile.path.c_str(), &buf))
+			{
+				throw "don't have the file";
+			}
 			ifstream file(tfile.path, ios::binary);
-			file.seekg(0, ios_base::end);
-			size_t inputSize = file.tellg();
-			file.seekg(0);
-
+			auto inputSize = (unsigned int)buf.st_size;
 			unique_ptr<char> buffer(new char[inputSize]);
 			file.read(buffer.get(), inputSize);
 			file.close();

@@ -4,15 +4,11 @@
 #include <vector>
 #include "Mathz.h"
 #include "Material.h"
-#include "ShaderProperty.h"
 #include "VertexData.h"
-#include "GraphicVertexData.h"
+#include "GraphicResource.h"
 #include "GraphicShader.h"
 
 namespace SemperEngine {
-
-	class Texture;
-	class GraphicTextureData;
 
 	namespace Core {
 
@@ -20,19 +16,9 @@ namespace SemperEngine {
 		{
 		private:
 
-			static GraphicVertexData _vertexData;
-
-			static Matrix4x4 _model;
-
-			static Matrix4x4 _view;
-
-			static Matrix4x4 _projection;
-
 			static GraphicShader _shader;
 
-			static ShaderProperty _shaderProperty;
-
-			static int textureIndex;
+			static int _vertexCount;
 
 		public:
 
@@ -50,23 +36,18 @@ namespace SemperEngine {
 
 			static void SetVertexData(GraphicVertexData& data);
 
-			static void SetTransform(Matrix4x4 &model, Matrix4x4 &view, Matrix4x4 &projection);
-
 			static void SetShader(std::string shader);
 
-			static void SetShaderProperty(ShaderProperty value);
-
-			static void SetTextureData(GraphicTextureData* data);
+			static void SetShaderProperty(std::string name, float& value);
+			static void SetShaderProperty(std::string name, Vector2& value);
+			static void SetShaderProperty(std::string name, Vector3& value);
+			static void SetShaderProperty(std::string name, Vector4& value);
+			static void SetShaderProperty(std::string name, Matrix4x4& value);
+			static void SetShaderProperty(int id, GraphicTextureData& data);
 
 			static void Draw();
 
 			static void SetWireframe(bool enable);
-
-
-			static GraphicTextureData* AddTextureData(Texture* data);
-
-			static void ClearTextureData(GraphicTextureData* data);
-
 
 		};
 	}

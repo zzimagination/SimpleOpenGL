@@ -3,8 +3,8 @@
 #define __GRAPHIC_RESOURCECALL__
 
 #include "VertexData.h"
-#include "GraphicVertexData.h"
-
+#include "TextureData.h"
+#include "GraphicResource.h"
 
 namespace SemperEngine
 {
@@ -17,6 +17,10 @@ namespace SemperEngine
 			static GraphicVertexData AddVertexData(VertexData* data);
 
 			static void ClearVertexData(GraphicVertexData data);
+
+			static GraphicTextureData AddTextureData(TextureData* data);
+
+			static void ClearTextureData(GraphicTextureData data);
 		};
 	}
 }

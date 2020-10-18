@@ -5,7 +5,7 @@
 namespace SemperEngine
 {
 	namespace Core
-	{ 
+	{
 		namespace GraphicAPI
 		{
 			using namespace std;
@@ -104,6 +104,12 @@ namespace SemperEngine
 			{
 				glBindVertexArray(VAO);
 			}
+			void GLRenderAPI::BindTexture2D(int id, unsigned int tex)
+			{
+				glActiveTexture(GL_TEXTURE0 + id);
+				glBindTexture(GL_TEXTURE_2D, tex);
+			}
+
 			void GLRenderAPI::SetShader(unsigned int program)
 			{
 				glUseProgram(program);

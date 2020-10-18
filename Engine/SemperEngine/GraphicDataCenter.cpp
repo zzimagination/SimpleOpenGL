@@ -7,50 +7,89 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		vector<shared_ptr<TextureCommandData>> GraphicDataCenter::_textureData;
+		vector<TextureCommandData> GraphicDataCenter::_textureData;
 
-		std::vector<shared_ptr<VertexCommandData>> GraphicDataCenter::_vertexData;
+		vector<unsigned int> GraphicDataCenter::_unusedTexture;
+
+		vector<VertexCommandData> GraphicDataCenter::_vertexData;
+
+		vector<unsigned int> GraphicDataCenter::_unusedVertex;
 
 		void GraphicDataCenter::AddVertexData(ResourcePackage<VertexData> package)
 		{
-			shared_ptr<VertexCommandData> data = shared_ptr<VertexCommandData>(new VertexCommandData);
+			auto data = VertexCommandDataInstance;
 			data->package = package;
-			data->package.GID = EncodeResourceID((unsigned int)_vertexData.size());
+			unsigned int id = 0;
+			if (_unusedVertex.size() > 0)
+			{
+				id = *(_unusedVertex.end() - 1);
+				_unusedVertex.pop_back();
+				_vertexData[id] = data;
+			}
+			else
+			{
+				id = (unsigned int)_vertexData.size();
+				_vertexData.push_back(data);
+			}
+			data->package.gid = EncodeGID(id);
 			GraphicCommandManager::AddVertexBuffer(data);
-			_vertexData.push_back(data);
 		}
 
 		void GraphicDataCenter::RemoveVertexData(ResourcePackage<VertexData> package)
 		{
-			auto id = DecodeResourceID(package.GID.ID());
+			auto id = DecodeGID(package.gid());
 			auto data = _vertexData[id];
 			GraphicCommandManager::ClearVertexBuffer(data);
-			_vertexData.erase(_vertexData.begin() + id);
-			for (int i = id; i < _vertexData.size(); i++)
-			{
-				_vertexData[i]->package.GID = EncodeResourceID(i);
-			}
+			data.reset();
+			_unusedVertex.push_back(id);
 		}
 
-		std::shared_ptr<VertexCommandData> GraphicDataCenter::GetVertexCommandData(ResourcePackage<VertexData> package)
+		VertexCommandData GraphicDataCenter::GetVertexCommandData(ResourcePackage<VertexData> package)
 		{
-			auto id = DecodeResourceID(package.GID.ID());
+			auto id = DecodeGID(package.gid());
 			return _vertexData[id];
 		}
 
-		void GraphicDataCenter::AddTextureData(ResourcePackage<Texture> package)
+		void GraphicDataCenter::AddTextureData(ResourcePackage<TextureData> package)
 		{
+			auto data = TextureCommandDataInstance;
+			data->package = package;
+			unsigned int id = 0;
+			if (_unusedTexture.size() > 0)
+			{
+				id = *(_unusedTexture.end() - 1);
+				_unusedTexture.pop_back();
+				_textureData[id] = data;
+			}
+			else
+			{
+				id = (unsigned int)_textureData.size();
+				_textureData.push_back(data);
+			}
+			data->package.gid = EncodeGID(id);
+			GraphicCommandManager::AddTextureBuffer(data);
 		}
 
-		void GraphicDataCenter::RemoveTextureData(ResourcePackage<Texture> package)
+		void GraphicDataCenter::RemoveTextureData(ResourcePackage<TextureData> package)
 		{
+			auto id = DecodeGID(package.gid());
+			auto data = _textureData[id];
+			GraphicCommandManager::ClearTextureBuffer(data);
+			data.reset();
+			_unusedTexture.push_back(id);
 		}
 
-		unsigned int GraphicDataCenter::DecodeResourceID(unsigned int gid)
+		TextureCommandData GraphicDataCenter::GetTextureCommandData(ResourcePackage<TextureData> package)
+		{
+			auto id = DecodeGID(package.gid());
+			return _textureData[id];
+		}
+
+		unsigned int GraphicDataCenter::DecodeGID(unsigned int gid)
 		{
 			return gid - 1;
 		}
-		unsigned int GraphicDataCenter::EncodeResourceID(unsigned int index)
+		unsigned int GraphicDataCenter::EncodeGID(unsigned int index)
 		{
 			return index + 1;
 		}

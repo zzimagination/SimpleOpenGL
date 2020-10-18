@@ -23,7 +23,7 @@ namespace SemperEngine
 				delete commands[i];
 			}
 
-			commands = Core::GraphicCommandManager::front_DrawCommands;
+			commands = GraphicCommandManager::front_DrawCommands;
 			for (int i = 0; i < commands.size(); i++)
 			{
 				commands[i]->Excute();
@@ -33,7 +33,7 @@ namespace SemperEngine
 
 		void GraphicRender::Resource()
 		{
-			auto commands = Core::GraphicCommandManager::resources;
+			auto commands = GraphicCommandManager::resources;
 			for (int i = 0; i < commands.size(); i++)
 			{
 				commands[i]->Excute();

@@ -32,7 +32,7 @@ namespace SemperEngine
 			}
 			return result;
 		}
-		std::vector<RenderObject*> RenderCollection::GetRenderObjects(Camera* camera)
+		std::vector<RenderObject*> RenderCollection::GetRenderObjects(CameraObject* camera)
 		{
 			vector<RenderObject*> result;
 			for (int i = 0; i < renderObjects.size(); i++)

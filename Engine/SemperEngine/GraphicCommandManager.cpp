@@ -25,40 +25,77 @@ namespace SemperEngine
 			resources.clear();
 		}
 
-		void GraphicCommandManager::AddVertexBuffer(shared_ptr<VertexCommandData> data)
+		void GraphicCommandManager::AddVertexBuffer(VertexCommandData data)
 		{
 			auto cmd = new  GVertexBufferCMD(data);
 			resources.push_back(cmd);
 		}
 
-		void GraphicCommandManager::AddTextureBuffer(Texture* data)
-		{
-			//auto cmd = new GraphicTextureBuffer(data);
-			//back_AddResource.push_back(cmd);
-		}
-
-		void GraphicCommandManager::ClearVertexBuffer(shared_ptr<VertexCommandData> data)
+		void GraphicCommandManager::ClearVertexBuffer(VertexCommandData data)
 		{
 			auto cmd = new  GVertexBufferClearCMD(data);
 			resources.push_back(cmd);
 		}
 
-		void GraphicCommandManager::ClearTextureBuffer(Texture* data)
+		void GraphicCommandManager::AddTextureBuffer(TextureCommandData data)
 		{
-			//auto cmd = new  GraphicTextureBufferClear(data);
-			//back_CollectResource.push_back(cmd);
+			auto cmd = new GTextureBufferCMD(data);
+			resources.push_back(cmd);
+		}
+
+		void GraphicCommandManager::ClearTextureBuffer(TextureCommandData data)
+		{
+			auto cmd = new  GTextureBufferClearCMD(data);
+			resources.push_back(cmd);
 		}
 
 		void GraphicCommandManager::Draw(RenderBatch& batch)
 		{
-			auto vdata = GraphicDataCenter::GetVertexCommandData(batch.vertexData);
-			auto cmd = new GDrawCMD(
-				vdata, 
-				batch.modelMatrix, 
-				batch.viewMatrix, 
-				batch.projectionMatrix, 
-				batch.material->shader, 
-				batch.material->shaderProperty);
+			auto cmd = new GDrawCMD();
+			cmd->vertexData = GraphicDataCenter::GetVertexCommandData(batch.vertexData->GetPackage());
+			cmd->shader = batch.material->shader;
+			cmd->modelMatrix = batch.modelMatrix;
+			cmd->viewMatrix = batch.viewMatrix;
+			cmd->projectionMatrix = batch.projectionMatrix;
+			auto fp = &batch.material->shaderProperty.floatProperty;
+			for (auto i = fp->begin(); i != fp->end(); i++)
+			{
+				cmd->floatNames.push_back(i->first);
+				cmd->floatValues.push_back(i->second);
+			}
+			auto v2p = &batch.material->shaderProperty.vector2Property;
+			for (auto i = v2p->begin(); i != v2p->end(); i++)
+			{
+				cmd->vec2Names.push_back(i->first);
+				cmd->vec2Values.push_back(i->second);
+			}
+			auto v3p = &batch.material->shaderProperty.vector3Property;
+			for (auto i = v3p->begin(); i != v3p->end(); i++)
+			{
+				cmd->vec3Names.push_back(i->first);
+				cmd->vec3Values.push_back(i->second);
+			}
+			auto v4p = &batch.material->shaderProperty.vector4Property;
+			for (auto i = v4p->begin(); i != v4p->end(); i++)
+			{
+				cmd->vec4Names.push_back(i->first);
+				cmd->vec4Values.push_back(i->second);
+			}
+			auto m4p = &batch.material->shaderProperty.matrix4x4Property;
+			for (auto i = m4p->begin(); i != m4p->end(); i++)
+			{
+				cmd->mat4Names.push_back(i->first);
+				cmd->mat4Values.push_back(i->second);
+			}
+			auto textureProperty = &batch.material->shaderProperty.textureProperty;
+			for (auto i = textureProperty->begin(); i != textureProperty->end(); i++)
+			{
+				auto id = i->first;
+				auto tex = i->second;
+				auto data = GraphicDataCenter::GetTextureCommandData(tex->GetPackage());
+				cmd->textureData.push_back(data);
+			}
+
 			back_DrawCommands.push_back(cmd);
 		}
 

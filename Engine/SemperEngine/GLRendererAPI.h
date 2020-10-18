@@ -37,6 +37,8 @@ namespace SemperEngine
 
 				static void BindVertexBuffer(unsigned int VAO);
 
+				static void BindTexture2D(int id, unsigned int tex);
+
 				static void SetShader(unsigned int program);
 
 				static void SetShaderValue(const std::string& name, bool value);

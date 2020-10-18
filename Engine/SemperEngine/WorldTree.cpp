@@ -11,6 +11,8 @@ namespace SemperEngine
 
 		std::vector<WorldFruit*> WorldTree::worldFruits;
 
+		bool WorldTree::_hasBad;
+
 		World WorldTree::AddWorld(World world, WorldAction* action, vector<GameObject*> gameObjects)
 		{
 			WorldFruit* fruit = new WorldFruit();
@@ -40,6 +42,7 @@ namespace SemperEngine
 			fruit->container.EndGameObjects();
 			fruit->action->End();
 			fruit->bad = true;
+			_hasBad = true;
 		}
 
 		WorldFruit* WorldTree::GetFruit(World world)
@@ -59,6 +62,10 @@ namespace SemperEngine
 
 		void WorldTree::Fall()
 		{
+			if (!_hasBad)
+			{
+				return;
+			}
 			vector<WorldFruit*> newVector;
 			for (int i = 0; i < worldFruits.size(); i++)
 			{
@@ -71,12 +78,18 @@ namespace SemperEngine
 				EncodeTreeID(fruit->world, (unsigned int)newVector.size());
 				newVector.push_back(fruit);
 			}
+			for (int i = 0; i < newWorldFruits.size(); i++)
+			{
+				auto fruit = newWorldFruits[i];
+				EncodeTreeID(fruit->world, (unsigned int)newVector.size() + i);
+			}
 			worldFruits = newVector;
+			_hasBad = false;
 		}
 
 		unsigned int WorldTree::DecodeTreeID(World& w)
 		{
-			auto id = w.treeIndex1.ID() - 1;
+			auto id = w.treeIndex1() - 1;
 			return id;
 		}
 		void WorldTree::EncodeTreeID(World& w, int i)

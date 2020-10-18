@@ -1,20 +1,30 @@
 #ifndef __GRAPHIC_SHADER__
 #define __GRAPHIC_SHADER__
+
 #include <fstream>
 #include <sstream>
 #include <iostream>
 #include <string>
 #include "Mathz.h"
-namespace SemperEngine {
 
-	class GraphicShader
+namespace SemperEngine 
+{
+	namespace Core
 	{
-	public:
+		constexpr const char* MODEL_MATRIX = "_model";
+		constexpr const char* VIEW_MATRIX = "_view";
+		constexpr const char* PROJECTION_MARIX = "_projection";
+		constexpr const char* MAINCOLOR = "_color";
 
-		unsigned int opengl_id;
+		class GraphicShader
+		{
+		public:
 
-	public:
+			unsigned int opengl_id;
 
-	};
+		public:
+
+		};
+	}
 }
 #endif

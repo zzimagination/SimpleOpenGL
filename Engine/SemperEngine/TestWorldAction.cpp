@@ -14,8 +14,6 @@ namespace SemperEngine
 	void TestWorldAction::Start()
 	{
 		Debug::Log("Start Test World");
-		auto file = TextureLib::TextureResource::Load("Resources/Textures/test.png");
-		file.width;
 	}
 	void TestWorldAction::Update()
 	{

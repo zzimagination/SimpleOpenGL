@@ -1,18 +1,22 @@
-#include "GraphicTextureData.h"
-#include "RenderObject.h"
-#include<glad/glad.h>
+#include "GraphicResource.h"
 
 
 namespace SemperEngine {
 
-	GraphicTextureData::GraphicTextureData(Texture * gameData, unsigned int id)
+	namespace Core
 	{
-		this->gameData = gameData;
-		this->textureId = id;
-	}
+		GraphicTextureData::GraphicTextureData()
+		{
+			glid = 0;
+		}
 
-	GraphicTextureData::~GraphicTextureData()
-	{
-	}
+		GraphicTextureData::GraphicTextureData(int id)
+		{
+			glid = id;
+		}
 
+		GraphicTextureData::~GraphicTextureData()
+		{
+		}
+	}
 }

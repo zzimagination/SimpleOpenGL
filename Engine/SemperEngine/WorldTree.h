@@ -19,6 +19,10 @@ namespace SemperEngine
 
 			static std::vector<WorldFruit*> worldFruits;
 
+		private:
+
+			static bool _hasBad;
+
 		public:
 
 			static World AddWorld(World world, WorldAction* action, std::vector<GameObject*> gameObjects);

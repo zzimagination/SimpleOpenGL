@@ -1,18 +1,23 @@
-#include "GraphicTextureBufferClear.h"
+#include "GraphicCommand.h"
 #include "GraphicDataCenter.h"
-#include "GraphicRenderAPI.h"
+#include "GraphicResouceAPI.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
-		GraphicTextureBufferClear::GraphicTextureBufferClear(Texture * gameData)
+		GTextureBufferClearCMD::GTextureBufferClearCMD(TextureCommandData data)
+		{
+			this->data = data;
+		}
+
+		GTextureBufferClearCMD::~GTextureBufferClearCMD()
 		{
 		}
 
-		void GraphicTextureBufferClear::Excute()
+		void GTextureBufferClearCMD::Excute()
 		{
-
+			GraphicResouceAPI::ClearTextureData(data->graphicData);
 		}
 	}
 }

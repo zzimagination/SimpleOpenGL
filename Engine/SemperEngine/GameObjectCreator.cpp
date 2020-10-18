@@ -9,7 +9,7 @@ namespace SemperEngine
 	GameObject* GameObjectCreator::Create(GameObject * gameObject)
 	{
 		auto world = WorldManager::currentWorld;
-		auto fruit = Core::WorldTree::GetFruit(world);
+		auto fruit = Core::WorldTree::GetFruit(*world);
 		fruit->container.AddGameObject(gameObject->life);
 		return gameObject;
 	}

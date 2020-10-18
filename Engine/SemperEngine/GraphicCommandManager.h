@@ -9,8 +9,6 @@
 
 namespace SemperEngine
 {
-	class Texture;
-
 	namespace Core
 	{
 		class GraphicCommandManager
@@ -31,13 +29,13 @@ namespace SemperEngine
 
 			static void SwapCommands();
 
-			static void AddVertexBuffer(std::shared_ptr<VertexCommandData> data);
+			static void AddVertexBuffer(VertexCommandData data);
 
-			static void AddTextureBuffer(Texture* data);
+			static void ClearVertexBuffer(VertexCommandData data);
 
-			static void ClearVertexBuffer(std::shared_ptr<VertexCommandData> data);
+			static void AddTextureBuffer(TextureCommandData data);
 
-			static void ClearTextureBuffer(Texture* data);
+			static void ClearTextureBuffer(TextureCommandData data);
 
 			static void Draw(RenderBatch &batch);
 

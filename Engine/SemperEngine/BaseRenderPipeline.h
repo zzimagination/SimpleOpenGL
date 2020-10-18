@@ -2,12 +2,13 @@
 #define __BASE_RENDER_PIPLINE__
 
 #include <vector>
-#include "Camera.h"
 
-namespace SemperEngine 
+namespace SemperEngine
 {
 	namespace Core
 	{
+		class CameraObject;
+
 		class BaseRenderPipeline
 		{
 		private:
@@ -19,11 +20,11 @@ namespace SemperEngine
 
 		private:
 
-			static void CameraClear(Camera* camera);
+			static void CameraClear(CameraObject* camera);
 
 			static void EmptyClear();
 
-			static void RenderCamera(Camera* camera);
+			static void RenderCamera(CameraObject* camera);
 
 		};
 	}

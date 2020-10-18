@@ -7,11 +7,10 @@
 #include <memory>
 #include "Mathz.h"
 #include "ShaderProperty.h"
-#include "ResourcePackage.h"
+#include "VertexDataCenter.h"
 #include "VertexData.h"
-#include "GraphicVertexData.h"
-#include "Texture.h"
-#include "GraphicTextureData.h"
+#include "TextureData.h"
+#include "GraphicResource.h"
 
 namespace SemperEngine
 {
@@ -32,9 +31,11 @@ namespace SemperEngine
 			~GraphicCommandData() {}
 		};
 
-		typedef GraphicCommandData<VertexData, GraphicVertexData> VertexCommandData;
+		typedef std::shared_ptr<GraphicCommandData<VertexData, GraphicVertexData>> VertexCommandData;
+#define VertexCommandDataInstance std::shared_ptr<GraphicCommandData<VertexData, GraphicVertexData>>(new GraphicCommandData<VertexData, GraphicVertexData>())
 
-		typedef GraphicCommandData<Texture, GraphicTextureData> TextureCommandData;
+		typedef std::shared_ptr<GraphicCommandData<TextureData, GraphicTextureData>> TextureCommandData;
+#define TextureCommandDataInstance std::shared_ptr<GraphicCommandData<TextureData, GraphicTextureData>>(new GraphicCommandData<TextureData, GraphicTextureData>())
 
 		class GraphicCommand
 		{
@@ -51,11 +52,11 @@ namespace SemperEngine
 		{
 		public:
 
-			std::shared_ptr<VertexCommandData> data;
+			VertexCommandData data;
 
 		public:
 
-			GVertexBufferCMD(std::shared_ptr<VertexCommandData> data);
+			GVertexBufferCMD(VertexCommandData data);
 
 			virtual ~GVertexBufferCMD() override;
 
@@ -66,13 +67,43 @@ namespace SemperEngine
 		{
 		public:
 
-			std::shared_ptr<VertexCommandData> data;
+			VertexCommandData data;
 
 		public:
 
-			GVertexBufferClearCMD(std::shared_ptr<VertexCommandData> data);
+			GVertexBufferClearCMD(VertexCommandData data);
 
 			virtual ~GVertexBufferClearCMD() override;
+
+			virtual void Excute() override;
+		};
+
+		class GTextureBufferCMD :public GraphicCommand
+		{
+		public:
+
+			TextureCommandData data;
+
+		public:
+
+			GTextureBufferCMD(TextureCommandData data);
+
+			virtual ~GTextureBufferCMD() override;
+
+			virtual void Excute() override;
+		};
+
+		class GTextureBufferClearCMD : public GraphicCommand
+		{
+		public:
+
+			TextureCommandData data;
+
+		public:
+
+			GTextureBufferClearCMD(TextureCommandData data);
+
+			virtual ~GTextureBufferClearCMD() override;
 
 			virtual void Excute() override;
 		};
@@ -81,7 +112,7 @@ namespace SemperEngine
 		{
 		public:
 
-			std::weak_ptr<VertexCommandData> vertexData;
+			VertexCommandData vertexData;
 
 			Matrix4x4 modelMatrix;
 
@@ -91,11 +122,31 @@ namespace SemperEngine
 
 			std::string shader;
 
-			ShaderProperty shaderProperty;
+			std::vector<std::string> floatNames;
+
+			std::vector<float> floatValues;
+
+			std::vector < std::string> vec2Names;
+
+			std::vector<Vector2> vec2Values;
+
+			std::vector<std::string> vec3Names;
+
+			std::vector<Vector3> vec3Values;
+
+			std::vector<std::string> vec4Names;
+
+			std::vector<Vector4> vec4Values;
+
+			std::vector<std::string> mat4Names;
+
+			std::vector<Matrix4x4> mat4Values;
+
+			std::vector<TextureCommandData> textureData;
 
 		public:
 
-			GDrawCMD(std::shared_ptr<VertexCommandData> v, Matrix4x4 m, Matrix4x4 view, Matrix4x4 p, std::string shader, ShaderProperty& pro);
+			GDrawCMD();
 
 			virtual ~GDrawCMD() override;
 

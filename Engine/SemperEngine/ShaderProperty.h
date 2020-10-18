@@ -5,72 +5,67 @@
 #include <vector>
 #include <string>
 #include "Mathz.h"
+#include "TextureDataCenter.h"
 
-namespace SemperEngine {
-
-	constexpr const char* MODEL_MATRIX = "_model";
-	constexpr const char* VIEW_MATRIX = "_view";
-	constexpr const char* PROJECTION_MARIX = "_projection";
-	constexpr const char* MAINCOLOR = "_color";
-
-	typedef std::map<std::string, float> FProperty;
-	typedef std::map<std::string, Vector2> Vec2Property;
-	typedef std::map<std::string, Vector3> Vec3Property;
-	typedef std::map<std::string, Vector4> Vec4Property;
-	typedef std::map<std::string, Matrix4x4> Mat4Property;
-
-	class ShaderProperty
+namespace SemperEngine
+{
+	namespace Core
 	{
-	public:
+		class ShaderProperty
+		{
+		public:
 
-		static int i;
+			std::map<std::string, float> floatProperty;
 
-	public:
+			std::map<std::string, Vector2> vector2Property;
 
-		FProperty floatProperty;
+			std::map<std::string, Vector3> vector3Property;
 
-		Vec2Property vector2Property;
+			std::map<std::string, Vector4> vector4Property;
 
-		Vec3Property vector3Property;
+			std::map<std::string, Matrix4x4> matrix4x4Property;
 
-		Vec4Property vector4Property;
+			std::map<int, RsTextureRef> textureProperty;
 
-		Mat4Property matrix4x4Property;
+		public:
 
-	public:
+			ShaderProperty() {
+			};
 
-		ShaderProperty() { 
+			~ShaderProperty() {
+			};
+
+			void Add(std::string name, float value)
+			{
+				floatProperty[name] = value;
+			}
+
+			void Add(std::string name, Vector2 value)
+			{
+				vector2Property[name] = value;
+			}
+
+			void Add(std::string name, Vector3 value)
+			{
+				vector3Property[name] = value;
+			}
+
+			void Add(std::string name, Vector4 value)
+			{
+				vector4Property[name] = value;
+			}
+
+			void Add(std::string name, Matrix4x4 value)
+			{
+				matrix4x4Property[name] = value;
+			}
+
+			void Add(int id, RsTextureRef value)
+			{
+				textureProperty[id] = value;
+			}
 		};
-
-		~ShaderProperty() {
-		};
-
-		void Add(std::string name, float value)
-		{
-			floatProperty[name] = value;
-		}
-
-		void Add(std::string name, Vector2 value)
-		{
-			vector2Property[name] = value;
-		}
-
-		void Add(std::string name, Vector3 value)
-		{
-			vector3Property[name] = value;
-		}
-
-		void Add(std::string name, Vector4 value)
-		{
-			vector4Property[name] = value;
-		}
-
-		void Add(std::string name, Matrix4x4 value)
-		{
-			matrix4x4Property[name] = value;
-		}
-
-	};
+	}
 }
 #endif // !SHADER_PROPERTY
 

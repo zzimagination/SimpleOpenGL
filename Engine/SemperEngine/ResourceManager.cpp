@@ -8,8 +8,6 @@ namespace SemperEngine
 	{
 		void ResourceManager::Collection()
 		{
-			VertexDataCenter::UnloadUnse();
-			TextureDataCenter::UnloadUnuse();
 		}
 	}
 }

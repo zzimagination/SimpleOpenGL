@@ -7,7 +7,7 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		GVertexBufferClearCMD::GVertexBufferClearCMD(shared_ptr<VertexCommandData> data)
+		GVertexBufferClearCMD::GVertexBufferClearCMD(VertexCommandData data)
 		{
 			this->data = data;
 		}

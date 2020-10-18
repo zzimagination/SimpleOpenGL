@@ -159,9 +159,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h" />
     <ClInclude Include="spng.h" />
-    <ClInclude Include="TextureFile.h" />
     <ClInclude Include="TextureLib.h" />
   </ItemGroup>
   <ItemGroup>

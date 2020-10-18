@@ -1,6 +1,7 @@
 #include "TextureDataCenter.h"
-#include <TextureLib.h>
 #include "GraphicDataCenter.h"
+#include "GraphicCommandManager.h"
+#include <TextureLib.h>
 
 namespace SemperEngine
 {
@@ -9,51 +10,48 @@ namespace SemperEngine
 		using namespace std;
 		using namespace TextureLib;
 
-		std::vector<ResourcePackage<Texture>> TextureDataCenter::instances;
+		vector<ResourcePackage<TextureData>> TextureDataCenter::instances;
 
+		std::vector<ResourceID> TextureDataCenter::unused;
 
-		ResourcePackage<Texture> TextureDataCenter::LoadTexture(std::string path)
+		RsTextureRef TextureDataCenter::LoadTexture(std::string path)
 		{
 			auto tex = CreateTexture(path);
-			ResourcePackage<Texture> package(tex);
-			instances.push_back(package);
-			GraphicDataCenter::AddTextureData(package);
-			return package;
-		}
-
-		void TextureDataCenter::UnloadUnuse()
-		{
-			vector<ResourcePackage<Texture>> newVector;
-			for (int i = 0; i < instances.size(); i++)
+			ResourcePackage<TextureData> package(tex);
+			package.onDestroy = Unload;
+			ResourceID id = 0;
+			if (unused.size() > 0)
 			{
-				if (UnloadOnce(instances[i]))
-				{
-					continue;
-				}
-				newVector.push_back(instances[i]);
+				id = *(unused.end() - 1);
+				unused.pop_back();
+				package.id = id;
+				instances[id] = package;
 			}
-			instances = newVector;
+			else
+			{
+				id = (ResourceID)instances.size();
+				package.id = id;
+				instances.push_back(package);
+			}
+			GraphicDataCenter::AddTextureData(package);
+			return RsTextureRef(new ResourceReference(package));
 		}
 
-		Texture* TextureDataCenter::CreateTexture(std::string path)
+		void TextureDataCenter::Unload(ResourceID id)
+		{
+			auto tex = instances[id];
+			unused.push_back(id);
+			GraphicDataCenter::RemoveTextureData(tex);
+		}
+
+		TextureData* TextureDataCenter::CreateTexture(std::string path)
 		{
 			auto file = TextureResource::Load(path);
-			auto tex = new Texture();
-			tex->data = file.textureData;
-			tex->width = file.width;
-			tex->height = file.height;
-			return tex;
-		}
-
-		bool TextureDataCenter::UnloadOnce(ResourcePackage<Texture> package)
-		{
-			if (*package._useCount > 0)
-			{
-				return false;
-			}
-			GraphicDataCenter::RemoveTextureData(package);
-			package.Destory();
-			return true;
+			auto texture = new TextureData();
+			texture->data = file.textureData;
+			texture->width = file.width;
+			texture->height = file.height;
+			return texture;
 		}
 
 	}

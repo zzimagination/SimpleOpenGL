@@ -2,14 +2,18 @@
 #ifndef __VERTEXDATA_CENTER__
 #define __VERTEXDATA_CENTER__
 
+#include <memory>
 #include "CubeData.h"
 #include "VertexData.h"
 #include "ResourcePackage.h"
+#include "ResourceReference.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
+		typedef std::shared_ptr< ResourceReference<VertexData>> RsVertexRef;
+
 		class VertexDataCenter
 		{
 		public:
@@ -18,21 +22,17 @@ namespace SemperEngine
 
 			static std::vector<ResourcePackage<VertexData>> cubes;
 
-			static std::vector<ResourcePackage<VertexData>> shareResources;
-
-			static std::vector<ResourcePackage<VertexData>> instanceResources;
+			static std::vector<int> unuseCube;
 
 		public:
 
-			static ResourcePackage<VertexData> LoadCube(bool share);
-
-			static void UnloadUnse();
+			static RsVertexRef LoadCube(bool share);
 
 		private:
 
 			static VertexData* CreateCubeData();
 
-			static bool UnloadOnce(ResourcePackage<VertexData> package);
+			static void Unload(ResourceID id);
 		};
 	}
 }

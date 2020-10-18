@@ -4,7 +4,7 @@
 
 #include "GameObject.h"
 #include "VertexData.h"
-#include "ResourcePackage.h"
+#include "VertexDataCenter.h"
 #include "RenderObject.h"
 
 namespace SemperEngine
@@ -17,7 +17,7 @@ namespace SemperEngine
 
 	private:
 
-		Core::ResourcePackage<Core::VertexData> _cube;
+		Core::RsVertexRef _cube;
 
 		std::unique_ptr<Core::RenderObject> _renderObject;
 
@@ -32,8 +32,6 @@ namespace SemperEngine
 		virtual void Start() override;
 
 		virtual void Update() override;
-
-		virtual void End() override;
 
 	};
 }

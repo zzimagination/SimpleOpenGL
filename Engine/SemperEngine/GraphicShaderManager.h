@@ -6,20 +6,22 @@
 #include <string>
 #include "GraphicShader.h"
 
-namespace SemperEngine {
-
-	class GraphicShaderManager
+namespace SemperEngine 
+{
+	namespace Core
 	{
-	public:
+		class GraphicShaderManager
+		{
+		public:
 
-		static std::map<std::string, GraphicShader> shaderMap;
+			static std::map<std::string, GraphicShader> shaderMap;
 
-	public:
+		public:
 
-		static GraphicShader FindShader(std::string name);
+			static GraphicShader FindShader(std::string name);
 
-	};
-
+		};
+	}
 }
 
 #endif // !SHADER_MANAGER

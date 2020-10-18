@@ -15,16 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="spng.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="TextureLib.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureFile.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

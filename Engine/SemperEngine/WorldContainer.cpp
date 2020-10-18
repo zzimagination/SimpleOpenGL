@@ -72,7 +72,7 @@ namespace SemperEngine
 		}
 		unsigned int WorldContainer::DecodeWorldID(GameObject* gobject)
 		{
-			auto id = gobject->worldID.ID() - 1;
+			auto id = gobject->worldID() - 1;
 			return id;
 		}
 		void WorldContainer::EncodeWorldID(GameObject* gobject, unsigned int i)

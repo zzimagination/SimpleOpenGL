@@ -4,7 +4,7 @@
 #include <vector>
 #include "RenderBatch.h"
 #include "RenderObject.h"
-#include "Camera.h"
+#include "CameraObject.h"
 
 namespace SemperEngine {
 
@@ -18,7 +18,7 @@ namespace SemperEngine {
 
 		public:
 
-			static void GenerateBatchs(Camera* camera, std::vector<RenderObject*> renderObjects);
+			static void GenerateBatchs(CameraObject* camera, std::vector<RenderObject*> renderObjects);
 
 			static void GenerateGraphicCommands();
 

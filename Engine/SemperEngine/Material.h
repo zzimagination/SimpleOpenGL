@@ -15,7 +15,7 @@ namespace SemperEngine
 
 		std::string shader;
 
-		ShaderProperty shaderProperty;
+		Core::ShaderProperty shaderProperty;
 
 	public:
 
@@ -23,18 +23,19 @@ namespace SemperEngine
 
 		Material(std::string shader);
 
-		void AddShaderProperty(std::string name, float value);
+		void AddProperty(std::string name, float value);
 
-		void AddShaderProperty(std::string name, Vector2 value);
+		void AddProperty(std::string name, Vector2 value);
 
-		void AddShaderProperty(std::string name, Vector3 value);
+		void AddProperty(std::string name, Vector3 value);
 
-		void AddShaderProperty(std::string name, Vector4 value);
+		void AddProperty(std::string name, Vector4 value);
 
-		void AddShaderProperty(std::string name, Matrix4x4 value);
+		void AddProperty(std::string name, Matrix4x4 value);
 
-		void AddShaderProperty(std::string name, Color value);
+		void AddProperty(std::string name, Color value);
 
+		void AddProperty(int id, Core::RsTextureRef value);
 	};
 }
 #endif // !MATERIAL

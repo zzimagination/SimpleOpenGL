@@ -1,5 +1,5 @@
 #include "Cube.h"
-#include "VertexDataCenter.h"
+#include "Resource.h"
 #include "RenderCollection.h"
 #include "Debug.h"
 
@@ -10,15 +10,13 @@ namespace SemperEngine
 
 	Cube::Cube()
 	{
-		_cube = VertexDataCenter::LoadCube(false);
-		_cube.Use(this);
+		_cube = Resource::LoadCube();
 		material = shared_ptr<Material>(new Material("Unlit"));
-		material->AddShaderProperty("_color", Vector4(1, 1, 1, 1));
+		material->AddProperty("_color", Vector4(1, 1, 1, 1));
 	}
 
 	Cube::~Cube()
 	{
-		
 	}
 
 	void Cube::Start()
@@ -26,7 +24,7 @@ namespace SemperEngine
 		_renderObject = unique_ptr<RenderObject>(new RenderObject());
 		_renderObject->modelMatrix = transform.GetModelMatrix();
 		_renderObject->material = material;
-		_renderObject->vertexData = this->_cube;
+		_renderObject->vertexData = this->_cube; 
 	}
 
 	void Cube::Update()
@@ -35,8 +33,4 @@ namespace SemperEngine
 		Core::RenderCollection::AddRenderObject(_renderObject->mylife);
 	}
 
-	void Cube::End()
-	{
-		_cube.Dispose();
-	}
 }

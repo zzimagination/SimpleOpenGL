@@ -4,8 +4,7 @@
 #include <vector>
 #include <memory>
 #include "Mathz.h"
-#include "ResourcePackage.h"
-#include "VertexData.h"
+#include "VertexDataCenter.h"
 #include "Material.h"
 
 namespace SemperEngine {
@@ -16,7 +15,7 @@ namespace SemperEngine {
 		{
 		public:
 
-			ResourcePackage<VertexData> vertexData;
+			RsVertexRef vertexData;
 
 			Matrix4x4 modelMatrix;
 

@@ -4,7 +4,7 @@
 #include <vector>
 #include <memory>
 #include "RenderObject.h"
-#include "Camera.h"
+#include "CameraObject.h"
 
 namespace SemperEngine {
 
@@ -22,7 +22,7 @@ namespace SemperEngine {
 
 			static std::vector<RenderObject*> GetRenderObjects();
 
-			static std::vector<RenderObject*> GetRenderObjects(Camera* camera);
+			static std::vector<RenderObject*> GetRenderObjects(CameraObject* camera);
 
 			static void ClearRenders();
 

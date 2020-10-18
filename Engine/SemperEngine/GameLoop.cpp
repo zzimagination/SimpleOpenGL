@@ -94,7 +94,6 @@ namespace SemperEngine
 				EventManager::ProcessEvent();
 				WorldLoop::Loop();
 				BaseRenderPipeline::Render();
-				ResourceManager::Collection();
 				EventManager::EndEvents();
 
 				/*·¢ËÍÍê±ÏÃüÁî*/
