@@ -16,7 +16,7 @@ namespace SemperEngine {
 			{
 				auto robject = renderObjects[i];
 				RenderBatch batch;
-				batch.vertexData = robject->vertexData;
+				batch.vertexData = robject->vertexData->Package();
 				batch.modelMatrix = robject->modelMatrix;
 				batch.material = robject->material;
 				batch.viewMatrix = camera->viewMatrix;

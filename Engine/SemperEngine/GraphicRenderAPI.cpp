@@ -43,6 +43,16 @@ namespace SemperEngine {
 			GLRenderAPI::SetCullMode(mode);
 		}
 
+		void GraphicRenderAPI::SetBlend(bool enable)
+		{
+			GLRenderAPI::SetBlend(enable);
+		}
+
+		void GraphicRenderAPI::SetBlendFunc()
+		{
+			GLRenderAPI::SetBlendFunc(0x0302, 0x0303);
+		}
+
 		void GraphicRenderAPI::SetVertexData(GraphicVertexData& data)
 		{
 			GLRenderAPI::BindVertexBuffer(data.VAO);

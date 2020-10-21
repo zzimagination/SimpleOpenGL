@@ -14,6 +14,32 @@ namespace SemperEngine
 		std::vector<GraphicCommand*> GraphicCommandManager::back_DrawCommands;
 		std::vector<GraphicCommand*> GraphicCommandManager::back_setting;
 
+		void GraphicCommandManager::Render()
+		{
+			auto commands = front_Setting;
+			for (int i = 0; i < commands.size(); i++)
+			{
+				commands[i]->Excute();
+				delete commands[i];
+			}
+
+			commands = front_DrawCommands;
+			for (int i = 0; i < commands.size(); i++)
+			{
+				commands[i]->Excute();
+				delete commands[i];
+			}
+		}
+
+		void GraphicCommandManager::Resource()
+		{
+			auto commands = resources;
+			for (int i = 0; i < commands.size(); i++)
+			{
+				commands[i]->Excute();
+				delete commands[i];
+			}
+		}
 
 		void GraphicCommandManager::SwapCommands()
 		{
@@ -49,10 +75,18 @@ namespace SemperEngine
 			resources.push_back(cmd);
 		}
 
+		void GraphicCommandManager::DrawScreen(RenderBatch& batch)
+		{
+			auto cmd = new GDrawScreen();
+			cmd->vertexData = GraphicDataCenter::screenVertex;
+			cmd->SetShaderProperty(batch.material);
+			back_DrawCommands.push_back(cmd);
+		}
+
 		void GraphicCommandManager::Draw(RenderBatch& batch)
 		{
 			auto cmd = new GDrawCMD();
-			cmd->vertexData = GraphicDataCenter::GetVertexCommandData(batch.vertexData->GetPackage());
+			cmd->vertexData = GraphicDataCenter::GetVertexCommandData(batch.vertexData);
 			cmd->shader = batch.material->shader;
 			cmd->modelMatrix = batch.modelMatrix;
 			cmd->viewMatrix = batch.viewMatrix;
@@ -92,7 +126,7 @@ namespace SemperEngine
 			{
 				auto id = i->first;
 				auto tex = i->second;
-				auto data = GraphicDataCenter::GetTextureCommandData(tex->GetPackage());
+				auto data = GraphicDataCenter::GetTextureCommandData(tex->Package());
 				cmd->textureData.push_back(data);
 			}
 

@@ -34,6 +34,10 @@ namespace SemperEngine {
 
 			static void SetCullMode(int mode);
 
+			static void SetBlend(bool enable);
+
+			static void SetBlendFunc();
+
 			static void SetVertexData(GraphicVertexData& data);
 
 			static void SetShader(std::string shader);

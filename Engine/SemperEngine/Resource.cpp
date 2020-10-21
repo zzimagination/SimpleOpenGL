@@ -5,11 +5,12 @@ namespace SemperEngine
 	using namespace std;
 	using namespace Core;
 
-	Core::RsVertexRef Resource::LoadCube(bool share)
+	shared_ptr<Mesh> Resource::LoadCube(bool share)
 	{
 		return VertexDataCenter::LoadCube(share);
 	}
-	Core::RsTextureRef Resource::LoadTexture(string path, bool share)
+
+	shared_ptr<Texture> Resource::LoadTexture(string path, bool share)
 	{
 		return TextureDataCenter::LoadTexture(path);
 	}

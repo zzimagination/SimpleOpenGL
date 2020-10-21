@@ -15,7 +15,9 @@ namespace SemperEngine {
 		{
 		public:
 
-			RsVertexRef vertexData;
+			bool screenDraw;
+
+			ResourcePackage<VertexData> vertexData;
 
 			Matrix4x4 modelMatrix;
 

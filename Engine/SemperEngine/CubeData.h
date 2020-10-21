@@ -6,10 +6,8 @@
 
 namespace SemperEngine {
 
-	class CubeData
+	struct CubeData
 	{
-	public:
-
 		static int vertexCount;
 
 		static Vector3 vertices[24];

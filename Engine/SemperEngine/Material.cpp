@@ -38,11 +38,13 @@ namespace SemperEngine {
 	{
 		shaderProperty.Add(name, value);
 	}
+	
 	void Material::AddProperty(std::string name, Color value)
 	{
 		shaderProperty.Add(name, Vector4(value.R(), value.G(), value.B(), value.A()));
 	}
-	void Material::AddProperty(int id, Core::RsTextureRef value)
+
+	void Material::AddProperty(int id, std::shared_ptr<Texture> value)
 	{
 		shaderProperty.Add(id, value);
 	}

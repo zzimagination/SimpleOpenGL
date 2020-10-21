@@ -14,8 +14,6 @@ namespace SemperEngine
 		{
 		public:
 
-			typedef unsigned int GPUResourceID;
-
 			std::vector<Vector3> vertices;
 
 			int vertexCount;
@@ -24,11 +22,19 @@ namespace SemperEngine
 
 			std::vector<int> index;
 
+			ResourcePackage<VertexData> package;
+
+		private:
+
+			bool _isPackage;
+
 		public:
 
 			VertexData();
 
 			~VertexData();
+
+			void Package(ResourcePackage<VertexData> mine);
 		};
 	}
 }

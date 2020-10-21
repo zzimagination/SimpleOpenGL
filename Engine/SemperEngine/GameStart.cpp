@@ -3,8 +3,10 @@
 #include "DebugSystem.h"
 #include "GameSetting.h"
 #include "GameWindow.h"
+#include "LogoPipeline.h"
+#include "GraphicDataCenter.h"
 
-namespace SemperEngine 
+namespace SemperEngine
 {
 	namespace Core
 	{
@@ -12,9 +14,19 @@ namespace SemperEngine
 		{
 			setlocale(LC_CTYPE, "");
 			DebugSystem::Initialization();
+			GameSetting::LoadConfig();
 			GameWindow::CreateGameWindow();
 			ShaderCompiler::Compile();
-			GameSetting::LoadConfig();
+			GraphicDataCenter::InitializeData();
+
+
+			/*LogoPipeline::Render();
+			GameWindow::SwapFrameBuffers();
+
+			while (!GameWindow::WindowShouldClose())
+			{
+				GameWindow::PollWindowEvent();
+			}*/
 		}
 	}
 }

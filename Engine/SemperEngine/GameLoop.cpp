@@ -8,14 +8,14 @@
 #include "GameWindow.h"
 #include "EventManager.h"
 #include "FrameRuntime.h"
-#include "GraphicRender.h"
 #include "BaseRenderPipeline.h"
 #include "GraphicCommandManager.h"
 #include "ResourceManager.h"
+#include "LogoPipeline.h"
 
-namespace SemperEngine 
+namespace SemperEngine
 {
-	namespace Core 
+	namespace Core
 	{
 		using namespace std;
 
@@ -31,7 +31,7 @@ namespace SemperEngine
 		{
 			WorldLoop::BeforeLoop();
 			BaseRenderPipeline::Render();
-			GraphicRender::Resource();
+			GraphicCommandManager::Resource();
 			GraphicCommandManager::SwapCommands();
 			_isLooping = true;
 		}
@@ -59,14 +59,14 @@ namespace SemperEngine
 				mainSignal.Send();
 
 				/*主线程执行*/
-				GraphicRender::Render();
+				GraphicCommandManager::Render();
 				GameWindow::SwapFrameBuffers();
 
 				/*等待其他线程执行完毕*/
 				logicSignal.Wait();
 
 				/*帧后处理*/
-				GraphicRender::Resource();
+				GraphicCommandManager::Resource();
 				GraphicCommandManager::SwapCommands();
 				FrameRuntime::EndFrame();
 			}

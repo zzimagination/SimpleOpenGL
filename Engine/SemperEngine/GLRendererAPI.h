@@ -35,6 +35,10 @@ namespace SemperEngine
 
 				static void SetCullMode(int mode);
 
+				static void SetBlendFunc(int source, int dest);
+
+				static void SetBlend(bool enable);
+
 				static void BindVertexBuffer(unsigned int VAO);
 
 				static void BindTexture2D(int id, unsigned int tex);

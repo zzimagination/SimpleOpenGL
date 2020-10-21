@@ -8,15 +8,12 @@
 #include "Texture.h"
 #include "TextureData.h"
 #include "ResourcePackage.h"
-#include "ResourceReference.h"
+#include "Texture.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
-
-		typedef std::shared_ptr<ResourceReference<TextureData>> RsTextureRef;
-
 		class TextureDataCenter
 		{
 		public:
@@ -27,13 +24,11 @@ namespace SemperEngine
 
 		public:
 
-			static RsTextureRef LoadTexture(std::string path);
+			static std::shared_ptr<Texture> LoadTexture(std::string path);
 
 		private:
 
 			static void Unload(ResourceID id);
-
-			static TextureData* CreateTexture(std::string path);
 
 		};
 	}

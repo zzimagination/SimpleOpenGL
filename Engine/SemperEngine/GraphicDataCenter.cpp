@@ -1,11 +1,16 @@
 #include "GraphicDataCenter.h"
 #include "GraphicCommandManager.h"
+#include "GraphicResouceAPI.h"
+#include <memory>
+#include "ScreenTextureData.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
 		using namespace std;
+
+		GraphicVertexData GraphicDataCenter::screenVertex;
 
 		vector<TextureCommandData> GraphicDataCenter::_textureData;
 
@@ -14,6 +19,22 @@ namespace SemperEngine
 		vector<VertexCommandData> GraphicDataCenter::_vertexData;
 
 		vector<unsigned int> GraphicDataCenter::_unusedVertex;
+
+		void GraphicDataCenter::InitializeData()
+		{
+			auto vert = unique_ptr<VertexData>(new VertexData());
+			auto size = sizeof(ScreenTextureData::vertices);
+			vert->vertices.resize(size);
+			memcpy(vert->vertices.data(), ScreenTextureData::vertices, size);
+			size = sizeof(ScreenTextureData::uvs);
+			vert->uv.resize(size);
+			memcpy(vert->uv.data(), ScreenTextureData::uvs, size);
+			size = sizeof(ScreenTextureData::indices);
+			vert->index.resize(size);
+			memcpy(vert->index.data(), ScreenTextureData::indices, size);
+			vert->vertexCount = ScreenTextureData::vertexCount;
+			screenVertex = GraphicResouceAPI::AddVertexData(vert.get());
+		}
 
 		void GraphicDataCenter::AddVertexData(ResourcePackage<VertexData> package)
 		{

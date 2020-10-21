@@ -5,7 +5,7 @@
 #include <vector>
 #include <string>
 #include "Mathz.h"
-#include "TextureDataCenter.h"
+#include "Texture.h"
 
 namespace SemperEngine
 {
@@ -25,7 +25,7 @@ namespace SemperEngine
 
 			std::map<std::string, Matrix4x4> matrix4x4Property;
 
-			std::map<int, RsTextureRef> textureProperty;
+			std::map<int, std::shared_ptr<Texture>> textureProperty;
 
 		public:
 
@@ -60,7 +60,7 @@ namespace SemperEngine
 				matrix4x4Property[name] = value;
 			}
 
-			void Add(int id, RsTextureRef value)
+			void Add(int id, std::shared_ptr<Texture> value)
 			{
 				textureProperty[id] = value;
 			}

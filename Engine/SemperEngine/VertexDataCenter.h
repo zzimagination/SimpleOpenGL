@@ -6,14 +6,12 @@
 #include "CubeData.h"
 #include "VertexData.h"
 #include "ResourcePackage.h"
-#include "ResourceReference.h"
+#include "Mesh.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
-		typedef std::shared_ptr< ResourceReference<VertexData>> RsVertexRef;
-
 		class VertexDataCenter
 		{
 		public:
@@ -26,13 +24,13 @@ namespace SemperEngine
 
 		public:
 
-			static RsVertexRef LoadCube(bool share);
+			static std::shared_ptr<Mesh> LoadCube(bool share);
 
 		private:
 
 			static VertexData* CreateCubeData();
 
-			static void Unload(ResourceID id);
+			static void UnloadCube(ResourceID id);
 		};
 	}
 }

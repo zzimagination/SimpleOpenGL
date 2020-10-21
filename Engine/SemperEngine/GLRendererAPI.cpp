@@ -100,6 +100,24 @@ namespace SemperEngine
 					break;
 				}
 			}
+
+			void GLRenderAPI::SetBlendFunc(int source, int dest)
+			{
+				glBlendFunc(source, dest);
+			}
+
+			void GLRenderAPI::SetBlend(bool enable)
+			{
+				if (enable)
+				{
+					glEnable(GL_BLEND);
+				}
+				else
+				{
+					glDisable(GL_BLEND);
+				}
+			}
+
 			void GLRenderAPI::BindVertexBuffer(unsigned int VAO)
 			{
 				glBindVertexArray(VAO);

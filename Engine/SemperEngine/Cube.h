@@ -3,8 +3,7 @@
 #define __GAMEOBJECT_CUBE__
 
 #include "GameObject.h"
-#include "VertexData.h"
-#include "VertexDataCenter.h"
+#include "Mesh.h"
 #include "RenderObject.h"
 
 namespace SemperEngine
@@ -17,7 +16,7 @@ namespace SemperEngine
 
 	private:
 
-		Core::RsVertexRef _cube;
+		std::shared_ptr<Mesh> _cube;
 
 		std::unique_ptr<Core::RenderObject> _renderObject;
 

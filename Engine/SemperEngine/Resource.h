@@ -11,9 +11,10 @@ namespace SemperEngine
 	{
 	public:
 
-		static Core::RsVertexRef LoadCube(bool share=false);
+		static std::shared_ptr<Mesh> LoadCube(bool share=false);
 
-		static Core::RsTextureRef LoadTexture(std::string path, bool share = false);
+		static std::shared_ptr<Texture> LoadTexture(std::string path, bool share = false);
+
 	};
 }
 

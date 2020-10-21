@@ -9,10 +9,19 @@ namespace SemperEngine
 {
 	class Mesh
 	{
-	public:
-
 	private:
 
+		Core::ResourcePackage<Core::VertexData> _package;
+
+	public:
+
+		Mesh();
+
+		Mesh(Core::ResourcePackage<Core::VertexData> package);
+
+		~Mesh();
+
+		Core::ResourcePackage<Core::VertexData> Package();
 	};
 }
 

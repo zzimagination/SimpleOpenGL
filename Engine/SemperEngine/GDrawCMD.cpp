@@ -24,7 +24,6 @@ namespace SemperEngine
 		{
 			GraphicRenderAPI::SetCullMode(1);
 			GraphicRenderAPI::SetCullFace(true);
-			GraphicRenderAPI::SetCullMode(3);
 			GraphicRenderAPI::SetDepthTest(true);
 
 			GraphicRenderAPI::SetVertexData(vertexData->graphicData);

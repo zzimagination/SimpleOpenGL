@@ -35,7 +35,7 @@ namespace SemperEngine
 
 		void AddProperty(std::string name, Color value);
 
-		void AddProperty(int id, Core::RsTextureRef value);
+		void AddProperty(int id, std::shared_ptr<Texture> value);
 	};
 }
 #endif // !MATERIAL

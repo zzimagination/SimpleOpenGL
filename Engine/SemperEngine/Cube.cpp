@@ -24,7 +24,7 @@ namespace SemperEngine
 		_renderObject = unique_ptr<RenderObject>(new RenderObject());
 		_renderObject->modelMatrix = transform.GetModelMatrix();
 		_renderObject->material = material;
-		_renderObject->vertexData = this->_cube; 
+		_renderObject->vertexData = this->_cube;
 	}
 
 	void Cube::Update()

@@ -16,7 +16,7 @@ namespace SemperEngine {
 		{
 		public:
 
-			RsVertexRef vertexData;
+			std::shared_ptr<Mesh> vertexData;
 
 			Matrix4x4 modelMatrix;
 

@@ -6,7 +6,6 @@
 #include <map>
 #include "Resource.h"
 #include "GraphicCommand.h"
-#include "GraphicResource.h"
 
 
 namespace SemperEngine
@@ -17,6 +16,7 @@ namespace SemperEngine
 		{
 		public:
 
+			static GraphicVertexData screenVertex;
 
 		private:
 
@@ -29,6 +29,8 @@ namespace SemperEngine
 			static std::vector<unsigned int> _unusedVertex;
 
 		public:
+
+			static void InitializeData();
 
 			static void AddVertexData(ResourcePackage<VertexData> package);
 

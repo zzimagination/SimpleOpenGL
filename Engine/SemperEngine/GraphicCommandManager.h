@@ -27,6 +27,10 @@ namespace SemperEngine
 
 		public:
 
+			static void Render();
+
+			static void Resource();
+
 			static void SwapCommands();
 
 			static void AddVertexBuffer(VertexCommandData data);
@@ -36,6 +40,8 @@ namespace SemperEngine
 			static void AddTextureBuffer(TextureCommandData data);
 
 			static void ClearTextureBuffer(TextureCommandData data);
+
+			static void DrawScreen(RenderBatch &batch);
 
 			static void Draw(RenderBatch &batch);
 

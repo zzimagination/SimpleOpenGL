@@ -11,6 +11,7 @@
 #include "VertexData.h"
 #include "TextureData.h"
 #include "GraphicResource.h"
+#include "Material.h"
 
 namespace SemperEngine
 {
@@ -31,6 +32,19 @@ namespace SemperEngine
 			~GraphicCommandData() {}
 		};
 
+#define MaterialData	std::string shader;\
+						std::vector<std::string> floatNames;\
+						std::vector<float> floatValues;\
+						std::vector < std::string> vec2Names;\
+						std::vector<Vector2> vec2Values;\
+						std::vector<std::string> vec3Names;\
+						std::vector<Vector3> vec3Values;\
+						std::vector<std::string> vec4Names;\
+						std::vector<Vector4> vec4Values;\
+						std::vector<std::string> mat4Names;\
+						std::vector<Matrix4x4> mat4Values;\
+						std::vector<TextureCommandData> textureData;
+		
 		typedef std::shared_ptr<GraphicCommandData<VertexData, GraphicVertexData>> VertexCommandData;
 #define VertexCommandDataInstance std::shared_ptr<GraphicCommandData<VertexData, GraphicVertexData>>(new GraphicCommandData<VertexData, GraphicVertexData>())
 
@@ -183,6 +197,25 @@ namespace SemperEngine
 			virtual ~GWireframeCMD() override;
 
 			virtual void Excute() override;
+		};
+
+		class GDrawScreen : public GraphicCommand
+		{
+		public:
+
+			GraphicVertexData vertexData;
+
+			MaterialData
+
+		public:
+
+			GDrawScreen();
+
+			virtual ~GDrawScreen() override;
+
+			virtual void Excute() override;
+
+			void SetShaderProperty(std::shared_ptr<Material> material);
 		};
 	}
 }

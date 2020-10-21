@@ -178,13 +178,13 @@
     <ClInclude Include="GraphicResource.h" />
     <ClInclude Include="GraphicCommand.h" />
     <ClInclude Include="GraphicDataCenter.h" />
-    <ClInclude Include="GraphicRender.h" />
     <ClInclude Include="GWindow.h" />
     <ClInclude Include="InsideWorld.h" />
     <ClInclude Include="InsideWorldAction.h" />
     <ClInclude Include="KeyIdentity.h" />
     <ClInclude Include="LifeContainer.h" />
     <ClInclude Include="LogDef.h" />
+    <ClInclude Include="LogoPipeline.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MathBase.h" />
     <ClInclude Include="Mesh.h" />
@@ -213,9 +213,9 @@
     <ClInclude Include="RenderObjectManager.h" />
     <ClInclude Include="RenderSetting.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="ResourceReference.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="ResourcePackage.h" />
+    <ClInclude Include="ScreenTextureData.h" />
     <ClInclude Include="SecondWorld.h" />
     <ClInclude Include="SecondWorldAction.h" />
     <ClInclude Include="GraphicShader.h" />
@@ -273,6 +273,7 @@
     <ClCompile Include="GameObjectContainer.cpp" />
     <ClCompile Include="GameObjectCreator.cpp" />
     <ClCompile Include="GClearCMD.cpp" />
+    <ClCompile Include="GDrawScreen.cpp" />
     <ClCompile Include="GLRendererAPI.cpp" />
     <ClCompile Include="GLResourceAPI.cpp" />
     <ClCompile Include="GLShaderAPI.cpp" />
@@ -283,12 +284,12 @@
     <ClCompile Include="GVertexBufferCMD.cpp" />
     <ClCompile Include="GraphicDataCenter.cpp" />
     <ClCompile Include="GDrawCMD.cpp" />
-    <ClCompile Include="GraphicRender.cpp" />
     <ClCompile Include="GVertexBufferClearCMD.cpp" />
     <ClCompile Include="GWindow.cpp" />
     <ClCompile Include="GWireframeCMD.cpp" />
     <ClCompile Include="InsideWorld.cpp" />
     <ClCompile Include="InsideWorldAction.cpp" />
+    <ClCompile Include="LogoPipeline.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MathBase.cpp" />
     <ClCompile Include="Mathz.cpp" />
@@ -315,8 +316,8 @@
     <ClCompile Include="GraphicShaderManager.cpp" />
     <ClCompile Include="RenderSetting.cpp" />
     <ClCompile Include="Resource.cpp" />
-    <ClCompile Include="ResourceReference.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="ScreenTextureData.cpp" />
     <ClCompile Include="SecondWorld.cpp" />
     <ClCompile Include="SecondWorldAction.cpp" />
     <ClCompile Include="ShaderCompiler.cpp" />

@@ -79,9 +79,6 @@
     <ClCompile Include="BaseRenderPipeline.cpp">
       <Filter>Render\GameRender</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicRender.cpp">
-      <Filter>Render\GraphicRender</Filter>
-    </ClCompile>
     <ClCompile Include="RenderObject.cpp">
       <Filter>Render\GameRender</Filter>
     </ClCompile>
@@ -265,12 +262,6 @@
     <ClCompile Include="TextureDataCenter.cpp">
       <Filter>Resources\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="CubeData.cpp">
-      <Filter>Resources\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceReference.cpp">
-      <Filter>Resources</Filter>
-    </ClCompile>
     <ClCompile Include="Resource.cpp">
       <Filter>Resources</Filter>
     </ClCompile>
@@ -285,6 +276,18 @@
     </ClCompile>
     <ClCompile Include="CameraObject.cpp">
       <Filter>Render\GameRender</Filter>
+    </ClCompile>
+    <ClCompile Include="LogoPipeline.cpp">
+      <Filter>Render\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="GDrawScreen.cpp">
+      <Filter>Render\GraphicRender\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeData.cpp">
+      <Filter>Resources\Mesh\StaticData</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenTextureData.cpp">
+      <Filter>Resources\Mesh\StaticData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -371,9 +374,6 @@
     </ClInclude>
     <ClInclude Include="BaseRenderPipeline.h">
       <Filter>Render\GameRender</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicRender.h">
-      <Filter>Render\GraphicRender</Filter>
     </ClInclude>
     <ClInclude Include="RenderObject.h">
       <Filter>Render\GameRender</Filter>
@@ -567,12 +567,6 @@
     <ClInclude Include="GraphicResource.h">
       <Filter>Render\GraphicRender\Data</Filter>
     </ClInclude>
-    <ClInclude Include="CubeData.h">
-      <Filter>Resources\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceReference.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>Resources</Filter>
     </ClInclude>
@@ -587,6 +581,15 @@
     </ClInclude>
     <ClInclude Include="CameraObject.h">
       <Filter>Render\GameRender</Filter>
+    </ClInclude>
+    <ClInclude Include="LogoPipeline.h">
+      <Filter>Render\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeData.h">
+      <Filter>Resources\Mesh\StaticData</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenTextureData.h">
+      <Filter>Resources\Mesh\StaticData</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -705,6 +708,12 @@
     </Filter>
     <Filter Include="Resources\Mesh">
       <UniqueIdentifier>{84560e57-2616-4c20-b0c3-133cc15194fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render\Logo">
+      <UniqueIdentifier>{2f829ab4-861c-47ed-93bc-7f5487beb8ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Mesh\StaticData">
+      <UniqueIdentifier>{7aadae0a-9762-4388-a641-6a3d9b686a72}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

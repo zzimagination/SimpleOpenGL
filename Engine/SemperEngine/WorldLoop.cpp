@@ -13,15 +13,15 @@ namespace SemperEngine
 			WorldMap::InitWorldBuilder();
 			WorldManager::Initialize();
 			Once();
-			//WorldConverter::Convert();
-			//WorldTree::Fall();
+			WorldConverter::Convert();
+			WorldTree::Fall();
 		}
 
 		void WorldLoop::Loop()
 		{
-			WorldConverter::Convert();
 			Once();
 			WorldTree::Fall();
+			WorldConverter::Convert();
 		}
 
 		void WorldLoop::AfterLoop()

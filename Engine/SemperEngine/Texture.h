@@ -4,24 +4,32 @@
 #include <vector>
 #include <string>
 #include <memory>
+#include "TextureData.h"
+#include "ResourcePackage.h"
 
 namespace SemperEngine {
+
+	typedef Core::ResourcePackage<Core::TextureData> TexturePackage;
 
 	class Texture
 	{
 	public:
 
-		int width;
 
-		int height;
 
-		std::shared_ptr<unsigned char> data;
+	private:
+
+		TexturePackage _package;
+
+	public:
 
 		Texture();
 
+		Texture(TexturePackage package);
+
 		~Texture();
 
-	private:
+		TexturePackage Package();
 	};
 
 }

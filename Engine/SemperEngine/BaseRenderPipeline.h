@@ -11,9 +11,6 @@ namespace SemperEngine
 
 		class BaseRenderPipeline
 		{
-		private:
-
-
 		public:
 
 			static void Render();
