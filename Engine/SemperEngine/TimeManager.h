@@ -2,8 +2,9 @@
 #ifndef __TIME_MANAGER__
 #define __TIME_MANAGER__
 
+#include <string>
 #include <ctime>
-#include <thread>
+#include <chrono>
 
 namespace SemperEngine
 {
@@ -28,6 +29,8 @@ namespace SemperEngine
 			static void StartRecord();
 
 			static void EndRecord();
+
+			static std::string Now();
 		};
 	}
 }

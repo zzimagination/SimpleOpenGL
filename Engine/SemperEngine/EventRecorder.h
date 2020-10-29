@@ -7,6 +7,20 @@ namespace SemperEngine {
 
 	namespace Core
 	{
+		struct KeyKeeper
+		{
+			Keyboard::Key key = Keyboard::Key::none;
+
+			float pressTime = 0;
+		};
+
+		struct MouseButtonKeeper
+		{
+			Mouse::Button button = Mouse::Button::none;
+
+			float pressTime = 0;
+		};
+
 		class EventRecorder
 		{
 		public:

@@ -8,6 +8,8 @@ namespace SemperEngine {
 
 	int GameSetting::vsync = 1;
 
+	float GameSetting::buttonPressT = 0.01f;
+
 	void GameSetting::LoadConfig()
 	{
 	}

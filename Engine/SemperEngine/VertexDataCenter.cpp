@@ -50,7 +50,7 @@ namespace SemperEngine
 				package.id = id;
 				cubes.push_back(package);
 			}
-			package.GetResource()->Package(package);
+			//package.GetResource()->Package(package);
 			return shared_ptr<Mesh>(new Mesh(package));
 		}
 

@@ -1,8 +1,8 @@
 #include "Time.h"
 #include "TimeManager.h"
 
-namespace SemperEngine {
-
+namespace SemperEngine 
+{
 	using namespace std;
 	using namespace Core;
 
@@ -12,5 +12,9 @@ namespace SemperEngine {
 
 	float Time::GetDeltaTime() {
 		return TimeManager::deltaTime;
+	}
+	std::string Time::SystemTime()
+	{
+		return TimeManager::Now();
 	}
 }

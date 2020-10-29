@@ -8,7 +8,7 @@ namespace SemperEngine
     Mesh::Mesh()
     {
         _package = ResourcePackage<VertexData>(new VertexData());
-        _package.GetResource()->Package(_package);
+        //_package.GetResource()->Package(_package);
         _package.Use(this);
     }
 

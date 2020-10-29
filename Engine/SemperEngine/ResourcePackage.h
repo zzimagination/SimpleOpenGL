@@ -3,6 +3,7 @@
 #define __RESOURCE_PACKAGE__
 
 #include<memory>
+#include <type_traits>
 #include "ObjectIndex.h"
 
 namespace SemperEngine
@@ -12,6 +13,9 @@ namespace SemperEngine
 		typedef ObjectIndex GPUResourceID;
 
 		typedef unsigned int ResourceID;
+
+		template<class T>
+		class IPackage;
 
 		template<class T>
 		class ResourcePackage
@@ -46,6 +50,7 @@ namespace SemperEngine
 
 			ResourcePackage(T* resource)
 			{
+				std::is_base_of<IPackage<T>, T>();
 				if (resource == nullptr)
 				{
 					throw "NULL";
@@ -74,7 +79,12 @@ namespace SemperEngine
 				{
 					throw "have destroy";
 				}
+				auto count = *_useCount;
 				*_useCount = *_useCount + 1;
+				if (count == 0)
+				{
+					_data->Package(*this);
+				}
 			}
 
 			void Use(void* user)
@@ -87,8 +97,8 @@ namespace SemperEngine
 				{
 					throw "have user";
 				}
-				_user = user;
 				Use();
+				_user = user;
 			}
 
 			void Dispose(void* user)
@@ -139,6 +149,15 @@ namespace SemperEngine
 				}
 			}
 		};
+
+		template<class T>
+		class IPackage
+		{
+		public:
+
+			virtual void Package(ResourcePackage<T> mine) = 0;
+		};
+
 	}
 }
 

@@ -10,7 +10,7 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		class TextureData
+		class TextureData :public IPackage<TextureData>
 		{
 		public:
 
@@ -34,7 +34,8 @@ namespace SemperEngine
 
 			~TextureData();
 
-			void Package(ResourcePackage<TextureData> mine);
+			virtual void Package(ResourcePackage<TextureData> mine) override;
+
 		};
 	}
 }

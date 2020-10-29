@@ -1,8 +1,10 @@
 #ifndef __TIME_SCRIPT__
 #define __TIME_SCRIPT__
 
-namespace SemperEngine {
+#include <string>
 
+namespace SemperEngine 
+{
 	class Time
 	{
 	public:
@@ -11,8 +13,8 @@ namespace SemperEngine {
 
 		static float GetDeltaTime();
 
+		static std::string SystemTime();
 	};
-
 }
 
 #endif // !TIME

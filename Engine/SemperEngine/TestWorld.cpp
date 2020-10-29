@@ -39,7 +39,6 @@ namespace SemperEngine
 		auto tex = Resource::LoadTexture("Resources/Textures/test.png");
 		floor->material->AddProperty(0, tex);
 		floor->material->AddProperty("_color", Color(1, 1, 1));
-		//floor->material->AddProperty("_color", Color::FromHEX24(0xcccccc));
 		AddGameObject(floor);
 
 
@@ -55,6 +54,12 @@ namespace SemperEngine
 		cube2->transform.position = Vector3(1.0f, 0.5f, -1.5f);
 		cube2->material->AddProperty("_color", Color(0, 1, 0));
 		AddGameObject(cube2);
+
+		auto cube3 = new Cube();
+		cube3->name = "cube3";
+		cube3->transform.position = Vector3(-2.0f, 0.5f, 1.f);
+		cube3->material->AddProperty("_color", Color(0, 0, 1));
+		AddGameObject(cube3);
 
 		return world;
 	}

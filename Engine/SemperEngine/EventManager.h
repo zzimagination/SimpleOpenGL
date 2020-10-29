@@ -1,10 +1,8 @@
 #ifndef __EVENT_MANAGER__
 #define __EVENT_MANAGER__
 
-#include "EventDef.h"
-
-namespace SemperEngine {
-
+namespace SemperEngine 
+{
 	namespace Core
 	{
 		class EventManager

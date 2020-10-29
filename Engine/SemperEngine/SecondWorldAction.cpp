@@ -14,7 +14,7 @@ namespace SemperEngine
 	}
 	void SecondWorldAction::Update()
 	{
-		if (Event::KeyAction(Keyboard::Key::number2, InputAction::Button::press))
+		if (Event::KeyAction(Keyboard::Key::number1, InputAction::Button::press))
 		{
 			WorldManager::SetActive(1);
 		}

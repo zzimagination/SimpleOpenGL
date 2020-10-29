@@ -103,6 +103,8 @@ namespace SemperEngine {
 		void Move();
 
 		void Rotate();
+
+		void ChangeProjection();
 	};
 }
 #endif

@@ -2,7 +2,6 @@
 #include <iostream>
 #include <filesystem>
 #include "StringEncoding.h"
-#include "LogDef.h"
 
 namespace SemperEngine {
 
@@ -11,19 +10,24 @@ namespace SemperEngine {
 		using namespace std;
 		using namespace std::filesystem;
 
-		fstream DebugFile::_file;
+		shared_ptr<DebugFile> DebugFile::Open()
+		{
+			string path(logFolder);
+			path.append("/");
+			path.append(logFile);
+			return Open(path);
+		}
 
-		bool DebugFile::isOpen = false;
-
-		void DebugFile::Open()
+		shared_ptr<DebugFile> DebugFile::Open(std::string file)
 		{
 			if (!exists(logFolder))
 			{
 				create_directory(logFolder);
 			}
-
-			_file.open(logPath, std::fstream::out);
-			isOpen = true;
+			auto ptr = shared_ptr<DebugFile>(new DebugFile());
+			ptr->isOpen = true;
+			ptr->_file.open(file, fstream::out);
+			return ptr;
 		}
 
 		void DebugFile::Close()
@@ -48,7 +52,6 @@ namespace SemperEngine {
 			wstring un = StringEncoding::ANSIToUnicode(log);
 			string u8 = StringEncoding::UnicodeToUTF8(un);
 			_file.write(u8.data(), u8.size());
-			_file.write("\r", 1);
 		}
 
 		void DebugFile::Write(std::wstring& log)
@@ -60,6 +63,34 @@ namespace SemperEngine {
 
 			string u8 = StringEncoding::UnicodeToUTF8(log);
 			_file.write(u8.data(), u8.size());
+		}
+		void DebugFile::WriteLine(std::string& log)
+		{
+			if (!isOpen)
+			{
+				return;
+			}
+			wstring un = StringEncoding::ANSIToUnicode(log);
+			string u8 = StringEncoding::UnicodeToUTF8(un);
+			_file.write(u8.data(), u8.size());
+			_file.write("\r", 1);
+		}
+		void DebugFile::WriteLine(std::wstring& log)
+		{
+			if (!isOpen)
+			{
+				return;
+			}
+			string u8 = StringEncoding::UnicodeToUTF8(log);
+			_file.write(u8.data(), u8.size());
+			_file.write("\r", 1);
+		}
+		void DebugFile::WriteLine()
+		{
+			if (!isOpen)
+			{
+				return;
+			}
 			_file.write("\r", 1);
 		}
 	}

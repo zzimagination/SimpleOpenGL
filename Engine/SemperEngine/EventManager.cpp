@@ -1,5 +1,6 @@
 #include "EventManager.h"
 #include "EventRecorder.h"
+#include "GameSetting.h"
 
 namespace SemperEngine {
 
@@ -11,6 +12,8 @@ namespace SemperEngine {
 
 		void EventManager::ProcessEvent()
 		{
+			keepInterval = GameSetting::buttonPressT;
+
 			auto mouseButtons = &EventRecorder::mouseButtons;
 			auto mouseButtonEvents = &EventRecorder::mouseButtonEvents;
 			for (int i = 0; i < mouseButtons->size(); i++)
@@ -40,6 +43,5 @@ namespace SemperEngine {
 		{
 			EventRecorder::Clear();
 		}
-
 	}
 }

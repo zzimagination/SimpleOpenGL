@@ -13,6 +13,8 @@ namespace SemperEngine {
 
 		static int vsync;
 
+		static float buttonPressT;
+
 	public:
 
 		static void LoadConfig();

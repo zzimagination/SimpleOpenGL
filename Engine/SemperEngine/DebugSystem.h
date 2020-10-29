@@ -1,7 +1,12 @@
 #ifndef __DEBUG_SYSTEM__
 #define __DEBUG_SYSTEM__
 
+#include <memory>
+#include <chrono>
 #include <thread>
+#include <condition_variable>
+#include "DebugFile.h"
+#include "DebugOutput.h"
 
 namespace SemperEngine {
 
@@ -15,7 +20,7 @@ namespace SemperEngine {
 
 			static bool _isOpen;
 
-			static std::chrono::milliseconds _time;
+			static std::shared_ptr<DebugFile> _file;
 
 		public:
 
@@ -26,6 +31,10 @@ namespace SemperEngine {
 			static void Update();
 
 			static void Close();
+
+		private:
+
+			static void OutputItem(LogItem item);
 		};
 	}
 }

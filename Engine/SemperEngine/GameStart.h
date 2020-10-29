@@ -8,7 +8,14 @@ namespace SemperEngine
 		class GameStart
 		{
 		public:
+
 			static void Start();
+
+		private:
+
+			static void SetLocale();
+
+			static void Logo();
 		};
 	}
 }

@@ -5,28 +5,45 @@
 #include "GameWindow.h"
 #include "LogoPipeline.h"
 #include "GraphicDataCenter.h"
+#include "BeforeAnything.h"
+#include <locale>
+
+#include "Debug.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
+
+		using namespace std;
+
 		void GameStart::Start()
 		{
-			setlocale(LC_CTYPE, "");
+			BeforeAnything::Start();
+			SetLocale();
 			DebugSystem::Initialization();
 			GameSetting::LoadConfig();
 			GameWindow::CreateGameWindow();
 			ShaderCompiler::Compile();
 			GraphicDataCenter::InitializeData();
+			Logo();
+		}
 
+		void GameStart::SetLocale()
+		{
+			setlocale(LC_CTYPE, "");
+		}
 
-			/*LogoPipeline::Render();
-			GameWindow::SwapFrameBuffers();
-
-			while (!GameWindow::WindowShouldClose())
+		void GameStart::Logo()
+		{
+			LogoPipeline::Start();
+			while (!GameWindow::WindowShouldClose() && !LogoPipeline::isCompleted)
 			{
 				GameWindow::PollWindowEvent();
-			}*/
+				LogoPipeline::Update();
+				GameWindow::SwapFrameBuffers();
+			}
+			LogoPipeline::End();
 		}
 	}
 }

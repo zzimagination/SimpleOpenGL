@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="BaseRenderPipeline.h" />
     <ClInclude Include="BeautifulWorld.h" />
+    <ClInclude Include="BeforeAnything.h" />
     <ClInclude Include="CameraCollection.h" />
     <ClInclude Include="CameraObject.h" />
     <ClInclude Include="Color.h" />
@@ -183,7 +184,7 @@
     <ClInclude Include="InsideWorldAction.h" />
     <ClInclude Include="KeyIdentity.h" />
     <ClInclude Include="LifeContainer.h" />
-    <ClInclude Include="LogDef.h" />
+    <ClInclude Include="LogoCollection.h" />
     <ClInclude Include="LogoPipeline.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MathBase.h" />
@@ -289,6 +290,7 @@
     <ClCompile Include="GWireframeCMD.cpp" />
     <ClCompile Include="InsideWorld.cpp" />
     <ClCompile Include="InsideWorldAction.cpp" />
+    <ClCompile Include="LogoCollection.cpp" />
     <ClCompile Include="LogoPipeline.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MathBase.cpp" />

@@ -11,7 +11,7 @@ namespace SemperEngine {
 	{
 		_package = TexturePackage(new TextureData());
 		_package.Use(this);
-		_package.GetResource()->Package(_package);
+		//_package.GetResource()->Package(_package);
 	}
 
 	Texture::Texture(TexturePackage package)

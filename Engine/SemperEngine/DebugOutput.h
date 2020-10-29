@@ -4,12 +4,30 @@
 #include <string>
 #include <mutex>
 #include <queue>
-#include "LogDef.h"
+#include <condition_variable>
 
 namespace SemperEngine
 {
 	namespace Core
 	{
+		class LogItem
+		{
+		public:
+
+			std::string info;
+
+			std::wstring winfo;
+
+			std::string time;
+
+			LogItem(std::string time)
+			{
+				info = "";
+				winfo = L"";
+				this->time = time;
+			}
+		};
+
 		class DebugOutput
 		{
 		private:
@@ -18,6 +36,10 @@ namespace SemperEngine
 
 			static std::queue<LogItem> _logs;
 
+			static std::condition_variable _waitToHave;
+
+			static std::mutex _waitLock;
+
 		public:
 
 			static void InputLog(LogItem& log);
@@ -25,6 +47,12 @@ namespace SemperEngine
 			static LogItem OutputLog();
 
 			static bool HasLog();
+
+		private:
+
+			static void Wait();
+
+			static void Send();
 		};
 	}
 }

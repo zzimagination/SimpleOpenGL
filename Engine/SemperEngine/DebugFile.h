@@ -1,29 +1,46 @@
 #ifndef __DEBUG_FILE__
 #define __DEBUG_FILE__
+
 #include <string>
 #include <fstream>
 #include <string>
+#include <memory>
 
 namespace SemperEngine
 {
-	namespace Core {
+	namespace Core
+	{
+		constexpr const char* logFolder = "Log";
+
+		constexpr const char* logFile = "log.text";
+
 		class DebugFile
 		{
 		private:
 
-			static std::fstream _file;
+			std::fstream _file;
 
-			static bool isOpen;
+			bool isOpen;
 
 		public:
 
-			static void Open();
+			static std::shared_ptr<DebugFile> Open();
 
-			static void Close();
+			static std::shared_ptr<DebugFile> Open(std::string file);
 
-			static void Write(std::string& log);
+		public:
 
-			static void Write(std::wstring& log);
+			void Close();
+
+			void Write(std::string& log);
+
+			void Write(std::wstring& log);
+
+			void WriteLine(std::string& log);
+
+			void WriteLine(std::wstring& log);
+
+			void WriteLine();
 		};
 	}
 }

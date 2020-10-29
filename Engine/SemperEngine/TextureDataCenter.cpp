@@ -33,7 +33,7 @@ namespace SemperEngine
 				package.id = id;
 				instances.push_back(package);
 			}
-			package.GetResource()->Package(package);
+			//package.GetResource()->Package(package);
 			return shared_ptr<Texture>(new Texture(package));
 		}
 

@@ -13,6 +13,7 @@ namespace SemperEngine
 	{
 		enum struct Key
 		{
+			none,
 			space,
 			apostrophe,
 			comma,
@@ -142,6 +143,7 @@ namespace SemperEngine
 	{
 		enum struct Button
 		{
+			none,
 			left,
 			right,
 			middle,
@@ -160,6 +162,7 @@ namespace SemperEngine
 	{
 		enum struct Button
 		{
+			none,
 			press,
 			release,
 			keep
@@ -168,34 +171,17 @@ namespace SemperEngine
 
 	struct KeyEvent {
 
-		Keyboard::Key value;
+		Keyboard::Key value = Keyboard::Key::none;
 
 		InputAction::Button action;
-
-	};
-
-	struct KeyKeeper
-	{
-		Keyboard::Key key;
-
-		float pressTime = 0;
-
 	};
 
 	struct MouseButtonEvent
 	{
-		Mouse::Button value;
+		Mouse::Button value = Mouse::Button::none;
 
-		InputAction::Button action;
-	};
-
-	struct MouseButtonKeeper
-	{
-		Mouse::Button button;
-
-		float pressTime = 0;
+		InputAction::Button action = InputAction::Button::none;
 	};
 }
-
 
 #endif // !EVENT_DEFINATION

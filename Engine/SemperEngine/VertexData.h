@@ -10,7 +10,7 @@ namespace SemperEngine
 {
 	namespace Core 
 	{
-		class VertexData
+		class VertexData : public IPackage<VertexData>
 		{
 		public:
 
@@ -34,7 +34,7 @@ namespace SemperEngine
 
 			~VertexData();
 
-			void Package(ResourcePackage<VertexData> mine);
+			virtual void Package(ResourcePackage<VertexData> mine) override;
 		};
 	}
 }

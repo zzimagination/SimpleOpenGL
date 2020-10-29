@@ -289,6 +289,9 @@
     <ClCompile Include="ScreenTextureData.cpp">
       <Filter>Resources\Mesh\StaticData</Filter>
     </ClCompile>
+    <ClCompile Include="LogoCollection.cpp">
+      <Filter>Render\Logo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -501,9 +504,6 @@
     <ClInclude Include="GLShaderAPI.h">
       <Filter>Render\GraphicRender\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="LogDef.h">
-      <Filter>Debug</Filter>
-    </ClInclude>
     <ClInclude Include="EventDef.h">
       <Filter>EventSystem</Filter>
     </ClInclude>
@@ -590,6 +590,12 @@
     </ClInclude>
     <ClInclude Include="ScreenTextureData.h">
       <Filter>Resources\Mesh\StaticData</Filter>
+    </ClInclude>
+    <ClInclude Include="BeforeAnything.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="LogoCollection.h">
+      <Filter>Render\Logo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

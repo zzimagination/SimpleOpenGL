@@ -43,6 +43,7 @@ namespace SemperEngine {
 
 	void Camera::Update()
 	{
+		ChangeProjection();
 		Move();
 		Rotate();
 		_cameraObject->viewMatrix = CalculateViewMatrix();
@@ -223,5 +224,19 @@ namespace SemperEngine {
 		_yaw += delta.x * Time::GetDeltaTime() * -5;
 		_pitch += delta.y * Time::GetDeltaTime() * -5;
 		transform.rotation = Quaternion::AngleAxis(_yaw, Vector3(0, 1, 0)) * Quaternion::AngleAxis(_pitch, Vector3(1, 0, 0));
+	}
+	void Camera::ChangeProjection()
+	{
+		if (Event::KeyAction(Keyboard::Key::f1, InputAction::Button::press))
+		{
+			if (projection == Projection::Orthographic)
+			{
+				projection = Projection::Perspective;
+			}
+			else
+			{
+				projection = Projection::Orthographic;
+			}
+		}
 	}
 }
