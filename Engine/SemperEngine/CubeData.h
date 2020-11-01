@@ -10,9 +10,9 @@ namespace SemperEngine {
 	{
 		static int vertexCount;
 
-		static Vector3 vertices[24];
+		static Float3 vertices[24];
 
-		static Vector2 uvs[24];
+		static Float2 uvs[24];
 
 		static int indices[36];
 	};

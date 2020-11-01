@@ -14,7 +14,7 @@ namespace SemperEngine
 
 		static std::vector<MouseButtonEvent> MouseButtons();
 
-		static Vector2 MousePosition();
+		static Float2 MousePosition();
 
 		static bool KeyAction(Keyboard::Key key, InputAction::Button action);
 

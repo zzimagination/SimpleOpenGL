@@ -33,7 +33,7 @@ namespace SemperEngine {
 
 			static std::vector<MouseButtonKeeper> mouseButtons;
 
-			static Vector2 mousePosition;
+			static Float2 mousePosition;
 
 		public:
 

@@ -26,12 +26,13 @@ namespace SemperEngine
 
 		virtual ~Cube() override;
 
-	public:
-
 		virtual void Start() override;
 
 		virtual void Update() override;
 
+		RenderLayer GetRenderLayer();
+
+		void AddRenderLayer(int layer);
 	};
 }
 

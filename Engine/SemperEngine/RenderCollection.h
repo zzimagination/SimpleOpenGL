@@ -16,6 +16,8 @@ namespace SemperEngine {
 
 			static std::vector<LifeContainer<RenderObject>> renderObjects;
 
+#define Check int a=1
+
 		public:
 
 			static void AddRenderObject(LifeContainer<RenderObject> robject);

@@ -10,39 +10,38 @@ namespace SemperEngine {
 	public:
 
 		static const float pi;
-		//3.14159265358979323846264338327950288
 
 	public:
 
-		static float Cos(float a);
+		static float Cos(const float& a);
 
-		static float Sin(float a);
+		static float Sin(const float& a);
 
-		static float Tan(float a);
+		static float Tan(const float& a);
 
-		static float Cot(float a);
+		static float Cot(const float& a);
 
-		static float ArcCos(float a);
+		static float ArcCos(const float& a);
 
-		static float ArcSin(float a);
+		static float ArcSin(const float& a);
 
-		static float ArcTan(float a);
+		static float ArcTan(const float& a);
 
-		static float Clamp(float min, float max, float value);
+		static float Clamp(const float& min, const float& max, const float& value);
 
-		static int Floor(float f);
+		static int Floor(const float& f);
 
-		static int Ceil(float f);
+		static int Ceil(const float& f);
 
-		static float Remainder(float a, float b);
+		static float Remainder(const float& a, const float& b);
 
-		static float Max(float a, float b);
+		static float Max(const float& a, const float& b);
 
-		static float Min(float a, float b);
+		static float Min(const float& a, const float& b);
 
-		static float Abs(float a);
+		static float Abs(const float& a);
 
-		static float Sqrt(float a);
+		static float Sqrt(const float& a);
 
 	};
 }

@@ -3,8 +3,8 @@
 #define __MATH_QUATERNION__
 
 #include "MathBase.h"
-#include "Vector3.h"
-#include "Vector4.h"
+#include "Float3.h"
+#include "Float4.h"
 #include "Matrix4x4.h"
 
 namespace SemperEngine
@@ -13,17 +13,17 @@ namespace SemperEngine
 	{
 	public:
 
-		static Quaternion AngleAxis(float angle, Vector3 axis);
+		static Quaternion AngleAxis(const float &angle, const Float3 &axis);
 
 	private:
 
-		Vector4 _data;
+		Float4 _data;
 
 	public:
 
 		Quaternion();
 
-		Quaternion(float x, float y, float z, float w);
+		Quaternion(const float &x, const float &y,const float &z,const float &w);
 
 		float X();
 
@@ -41,9 +41,7 @@ namespace SemperEngine
 
 		Quaternion operator*(const Quaternion& right);
 
-		Vector3 operator*(const Vector3& right);
-	private:
-
+		Float3 operator*(const Float3& right);
 	};
 }
 

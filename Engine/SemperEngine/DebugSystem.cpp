@@ -34,6 +34,7 @@ namespace SemperEngine
 				OutputItem(item);
 			}
 		}
+
 		void DebugSystem::Close()
 		{
 			_isOpen = false;

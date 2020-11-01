@@ -2,8 +2,8 @@
 #ifndef __COLOR_VARIABLE__
 #define __COLOR_VARIABLE__
 
-#include "Vector3.h"
-#include "Vector4.h"
+#include "Float3.h"
+#include "Float4.h"
 
 namespace SemperEngine
 {
@@ -11,22 +11,22 @@ namespace SemperEngine
 	{
 	public:
 
-		static Color FromHEX32(long hex);
-		static Color FromHEX24(long hex);
+		static Color FromHEX32(const long& hex);
+		static Color FromHEX24(const long& hex);
 
 	private:
 
-		Vector4 _data;
+		Float4 _data;
 
 	public:
 
 		Color();
 
-		Color(Vector4 value);
+		Color(Float4 value);
 
-		Color(Vector3 value);
+		Color(Float3 value);
 
-		Color(float r, float g, float b, float a = 1);
+		Color(const float& r, const float& g, const float& b, const float& a = 1);
 
 		float R();
 
@@ -36,9 +36,9 @@ namespace SemperEngine
 
 		float A();
 
-		Color& operator=(const Vector4& right);
+		Color& operator=(const Float4& right);
 
-		Color& operator=(const Vector3& right);
+		Color& operator=(const Float3& right);
 
 		Color& operator=(const Color& right);
 	};

@@ -7,7 +7,7 @@ namespace SemperEngine
 	{
 		namespace GraphicAPI
 		{
-			GLVertexData GLResourceAPI::AddVertexData(Vector3* vertices, Vector2* uv, int* index, int count)
+			GLVertexData GLResourceAPI::AddVertexData(Float3* vertices, Float2* uv, int* index, int count)
 			{
 				unsigned int VAO = 0, VBO = 0, EBO = 0, pointCount = 0;
 
@@ -24,8 +24,8 @@ namespace SemperEngine
 					pointCount = count;
 				}
 
-				int verticesSize = count * sizeof(Vector3);
-				int uvSize = count * sizeof(Vector2);
+				int verticesSize = count * sizeof(Float3);
+				int uvSize = count * sizeof(Float2);
 				int indexSize = pointCount * sizeof(int);
 				int totalSize = verticesSize + uvSize + indexSize;
 
@@ -53,10 +53,10 @@ namespace SemperEngine
 				glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexSize, index, GL_STATIC_DRAW);
 
 				glEnableVertexAttribArray(0);
-				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vector3), (void*)voffset);
+				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Float3), (void*)voffset);
 
 				glEnableVertexAttribArray(1);
-				glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vector2), (void*)uvoffset);
+				glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Float2), (void*)uvoffset);
 
 				// note that this is allowed, the call to glVertexAttribPointer registered VBO 
 				// as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
@@ -71,17 +71,17 @@ namespace SemperEngine
 				return result;
 			}
 
-			GLVertexData GLResourceAPI::AddVertexData(Vector3* vertices, int count)
+			GLVertexData GLResourceAPI::AddVertexData(Float3* vertices, int count)
 			{
 				unsigned int VAO, VBO;
 				glGenVertexArrays(1, &VAO);
 				glGenBuffers(1, &VBO);
 				glBindVertexArray(VAO);
 				glBindBuffer(GL_ARRAY_BUFFER, VBO);
-				auto size = count * sizeof(Vector3);
+				auto size = count * sizeof(Float3);
 				glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);//首先执行这个
 				glEnableVertexAttribArray(0);
-				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vector3), (void*)0);
+				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Float3), (void*)0);
 				glBindBuffer(GL_ARRAY_BUFFER, 0);
 				glBindVertexArray(0);
 				GLVertexData result = { VAO, VBO };

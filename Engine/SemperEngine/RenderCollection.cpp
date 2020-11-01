@@ -1,6 +1,7 @@
 #include "RenderCollection.h"
 #include "RenderObject.h"
 #include "RendererGenerator.h"
+#include "RenderLayer.h"
 #include "WorldManager.h"
 
 namespace SemperEngine
@@ -41,13 +42,10 @@ namespace SemperEngine
 				{
 					continue;
 				}
-
-				if (!CheckLayer(camera->renderLayer, renderObjects[i].self->layer))
+				if (camera->renderLayer == renderObjects[i].self->layer)
 				{
-					continue;
+					result.push_back(renderObjects[i].self);
 				}
-
-				result.push_back(renderObjects[i].self);
 			}
 			return result;
 		}
@@ -59,15 +57,7 @@ namespace SemperEngine
 		{
 			for (int i = 0; i < layers.size(); i++)
 			{
-				if (layers[i] == 1)
-				{
-					return true;
-				}
-				else if (layers[i] == 0)
-				{
-					return false;
-				}
-				else if (layers[i] == target)
+				if (layers[i] == target)
 				{
 					return true;
 				}

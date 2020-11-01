@@ -48,7 +48,7 @@ namespace SemperEngine
 
 		void BaseRenderPipeline::EmptyClear()
 		{
-			GraphicCommandManager::Clear(Vector4(0, 0, 0, 1), 0x03);
+			GraphicCommandManager::Clear(Float4(0, 0, 0, 1), 0x03);
 		}
 
 		void BaseRenderPipeline::RenderCamera(CameraObject* camera)

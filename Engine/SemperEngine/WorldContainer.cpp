@@ -12,7 +12,7 @@ namespace SemperEngine
 		}
 		void WorldContainer::AddGameObject(LifeContainer<GameObject> gameObject)
 		{
-			EncodeWorldID(gameObject.self, newGameObjects.size() + gameObjects.size());
+			EncodeWorldID(gameObject.self, (unsigned int)newGameObjects.size() + (unsigned int)gameObjects.size());
 			newGameObjects.push_back(gameObject);
 		}
 

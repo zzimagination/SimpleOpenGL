@@ -210,6 +210,7 @@
     <ClInclude Include="RenderBatch.h" />
     <ClInclude Include="GraphicRenderAPI.h" />
     <ClInclude Include="RenderCollection.h" />
+    <ClInclude Include="RenderLayer.h" />
     <ClInclude Include="RenderObject.h" />
     <ClInclude Include="RenderObjectManager.h" />
     <ClInclude Include="RenderSetting.h" />
@@ -234,9 +235,9 @@
     <ClInclude Include="Time.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Transform.h" />
-    <ClInclude Include="Vector2.h" />
-    <ClInclude Include="Vector3.h" />
-    <ClInclude Include="Vector4.h" />
+    <ClInclude Include="Float2.h" />
+    <ClInclude Include="Float3.h" />
+    <ClInclude Include="Float4.h" />
     <ClInclude Include="VertexData.h" />
     <ClInclude Include="VertexDataCenter.h" />
     <ClInclude Include="GWinText.h" />
@@ -312,6 +313,7 @@
     <ClCompile Include="RenderBatch.cpp" />
     <ClCompile Include="GraphicRenderAPI.cpp" />
     <ClCompile Include="RenderCollection.cpp" />
+    <ClCompile Include="RenderLayer.cpp" />
     <ClCompile Include="RenderObject.cpp" />
     <ClCompile Include="RenderObjectManager.cpp" />
     <ClCompile Include="GraphicShader.cpp" />
@@ -335,9 +337,9 @@
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Transform.cpp" />
-    <ClCompile Include="Vector2.cpp" />
-    <ClCompile Include="Vector3.cpp" />
-    <ClCompile Include="Vector4.cpp" />
+    <ClCompile Include="Float2.cpp" />
+    <ClCompile Include="Float3.cpp" />
+    <ClCompile Include="Float4.cpp" />
     <ClCompile Include="GraphicVertexData.cpp" />
     <ClCompile Include="VertexData.cpp" />
     <ClCompile Include="VertexDataCenter.cpp" />

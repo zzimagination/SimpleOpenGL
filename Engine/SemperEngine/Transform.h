@@ -8,17 +8,17 @@ namespace SemperEngine {
 	{
 	public:
 
-		Vector3 position;
+		Float3 position;
 
 		Quaternion rotation;
 
-		Vector3 scale;
+		Float3 scale;
 
 	public:
 
 		Transform();
 
-		Vector3 EulerAngle();
+		Float3 EulerAngle();
 
 		Matrix4x4 GetModelMatrix();
 

@@ -2,7 +2,7 @@
 
 namespace SemperEngine
 {
-	Color Color::FromHEX32(long hex)
+	Color Color::FromHEX32(const long& hex)
 	{
 		auto r = (hex & 0xff000000) >> 24;
 		auto g = (hex & 0x00ff0000) >> 16;
@@ -10,7 +10,7 @@ namespace SemperEngine
 		auto a = (hex & 0x000000FF);
 		return Color(r / 255.0f, g / 255.0f, b / 255.0f, a / 255.0f);
 	}
-	Color Color::FromHEX24(long hex)
+	Color Color::FromHEX24(const long& hex)
 	{
 		auto r = (hex & 0xff0000) >> 16;
 		auto g = (hex & 0x00ff00) >> 8;
@@ -19,19 +19,19 @@ namespace SemperEngine
 	}
 	Color::Color()
 	{
-		_data = Vector4(1, 1, 1, 1);
+		_data = Float4(1, 1, 1, 1);
 	}
-	Color::Color(Vector4 value)
+	Color::Color(Float4 value)
 	{
 		_data = value;
 	}
-	Color::Color(Vector3 value)
+	Color::Color(Float3 value)
 	{
-		_data = Vector4(value.x, value.y, value.z, 1);
+		_data = Float4(value.x, value.y, value.z, 1);
 	}
-	Color::Color(float r, float g, float b, float a)
+	Color::Color(const float& r, const float& g, const float& b, const float& a)
 	{
-		_data = Vector4(r, g, b, a);
+		_data = Float4(r, g, b, a);
 	}
 	float Color::R()
 	{
@@ -49,19 +49,19 @@ namespace SemperEngine
 	{
 		return _data.w;
 	}
-	Color& Color::operator=(const Vector4& right)
+	Color& Color::operator=(const Float4& right)
 	{
 		this->_data = right;
 		return *this;
 	}
-	Color& Color::operator=(const Vector3& right)
+	Color& Color::operator=(const Float3& right)
 	{
-		this->_data = Vector4(right.x, right.y, right.z, 1);
+		this->_data = Float4(right.x, right.y, right.z, 1);
 		return *this;
 	}
 	Color& Color::operator=(const Color& right)
 	{
 		this->_data = right._data;
-		return *this;// TODO: 在此处插入 return 语句
+		return *this;
 	}
 }

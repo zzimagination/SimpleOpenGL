@@ -2,7 +2,7 @@
 
 namespace SemperEngine
 {
-	Quaternion Quaternion::AngleAxis(float angle, Vector3 axis)
+	Quaternion Quaternion::AngleAxis(const float &angle, const Float3 &axis)
 	{
 		float s = Math::Sin(angle * 0.5f);
 		float x = s * axis.x;
@@ -13,9 +13,9 @@ namespace SemperEngine
 	}
 	Quaternion::Quaternion()
 	{
-		_data = Vector4(0, 0, 0, 1);
+		_data = Float4(0, 0, 0, 1);
 	}
-	Quaternion::Quaternion(float x, float y, float z, float w)
+	Quaternion::Quaternion(const float &x, const float &y, const float &z, const float &w)
 	{
 		_data.x = x;
 		_data.y = y;
@@ -82,12 +82,12 @@ namespace SemperEngine
 		float s = s1 * s2 - (x1 * x2 + y1 * y2 + z1 * z2);
 		return Quaternion(x, y, z, s);
 	}
-	Vector3 Quaternion::operator*(const Vector3& right)
+	Float3 Quaternion::operator*(const Float3& right)
 	{
 		Quaternion q = Quaternion(right.x, right.y, right.z, 0);
 		float s = this->W();
-		Vector3 v(this->X(), this->Y(), this->Z());
-		auto result = s * s * right + Vector3::Cross(2 * s * v, right) + Vector3::Dot(v, right) * v - Vector3::Cross(Vector3::Cross(v, right), v);
+		Float3 v(this->X(), this->Y(), this->Z());
+		auto result = s * s * right + Float3::Cross(2 * s * v, right) + Float3::Dot(v, right) * v - Float3::Cross(Float3::Cross(v, right), v);
 		return result;
 	}
 }

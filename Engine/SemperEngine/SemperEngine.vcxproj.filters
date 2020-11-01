@@ -19,19 +19,10 @@
     <ClCompile Include="World.cpp">
       <Filter>World\World</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector3.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>World\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Matrix4x4.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector4.cpp">
       <Filter>Math</Filter>
     </ClCompile>
     <ClCompile Include="Mathz.cpp">
@@ -292,6 +283,18 @@
     <ClCompile Include="LogoCollection.cpp">
       <Filter>Render\Logo</Filter>
     </ClCompile>
+    <ClCompile Include="Float2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Float3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Float4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderLayer.cpp">
+      <Filter>Render\GameRender</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -318,19 +321,10 @@
     <ClInclude Include="World.h">
       <Filter>World\World</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3.h">
-      <Filter>Math</Filter>
-    </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>World\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Matrix4x4.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector4.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="Mathz.h">
@@ -596,6 +590,18 @@
     </ClInclude>
     <ClInclude Include="LogoCollection.h">
       <Filter>Render\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="Float2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Float3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Float4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderLayer.h">
+      <Filter>Render\GameRender</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

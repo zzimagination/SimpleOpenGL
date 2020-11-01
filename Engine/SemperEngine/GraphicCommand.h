@@ -36,11 +36,11 @@ namespace SemperEngine
 						std::vector<std::string> floatNames;\
 						std::vector<float> floatValues;\
 						std::vector < std::string> vec2Names;\
-						std::vector<Vector2> vec2Values;\
+						std::vector<Float2> vec2Values;\
 						std::vector<std::string> vec3Names;\
-						std::vector<Vector3> vec3Values;\
+						std::vector<Float3> vec3Values;\
 						std::vector<std::string> vec4Names;\
-						std::vector<Vector4> vec4Values;\
+						std::vector<Float4> vec4Values;\
 						std::vector<std::string> mat4Names;\
 						std::vector<Matrix4x4> mat4Values;\
 						std::vector<TextureCommandData> textureData;
@@ -142,15 +142,15 @@ namespace SemperEngine
 
 			std::vector < std::string> vec2Names;
 
-			std::vector<Vector2> vec2Values;
+			std::vector<Float2> vec2Values;
 
 			std::vector<std::string> vec3Names;
 
-			std::vector<Vector3> vec3Values;
+			std::vector<Float3> vec3Values;
 
 			std::vector<std::string> vec4Names;
 
-			std::vector<Vector4> vec4Values;
+			std::vector<Float4> vec4Values;
 
 			std::vector<std::string> mat4Names;
 

@@ -14,11 +14,11 @@ namespace SemperEngine
 		{
 		public:
 
-			std::vector<Vector3> vertices;
+			std::vector<Float3> vertices;
 
 			int vertexCount;
 
-			std::vector<Vector2> uv;
+			std::vector<Float2> uv;
 
 			std::vector<int> index;
 

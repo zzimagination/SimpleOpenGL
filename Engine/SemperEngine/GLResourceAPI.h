@@ -33,9 +33,9 @@ namespace SemperEngine
 			{
 			public:
 
-				static GLVertexData AddVertexData(Vector3* vertices, Vector2* uv, int* index, int count);
+				static GLVertexData AddVertexData(Float3* vertices, Float2* uv, int* index, int count);
 
-				static GLVertexData AddVertexData(Vector3* vertices, int count);
+				static GLVertexData AddVertexData(Float3* vertices, int count);
 
 				static void ClearVertexData(unsigned int VAO, unsigned int VBO, unsigned int EBO);
 

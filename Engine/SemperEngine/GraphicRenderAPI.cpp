@@ -70,17 +70,17 @@ namespace SemperEngine {
 			GLRenderAPI::SetShaderValue(name, value);
 		}
 
-		void GraphicRenderAPI::SetShaderProperty(std::string name, Vector2& value)
+		void GraphicRenderAPI::SetShaderProperty(std::string name, Float2& value)
 		{
 			GLRenderAPI::SetShaderValue(name, value);
 		}
 
-		void GraphicRenderAPI::SetShaderProperty(std::string name, Vector3& value)
+		void GraphicRenderAPI::SetShaderProperty(std::string name, Float3& value)
 		{
 			GLRenderAPI::SetShaderValue(name, value);
 		}
 
-		void GraphicRenderAPI::SetShaderProperty(std::string name, Vector4& value)
+		void GraphicRenderAPI::SetShaderProperty(std::string name, Float4& value)
 		{
 			GLRenderAPI::SetShaderValue(name, value);
 		}

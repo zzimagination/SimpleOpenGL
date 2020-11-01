@@ -5,6 +5,7 @@
 #include <vector>
 #include "Mathz.h"
 #include "LifeContainer.h"
+#include "RenderLayer.h"
 
 namespace SemperEngine
 {
@@ -28,9 +29,9 @@ namespace SemperEngine
 
 			Color clearColor;
 
-			std::vector<int> renderLayer;
-
 			LifeContainer<CameraObject> myLife;
+
+			RenderLayer renderLayer;
 
 		public:
 

@@ -17,11 +17,11 @@ namespace SemperEngine
 
 			std::map<std::string, float> floatProperty;
 
-			std::map<std::string, Vector2> vector2Property;
+			std::map<std::string, Float2> vector2Property;
 
-			std::map<std::string, Vector3> vector3Property;
+			std::map<std::string, Float3> vector3Property;
 
-			std::map<std::string, Vector4> vector4Property;
+			std::map<std::string, Float4> vector4Property;
 
 			std::map<std::string, Matrix4x4> matrix4x4Property;
 
@@ -40,17 +40,17 @@ namespace SemperEngine
 				floatProperty[name] = value;
 			}
 
-			void Add(std::string name, Vector2 value)
+			void Add(std::string name, Float2 value)
 			{
 				vector2Property[name] = value;
 			}
 
-			void Add(std::string name, Vector3 value)
+			void Add(std::string name, Float3 value)
 			{
 				vector3Property[name] = value;
 			}
 
-			void Add(std::string name, Vector4 value)
+			void Add(std::string name, Float4 value)
 			{
 				vector4Property[name] = value;
 			}

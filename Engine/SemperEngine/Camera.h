@@ -38,8 +38,6 @@ namespace SemperEngine {
 
 		Color clearColor;
 
-		std::vector<int> renderLayer;
-
 	private:
 
 		float _size;
@@ -52,7 +50,7 @@ namespace SemperEngine {
 
 		float _aspect;
 
-		Vector2 _lastMousePos;
+		Float2 _lastMousePos;
 
 		float _yaw;
 
@@ -97,6 +95,12 @@ namespace SemperEngine {
 		Matrix4x4 CalculateProjectionMatrix();
 
 		Matrix4x4 CalculateViewMatrix();
+
+		void AddRenderLayer(int layer);
+
+		void RemoveRenderLayer(int layer);
+
+		std::vector<int> GetRenderLayers();
 
 	private:
 

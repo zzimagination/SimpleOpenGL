@@ -51,11 +51,11 @@ namespace SemperEngine
 
 				static void SetShaderValue(const std::string& name, float value);
 
-				static void SetShaderValue(const std::string& name, const Vector2& value);
+				static void SetShaderValue(const std::string& name, const Float2& value);
 
-				static void SetShaderValue(const std::string& name, const Vector3& value);
+				static void SetShaderValue(const std::string& name, const Float3& value);
 
-				static void SetShaderValue(const std::string& name, const Vector4& value);
+				static void SetShaderValue(const std::string& name, const Float4& value);
 
 				static void SetShaderValue(const std::string& name, const Matrix4x4& mat);
 

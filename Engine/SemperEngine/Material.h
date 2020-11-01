@@ -25,11 +25,11 @@ namespace SemperEngine
 
 		void AddProperty(std::string name, float value);
 
-		void AddProperty(std::string name, Vector2 value);
+		void AddProperty(std::string name, Float2 value);
 
-		void AddProperty(std::string name, Vector3 value);
+		void AddProperty(std::string name, Float3 value);
 
-		void AddProperty(std::string name, Vector4 value);
+		void AddProperty(std::string name, Float4 value);
 
 		void AddProperty(std::string name, Matrix4x4 value);
 

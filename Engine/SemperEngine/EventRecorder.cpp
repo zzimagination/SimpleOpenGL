@@ -11,7 +11,7 @@ namespace SemperEngine {
 		vector<KeyKeeper> EventRecorder::pressedKeys;
 		vector<MouseButtonEvent> EventRecorder::mouseButtonEvents;
 		vector<MouseButtonKeeper> EventRecorder::mouseButtons;
-		Vector2 EventRecorder::mousePosition = Vector2(0, 0);
+		Float2 EventRecorder::mousePosition = Float2(0, 0);
 
 		void EventRecorder::RecordKeyEvent(int key, int action)
 		{

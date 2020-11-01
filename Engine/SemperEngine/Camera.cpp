@@ -17,8 +17,7 @@ namespace SemperEngine {
 		this->_aspect = (float)GameSetting::windowWidth / GameSetting::windowHeight;
 		this->projection = Projection::Perspective;
 		this->clearMode = ClearMode::Color;
-		this->clearColor = Vector4(0.8f, 0.8f, 0.8f, 1);
-		this->renderLayer = { 1 };
+		this->clearColor = Color(0.8f, 0.8f, 0.8f);
 		_cameraObject = unique_ptr<CameraObject>(new CameraObject());
 	}
 
@@ -29,13 +28,12 @@ namespace SemperEngine {
 
 	void Camera::Start()
 	{
-		auto look = transform.rotation * Vector3::forward;
-		Vector3 lookp(look.x, 0, look.z);
-		_yaw = Math::ArcCos(Vector3::Dot(lookp, Vector3::forward) / lookp.Length());
-		_pitch = Math::ArcCos(Vector3::Dot(lookp, look) / (look.Length(), lookp.Length()));
+		auto look = transform.rotation * Float3::forward;
+		Float3 lookp(look.x, 0, look.z);
+		_yaw = Math::ArcCos(Float3::Dot(lookp, Float3::forward) / lookp.Length());
+		_pitch = Math::ArcCos(Float3::Dot(lookp, look) / (look.Length(), lookp.Length()));
 		_cameraObject->viewMatrix = CalculateViewMatrix();
 		_cameraObject->projectMatrix = CalculateProjectionMatrix();
-		_cameraObject->renderLayer = renderLayer;
 		_cameraObject->clearColor = clearColor;
 		_cameraObject->clearMode = (int)clearMode;
 		CameraCollection::AddCamera(_cameraObject->myLife);
@@ -48,7 +46,6 @@ namespace SemperEngine {
 		Rotate();
 		_cameraObject->viewMatrix = CalculateViewMatrix();
 		_cameraObject->projectMatrix = CalculateProjectionMatrix();
-		_cameraObject->renderLayer = renderLayer;
 		_cameraObject->clearColor = clearColor;
 		_cameraObject->clearMode = (int)clearMode;
 		CameraCollection::AddCamera(_cameraObject->myLife);
@@ -154,29 +151,41 @@ namespace SemperEngine {
 
 	Matrix4x4 Camera::CalculateViewMatrix()
 	{
-		Vector3 zero(0, 0, 0);
-		Vector3 pos = transform.position;
-		Vector3 up(0, 1, 0);
+		Float3 zero(0, 0, 0);
+		Float3 pos = transform.position;
+		Float3 up(0, 1, 0);
 
-		Vector3 look = transform.rotation * Vector3(0, 0, 1);
-		Vector3 right = transform.rotation * Vector3(1, 0, 0);
-		Vector3 top = Vector3::Cross(look, right);
+		Float3 look = transform.rotation * Float3(0, 0, 1);
+		Float3 right = transform.rotation * Float3(1, 0, 0);
+		Float3 top = Float3::Cross(look, right);
 
 		Matrix4x4 view(
-			right.x, right.y, right.z, -Vector3::Dot(right, pos),
-			top.x, top.y, top.z, -Vector3::Dot(top, pos),
-			look.x, look.y, look.z, -Vector3::Dot(look, pos),
+			right.x, right.y, right.z, -Float3::Dot(right, pos),
+			top.x, top.y, top.z, -Float3::Dot(top, pos),
+			look.x, look.y, look.z, -Float3::Dot(look, pos),
 			0, 0, 0, 1
 		);
 
 		worldToViewMatrix = view;
 		return worldToViewMatrix;
 	}
+	void Camera::AddRenderLayer(int layer)
+	{
+		_cameraObject->renderLayer.Add(layer);
+	}
+	void Camera::RemoveRenderLayer(int layer)
+	{
+		_cameraObject->renderLayer.Remove(layer);
+	}
+	std::vector<int> Camera::GetRenderLayers()
+	{
+		return _cameraObject->renderLayer.GetLayers();
+	}
 	void Camera::Move()
 	{
 		typedef Keyboard::Key Key;
 		typedef InputAction::Button BA;
-		Vector3 moveDelta;
+		Float3 moveDelta;
 		if (Event::KeyAction(Key::w, BA::press) || Event::KeyAction(Key::w, BA::keep))
 		{
 			moveDelta.z = -Time::GetDeltaTime() * 5;
@@ -202,9 +211,9 @@ namespace SemperEngine {
 			moveDelta.y = Time::GetDeltaTime() * 5;
 		}
 
-		auto forward = transform.rotation * Vector3(0, 0, 1);
-		auto up = Vector3(0, 1, 0);
-		auto left = transform.rotation * Vector3(1, 0, 0);
+		auto forward = transform.rotation * Float3(0, 0, 1);
+		auto up = Float3(0, 1, 0);
+		auto left = transform.rotation * Float3(1, 0, 0);
 		transform.position = transform.position + forward * moveDelta.z + moveDelta.y * up + moveDelta.x * left;
 	}
 	void Camera::Rotate()
@@ -223,7 +232,7 @@ namespace SemperEngine {
 		_lastMousePos = nowPos;
 		_yaw += delta.x * Time::GetDeltaTime() * -5;
 		_pitch += delta.y * Time::GetDeltaTime() * -5;
-		transform.rotation = Quaternion::AngleAxis(_yaw, Vector3(0, 1, 0)) * Quaternion::AngleAxis(_pitch, Vector3(1, 0, 0));
+		transform.rotation = Quaternion::AngleAxis(_yaw, Float3(0, 1, 0)) * Quaternion::AngleAxis(_pitch, Float3(1, 0, 0));
 	}
 	void Camera::ChangeProjection()
 	{

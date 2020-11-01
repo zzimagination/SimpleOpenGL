@@ -4,16 +4,16 @@ namespace SemperEngine {
 
 	Transform::Transform()
 	{
-		position = Vector3();
+		position = Float3();
 
 		rotation = Quaternion();
 
-		scale = Vector3(1, 1, 1);
+		scale = Float3(1, 1, 1);
 	}
 
-	Vector3 Transform::EulerAngle()
+	Float3 Transform::EulerAngle()
 	{
-		return Vector3();
+		return Float3();
 	}
 
 	Matrix4x4 Transform::GetModelMatrix()

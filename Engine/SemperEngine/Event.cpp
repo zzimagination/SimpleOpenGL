@@ -16,7 +16,7 @@ namespace SemperEngine
 	{
 		return EventRecorder::mouseButtonEvents;
 	}
-	Vector2 Event::MousePosition()
+	Float2 Event::MousePosition()
 	{
 		return EventRecorder::mousePosition;
 	}

@@ -148,19 +148,19 @@ namespace SemperEngine
 				auto local = glGetUniformLocation(_shader, name.c_str());
 				glUniform1f(local, value);
 			}
-			void GLRenderAPI::SetShaderValue(const string& name, const Vector2& value)
+			void GLRenderAPI::SetShaderValue(const string& name, const Float2& value)
 			{
 				float data[2] = { value.x,value.y };
 				auto local = glGetUniformLocation(_shader, name.c_str());
 				glUniform2fv(local, 1, data);
 			}
-			void GLRenderAPI::SetShaderValue(const string& name, const Vector3& value)
+			void GLRenderAPI::SetShaderValue(const string& name, const Float3& value)
 			{
 				float data[3] = { value.x, value.y,value.z };
 				auto local = glGetUniformLocation(_shader, name.c_str());
 				glUniform3fv(local, 1, data);
 			}
-			void GLRenderAPI::SetShaderValue(const string& name, const Vector4& value)
+			void GLRenderAPI::SetShaderValue(const string& name, const Float4& value)
 			{
 				float data[4] = { value.x,value.y,value.z,value.w };
 				auto local = glGetUniformLocation(_shader, name.c_str());
