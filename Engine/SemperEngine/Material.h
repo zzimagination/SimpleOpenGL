@@ -5,7 +5,9 @@
 #include <map>
 #include <string>
 #include "Mathz.h"
+#include "Render.h"
 #include "ShaderProperty.h"
+#include "Texture.h"
 
 namespace SemperEngine
 {
@@ -13,9 +15,44 @@ namespace SemperEngine
 	{
 	public:
 
-		std::string shader;
+		class MaterialTexture
+		{
+		public:
+
+			int index;
+
+			std::shared_ptr<Texture> texture;
+
+		public:
+
+			MaterialTexture(int i, std::shared_ptr<Texture> tex)
+			{
+				this->index = i;
+				this->texture = tex;
+			}
+			~MaterialTexture()
+			{}
+
+			bool operator==(const MaterialTexture& right)
+			{
+				if (this->index == right.index)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		};
+
+	public:
+
+		Core::RenderOperation renderOperation;
 
 		Core::ShaderProperty shaderProperty;
+
+		std::vector<MaterialTexture> textures;
 
 	public:
 

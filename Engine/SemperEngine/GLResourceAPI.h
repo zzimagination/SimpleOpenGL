@@ -3,7 +3,6 @@
 #define __GL_RESOURCEAPI__
 
 #include "Mathz.h"
-#include "GraphicResource.h"
 
 namespace SemperEngine
 {
@@ -27,7 +26,6 @@ namespace SemperEngine
 			{
 				unsigned int texture;
 			};
-
 
 			class GLResourceAPI
 			{

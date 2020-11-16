@@ -1,16 +1,12 @@
 #ifndef __EVENT_MANAGER__
 #define __EVENT_MANAGER__
 
-namespace SemperEngine 
+namespace SemperEngine
 {
 	namespace Core
 	{
 		class EventManager
 		{
-		private:
-
-			static float keepInterval;
-
 		public:
 
 			static void ProcessEvent();

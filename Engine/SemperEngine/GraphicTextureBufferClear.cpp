@@ -6,9 +6,11 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		GTextureBufferClearCMD::GTextureBufferClearCMD(TextureCommandData data)
+		using namespace std;
+
+		GTextureBufferClearCMD::GTextureBufferClearCMD(GraphicDataInfo info)
 		{
-			this->data = data;
+			this->dataInfo = info;
 		}
 
 		GTextureBufferClearCMD::~GTextureBufferClearCMD()
@@ -17,7 +19,9 @@ namespace SemperEngine
 
 		void GTextureBufferClearCMD::Excute()
 		{
-			GraphicResouceAPI::ClearTextureData(data->graphicData);
+			auto data = GraphicDataCenter::GetTextureData(dataInfo);
+			GraphicResouceAPI::ClearTextureData(*data.get());
+			GraphicDataCenter::DeleteGraphicTextureData(dataInfo);
 		}
 	}
 }

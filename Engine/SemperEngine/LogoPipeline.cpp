@@ -1,9 +1,11 @@
 #include "LogoPipeline.h"
-#include "GraphicCommandManager.h"
-#include "GraphicDataCenter.h"
-#include "RenderBatch.h"
-#include "GraphicResouceAPI.h"
 #include "LogoCollection.h"
+#include "RenderBatch.h"
+#include "TextureDataCenter.h"
+#include "GraphicRenderer.h"
+#include "GraphicCommandManager.h"
+#include "ResourceLoader.h"
+#include "ResourceManager.h"
 
 namespace SemperEngine
 {
@@ -83,14 +85,24 @@ namespace SemperEngine
 
 		void LogoPipeline::LoadResources()
 		{
+			auto data = ResourceLoader::LoadTexture(ResourceLoader::InternalFile("logo2.png"));
+			auto package = TextureDataCenter::InputData(data);
+			auto defaultLogo = shared_ptr<Texture>(new Texture(package));
+			logoTextures.push_back(defaultLogo);
 			for (int i = 0; i < LogoCollection::Count(); i++)
 			{
-				auto texture = Resource::LoadTexture(LogoCollection::_files[i]);
-				logoTextures.push_back(texture);
+				auto tmpData = ResourceLoader::LoadTexture(ResourceLoader::InternalFile(LogoCollection::files[i]));
+				auto tmpPackage = TextureDataCenter::InputData(data);
+				auto tmpLogo = shared_ptr<Texture>(new Texture(package));
+				logoTextures.push_back(tmpLogo);
 			}
 
 			material = shared_ptr<Material>(new Material("ScreenTexture"));
 			material->AddProperty("_color", Color(1, 1, 1));
+			material->renderOperation.blend = true;
+			material->renderOperation.depth = false;
+			ResourceManager::AddAndDelete();
+			GraphicCommandManager::Resource();
 		}
 
 		void LogoPipeline::Dispose()
@@ -99,30 +111,36 @@ namespace SemperEngine
 			{
 				logoTextures[i].reset();
 			}
+			logoTextures.clear();
 			material.reset();
 		}
 
 		void LogoPipeline::Render()
 		{
-			RenderBatch batch;
-			batch.screenDraw = true;
-			batch.material = material;
-			GraphicCommandManager::Resource();
-			GraphicCommandManager::Clear(Color(0, 0, 0), 1);
-			GraphicCommandManager::DrawScreen(batch);
+			vector<GraphicTextureInfo> textures;
+			for (auto i = 0; i < material->textures.size(); i++)
+			{
+				auto info = material->textures[i].texture->Package().clerk->GetGDataInfo();
+				auto index = material->textures[i].index;
+				GraphicTextureInfo tex = { index,info };
+				textures.push_back(tex);
+			}
+
+			GraphicRenderer::Clear(Color(0, 0, 0, 1));
+			GraphicRenderer::RenderScreen(material->renderOperation, material->shaderProperty, textures);
+
 			GraphicCommandManager::SwapCommands();
 			GraphicCommandManager::Render();
 		}
 
 		bool LogoPipeline::Do()
 		{
-			auto result = LogoCollection::_files.size();
-			return result > 0;
+			return true;
 		}
 
 		float LogoPipeline::Alpha(float time)
 		{
-			auto t = time - (int)(time / logoTime *1000.f) * (logoTime/1000.f);
+			auto t = time - (int)(time / logoTime * 1000.f) * (logoTime / 1000.f);
 			_alpha = _alpha + 0.017f;
 			_alpha = _alpha > 1 ? 1 : _alpha;
 			if (t <= 1.5)

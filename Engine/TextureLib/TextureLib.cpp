@@ -22,12 +22,12 @@ namespace SemperEngine
 		{
 			if (tfile.path == "")
 			{
-				throw "NULL";
+				return;
 			}
 			struct stat buf;
 			if (stat(tfile.path.c_str(), &buf))
 			{
-				throw "don't have the file";
+				return;
 			}
 			ifstream file(tfile.path, ios::binary);
 			auto inputSize = (unsigned int)buf.st_size;

@@ -2,6 +2,9 @@
 #include "GraphicResouceAPI.h"
 #include "GraphicDataCenter.h"
 #include "GraphicCommandManager.h"
+#include "TextureDataCenter.h"
+#include "DataCenterClerk.h"
+#include "TextureData.h"
 
 namespace SemperEngine
 {
@@ -9,10 +12,9 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		GTextureBufferCMD::GTextureBufferCMD(TextureCommandData data)
+		GTextureBufferCMD::GTextureBufferCMD(GraphicDataInfo info)
 		{
-			this->data = data;
-			this->data->package.Use(this);
+			this->dataInfo = info;
 		}
 
 		GTextureBufferCMD::~GTextureBufferCMD()
@@ -21,9 +23,10 @@ namespace SemperEngine
 
 		void GTextureBufferCMD::Excute()
 		{
-			auto gdata = GraphicResouceAPI::AddTextureData(data->package.GetResource());
-			data->graphicData = gdata;
-			data->package.Dispose(this);
+			auto data = GraphicDataCenter::GetTextureData(dataInfo);
+			auto tmp = GraphicResouceAPI::AddTextureData(data->GetSource());
+			data->glid = tmp.glid;
+			data->Complete();
 		}
 	}
 }

@@ -1,21 +1,20 @@
 #include "GameWindow.h"
-#include "GWindow.h"
 #include <iostream>
-#include "GameSetting.h"
 #include <string>
+#include "GameSetting.h"
 
 namespace SemperEngine {
 
 	namespace Core
 	{
-		GWindow* GameWindow::window = nullptr;
+		GLWindow* GameWindow::window = nullptr;
 
 		void GameWindow::CreateGameWindow()
 		{
 			int width = GameSetting::windowWidth;
 			int height = GameSetting::windowHeight;
 
-			window = GWindow::Create(width, height, L"SemperEngine");
+			window = GLWindow::Create(width, height, L" º÷’“˝«Ê");
 		}
 
 		void GameWindow::TerminateGameWindow()
@@ -43,15 +42,6 @@ namespace SemperEngine {
 		{
 			GameSetting::windowWidth = width;
 			GameSetting::windowHeight = height;
-		}
-
-		void GameWindow::OnMouse(double xpos, double ypos)
-		{
-
-		}
-
-		void GameWindow::OnScroll(double xoffset, double yoffset)
-		{
 		}
 	}
 }

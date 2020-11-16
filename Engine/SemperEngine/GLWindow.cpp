@@ -1,7 +1,6 @@
-#include "GWindow.h"
+#include "GLWindow.h"
 #include "GameSetting.h"
 #include "GameWindow.h"
-#include "KeyIdentity.h"
 #include "EventRecorder.h"
 
 namespace SemperEngine {
@@ -10,9 +9,9 @@ namespace SemperEngine {
 	{
 		using namespace std;
 
-		GWindow* GWindow::Create(int width, int height, wstring title)
+		GLWindow* GLWindow::Create(int width, int height, wstring title)
 		{
-			GWindow* gwindow = new GWindow();
+			GLWindow* gwindow = new GLWindow();
 
 			glfwInit();
 			glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -27,11 +26,11 @@ namespace SemperEngine {
 			}
 			glfwMakeContextCurrent(gwindow->window);
 
-			glfwSetCursorPosCallback(gwindow->window, GWindow::cursor_position_callback);
-			glfwSetMouseButtonCallback(gwindow->window, GWindow::mouse_button_callback);
-			glfwSetFramebufferSizeCallback(gwindow->window, GWindow::OnSizeChanged);
-			glfwSetScrollCallback(gwindow->window, GWindow::OnScroll);
-			glfwSetKeyCallback(gwindow->window, GWindow::key_callback);
+			glfwSetCursorPosCallback(gwindow->window, GLWindow::cursor_position_callback);
+			glfwSetMouseButtonCallback(gwindow->window, GLWindow::mouse_button_callback);
+			glfwSetFramebufferSizeCallback(gwindow->window, GLWindow::framebuffer_size_callback);
+			glfwSetScrollCallback(gwindow->window, GLWindow::scroll_callback);
+			glfwSetKeyCallback(gwindow->window, GLWindow::key_callback);
 
 			if (!gladLoadGL())
 			{
@@ -40,12 +39,12 @@ namespace SemperEngine {
 
 			glViewport(0, 0, width, height);
 			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 			gwindow->SwapFrameBuffers();
 			return gwindow;
 		}
 
-		void GWindow::SwapFrameBuffers()
+		void GLWindow::SwapFrameBuffers()
 		{
 			auto v = GameSetting::vsync;
 			if (1 == v)
@@ -59,42 +58,42 @@ namespace SemperEngine {
 			glfwSwapBuffers(window);
 		}
 
-		void GWindow::Terminate()
+		void GLWindow::Terminate()
 		{
 			glfwTerminate();
 		}
 
-		bool GWindow::ShouldClose()
+		bool GLWindow::ShouldClose()
 		{
 			return glfwWindowShouldClose(window);
 		}
 
-		void GWindow::PollEvent()
+		void GLWindow::PollEvent()
 		{
 			glfwPollEvents();
 		}
 
-		void GWindow::OnSizeChanged(GLFWwindow* window, int width, int height)
+		void GLWindow::framebuffer_size_callback(GLFWwindow* window, int width, int height)
 		{
 			glViewport(0, 0, width, height);
 			GameWindow::OnSizeChanged(width, height);
 		}
 
-		void GWindow::cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
+		void GLWindow::cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 		{
 			EventRecorder::RecordCursorPosition((int)xpos, (int)ypos);
 		}
 
-		void GWindow::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+		void GLWindow::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 		{
 			EventRecorder::RecordMouseButton(button, action);
 		}
 
-		void GWindow::OnScroll(GLFWwindow* window, double xoffset, double yoffset)
+		void GLWindow::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 		{
-			GameWindow::OnScroll(xoffset, yoffset);
 		}
-		void GWindow::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+
+		void GLWindow::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 		{
 			EventRecorder::RecordKeyEvent(key, action);
 		}

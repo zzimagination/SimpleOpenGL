@@ -5,31 +5,49 @@
 #include <string>
 #include <memory>
 #include <vector>
+#include <map>
+#include "FillList.h"
+#include "DataCenter.h"
 #include "Texture.h"
-#include "TextureData.h"
-#include "ResourcePackage.h"
-#include "Texture.h"
+#include "Graphic.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
-		class TextureDataCenter
+		class TextureDataCenter : public DataCenter
 		{
 		public:
 
-			static std::vector<ResourcePackage<TextureData>> instances;
-
-			static std::vector<ResourceID> unused;
+			static FillList < GPResourceUnit<TextureData> > textures;
 
 		public:
 
-			static std::shared_ptr<Texture> LoadTexture(std::string path);
+			static ResourcePackage<TextureData> InputData(TextureData* data);
+
+			static ResourcePackage<TextureData> InputData(TextureData* data, std::string path);
+
+			static void AddAndDelete();
 
 		private:
 
-			static void Unload(ResourceID id);
+			static std::vector<int> _addIndex;
 
+			static std::vector<int> _removeIndex;
+
+		private:
+
+			static BaseData* GetData(int id);
+
+			static void AddPath(int id, std::string path);
+
+			static void Destroy(int id);
+
+			static GraphicDataInfo GetGDataInfo(int id);
+
+			static void AddIndex(int id);
+
+			static void RemoveIndex(int id);
 		};
 	}
 }

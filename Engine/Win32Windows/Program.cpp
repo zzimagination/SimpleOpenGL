@@ -1,4 +1,5 @@
 #include "Program.h"
+#include <sstream>
 #include <iostream>
 #include <fstream>
 #include "MyWindow.h"
@@ -6,7 +7,7 @@
 #include "../SemperEngine/GLShaderAPI.h"
 #include "../SemperEngine/GLRendererAPI.h"
 #include "../SemperEngine/GLResourceAPI.h"
-#include "../SemperEngine/Vector3.h"
+#include "../SemperEngine/Float3.h"
 
 using namespace SemperEngine::Core::GraphicAPI;
 using namespace SemperEngine;
@@ -21,6 +22,7 @@ int main()
 
 	std::ifstream vs;
 	vs.open("../SemperEngine/Shader/Line.vs", std::ios_base::in);
+	auto line = new char[20];
 	std::stringstream vss;
 	vss<<vs.rdbuf();
 
@@ -30,19 +32,19 @@ int main()
 	fss << fs.rdbuf();
 	auto shader = GLShaderCompiler::Compile(vss.str(), fss.str(), "");
 
-	Vector3 points[6] = {
-		Vector3(0, 0.5f, 0),
-		Vector3(0.4f, -0.2f, 0),
-		Vector3(0.4f, -0.2f, 0),
-		Vector3(-0.4f, -0.2, 0),
-		Vector3(-0.4f, -0.2, 0),
-		Vector3(0, 0.5f, 0)
+	Float3 points[6] = {
+		Float3(0, 0.5f, 0),
+		Float3(0.4f, -0.2f, 0),
+		Float3(0.4f, -0.2f, 0),
+		Float3(-0.4f, -0.2f, 0),
+		Float3(-0.4f, -0.2f, 0),
+		Float3(0, 0.5f, 0)
 	};
 
 	auto vdata = GLResourceAPI::AddVertexData(points, 6);
 	GLRenderAPI::BindVertexBuffer(vdata.VAO);
 	GLRenderAPI::SetShader(shader.program);
-	GLRenderAPI::SetShaderValue("_color", Vector3(1, 0, 0));
+	GLRenderAPI::SetShaderValue("_color", Float3(1, 0, 0));
 	GLRenderAPI::DrawLines(18);
 	window->SwapWindowBuffers();
 

@@ -4,7 +4,7 @@
 #include <vector>
 #include <memory>
 #include "Mathz.h"
-#include "VertexDataCenter.h"
+#include "Mesh.h"
 #include "Material.h"
 
 namespace SemperEngine {
@@ -15,9 +15,7 @@ namespace SemperEngine {
 		{
 		public:
 
-			bool screenDraw;
-
-			ResourcePackage<VertexData> vertexData;
+			std::shared_ptr<Mesh> vertexData;
 
 			Matrix4x4 modelMatrix;
 

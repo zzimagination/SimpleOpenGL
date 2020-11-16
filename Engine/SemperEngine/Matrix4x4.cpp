@@ -46,7 +46,7 @@ namespace SemperEngine {
 
 	Matrix4x4 Matrix4x4::Identity()
 	{
-		return Matrix4x4();
+		return Matrix4x4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	}
 
 	Matrix4x4::Matrix4x4()
@@ -113,37 +113,37 @@ namespace SemperEngine {
 		}
 	}
 
-	Matrix4x4 Matrix4x4::operator*(const Matrix4x4 &b)
+	Matrix4x4 Matrix4x4::operator*(const Matrix4x4& b)
 	{
 		Matrix4x4 m;
-		m.x0 = this->GetRow(0)*b.GetColumn(0);
-		m.x1 = this->GetRow(1)*b.GetColumn(0);
-		m.x2 = this->GetRow(2)*b.GetColumn(0);
-		m.x3 = this->GetRow(3)*b.GetColumn(0);
+		m.x0 = this->GetRow(0) * b.GetColumn(0);
+		m.x1 = this->GetRow(1) * b.GetColumn(0);
+		m.x2 = this->GetRow(2) * b.GetColumn(0);
+		m.x3 = this->GetRow(3) * b.GetColumn(0);
 
-		m.y0 = this->GetRow(0)*b.GetColumn(1);
-		m.y1 = this->GetRow(1)*b.GetColumn(1);
-		m.y2 = this->GetRow(2)*b.GetColumn(1);
-		m.y3 = this->GetRow(3)*b.GetColumn(1);
+		m.y0 = this->GetRow(0) * b.GetColumn(1);
+		m.y1 = this->GetRow(1) * b.GetColumn(1);
+		m.y2 = this->GetRow(2) * b.GetColumn(1);
+		m.y3 = this->GetRow(3) * b.GetColumn(1);
 
-		m.z0 = this->GetRow(0)*b.GetColumn(2);
-		m.z1 = this->GetRow(1)*b.GetColumn(2);
-		m.z2 = this->GetRow(2)*b.GetColumn(2);
-		m.z3 = this->GetRow(3)*b.GetColumn(2);
+		m.z0 = this->GetRow(0) * b.GetColumn(2);
+		m.z1 = this->GetRow(1) * b.GetColumn(2);
+		m.z2 = this->GetRow(2) * b.GetColumn(2);
+		m.z3 = this->GetRow(3) * b.GetColumn(2);
 
-		m.w0 = this->GetRow(0)*b.GetColumn(3);
-		m.w1 = this->GetRow(1)*b.GetColumn(3);
-		m.w2 = this->GetRow(2)*b.GetColumn(3);
-		m.w3 = this->GetRow(3)*b.GetColumn(3);
+		m.w0 = this->GetRow(0) * b.GetColumn(3);
+		m.w1 = this->GetRow(1) * b.GetColumn(3);
+		m.w2 = this->GetRow(2) * b.GetColumn(3);
+		m.w3 = this->GetRow(3) * b.GetColumn(3);
 		return m;
 	}
-	Float3 Matrix4x4::operator*(const Float3 & right)
+	Float3 Matrix4x4::operator*(const Float3& right)
 	{
 		Float4 v(right.x, right.y, right.z, 0);
 
-		float x = this->GetRow(0)*v;
-		float y = this->GetRow(1)*v;
-		float z = this->GetRow(2)*v;
+		float x = this->GetRow(0) * v;
+		float y = this->GetRow(1) * v;
+		float z = this->GetRow(2) * v;
 
 		return Float3(x, y, z);
 	}

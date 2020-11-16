@@ -7,23 +7,27 @@ namespace SemperEngine {
 
 	namespace Core
 	{
-		struct KeyKeeper
-		{
-			Keyboard::Key key = Keyboard::Key::none;
 
+		struct EventKeeper
+		{
 			float pressTime = 0;
 		};
 
-		struct MouseButtonKeeper
+		struct KeyKeeper : EventKeeper
+		{
+			Keyboard::Key key = Keyboard::Key::none;
+		};
+
+		struct MouseButtonKeeper : EventKeeper
 		{
 			Mouse::Button button = Mouse::Button::none;
-
-			float pressTime = 0;
 		};
 
 		class EventRecorder
 		{
 		public:
+
+			static float keepInterval;
 
 			static std::vector<KeyEvent> keyEvents;
 
@@ -44,6 +48,14 @@ namespace SemperEngine {
 			static void RecordMouseButton(int button, int action);
 
 			static void Clear();
+
+			static void Keep();
+
+		private:
+			
+			static void MouseButtonKeep();
+
+			static void KeyKeep();
 
 		};
 	}

@@ -23,6 +23,7 @@ namespace SemperEngine {
 			static void GenerateGraphicCommands();
 
 			static void Clear();
+
 		};
 	}
 }

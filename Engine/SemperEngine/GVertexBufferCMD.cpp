@@ -7,10 +7,9 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		GVertexBufferCMD::GVertexBufferCMD(VertexCommandData data)
+		GVertexBufferCMD::GVertexBufferCMD(GraphicDataInfo info)
 		{
-			this->data = data;
-			this->data->package.Use(this);
+			this->dataInfo = info;
 		}
 
 		GVertexBufferCMD::~GVertexBufferCMD()
@@ -19,9 +18,13 @@ namespace SemperEngine
 
 		void GVertexBufferCMD::Excute()
 		{
-			auto gvd = GraphicResouceAPI::AddVertexData(data->package.GetResource());
-			this->data->graphicData = gvd;
-			this->data->package.Dispose(this);
+			auto data = GraphicDataCenter::GetVertexData(dataInfo);
+			auto tmp = GraphicResouceAPI::AddVertexData(data->GetSource());
+			data->VAO = tmp.VAO;
+			data->VBO = tmp.EBO;
+			data->EBO = tmp.EBO;
+			data->pointCount = tmp.pointCount;
+			data->Complete();
 		}
 	}
 }

@@ -15,12 +15,9 @@ namespace SemperEngine
 
 		void ShaderCompiler::Compile()
 		{
-			auto files = shaderfiles;
-			for (int i = 0; i < files.size(); i++)
+			for (int i = 0; i < shaderfiles.size(); i++)
 			{
-				auto shader = Shader(files[i]);
-				pair<string, GraphicShader> pair(files[i].name, shader);
-				GraphicShaderManager::shaderMap.insert(pair);
+				GraphicShaderManager::shaderMap[shaderfiles[i].name] = Shader(shaderfiles[i]);
 			}
 		}
 

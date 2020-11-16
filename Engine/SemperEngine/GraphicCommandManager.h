@@ -4,8 +4,11 @@
 
 #include <vector>
 #include <memory>
+#include <map>
+#include "Graphic.h"
+#include "GraphicVertexData.h"
+#include "GraphicTextureData.h"
 #include "GraphicCommand.h"
-#include "RenderBatch.h"
 
 namespace SemperEngine
 {
@@ -33,21 +36,28 @@ namespace SemperEngine
 
 			static void SwapCommands();
 
-			static void AddVertexBuffer(VertexCommandData data);
+			static void AddVertexBuffer(GraphicDataInfo info);
 
-			static void ClearVertexBuffer(VertexCommandData data);
+			static void ClearVertexBuffer(GraphicDataInfo info);
 
-			static void AddTextureBuffer(TextureCommandData data);
+			static void AddTextureBuffer(GraphicDataInfo info);
 
-			static void ClearTextureBuffer(TextureCommandData data);
+			static void ClearTextureBuffer(GraphicDataInfo info);
 
-			static void DrawScreen(RenderBatch &batch);
+			static void Draw(
+				GraphicVertexInfo vertex, 
+				RenderOperation operation, 
+				RenderMatrix matrix, 
+				ShaderProperty sproperty, 
+				std::vector<GraphicTextureInfo> textures);
 
-			static void Draw(RenderBatch &batch);
-
-			static void Clear(Color color, int mode);
+			static void Clear(Color color, RenderEnum::ClearMode mode);
 
 			static void SetWireframe(bool enable);
+
+		private:
+
+			static void Excute(std::vector<GraphicCommand*>& cmds);
 		};
 	}
 }

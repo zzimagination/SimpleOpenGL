@@ -1,6 +1,7 @@
 #include "EventManager.h"
 #include "EventRecorder.h"
 #include "GameSetting.h"
+#include "Time.h"
 
 namespace SemperEngine {
 
@@ -8,35 +9,10 @@ namespace SemperEngine {
 	{
 		using namespace std;
 
-		float EventManager::keepInterval = 0.01f;
-
 		void EventManager::ProcessEvent()
 		{
-			keepInterval = GameSetting::buttonPressT;
-
-			auto mouseButtons = &EventRecorder::mouseButtons;
-			auto mouseButtonEvents = &EventRecorder::mouseButtonEvents;
-			for (int i = 0; i < mouseButtons->size(); i++)
-			{
-				if ((*mouseButtons)[i].pressTime > keepInterval)
-				{
-					MouseButtonEvent e = { (*mouseButtons)[i].button, InputAction::Button::keep };
-					mouseButtonEvents->push_back(e);
-				}
-				(*mouseButtons)[i].pressTime += Time::GetDeltaTime();
-			}
-			auto pressedKeys = &EventRecorder::pressedKeys;
-			auto keyEvents = &EventRecorder::keyEvents;
-			for (int i = 0; i < pressedKeys->size(); i++)
-			{
-				if ((*pressedKeys)[i].pressTime > keepInterval)
-				{
-					KeyEvent e = { (*pressedKeys)[i].key, InputAction::Button::keep };
-					keyEvents->push_back(e);
-				}
-				(*pressedKeys)[i].pressTime += Time::GetDeltaTime();
-			}
-
+			EventRecorder::keepInterval = GameSetting::buttonPressT;
+			EventRecorder::Keep();
 		}
 
 		void EventManager::EndEvents()

@@ -6,7 +6,7 @@ namespace SemperEngine {
 
 	Material::Material(string shader)
 	{
-		this->shader = shader;
+		shaderProperty.name = shader;
 	}
 
 	Material::Material() :Material("Unlit")
@@ -41,11 +41,21 @@ namespace SemperEngine {
 	
 	void Material::AddProperty(std::string name, Color value)
 	{
-		shaderProperty.Add(name, Float4(value.R(), value.G(), value.B(), value.A()));
+		auto f = Float4(value.R(), value.G(), value.B(), value.A());
+		shaderProperty.Add(name, f);
 	}
 
 	void Material::AddProperty(int id, std::shared_ptr<Texture> value)
 	{
-		shaderProperty.Add(id, value);
+		MaterialTexture tex(id, value);
+		for (int i = 0; i < textures.size(); i++)
+		{
+			if (textures[i] == tex)
+			{
+				textures[i] == tex;
+				return;
+			}
+		}
+		textures.push_back(tex);
 	}
 }

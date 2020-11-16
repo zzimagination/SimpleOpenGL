@@ -4,13 +4,13 @@
 
 #include <vector>
 #include "Mathz.h"
-#include "ResourcePackage.h"
+#include "BaseData.h"
 
 namespace SemperEngine
 {
 	namespace Core 
 	{
-		class VertexData : public IPackage<VertexData>
+		class VertexData : public BaseData
 		{
 		public:
 
@@ -22,19 +22,11 @@ namespace SemperEngine
 
 			std::vector<int> index;
 
-			ResourcePackage<VertexData> package;
-
-		private:
-
-			bool _isPackage;
-
 		public:
 
 			VertexData();
 
-			~VertexData();
-
-			virtual void Package(ResourcePackage<VertexData> mine) override;
+			virtual ~VertexData() override;
 		};
 	}
 }

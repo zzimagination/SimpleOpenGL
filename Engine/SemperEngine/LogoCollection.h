@@ -7,22 +7,17 @@
 
 namespace SemperEngine
 {
-	namespace Core {
-		class LogoPipeline;
-	}
 	class LogoCollection
 	{
-	private:
+	public:
 
-		static std::vector<std::string> _files;
+		static std::vector<std::string> files;
 
 	public:
 
 		static void AddLogoImage(std::string file);
 
 		static int Count();
-
-		friend class Core::LogoPipeline;
 	};
 }
 

@@ -6,7 +6,6 @@
 #include "GraphicDataCenter.h"
 #include "GLRendererAPI.h"
 
-
 namespace SemperEngine {
 
 	namespace Core {
@@ -22,7 +21,7 @@ namespace SemperEngine {
 		{
 			GLRenderAPI::SetClearColor(color);
 		}
-		void GraphicRenderAPI::SetClear(int mode)
+		void GraphicRenderAPI::SetClear(RenderEnum::ClearMode mode)
 		{
 			GLRenderAPI::SetClear(mode);
 		}
@@ -30,7 +29,7 @@ namespace SemperEngine {
 		{
 			GLRenderAPI::SetDepthTest(enable);
 		}
-		void GraphicRenderAPI::SetDepthTestFunc(int func)
+		void GraphicRenderAPI::SetDepthTestFunc(RenderEnum::DepthFunc func)
 		{
 			GLRenderAPI::SetDepthTestFunc(func);
 		}
@@ -38,9 +37,9 @@ namespace SemperEngine {
 		{
 			GLRenderAPI::SetCullFace(enable);
 		}
-		void GraphicRenderAPI::SetCullMode(int mode)
+		void GraphicRenderAPI::SetCullMode(RenderEnum::CullFace face)
 		{
-			GLRenderAPI::SetCullMode(mode);
+			GLRenderAPI::SetCullMode(face);
 		}
 
 		void GraphicRenderAPI::SetBlend(bool enable)

@@ -17,10 +17,6 @@ namespace SemperEngine
 
 		private:
 
-			static void CameraClear(CameraObject* camera);
-
-			static void EmptyClear();
-
 			static void RenderCamera(CameraObject* camera);
 
 		};

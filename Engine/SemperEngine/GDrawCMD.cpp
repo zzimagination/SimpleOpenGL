@@ -22,40 +22,66 @@ namespace SemperEngine
 
 		void GDrawCMD::Excute()
 		{
-			GraphicRenderAPI::SetCullMode(1);
-			GraphicRenderAPI::SetCullFace(true);
-			GraphicRenderAPI::SetDepthTest(true);
+			GraphicRenderAPI::SetCullFace(operation.cull);
+			GraphicRenderAPI::SetCullMode(operation.cullFace);
+			GraphicRenderAPI::SetDepthTest(operation.depth);
+			GraphicRenderAPI::SetDepthTestFunc(operation.depthFunc);
+			GraphicRenderAPI::SetBlend(operation.blend);
+			GraphicRenderAPI::SetBlendFunc();
 
-			GraphicRenderAPI::SetVertexData(vertexData->graphicData);
-			GraphicRenderAPI::SetShader(shader);
-			GraphicRenderAPI::SetShaderProperty(MODEL_MATRIX, modelMatrix);
-			GraphicRenderAPI::SetShaderProperty(VIEW_MATRIX, viewMatrix);
-			GraphicRenderAPI::SetShaderProperty(PROJECTION_MARIX, projectionMatrix);
-			for (int i = 0; i < floatNames.size(); i++)
+			GraphicVertexData vert;
+			switch (vertex.type)
 			{
-				GraphicRenderAPI::SetShaderProperty(floatNames[i], floatValues[i]);
+			case GraphicVertexInfo::Type::screen:
+				vert = *GraphicDataCenter::screenVertexData.get();
+				break;
+			case GraphicVertexInfo::Type::custom:
+				vert = *GraphicDataCenter::GetVertexData(vertex.info);
+				break;
 			}
-			for (int i = 0; i < vec2Names.size(); i++)
+			GraphicRenderAPI::SetVertexData(vert);
+
+			SetShaderProperty(shaderProperty);
+			GraphicRenderAPI::SetShaderProperty(MODEL_MATRIX, matrix.model);
+			GraphicRenderAPI::SetShaderProperty(VIEW_MATRIX, matrix.view);
+			GraphicRenderAPI::SetShaderProperty(PROJECTION_MARIX, matrix.projection);
+			for (int i = 0; i < textures.size(); i++)
 			{
-				GraphicRenderAPI::SetShaderProperty(vec2Names[i], vec2Values[i]);
+				auto tex = GraphicDataCenter::GetTextureData(textures[i].info);
+				GraphicRenderAPI::SetShaderProperty(textures[i].index, *tex.get());
 			}
-			for (int i = 0; i < vec3Names.size(); i++)
-			{
-				GraphicRenderAPI::SetShaderProperty(vec3Names[i], vec3Values[i]);
-			}
-			for (int i = 0; i < vec4Names.size(); i++)
-			{
-				GraphicRenderAPI::SetShaderProperty(vec4Names[i], vec4Values[i]);
-			}
-			for (int i = 0; i < mat4Names.size(); i++)
-			{
-				GraphicRenderAPI::SetShaderProperty(mat4Names[i], mat4Values[i]);
-			}
-			for (int i = 0; i < textureData.size(); i++)
-			{
-				GraphicRenderAPI::SetShaderProperty(i, textureData[i]->graphicData);
-			}
+
 			GraphicRenderAPI::Draw();
+		}
+
+		void GDrawCMD::SetShaderProperty(ShaderProperty sproperty)
+		{
+			GraphicRenderAPI::SetShader(sproperty.name);
+			auto fp = sproperty.floatProperty;
+			for (auto i = fp.begin(); i != fp.end(); i++)
+			{
+				GraphicRenderAPI::SetShaderProperty(i->first, i->second);
+			}
+			auto v2p = sproperty.vector2Property;
+			for (auto i = v2p.begin(); i != v2p.end(); i++)
+			{
+				GraphicRenderAPI::SetShaderProperty(i->first, i->second);
+			}
+			auto v3p = sproperty.vector3Property;
+			for (auto i = v3p.begin(); i != v3p.end(); i++)
+			{
+				GraphicRenderAPI::SetShaderProperty(i->first, i->second);
+			}
+			auto v4p = sproperty.vector4Property;
+			for (auto i = v4p.begin(); i != v4p.end(); i++)
+			{
+				GraphicRenderAPI::SetShaderProperty(i->first, i->second);
+			}
+			auto m4p = sproperty.matrix4x4Property;
+			for (auto i = m4p.begin(); i != m4p.end(); i++)
+			{
+				GraphicRenderAPI::SetShaderProperty(i->first, i->second);
+			}
 		}
 	}
 }

@@ -7,9 +7,9 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		GVertexBufferClearCMD::GVertexBufferClearCMD(VertexCommandData data)
+		GVertexBufferClearCMD::GVertexBufferClearCMD(GraphicDataInfo info)
 		{
-			this->data = data;
+			this->dataInfo = info;
 		}
 
 		GVertexBufferClearCMD::~GVertexBufferClearCMD()
@@ -18,7 +18,9 @@ namespace SemperEngine
 
 		void GVertexBufferClearCMD::Excute()
 		{
-			GraphicResouceAPI::ClearVertexData(data->graphicData);
+			auto data = GraphicDataCenter::GetVertexData(dataInfo);
+			GraphicResouceAPI::ClearVertexData(*data.get());
+			GraphicDataCenter::DeleteGraphicVertexData(dataInfo);
 		}
 	}
 }

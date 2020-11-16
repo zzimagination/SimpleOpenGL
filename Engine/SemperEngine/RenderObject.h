@@ -4,19 +4,15 @@
 #include <memory>
 #include "Mathz.h"
 #include "Material.h"
+#include "Mesh.h"
 #include "LifeContainer.h"
 #include "VertexDataCenter.h"
-#include "VertexData.h"
 #include "RenderLayer.h"
 
 namespace SemperEngine {
 
 	namespace Core
 	{
-		class RenderObject;
-
-		typedef LifeContainer<RenderObject> RenderObjectContainer;
-
 		class RenderObject
 		{
 		public:

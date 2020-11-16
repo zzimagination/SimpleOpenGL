@@ -27,23 +27,24 @@ namespace SemperEngine
 			{
 				glClearColor(color.R(), color.G(), color.B(), color.A());
 			}
-			void GLRenderAPI::SetClear(int mode)
+			void GLRenderAPI::SetClear(RenderEnum::ClearMode mode)
 			{
 				int m = 0;
-				if ((mode & 0x0001) != 0)
+				if ((int)mode & 1<<0 )
 				{
 					m |= GL_COLOR_BUFFER_BIT;
 				}
-				if ((mode & 0x0002) != 0)
+				if ((int)mode & 1<<1)
 				{
 					m |= GL_DEPTH_BUFFER_BIT;
 				}
-				if ((mode & 0x0004) != 0)
+				if ((int)mode & 1<<2)
 				{
 					m |= GL_STENCIL_BUFFER_BIT;
 				}
 				glClear(m);
 			}
+
 			void GLRenderAPI::SetDepthTest(bool enable)
 			{
 				if (enable)
@@ -55,28 +56,41 @@ namespace SemperEngine
 					glDisable(GL_DEPTH_TEST);
 				}
 			}
-			void GLRenderAPI::SetDepthTestFunc(int func)
+			void GLRenderAPI::SetDepthTestFunc(RenderEnum::DepthFunc func)
 			{
+				typedef RenderEnum::DepthFunc DepthFunc;
 				switch (func)
 				{
-				case 0: glDepthFunc(GL_NEVER);
+				case DepthFunc::Never:
+					glDepthFunc(GL_NEVER);
 					break;
-				case 1: glDepthFunc(GL_LESS);
+				case DepthFunc::Less :
+					glDepthFunc(GL_LESS);
 					break;
-				case 2:glDepthFunc(GL_EQUAL);
+				case DepthFunc::Equal:
+					glDepthFunc(GL_EQUAL);
 					break;
-				case 3: glDepthFunc(GL_LEQUAL);
+				case DepthFunc::LEqual:
+					glDepthFunc(GL_LEQUAL);
 					break;
-				case 4: glDepthFunc(GL_GREATER);
+				case DepthFunc::Greater:
+					glDepthFunc(GL_GREATER);
 					break;
-				case 5: glDepthFunc(GL_GEQUAL);
+				case DepthFunc::GEqual:
+					glDepthFunc(GL_GEQUAL);
 					break;
-				case 6:glDepthFunc(GL_NOTEQUAL);
+				case DepthFunc::NotEqual:
+					glDepthFunc(GL_NOTEQUAL);
 					break;
-				case 7: glDepthFunc(GL_ALWAYS);
+				case DepthFunc::Always:
+					glDepthFunc(GL_ALWAYS);
+					break;
+				default:
+					glDepthFunc(GL_LESS);
 					break;
 				}
 			}
+
 			void GLRenderAPI::SetCullFace(bool enable)
 			{
 				if (enable)
@@ -88,14 +102,18 @@ namespace SemperEngine
 					glDisable(GL_CULL_FACE);
 				}
 			}
-			void GLRenderAPI::SetCullMode(int mode)
+			void GLRenderAPI::SetCullMode(RenderEnum::CullFace face)
 			{
-				switch (mode)
+				typedef RenderEnum::CullFace CullFace;
+				switch (face)
 				{
-				case 0:
+				case CullFace::Front:
 					glCullFace(GL_FRONT);
 					break;
-				case 1:
+				case CullFace::Back:
+					glCullFace(GL_BACK);
+					break;
+				default:
 					glCullFace(GL_BACK);
 					break;
 				}

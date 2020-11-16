@@ -2,11 +2,15 @@
 #ifndef __GRAPHIC_DATACENTER__
 #define __GRAPHIC_DATACENTER__
 
-#include <vector>
-#include <map>
-#include "Resource.h"
+#include <memory>
+#include "FillList.h"
+#include "VertexData.h"
+#include "TextureData.h"
+#include "ShaderProperty.h"
+#include "GraphicTextureData.h"
+#include "GraphicVertexData.h"
 #include "GraphicCommand.h"
-
+#include "Graphic.h"
 
 namespace SemperEngine
 {
@@ -16,39 +20,38 @@ namespace SemperEngine
 		{
 		public:
 
-			static GraphicVertexData screenVertex;
+			static std::shared_ptr<GraphicVertexData> screenVertexData;
 
 		private:
 
-			static std::vector<TextureCommandData> _textureData;
+			static FillList<std::shared_ptr<GraphicTextureData>> _textureData;
 
-			static std::vector<unsigned int> _unusedTexture;
-
-			static std::vector<VertexCommandData> _vertexData;
-
-			static std::vector<unsigned int> _unusedVertex;
+			static FillList<std::shared_ptr<GraphicVertexData>> _vertexData;
 
 		public:
 
-			static void InitializeData();
+			static void Initialize();
 
-			static void AddVertexData(ResourcePackage<VertexData> package);
+			static GraphicDataInfo AddVertexData(VertexData* data);
 
-			static void RemoveVertexData(ResourcePackage<VertexData> package);
+			static void RemoveVertexData(GraphicDataInfo info);
 
-			static VertexCommandData GetVertexCommandData(ResourcePackage<VertexData> package);
+			static void DeleteGraphicVertexData(GraphicDataInfo info);
 
-			static void AddTextureData(ResourcePackage<TextureData> package);
+			static std::shared_ptr<GraphicVertexData> GetVertexData(GraphicDataInfo info);
 
-			static void RemoveTextureData(ResourcePackage<TextureData> package);
+			static GraphicDataInfo AddTextureData(TextureData* data);
 
-			static TextureCommandData GetTextureCommandData(ResourcePackage<TextureData> package);
+			static void RemoveTextureData(GraphicDataInfo info);
+
+			static void DeleteGraphicTextureData(GraphicDataInfo info);
+
+			static std::shared_ptr<GraphicTextureData> GetTextureData(GraphicDataInfo info);
 
 		private:
 
-			static unsigned int DecodeGID(unsigned int gid);
+			static void GenerateScreenVertex();
 
-			static unsigned int EncodeGID(unsigned int index);
 		};
 	}
 }

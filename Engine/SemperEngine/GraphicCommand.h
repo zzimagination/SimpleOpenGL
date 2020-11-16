@@ -7,11 +7,11 @@
 #include <memory>
 #include "Mathz.h"
 #include "ShaderProperty.h"
-#include "VertexDataCenter.h"
 #include "VertexData.h"
 #include "TextureData.h"
-#include "GraphicResource.h"
-#include "Material.h"
+#include "Render.h"
+#include "Graphic.h"
+#include "GraphicDataCenter.h"
 
 namespace SemperEngine
 {
@@ -31,26 +31,7 @@ namespace SemperEngine
 			GraphicCommandData() {}
 			~GraphicCommandData() {}
 		};
-
-#define MaterialData	std::string shader;\
-						std::vector<std::string> floatNames;\
-						std::vector<float> floatValues;\
-						std::vector < std::string> vec2Names;\
-						std::vector<Float2> vec2Values;\
-						std::vector<std::string> vec3Names;\
-						std::vector<Float3> vec3Values;\
-						std::vector<std::string> vec4Names;\
-						std::vector<Float4> vec4Values;\
-						std::vector<std::string> mat4Names;\
-						std::vector<Matrix4x4> mat4Values;\
-						std::vector<TextureCommandData> textureData;
 		
-		typedef std::shared_ptr<GraphicCommandData<VertexData, GraphicVertexData>> VertexCommandData;
-#define VertexCommandDataInstance std::shared_ptr<GraphicCommandData<VertexData, GraphicVertexData>>(new GraphicCommandData<VertexData, GraphicVertexData>())
-
-		typedef std::shared_ptr<GraphicCommandData<TextureData, GraphicTextureData>> TextureCommandData;
-#define TextureCommandDataInstance std::shared_ptr<GraphicCommandData<TextureData, GraphicTextureData>>(new GraphicCommandData<TextureData, GraphicTextureData>())
-
 		class GraphicCommand
 		{
 		public:
@@ -66,11 +47,11 @@ namespace SemperEngine
 		{
 		public:
 
-			VertexCommandData data;
+			GraphicDataInfo dataInfo;
 
 		public:
 
-			GVertexBufferCMD(VertexCommandData data);
+			GVertexBufferCMD(GraphicDataInfo info);
 
 			virtual ~GVertexBufferCMD() override;
 
@@ -81,11 +62,11 @@ namespace SemperEngine
 		{
 		public:
 
-			VertexCommandData data;
+			GraphicDataInfo dataInfo;
 
 		public:
 
-			GVertexBufferClearCMD(VertexCommandData data);
+			GVertexBufferClearCMD(GraphicDataInfo info);
 
 			virtual ~GVertexBufferClearCMD() override;
 
@@ -96,11 +77,11 @@ namespace SemperEngine
 		{
 		public:
 
-			TextureCommandData data;
+			GraphicDataInfo dataInfo;
 
 		public:
 
-			GTextureBufferCMD(TextureCommandData data);
+			GTextureBufferCMD(GraphicDataInfo info);
 
 			virtual ~GTextureBufferCMD() override;
 
@@ -111,11 +92,11 @@ namespace SemperEngine
 		{
 		public:
 
-			TextureCommandData data;
+			GraphicDataInfo dataInfo;
 
 		public:
 
-			GTextureBufferClearCMD(TextureCommandData data);
+			GTextureBufferClearCMD(GraphicDataInfo info);
 
 			virtual ~GTextureBufferClearCMD() override;
 
@@ -126,37 +107,15 @@ namespace SemperEngine
 		{
 		public:
 
-			VertexCommandData vertexData;
+			RenderOperation operation;
 
-			Matrix4x4 modelMatrix;
+			GraphicVertexInfo vertex;
 
-			Matrix4x4 viewMatrix;
+			RenderMatrix matrix;
 
-			Matrix4x4 projectionMatrix;
+			ShaderProperty shaderProperty;
 
-			std::string shader;
-
-			std::vector<std::string> floatNames;
-
-			std::vector<float> floatValues;
-
-			std::vector < std::string> vec2Names;
-
-			std::vector<Float2> vec2Values;
-
-			std::vector<std::string> vec3Names;
-
-			std::vector<Float3> vec3Values;
-
-			std::vector<std::string> vec4Names;
-
-			std::vector<Float4> vec4Values;
-
-			std::vector<std::string> mat4Names;
-
-			std::vector<Matrix4x4> mat4Values;
-
-			std::vector<TextureCommandData> textureData;
+			std::vector<GraphicTextureInfo> textures;
 
 		public:
 
@@ -165,6 +124,10 @@ namespace SemperEngine
 			virtual ~GDrawCMD() override;
 
 			virtual void Excute() override;
+
+		private:
+
+			void SetShaderProperty(ShaderProperty shaderP);
 		};
 
 		class GClearCMD : public GraphicCommand
@@ -173,11 +136,11 @@ namespace SemperEngine
 
 			Color color;
 
-			int mode;
+			RenderEnum::ClearMode mode;
 
 		public:
 
-			GClearCMD(Color color, int mode);
+			GClearCMD(Color color, RenderEnum::ClearMode mode);
 
 			virtual ~GClearCMD() override;
 
@@ -197,25 +160,6 @@ namespace SemperEngine
 			virtual ~GWireframeCMD() override;
 
 			virtual void Excute() override;
-		};
-
-		class GDrawScreen : public GraphicCommand
-		{
-		public:
-
-			GraphicVertexData vertexData;
-
-			MaterialData
-
-		public:
-
-			GDrawScreen();
-
-			virtual ~GDrawScreen() override;
-
-			virtual void Excute() override;
-
-			void SetShaderProperty(std::shared_ptr<Material> material);
 		};
 	}
 }

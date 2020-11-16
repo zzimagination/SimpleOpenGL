@@ -8,19 +8,18 @@ namespace SemperEngine
     Mesh::Mesh()
     {
         _package = ResourcePackage<VertexData>(new VertexData());
-        //_package.GetResource()->Package(_package);
-        _package.Use(this);
+        _package.Use();
     }
 
     Mesh::Mesh(ResourcePackage<VertexData> package)
     {
         _package = package;
-        _package.Use(this);
+        _package.Use();
     }
 
     Mesh::~Mesh()
     {
-        _package.Dispose(this);
+        _package.Dispose();
     }
     Core::ResourcePackage<Core::VertexData> Mesh::Package()
     {

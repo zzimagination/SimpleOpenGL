@@ -4,7 +4,8 @@
 
 #include "VertexData.h"
 #include "TextureData.h"
-#include "GraphicResource.h"
+#include "GraphicVertexData.h"
+#include "GraphicTextureData.h"
 
 namespace SemperEngine
 {

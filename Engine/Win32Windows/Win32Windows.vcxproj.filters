@@ -30,16 +30,19 @@
     <ClInclude Include="..\SemperEngine\GLRendererAPI.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\SemperEngine\Vector4.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SemperEngine\Vector3.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\SemperEngine\MathBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\SemperEngine\Color.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SemperEngine\Float2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SemperEngine\Float3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SemperEngine\Float4.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -62,16 +65,19 @@
     <ClCompile Include="..\SemperEngine\GLRendererAPI.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\SemperEngine\Vector4.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SemperEngine\Vector3.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\SemperEngine\MathBase.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\SemperEngine\Color.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SemperEngine\Float2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SemperEngine\Float3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SemperEngine\Float4.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,7 +1,7 @@
 #include "Texture.h"
 #include <fstream>
 #include <iostream>
-#include "GraphicCommandManager.h"
+#include "TextureDataCenter.h"
 
 namespace SemperEngine {
 
@@ -9,20 +9,20 @@ namespace SemperEngine {
 
 	Texture::Texture()
 	{
-		_package = TexturePackage(new TextureData());
-		_package.Use(this);
-		//_package.GetResource()->Package(_package);
+		auto data = new TextureData();
+		_package = TextureDataCenter::InputData(data);
+		_package.Use();
 	}
 
 	Texture::Texture(TexturePackage package)
 	{
 		_package = package;
-		_package.Use(this);
+		_package.Use();
 	}
 
 	Texture::~Texture()
 	{
-		_package.Dispose(this);
+		_package.Dispose();
 	}
 
 	TexturePackage Texture::Package()

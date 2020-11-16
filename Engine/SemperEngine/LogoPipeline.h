@@ -6,7 +6,6 @@
 #include <memory>
 #include "Texture.h"
 #include "Material.h"
-#include "GraphicResource.h"
 
 namespace SemperEngine
 {

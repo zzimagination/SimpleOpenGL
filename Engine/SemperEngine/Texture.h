@@ -11,7 +11,7 @@ namespace SemperEngine {
 
 	typedef Core::ResourcePackage<Core::TextureData> TexturePackage;
 
-	class Texture
+	class Texture 
 	{
 	public:
 

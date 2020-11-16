@@ -1,13 +1,15 @@
 #include "RenderSetting.h"
-#include "GraphicCommandManager.h"
+#include "GraphicRenderer.h"
 
 namespace SemperEngine
 {
+	using namespace Core;
+
 	bool RenderSetting::wireframe = false;
 
 	void RenderSetting::SetWireframeMode(bool enable)
 	{
 		wireframe = enable;
-		Core::GraphicCommandManager::SetWireframe(enable);
+		GraphicRenderer::Wireframe(wireframe);
 	}
 }

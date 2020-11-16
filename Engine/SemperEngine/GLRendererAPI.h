@@ -6,6 +6,7 @@
 #include <memory>
 #include <string>
 #include "Mathz.h"
+#include "Render.h"
 
 namespace SemperEngine
 {
@@ -25,15 +26,15 @@ namespace SemperEngine
 
 				static void SetClearColor(Color color);
 
-				static void SetClear(int mode);
+				static void SetClear(RenderEnum::ClearMode mode);
 
 				static void SetDepthTest(bool enable);
 
-				static void SetDepthTestFunc(int func);
+				static void SetDepthTestFunc(RenderEnum::DepthFunc func);
 
 				static void SetCullFace(bool enable);
 
-				static void SetCullMode(int mode);
+				static void SetCullMode(RenderEnum::CullFace face);
 
 				static void SetBlendFunc(int source, int dest);
 

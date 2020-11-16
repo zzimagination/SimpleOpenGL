@@ -2,6 +2,7 @@
 #include "GameSetting.h"
 #include "CameraCollection.h"
 #include "Event.h"
+#include "Time.h"
 
 namespace SemperEngine {
 
@@ -32,11 +33,7 @@ namespace SemperEngine {
 		Float3 lookp(look.x, 0, look.z);
 		_yaw = Math::ArcCos(Float3::Dot(lookp, Float3::forward) / lookp.Length());
 		_pitch = Math::ArcCos(Float3::Dot(lookp, look) / (look.Length(), lookp.Length()));
-		_cameraObject->viewMatrix = CalculateViewMatrix();
-		_cameraObject->projectMatrix = CalculateProjectionMatrix();
-		_cameraObject->clearColor = clearColor;
-		_cameraObject->clearMode = (int)clearMode;
-		CameraCollection::AddCamera(_cameraObject->myLife);
+		UpdateObject();
 	}
 
 	void Camera::Update()
@@ -44,11 +41,7 @@ namespace SemperEngine {
 		ChangeProjection();
 		Move();
 		Rotate();
-		_cameraObject->viewMatrix = CalculateViewMatrix();
-		_cameraObject->projectMatrix = CalculateProjectionMatrix();
-		_cameraObject->clearColor = clearColor;
-		_cameraObject->clearMode = (int)clearMode;
-		CameraCollection::AddCamera(_cameraObject->myLife);
+		UpdateObject();
 	}
 
 	void Camera::End()
@@ -247,5 +240,25 @@ namespace SemperEngine {
 				projection = Projection::Orthographic;
 			}
 		}
+	}
+
+	void Camera::UpdateObject()
+	{
+		_cameraObject->viewMatrix = CalculateViewMatrix();
+		_cameraObject->projectMatrix = CalculateProjectionMatrix();
+		_cameraObject->clearColor = clearColor;
+		switch (clearMode)
+		{
+		case ClearMode::None:
+			_cameraObject->clearMode = RenderEnum::ClearMode::Color;
+			break;
+		case ClearMode::Color:
+			_cameraObject->clearMode = ClearColorDepth;
+			break;
+		case ClearMode::DepthOnly:
+			_cameraObject->clearMode = RenderEnum::ClearMode::Depth;
+			break;
+		}
+		CameraCollection::AddCamera(_cameraObject->myLife);
 	}
 }

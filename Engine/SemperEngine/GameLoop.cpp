@@ -30,6 +30,7 @@ namespace SemperEngine
 		void GameLoop::BeforeLoop()
 		{
 			WorldLoop::BeforeLoop();
+			ResourceManager::AddAndDelete();
 			BaseRenderPipeline::Render();
 			GraphicCommandManager::Resource();
 			GraphicCommandManager::SwapCommands();
@@ -93,9 +94,9 @@ namespace SemperEngine
 				/*处理游戏逻辑*/
 				EventManager::ProcessEvent();
 				WorldLoop::Loop();
+				ResourceManager::AddAndDelete();
 				BaseRenderPipeline::Render();
 				EventManager::EndEvents();
-
 				/*发送完毕命令*/
 				logicSignal.Send();
 			}

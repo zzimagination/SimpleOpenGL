@@ -2,7 +2,7 @@
 #include "RenderBatchManager.h"
 #include "RenderCollection.h"
 #include "CameraCollection.h"
-#include "GraphicCommandManager.h"
+#include "GraphicRenderer.h"
 #include "CameraObject.h"
 
 namespace SemperEngine
@@ -14,7 +14,7 @@ namespace SemperEngine
 			auto cameras = CameraCollection::GetCameras();
 			if (cameras.size() == 0)
 			{
-				EmptyClear();
+				GraphicRenderer::Clear(Float4(0, 0, 0, 1));
 				return;
 			}
 
@@ -28,32 +28,9 @@ namespace SemperEngine
 			CameraCollection::ClearCameras();
 		}
 
-		void BaseRenderPipeline::CameraClear(CameraObject* camera)
-		{
-			Color clearColor = camera->clearColor;
-			int clearMode = 0;
-			switch ((int)camera->clearMode)
-			{
-			case 0:
-				clearMode = 0;
-				break;
-			case 1:
-				clearMode = 0x03;
-				break;
-			case 2:
-				clearMode = 0x02;
-			}
-			GraphicCommandManager::Clear(clearColor, clearMode);
-		}
-
-		void BaseRenderPipeline::EmptyClear()
-		{
-			GraphicCommandManager::Clear(Float4(0, 0, 0, 1), 0x03);
-		}
-
 		void BaseRenderPipeline::RenderCamera(CameraObject* camera)
 		{
-			CameraClear(camera);
+			GraphicRenderer::Clear(camera->clearColor, camera->clearMode);
 			auto renderObjects = RenderCollection::GetRenderObjects(camera);
 			RenderBatchManager::GenerateBatchs(camera, renderObjects);
 			RenderBatchManager::GenerateGraphicCommands();

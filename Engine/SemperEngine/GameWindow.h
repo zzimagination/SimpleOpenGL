@@ -1,7 +1,7 @@
 #ifndef __GAMEWINDOW__
 #define __GAMEWINDOW__
 
-#include "GWindow.h"
+#include "GLWindow.h"
 
 namespace SemperEngine {
 
@@ -11,7 +11,7 @@ namespace SemperEngine {
 		{
 		public:
 
-			static GWindow* window;
+			static GLWindow* window;
 
 			static void CreateGameWindow();
 
@@ -24,10 +24,6 @@ namespace SemperEngine {
 			static void PollWindowEvent();
 
 			static void OnSizeChanged(int width, int height);
-
-			static void OnMouse(double xpos, double ypos);
-
-			static void OnScroll(double xoffset, double yoffset);
 
 		};
 	}

@@ -3,34 +3,46 @@
 #define __VERTEXDATA_CENTER__
 
 #include <memory>
-#include "CubeData.h"
-#include "VertexData.h"
+#include "FillList.h"
 #include "ResourcePackage.h"
-#include "Mesh.h"
+#include "DataCenter.h"
+#include "VertexData.h"
+#include "Graphic.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
-		class VertexDataCenter
+		class VertexDataCenter : public DataCenter
 		{
 		public:
 
-			static ResourcePackage<VertexData> shareCube;
-
-			static std::vector<ResourcePackage<VertexData>> cubes;
-
-			static std::vector<int> unuseCube;
+			static FillList<GPResourceUnit<VertexData>> vertexDatas;
 
 		public:
 
-			static std::shared_ptr<Mesh> LoadCube(bool share);
+			static ResourcePackage<VertexData> InputData(VertexData* data);
+
+			static void AddAndDelete();
 
 		private:
 
-			static VertexData* CreateCubeData();
+			static std::vector<int> _addIndex;
 
-			static void UnloadCube(ResourceID id);
+			static std::vector<int> _removeIndex;
+
+		private:
+
+			static BaseData* GetData(int id);
+
+			static void Destroy(int id);
+
+			static GraphicDataInfo GetGDataInfo(int id);
+
+			static void AddIndex(int id);
+
+			static void RemoveIndex(int id);
+
 		};
 	}
 }

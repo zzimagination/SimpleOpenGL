@@ -2,14 +2,14 @@
 
 namespace SemperEngine
 {
-	std::vector<std::string> LogoCollection::_files;
+	std::vector<std::string> LogoCollection::files;
 
 	void LogoCollection::AddLogoImage(std::string file)
 	{
-		_files.push_back(file);
+		files.push_back(file);
 	}
 	int LogoCollection::Count()
 	{
-		return _files.size();
+		return files.size();
 	}
 }

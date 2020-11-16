@@ -1,5 +1,4 @@
 #include "VertexDataCenter.h"
-#include "CubeData.h"
 #include "GraphicDataCenter.h"
 #include "ScreenTextureData.h"
 
@@ -9,73 +8,79 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		ResourcePackage<VertexData> VertexDataCenter::shareCube;
+		FillList<VertexDataCenter::GPResourceUnit<VertexData>> VertexDataCenter::vertexDatas;
 
-		std::vector<ResourcePackage<VertexData>> VertexDataCenter::cubes;
+		vector<int> VertexDataCenter::_addIndex;
 
-		vector<int> VertexDataCenter::unuseCube;
+		vector<int> VertexDataCenter::_removeIndex;
 
-		shared_ptr<Mesh> VertexDataCenter::LoadCube(bool share = false)
+		ResourcePackage<VertexData> VertexDataCenter::InputData(VertexData* data)
 		{
-			//if (share)
-			//{
-			//	if (shareCube.IsEmpty())
-			//	{
-			//		auto cube = CreateCubeData();
-			//		shareCube = ResourcePackage<VertexData>(cube);
-			//		shareCube.onDestroy = Unload;
-			//		shareCube.id = 0;
-			//		shareCube.Use();
-			//		GraphicDataCenter::AddVertexData(shareCube);
-			//	}
-			//	auto instance = new ResourceReference<VertexData>(shareCube);
-			//	RsVertexRef rs(instance);
-			//	return rs;
-			//}
+			auto clerk = shared_ptr<DataCenterClerk>(new DataCenterClerk());
+			clerk->getDataTo = GetData;
+			clerk->destoryTo = Destroy;
+			clerk->getGDataInfo = GetGDataInfo;
 
-			auto cube = CreateCubeData();
-			ResourcePackage<VertexData> package(cube);
-			package.onDestroy = UnloadCube;
-			unsigned int id = 0;
-			if (unuseCube.size() > 0)
+			ResourcePackage<VertexData> package(data);
+			package.clerk = clerk;
+
+			GPResourceUnit<VertexData> unit;
+			unit.package = package;
+
+			clerk->id = vertexDatas.Add(unit);
+			AddIndex(clerk->id);
+			return package;
+		}
+
+		void VertexDataCenter::AddAndDelete()
+		{
+			for (int i = 0; i < _removeIndex.size(); i++)
 			{
-				id = *(unuseCube.end() - 1);
-				unuseCube.pop_back();
-				package.id = id;
-				cubes[id] = package;
+				auto info = vertexDatas[_removeIndex[i]].graphicDataInfo;
+				GraphicDataCenter::RemoveVertexData(info);
+				vertexDatas.Remove(_removeIndex[i]);
 			}
-			else
+			_removeIndex.clear();
+			for (int i = 0; i < _addIndex.size(); i++)
 			{
-				id = (unsigned int)cubes.size();
-				package.id = id;
-				cubes.push_back(package);
+				auto package = vertexDatas[_addIndex[i]].package;
+				auto info = GraphicDataCenter::AddVertexData(package.GetResource());
+				vertexDatas[_addIndex[i]].graphicDataInfo = info;
 			}
-			//package.GetResource()->Package(package);
-			return shared_ptr<Mesh>(new Mesh(package));
+			_addIndex.clear();
 		}
 
-		void VertexDataCenter::UnloadCube(ResourceID id)
+		BaseData* VertexDataCenter::GetData(int id)
 		{
-			auto package = cubes[id];
-			GraphicDataCenter::RemoveVertexData(package);
-			unuseCube.push_back(id);
+			return vertexDatas[id].package.GetResource();
 		}
 
-		VertexData* VertexDataCenter::CreateCubeData()
+		void VertexDataCenter::Destroy(int id)
 		{
-			auto cube = new VertexData();
-			auto size = sizeof(CubeData::vertices);
-			cube->vertices.resize(size);
-			memcpy(cube->vertices.data(), CubeData::vertices, size);
-			size = sizeof(CubeData::uvs);
-			cube->uv.resize(size);
-			memcpy(cube->uv.data(), CubeData::uvs, size);
-			size = sizeof(CubeData::indices);
-			cube->index.resize(size);
-			memcpy(cube->index.data(), CubeData::indices, size);
-			cube->vertexCount = CubeData::vertexCount;
-			return cube;
+			RemoveIndex(id);
 		}
 
+		GraphicDataInfo VertexDataCenter::GetGDataInfo(int id)
+		{
+			return vertexDatas[id].graphicDataInfo;
+		}
+
+		void VertexDataCenter::AddIndex(int id)
+		{
+			_addIndex.push_back(id);
+		}
+
+		void VertexDataCenter::RemoveIndex(int id)
+		{
+			for (int i = 0; i < _addIndex.size(); i++)
+			{
+				if (_addIndex[i] == id)
+				{
+					_addIndex.erase(_addIndex.begin() + i);
+					return;
+				}
+			}
+			_removeIndex.push_back(id);
+		}
 	}
 }

@@ -151,15 +151,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BaseData.h" />
     <ClInclude Include="BaseRenderPipeline.h" />
     <ClInclude Include="BeautifulWorld.h" />
-    <ClInclude Include="BeforeAnything.h" />
     <ClInclude Include="CameraCollection.h" />
     <ClInclude Include="CameraObject.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="CompletedSignal.h" />
     <ClInclude Include="ComponentCreator.h" />
     <ClInclude Include="Cube.h" />
+    <ClInclude Include="DataCenter.h" />
+    <ClInclude Include="DataCenterClerk.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="DebugFile.h" />
     <ClInclude Include="DebugOutput.h" />
@@ -168,21 +170,25 @@
     <ClInclude Include="EventDef.h" />
     <ClInclude Include="EventRecorder.h" />
     <ClInclude Include="EventManager.h" />
+    <ClInclude Include="FillList.h" />
     <ClInclude Include="GameEnd.h" />
     <ClInclude Include="GameObjectContainer.h" />
     <ClInclude Include="GameObjectCreator.h" />
     <ClInclude Include="GLRendererAPI.h" />
     <ClInclude Include="GLResourceAPI.h" />
     <ClInclude Include="GLShaderAPI.h" />
+    <ClInclude Include="Graphic.h" />
+    <ClInclude Include="GraphicRenderer.h" />
     <ClInclude Include="GraphicCommandManager.h" />
     <ClInclude Include="GraphicResouceAPI.h" />
-    <ClInclude Include="GraphicResource.h" />
+    <ClInclude Include="GraphicData.h" />
     <ClInclude Include="GraphicCommand.h" />
     <ClInclude Include="GraphicDataCenter.h" />
-    <ClInclude Include="GWindow.h" />
+    <ClInclude Include="GraphicTextureData.h" />
+    <ClInclude Include="GraphicVertexData.h" />
+    <ClInclude Include="GLWindow.h" />
     <ClInclude Include="InsideWorld.h" />
     <ClInclude Include="InsideWorldAction.h" />
-    <ClInclude Include="KeyIdentity.h" />
     <ClInclude Include="LifeContainer.h" />
     <ClInclude Include="LogoCollection.h" />
     <ClInclude Include="LogoPipeline.h" />
@@ -190,10 +196,9 @@
     <ClInclude Include="MathBase.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="NextWorld.h" />
-    <ClInclude Include="ObjectCollection.h" />
-    <ClInclude Include="ObjectCollection.hpp" />
     <ClInclude Include="ObjectIndex.h" />
     <ClInclude Include="Quaternion.h" />
+    <ClInclude Include="Render.h" />
     <ClInclude Include="RenderBatchManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
@@ -215,6 +220,8 @@
     <ClInclude Include="RenderObjectManager.h" />
     <ClInclude Include="RenderSetting.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="ResourceInternal.h" />
+    <ClInclude Include="ResourceLoader.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="ResourcePackage.h" />
     <ClInclude Include="ScreenTextureData.h" />
@@ -264,6 +271,8 @@
     <ClCompile Include="ComponentCreator.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="CubeData.cpp" />
+    <ClCompile Include="DataCenter.cpp" />
+    <ClCompile Include="DataCenterClerk.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="DebugFile.cpp" />
     <ClCompile Include="DebugOutput.cpp" />
@@ -275,10 +284,10 @@
     <ClCompile Include="GameObjectContainer.cpp" />
     <ClCompile Include="GameObjectCreator.cpp" />
     <ClCompile Include="GClearCMD.cpp" />
-    <ClCompile Include="GDrawScreen.cpp" />
     <ClCompile Include="GLRendererAPI.cpp" />
     <ClCompile Include="GLResourceAPI.cpp" />
     <ClCompile Include="GLShaderAPI.cpp" />
+    <ClCompile Include="GraphicRenderer.cpp" />
     <ClCompile Include="GraphicCommandManager.cpp" />
     <ClCompile Include="GraphicResourceAPI.cpp" />
     <ClCompile Include="GraphicTextureBuffer.cpp" />
@@ -287,7 +296,7 @@
     <ClCompile Include="GraphicDataCenter.cpp" />
     <ClCompile Include="GDrawCMD.cpp" />
     <ClCompile Include="GVertexBufferClearCMD.cpp" />
-    <ClCompile Include="GWindow.cpp" />
+    <ClCompile Include="GLWindow.cpp" />
     <ClCompile Include="GWireframeCMD.cpp" />
     <ClCompile Include="InsideWorld.cpp" />
     <ClCompile Include="InsideWorldAction.cpp" />
@@ -320,12 +329,13 @@
     <ClCompile Include="GraphicShaderManager.cpp" />
     <ClCompile Include="RenderSetting.cpp" />
     <ClCompile Include="Resource.cpp" />
+    <ClCompile Include="ResourceInternal.cpp" />
+    <ClCompile Include="ResourceLoader.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="ScreenTextureData.cpp" />
     <ClCompile Include="SecondWorld.cpp" />
     <ClCompile Include="SecondWorldAction.cpp" />
     <ClCompile Include="ShaderCompiler.cpp" />
-    <ClCompile Include="ShaderProperty.cpp" />
     <ClCompile Include="StringEncoding.cpp" />
     <ClCompile Include="TestComponent.cpp" />
     <ClCompile Include="TestWorld.cpp" />

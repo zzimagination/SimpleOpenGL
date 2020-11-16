@@ -1,5 +1,5 @@
 #include "EventRecorder.h"
-#include "KeyIdentity.h"
+#include "Time.h"
 
 namespace SemperEngine {
 
@@ -7,6 +7,7 @@ namespace SemperEngine {
 	{
 		using namespace std;
 
+		float EventRecorder::keepInterval = 0.02f;
 		vector<KeyEvent> EventRecorder::keyEvents;
 		vector<KeyKeeper> EventRecorder::pressedKeys;
 		vector<MouseButtonEvent> EventRecorder::mouseButtonEvents;
@@ -477,6 +478,42 @@ namespace SemperEngine {
 		{
 			mouseButtonEvents.clear();
 			keyEvents.clear();
+		}
+
+		void EventRecorder::Keep()
+		{
+			MouseButtonKeep();
+			KeyKeep();
+		}
+
+		void EventRecorder::MouseButtonKeep()
+		{
+			for (int i = 0; i < mouseButtons.size(); i++)
+			{
+				if (mouseButtons[i].pressTime > keepInterval)
+				{
+					MouseButtonEvent e;
+					e.value = mouseButtons[i].button;
+					e.action = InputAction::Button::keep;
+					mouseButtonEvents.push_back(e);
+				}
+				mouseButtons[i].pressTime += Time::GetDeltaTime();
+			}
+		}
+
+		void EventRecorder::KeyKeep()
+		{
+			for (int i = 0; i < pressedKeys.size(); i++)
+			{
+				if (pressedKeys[i].pressTime > keepInterval)
+				{
+					KeyEvent e;
+					e.value = pressedKeys[i].key;
+					e.action = InputAction::Button::keep;
+					keyEvents.push_back(e);
+				};
+				pressedKeys[i].pressTime += Time::GetDeltaTime();
+			}
 		}
 	}
 }

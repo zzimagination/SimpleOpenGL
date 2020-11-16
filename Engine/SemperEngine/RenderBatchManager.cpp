@@ -1,6 +1,8 @@
 #include "RenderBatchManager.h"
-#include "GraphicCommandManager.h"
+#include "GraphicRenderer.h"
+#include "GraphicDataCenter.h"
 #include "Camera.h"
+#include "Graphic.h"
 
 namespace SemperEngine {
 
@@ -16,7 +18,7 @@ namespace SemperEngine {
 			{
 				auto robject = renderObjects[i];
 				RenderBatch batch;
-				batch.vertexData = robject->vertexData->Package();
+				batch.vertexData = robject->vertexData;
 				batch.modelMatrix = robject->modelMatrix;
 				batch.material = robject->material;
 				batch.viewMatrix = camera->viewMatrix;
@@ -29,7 +31,20 @@ namespace SemperEngine {
 		{
 			for (int i = 0; i < batchs.size(); i++)
 			{
-				GraphicCommandManager::Draw(batchs[i]);
+				GraphicVertexInfo vertex = { GraphicVertexInfo::Type::custom, batchs[i].vertexData->Package().clerk->GetGDataInfo() };
+				RenderMatrix matrix = { batchs[i].modelMatrix, batchs[i].viewMatrix,batchs[i].projectionMatrix };
+				auto operation = batchs[i].material->renderOperation;
+				auto sproperty = batchs[i].material->shaderProperty;
+
+				vector<GraphicTextureInfo> textures;
+				for (int i = 0; i < batchs[i].material->textures.size(); i++)
+				{
+					auto tex = batchs[i].material->textures[i];
+					GraphicTextureInfo tmp = { tex.index, tex.texture->Package().clerk->GetGDataInfo() };
+					textures.push_back(tmp);
+				}
+
+				GraphicRenderer::Render(vertex, operation, matrix, sproperty, textures);
 			}
 		}
 

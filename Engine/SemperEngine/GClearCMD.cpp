@@ -5,7 +5,7 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		GClearCMD::GClearCMD(Color color, int mode)
+		GClearCMD::GClearCMD(Color color, RenderEnum::ClearMode mode)
 		{
 			this->color = color;
 			this->mode = mode;

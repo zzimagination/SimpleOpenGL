@@ -23,15 +23,12 @@
       <Filter>World\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Matrix4x4.cpp">
-      <Filter>Math</Filter>
+      <Filter>Common\Math</Filter>
     </ClCompile>
     <ClCompile Include="Mathz.cpp">
-      <Filter>Math</Filter>
+      <Filter>Common\Math</Filter>
     </ClCompile>
     <ClCompile Include="GameWindow.cpp">
-      <Filter>Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="GWindow.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="GameLoop.cpp">
@@ -41,7 +38,7 @@
       <Filter>Project\Loop</Filter>
     </ClCompile>
     <ClCompile Include="MathBase.cpp">
-      <Filter>Math</Filter>
+      <Filter>Common\Math</Filter>
     </ClCompile>
     <ClCompile Include="EventRecorder.cpp">
       <Filter>EventSystem</Filter>
@@ -62,10 +59,10 @@
       <Filter>Project\Loop</Filter>
     </ClCompile>
     <ClCompile Include="StringEncoding.cpp">
-      <Filter>Tools\Text</Filter>
+      <Filter>Common\Tools\Text</Filter>
     </ClCompile>
     <ClCompile Include="CompletedSignal.cpp">
-      <Filter>Tools\MultiThread</Filter>
+      <Filter>Common\Tools\MultiThread</Filter>
     </ClCompile>
     <ClCompile Include="BaseRenderPipeline.cpp">
       <Filter>Render\GameRender</Filter>
@@ -83,7 +80,7 @@
       <Filter>Render\GraphicRender\Data</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
-      <Filter>Resources\Texture</Filter>
+      <Filter>Resource\Texture</Filter>
     </ClCompile>
     <ClCompile Include="Component.cpp">
       <Filter>World\Component</Filter>
@@ -176,13 +173,13 @@
       <Filter>Render\GraphicRender\Shader</Filter>
     </ClCompile>
     <ClCompile Include="glad.c">
-      <Filter>Render\GraphicRender\OpenGL</Filter>
+      <Filter>Render\GraphicRender\GraphicAPI\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="GLResourceAPI.cpp">
-      <Filter>Render\GraphicRender\OpenGL</Filter>
+      <Filter>Render\GraphicRender\GraphicAPI\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="GLShaderAPI.cpp">
-      <Filter>Render\GraphicRender\OpenGL</Filter>
+      <Filter>Render\GraphicRender\GraphicAPI\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="Event.cpp">
       <Filter>EventSystem</Filter>
@@ -205,17 +202,14 @@
     <ClCompile Include="GVertexBufferCMD.cpp">
       <Filter>Render\GraphicRender\Command</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderProperty.cpp">
-      <Filter>Render\Base</Filter>
-    </ClCompile>
     <ClCompile Include="GWinText.cpp">
-      <Filter>Tools\Text</Filter>
+      <Filter>Common\Tools\Text</Filter>
     </ClCompile>
     <ClCompile Include="GClearCMD.cpp">
       <Filter>Render\GraphicRender\Command</Filter>
     </ClCompile>
     <ClCompile Include="GLRendererAPI.cpp">
-      <Filter>Render\GraphicRender\OpenGL</Filter>
+      <Filter>Render\GraphicRender\GraphicAPI\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="RenderSetting.cpp">
       <Filter>Render\GameRender</Filter>
@@ -224,13 +218,10 @@
       <Filter>Render\GraphicRender\Command</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
-      <Filter>Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicRenderAPI.cpp">
-      <Filter>Render\GraphicRender</Filter>
+      <Filter>Resource</Filter>
     </ClCompile>
     <ClCompile Include="Color.cpp">
-      <Filter>Math</Filter>
+      <Filter>Common\Math</Filter>
     </ClCompile>
     <ClCompile Include="CameraCollection.cpp">
       <Filter>Render\GameRender</Filter>
@@ -239,31 +230,19 @@
       <Filter>World\World</Filter>
     </ClCompile>
     <ClCompile Include="Quaternion.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicResourceAPI.cpp">
-      <Filter>Render\GraphicRender</Filter>
+      <Filter>Common\Math</Filter>
     </ClCompile>
     <ClCompile Include="VertexDataCenter.cpp">
-      <Filter>Resources\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexData.cpp">
-      <Filter>Resources\Mesh</Filter>
+      <Filter>Resource\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="TextureDataCenter.cpp">
-      <Filter>Resources\Texture</Filter>
+      <Filter>Resource\Texture</Filter>
     </ClCompile>
     <ClCompile Include="Resource.cpp">
-      <Filter>Resources</Filter>
+      <Filter>Resource</Filter>
     </ClCompile>
     <ClCompile Include="Mesh.cpp">
-      <Filter>Resources\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureData.cpp">
-      <Filter>Resources\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>Resources</Filter>
+      <Filter>Resource\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="CameraObject.cpp">
       <Filter>Render\GameRender</Filter>
@@ -271,29 +250,59 @@
     <ClCompile Include="LogoPipeline.cpp">
       <Filter>Render\Logo</Filter>
     </ClCompile>
-    <ClCompile Include="GDrawScreen.cpp">
-      <Filter>Render\GraphicRender\Command</Filter>
-    </ClCompile>
     <ClCompile Include="CubeData.cpp">
-      <Filter>Resources\Mesh\StaticData</Filter>
+      <Filter>Common\BaseData\StaticData</Filter>
     </ClCompile>
     <ClCompile Include="ScreenTextureData.cpp">
-      <Filter>Resources\Mesh\StaticData</Filter>
+      <Filter>Common\BaseData\StaticData</Filter>
     </ClCompile>
     <ClCompile Include="LogoCollection.cpp">
       <Filter>Render\Logo</Filter>
     </ClCompile>
     <ClCompile Include="Float2.cpp">
-      <Filter>Math</Filter>
+      <Filter>Common\Math</Filter>
     </ClCompile>
     <ClCompile Include="Float3.cpp">
-      <Filter>Math</Filter>
+      <Filter>Common\Math</Filter>
     </ClCompile>
     <ClCompile Include="Float4.cpp">
-      <Filter>Math</Filter>
+      <Filter>Common\Math</Filter>
     </ClCompile>
     <ClCompile Include="RenderLayer.cpp">
       <Filter>Render\GameRender</Filter>
+    </ClCompile>
+    <ClCompile Include="DataCenter.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicResourceAPI.cpp">
+      <Filter>Render\GraphicRender\GraphicAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicRenderAPI.cpp">
+      <Filter>Render\GraphicRender\GraphicAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Render\GameRender</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicRenderer.cpp">
+      <Filter>Render\GraphicRender</Filter>
+    </ClCompile>
+    <ClCompile Include="DataCenterClerk.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceLoader.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceInternal.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexData.cpp">
+      <Filter>Common\BaseData</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureData.cpp">
+      <Filter>Common\BaseData</Filter>
+    </ClCompile>
+    <ClCompile Include="GLWindow.cpp">
+      <Filter>Windows</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -325,15 +334,12 @@
       <Filter>World\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Matrix4x4.h">
-      <Filter>Math</Filter>
+      <Filter>Common\Math</Filter>
     </ClInclude>
     <ClInclude Include="Mathz.h">
-      <Filter>Math</Filter>
+      <Filter>Common\Math</Filter>
     </ClInclude>
     <ClInclude Include="GameWindow.h">
-      <Filter>Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="GWindow.h">
       <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="GameLoop.h">
@@ -343,7 +349,7 @@
       <Filter>Project\Loop</Filter>
     </ClInclude>
     <ClInclude Include="MathBase.h">
-      <Filter>Math</Filter>
+      <Filter>Common\Math</Filter>
     </ClInclude>
     <ClInclude Include="EventRecorder.h">
       <Filter>EventSystem</Filter>
@@ -364,10 +370,10 @@
       <Filter>Project\Loop</Filter>
     </ClInclude>
     <ClInclude Include="StringEncoding.h">
-      <Filter>Tools\Text</Filter>
+      <Filter>Common\Tools\Text</Filter>
     </ClInclude>
     <ClInclude Include="CompletedSignal.h">
-      <Filter>Tools\MultiThread</Filter>
+      <Filter>Common\Tools\MultiThread</Filter>
     </ClInclude>
     <ClInclude Include="BaseRenderPipeline.h">
       <Filter>Render\GameRender</Filter>
@@ -379,16 +385,7 @@
       <Filter>Render\GameRender</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>Resources\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectCollection.h">
-      <Filter>Tools\Collection</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectCollection.hpp">
-      <Filter>Tools\Collection</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicCommand.h">
-      <Filter>Render\GraphicRender\Command</Filter>
+      <Filter>Resource\Texture</Filter>
     </ClInclude>
     <ClInclude Include="RenderCollection.h">
       <Filter>Render\GameRender</Filter>
@@ -430,13 +427,10 @@
       <Filter>World\Component</Filter>
     </ClInclude>
     <ClInclude Include="LifeContainer.h">
-      <Filter>Tools\Custom</Filter>
+      <Filter>Common\Tools\Custom</Filter>
     </ClInclude>
     <ClInclude Include="BeautifulWorld.h">
       <Filter>World</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourcePackage.h">
-      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="GraphicCommandManager.h">
       <Filter>Render\GraphicRender</Filter>
@@ -487,16 +481,16 @@
       <Filter>Render\GraphicRender\Shader</Filter>
     </ClInclude>
     <ClInclude Include="GLRendererAPI.h">
-      <Filter>Render\GraphicRender\OpenGL</Filter>
+      <Filter>Render\GraphicRender\GraphicAPI\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="GLResourceAPI.h">
-      <Filter>Render\GraphicRender\OpenGL</Filter>
+      <Filter>Render\GraphicRender\GraphicAPI\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="WorldBuilder.h">
       <Filter>World\World</Filter>
     </ClInclude>
     <ClInclude Include="GLShaderAPI.h">
-      <Filter>Render\GraphicRender\OpenGL</Filter>
+      <Filter>Render\GraphicRender\GraphicAPI\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="EventDef.h">
       <Filter>EventSystem</Filter>
@@ -513,29 +507,20 @@
     <ClInclude Include="TimeManager.h">
       <Filter>Project</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderProperty.h">
-      <Filter>Render\Base</Filter>
-    </ClInclude>
     <ClInclude Include="GWinText.h">
-      <Filter>Tools\Text</Filter>
+      <Filter>Common\Tools\Text</Filter>
     </ClInclude>
     <ClInclude Include="RenderSetting.h">
       <Filter>Render\GameRender</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyIdentity.h">
-      <Filter>EventSystem</Filter>
+      <Filter>Resource</Filter>
     </ClInclude>
     <ClInclude Include="ObjectIndex.h">
-      <Filter>Tools\Custom</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicRenderAPI.h">
-      <Filter>Render\GraphicRender</Filter>
+      <Filter>Common\Tools\Custom</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
-      <Filter>Math</Filter>
+      <Filter>Common\Math</Filter>
     </ClInclude>
     <ClInclude Include="CameraCollection.h">
       <Filter>Render\GameRender</Filter>
@@ -544,34 +529,19 @@
       <Filter>World\World</Filter>
     </ClInclude>
     <ClInclude Include="Quaternion.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicResouceAPI.h">
-      <Filter>Render\GraphicRender</Filter>
+      <Filter>Common\Math</Filter>
     </ClInclude>
     <ClInclude Include="VertexDataCenter.h">
-      <Filter>Resources\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexData.h">
-      <Filter>Resources\Mesh</Filter>
+      <Filter>Resource\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="TextureDataCenter.h">
-      <Filter>Resources\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicResource.h">
-      <Filter>Render\GraphicRender\Data</Filter>
+      <Filter>Resource\Texture</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
-      <Filter>Resources</Filter>
+      <Filter>Resource</Filter>
     </ClInclude>
     <ClInclude Include="Mesh.h">
-      <Filter>Resources\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureData.h">
-      <Filter>Resources\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Resources</Filter>
+      <Filter>Resource\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="CameraObject.h">
       <Filter>Render\GameRender</Filter>
@@ -580,28 +550,88 @@
       <Filter>Render\Logo</Filter>
     </ClInclude>
     <ClInclude Include="CubeData.h">
-      <Filter>Resources\Mesh\StaticData</Filter>
+      <Filter>Common\BaseData\StaticData</Filter>
     </ClInclude>
     <ClInclude Include="ScreenTextureData.h">
-      <Filter>Resources\Mesh\StaticData</Filter>
-    </ClInclude>
-    <ClInclude Include="BeforeAnything.h">
-      <Filter>GameLogic</Filter>
+      <Filter>Common\BaseData\StaticData</Filter>
     </ClInclude>
     <ClInclude Include="LogoCollection.h">
       <Filter>Render\Logo</Filter>
     </ClInclude>
     <ClInclude Include="Float2.h">
-      <Filter>Math</Filter>
+      <Filter>Common\Math</Filter>
     </ClInclude>
     <ClInclude Include="Float3.h">
-      <Filter>Math</Filter>
+      <Filter>Common\Math</Filter>
     </ClInclude>
     <ClInclude Include="Float4.h">
-      <Filter>Math</Filter>
+      <Filter>Common\Math</Filter>
     </ClInclude>
     <ClInclude Include="RenderLayer.h">
       <Filter>Render\GameRender</Filter>
+    </ClInclude>
+    <ClInclude Include="FillList.h">
+      <Filter>Common\Tools\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="DataCenter.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicResouceAPI.h">
+      <Filter>Render\GraphicRender\GraphicAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicRenderAPI.h">
+      <Filter>Render\GraphicRender\GraphicAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicCommand.h">
+      <Filter>Render\GraphicRender</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Render\GameRender</Filter>
+    </ClInclude>
+    <ClInclude Include="Render.h">
+      <Filter>Render\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicRenderer.h">
+      <Filter>Render\GraphicRender</Filter>
+    </ClInclude>
+    <ClInclude Include="DataCenterClerk.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceLoader.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceInternal.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexData.h">
+      <Filter>Common\BaseData</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureData.h">
+      <Filter>Common\BaseData</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseData.h">
+      <Filter>Common\BaseData</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourcePackage.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicVertexData.h">
+      <Filter>Render\GraphicRender\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicTextureData.h">
+      <Filter>Render\GraphicRender\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicData.h">
+      <Filter>Render\GraphicRender\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProperty.h">
+      <Filter>Render\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphic.h">
+      <Filter>Render\GraphicRender</Filter>
+    </ClInclude>
+    <ClInclude Include="GLWindow.h">
+      <Filter>Windows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -625,9 +655,6 @@
       <Extensions>
       </Extensions>
     </Filter>
-    <Filter Include="Math">
-      <UniqueIdentifier>{39606d9c-726b-4a51-abbe-cc3951ddabf9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameLogic">
       <UniqueIdentifier>{ee4e0d89-ced1-4bc5-9fac-ec48b34404cc}</UniqueIdentifier>
     </Filter>
@@ -640,41 +667,20 @@
     <Filter Include="Debug">
       <UniqueIdentifier>{0978051b-1908-419e-aa4a-9f6831c93d5a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Tools">
-      <UniqueIdentifier>{9464c1f2-46ea-4b0e-955a-86dd17a57920}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Tools\Text">
-      <UniqueIdentifier>{2137ed17-9cf9-427c-95ed-2681c264531d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Tools\MultiThread">
-      <UniqueIdentifier>{3868821b-476b-4570-a3be-8371f71fcccc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Render\GameRender">
       <UniqueIdentifier>{24c8317f-0513-4841-ae1c-6a384901ba55}</UniqueIdentifier>
     </Filter>
     <Filter Include="Render\GraphicRender">
       <UniqueIdentifier>{ab36a48d-a718-430d-9235-d8a21df371bb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Render\GameRender\Data">
-      <UniqueIdentifier>{c5ff5945-3fce-4f69-816f-54a6a79e0ebb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Render\GraphicRender\Data">
       <UniqueIdentifier>{82b3e8d2-cf97-40c0-ba34-fe23f1344c97}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Tools\Collection">
-      <UniqueIdentifier>{7a3d9c93-c102-4875-a804-5a778e89fc3b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Render\GraphicRender\Command">
       <UniqueIdentifier>{9b033068-97cc-4484-b37d-d61b07272808}</UniqueIdentifier>
     </Filter>
     <Filter Include="Windows">
       <UniqueIdentifier>{94b3bf07-6d83-4bcc-95ac-2544e04f03b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources">
-      <UniqueIdentifier>{0cc2f298-98df-4ecb-ad7b-5226f98a010f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Texture">
-      <UniqueIdentifier>{249a390d-587b-4d12-b97c-0a53ef9ab8c0}</UniqueIdentifier>
     </Filter>
     <Filter Include="World">
       <UniqueIdentifier>{0348e011-0140-41b7-8452-82008fe2c81c}</UniqueIdentifier>
@@ -694,12 +700,6 @@
     <Filter Include="World\Component">
       <UniqueIdentifier>{8a83e296-1391-4c56-9c35-fa33ac688ef4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Render\GraphicRender\OpenGL">
-      <UniqueIdentifier>{2246f91a-9c0e-486a-96c8-a606dcadf677}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Tools\Custom">
-      <UniqueIdentifier>{022e4208-76a3-46a9-81ca-e0e9f6f86d2b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameLogic\WorldBuilder">
       <UniqueIdentifier>{8909a09a-2484-43a8-9172-fd4eb3c5d594}</UniqueIdentifier>
     </Filter>
@@ -718,14 +718,50 @@
     <Filter Include="Render\Base">
       <UniqueIdentifier>{63ee41a1-c11a-41e6-b360-ceed611c7250}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resources\Mesh">
-      <UniqueIdentifier>{84560e57-2616-4c20-b0c3-133cc15194fe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Render\Logo">
       <UniqueIdentifier>{2f829ab4-861c-47ed-93bc-7f5487beb8ea}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resources\Mesh\StaticData">
+    <Filter Include="Render\GraphicRender\GraphicAPI">
+      <UniqueIdentifier>{d93eac7b-2a75-4438-87a6-1bc2c148c1a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render\GraphicRender\GraphicAPI\OpenGL">
+      <UniqueIdentifier>{2246f91a-9c0e-486a-96c8-a606dcadf677}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{64e7c77f-c0ab-48af-b2e9-b43b6a2b1401}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Math">
+      <UniqueIdentifier>{39606d9c-726b-4a51-abbe-cc3951ddabf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\BaseData">
+      <UniqueIdentifier>{56a5d096-ca97-4abe-add5-369e130ae3d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\BaseData\StaticData">
       <UniqueIdentifier>{7aadae0a-9762-4388-a641-6a3d9b686a72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Tools">
+      <UniqueIdentifier>{9464c1f2-46ea-4b0e-955a-86dd17a57920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Tools\Text">
+      <UniqueIdentifier>{2137ed17-9cf9-427c-95ed-2681c264531d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Tools\MultiThread">
+      <UniqueIdentifier>{3868821b-476b-4570-a3be-8371f71fcccc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Tools\Collection">
+      <UniqueIdentifier>{7a3d9c93-c102-4875-a804-5a778e89fc3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Tools\Custom">
+      <UniqueIdentifier>{022e4208-76a3-46a9-81ca-e0e9f6f86d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{0cc2f298-98df-4ecb-ad7b-5226f98a010f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Texture">
+      <UniqueIdentifier>{249a390d-587b-4d12-b97c-0a53ef9ab8c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Mesh">
+      <UniqueIdentifier>{84560e57-2616-4c20-b0c3-133cc15194fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -4,37 +4,27 @@
 
 #include <string>
 #include <memory>
-#include "ResourcePackage.h"
+#include "BaseData.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
-		class TextureData :public IPackage<TextureData>
+		class TextureData : public BaseData
 		{
-		public:
-
-			static TextureData* LoadFile(std::string png);
-
 		public:
 
 			std::shared_ptr<unsigned char> data;
 
-			int width;
+			int width = 0;
 
-			int height;
-
-			ResourcePackage<TextureData> package;
-
-			bool isPackaged;
+			int height = 0;
 
 		public:
 
 			TextureData();
 
-			~TextureData();
-
-			virtual void Package(ResourcePackage<TextureData> mine) override;
+			virtual ~TextureData() override;
 
 		};
 	}
