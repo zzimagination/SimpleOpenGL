@@ -1,11 +1,12 @@
 #include "LogoPipeline.h"
 #include "LogoCollection.h"
 #include "RenderBatch.h"
-#include "TextureDataCenter.h"
 #include "GraphicRenderer.h"
 #include "GraphicCommandManager.h"
-#include "ResourceLoader.h"
-#include "ResourceManager.h"
+#include "ResourceDataCenter.h"
+#include "Resource.h"
+#include "ResourceObjectManager.h"
+#include "ResourceInternal.h"
 
 namespace SemperEngine
 {
@@ -85,15 +86,11 @@ namespace SemperEngine
 
 		void LogoPipeline::LoadResources()
 		{
-			auto data = ResourceLoader::LoadTexture(ResourceLoader::InternalFile("logo2.png"));
-			auto package = TextureDataCenter::InputData(data);
-			auto defaultLogo = shared_ptr<Texture>(new Texture(package));
+			auto defaultLogo = ResourceInternal::LoadTexture("logo2.png");
 			logoTextures.push_back(defaultLogo);
 			for (int i = 0; i < LogoCollection::Count(); i++)
 			{
-				auto tmpData = ResourceLoader::LoadTexture(ResourceLoader::InternalFile(LogoCollection::files[i]));
-				auto tmpPackage = TextureDataCenter::InputData(data);
-				auto tmpLogo = shared_ptr<Texture>(new Texture(package));
+				auto tmpLogo = Resource::LoadTexture(LogoCollection::files[i]);
 				logoTextures.push_back(tmpLogo);
 			}
 
@@ -101,7 +98,7 @@ namespace SemperEngine
 			material->AddProperty("_color", Color(1, 1, 1));
 			material->renderOperation.blend = true;
 			material->renderOperation.depth = false;
-			ResourceManager::AddAndDelete();
+			ResourceObjectManager::EndProcess();
 			GraphicCommandManager::Resource();
 		}
 
@@ -120,9 +117,9 @@ namespace SemperEngine
 			vector<GraphicTextureInfo> textures;
 			for (auto i = 0; i < material->textures.size(); i++)
 			{
-				auto info = material->textures[i].texture->Package().clerk->GetGDataInfo();
+				auto info = material->textures[i].texture->object->graphicDataInfo;
 				auto index = material->textures[i].index;
-				GraphicTextureInfo tex = { index,info };
+				GraphicTextureInfo tex = { index, info };
 				textures.push_back(tex);
 			}
 
