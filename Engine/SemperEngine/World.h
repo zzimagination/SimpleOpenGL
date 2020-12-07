@@ -2,52 +2,26 @@
 #ifndef __WORLD_SCRIPT__
 #define __WORLD_SCRIPT__
 
-#include <vector>
-#include <memory>
 #include <string>
-#include "ObjectIndex.h"
+#include "GameObject.h"
 
-namespace SemperEngine {
-
-	namespace Core
-	{
-		class WorldMachine;
-	}
-
-
-
+namespace SemperEngine
+{
 	class World
 	{
 	public:
 
-		Core::ObjectIndex treeIndex1;
+		static std::string GetInside();
 
-	private:
+		static std::string GetActive();
 
-		std::string _name;
+		static void SetActive(std::string name);
 
-		int _id;
+		static bool Inside();
 
-	public:
+		static void AddGameObject(std::string world, GameObject* gameObject);
 
-		World();
-
-		World(std::string name, int id);
-
-		~World();
-
-		std::string Name();
-
-		int ID();
-
-		bool operator== (const World &world);
-
-		bool operator!= ( const World &world);
 	};
-
-
-
-
-
 }
+
 #endif // !WORLD_SCRIPT

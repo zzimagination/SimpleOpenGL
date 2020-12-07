@@ -1,6 +1,5 @@
 #include "SecondWorld.h"
 #include "SecondWorldAction.h"
-#include "ComponentCreator.h"
 #include "TestComponent.h"
 
 namespace SemperEngine
@@ -8,9 +7,9 @@ namespace SemperEngine
 	SecondWorld::SecondWorld() : WorldBuilder("second", 2)
 	{
 	}
-	World SecondWorld::Build()
+
+	void SecondWorld::Build()
 	{
-		auto world = World(name, id);
 		AddAction(new SecondWorldAction());
 
 		Camera* camera = new Camera();
@@ -30,6 +29,5 @@ namespace SemperEngine
 		cube->transform.position = Float3(0, 0.5f, 0);
 		cube->material->AddProperty("_color", Color(0, 0.4f, 1));
 		AddGameObject(cube);
-		return world;
 	}
 }

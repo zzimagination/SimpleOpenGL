@@ -142,27 +142,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\SemperEngine\Color.h" />
-    <ClInclude Include="..\SemperEngine\Float2.h" />
-    <ClInclude Include="..\SemperEngine\Float3.h" />
-    <ClInclude Include="..\SemperEngine\Float4.h" />
-    <ClInclude Include="..\SemperEngine\GLRendererAPI.h" />
-    <ClInclude Include="..\SemperEngine\GLResourceAPI.h" />
-    <ClInclude Include="..\SemperEngine\GLShaderAPI.h" />
-    <ClInclude Include="..\SemperEngine\MathBase.h" />
+    <ClInclude Include="GLHelper.h" />
     <ClInclude Include="MyWindow.h" />
     <ClInclude Include="Program.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\SemperEngine\Color.cpp" />
-    <ClCompile Include="..\SemperEngine\Float2.cpp" />
-    <ClCompile Include="..\SemperEngine\Float3.cpp" />
-    <ClCompile Include="..\SemperEngine\Float4.cpp" />
-    <ClCompile Include="..\SemperEngine\GLRendererAPI.cpp" />
-    <ClCompile Include="..\SemperEngine\GLResourceAPI.cpp" />
-    <ClCompile Include="..\SemperEngine\GLShaderAPI.cpp" />
-    <ClCompile Include="..\SemperEngine\MathBase.cpp" />
     <ClCompile Include="glad.c" />
+    <ClCompile Include="GLHelper.cpp" />
     <ClCompile Include="MyWindow.cpp" />
     <ClCompile Include="Program.cpp" />
   </ItemGroup>

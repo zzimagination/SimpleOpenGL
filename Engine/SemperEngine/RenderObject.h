@@ -6,7 +6,6 @@
 #include "Material.h"
 #include "Mesh.h"
 #include "LifeContainer.h"
-#include "VertexDataCenter.h"
 #include "RenderLayer.h"
 
 namespace SemperEngine {

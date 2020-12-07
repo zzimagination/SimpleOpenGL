@@ -9,17 +9,9 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		TextureFile::TextureFile(std::string file)
+		void TextureFile::Dispose()
 		{
-			this->path = file;
-			this->compression = 0;
-			this->depth = 0;
-			this->filter = 0;
-			this->height = 0;
-			this->width = 0;
-			this->interlace = 0;
-			this->colorType = ColorType::Grayscale;
+			delete [] this->textureData;
 		}
-
 	}
 }

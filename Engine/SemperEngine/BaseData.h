@@ -10,13 +10,10 @@ namespace SemperEngine
 		{
 		public:
 
-			bool isReadOnly = false;
-
-		public:
-
 			BaseData() {};
 
 			virtual ~BaseData() {};
+
 		};
 	}
 }

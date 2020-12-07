@@ -11,25 +11,24 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		TextureFile TextureResource::Load(std::string file)
+		TextureFile TextureResource::Load(std::string path)
 		{
-			TextureFile tex(file);
-			LoadResource(tex);
-			return tex;
+			return LoadResource(path);;
 		}
 
-		void TextureResource::LoadResource(TextureFile& tfile)
+		TextureFile TextureResource::LoadResource(string path)
 		{
-			if (tfile.path == "")
+			TextureFile texFile;
+			if (path == "")
 			{
-				return;
+				throw "path is null";
 			}
 			struct stat buf;
-			if (stat(tfile.path.c_str(), &buf))
+			if (stat(path.c_str(), &buf))
 			{
-				return;
+				return TextureFile();
 			}
-			ifstream file(tfile.path, ios::binary);
+			ifstream file(path, ios::binary);
 			auto inputSize = (unsigned int)buf.st_size;
 			unique_ptr<char> buffer(new char[inputSize]);
 			file.read(buffer.get(), inputSize);
@@ -53,30 +52,30 @@ namespace SemperEngine
 			{
 				throw "load texture error ";
 			}
-			tfile.width = ihdr.width;
-			tfile.height = ihdr.height;
+			texFile.width = ihdr.width;
+			texFile.height = ihdr.height;
 			switch (ihdr.color_type)
 			{
 			case SPNG_COLOR_TYPE_GRAYSCALE:
-				tfile.colorType = TextureFile::ColorType::Grayscale;
+				texFile.colorType = TextureFile::ColorType::Grayscale;
 				break;
 			case SPNG_COLOR_TYPE_TRUECOLOR:
-				tfile.colorType = TextureFile::ColorType::Truecolor;
+				texFile.colorType = TextureFile::ColorType::Truecolor;
 				break;
 			case SPNG_COLOR_TYPE_INDEXED:
-				tfile.colorType = TextureFile::ColorType::Indexed;
+				texFile.colorType = TextureFile::ColorType::Indexed;
 				break;
 			case SPNG_COLOR_TYPE_GRAYSCALE_ALPHA:
-				tfile.colorType = TextureFile::ColorType::GrayscaleAlpha;
+				texFile.colorType = TextureFile::ColorType::GrayscaleAlpha;
 				break;
 			case SPNG_COLOR_TYPE_TRUECOLOR_ALPHA:
-				tfile.colorType = TextureFile::ColorType::TruecolorAlpha;
+				texFile.colorType = TextureFile::ColorType::TruecolorAlpha;
 				break;
 			}
-			tfile.depth = ihdr.bit_depth;
-			tfile.compression = ihdr.compression_method;
-			tfile.filter = ihdr.filter_method;
-			tfile.interlace = ihdr.interlace_method;
+			texFile.depth = ihdr.bit_depth;
+			texFile.compression = ihdr.compression_method;
+			texFile.filter = ihdr.filter_method;
+			texFile.interlace = ihdr.interlace_method;
 			////const char *clr_type_str;
 			////if (ihdr.color_type == SPNG_COLOR_TYPE_GRAYSCALE)
 			////	clr_type_str = "grayscale";
@@ -106,14 +105,17 @@ namespace SemperEngine
 				throw "image decoded error";
 			}
 
-			tfile.textureData = shared_ptr<unsigned char>(new unsigned char[out_size]);
-			error = spng_decode_image(ctx, tfile.textureData.get(), out_size, SPNG_FMT_RGBA8, 0);
+			texFile.textureData = new unsigned char[out_size];
+			texFile.size = (unsigned int)out_size;
+			error = spng_decode_image(ctx, texFile.textureData, out_size, SPNG_FMT_RGBA8, 0);
 			if (error)
 			{
 				throw "image decoded error";
 			}
 
 			spng_ctx_free(ctx);
+			return texFile;
 		}
+
 	}
 }

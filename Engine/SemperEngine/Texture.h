@@ -4,33 +4,27 @@
 #include <vector>
 #include <string>
 #include <memory>
-#include "TextureData.h"
-#include "ResourcePackage.h"
+#include "TextureObject.h"
 
-namespace SemperEngine {
-
-	typedef Core::ResourcePackage<Core::TextureData> TexturePackage;
-
-	class Texture 
+namespace SemperEngine 
+{
+	class Texture
 	{
 	public:
 
-
-
-	private:
-
-		TexturePackage _package;
+		std::shared_ptr<Core::TextureObject> object;
 
 	public:
 
 		Texture();
 
-		Texture(TexturePackage package);
-
 		~Texture();
 
-		TexturePackage Package();
-	};
+		Texture* Copy();
 
+		void ColorBuffer(std::shared_ptr<unsigned char> buffer);
+
+		std::shared_ptr<unsigned char> ColorBuffer();
+	};
 }
 #endif // !TEXTURE

@@ -12,25 +12,33 @@ namespace SemperEngine
 {
 	namespace Core
 	{
+		constexpr const char* WHITE_TEXTURE = "white";
+		constexpr const char* BLACK_TEXTURE = "black";
+		constexpr const char* BUMP_TEXTURE = "bump";
+
 		class ResourceInternal
 		{
-		private:
+		public:
 
-			static std::map < std::string, std::shared_ptr<Texture>> _texutures;
-
-			static Mesh _cube;
+			static std::map<std::string, std::shared_ptr<Texture>> textures;
 
 		public:
 
-			static void AddTexture(std::string name, std::shared_ptr<Texture> texture);
+			static void PreLoad();
 
-			static std::weak_ptr<Texture> GetTexture(std::string name);
+			static std::shared_ptr<Texture> GetTexture(std::string name);
 
-			static std::shared_ptr<Mesh> GetCube();
+			static std::shared_ptr<Texture> LoadTexture(std::string name);
+
+			static std::shared_ptr<Mesh> CreateCube();
+
+			static void Dispose();
 
 		private:
 
-			static VertexData* CreateCubeData();
+			static std::shared_ptr<Texture> LoadTexture(std::string name, TextureObject::Setting setting);
+
+			static std::string InternalFile(std::string file);
 		};
 	}
 }

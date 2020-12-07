@@ -15,8 +15,6 @@ namespace SemperEngine
 
 		virtual void Update() override;
 
-		virtual void End() override;
-
 	};
 }
 #endif // !TEST_COMPONENT

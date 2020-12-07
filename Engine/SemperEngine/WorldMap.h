@@ -4,6 +4,7 @@
 
 #include "World.h"
 #include "WorldBuilder.h"
+#include "WorldBuilderList.h"
 
 namespace SemperEngine
 {
@@ -13,23 +14,29 @@ namespace SemperEngine
 		{
 		private:
 
-			static std::vector<WorldBuilder*> _builders;
+			static WorldBuilderList builderList;
 
 		public:
 
-			static void InitWorldBuilder();
+			static void Initialize();
 
-			static World BuildWorld(int id );
+			static void BuildWorld(std::string name);
 
-			static World BuildWorld(std::string id );
+			static void BuildWorld(int id);
 
-			static int GetWorldID(std::string name);
+			static bool Contain(std::string name);
 
 			static bool Contain(int id);
 
+			static int WorldId(std::string name);
+
+			static std::string WorldName(int id);
+
 		private:
 
-			static void AddBuilder(WorldBuilder* builder);
+			static void CheckRepeat(std::string name, int id, int listId);
+
+			static WorldBuilder* GetBuilder(std::string name);
 
 			static WorldBuilder* GetBuilder(int id);
 		};

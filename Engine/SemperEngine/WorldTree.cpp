@@ -1,5 +1,7 @@
 #include "WorldTree.h"
 #include "WorldManager.h"
+#include "WorldMap.h"
+#include "Debug.h"
 
 namespace SemperEngine
 {
@@ -13,51 +15,41 @@ namespace SemperEngine
 
 		bool WorldTree::_hasBad;
 
-		World WorldTree::AddWorld(World world, WorldAction* action, vector<GameObject*> gameObjects)
+		void WorldTree::AddWorld(string name, int id, WorldAction* action, vector<GameObject*> gameObjects)
 		{
 			WorldFruit* fruit = new WorldFruit();
-			fruit->world = world;
+			fruit->name = name;
+			fruit->id = id;
 			fruit->action.reset(action);
 			for (int i = 0; i < gameObjects.size(); i++)
 			{
-				fruit->container.AddGameObject(gameObjects[i]);
+				fruit->container->AddGameObject(gameObjects[i]);
 			}
-			EncodeTreeID(fruit->world, (unsigned int)(worldFruits.size() + newWorldFruits.size()));
+			fruit->treeId = (int)(worldFruits.size() + newWorldFruits.size());
 			newWorldFruits.push_back(fruit);
-			return fruit->world;
 		}
 
-		void WorldTree::RemoveWorld(World world)
+		void WorldTree::RemoveWorld(string name)
 		{
-			WorldFruit* fruit;
-			auto treeID = DecodeTreeID(world);
-			if (treeID < worldFruits.size())
-			{
-				fruit = worldFruits[treeID];
-			}
-			else
-			{
-				fruit = newWorldFruits[treeID - worldFruits.size()];
-			}
-			fruit->container.EndGameObjects();
+			auto fruit = FindWorld(name);
+			fruit->container->EndGameObjects();
 			fruit->action->End();
 			fruit->bad = true;
 			_hasBad = true;
 		}
 
-		WorldFruit* WorldTree::GetFruit(World world)
+		void WorldTree::RemoveWorld(int id)
 		{
-			WorldFruit* fruit;
-			auto treeID = DecodeTreeID(world);
-			if (treeID < worldFruits.size())
-			{
-				fruit = worldFruits[treeID];
-			}
-			else
-			{
-				fruit = newWorldFruits[treeID - worldFruits.size()];
-			}
-			return fruit;
+			auto fruit = FindWorld(id);
+			fruit->container->EndGameObjects();
+			fruit->action->End();
+			fruit->bad = true;
+			_hasBad = true;
+		}
+
+		WorldContainer* WorldTree::FindContainer(std::string name)
+		{
+			return FindWorld(name)->container.get();
 		}
 
 		void WorldTree::Fall()
@@ -75,26 +67,60 @@ namespace SemperEngine
 					delete fruit;
 					continue;
 				}
-				EncodeTreeID(fruit->world, (unsigned int)newVector.size());
+				fruit->treeId = (int)newVector.size();
 				newVector.push_back(fruit);
 			}
 			for (int i = 0; i < newWorldFruits.size(); i++)
 			{
 				auto fruit = newWorldFruits[i];
-				EncodeTreeID(fruit->world, (unsigned int)newVector.size() + i);
+				fruit->treeId = (int)newVector.size() + i;
 			}
 			worldFruits = newVector;
 			_hasBad = false;
 		}
 
-		unsigned int WorldTree::DecodeTreeID(World& w)
+		WorldFruit* WorldTree::FindWorld(string name)
 		{
-			auto id = w.treeIndex1() - 1;
-			return id;
+			for (int i = 0; i < newWorldFruits.size(); i++)
+			{
+				if (newWorldFruits[i]->name == name)
+				{
+					return newWorldFruits[i];
+				}
+			}
+			for (int i = 0; i < worldFruits.size(); i++)
+			{
+				if (worldFruits[i]->name == name)
+				{
+					return worldFruits[i];
+				}
+			}
+			string log = "don't find the world ";
+			log.append(name);
+			Debug::Log(log);
+			throw log;
 		}
-		void WorldTree::EncodeTreeID(World& w, int i)
+		WorldFruit* WorldTree::FindWorld(int id)
 		{
-			w.treeIndex1 = i + 1;
+			for (int i = 0; i < newWorldFruits.size(); i++)
+			{
+				if (newWorldFruits[i]->id == id)
+				{
+					return newWorldFruits[i];
+
+				}
+			}
+			for (int i = 0; i < worldFruits.size(); i++)
+			{
+				if (worldFruits[i]->id == id)
+				{
+					return worldFruits[i];
+				}
+			}
+			string log = "don't find the world ";
+			log.append(to_string(id));
+			Debug::Log(log);
+			throw log;
 		}
 	}
 }

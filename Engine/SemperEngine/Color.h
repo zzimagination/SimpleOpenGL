@@ -12,6 +12,7 @@ namespace SemperEngine
 	public:
 
 		static Color FromHEX32(const long& hex);
+
 		static Color FromHEX24(const long& hex);
 
 	private:

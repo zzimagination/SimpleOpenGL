@@ -9,9 +9,8 @@
 #include "EventManager.h"
 #include "FrameRuntime.h"
 #include "BaseRenderPipeline.h"
-#include "GraphicCommandManager.h"
-#include "ResourceManager.h"
-#include "LogoPipeline.h"
+#include "ResourceObjectManager.h"
+#include "GraphicManager.h"
 
 namespace SemperEngine
 {
@@ -30,10 +29,9 @@ namespace SemperEngine
 		void GameLoop::BeforeLoop()
 		{
 			WorldLoop::BeforeLoop();
-			ResourceManager::AddAndDelete();
+			ResourceObjectManager::EndProcess();
 			BaseRenderPipeline::Render();
-			GraphicCommandManager::Resource();
-			GraphicCommandManager::SwapCommands();
+			GraphicManager::BeforeLoopEnd();
 			_isLooping = true;
 		}
 
@@ -60,15 +58,14 @@ namespace SemperEngine
 				mainSignal.Send();
 
 				/*主线程执行*/
-				GraphicCommandManager::Render();
+				GraphicManager::Loop();
 				GameWindow::SwapFrameBuffers();
 
 				/*等待其他线程执行完毕*/
 				logicSignal.Wait();
 
 				/*帧后处理*/
-				GraphicCommandManager::Resource();
-				GraphicCommandManager::SwapCommands();
+				GraphicManager::LoopEnd();
 				FrameRuntime::EndFrame();
 			}
 			logic.join();
@@ -77,6 +74,8 @@ namespace SemperEngine
 		void GameLoop::AfterLoop()
 		{
 			WorldLoop::AfterLoop();
+			ResourceObjectManager::Dispose();
+			GraphicManager::AfterLoop();
 		}
 
 		void GameLoop::LogicLoop()
@@ -94,7 +93,7 @@ namespace SemperEngine
 				/*处理游戏逻辑*/
 				EventManager::ProcessEvent();
 				WorldLoop::Loop();
-				ResourceManager::AddAndDelete();
+				ResourceObjectManager::EndProcess();
 				BaseRenderPipeline::Render();
 				EventManager::EndEvents();
 				/*发送完毕命令*/

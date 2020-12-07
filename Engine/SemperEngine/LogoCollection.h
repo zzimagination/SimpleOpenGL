@@ -12,12 +12,6 @@ namespace SemperEngine
 	public:
 
 		static std::vector<std::string> files;
-
-	public:
-
-		static void AddLogoImage(std::string file);
-
-		static int Count();
 	};
 }
 

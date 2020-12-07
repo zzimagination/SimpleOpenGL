@@ -2,7 +2,7 @@
 #ifndef __TEST_WORLD__
 #define __TEST_WORLD__
 
-#include "BeautifulWorld.h"
+#include "WorldBuilder.h"
 
 namespace SemperEngine
 {
@@ -12,7 +12,7 @@ namespace SemperEngine
 
 		TestWorld();
 
-		virtual World Build() override;
+		virtual void Build() override;
 
 	};
 }

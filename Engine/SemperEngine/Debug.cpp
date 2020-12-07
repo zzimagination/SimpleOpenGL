@@ -8,45 +8,41 @@ namespace SemperEngine
 	using namespace std;
 	using namespace Core;
 
-	void Debug::Log(int &message)
+	void Debug::Log(int& message)
 	{
-		LogItem item(Time::SystemTime());
-		item.info = to_string(message);
-		DebugOutput::InputLog(item);
+		auto str = to_string(message);
+		Log(str);
 	}
 
 	void Debug::Log(float& message)
 	{
-		LogItem item(Time::SystemTime());
-		item.info = to_string(message);
-		DebugOutput::InputLog(item);
+		auto str = to_string(message);
+		Log(str);
 	}
 
 	void Debug::Log(double& message)
 	{
-		LogItem item(Time::SystemTime());
-		item.info = to_string(message);
-		DebugOutput::InputLog(item);
+		auto str = to_string(message);
+		Log(str);
 	}
 
 	void Debug::Log(bool& message)
 	{
-		LogItem item(Time::SystemTime());
-		item.info = to_string(message);
-		DebugOutput::InputLog(item);
+		auto str = to_string(message);
+		Log(str);
 	}
 
 	void Debug::Log(char& message)
 	{
-		LogItem item(Time::SystemTime());
-		item.info = to_string(message);
-		DebugOutput::InputLog(item);
+		auto str = to_string(message);
+		Log(str);
 	}
 
 	void Debug::Log(std::string& message)
 	{
 		LogItem item(Time::SystemTime());
 		item.info = message;
+		cout << item.time<< ' ' << item.info << endl;
 		DebugOutput::InputLog(item);
 	}
 
@@ -54,6 +50,7 @@ namespace SemperEngine
 	{
 		LogItem item(Time::SystemTime());
 		item.info = message;
+		cout << item.time << ' ' << item.info << endl;
 		DebugOutput::InputLog(item);
 	}
 
@@ -61,6 +58,8 @@ namespace SemperEngine
 	{
 		LogItem item(Time::SystemTime());
 		item.winfo = message;
+		cout << item.time<< ' ';
+		wcout << item.winfo << endl;
 		DebugOutput::InputLog(item);
 	}
 
@@ -68,12 +67,14 @@ namespace SemperEngine
 	{
 		LogItem item(Time::SystemTime());
 		item.winfo = message;
+		cout << item.time << ' ';
+		wcout << item.winfo << endl;
 		DebugOutput::InputLog(item);
 	}
 	void Debug::Log(initializer_list<string> messages)
 	{
 		string sentence = *messages.begin();
-		for (auto i = messages.begin()+1; i != messages.end(); i++)
+		for (auto i = messages.begin() + 1; i != messages.end(); i++)
 		{
 			sentence.append(*i);
 		}

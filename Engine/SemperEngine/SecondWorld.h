@@ -2,7 +2,7 @@
 #ifndef __SCEOND_WORLD__
 #define __SECOND_WORLD__
 
-#include "BeautifulWorld.h"
+#include "WorldBuilder.h"
 
 namespace SemperEngine
 {
@@ -11,8 +11,8 @@ namespace SemperEngine
 	public:
 
 		SecondWorld();
-		// Í¨¹ý WorldBuilder ¼Ì³Ð
-		virtual World Build() override;
+
+		virtual void Build() override;
 	};
 }
 

@@ -21,28 +21,7 @@
     <ClInclude Include="MyWindow.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\SemperEngine\GLShaderAPI.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SemperEngine\GLResourceAPI.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SemperEngine\GLRendererAPI.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SemperEngine\MathBase.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SemperEngine\Color.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SemperEngine\Float2.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SemperEngine\Float3.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SemperEngine\Float4.h">
+    <ClInclude Include="GLHelper.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -56,28 +35,7 @@
     <ClCompile Include="glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\SemperEngine\GLShaderAPI.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SemperEngine\GLResourceAPI.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SemperEngine\GLRendererAPI.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SemperEngine\MathBase.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SemperEngine\Color.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SemperEngine\Float2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SemperEngine\Float3.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\SemperEngine\Float4.cpp">
+    <ClCompile Include="GLHelper.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

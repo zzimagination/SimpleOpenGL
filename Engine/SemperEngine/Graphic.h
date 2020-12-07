@@ -22,14 +22,6 @@ namespace SemperEngine
 
 		struct GraphicVertexInfo
 		{
-			enum struct Type
-			{
-				custom,
-				screen
-			};
-
-			Type type = Type::custom;
-
 			GraphicDataInfo info;
 		};
 	}

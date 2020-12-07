@@ -1,12 +1,9 @@
 #include "LogoPipeline.h"
 #include "LogoCollection.h"
-#include "RenderBatch.h"
-#include "GraphicRenderer.h"
 #include "GraphicCommandManager.h"
-#include "ResourceDataCenter.h"
-#include "Resource.h"
-#include "ResourceObjectManager.h"
-#include "ResourceInternal.h"
+#include "ResourceLoader.h"
+#include "GraphicResouceAPI.h"
+#include "GraphicRenderAPI.h"
 
 namespace SemperEngine
 {
@@ -15,13 +12,13 @@ namespace SemperEngine
 		using namespace std;
 		using namespace chrono;
 
-		vector<shared_ptr<Texture>> LogoPipeline::logoTextures;
-
-		shared_ptr<Material> LogoPipeline::material;
-
 		float LogoPipeline::logoTime = 3000;
 
 		int LogoPipeline::_current = -1;
+
+		GraphicVertexData LogoPipeline::_graphicVertex;
+
+		GraphicTextureData LogoPipeline::_graphicTexture;
 
 		int LogoPipeline::_next = 0;
 
@@ -35,35 +32,44 @@ namespace SemperEngine
 
 		void LogoPipeline::Start()
 		{
-			bool t = !Do();
-			if (!Do())
+			if (Completed())
 			{
-				isCompleted = true;
 				return;
 			}
-			LoadResources();
+			_graphicVertex = GenerateScreenVertex();
+			GraphicRenderAPI::SetVertexData(_graphicVertex);
+			GraphicRenderAPI::SetShader("ScreenTexture");
+			_current = _next;
+			auto texData = ResourceLoader::LoadTexture(FullPath(LogoCollection::files[_current]));
+			_graphicTexture = GraphicResouceAPI::AddTextureData(texData);
+			delete texData;
+			GraphicRenderAPI::SetClearColor(Color(0, 0, 0, 1));
+			GraphicRenderAPI::SetBlend(true);
+			GraphicRenderAPI::SetBlendFunc();
 			_startTime = system_clock::now();
 		}
 
 		void LogoPipeline::Update()
 		{
-			if (!Do())
+			if (Completed())
 			{
-				isCompleted = true;
 				return;
 			}
 
 			if (_next != _current)
 			{
 				_current = _next;
-				material->AddProperty(0, logoTextures[_current]);
+				GraphicResouceAPI::ClearTextureData(_graphicTexture);
+				auto texData = ResourceLoader::LoadTexture(FullPath(LogoCollection::files[_current]));
+				_graphicTexture = GraphicResouceAPI::AddTextureData(texData);
+				delete texData;
 				_alpha = 0;
 			}
 			else
 			{
 				_alpha = Alpha(_time.count() / 1000.f);
 			}
-			material->AddProperty("_color", Color(1, 1, 1, _alpha));
+
 			Render();
 
 			auto now = system_clock::now();
@@ -72,7 +78,7 @@ namespace SemperEngine
 			{
 				_next = _current + 1;
 			}
-			if (_next >= logoTextures.size())
+			if (_next >= LogoCollection::files.size())
 			{
 				isCompleted = true;
 				return;
@@ -81,53 +87,20 @@ namespace SemperEngine
 
 		void LogoPipeline::End()
 		{
-			Dispose();
-		}
-
-		void LogoPipeline::LoadResources()
-		{
-			auto defaultLogo = ResourceInternal::LoadTexture("logo2.png");
-			logoTextures.push_back(defaultLogo);
-			for (int i = 0; i < LogoCollection::Count(); i++)
+			if (Completed())
 			{
-				auto tmpLogo = Resource::LoadTexture(LogoCollection::files[i]);
-				logoTextures.push_back(tmpLogo);
+				return;
 			}
-
-			material = shared_ptr<Material>(new Material("ScreenTexture"));
-			material->AddProperty("_color", Color(1, 1, 1));
-			material->renderOperation.blend = true;
-			material->renderOperation.depth = false;
-			ResourceObjectManager::EndProcess();
-			GraphicCommandManager::Resource();
-		}
-
-		void LogoPipeline::Dispose()
-		{
-			for (int i = 0; i < logoTextures.size(); i++)
-			{
-				logoTextures[i].reset();
-			}
-			logoTextures.clear();
-			material.reset();
+			GraphicResouceAPI::ClearVertexData(_graphicVertex);
+			GraphicResouceAPI::ClearTextureData(_graphicTexture);
 		}
 
 		void LogoPipeline::Render()
 		{
-			vector<GraphicTextureInfo> textures;
-			for (auto i = 0; i < material->textures.size(); i++)
-			{
-				auto info = material->textures[i].texture->object->graphicDataInfo;
-				auto index = material->textures[i].index;
-				GraphicTextureInfo tex = { index, info };
-				textures.push_back(tex);
-			}
-
-			GraphicRenderer::Clear(Color(0, 0, 0, 1));
-			GraphicRenderer::RenderScreen(material->renderOperation, material->shaderProperty, textures);
-
-			GraphicCommandManager::SwapCommands();
-			GraphicCommandManager::Render();
+			GraphicRenderAPI::SetClear(ClearColorDepth);
+			auto color = Float4(1, 1, 1, _alpha);
+			GraphicRenderAPI::SetShaderProperty("_color", color);
+			GraphicRenderAPI::Draw();
 		}
 
 		bool LogoPipeline::Do()
@@ -155,6 +128,29 @@ namespace SemperEngine
 				return t2;
 			}
 			return 0.0f;
+		}
+
+		bool LogoPipeline::Completed()
+		{
+			if (!Do())
+			{
+				isCompleted = true;
+				return true;
+			}
+			return false;
+		}
+
+		GraphicVertexData LogoPipeline::GenerateScreenVertex()
+		{
+			auto data = VertexData::CreateScreen();
+			return GraphicResouceAPI::AddVertexData(data);
+		}
+
+		std::string LogoPipeline::FullPath(std::string file)
+		{
+			string path = "Internal/";
+			path.append(file);
+			return path;
 		}
 	}
 }

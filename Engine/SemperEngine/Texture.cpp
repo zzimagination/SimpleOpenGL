@@ -1,32 +1,35 @@
 #include "Texture.h"
-#include <fstream>
-#include <iostream>
-#include "TextureDataCenter.h"
+#include "ResourceObjectCenter.h"
+
 
 namespace SemperEngine {
 
+	using namespace std;
 	using namespace Core;
 
 	Texture::Texture()
 	{
-		auto data = new TextureData();
-		_package = TextureDataCenter::InputData(data);
-		_package.Use();
-	}
-
-	Texture::Texture(TexturePackage package)
-	{
-		_package = package;
-		_package.Use();
+		object = ResourceObjectCenter::CreateTexture();
 	}
 
 	Texture::~Texture()
 	{
-		_package.Dispose();
+		ResourceObjectCenter::DeleteTexture(object);
 	}
-
-	TexturePackage Texture::Package()
+	Texture* Texture::Copy()
 	{
-		return _package;
+		auto obj = ResourceObjectCenter::CopyTexture(object);
+		auto texture = new Texture();
+		ResourceObjectCenter::DeleteTexture(texture->object);
+		texture->object = obj;
+		return texture;
+	}
+	void Texture::ColorBuffer(std::shared_ptr<unsigned char> buffer)
+	{
+
+	}
+	std::shared_ptr<unsigned char> Texture::ColorBuffer()
+	{
+		return std::shared_ptr<unsigned char>();
 	}
 }

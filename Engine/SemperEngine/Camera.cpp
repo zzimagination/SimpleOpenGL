@@ -13,7 +13,7 @@ namespace SemperEngine {
 	{
 		this->_size = 5;
 		this->_farPlane = 1000;
-		this->_nearPlane = 1;
+		this->_nearPlane = 0.2f;
 		this->_fov = 65;
 		this->_aspect = (float)GameSetting::windowWidth / GameSetting::windowHeight;
 		this->projection = Projection::Perspective;
@@ -42,10 +42,6 @@ namespace SemperEngine {
 		Move();
 		Rotate();
 		UpdateObject();
-	}
-
-	void Camera::End()
-	{
 	}
 
 	float Camera::GetSize()

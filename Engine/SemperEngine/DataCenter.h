@@ -6,13 +6,28 @@
 #include <memory>
 #include <vector>
 #include "ResourcePackage.h"
-#include "Graphic.h"
+#include "FillList.h"
+#include "DataCenterClerk.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
-		class DataCenter
+		class DataCenterBase
+		{
+		public:
+
+			DataCenterBase();
+
+			virtual ~DataCenterBase();
+
+			virtual void Destroy(int id) = 0;
+
+			virtual void AddPath(int id, std::string path) = 0;
+		};
+
+		template<class T>
+		class DataCenter : public DataCenterBase
 		{
 		protected:
 
@@ -20,6 +35,7 @@ namespace SemperEngine
 			class ResourceUnit
 			{
 			public:
+
 				ResourcePackage<TType> package;
 
 				std::string path;
@@ -28,39 +44,105 @@ namespace SemperEngine
 
 				ResourceUnit();
 
-				virtual ~ResourceUnit();
+				~ResourceUnit();
 			};
 
-			template<class TType>
-			class GPResourceUnit : public ResourceUnit<TType>
-			{
-			public:
-				
-				GraphicDataInfo graphicDataInfo;
+		public:
 
-			public:
+			FillList<ResourceUnit<T>> units;
 
-				GPResourceUnit();
+		public:
 
-				virtual ~GPResourceUnit() override;
-			};
+			DataCenter();
 
+			virtual ~DataCenter() override;
+
+			ResourcePackage<T> CreatePackage();
+
+			ResourcePackage<T> CreatePackage(T* data);
+
+			ResourcePackage<T> CopyPackage(ResourcePackage<T> package);
+
+			virtual void Destroy(int id) override;
+
+			virtual void AddPath(int id, std::string path) override;
+
+		private:
+
+			std::shared_ptr<DataCenterClerk> CreateClerk();
 		};
+
+		template<class T>
 		template<class TType>
-		inline DataCenter::ResourceUnit<TType>::ResourceUnit()
+		DataCenter<T>::ResourceUnit<TType>::ResourceUnit()
 		{
 		}
+
+		template<class T>
 		template<class TType>
-		inline DataCenter::ResourceUnit<TType>::~ResourceUnit()
+		DataCenter<T>::ResourceUnit<TType>::~ResourceUnit()
 		{
 		}
-		template<class TType>
-		inline DataCenter::GPResourceUnit<TType>::GPResourceUnit()
+
+		template<class T>
+		DataCenter<T>::DataCenter()
 		{
 		}
-		template<class TType>
-		inline DataCenter::GPResourceUnit<TType>::~GPResourceUnit()
+
+		template<class T>
+		DataCenter<T>::~DataCenter()
 		{
+		}
+
+		template<class T>
+		ResourcePackage<T> DataCenter<T>::CreatePackage()
+		{
+			auto clerk = CreateClerk();
+			ResourcePackage<T> package(new T);
+			package.clerk = clerk;
+			ResourceUnit<T> unit;
+			unit.package = package;
+			clerk->id = units.Add(unit);
+			return package;
+		}
+
+		template<class T>
+		ResourcePackage<T> DataCenter<T>::CreatePackage(T* data)
+		{
+			auto clerk = CreateClerk();
+			ResourcePackage<T> package(data);
+			package.clerk = clerk;
+			ResourceUnit<T> unit;
+			unit.package = package;
+			clerk->id = units.Add(unit);
+			return package;
+		}
+
+		template<class T>
+		ResourcePackage<T> DataCenter<T>::CopyPackage(ResourcePackage<T> package)
+		{
+			auto data = package.GetResource()->Copy();
+			return CreatePackage(data);
+		}
+
+		template<class T>
+		inline void DataCenter<T>::Destroy(int id)
+		{
+			units.Remove(id);
+		}
+
+		template<class T>
+		inline void DataCenter<T>::AddPath(int id ,std::string path)
+		{
+			units[id].value.path = path;
+		}
+
+		template<class T>
+		std::shared_ptr<DataCenterClerk> DataCenter<T>::CreateClerk()
+		{
+			auto clerk = std::shared_ptr<DataCenterClerk>(new DataCenterClerk());
+			clerk->dataCenter = this;
+			return clerk;
 		}
 	}
 }

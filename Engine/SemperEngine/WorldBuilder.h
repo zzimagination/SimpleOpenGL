@@ -2,6 +2,7 @@
 #ifndef __WORLD_BUILDER__
 #define __WORLD_BUILDER__
 
+#include <memory>
 #include "GameObject.h"
 #include "World.h"
 #include "WorldAction.h"
@@ -24,37 +25,22 @@ namespace SemperEngine
 
 	public:
 
-		WorldBuilder(std::string name, int id)
-		{
-			this->name = name;
-			this->id = id;
-		}
+		WorldBuilder(std::string name, int id);
 
-		virtual World Build() = 0;
+		virtual ~WorldBuilder();
 
-		std::vector<GameObject*> GetGameObjects()
-		{
-			auto temp = _gameObjects;
-			_gameObjects.clear();
-			return temp;
-		}
+		virtual void Build() = 0;
 
-		void AddGameObject(GameObject* gameObject)
-		{
-			_gameObjects.push_back(gameObject);
-		}
+		std::vector<GameObject*> GetGameObjects();
 
-		WorldAction* GetAction()
-		{
-			auto temp = _action;
-			_action = nullptr;
-			return temp;
-		}
+		WorldAction* GetAction();
 
-		void AddAction(WorldAction* action)
-		{
-			_action = action;
-		}
+	protected:
+
+		void AddGameObject(GameObject* gameObject);
+
+		void AddAction(WorldAction* action);
+
 	};
 }
 

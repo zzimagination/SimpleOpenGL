@@ -33,7 +33,7 @@ namespace SemperEngine
 					glGetProgramInfoLog(program, 512, NULL, infoLog);
 					string log = "ERROR::SHADER::PROGRAM::LINKING_FAILED\n";
 					log.append(infoLog);
-					//Debug::Log(log);
+					Debug::Log(log);
 				}
 
 				glDeleteShader(vertex);
@@ -63,7 +63,7 @@ namespace SemperEngine
 					log.append(to_string(type));
 					log.append("::COMPILATION_FAILED\n");
 					log.append(infoLog);
-					//Debug::Log(log);
+					Debug::Log(log);
 				};
 				return shader;
 			}

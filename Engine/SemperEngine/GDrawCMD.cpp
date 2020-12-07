@@ -29,17 +29,8 @@ namespace SemperEngine
 			GraphicRenderAPI::SetBlend(operation.blend);
 			GraphicRenderAPI::SetBlendFunc();
 
-			GraphicVertexData vert;
-			switch (vertex.type)
-			{
-			case GraphicVertexInfo::Type::screen:
-				vert = *GraphicDataCenter::screenVertexData.get();
-				break;
-			case GraphicVertexInfo::Type::custom:
-				vert = *GraphicDataCenter::GetVertexData(vertex.info);
-				break;
-			}
-			GraphicRenderAPI::SetVertexData(vert);
+			auto v = GraphicDataCenter::GetVertexData(vertex.info);
+			GraphicRenderAPI::SetVertexData(*v);
 
 			SetShaderProperty(shaderProperty);
 			GraphicRenderAPI::SetShaderProperty(MODEL_MATRIX, matrix.model);

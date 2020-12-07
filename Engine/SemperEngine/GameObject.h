@@ -9,7 +9,7 @@
 #include "ObjectIndex.h"
 #include "Transform.h"
 #include "GameObjectContainer.h"
-#include "ComponentCreator.h"
+#include "Component.h"
 
 namespace SemperEngine
 {
@@ -26,7 +26,7 @@ namespace SemperEngine
 
 		Core::GameObjectContainer container;
 
-		Core::ObjectIndex worldID;
+		int worldID;
 
 	public:
 
@@ -34,13 +34,13 @@ namespace SemperEngine
 
 		virtual ~GameObject();
 
+		void AddComponent(Component* com);
+
 	public:
 
 		virtual void Start();
 
 		virtual void Update();
-
-		virtual void End();
 
 	};
 }

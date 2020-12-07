@@ -29,6 +29,10 @@ namespace SemperEngine {
 		static void Log(const wchar_t* message);
 
 		static void Log(std::initializer_list<std::string> messages);
+
+	private:
+
+
 	};
 
 }

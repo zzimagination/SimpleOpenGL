@@ -2,6 +2,7 @@
 #ifndef __WORLD_TREE__
 #define __WORLD_TREE__
 
+#include <string>
 #include <vector>
 #include "WorldFruit.h"
 
@@ -25,19 +26,22 @@ namespace SemperEngine
 
 		public:
 
-			static World AddWorld(World world, WorldAction* action, std::vector<GameObject*> gameObjects);
+			static void AddWorld(std::string name, int id, WorldAction* action, std::vector<GameObject*> gameObjects);
 
-			static void RemoveWorld(World world);
+			static void RemoveWorld(std::string name);
 
-			static WorldFruit* GetFruit(World world);
+			static void RemoveWorld(int id);
+
+			static WorldContainer* FindContainer(std::string name);
 
 			static void Fall();
 
 		private:
 
-			static unsigned int DecodeTreeID(World& w);
+			static WorldFruit* FindWorld(std::string name);
 
-			static void EncodeTreeID(World &w, int i);
+			static WorldFruit* FindWorld(int id);
+
 		};
 	}
 }

@@ -1,38 +1,26 @@
 #include "DataCenterClerk.h"
+#include "DataCenter.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
+
+		void DataCenterClerk::Destroy()
+		{
+			if (dataCenter != nullptr)
+			{
+				dataCenter->Destroy(id);
+			}
+		}
+
 		void DataCenterClerk::AddPath(std::string path)
 		{
-			if (addPathTo != nullptr)
+			if (dataCenter != nullptr)
 			{
-				addPathTo(id, path);
+				dataCenter->AddPath(id, path);
 			}
 		}
-		void DataCenterClerk::Destory()
-		{
-			if (destoryTo != nullptr)
-			{
-				destoryTo(id);
-			}
-		}
-		BaseData* DataCenterClerk::GetData()
-		{
-			if (getDataTo != nullptr)
-			{
-				return getDataTo(id);
-			}
-			return nullptr;
-		}
-		GraphicDataInfo DataCenterClerk::GetGDataInfo()
-		{
-			if (getGDataInfo != nullptr)
-			{
-				return getGDataInfo(id);
-			}
-			return GraphicDataInfo();
-		}
+
 	}
 }

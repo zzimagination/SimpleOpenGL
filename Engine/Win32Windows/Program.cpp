@@ -8,6 +8,7 @@
 #include "../SemperEngine/GLRendererAPI.h"
 #include "../SemperEngine/GLResourceAPI.h"
 #include "../SemperEngine/Float3.h"
+#include "GLHelper.h"
 
 using namespace SemperEngine::Core::GraphicAPI;
 using namespace SemperEngine;
@@ -20,32 +21,12 @@ int main()
 	glClearColor(0.0, 0.0, 0.0, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	std::ifstream vs;
-	vs.open("../SemperEngine/Shader/Line.vs", std::ios_base::in);
-	auto line = new char[20];
-	std::stringstream vss;
-	vss<<vs.rdbuf();
+	auto shader = GLHelper::CompileShader(GLHelper::vertexShader, GLHelper::fragmentShader);
+	auto vertex = GLHelper::GetVertex(GLHelper::points);
+	glBindVertexArray(vertex);
+	glUseProgram(shader);
+	glDrawArrays(GL_LINES, 0, GLHelper::points.size() / 3);
 
-	std::ifstream fs;
-	fs.open("../SemperEngine/Shader/Line.fs", std::ios_base::in);
-	std::stringstream fss;
-	fss << fs.rdbuf();
-	auto shader = GLShaderCompiler::Compile(vss.str(), fss.str(), "");
-
-	Float3 points[6] = {
-		Float3(0, 0.5f, 0),
-		Float3(0.4f, -0.2f, 0),
-		Float3(0.4f, -0.2f, 0),
-		Float3(-0.4f, -0.2f, 0),
-		Float3(-0.4f, -0.2f, 0),
-		Float3(0, 0.5f, 0)
-	};
-
-	auto vdata = GLResourceAPI::AddVertexData(points, 6);
-	GLRenderAPI::BindVertexBuffer(vdata.VAO);
-	GLRenderAPI::SetShader(shader.program);
-	GLRenderAPI::SetShaderValue("_color", Float3(1, 0, 0));
-	GLRenderAPI::DrawLines(18);
 	window->SwapWindowBuffers();
 
 	while (true)

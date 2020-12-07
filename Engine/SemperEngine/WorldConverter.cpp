@@ -2,23 +2,35 @@
 #include "WorldMap.h"
 #include "WorldTree.h"
 #include "WorldManager.h"
+#include "Debug.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
+		using namespace std;
+
 		NextWorld WorldConverter::nextWorld;
 
 		void WorldConverter::SetNext(std::string name)
 		{
-			auto id = WorldMap::GetWorldID(name);
-			SetNext(id);
+			if (!WorldMap::Contain(name))
+			{
+				string log = "don't have the world ";
+				log.append(name);
+				Debug::Log(log);
+				throw log;
+			}
+			nextWorld.SetID(WorldMap::WorldId(name));
 		}
 		void WorldConverter::SetNext(int id)
 		{
 			if (!WorldMap::Contain(id))
 			{
-				throw "arguments error";
+				string log = "don't have the world ";
+				log.append(to_string(id));
+				Debug::Log(log);
+				throw log;
 			}
 			nextWorld.SetID(id);
 		}
@@ -28,8 +40,8 @@ namespace SemperEngine
 			{
 				auto last = WorldManager::GetActive();
 				WorldTree::RemoveWorld(last);
-				auto next = WorldMap::BuildWorld(nextWorld.GetID());
-				WorldManager::_active = next;
+				WorldMap::BuildWorld(nextWorld.GetID());
+				WorldManager::_active = WorldMap::WorldName(nextWorld.GetID());
 				nextWorld.Reset();
 			}
 		}

@@ -15,11 +15,15 @@ namespace SemperEngine
 		{
 		public:
 
-			World world;
+			std::string name;
+
+			int id;
+
+			int treeId;
 
 			std::unique_ptr<WorldAction> action;
 
-			WorldContainer container;
+			std::unique_ptr<WorldContainer> container;
 
 			bool isStarted;
 

@@ -29,11 +29,6 @@ namespace SemperEngine
 
 			void EndComponents();
 
-		private:
-
-			unsigned int DecodeComID(Component* com);
-
-			void EncodeComID(Component* com, unsigned int i);
 		};
 	}
 }

@@ -8,7 +8,7 @@ namespace SemperEngine
 
 		void GameObjectContainer::AddComponent(LifeContainer<Component> com)
 		{
-			EncodeComID(com.self, _components.size() + _newComponents.size());
+			com.self->gameObjectId = (int)(_components.size() + _newComponents.size());
 			_newComponents.push_back(com);
 		}
 
@@ -47,7 +47,7 @@ namespace SemperEngine
 				{
 					continue;
 				}
-				EncodeComID(com.self, (unsigned int)next.size());
+				com.self->gameObjectId = (int)next.size();
 				next.push_back(com);
 			}
 			_components = next;
@@ -58,18 +58,8 @@ namespace SemperEngine
 			for (int i = 0; i < _components.size(); i++)
 			{
 				auto com = _components[i];
-				com.self->End();
 				delete com.self;
 			}
-		}
-		unsigned int GameObjectContainer::DecodeComID(Component* com)
-		{
-			auto id = com->comID() - 1;
-			return id;
-		}
-		void GameObjectContainer::EncodeComID(Component* com, unsigned int i)
-		{
-			com->comID = i + 1;
 		}
 	}
 }

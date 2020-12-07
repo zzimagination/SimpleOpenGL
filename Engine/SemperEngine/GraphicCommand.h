@@ -130,6 +130,8 @@ namespace SemperEngine
 			void SetShaderProperty(ShaderProperty shaderP);
 		};
 
+
+
 		class GClearCMD : public GraphicCommand
 		{
 		public:

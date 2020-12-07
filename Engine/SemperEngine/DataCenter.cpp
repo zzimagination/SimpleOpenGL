@@ -6,5 +6,13 @@ namespace SemperEngine
 	{
 		using namespace std;
 
+		DataCenterBase::DataCenterBase()
+		{
+		}
+
+		DataCenterBase::~DataCenterBase()
+		{
+		}
+
 	}
 }

@@ -10,7 +10,7 @@ namespace SemperEngine
 
 	Cube::Cube()
 	{
-		_cube = Resource::LoadCube();
+		_cube = Resource::CreateCube();
 		material = shared_ptr<Material>(new Material("Unlit"));
 		material->AddProperty("_color", Float4(1, 1, 1, 1));
 		_renderObject = unique_ptr<RenderObject>(new RenderObject());

@@ -68,8 +68,6 @@ namespace SemperEngine {
 
 		virtual void Update() override;
 
-		virtual void End() override;
-
 	public:
 
 		float GetSize();

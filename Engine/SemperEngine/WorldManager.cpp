@@ -3,46 +3,50 @@
 #include "WorldTree.h"
 #include "WorldConverter.h"
 
-namespace SemperEngine {
-
-	using namespace std;
-	using namespace Core;
-
-	World* WorldManager::currentWorld;
-
-	World WorldManager::_active;
-
-	World WorldManager::_inside;
-
-	void WorldManager::Initialize()
+namespace SemperEngine 
+{
+	namespace Core
 	{
-		_inside = WorldMap::BuildWorld(0);
-		_active = WorldMap::BuildWorld(1);
-	}
+		using namespace std;
+		using namespace Core;
 
-	World WorldManager::GetInside()
-	{
-		return _inside;
-	}
+		string WorldManager::currentWorld;
 
-	World WorldManager::GetActive()
-	{
-		return _active;
-	}
+		string WorldManager::_active;
 
-	void WorldManager::SetActive(string name)
-	{
-		WorldConverter::SetNext(name);
-	}
+		string WorldManager::_inside;
 
-	void WorldManager::SetActive(int id)
-	{
-		WorldConverter::SetNext(id);
-	}
+		void WorldManager::Initialize()
+		{
+			_inside = WorldMap::WorldName(0);
+			WorldMap::BuildWorld(0);
+			_active = WorldMap::WorldName(1);
+			WorldMap::BuildWorld(1);
+		}
 
-	bool WorldManager::Inside()
-	{
-		return *currentWorld == _inside;
-	}
+		string WorldManager::GetInside()
+		{
+			return _inside;
+		}
 
+		string WorldManager::GetActive()
+		{
+			return _active;
+		}
+
+		void WorldManager::SetActive(string name)
+		{
+			WorldConverter::SetNext(name);
+		}
+
+		void WorldManager::SetActive(int id)
+		{
+			WorldConverter::SetNext(id);
+		}
+
+		bool WorldManager::Inside()
+		{
+			return currentWorld == _inside;
+		}
+	}
 }

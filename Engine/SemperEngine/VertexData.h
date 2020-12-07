@@ -24,9 +24,17 @@ namespace SemperEngine
 
 		public:
 
+			static VertexData* CreateCube();
+
+			static VertexData* CreateScreen();
+
+		public:
+
 			VertexData();
 
 			virtual ~VertexData() override;
+
+			VertexData* Copy();
 		};
 	}
 }

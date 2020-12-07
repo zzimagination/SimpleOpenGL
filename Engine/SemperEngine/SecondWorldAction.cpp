@@ -10,17 +10,15 @@ namespace SemperEngine
 	}
 	void SecondWorldAction::Start()
 	{
-		Debug::Log("Start Second World");
 	}
 	void SecondWorldAction::Update()
 	{
 		if (Event::KeyAction(Keyboard::Key::number1, InputAction::Button::press))
 		{
-			WorldManager::SetActive(1);
+			Core::WorldManager::SetActive(1);
 		}
 	}
 	void SecondWorldAction::End()
 	{
-		Debug::Log("End Second World");
 	}
 }

@@ -39,6 +39,7 @@ namespace SemperEngine
 		{
 			_isOpen = false;
 			LogItem item(Time::SystemTime());
+			item.info = "Game End.";
 			DebugOutput::InputLog(item);
 			_debugThread.join();
 			while (DebugOutput::HasLog())
@@ -55,16 +56,13 @@ namespace SemperEngine
 			time.append(item.time);
 			time.append("]:");
 			_file->Write(time);
-			cout << time;
 			if (item.info != "")
 			{
 				_file->WriteLine(item.info);
-				cout << item.info << endl;
 			}
 			else
 			{
 				_file->WriteLine(item.winfo);
-				wcout << item.winfo << endl;
 			}
 		}
 	}

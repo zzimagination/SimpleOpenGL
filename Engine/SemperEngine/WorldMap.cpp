@@ -1,7 +1,7 @@
 #include "WorldMap.h"
 #include "WorldTree.h"
-#include "WorldBuilderList.h"
 #include "WorldActionList.h"
+#include "Debug.h"
 
 namespace SemperEngine
 {
@@ -9,50 +9,41 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		std::vector<WorldBuilder*> WorldMap::_builders;
+		WorldBuilderList WorldMap::builderList;
 
-		void WorldMap::InitWorldBuilder()
+		void WorldMap::Initialize()
 		{
-			for (int i = 0; i < worldBuilders.size(); i++)
+			auto list = builderList.worldBuilders;
+			for (int i = 0; i < list.size(); i++)
 			{
-				AddBuilder(worldBuilders[i]);
+				CheckRepeat(list[i]->name, list[i]->id , i);
 			}
 		}
 
-		World WorldMap::BuildWorld(int id)
+		void WorldMap::BuildWorld(string name)
 		{
-			auto builder = GetBuilder(id);
-		 	auto worldTemplate = builder->Build(); 
+			auto builder = GetBuilder(name);
+			builder->Build();
 			auto action = builder->GetAction();
 			auto gameObjects = builder->GetGameObjects();
-
-			auto world = WorldTree::AddWorld(worldTemplate, action, gameObjects);
-			return world;
+			WorldTree::AddWorld(builder->name, builder->id, action, gameObjects);
 		}
 
-		World WorldMap::BuildWorld(std::string name)
+		void WorldMap::BuildWorld(int id)
 		{
-			auto id = GetWorldID(name);
-			return BuildWorld(id);
+			auto builder = GetBuilder(id);
+			builder->Build();
+			auto action = builder->GetAction();
+			auto gameObjects = builder->GetGameObjects();
+			WorldTree::AddWorld(builder->name, builder->id, action, gameObjects);
 		}
 
-		int WorldMap::GetWorldID(std::string name)
+		bool WorldMap::Contain(string name)
 		{
-			for (int i = 0; i < 2; i++)
+			auto list = builderList.worldBuilders;
+			for (int i = 0; i < list.size(); i++)
 			{
-				if (_builders[i]->name == name)
-				{
-					return _builders[i]->id;
-				}
-			}
-			throw "arguments error";
-		}
-
-		bool WorldMap::Contain(int id)
-		{
-			for (int i = 0; i < _builders.size(); i++)
-			{
-				if (_builders[i]->id == id)
+				if (list[i]->name == name)
 				{
 					return true;
 				}
@@ -60,29 +51,104 @@ namespace SemperEngine
 			return false;
 		}
 
-		void WorldMap::AddBuilder(WorldBuilder * builder)
+		bool WorldMap::Contain(int id)
 		{
-			for (int i = 0; i < _builders.size(); i++)
+			auto list = builderList.worldBuilders;
+			for (int i = 0; i < list.size(); i++)
 			{
-				if (builder->id == _builders[i]->id || builder->name == _builders[i]->name)
+				if (list[i]->id == id)
 				{
-					throw "world repeat";
+					return true;
 				}
 			}
-			_builders.push_back(builder);
+			return false;
 		}
 
-		WorldBuilder * WorldMap::GetBuilder(int id)
+		int WorldMap::WorldId(std::string name)
 		{
-			for (int i = 0; i < _builders.size(); i++)
+			auto list = builderList.worldBuilders;
+			for (int i = 0; i < list.size(); i++)
 			{
-				if (_builders[i]->id == id)
+				if (list[i]->name == name)
 				{
-					return _builders[i];
+					return list[i]->id;
 				}
 			}
-			throw "don't have this world";
+			string log = "don't have the world ";
+			log.append(name);
+			Debug::Log(log);
+			throw log;
 		}
 
+		std::string WorldMap::WorldName(int id)
+		{
+			auto list = builderList.worldBuilders;
+			for (int i = 0; i < list.size(); i++)
+			{
+				if (list[i]->id == id)
+				{
+					return list[i]->name;
+				}
+			}
+			string log = "don't have the world ";
+			log.append(to_string(id));
+			Debug::Log(log);
+			throw log;
+		}
+
+		void WorldMap::CheckRepeat(std::string name, int id, int listId)
+		{
+			auto list = builderList.worldBuilders;
+			for (int i = 0; i < builderList.worldBuilders.size(); i++)
+			{
+				if (i == listId)
+				{
+					continue;
+				}
+				if (name == list[i]->name || id == list[i]->id)
+				{
+					string log = "world name repeat ";
+					log.append(name);
+					log.append(":");
+					log.append(to_string(id));
+					Debug::Log(log);
+					throw log;
+				}
+			}
+		}
+
+		WorldBuilder* WorldMap::GetBuilder(string name)
+		{
+			auto list = builderList.worldBuilders;
+			for (int i = 0; i < list.size(); i++)
+			{
+				if (list[i]->name == name)
+				{
+					auto ptr = list[i];
+					return ptr;
+				}
+			}
+			string log = "don't have the world ";
+			log.append(name);
+			Debug::Log(log);
+			throw log;
+		}
+
+		WorldBuilder* WorldMap::GetBuilder(int id)
+		{
+			auto list = builderList.worldBuilders;
+			for (int i = 0; i < list.size(); i++)
+			{
+				if (list[i]->id == id)
+				{
+					auto ptr = list[i];
+					return ptr;
+				}
+			}
+			string log = "don't have the world ";
+			log.append(to_string(id));
+			Debug::Log(log);
+			throw log;
+		}
 	}
 }

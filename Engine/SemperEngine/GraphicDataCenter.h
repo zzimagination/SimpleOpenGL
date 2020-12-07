@@ -20,7 +20,7 @@ namespace SemperEngine
 		{
 		public:
 
-			static std::shared_ptr<GraphicVertexData> screenVertexData;
+			static GraphicDataInfo screenVertexData;
 
 		private:
 
@@ -47,10 +47,6 @@ namespace SemperEngine
 			static void DeleteGraphicTextureData(GraphicDataInfo info);
 
 			static std::shared_ptr<GraphicTextureData> GetTextureData(GraphicDataInfo info);
-
-		private:
-
-			static void GenerateScreenVertex();
 
 		};
 	}

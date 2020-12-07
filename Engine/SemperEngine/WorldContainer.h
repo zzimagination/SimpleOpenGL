@@ -32,11 +32,6 @@ namespace SemperEngine
 
 			void EndGameObjects();
 
-		private:
-
-			unsigned int DecodeWorldID(GameObject* gobject);
-
-			void EncodeWorldID(GameObject* gobject, unsigned int i);
 		};
 	}
 }

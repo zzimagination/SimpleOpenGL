@@ -22,90 +22,86 @@ namespace SemperEngine
 
 			std::shared_ptr<bool> _isEmpty;
 
-			std::shared_ptr<int> _useCount;
-
 		public:
 
-			ResourcePackage()
-			{
-				EmptyPackage();
-			}
+			ResourcePackage();
 
-			ResourcePackage(T* resource)
-			{
-				if (resource == nullptr)
-				{
-					EmptyPackage();
-					return;
-				}
-				_data = resource;
-				_useCount = std::shared_ptr<int>(new int(0));
-				_isEmpty = std::shared_ptr<bool>(new bool(false));
-			}
+			ResourcePackage(T* resource);
 
-			~ResourcePackage()
-			{
-			}
+			~ResourcePackage();
 
-			T* GetResource()
-			{
-				if (IsEmpty())
-				{
-					return nullptr;
-				}
-				return _data;
-			}
+			T* GetResource();
 
-			void Use()
-			{
-				if (IsEmpty())
-				{
-					throw "empty";
-				}
-				*_useCount = *_useCount + 1;
-			}
+			void Dispose();
 
-			void Dispose()
-			{
-				if (IsEmpty())
-				{
-					return;
-				}
-				*_useCount = *_useCount - 1;
-				if (*_useCount <= 0)
-				{
-					Destory();
-				}
-			}
-
-			int UseCount()
-			{
-				return *_useCount;
-			}
-
-			bool IsEmpty()
-			{
-				return *_isEmpty;
-			}
+			bool IsEmpty();
 
 		private:
 
-			void EmptyPackage()
-			{
-				_useCount = std::shared_ptr<int>(new int(0));
-				_isEmpty = std::shared_ptr<bool>(new bool(true));
-			}
+			void EmptyPackage();
 
-			void Destory()
-			{
-				delete _data;
-				*_isEmpty = true;
-				if (clerk.get() != nullptr)
-				{
-					clerk->Destory();
-				}
-			}
+			void Destory();
 		};
+		template<class T>
+		inline ResourcePackage<T>::ResourcePackage()
+		{
+			EmptyPackage();
+		}
+		template<class T>
+		ResourcePackage<T>::ResourcePackage(T* resource)
+		{
+			if (resource == nullptr)
+			{
+				EmptyPackage();
+				return;
+			}
+			_data = resource;
+			_isEmpty = std::shared_ptr<bool>(new bool(false));
+		}
+		template<class T>
+		inline ResourcePackage<T>::~ResourcePackage()
+		{
+		}
+		template<class T>
+		T* ResourcePackage<T>::GetResource()
+		{
+			if (IsEmpty())
+			{
+				return nullptr;
+			}
+			return _data;
+		}
+
+		template<class T>
+		void ResourcePackage<T>::Dispose()
+		{
+			if (IsEmpty())
+			{
+				return;
+			}
+			Destory();
+		}
+
+		template<class T>
+		inline bool ResourcePackage<T>::IsEmpty()
+		{
+			return *_isEmpty;
+		}
+		template<class T>
+		inline void ResourcePackage<T>::EmptyPackage()
+		{
+			_isEmpty = std::shared_ptr<bool>(new bool(true));
+		}
+		template<class T>
+		void ResourcePackage<T>::Destory()
+		{
+			delete _data;
+			*_isEmpty = true;
+			if (clerk != nullptr)
+			{
+				clerk->Destroy();
+			}
+		}
 	}
 }
 

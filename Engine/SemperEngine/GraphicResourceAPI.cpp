@@ -21,12 +21,16 @@ namespace SemperEngine
 
 		void GraphicResouceAPI::ClearVertexData(GraphicVertexData data)
 		{
-			GLResourceAPI::ClearVertexData(data.VAO, data.VBO, data.EBO);
+			GLVertexData glData;
+			glData.VAO = data.VAO;
+			glData.VBO = data.VBO;
+			glData.EBO = data.EBO;
+			GLResourceAPI::ClearVertexData(glData);
 		}
 
 		GraphicTextureData GraphicResouceAPI::AddTextureData(TextureData* data)
 		{
-			auto mid = GLResourceAPI::AddTextureData(data->data.get(), data->width, data->height);
+			auto mid = GLResourceAPI::AddTextureData(data->SourceData(), data->width, data->height);
 			GraphicTextureData resource;
 			resource.glid = mid.texture;
 			return resource;

@@ -16,15 +16,17 @@ namespace SemperEngine {
 		*(life.life) = false;
 	}
 
+	void GameObject::AddComponent(Component* com)
+	{
+		this->container.AddComponent(com->life);
+	}
+
+
 	void GameObject::Start() 
 	{
 	}
 
 	void GameObject::Update() 
-	{
-	}
-
-	void GameObject::End() 
 	{
 	}
 

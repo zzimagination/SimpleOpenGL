@@ -5,6 +5,8 @@
 #include "RenderBatch.h"
 #include "RenderObject.h"
 #include "CameraObject.h"
+#include "Graphic.h"
+#include "Material.h"
 
 namespace SemperEngine {
 
@@ -23,6 +25,10 @@ namespace SemperEngine {
 			static void GenerateGraphicCommands();
 
 			static void Clear();
+
+		private:
+
+			static std::vector<GraphicTextureInfo> GetGraphicTextureInfos(std::shared_ptr<Material> material);
 
 		};
 	}

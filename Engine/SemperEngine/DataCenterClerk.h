@@ -5,43 +5,26 @@
 #include <string>
 #include <memory>
 #include "BaseData.h"
-#include "Graphic.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
+		class DataCenterBase;
+
 		class DataCenterClerk
 		{
 		public:
 
 			int id;
 
-			typedef void (*ADDPATH)(int, std::string);
-
-			ADDPATH addPathTo;
-
-			typedef void (*DESTORY)(int);
-
-			DESTORY destoryTo;
-
-			typedef BaseData* (*GETDATA)(int);
-			
-			GETDATA getDataTo;
-
-			typedef GraphicDataInfo (*GETGDATAINFO)(int);
-
-			GETGDATAINFO getGDataInfo;
+			DataCenterBase* dataCenter;
 
 		public:
 
+			void Destroy();
+
 			void AddPath(std::string path);
-
-			void Destory();
-
-			BaseData* GetData();
-
-			GraphicDataInfo GetGDataInfo();
 		};
 	}
 }

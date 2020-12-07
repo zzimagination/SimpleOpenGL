@@ -14,15 +14,10 @@ namespace SemperEngine
 
 	void TestComponent::Start()
 	{
-		Debug::Log("Component Start");
 	}
 
 	void TestComponent::Update()
 	{
 	}
 
-	void TestComponent::End()
-	{
-		Debug::Log("Component End");
-	}
 }

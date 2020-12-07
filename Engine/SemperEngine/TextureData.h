@@ -4,6 +4,8 @@
 
 #include <string>
 #include <memory>
+#include <vector>
+#include "Mathz.h"
 #include "BaseData.h"
 
 namespace SemperEngine
@@ -14,7 +16,7 @@ namespace SemperEngine
 		{
 		public:
 
-			std::shared_ptr<unsigned char> data;
+			std::shared_ptr<std::vector<unsigned char>> data;
 
 			int width = 0;
 
@@ -26,6 +28,9 @@ namespace SemperEngine
 
 			virtual ~TextureData() override;
 
+			TextureData* Copy();
+
+			unsigned char* SourceData();
 		};
 	}
 }

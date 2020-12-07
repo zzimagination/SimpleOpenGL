@@ -2,7 +2,7 @@
 #ifndef __INSIDE_WORLD__
 #define __INSIDE_WORLD__
 
-#include "BeautifulWorld.h"
+#include "WorldBuilder.h"
 
 namespace SemperEngine
 {
@@ -12,7 +12,7 @@ namespace SemperEngine
 
 		InsideWorld();
 
-		virtual World Build() override;
+		virtual void Build() override;
 
 	};
 }

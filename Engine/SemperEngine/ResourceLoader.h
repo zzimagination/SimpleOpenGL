@@ -3,6 +3,7 @@
 #define __RESOURCELOADER__
 
 #include <string>
+#include <vector>
 #include <map>
 #include "TextureData.h"
 
@@ -14,15 +15,8 @@ namespace SemperEngine
 		{
 		public:
 
-
-
-		public:
-
 			static TextureData* LoadTexture(std::string file);
 
-			static std::string InternalFile(std::string file);
-
-			static std::string ExternalFile(std::string file);
 		};
 	}
 }

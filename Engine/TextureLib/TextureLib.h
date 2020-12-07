@@ -17,46 +17,51 @@ namespace SemperEngine
 			enum class ColorType
 			{
 				Grayscale,
+
 				Truecolor,
+
 				Indexed,
+
 				GrayscaleAlpha,
+
 				TruecolorAlpha
 			};
 
 		public:
 
-			std::shared_ptr<unsigned char> textureData;
+			unsigned char* textureData;
 
-			std::string path;
+			unsigned int size = 0;
 
-			int width;
+			int width = 0;
 
-			int height;
+			int height = 0;
 
-			ColorType colorType;
+			ColorType colorType = ColorType::Truecolor;
 
-			int depth;
+			int depth = 0;
 
-			int compression;
+			int compression = 0;
 
-			int filter;
+			int filter = 0;
 
-			int interlace;
+			int interlace = 0;
 
 		public:
 
-			TextureFile(std::string file);
+			void Dispose();
+
 		};
 
 		class TextureResource
 		{
 		public:
 
-			static TextureFile Load(std::string file);
+			static TextureFile Load(std::string path);
 
 		private:
 
-			static void LoadResource(TextureFile& tfile);
+			static TextureFile LoadResource(std::string path);
 		};
 	}
 }

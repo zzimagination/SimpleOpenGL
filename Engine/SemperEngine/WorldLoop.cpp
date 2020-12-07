@@ -10,7 +10,7 @@ namespace SemperEngine
 	{
 		void WorldLoop::BeforeLoop()
 		{
-			WorldMap::InitWorldBuilder();
+			WorldMap::Initialize();
 			WorldManager::Initialize();
 			Once();
 			WorldConverter::Convert();
@@ -35,12 +35,12 @@ namespace SemperEngine
 				{
 					continue;
 				}
-				WorldManager::currentWorld = &fruit->world;
-				fruit->container.EndGameObjects();
+				WorldManager::currentWorld = fruit->name;
+				fruit->container->EndGameObjects();
 				fruit->action->End();
 				delete fruit;
 			}
-			WorldManager::currentWorld = nullptr;
+			WorldManager::currentWorld = "";
 		}
 
 		void WorldLoop::Once()
@@ -54,9 +54,9 @@ namespace SemperEngine
 				{
 					continue;
 				}
-				WorldManager::currentWorld = & fruit->world;
+				WorldManager::currentWorld = fruit->name;
 				fruit->action->Start();
-				fruit->container.StartGameObjects();
+				fruit->container->StartGameObjects();
 				WorldTree::worldFruits.push_back(fruit);
 			}
 
@@ -68,13 +68,13 @@ namespace SemperEngine
 				{
 					continue;
 				}
-				WorldManager::currentWorld = & fruit->world;
-				fruit->container.StartGameObjects();
+				WorldManager::currentWorld = fruit->name;
+				fruit->container->StartGameObjects();
 				fruit->action->Update();
-				fruit->container.UpdateGameObjects();
+				fruit->container->UpdateGameObjects();
 			}
 
-			WorldManager::currentWorld = nullptr;
+			WorldManager::currentWorld = "";
 		}
 	}
 }

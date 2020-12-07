@@ -1,4 +1,5 @@
 #include "InsideWorld.h"
+#include "BeautifulWorld.h"
 #include "InsideWorldAction.h"
 #include "Debug.h"
 
@@ -11,11 +12,9 @@ namespace SemperEngine
 	{
 	}
 
-	World InsideWorld::Build()
+	void InsideWorld::Build()
 	{
-		auto world = World(name, id);
 		AddAction(new InsideWorldAction());
-		return world;
 	}
 
 }

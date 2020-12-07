@@ -6,15 +6,12 @@
 
 namespace SemperEngine
 {
-	using namespace Core;
-
 	InsideWorldAction::~InsideWorldAction()
 	{
 	}
 
 	void InsideWorldAction::Start()
 	{
-		Debug::Log("Start Inside World");
 	}
 
 	void InsideWorldAction::Update()
@@ -31,6 +28,5 @@ namespace SemperEngine
 
 	void InsideWorldAction::End()
 	{
-		Debug::Log("End Inside World");
 	}
 }

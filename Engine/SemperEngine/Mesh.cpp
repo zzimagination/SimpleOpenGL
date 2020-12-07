@@ -1,5 +1,5 @@
 #include "Mesh.h"
-#include "GraphicDataCenter.h"
+#include "ResourceObjectCenter.h"
 
 namespace SemperEngine
 {
@@ -7,22 +7,19 @@ namespace SemperEngine
 
     Mesh::Mesh()
     {
-        _package = ResourcePackage<VertexData>(new VertexData());
-        _package.Use();
-    }
-
-    Mesh::Mesh(ResourcePackage<VertexData> package)
-    {
-        _package = package;
-        _package.Use();
+        object = ResourceObjectCenter::CreateCube();
     }
 
     Mesh::~Mesh()
     {
-        _package.Dispose();
+        ResourceObjectCenter::DeleteCube(object);
     }
-    Core::ResourcePackage<Core::VertexData> Mesh::Package()
+    Mesh* Mesh::Copy()
     {
-        return _package;
+        auto obj = ResourceObjectCenter::CopyMesh(this->object);
+        auto copy = new Mesh();
+        ResourceObjectCenter::DeleteCube(copy->object);
+        copy->object = obj;
+        return copy;
     }
 }

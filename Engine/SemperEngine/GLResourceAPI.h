@@ -35,7 +35,7 @@ namespace SemperEngine
 
 				static GLVertexData AddVertexData(Float3* vertices, int count);
 
-				static void ClearVertexData(unsigned int VAO, unsigned int VBO, unsigned int EBO);
+				static void ClearVertexData(GLVertexData data);
 
 				static void ClearVertexData(unsigned int VAO, unsigned int VBO);
 

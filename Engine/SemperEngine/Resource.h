@@ -13,16 +13,19 @@ namespace SemperEngine
 	{
 	public:
 
-		static std::shared_ptr<Mesh> LoadCube(bool share=false);
+		static std::shared_ptr<Texture> WhiteTex();
 
-		static std::weak_ptr<Texture> WhiteTex();
+		static std::shared_ptr<Texture> BlackTex();
 
-		static std::weak_ptr<Texture> BlackTex();
-
-		static std::weak_ptr<Texture> BumpTex();
+		static std::shared_ptr<Texture> BumpTex();
 
 		static std::shared_ptr<Texture> LoadTexture(std::string path, bool share = false);
 
+		static std::shared_ptr<Mesh> CreateCube();
+
+	private:
+
+		static std::string ExternalFile(std::string file);
 	};
 }
 

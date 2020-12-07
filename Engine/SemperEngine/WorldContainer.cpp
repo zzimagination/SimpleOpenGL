@@ -12,7 +12,7 @@ namespace SemperEngine
 		}
 		void WorldContainer::AddGameObject(LifeContainer<GameObject> gameObject)
 		{
-			EncodeWorldID(gameObject.self, (unsigned int)newGameObjects.size() + (unsigned int)gameObjects.size());
+			gameObject.self->worldID = (int)newGameObjects.size() + (int)gameObjects.size();
 			newGameObjects.push_back(gameObject);
 		}
 
@@ -54,7 +54,7 @@ namespace SemperEngine
 				{
 					continue;
 				}
-				EncodeWorldID(gameObject.self, (unsigned int)nextGameObjects.size());
+				gameObject.self->worldID = (int)nextGameObjects.size();
 				nextGameObjects.push_back(gameObject);
 			}
 			gameObjects = nextGameObjects;
@@ -66,18 +66,8 @@ namespace SemperEngine
 			{
 				auto gameObject = gameObjects[i];
 				gameObject.self->container.EndComponents();
-				gameObject.self->End();
 				delete gameObject.self;
 			}
-		}
-		unsigned int WorldContainer::DecodeWorldID(GameObject* gobject)
-		{
-			auto id = gobject->worldID() - 1;
-			return id;
-		}
-		void WorldContainer::EncodeWorldID(GameObject* gobject, unsigned int i)
-		{
-			gobject->worldID = i + 1;
 		}
 	}
 }

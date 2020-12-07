@@ -88,8 +88,11 @@ namespace SemperEngine
 				return result;
 			}
 
-			void GLResourceAPI::ClearVertexData(unsigned int VAO, unsigned int VBO, unsigned int EBO)
+			void GLResourceAPI::ClearVertexData(GLVertexData data)
 			{
+				auto VAO = data.VAO;
+				auto VBO = data.VBO;
+				auto EBO = data.EBO;
 				glDeleteBuffers(1, &EBO);//×¢ÒâË³Ðò
 				glDeleteBuffers(1, &VBO);
 				glDeleteVertexArrays(1, &VAO);

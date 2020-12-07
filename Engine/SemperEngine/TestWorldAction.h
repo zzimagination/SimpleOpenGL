@@ -2,7 +2,7 @@
 #ifndef __TEST_WORLD_ACTION__
 #define __TEST_WORLD_ACTION__
 
-#include "BeautifulWorld.h"
+#include "WorldAction.h"
 
 namespace SemperEngine
 {

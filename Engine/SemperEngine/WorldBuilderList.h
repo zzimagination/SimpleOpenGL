@@ -9,10 +9,15 @@
 
 namespace SemperEngine 
 {
-	std::vector<WorldBuilder*> worldBuilders = {
-		new InsideWorld(),
-		new TestWorld(),
-		new SecondWorld()
+	class WorldBuilderList
+	{
+	public:
+
+		std::vector<WorldBuilder*> worldBuilders = {
+			new TestWorld(),
+			new SecondWorld(),
+			new InsideWorld()
+		};
 	};
 }
 

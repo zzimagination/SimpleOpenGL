@@ -11,24 +11,16 @@ namespace SemperEngine
 		TextureData* ResourceLoader::LoadTexture(std::string file)
 		{
 			auto texfile = TextureResource::Load(file);
+			auto colorBuffer = new vector<unsigned char>();
+			colorBuffer->resize(texfile.size);
+			memcpy(colorBuffer->data(), texfile.textureData, texfile.size);
+			texfile.Dispose();
+
 			auto data = new TextureData();
-			data->data = texfile.textureData;
+			data->data.reset(colorBuffer);
 			data->width = texfile.width;
 			data->height = texfile.height;
 			return data;
-		}
-
-		std::string ResourceLoader::InternalFile(std::string file)
-		{
-			auto result = string("Internal/");
-			result.append(file);
-			return result;
-		}
-		std::string ResourceLoader::ExternalFile(std::string file)
-		{
-			auto result = string("Resources/");
-			result.append(file);
-			return result;
 		}
 	}
 }

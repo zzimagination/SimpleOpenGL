@@ -158,7 +158,6 @@
     <ClInclude Include="CameraObject.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="CompletedSignal.h" />
-    <ClInclude Include="ComponentCreator.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="DataCenter.h" />
     <ClInclude Include="DataCenterClerk.h" />
@@ -173,11 +172,11 @@
     <ClInclude Include="FillList.h" />
     <ClInclude Include="GameEnd.h" />
     <ClInclude Include="GameObjectContainer.h" />
-    <ClInclude Include="GameObjectCreator.h" />
     <ClInclude Include="GLRendererAPI.h" />
     <ClInclude Include="GLResourceAPI.h" />
     <ClInclude Include="GLShaderAPI.h" />
     <ClInclude Include="Graphic.h" />
+    <ClInclude Include="GraphicManager.h" />
     <ClInclude Include="GraphicRenderer.h" />
     <ClInclude Include="GraphicCommandManager.h" />
     <ClInclude Include="GraphicResouceAPI.h" />
@@ -195,6 +194,7 @@
     <ClInclude Include="Material.h" />
     <ClInclude Include="MathBase.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshObject.h" />
     <ClInclude Include="NextWorld.h" />
     <ClInclude Include="ObjectIndex.h" />
     <ClInclude Include="Quaternion.h" />
@@ -220,9 +220,12 @@
     <ClInclude Include="RenderObjectManager.h" />
     <ClInclude Include="RenderSetting.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="ResourceDataCenter.h" />
     <ClInclude Include="ResourceInternal.h" />
     <ClInclude Include="ResourceLoader.h" />
-    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="ResourceObjectCenter.h" />
+    <ClInclude Include="ResourceObjectContainer.h" />
+    <ClInclude Include="ResourceObjectManager.h" />
     <ClInclude Include="ResourcePackage.h" />
     <ClInclude Include="ScreenTextureData.h" />
     <ClInclude Include="SecondWorld.h" />
@@ -238,7 +241,7 @@
     <ClInclude Include="TestWorldAction.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureData.h" />
-    <ClInclude Include="TextureDataCenter.h" />
+    <ClInclude Include="TextureObject.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Transform.h" />
@@ -246,7 +249,6 @@
     <ClInclude Include="Float3.h" />
     <ClInclude Include="Float4.h" />
     <ClInclude Include="VertexData.h" />
-    <ClInclude Include="VertexDataCenter.h" />
     <ClInclude Include="GWinText.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="WorldAction.h" />
@@ -268,7 +270,6 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="CompletedSignal.cpp" />
     <ClCompile Include="Component.cpp" />
-    <ClCompile Include="ComponentCreator.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="CubeData.cpp" />
     <ClCompile Include="DataCenter.cpp" />
@@ -282,11 +283,11 @@
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="GameEnd.cpp" />
     <ClCompile Include="GameObjectContainer.cpp" />
-    <ClCompile Include="GameObjectCreator.cpp" />
     <ClCompile Include="GClearCMD.cpp" />
     <ClCompile Include="GLRendererAPI.cpp" />
     <ClCompile Include="GLResourceAPI.cpp" />
     <ClCompile Include="GLShaderAPI.cpp" />
+    <ClCompile Include="GraphicManager.cpp" />
     <ClCompile Include="GraphicRenderer.cpp" />
     <ClCompile Include="GraphicCommandManager.cpp" />
     <ClCompile Include="GraphicResourceAPI.cpp" />
@@ -306,6 +307,7 @@
     <ClCompile Include="MathBase.cpp" />
     <ClCompile Include="Mathz.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="MeshObject.cpp" />
     <ClCompile Include="NextWorld.cpp" />
     <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="RenderBatchManager.cpp" />
@@ -329,9 +331,13 @@
     <ClCompile Include="GraphicShaderManager.cpp" />
     <ClCompile Include="RenderSetting.cpp" />
     <ClCompile Include="Resource.cpp" />
+    <ClCompile Include="ResourceDataCenter.cpp" />
     <ClCompile Include="ResourceInternal.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="ResourceObject.h" />
+    <ClCompile Include="ResourceObjectCenter.cpp" />
+    <ClCompile Include="ResourceObjectContainer.cpp" />
+    <ClCompile Include="ResourceObjectManager.cpp" />
     <ClCompile Include="ScreenTextureData.cpp" />
     <ClCompile Include="SecondWorld.cpp" />
     <ClCompile Include="SecondWorldAction.cpp" />
@@ -343,7 +349,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="GraphicTextureData.cpp" />
     <ClCompile Include="TextureData.cpp" />
-    <ClCompile Include="TextureDataCenter.cpp" />
+    <ClCompile Include="TextureObject.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -352,10 +358,10 @@
     <ClCompile Include="Float4.cpp" />
     <ClCompile Include="GraphicVertexData.cpp" />
     <ClCompile Include="VertexData.cpp" />
-    <ClCompile Include="VertexDataCenter.cpp" />
     <ClCompile Include="GWinText.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldAction.cpp" />
+    <ClCompile Include="WorldBuilder.cpp" />
     <ClCompile Include="WorldContainer.cpp" />
     <ClCompile Include="WorldConverter.cpp" />
     <ClCompile Include="WorldFruit.cpp" />

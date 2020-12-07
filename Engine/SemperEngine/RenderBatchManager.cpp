@@ -31,19 +31,16 @@ namespace SemperEngine {
 		{
 			for (int i = 0; i < batchs.size(); i++)
 			{
-				GraphicVertexInfo vertex = { GraphicVertexInfo::Type::custom, batchs[i].vertexData->Package().clerk->GetGDataInfo() };
-				RenderMatrix matrix = { batchs[i].modelMatrix, batchs[i].viewMatrix,batchs[i].projectionMatrix };
-				auto operation = batchs[i].material->renderOperation;
-				auto sproperty = batchs[i].material->shaderProperty;
-
-				vector<GraphicTextureInfo> textures;
-				for (int i = 0; i < batchs[i].material->textures.size(); i++)
-				{
-					auto tex = batchs[i].material->textures[i];
-					GraphicTextureInfo tmp = { tex.index, tex.texture->Package().clerk->GetGDataInfo() };
-					textures.push_back(tmp);
-				}
-
+				GraphicVertexInfo vertex;
+				vertex.info = batchs[i].vertexData->object->graphicDataInfo;
+				RenderMatrix matrix;
+				matrix.model = batchs[i].modelMatrix;
+				matrix.projection = batchs[i].projectionMatrix;
+				matrix.view = batchs[i].viewMatrix;
+				auto material = batchs[i].material;
+				auto operation = material->renderOperation;
+				auto sproperty = material->shaderProperty;
+				auto textures = GetGraphicTextureInfos(material);
 				GraphicRenderer::Render(vertex, operation, matrix, sproperty, textures);
 			}
 		}
@@ -51,6 +48,21 @@ namespace SemperEngine {
 		void RenderBatchManager::Clear()
 		{
 			batchs.clear();
+		}
+
+		std::vector<GraphicTextureInfo> RenderBatchManager::GetGraphicTextureInfos(std::shared_ptr<Material> material)
+		{
+			vector<GraphicTextureInfo> textures;
+			for (int j = 0; j < material->textures.size(); j++)
+			{
+				auto index = material->textures[j].index;
+				auto info = material->textures[j].texture->object->graphicDataInfo;
+				GraphicTextureInfo tmp;
+				tmp.index = index;
+				tmp.info = info;
+				textures.push_back(tmp);
+			}
+			return textures;
 		}
 
 	}

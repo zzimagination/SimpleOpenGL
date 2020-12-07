@@ -4,8 +4,8 @@
 
 #include <chrono>
 #include <memory>
-#include "Texture.h"
-#include "Material.h"
+#include "GraphicVertexData.h"
+#include "GraphicTextureData.h"
 
 namespace SemperEngine
 {
@@ -17,13 +17,13 @@ namespace SemperEngine
 
 			static float logoTime;
 
-			static std::vector<std::shared_ptr<Texture>> logoTextures;
-
-			static std::shared_ptr<Material> material;
-
 			static bool isCompleted;
 
 		private:
+
+			static GraphicVertexData _graphicVertex;
+
+			static GraphicTextureData _graphicTexture;
 
 			static int _current;
 
@@ -45,15 +45,17 @@ namespace SemperEngine
 
 		private:
 
-			static void LoadResources();
-
-			static void Dispose();
-
 			static void Render();
 
 			static bool Do();
 
 			static float Alpha(float time);
+
+			static bool Completed();
+
+			static GraphicVertexData GenerateScreenVertex();
+
+			static std::string FullPath(std::string file);
 		};
 	}
 }

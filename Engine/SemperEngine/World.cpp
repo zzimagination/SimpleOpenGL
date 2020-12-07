@@ -1,61 +1,34 @@
 #include "World.h"
-#include "Camera.h"
-#include "GameObject.h"
+#include "WorldManager.h"
+#include "WorldTree.h"
 
-namespace SemperEngine {
-
+namespace SemperEngine
+{
 	using namespace std;
+	using namespace Core;
 
-	World::World()
+	std::string SemperEngine::World::GetInside()
 	{
-		this->_name = "";
-		this->_id = -1;
-		this->treeIndex1;
+		return WorldManager::GetInside();
 	}
 
-	World::World(std::string name, int id)
+	std::string SemperEngine::World::GetActive()
 	{
-		if (name == "" || id < 0)
-		{
-			throw "arguments error";
-		}
-		this->_name = name;
-		this->_id = id;
-		this->treeIndex1;
+		return WorldManager::GetActive();
 	}
 
-	World::~World()
+	void SemperEngine::World::SetActive(std::string name)
 	{
+		WorldManager::SetActive(name);
 	}
 
-	std::string World::Name()
+	bool SemperEngine::World::Inside()
 	{
-		if (_name == "")
-		{
-			throw "error world";
-		}
-		return _name;
+		return WorldManager::Inside();
 	}
 
-	int World::ID()
+	void World::AddGameObject(std::string world, GameObject* gameObject)
 	{
-		if (_id < 0)
-		{
-			throw "error world";
-		}
-		return _id;
+		WorldTree::FindContainer(world)->AddGameObject(gameObject);
 	}
-
-	bool World::operator==(const World & world)
-	{
-		bool result = this->_name == world._name;
-		result &= this->_id == world._id;
-		return result;
-	}
-
-	bool World::operator!=(const World & world)
-	{
-		return !(*this == world);
-	}
-
 }
