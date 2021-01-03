@@ -1,704 +1,691 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Program.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="Program\TextureData.cpp">
+      <Filter>Common\BaseData</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
-      <Filter>Project</Filter>
+    <ClCompile Include="Program\VertexData.cpp">
+      <Filter>Common\BaseData</Filter>
     </ClCompile>
-    <ClCompile Include="FrameRuntime.cpp">
-      <Filter>Project</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldManager.cpp">
-      <Filter>World\World</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>World\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix4x4.cpp">
+    <ClCompile Include="Program\Color.cpp">
       <Filter>Common\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Mathz.cpp">
+    <ClCompile Include="Program\Float2.cpp">
       <Filter>Common\Math</Filter>
     </ClCompile>
-    <ClCompile Include="GameWindow.cpp">
-      <Filter>Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLoop.cpp">
-      <Filter>Project\Loop</Filter>
-    </ClCompile>
-    <ClCompile Include="GameStart.cpp">
-      <Filter>Project\Loop</Filter>
-    </ClCompile>
-    <ClCompile Include="MathBase.cpp">
+    <ClCompile Include="Program\Float3.cpp">
       <Filter>Common\Math</Filter>
     </ClCompile>
-    <ClCompile Include="EventRecorder.cpp">
+    <ClCompile Include="Program\Float4.cpp">
+      <Filter>Common\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\MathBase.cpp">
+      <Filter>Common\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Mathz.cpp">
+      <Filter>Common\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Matrix4x4.cpp">
+      <Filter>Common\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Quaternion.cpp">
+      <Filter>Common\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\CompletedSignal.cpp">
+      <Filter>Common\MultiThread</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GWinText.cpp">
+      <Filter>Common\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\StringEncoding.cpp">
+      <Filter>Common\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Debug.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\DebugFile.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\DebugOutput.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\DebugSystem.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Event.cpp">
       <Filter>EventSystem</Filter>
     </ClCompile>
-    <ClCompile Include="Debug.cpp">
-      <Filter>Debug</Filter>
+    <ClCompile Include="Program\EventManager.cpp">
+      <Filter>EventSystem</Filter>
     </ClCompile>
-    <ClCompile Include="DebugOutput.cpp">
-      <Filter>Debug</Filter>
+    <ClCompile Include="Program\EventRecorder.cpp">
+      <Filter>EventSystem</Filter>
     </ClCompile>
-    <ClCompile Include="DebugFile.cpp">
-      <Filter>Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="DebugSystem.cpp">
-      <Filter>Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEnd.cpp">
-      <Filter>Project\Loop</Filter>
-    </ClCompile>
-    <ClCompile Include="StringEncoding.cpp">
-      <Filter>Common\Tools\Text</Filter>
-    </ClCompile>
-    <ClCompile Include="CompletedSignal.cpp">
-      <Filter>Common\Tools\MultiThread</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseRenderPipeline.cpp">
-      <Filter>Render\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderObject.cpp">
-      <Filter>Render\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicVertexData.cpp">
-      <Filter>Render\Graphic\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicTextureData.cpp">
-      <Filter>Render\Graphic\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>ResourceObject\Object\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>World\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>World\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicTextureBuffer.cpp">
-      <Filter>Render\Graphic\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicTextureBufferClear.cpp">
-      <Filter>Render\Graphic\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderCollection.cpp">
-      <Filter>Render\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderBatchManager.cpp">
-      <Filter>Render\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderBatch.cpp">
-      <Filter>Render\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldLoop.cpp">
-      <Filter>World\World</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldMap.cpp">
-      <Filter>World\World</Filter>
-    </ClCompile>
-    <ClCompile Include="NextWorld.cpp">
-      <Filter>World\World</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldTree.cpp">
-      <Filter>World\World</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldContainer.cpp">
-      <Filter>World\World</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldFruit.cpp">
-      <Filter>World\World</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObjectContainer.cpp">
-      <Filter>World\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicCommandManager.cpp">
-      <Filter>Render\Graphic</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicDataCenter.cpp">
-      <Filter>Render\Graphic</Filter>
-    </ClCompile>
-    <ClCompile Include="InsideWorld.cpp">
-      <Filter>GameLogic\WorldBuilder</Filter>
-    </ClCompile>
-    <ClCompile Include="SecondWorld.cpp">
-      <Filter>GameLogic\WorldBuilder</Filter>
-    </ClCompile>
-    <ClCompile Include="TestWorld.cpp">
-      <Filter>GameLogic\WorldBuilder</Filter>
-    </ClCompile>
-    <ClCompile Include="InsideWorldAction.cpp">
-      <Filter>GameLogic\WorldAction</Filter>
-    </ClCompile>
-    <ClCompile Include="SecondWorldAction.cpp">
-      <Filter>GameLogic\WorldAction</Filter>
-    </ClCompile>
-    <ClCompile Include="TestWorldAction.cpp">
-      <Filter>GameLogic\WorldAction</Filter>
-    </ClCompile>
-    <ClCompile Include="TestComponent.cpp">
+    <ClCompile Include="Program\ChangeColor.cpp">
       <Filter>GameLogic\Components</Filter>
     </ClCompile>
-    <ClCompile Include="WorldAction.cpp">
-      <Filter>World\World</Filter>
+    <ClCompile Include="Program\ChangeTexture.cpp">
+      <Filter>GameLogic\Components</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicShaderManager.cpp">
-      <Filter>Render\Graphic\Shader</Filter>
+    <ClCompile Include="Program\TestComponent.cpp">
+      <Filter>GameLogic\Components</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicShader.cpp">
-      <Filter>Render\Graphic\Shader</Filter>
+    <ClCompile Include="Program\Camera.cpp">
+      <Filter>GameLogic\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderCompiler.cpp">
-      <Filter>Render\Graphic\Shader</Filter>
+    <ClCompile Include="Program\Cube.cpp">
+      <Filter>GameLogic\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="glad.c">
-      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
+    <ClCompile Include="Program\InsideWorldAction.cpp">
+      <Filter>GameLogic\WorldAction</Filter>
     </ClCompile>
-    <ClCompile Include="GLResourceAPI.cpp">
-      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
+    <ClCompile Include="Program\SecondWorldAction.cpp">
+      <Filter>GameLogic\WorldAction</Filter>
     </ClCompile>
-    <ClCompile Include="GLShaderAPI.cpp">
-      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
+    <ClCompile Include="Program\TestWorldAction.cpp">
+      <Filter>GameLogic\WorldAction</Filter>
     </ClCompile>
-    <ClCompile Include="Event.cpp">
-      <Filter>EventSystem</Filter>
+    <ClCompile Include="Program\InsideWorld.cpp">
+      <Filter>GameLogic\WorldBuilder</Filter>
     </ClCompile>
-    <ClCompile Include="EventManager.cpp">
-      <Filter>EventSystem</Filter>
+    <ClCompile Include="Program\SecondWorld.cpp">
+      <Filter>GameLogic\WorldBuilder</Filter>
     </ClCompile>
-    <ClCompile Include="GameSetting.cpp">
+    <ClCompile Include="Program\TestWorld.cpp">
+      <Filter>GameLogic\WorldBuilder</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GameEnd.cpp">
+      <Filter>Project\Loop</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GameLoop.cpp">
+      <Filter>Project\Loop</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GameStart.cpp">
+      <Filter>Project\Loop</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GameThread.cpp">
+      <Filter>Project\Loop</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\LogicThread.cpp">
+      <Filter>Project\Loop</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\FrameRuntime.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="TimeManager.cpp">
+    <ClCompile Include="Program\GameSetting.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="GDrawCMD.cpp">
+    <ClCompile Include="Program\Time.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\TimeManager.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\CameraCollection.cpp">
+      <Filter>Render\Game\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\CameraObject.cpp">
+      <Filter>Render\Game\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\RenderCustomObject.cpp">
+      <Filter>Render\Game\RenderObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\RenderScreenObject.cpp">
+      <Filter>Render\Game\RenderObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\BaseRenderPipeline.cpp">
+      <Filter>Render\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Material.cpp">
+      <Filter>Render\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\RenderBatch.cpp">
+      <Filter>Render\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\RenderBatchManager.cpp">
+      <Filter>Render\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\RenderCollection.cpp">
+      <Filter>Render\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\RenderLayer.cpp">
+      <Filter>Render\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\RenderObject.cpp">
+      <Filter>Render\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\RenderSetting.cpp">
+      <Filter>Render\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GClearCMD.cpp">
       <Filter>Render\Graphic\Command</Filter>
     </ClCompile>
-    <ClCompile Include="GVertexBufferClearCMD.cpp">
+    <ClCompile Include="Program\GDrawCMD.cpp">
       <Filter>Render\Graphic\Command</Filter>
     </ClCompile>
-    <ClCompile Include="GVertexBufferCMD.cpp">
+    <ClCompile Include="Program\GraphicTextureBuffer.cpp">
       <Filter>Render\Graphic\Command</Filter>
     </ClCompile>
-    <ClCompile Include="GWinText.cpp">
-      <Filter>Common\Tools\Text</Filter>
-    </ClCompile>
-    <ClCompile Include="GClearCMD.cpp">
+    <ClCompile Include="Program\GraphicTextureBufferClear.cpp">
       <Filter>Render\Graphic\Command</Filter>
     </ClCompile>
-    <ClCompile Include="GLRendererAPI.cpp">
+    <ClCompile Include="Program\GVertexBufferClearCMD.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GWireframeCMD.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GVertexBufferCMD.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GraphicTextureData.cpp">
+      <Filter>Render\Graphic\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GraphicVertexData.cpp">
+      <Filter>Render\Graphic\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\glad.c">
       <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="RenderSetting.cpp">
-      <Filter>Render\Game</Filter>
+    <ClCompile Include="Program\GLRendererAPI.cpp">
+      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="GWireframeCMD.cpp">
-      <Filter>Render\Graphic\Command</Filter>
+    <ClCompile Include="Program\GLResourceAPI.cpp">
+      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="Color.cpp">
-      <Filter>Common\Math</Filter>
+    <ClCompile Include="Program\GLShaderAPI.cpp">
+      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="WorldConverter.cpp">
-      <Filter>World\World</Filter>
-    </ClCompile>
-    <ClCompile Include="Quaternion.cpp">
-      <Filter>Common\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>ResourceObject\Object\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="LogoPipeline.cpp">
-      <Filter>Render\Logo</Filter>
-    </ClCompile>
-    <ClCompile Include="LogoCollection.cpp">
-      <Filter>Render\Logo</Filter>
-    </ClCompile>
-    <ClCompile Include="Float2.cpp">
-      <Filter>Common\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Float3.cpp">
-      <Filter>Common\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Float4.cpp">
-      <Filter>Common\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderLayer.cpp">
-      <Filter>Render\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="DataCenter.cpp">
-      <Filter>Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicResourceAPI.cpp">
+    <ClCompile Include="Program\GraphicRenderAPI.cpp">
       <Filter>Render\Graphic\GraphicAPI</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicRenderAPI.cpp">
+    <ClCompile Include="Program\GraphicResourceAPI.cpp">
       <Filter>Render\Graphic\GraphicAPI</Filter>
     </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>Render\Game</Filter>
+    <ClCompile Include="Program\GraphicShader.cpp">
+      <Filter>Render\Graphic\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicRenderer.cpp">
+    <ClCompile Include="Program\GraphicShaderManager.cpp">
+      <Filter>Render\Graphic\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\ShaderCompiler.cpp">
+      <Filter>Render\Graphic\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GraphicCommandManager.cpp">
       <Filter>Render\Graphic</Filter>
     </ClCompile>
-    <ClCompile Include="DataCenterClerk.cpp">
-      <Filter>Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexData.cpp">
-      <Filter>Common\BaseData</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureData.cpp">
-      <Filter>Common\BaseData</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceObjectCenter.cpp">
-      <Filter>ResourceObject</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureObject.cpp">
-      <Filter>ResourceObject\Object\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshObject.cpp">
-      <Filter>ResourceObject\Object\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="Resource.cpp">
-      <Filter>ResourceObject</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceLoader.cpp">
-      <Filter>Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceDataCenter.cpp">
-      <Filter>Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceInternal.cpp">
-      <Filter>ResourceObject</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicManager.cpp">
+    <ClCompile Include="Program\GraphicDataCenter.cpp">
       <Filter>Render\Graphic</Filter>
     </ClCompile>
-    <ClCompile Include="WorldBuilder.cpp">
-      <Filter>World\World</Filter>
+    <ClCompile Include="Program\GraphicManager.cpp">
+      <Filter>Render\Graphic</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceTextureLibrary.cpp">
+    <ClCompile Include="Program\GraphicRenderer.cpp">
+      <Filter>Render\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\LogoCollection.cpp">
+      <Filter>Render\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\LogoPipeline.cpp">
+      <Filter>Render\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\DataCenter.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\DataCenterClerk.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\ResourceDataCenter.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\ResourceLoader.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Mesh.cpp">
+      <Filter>ResourceObject\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\MeshObject.cpp">
+      <Filter>ResourceObject\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\ResourceTextureLibrary.cpp">
       <Filter>ResourceObject\ResourceLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="CameraObject.cpp">
-      <Filter>Render\Game\Camera</Filter>
+    <ClCompile Include="Program\Texture.cpp">
+      <Filter>ResourceObject\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="CameraCollection.cpp">
-      <Filter>Render\Game\Camera</Filter>
+    <ClCompile Include="Program\TextureObject.cpp">
+      <Filter>ResourceObject\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="RenderScreenObject.cpp">
-      <Filter>Render\Game\RenderObject</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderCustomObject.cpp">
-      <Filter>Render\Game\RenderObject</Filter>
-    </ClCompile>
-    <ClCompile Include="ChangeColor.cpp">
-      <Filter>GameLogic\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceObject.cpp">
+    <ClCompile Include="Program\Resource.cpp">
       <Filter>ResourceObject</Filter>
     </ClCompile>
-    <ClCompile Include="ChangeTexture.cpp">
-      <Filter>GameLogic\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="GameThread.cpp">
-      <Filter>Project\Loop</Filter>
-    </ClCompile>
-    <ClCompile Include="LogicThread.cpp">
-      <Filter>Project\Loop</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceObjectLoop.cpp">
+    <ClCompile Include="Program\ResourceInternal.cpp">
       <Filter>ResourceObject</Filter>
     </ClCompile>
-    <ClCompile Include="WorldController.cpp">
-      <Filter>World\World</Filter>
+    <ClCompile Include="Program\ResourceObject.cpp">
+      <Filter>ResourceObject</Filter>
     </ClCompile>
-    <ClCompile Include="GameCabin.cpp">
-      <Filter>World\GameObject</Filter>
+    <ClCompile Include="Program\ResourceObjectCenter.cpp">
+      <Filter>ResourceObject</Filter>
     </ClCompile>
-    <ClCompile Include="GLWindow.cpp">
+    <ClCompile Include="Program\ResourceObjectLoop.cpp">
+      <Filter>ResourceObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GameWindow.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
-    <ClCompile Include="GameSlot.cpp">
+    <ClCompile Include="Program\GLWindow.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Component.cpp">
       <Filter>World\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>GameLogic\GameObjects</Filter>
+    <ClCompile Include="Program\GameSlot.cpp">
+      <Filter>World\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Cube.cpp">
-      <Filter>GameLogic\GameObjects</Filter>
+    <ClCompile Include="Program\GameCabin.cpp">
+      <Filter>World\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="Program\GameObject.cpp">
+      <Filter>World\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GameObjectContainer.cpp">
+      <Filter>World\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Transform.cpp">
+      <Filter>World\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\NextWorld.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\WorldAction.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\WorldBuilder.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\WorldContainer.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\WorldController.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\WorldConverter.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\WorldFruit.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\WorldLoop.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\WorldManager.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\WorldMap.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\WorldTree.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Program.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>头文件</Filter>
+    <ClInclude Include="Program\BaseData.h">
+      <Filter>Common\BaseData</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
-      <Filter>Project</Filter>
+    <ClInclude Include="Program\TextureData.h">
+      <Filter>Common\BaseData</Filter>
     </ClInclude>
-    <ClInclude Include="FrameRuntime.h">
-      <Filter>Project</Filter>
+    <ClInclude Include="Program\VertexData.h">
+      <Filter>Common\BaseData</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>World\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>World\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldManager.h">
-      <Filter>World\World</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>World\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix4x4.h">
+    <ClInclude Include="Program\Color.h">
       <Filter>Common\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Mathz.h">
+    <ClInclude Include="Program\Float2.h">
       <Filter>Common\Math</Filter>
     </ClInclude>
-    <ClInclude Include="GameWindow.h">
-      <Filter>Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="GameLoop.h">
-      <Filter>Project\Loop</Filter>
-    </ClInclude>
-    <ClInclude Include="GameStart.h">
-      <Filter>Project\Loop</Filter>
-    </ClInclude>
-    <ClInclude Include="MathBase.h">
+    <ClInclude Include="Program\Float3.h">
       <Filter>Common\Math</Filter>
     </ClInclude>
-    <ClInclude Include="EventRecorder.h">
+    <ClInclude Include="Program\Float4.h">
+      <Filter>Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\MathBase.h">
+      <Filter>Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Mathz.h">
+      <Filter>Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Matrix4x4.h">
+      <Filter>Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Quaternion.h">
+      <Filter>Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\LifeContainer.h">
+      <Filter>Common\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ArrayList.h">
+      <Filter>Common\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\FillList.h">
+      <Filter>Common\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\CompletedSignal.h">
+      <Filter>Common\MultiThread</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GWinText.h">
+      <Filter>Common\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\StringEncoding.h">
+      <Filter>Common\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Debug.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\DebugFile.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\DebugOutput.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\DebugSystem.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Event.h">
       <Filter>EventSystem</Filter>
     </ClInclude>
-    <ClInclude Include="Debug.h">
-      <Filter>Debug</Filter>
+    <ClInclude Include="Program\EventDef.h">
+      <Filter>EventSystem</Filter>
     </ClInclude>
-    <ClInclude Include="DebugOutput.h">
-      <Filter>Debug</Filter>
+    <ClInclude Include="Program\EventManager.h">
+      <Filter>EventSystem</Filter>
     </ClInclude>
-    <ClInclude Include="DebugFile.h">
-      <Filter>Debug</Filter>
+    <ClInclude Include="Program\EventRecorder.h">
+      <Filter>EventSystem</Filter>
     </ClInclude>
-    <ClInclude Include="DebugSystem.h">
-      <Filter>Debug</Filter>
+    <ClInclude Include="Program\ChangeColor.h">
+      <Filter>GameLogic\Components</Filter>
     </ClInclude>
-    <ClInclude Include="GameEnd.h">
+    <ClInclude Include="Program\ChangeTexture.h">
+      <Filter>GameLogic\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\TestComponent.h">
+      <Filter>GameLogic\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Camera.h">
+      <Filter>GameLogic\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Cube.h">
+      <Filter>GameLogic\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\InsideWorldAction.h">
+      <Filter>GameLogic\WorldAction</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\SecondWorldAction.h">
+      <Filter>GameLogic\WorldAction</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\TestWorldAction.h">
+      <Filter>GameLogic\WorldAction</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\WorldActionList.h">
+      <Filter>GameLogic\WorldAction</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\InsideWorld.h">
+      <Filter>GameLogic\WorldBuilder</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\SecondWorld.h">
+      <Filter>GameLogic\WorldBuilder</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\TestWorld.h">
+      <Filter>GameLogic\WorldBuilder</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\WorldBuilderList.h">
+      <Filter>GameLogic\WorldBuilder</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GameEnd.h">
       <Filter>Project\Loop</Filter>
     </ClInclude>
-    <ClInclude Include="StringEncoding.h">
-      <Filter>Common\Tools\Text</Filter>
+    <ClInclude Include="Program\GameLoop.h">
+      <Filter>Project\Loop</Filter>
     </ClInclude>
-    <ClInclude Include="CompletedSignal.h">
-      <Filter>Common\Tools\MultiThread</Filter>
+    <ClInclude Include="Program\GameStart.h">
+      <Filter>Project\Loop</Filter>
     </ClInclude>
-    <ClInclude Include="BaseRenderPipeline.h">
+    <ClInclude Include="Program\GameThread.h">
+      <Filter>Project\Loop</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\LogicThread.h">
+      <Filter>Project\Loop</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\FrameRuntime.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GameSetting.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Time.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\TimeManager.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\CameraCollection.h">
+      <Filter>Render\Game\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\CameraObject.h">
+      <Filter>Render\Game\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\RenderCustomObject.h">
+      <Filter>Render\Game\RenderObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\RenderScreenObject.h">
+      <Filter>Render\Game\RenderObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\BaseRenderPipeline.h">
       <Filter>Render\Game</Filter>
     </ClInclude>
-    <ClInclude Include="RenderObject.h">
+    <ClInclude Include="Program\Material.h">
       <Filter>Render\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>ResourceObject\Object\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderCollection.h">
+    <ClInclude Include="Program\RenderBatch.h">
       <Filter>Render\Game</Filter>
     </ClInclude>
-    <ClInclude Include="RenderBatchManager.h">
+    <ClInclude Include="Program\RenderBatchManager.h">
       <Filter>Render\Game</Filter>
     </ClInclude>
-    <ClInclude Include="RenderBatch.h">
+    <ClInclude Include="Program\RenderCollection.h">
       <Filter>Render\Game</Filter>
     </ClInclude>
-    <ClInclude Include="WorldLoop.h">
-      <Filter>World\World</Filter>
+    <ClInclude Include="Program\RenderLayer.h">
+      <Filter>Render\Game</Filter>
     </ClInclude>
-    <ClInclude Include="WorldMap.h">
-      <Filter>World\World</Filter>
+    <ClInclude Include="Program\RenderObject.h">
+      <Filter>Render\Game</Filter>
     </ClInclude>
-    <ClInclude Include="NextWorld.h">
-      <Filter>World\World</Filter>
+    <ClInclude Include="Program\RenderSetting.h">
+      <Filter>Render\Game</Filter>
     </ClInclude>
-    <ClInclude Include="WorldTree.h">
-      <Filter>World\World</Filter>
+    <ClInclude Include="Program\GraphicData.h">
+      <Filter>Render\Graphic\Data</Filter>
     </ClInclude>
-    <ClInclude Include="WorldContainer.h">
-      <Filter>World\World</Filter>
+    <ClInclude Include="Program\GraphicTextureData.h">
+      <Filter>Render\Graphic\Data</Filter>
     </ClInclude>
-    <ClInclude Include="WorldFruit.h">
-      <Filter>World\World</Filter>
+    <ClInclude Include="Program\GraphicVertexData.h">
+      <Filter>Render\Graphic\Data</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjectContainer.h">
+    <ClInclude Include="Program\GLRendererAPI.h">
+      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GLResourceAPI.h">
+      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GLShaderAPI.h">
+      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GraphicRenderAPI.h">
+      <Filter>Render\Graphic\GraphicAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GraphicResouceAPI.h">
+      <Filter>Render\Graphic\GraphicAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GraphicShader.h">
+      <Filter>Render\Graphic\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GraphicShaderManager.h">
+      <Filter>Render\Graphic\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ShaderCompiler.h">
+      <Filter>Render\Graphic\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ShaderSource.h">
+      <Filter>Render\Graphic\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GraphicCommand.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GraphicCommandManager.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GraphicDataCenter.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GraphicManager.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GraphicRenderer.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\LogoCollection.h">
+      <Filter>Render\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\LogoPipeline.h">
+      <Filter>Render\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ShaderProperty.h">
+      <Filter>Render\Graphic\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\DataCenter.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\DataCenterClerk.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ResourceDataCenter.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ResourceLoader.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ResourcePackage.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Mesh.h">
+      <Filter>ResourceObject\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\MeshObject.h">
+      <Filter>ResourceObject\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ResourceTextureLibrary.h">
+      <Filter>ResourceObject\ResourceLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Texture.h">
+      <Filter>ResourceObject\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\TextureObject.h">
+      <Filter>ResourceObject\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Resource.h">
+      <Filter>ResourceObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ResourceInternal.h">
+      <Filter>ResourceObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ResourceLibrary.h">
+      <Filter>ResourceObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ResourceObject.h">
+      <Filter>ResourceObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ResourceObjectCenter.h">
+      <Filter>ResourceObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ResourceObjectLoop.h">
+      <Filter>ResourceObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GameWindow.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GLWindow.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Component.h">
+      <Filter>World\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GameSlot.h">
+      <Filter>World\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GameCabin.h">
       <Filter>World\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="LifeContainer.h">
-      <Filter>Common\Tools\Custom</Filter>
+    <ClInclude Include="Program\GameObject.h">
+      <Filter>World\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="BeautifulWorld.h">
+    <ClInclude Include="Program\GameObjectContainer.h">
+      <Filter>World\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Transform.h">
+      <Filter>World\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\NextWorld.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\WorldAction.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\WorldBuilder.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\WorldContainer.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\WorldController.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\WorldConverter.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\WorldFruit.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\WorldLoop.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\WorldManager.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\WorldMap.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\WorldTree.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\BeautifulWorld.h">
       <Filter>World</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicCommandManager.h">
-      <Filter>Render\Graphic</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicDataCenter.h">
-      <Filter>Render\Graphic</Filter>
-    </ClInclude>
-    <ClInclude Include="InsideWorld.h">
-      <Filter>GameLogic\WorldBuilder</Filter>
-    </ClInclude>
-    <ClInclude Include="SecondWorld.h">
-      <Filter>GameLogic\WorldBuilder</Filter>
-    </ClInclude>
-    <ClInclude Include="TestWorld.h">
-      <Filter>GameLogic\WorldBuilder</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldBuilderList.h">
-      <Filter>GameLogic\WorldBuilder</Filter>
-    </ClInclude>
-    <ClInclude Include="TestWorldAction.h">
-      <Filter>GameLogic\WorldAction</Filter>
-    </ClInclude>
-    <ClInclude Include="InsideWorldAction.h">
-      <Filter>GameLogic\WorldAction</Filter>
-    </ClInclude>
-    <ClInclude Include="SecondWorldAction.h">
-      <Filter>GameLogic\WorldAction</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldActionList.h">
-      <Filter>GameLogic\WorldAction</Filter>
-    </ClInclude>
-    <ClInclude Include="TestComponent.h">
-      <Filter>GameLogic\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldAction.h">
-      <Filter>World\World</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicShaderManager.h">
-      <Filter>Render\Graphic\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicShader.h">
-      <Filter>Render\Graphic\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderSource.h">
-      <Filter>Render\Graphic\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderCompiler.h">
-      <Filter>Render\Graphic\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="GLRendererAPI.h">
-      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="GLResourceAPI.h">
-      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldBuilder.h">
-      <Filter>World\World</Filter>
-    </ClInclude>
-    <ClInclude Include="GLShaderAPI.h">
-      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="EventDef.h">
-      <Filter>EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="Event.h">
-      <Filter>EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="EventManager.h">
-      <Filter>EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="GameSetting.h">
-      <Filter>Project</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeManager.h">
-      <Filter>Project</Filter>
-    </ClInclude>
-    <ClInclude Include="GWinText.h">
-      <Filter>Common\Tools\Text</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSetting.h">
-      <Filter>Render\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Color.h">
-      <Filter>Common\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldConverter.h">
-      <Filter>World\World</Filter>
-    </ClInclude>
-    <ClInclude Include="Quaternion.h">
-      <Filter>Common\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>ResourceObject\Object\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="LogoPipeline.h">
-      <Filter>Render\Logo</Filter>
-    </ClInclude>
-    <ClInclude Include="LogoCollection.h">
-      <Filter>Render\Logo</Filter>
-    </ClInclude>
-    <ClInclude Include="Float2.h">
-      <Filter>Common\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Float3.h">
-      <Filter>Common\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Float4.h">
-      <Filter>Common\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderLayer.h">
-      <Filter>Render\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="FillList.h">
-      <Filter>Common\Tools\Collection</Filter>
-    </ClInclude>
-    <ClInclude Include="DataCenter.h">
-      <Filter>Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicResouceAPI.h">
-      <Filter>Render\Graphic\GraphicAPI</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicRenderAPI.h">
-      <Filter>Render\Graphic\GraphicAPI</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicCommand.h">
-      <Filter>Render\Graphic</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Render\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Render.h">
-      <Filter>Render\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicRenderer.h">
-      <Filter>Render\Graphic</Filter>
-    </ClInclude>
-    <ClInclude Include="DataCenterClerk.h">
-      <Filter>Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexData.h">
-      <Filter>Common\BaseData</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureData.h">
-      <Filter>Common\BaseData</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseData.h">
-      <Filter>Common\BaseData</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourcePackage.h">
-      <Filter>Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicVertexData.h">
-      <Filter>Render\Graphic\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicTextureData.h">
-      <Filter>Render\Graphic\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicData.h">
-      <Filter>Render\Graphic\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderProperty.h">
-      <Filter>Render\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="GLWindow.h">
-      <Filter>Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceObjectCenter.h">
-      <Filter>ResourceObject</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureObject.h">
-      <Filter>ResourceObject\Object\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshObject.h">
-      <Filter>ResourceObject\Object\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>ResourceObject</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceLoader.h">
-      <Filter>Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceDataCenter.h">
-      <Filter>Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceInternal.h">
-      <Filter>ResourceObject</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicManager.h">
-      <Filter>Render\Graphic</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceLibrary.h">
-      <Filter>ResourceObject</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceTextureLibrary.h">
-      <Filter>ResourceObject\ResourceLibrary</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphic.h">
-      <Filter>Render\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraObject.h">
-      <Filter>Render\Game\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraCollection.h">
-      <Filter>Render\Game\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderScreenObject.h">
-      <Filter>Render\Game\RenderObject</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderCustomObject.h">
-      <Filter>Render\Game\RenderObject</Filter>
-    </ClInclude>
-    <ClInclude Include="ChangeColor.h">
-      <Filter>GameLogic\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceObject.h">
-      <Filter>ResourceObject</Filter>
-    </ClInclude>
-    <ClInclude Include="ChangeTexture.h">
-      <Filter>GameLogic\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="ArrayList.h">
-      <Filter>Common\Tools\Collection</Filter>
-    </ClInclude>
-    <ClInclude Include="GameThread.h">
-      <Filter>Project\Loop</Filter>
-    </ClInclude>
-    <ClInclude Include="LogicThread.h">
-      <Filter>Project\Loop</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceObjectLoop.h">
-      <Filter>ResourceObject</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldController.h">
-      <Filter>World\World</Filter>
-    </ClInclude>
-    <ClInclude Include="GameCabin.h">
-      <Filter>World\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="GameSlot.h">
-      <Filter>World\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>GameLogic\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Cube.h">
-      <Filter>GameLogic\GameObjects</Filter>
-    </ClInclude>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Program\GameProject.h" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="头文件">
-      <UniqueIdentifier>{35f27a84-09e3-451b-bfa4-c888edcfa538}</UniqueIdentifier>
-      <Extensions>
-      </Extensions>
-    </Filter>
-    <Filter Include="源文件">
-      <UniqueIdentifier>{07616fa9-a65f-4390-827b-3f7758ec8ada}</UniqueIdentifier>
-      <Extensions>
-      </Extensions>
-    </Filter>
     <Filter Include="Project">
       <UniqueIdentifier>{3106f0be-a40e-41f0-9bd6-888a31519efa}</UniqueIdentifier>
       <Extensions>
@@ -752,21 +739,6 @@
     <Filter Include="Common\BaseData">
       <UniqueIdentifier>{56a5d096-ca97-4abe-add5-369e130ae3d8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Common\Tools">
-      <UniqueIdentifier>{9464c1f2-46ea-4b0e-955a-86dd17a57920}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Common\Tools\Text">
-      <UniqueIdentifier>{2137ed17-9cf9-427c-95ed-2681c264531d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Common\Tools\MultiThread">
-      <UniqueIdentifier>{3868821b-476b-4570-a3be-8371f71fcccc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Common\Tools\Collection">
-      <UniqueIdentifier>{7a3d9c93-c102-4875-a804-5a778e89fc3b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Common\Tools\Custom">
-      <UniqueIdentifier>{022e4208-76a3-46a9-81ca-e0e9f6f86d2b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource">
       <UniqueIdentifier>{0cc2f298-98df-4ecb-ad7b-5226f98a010f}</UniqueIdentifier>
     </Filter>
@@ -783,18 +755,6 @@
     </Filter>
     <Filter Include="ResourceObject\ResourceLibrary">
       <UniqueIdentifier>{997cb024-d6aa-490a-9297-c09ef4445bad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ResourceObject\Object">
-      <UniqueIdentifier>{b26b5d70-8902-4dbc-9920-1f882393ab90}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ResourceObject\Object\Texture">
-      <UniqueIdentifier>{249a390d-587b-4d12-b97c-0a53ef9ab8c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ResourceObject\Object\Mesh">
-      <UniqueIdentifier>{84560e57-2616-4c20-b0c3-133cc15194fe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Render\Common">
-      <UniqueIdentifier>{63ee41a1-c11a-41e6-b360-ceed611c7250}</UniqueIdentifier>
     </Filter>
     <Filter Include="Render\Graphic">
       <UniqueIdentifier>{ab36a48d-a718-430d-9235-d8a21df371bb}</UniqueIdentifier>
@@ -822,6 +782,24 @@
     </Filter>
     <Filter Include="Render\Game\Camera">
       <UniqueIdentifier>{6e0fe1f7-17b7-4ca1-a003-65b0c48df53a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Collection">
+      <UniqueIdentifier>{7a3d9c93-c102-4875-a804-5a778e89fc3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Custom">
+      <UniqueIdentifier>{022e4208-76a3-46a9-81ca-e0e9f6f86d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\MultiThread">
+      <UniqueIdentifier>{3868821b-476b-4570-a3be-8371f71fcccc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Text">
+      <UniqueIdentifier>{2137ed17-9cf9-427c-95ed-2681c264531d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ResourceObject\Mesh">
+      <UniqueIdentifier>{84560e57-2616-4c20-b0c3-133cc15194fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ResourceObject\Texture">
+      <UniqueIdentifier>{249a390d-587b-4d12-b97c-0a53ef9ab8c0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
