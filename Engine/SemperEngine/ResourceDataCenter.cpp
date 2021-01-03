@@ -16,6 +16,12 @@ namespace SemperEngine
 		{
 			return textureDataCenter.CreatePackage();
 		}
+
+		ResourcePackage<TextureData> ResourceDataCenter::CreateTexture(TextureData* data)
+		{
+			return textureDataCenter.CreatePackage(data);
+		}
+
 		ResourcePackage<TextureData> ResourceDataCenter::CopyTexture(ResourcePackage<TextureData> package)
 		{
 			return textureDataCenter.CopyPackage(package);
@@ -24,7 +30,6 @@ namespace SemperEngine
 		{
 			auto data = ResourceLoader::LoadTexture(path);
 			auto package = textureDataCenter.CreatePackage(data);
-			package.clerk->AddPath(path);
 			return package;
 		}
 		ResourcePackage<VertexData> ResourceDataCenter::CreateVertexData()

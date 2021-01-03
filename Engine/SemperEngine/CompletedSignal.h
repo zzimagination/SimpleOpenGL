@@ -40,6 +40,10 @@ namespace SemperEngine
 			void Send();
 
 			void Send(WaitCode code);
+
+			void SendAll();
+
+			void SendAll(WaitCode code);
 		};
 	}
 }

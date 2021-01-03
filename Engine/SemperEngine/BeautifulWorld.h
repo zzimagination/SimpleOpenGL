@@ -6,6 +6,5 @@
 #include "GameObject.h"
 #include "Camera.h"
 #include "Cube.h"
-#include "Debug.h"
 
 #endif // !BEAUTIFULWORLD

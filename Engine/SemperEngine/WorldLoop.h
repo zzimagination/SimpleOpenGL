@@ -16,9 +16,6 @@ namespace SemperEngine
 
 			static void AfterLoop();
 
-		private:
-
-			static void Once();
 		};
 	}
 }

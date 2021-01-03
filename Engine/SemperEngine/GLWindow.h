@@ -11,13 +11,19 @@ namespace SemperEngine {
 	{
 		class GLWindow
 		{
-		private:
-
-			GLFWwindow* window;
-
 		public:
 
 			static GLWindow* Create(int width, int height, std::wstring title);
+
+			static GLWindow* Create(int width, int height, std::string title);
+
+		public:
+
+			int vsync;
+
+		private:
+
+			GLFWwindow* window;
 
 		public:
 

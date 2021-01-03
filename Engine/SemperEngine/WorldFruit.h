@@ -3,7 +3,6 @@
 #define __WORLD_FRUIT__
 
 #include <memory>
-#include "World.h"
 #include "WorldAction.h"
 #include "WorldContainer.h"
 
@@ -19,22 +18,20 @@ namespace SemperEngine
 
 			int id;
 
-			int treeId;
-
 			std::unique_ptr<WorldAction> action;
 
 			std::unique_ptr<WorldContainer> container;
 
-			bool isStarted;
+			bool start = false;
 
-			bool bad;
+			bool bad = false;
 
 		public:
 
 			WorldFruit();
 
 			~WorldFruit();
-			
+
 		};
 	}
 }

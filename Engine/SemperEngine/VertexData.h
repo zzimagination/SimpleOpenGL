@@ -2,7 +2,9 @@
 #ifndef __VERTEXDATA__
 #define __VERTEXDATA__
 
-#include <vector>
+#include <memory>
+#include <array>
+#include "ArrayList.h"
 #include "Mathz.h"
 #include "BaseData.h"
 
@@ -10,17 +12,33 @@ namespace SemperEngine
 {
 	namespace Core 
 	{
+		struct CubeData
+		{
+			static std::array<Float3, 24> vertices;
+
+			static std::array<Float2, 24> uv;
+
+			static std::array<int, 36> indices;
+		};
+
+		struct ScreenTextureData
+		{
+			static std::array<Float3, 4> vertices;
+
+			static std::array<Float2, 4> uv;
+
+			static std::array<int, 6> indices;
+		};
+
 		class VertexData : public BaseData
 		{
 		public:
 
-			std::vector<Float3> vertices;
+			ArrayList<Float3> vertices;
 
-			int vertexCount;
+			ArrayList<Float2> uv;
 
-			std::vector<Float2> uv;
-
-			std::vector<int> index;
+			ArrayList<int> index;
 
 		public:
 

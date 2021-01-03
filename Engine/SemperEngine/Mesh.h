@@ -4,6 +4,7 @@
 
 #include <memory>
 #include "MeshObject.h"
+#include "ArrayList.h"
 
 namespace SemperEngine
 {
@@ -11,15 +12,21 @@ namespace SemperEngine
 	{
 	public:
 
-		std::shared_ptr<Core::MeshObject> object;
+		Core::MeshObject* object;
 
 	public:
 
 		Mesh();
 
+		Mesh(Core::MeshObject* obj);
+
 		~Mesh();
 
 		Mesh* Copy();
+
+		ArrayList<Float3> GetVertices();
+
+		void SetVertices(ArrayList<Float3> vertices);
 	};
 }
 

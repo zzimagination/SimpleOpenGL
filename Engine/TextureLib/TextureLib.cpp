@@ -11,22 +11,23 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		TextureFile TextureResource::Load(std::string path)
+		shared_ptr<TextureFile> TextureResource::Load(std::string path)
 		{
 			return LoadResource(path);;
 		}
 
-		TextureFile TextureResource::LoadResource(string path)
+		shared_ptr<TextureFile> TextureResource::LoadResource(string path)
 		{
-			TextureFile texFile;
 			if (path == "")
 			{
-				throw "path is null";
+				return shared_ptr<TextureFile>();
 			}
+
+			auto texFile = shared_ptr<TextureFile>(new TextureFile);
 			struct stat buf;
 			if (stat(path.c_str(), &buf))
 			{
-				return TextureFile();
+				return shared_ptr<TextureFile>();
 			}
 			ifstream file(path, ios::binary);
 			auto inputSize = (unsigned int)buf.st_size;
@@ -52,30 +53,30 @@ namespace SemperEngine
 			{
 				throw "load texture error ";
 			}
-			texFile.width = ihdr.width;
-			texFile.height = ihdr.height;
+			texFile->width = ihdr.width;
+			texFile->height = ihdr.height;
 			switch (ihdr.color_type)
 			{
 			case SPNG_COLOR_TYPE_GRAYSCALE:
-				texFile.colorType = TextureFile::ColorType::Grayscale;
+				texFile->colorType = TextureFile::ColorType::Grayscale;
 				break;
 			case SPNG_COLOR_TYPE_TRUECOLOR:
-				texFile.colorType = TextureFile::ColorType::Truecolor;
+				texFile->colorType = TextureFile::ColorType::Truecolor;
 				break;
 			case SPNG_COLOR_TYPE_INDEXED:
-				texFile.colorType = TextureFile::ColorType::Indexed;
+				texFile->colorType = TextureFile::ColorType::Indexed;
 				break;
 			case SPNG_COLOR_TYPE_GRAYSCALE_ALPHA:
-				texFile.colorType = TextureFile::ColorType::GrayscaleAlpha;
+				texFile->colorType = TextureFile::ColorType::GrayscaleAlpha;
 				break;
 			case SPNG_COLOR_TYPE_TRUECOLOR_ALPHA:
-				texFile.colorType = TextureFile::ColorType::TruecolorAlpha;
+				texFile->colorType = TextureFile::ColorType::TruecolorAlpha;
 				break;
 			}
-			texFile.depth = ihdr.bit_depth;
-			texFile.compression = ihdr.compression_method;
-			texFile.filter = ihdr.filter_method;
-			texFile.interlace = ihdr.interlace_method;
+			texFile->depth = ihdr.bit_depth;
+			texFile->compression = ihdr.compression_method;
+			texFile->filter = ihdr.filter_method;
+			texFile->interlace = ihdr.interlace_method;
 			////const char *clr_type_str;
 			////if (ihdr.color_type == SPNG_COLOR_TYPE_GRAYSCALE)
 			////	clr_type_str = "grayscale";
@@ -105,9 +106,9 @@ namespace SemperEngine
 				throw "image decoded error";
 			}
 
-			texFile.textureData = new unsigned char[out_size];
-			texFile.size = (unsigned int)out_size;
-			error = spng_decode_image(ctx, texFile.textureData, out_size, SPNG_FMT_RGBA8, 0);
+			texFile->data = unique_ptr<unsigned char>(new unsigned char[out_size]);
+			texFile->size = (int)out_size;
+			error = spng_decode_image(ctx, texFile->data.get(), out_size, SPNG_FMT_RGBA8, 0);
 			if (error)
 			{
 				throw "image decoded error";

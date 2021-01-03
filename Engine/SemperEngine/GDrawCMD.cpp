@@ -2,7 +2,6 @@
 #include "GraphicDataCenter.h"
 #include "GraphicRenderAPI.h"
 #include "GraphicShaderManager.h"
-#include "CubeData.h"
 #include "GLRendererAPI.h"
 #include "ShaderProperty.h"
 
@@ -29,17 +28,22 @@ namespace SemperEngine
 			GraphicRenderAPI::SetBlend(operation.blend);
 			GraphicRenderAPI::SetBlendFunc();
 
-			auto v = GraphicDataCenter::GetVertexData(vertex.info);
-			GraphicRenderAPI::SetVertexData(*v);
+			auto vertexData = GraphicDataCenter::GetVertexData(vertex.info);
+			vector<shared_ptr<GraphicTextureData>> texturesData;
+			for (int i = 0; i < textures.size(); i++)
+			{
+				auto tex = GraphicDataCenter::GetTextureData(textures[i].info);
+				texturesData.push_back(tex);
+			}
 
+			GraphicRenderAPI::SetVertexData(*vertexData);
 			SetShaderProperty(shaderProperty);
 			GraphicRenderAPI::SetShaderProperty(MODEL_MATRIX, matrix.model);
 			GraphicRenderAPI::SetShaderProperty(VIEW_MATRIX, matrix.view);
 			GraphicRenderAPI::SetShaderProperty(PROJECTION_MARIX, matrix.projection);
-			for (int i = 0; i < textures.size(); i++)
+			for (size_t i = 0; i < texturesData.size(); i++)
 			{
-				auto tex = GraphicDataCenter::GetTextureData(textures[i].info);
-				GraphicRenderAPI::SetShaderProperty(textures[i].index, *tex.get());
+				GraphicRenderAPI::SetShaderProperty(textures[i].index, *(texturesData[i]));
 			}
 
 			GraphicRenderAPI::Draw();

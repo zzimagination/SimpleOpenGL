@@ -4,8 +4,10 @@
 
 #include <vector>
 #include <memory>
+#include <typeIndex>
 #include "Component.h"
 #include "LifeContainer.h"
+#include "GameSlot.h"
 
 namespace SemperEngine
 {
@@ -15,20 +17,25 @@ namespace SemperEngine
 		{
 		private:
 
-			std::vector<LifeContainer<Component>> _newComponents;
+			std::vector<GameSlot*> _newSlots;
 
-			std::vector<LifeContainer<Component>> _components;
+			std::vector<GameSlot*> _slots;
 
 		public:
 
-			void AddComponent(LifeContainer<Component> com);
+			void AddComponent(Component* com);
 
-			void StartComponents();
+			void Remove(std::type_index type);
 
-			void UpdateComponents();
+			std::vector<Component*> GetComponents();
+			
+			Component* GetComponent(std::type_index type);
 
-			void EndComponents();
+			void Start();
 
+			void Update();
+
+			void End();
 		};
 	}
 }

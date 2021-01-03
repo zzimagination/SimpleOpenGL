@@ -22,11 +22,17 @@ namespace SemperEngine
 
 		public:
 
+			/*TextureData*/
+
 			static ResourcePackage<TextureData> CreateTexture();
+
+			static ResourcePackage<TextureData> CreateTexture(TextureData* data);
 
 			static ResourcePackage<TextureData> CopyTexture(ResourcePackage<TextureData> package);
 
 			static ResourcePackage<TextureData> LoadTexture(std::string path);
+
+			/*VertexData*/
 
 			static ResourcePackage<VertexData> CreateVertexData();
 

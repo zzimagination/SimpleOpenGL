@@ -1,12 +1,11 @@
 #include "GameStart.h"
 #include <locale>
-#include "ShaderCompiler.h"
 #include "DebugSystem.h"
 #include "GameSetting.h"
 #include "GameWindow.h"
 #include "LogoPipeline.h"
 #include "GraphicManager.h"
-#include "ResourceObjectManager.h"
+#include "ResourceObjectLoop.h"
 #include "Debug.h"
 
 namespace SemperEngine
@@ -20,15 +19,9 @@ namespace SemperEngine
 			SetLocale();
 			DebugSystem::Initialization();
 			GameSetting::LoadConfig();
-
 			GameWindow::CreateGameWindow();
-
-			ShaderCompiler::Compile();
-
 			GraphicManager::Initialize();
-
-			ResourceObjectManager::PreLoad();
-
+			ResourceObjectLoop::Start();
 			Logo();
 		}
 

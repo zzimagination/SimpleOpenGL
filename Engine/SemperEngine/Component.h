@@ -1,7 +1,6 @@
 #ifndef __COMPONENT__
 #define __COMPONENT__
 
-#include "ObjectIndex.h"
 #include "LifeContainer.h"
 
 namespace SemperEngine {
@@ -14,15 +13,13 @@ namespace SemperEngine {
 
 		GameObject* gameObject;
 
-		Core::LifeContainer<Component> life;
-
-		int gameObjectId;
+		LifeContainer<Component> life;
 
 	public:
 
-		virtual void Start() = 0;
+		virtual void Start();
 
-		virtual void Update() = 0;
+		virtual void Update();
 
 	public:
 

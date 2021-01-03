@@ -4,27 +4,30 @@
 #include <vector>
 #include <string>
 #include <memory>
+#include "Mathz.h"
 #include "TextureObject.h"
 
-namespace SemperEngine 
+namespace SemperEngine
 {
 	class Texture
 	{
 	public:
 
-		std::shared_ptr<Core::TextureObject> object;
+		Core::TextureObject* object;
 
 	public:
 
 		Texture();
 
+		Texture(Core::TextureObject* obj);
+
 		~Texture();
 
 		Texture* Copy();
 
-		void ColorBuffer(std::shared_ptr<unsigned char> buffer);
+		void SetColors(ArrayList<ColorByte> pixels);
 
-		std::shared_ptr<unsigned char> ColorBuffer();
+		ArrayList<ColorByte> GetColors();
 	};
 }
 #endif // !TEXTURE

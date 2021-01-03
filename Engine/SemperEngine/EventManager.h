@@ -9,6 +9,10 @@ namespace SemperEngine
 		{
 		public:
 
+			static float keepInterval;
+
+		public:
+
 			static void ProcessEvent();
 
 			static void EndEvents();

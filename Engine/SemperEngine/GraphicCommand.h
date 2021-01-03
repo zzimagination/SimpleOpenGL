@@ -16,22 +16,7 @@
 namespace SemperEngine
 {
 	namespace Core
-	{
-		template<class DATA, class GDATA>
-		class GraphicCommandData
-		{
-		public:
-
-			ResourcePackage<DATA> package;
-
-			GDATA graphicData;
-
-		public:
-
-			GraphicCommandData() {}
-			~GraphicCommandData() {}
-		};
-		
+	{		
 		class GraphicCommand
 		{
 		public:

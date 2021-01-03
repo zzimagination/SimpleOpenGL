@@ -2,15 +2,19 @@
 #ifndef __TEXTURE_OBJECT__
 #define __TEXTURE_OBJECT__
 
+#include <memory>
+#include <vector>
 #include "ResourcePackage.h"
 #include "ResourceObject.h"
 #include "TextureData.h"
 #include "Graphic.h"
+#include "ArrayList.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
+
 		class TextureObject : public ResourceObject
 		{
 		public:
@@ -28,14 +32,25 @@ namespace SemperEngine
 
 		public:
 
+			static TextureObject* Create();
+
+		public:
+
 			TextureObject();
-
-			TextureObject(bool share);
-
-			TextureObject(bool share, Setting setting);
 
 			virtual ~TextureObject() override;
 
+			virtual void EndCreate() override;
+
+			virtual void EndDelete() override;
+
+			virtual void EndModify() override;
+
+			void ColorBytes(ArrayList<ColorByte> data);
+
+			TextureObject* Copy();
+
+			ArrayList<ColorByte> ColorBytes();
 		};
 	}
 }

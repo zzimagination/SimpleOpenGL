@@ -39,5 +39,19 @@ namespace SemperEngine
 			_ready = true;
 			_code = code;
 		}
+		void CompletedSignal::SendAll()
+		{
+			unique_lock<mutex> locker(_mutex);
+			_con.notify_all();
+			_ready = true;
+			_code = Normal;
+		}
+		void CompletedSignal::SendAll(WaitCode code)
+		{
+			unique_lock<mutex> locker(_mutex);
+			_con.notify_all();
+			_ready = true;
+			_code = code;
+		}
 	}
 }

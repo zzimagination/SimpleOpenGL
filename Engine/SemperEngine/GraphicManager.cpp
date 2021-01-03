@@ -1,6 +1,7 @@
 #include "GraphicManager.h"
 #include "GraphicDataCenter.h"
 #include "GraphicCommandManager.h"
+#include "ShaderCompiler.h"
 
 namespace SemperEngine
 {
@@ -8,29 +9,25 @@ namespace SemperEngine
 	{
 		void GraphicManager::Initialize()
 		{
+			ShaderCompiler::Compile();
 			GraphicDataCenter::Initialize();
 			GraphicCommandManager::Resource();
 		}
-		void GraphicManager::BeforeLoopEnd()
-		{
-			GraphicCommandManager::Resource();
-			GraphicCommandManager::SwapCommands();
-		}
-		void GraphicManager::LoopEnd()
-		{
-			GraphicCommandManager::Resource();
-			GraphicCommandManager::SwapCommands();
-		}
-		void GraphicManager::Loop()
+		void GraphicManager::Render()
 		{
 			GraphicCommandManager::Render();
 		}
-		void GraphicManager::AfterLoop()
+		void GraphicManager::Resource()
 		{
 			GraphicCommandManager::Resource();
 		}
+		void GraphicManager::SwapCommands()
+		{
+			GraphicCommandManager::SwapCommands();
+		}
 		void GraphicManager::Dispose()
 		{
+			GraphicCommandManager::Resource();
 		}
 	}
 }

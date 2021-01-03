@@ -36,9 +36,9 @@ namespace SemperEngine
 			const float& r2c0, const float& r2c1, const float& r2c2, const float& r2c3,
 			const float& r3c0, const float& r3c1, const float& r3c2, const float& r3c3);
 
-		Float4 GetRow(int i) const;
+		Float4 GetRow(const int& i) const;
 
-		Float4 GetColumn(int i) const;
+		Float4 GetColumn(const int& i) const;
 
 	public:
 

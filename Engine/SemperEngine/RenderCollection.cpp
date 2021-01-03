@@ -10,59 +10,53 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		vector<LifeContainer<RenderObject>> RenderCollection::renderObjects;
+		vector<LifeContainer<RenderObject>> RenderCollection::_customObjects;
 
-		void RenderCollection::AddRenderObject(LifeContainer<RenderObject> robject)
+		vector<LifeContainer<RenderObject>> RenderCollection::_screenObjects;
+
+		void RenderCollection::AddCustomObject(RenderCustomObject* object)
 		{
-			if (WorldManager::Inside())
-			{
-				return;
-			}
-			renderObjects.push_back(robject);
+			_customObjects.push_back(object->mylife);
 		}
 
-		vector<RenderObject*> RenderCollection::GetRenderObjects()
+		void RenderCollection::AddScreenObject(RenderScreenObject* object)
+		{
+			_screenObjects.push_back(object->mylife);
+		}
+
+		std::vector<RenderObject*> RenderCollection::GetCustomObjects(RenderLayer layer)
 		{
 			vector<RenderObject*> result;
-			for (int i = 0; i < renderObjects.size(); i++)
+			for (size_t i = 0; i < _customObjects.size(); i++)
 			{
-				if (*renderObjects[i].life)
+				if (!*_customObjects[i].life)
 				{
-					result.push_back(renderObjects[i].self);
+					continue;
+				}
+				if (layer == _customObjects[i].self->layer)
+				{
+					result.push_back(_customObjects[i].self);
 				}
 			}
 			return result;
 		}
-		std::vector<RenderObject*> RenderCollection::GetRenderObjects(CameraObject* camera)
+		std::vector<RenderObject*> RenderCollection::GetScreenObjects()
 		{
 			vector<RenderObject*> result;
-			for (int i = 0; i < renderObjects.size(); i++)
+			for (size_t i = 0; i < _screenObjects.size(); i++)
 			{
-				if (!*renderObjects[i].life)
+				if (!*_screenObjects[i].life)
 				{
 					continue;
 				}
-				if (camera->renderLayer == renderObjects[i].self->layer)
-				{
-					result.push_back(renderObjects[i].self);
-				}
+				result.push_back(_screenObjects[i].self);
 			}
 			return result;
 		}
 		void RenderCollection::ClearRenders()
 		{
-			renderObjects.clear();
-		}
-		bool RenderCollection::CheckLayer(std::vector<int> layers, int target)
-		{
-			for (int i = 0; i < layers.size(); i++)
-			{
-				if (layers[i] == target)
-				{
-					return true;
-				}
-			}
-			return false;
+			_customObjects.clear();
+			_screenObjects.clear();
 		}
 	}
 }

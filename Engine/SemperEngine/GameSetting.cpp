@@ -2,13 +2,15 @@
 
 namespace SemperEngine {
 
-	int GameSetting::windowWidth = 1920;
+	using namespace std;
 
-	int GameSetting::windowHeight = 1080;
+	wstring GameSetting::gameTitle = L"semperÒýÇæ";
 
-	int GameSetting::vsync = 1;
+	int GameSetting::windowWidth = 2560;
 
-	float GameSetting::buttonPressT = 0.01f;
+	int GameSetting::windowHeight = 1440;
+
+	GameSetting::Vsync GameSetting::vsync = GameSetting::Vsync::vsync;
 
 	void GameSetting::LoadConfig()
 	{

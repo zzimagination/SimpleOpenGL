@@ -40,7 +40,7 @@ namespace SemperEngine
 
 			void EmptyPackage();
 
-			void Destory();
+			void Destroy();
 		};
 		template<class T>
 		inline ResourcePackage<T>::ResourcePackage()
@@ -79,7 +79,7 @@ namespace SemperEngine
 			{
 				return;
 			}
-			Destory();
+			Destroy();
 		}
 
 		template<class T>
@@ -93,7 +93,7 @@ namespace SemperEngine
 			_isEmpty = std::shared_ptr<bool>(new bool(true));
 		}
 		template<class T>
-		void ResourcePackage<T>::Destory()
+		void ResourcePackage<T>::Destroy()
 		{
 			delete _data;
 			*_isEmpty = true;

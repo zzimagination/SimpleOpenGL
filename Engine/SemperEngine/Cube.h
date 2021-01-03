@@ -4,7 +4,7 @@
 
 #include "GameObject.h"
 #include "Mesh.h"
-#include "RenderObject.h"
+#include "RenderCustomObject.h"
 
 namespace SemperEngine
 {
@@ -14,11 +14,11 @@ namespace SemperEngine
 
 		std::shared_ptr<Material> material;
 
+		std::shared_ptr<Mesh> mesh;
+
 	private:
 
-		std::shared_ptr<Mesh> _cube;
-
-		std::unique_ptr<Core::RenderObject> _renderObject;
+		std::unique_ptr<Core::RenderCustomObject> _renderObject;
 
 	public:
 
@@ -33,6 +33,8 @@ namespace SemperEngine
 		RenderLayer GetRenderLayer();
 
 		void AddRenderLayer(int layer);
+
+		std::shared_ptr<Mesh> GetMesh();
 	};
 }
 

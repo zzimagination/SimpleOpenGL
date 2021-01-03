@@ -9,9 +9,9 @@ namespace SemperEngine
 		{
 		public:
 
-			static void BeginFrame();
+			static void Begin();
 
-			static void EndFrame();
+			static void End();
 
 		};
 	}

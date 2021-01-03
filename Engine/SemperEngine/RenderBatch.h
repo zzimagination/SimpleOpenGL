@@ -6,6 +6,8 @@
 #include "Mathz.h"
 #include "Mesh.h"
 #include "Material.h"
+#include "Graphic.h"
+#include "Render.h"
 
 namespace SemperEngine {
 
@@ -15,15 +17,44 @@ namespace SemperEngine {
 		{
 		public:
 
-			std::shared_ptr<Mesh> vertexData;
+			enum class VertexType
+			{
+				Custom,
 
-			Matrix4x4 modelMatrix;
+				Screen
+			};
 
-			Matrix4x4 viewMatrix;
+		private:
 
-			Matrix4x4 projectionMatrix;
+			VertexType _vertexType;
 
-			std::shared_ptr<Material> material;
+			std::shared_ptr<Mesh> _mesh;
+
+			RenderMatrix _renderMatrix;
+
+			std::shared_ptr<Material> _material;
+
+		public:
+
+			void SetVertexType(VertexType type);
+
+			VertexType GetVertexType();
+
+			void SetMesh(std::shared_ptr<Mesh> mesh);
+
+			GraphicVertexInfo GetGraphicVertexInfo();
+
+			void SetModelMatrix(Matrix4x4 mat4);
+
+			void SetViewMatrix(Matrix4x4 mat4);
+
+			void SetProjectionMatrix(Matrix4x4 mat4);
+
+			RenderMatrix GetRenderMatrix();
+
+			void SetMaterial(std::shared_ptr<Material> material);
+
+			std::shared_ptr<Material> GetMaterial();
 		};
 	}
 }

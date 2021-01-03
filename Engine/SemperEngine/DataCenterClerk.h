@@ -23,8 +23,6 @@ namespace SemperEngine
 		public:
 
 			void Destroy();
-
-			void AddPath(std::string path);
 		};
 	}
 }

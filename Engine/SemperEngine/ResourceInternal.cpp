@@ -1,5 +1,6 @@
 #include "ResourceInternal.h"
 #include "ResourceObjectCenter.h"
+#include "Debug.h"
 
 namespace SemperEngine
 {
@@ -7,56 +8,61 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-#define TEXPATH(name) string(name).append(".png") 
+#define PNG_EXTEND(name) string(name).append(".png") 
 
-		std::map<std::string, std::shared_ptr<Texture>> ResourceInternal::textures;
+		std::map<std::string, std::shared_ptr<Texture>> ResourceInternal::textureMap;
+
+		ResourceTextureLibrary ResourceInternal::textureLibrary;
+
+		std::shared_ptr<Texture> ResourceInternal::WhiteTex()
+		{
+			return GetTexture(WHITE_TEXTURE);
+		}
+
+		std::shared_ptr<Texture> ResourceInternal::BlackTex()
+		{
+			return GetTexture(BLACK_TEXTURE);
+		}
+
+		std::shared_ptr<Texture> ResourceInternal::BumpTex()
+		{
+			return GetTexture(BUMP_TEXTURE);
+		}
 
 		void ResourceInternal::PreLoad()
 		{
 			TextureObject::Setting setting;
 			setting.readOnly = true;
-			textures[WHITE_TEXTURE] = LoadTexture(TEXPATH(WHITE_TEXTURE), setting);
-			textures[BLACK_TEXTURE] = LoadTexture(TEXPATH(BLACK_TEXTURE), setting);
-			textures[BUMP_TEXTURE] = LoadTexture(TEXPATH(BUMP_TEXTURE), setting);
+			textureMap[WHITE_TEXTURE] = LoadTexture(PNG_EXTEND(WHITE_TEXTURE));
+			textureMap[BLACK_TEXTURE] = LoadTexture(PNG_EXTEND(BLACK_TEXTURE));
+			textureMap[BUMP_TEXTURE] = LoadTexture(PNG_EXTEND(BUMP_TEXTURE));
 		}
 
 		std::shared_ptr<Texture> ResourceInternal::GetTexture(std::string name)
 		{
-			auto target = textures.find(name);
-			if (target != textures.end())
+			auto target = textureMap.find(name);
+			if (target != textureMap.end())
 			{
-				return shared_ptr<Texture>(target->second->Copy());
+				return target->second;
 			}
-			return std::shared_ptr<Texture>();
+			string log = "can't find texture";
+			log.append(name);
+			Debug::Log(log);
+			throw log;
 		}
 
-		std::shared_ptr<Texture> ResourceInternal::LoadTexture(std::string name)
-		{
-			return LoadTexture(name, TextureObject::Setting());
-		}
-
-		shared_ptr<Texture> ResourceInternal::LoadTexture(std::string name, TextureObject::Setting setting)
+		shared_ptr<Texture> ResourceInternal::LoadTexture(std::string name)
 		{
 			auto fullPath = InternalFile(name);
-			auto obj = ResourceObjectCenter::LoadTexture(fullPath, true, setting);
-			auto texture = shared_ptr<Texture>(new Texture());
-			ResourceObjectCenter::DeleteTexture(texture->object);
-			texture->object = obj;
+			auto obj = textureLibrary.Load(fullPath);
+			auto texture = shared_ptr<Texture>(new Texture(obj));
 			return texture;
 		}
-
-		std::shared_ptr<Mesh> ResourceInternal::CreateCube()
-		{
-			auto obj = ResourceObjectCenter::CreateCube();
-			auto cube = shared_ptr<Mesh>(new Mesh);
-			ResourceObjectCenter::DeleteCube(cube->object);
-			cube->object = obj;
-			return cube;
-		}
-
+		 
 		void ResourceInternal::Dispose()
 		{
-			textures.clear();
+			textureMap.clear();
+			textureLibrary.DisposeUnuse();
 		}
 
 		std::string ResourceInternal::InternalFile(std::string file)

@@ -3,9 +3,15 @@
 
 namespace SemperEngine
 {
+	void Component::Start()
+	{
+	}
+	void Component::Update()
+	{
+	}
 	Component::Component()
 	{
-		life = Core::LifeContainer<Component>(this);
+		life = LifeContainer<Component>(this);
 	}
 
 	Component::~Component()

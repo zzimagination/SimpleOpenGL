@@ -5,12 +5,12 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		void FrameRuntime::BeginFrame()
+		void FrameRuntime::Begin()
 		{
 			TimeManager::StartRecord();
 		}
 
-		void FrameRuntime::EndFrame()
+		void FrameRuntime::End()
 		{
 			TimeManager::EndRecord();
 		}

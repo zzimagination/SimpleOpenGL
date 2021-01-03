@@ -7,6 +7,7 @@
 #include <memory>
 #include "Texture.h"
 #include "Mesh.h"
+#include "ResourceTextureLibrary.h"
 
 namespace SemperEngine
 {
@@ -18,25 +19,29 @@ namespace SemperEngine
 
 		class ResourceInternal
 		{
+		private:
+
+			static std::map<std::string, std::shared_ptr<Texture>> textureMap;
+
+			static ResourceTextureLibrary textureLibrary;
+
 		public:
 
-			static std::map<std::string, std::shared_ptr<Texture>> textures;
+			static std::shared_ptr<Texture> WhiteTex();
 
-		public:
+			static std::shared_ptr<Texture> BlackTex();
+
+			static std::shared_ptr<Texture> BumpTex();
 
 			static void PreLoad();
 
-			static std::shared_ptr<Texture> GetTexture(std::string name);
-
-			static std::shared_ptr<Texture> LoadTexture(std::string name);
-
-			static std::shared_ptr<Mesh> CreateCube();
-
 			static void Dispose();
+
+			static std::shared_ptr<Texture> GetTexture(std::string name);
 
 		private:
 
-			static std::shared_ptr<Texture> LoadTexture(std::string name, TextureObject::Setting setting);
+			static std::shared_ptr<Texture> LoadTexture(std::string name);
 
 			static std::string InternalFile(std::string file);
 		};

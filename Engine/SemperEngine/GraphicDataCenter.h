@@ -32,6 +32,7 @@ namespace SemperEngine
 
 			static void Initialize();
 
+
 			static GraphicDataInfo AddVertexData(VertexData* data);
 
 			static void RemoveVertexData(GraphicDataInfo info);
@@ -39,6 +40,7 @@ namespace SemperEngine
 			static void DeleteGraphicVertexData(GraphicDataInfo info);
 
 			static std::shared_ptr<GraphicVertexData> GetVertexData(GraphicDataInfo info);
+
 
 			static GraphicDataInfo AddTextureData(TextureData* data);
 

@@ -16,7 +16,7 @@ namespace SemperEngine
 			auto list = builderList.worldBuilders;
 			for (int i = 0; i < list.size(); i++)
 			{
-				CheckRepeat(list[i]->name, list[i]->id , i);
+				CheckRepeat(list[i]->name, list[i]->id, i);
 			}
 		}
 
@@ -74,10 +74,9 @@ namespace SemperEngine
 					return list[i]->id;
 				}
 			}
-			string log = "don't have the world ";
-			log.append(name);
-			Debug::Log(log);
-			throw log;
+
+			Debug::LogError({ "don't have the world " , name});
+			return 0;
 		}
 
 		std::string WorldMap::WorldName(int id)
@@ -90,10 +89,9 @@ namespace SemperEngine
 					return list[i]->name;
 				}
 			}
-			string log = "don't have the world ";
-			log.append(to_string(id));
-			Debug::Log(log);
-			throw log;
+
+			Debug::LogError({ "don't have the world " , to_string(id)});
+			return "";
 		}
 
 		void WorldMap::CheckRepeat(std::string name, int id, int listId)
@@ -107,12 +105,7 @@ namespace SemperEngine
 				}
 				if (name == list[i]->name || id == list[i]->id)
 				{
-					string log = "world name repeat ";
-					log.append(name);
-					log.append(":");
-					log.append(to_string(id));
-					Debug::Log(log);
-					throw log;
+					Debug::LogError({ "world name repeat", name, to_string(id) });
 				}
 			}
 		}
@@ -128,10 +121,8 @@ namespace SemperEngine
 					return ptr;
 				}
 			}
-			string log = "don't have the world ";
-			log.append(name);
-			Debug::Log(log);
-			throw log;
+			Debug::LogError({ "don't have the world ", name });
+			return nullptr;
 		}
 
 		WorldBuilder* WorldMap::GetBuilder(int id)
@@ -145,10 +136,8 @@ namespace SemperEngine
 					return ptr;
 				}
 			}
-			string log = "don't have the world ";
-			log.append(to_string(id));
-			Debug::Log(log);
-			throw log;
+			Debug::LogError({ "don't have the world " , to_string(id) });
+			return nullptr;
 		}
 	}
 }

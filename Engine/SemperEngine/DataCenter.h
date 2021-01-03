@@ -21,9 +21,8 @@ namespace SemperEngine
 
 			virtual ~DataCenterBase();
 
-			virtual void Destroy(int id) = 0;
+			virtual void Delete(int id) = 0;
 
-			virtual void AddPath(int id, std::string path) = 0;
 		};
 
 		template<class T>
@@ -63,9 +62,7 @@ namespace SemperEngine
 
 			ResourcePackage<T> CopyPackage(ResourcePackage<T> package);
 
-			virtual void Destroy(int id) override;
-
-			virtual void AddPath(int id, std::string path) override;
+			virtual void Delete(int id) override;
 
 		private:
 
@@ -126,15 +123,9 @@ namespace SemperEngine
 		}
 
 		template<class T>
-		inline void DataCenter<T>::Destroy(int id)
+		void DataCenter<T>::Delete(int id)
 		{
 			units.Remove(id);
-		}
-
-		template<class T>
-		inline void DataCenter<T>::AddPath(int id ,std::string path)
-		{
-			units[id].value.path = path;
 		}
 
 		template<class T>

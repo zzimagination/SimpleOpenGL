@@ -8,10 +8,5 @@ namespace SemperEngine
 	namespace TextureLib
 	{
 		using namespace std;
-
-		void TextureFile::Dispose()
-		{
-			delete [] this->textureData;
-		}
 	}
 }

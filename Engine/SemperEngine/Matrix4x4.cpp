@@ -73,7 +73,7 @@ namespace SemperEngine {
 		x3 = r3c0; y3 = r3c1; z3 = r3c2; w3 = r3c3;
 	}
 
-	Float4 Matrix4x4::GetRow(int i) const
+	Float4 Matrix4x4::GetRow(const int& i) const
 	{
 		if (i == 0)
 		{
@@ -93,7 +93,7 @@ namespace SemperEngine {
 		}
 	}
 
-	Float4 Matrix4x4::GetColumn(int i) const
+	Float4 Matrix4x4::GetColumn(const int& i) const
 	{
 		if (i == 0)
 		{

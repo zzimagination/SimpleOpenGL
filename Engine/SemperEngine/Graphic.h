@@ -2,8 +2,6 @@
 #ifndef __GRAPHIC__
 #define __GRAPHIC__
 
-#include <memory>
-
 namespace SemperEngine
 {
 	namespace Core

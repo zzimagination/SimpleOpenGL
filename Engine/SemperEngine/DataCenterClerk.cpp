@@ -10,15 +10,7 @@ namespace SemperEngine
 		{
 			if (dataCenter != nullptr)
 			{
-				dataCenter->Destroy(id);
-			}
-		}
-
-		void DataCenterClerk::AddPath(std::string path)
-		{
-			if (dataCenter != nullptr)
-			{
-				dataCenter->AddPath(id, path);
+				dataCenter->Delete(id);
 			}
 		}
 

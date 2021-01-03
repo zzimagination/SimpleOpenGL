@@ -30,6 +30,26 @@ namespace SemperEngine {
 
 		static void Log(std::initializer_list<std::string> messages);
 
+		static void LogError(int& message);
+
+		static void LogError(float& message);
+
+		static void LogError(double& message);
+
+		static void LogError(bool& message);
+
+		static void LogError(char& message);
+
+		static void LogError(std::string& message);
+
+		static void LogError(const char* message);
+
+		static void LogError(std::wstring& message);
+
+		static void LogError(const wchar_t* message);
+
+		static void LogError(std::initializer_list<std::string> messages);
+
 	private:
 
 

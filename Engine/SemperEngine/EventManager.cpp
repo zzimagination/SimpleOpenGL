@@ -9,9 +9,11 @@ namespace SemperEngine {
 	{
 		using namespace std;
 
+		float EventManager::keepInterval = 0.01f;
+
 		void EventManager::ProcessEvent()
 		{
-			EventRecorder::keepInterval = GameSetting::buttonPressT;
+			EventRecorder::keepInterval = keepInterval;
 			EventRecorder::Keep();
 		}
 

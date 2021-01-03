@@ -2,6 +2,7 @@
 #include "DebugOutput.h"
 #include <iostream>
 #include "Time.h"
+#include "DebugSystem.h"
 
 namespace SemperEngine
 {
@@ -79,5 +80,88 @@ namespace SemperEngine
 			sentence.append(*i);
 		}
 		Log(sentence);
+	}
+
+	void Debug::LogError(int& message)
+	{
+		auto str = to_string(message);
+		LogError(str);
+		DebugSystem::Close();
+		throw message;
+	}
+	void Debug::LogError(float& message)
+	{
+		auto str = to_string(message);
+		LogError(str);
+		DebugSystem::Close();
+		throw message;
+	}
+	void Debug::LogError(double& message)
+	{
+		auto str = to_string(message);
+		LogError(str);
+		DebugSystem::Close();
+		throw message;
+	}
+	void Debug::LogError(bool& message)
+	{
+		auto str = to_string(message);
+		LogError(str);
+		DebugSystem::Close();
+		throw message;
+	}
+	void Debug::LogError(char& message)
+	{
+		auto str = to_string(message);
+		LogError(str);
+		DebugSystem::Close();
+		throw message;
+	}
+	void Debug::LogError(std::string& message)
+	{
+		LogItem item(Time::SystemTime(), LogItem::Type::Error);
+		item.info = message;
+		cout << item.time << ' ' << item.info << endl;
+		DebugOutput::InputLog(item);
+		DebugSystem::Close();
+		throw message;
+	}
+	void Debug::LogError(const char* message)
+	{
+		LogItem item(Time::SystemTime(), LogItem::Type::Error);
+		item.info = message;
+		cout << item.time << ' ' << item.info << endl;
+		DebugOutput::InputLog(item);
+		DebugSystem::Close();
+		throw message;
+	}
+	void Debug::LogError(std::wstring& message)
+	{
+		LogItem item(Time::SystemTime(), LogItem::Type::Error);
+		item.winfo = message;
+		cout << item.time << ' ';
+		wcout << item.winfo << endl;
+		DebugOutput::InputLog(item);
+		DebugSystem::Close();
+		throw message;
+	}
+	void Debug::LogError(const wchar_t* message)
+	{
+		LogItem item(Time::SystemTime(), LogItem::Type::Error);
+		item.winfo = message;
+		cout << item.time << ' ';
+		wcout << item.winfo << endl;
+		DebugOutput::InputLog(item);
+		DebugSystem::Close();
+		throw message;
+	}
+	void Debug::LogError(std::initializer_list<std::string> messages)
+	{
+		string sentence = *messages.begin();
+		for (auto i = messages.begin() + 1; i != messages.end(); i++)
+		{
+			sentence.append(*i);
+		}
+		LogError(sentence);
 	}
 }

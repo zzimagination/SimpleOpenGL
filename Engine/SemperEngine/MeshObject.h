@@ -2,6 +2,7 @@
 #ifndef __MESH_OBJECT__
 #define __MESH_OBJECT__
 
+#include "ArrayList.h"
 #include "ResourceObject.h"
 #include "ResourcePackage.h"
 #include "VertexData.h"
@@ -22,6 +23,12 @@ namespace SemperEngine
 
 		public:
 
+			static MeshObject* Create();
+
+			static MeshObject* CreateCube();
+
+		public:
+
 			ResourcePackage<VertexData> resourcePackage;
 
 			GraphicDataInfo graphicDataInfo;
@@ -30,11 +37,19 @@ namespace SemperEngine
 
 			MeshObject();
 
-			MeshObject(bool share);
-
-			MeshObject(bool share, Setting setting);
-
 			virtual ~MeshObject() override;
+
+			virtual void EndCreate() override;
+
+			virtual void EndDelete() override;
+
+			virtual void EndModify() override;
+
+			MeshObject* Copy();
+
+			void SetVertex(ArrayList<Float3> vertices);
+
+			ArrayList<Float3> GetVertex();
 		};
 	}
 }

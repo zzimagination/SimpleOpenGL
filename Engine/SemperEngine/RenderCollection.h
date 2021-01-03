@@ -3,7 +3,8 @@
 
 #include <vector>
 #include <memory>
-#include "RenderObject.h"
+#include "RenderCustomObject.h"
+#include "RenderScreenObject.h"
 #include "CameraObject.h"
 
 namespace SemperEngine {
@@ -12,23 +13,23 @@ namespace SemperEngine {
 	{
 		class RenderCollection
 		{
-		public:
-
-			static std::vector<LifeContainer<RenderObject>> renderObjects;
-
-		public:
-
-			static void AddRenderObject(LifeContainer<RenderObject> robject);
-
-			static std::vector<RenderObject*> GetRenderObjects();
-
-			static std::vector<RenderObject*> GetRenderObjects(CameraObject* camera);
-
-			static void ClearRenders();
-
 		private:
 
-			static bool CheckLayer(std::vector<int> layers, int target);
+			static std::vector<LifeContainer<RenderObject>> _customObjects;
+
+			static std::vector<LifeContainer<RenderObject>> _screenObjects;
+
+		public:
+
+			static void AddCustomObject(RenderCustomObject* object);
+
+			static void AddScreenObject(RenderScreenObject* object);
+
+			static std::vector<RenderObject*> GetCustomObjects(RenderLayer layer);
+
+			static std::vector<RenderObject*> GetScreenObjects();
+
+			static void ClearRenders();
 
 		};
 	}

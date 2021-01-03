@@ -13,7 +13,7 @@ namespace SemperEngine
 		{
 			bool usable = false;
 
-			TValue value;
+			TValue value = TValue();
 		};
 
 		template<class T>
@@ -39,22 +39,22 @@ namespace SemperEngine
 
 			T Pop(int index);
 
-			int Size();
+			size_t Size();
 
-			int UseSize();
+			size_t UseSize();
 
-			int UnuseSize();
+			size_t UnuseSize();
 
 			int AvailableId();
 
 			FillPair<T> operator[](const int index);
 		};
 		template<class T>
-		inline FillList<T>::FillList()
+		FillList<T>::FillList()
 		{
 		}
 		template<class T>
-		inline int FillList<T>::Add(T value)
+		int FillList<T>::Add(T value)
 		{
 			if (_unused.size() > 0)
 			{
@@ -73,7 +73,7 @@ namespace SemperEngine
 			}
 		}
 		template<class T>
-		inline void FillList<T>::Remove(int index)
+		void FillList<T>::Remove(int index)
 		{
 			if (index >= _data.size())
 			{
@@ -87,7 +87,7 @@ namespace SemperEngine
 			}
 		}
 		template<class T>
-		inline T FillList<T>::Pop(int index)
+		T FillList<T>::Pop(int index)
 		{
 			if (index >= _data.size())
 			{
@@ -104,22 +104,22 @@ namespace SemperEngine
 			return _data[index];
 		}
 		template<class T>
-		inline int FillList<T>::Size()
+		inline size_t FillList<T>::Size()
 		{
 			return _data.size();
 		}
 		template<class T>
-		inline int FillList<T>::UseSize()
+		inline size_t FillList<T>::UseSize()
 		{
 			return _data.size() - _unused.size();
 		}
 		template<class T>
-		inline int FillList<T>::UnuseSize()
+		inline size_t FillList<T>::UnuseSize()
 		{
 			return _unused.size();
 		}
 		template<class T>
-		inline int FillList<T>::AvailableId()
+		int FillList<T>::AvailableId()
 		{
 			if (_unused.size() > 0)
 			{
@@ -131,7 +131,7 @@ namespace SemperEngine
 			}
 		}
 		template<class T>
-		inline FillPair<T> FillList<T>::operator[](const int index)
+		FillPair<T> FillList<T>::operator[](const int index)
 		{
 			if (_empty[index])
 			{

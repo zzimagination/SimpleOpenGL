@@ -3,6 +3,6 @@
 namespace SemperEngine
 {
 	std::vector<std::string> LogoCollection::files = {
-		"logo2.png"
+		"Logo/logo2.png"
 	};
 }

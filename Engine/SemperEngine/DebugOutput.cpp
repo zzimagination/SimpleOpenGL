@@ -14,7 +14,7 @@ namespace SemperEngine
 
 		mutex DebugOutput::_waitLock;
 
-		void DebugOutput::InputLog(LogItem& log)
+		void DebugOutput::InputLog(LogItem log)
 		{
 			lock_guard<mutex> lock(_logLock);
 			_logs.push(log);
@@ -41,6 +41,11 @@ namespace SemperEngine
 		{
 			lock_guard<mutex> lock(_logLock);
 			return _logs.size() > 0;
+		}
+
+		void DebugOutput::Close()
+		{
+			Send();
 		}
 
 		void DebugOutput::Wait()

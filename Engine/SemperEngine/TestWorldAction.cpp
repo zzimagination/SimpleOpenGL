@@ -1,12 +1,13 @@
 #include "TestWorldAction.h"
-#include "WorldManager.h"
 #include "Event.h"
 #include "Debug.h"
-#include "RenderSetting.h"
-#include <TextureLib.h>
+#include "Cube.h"
+#include "WorldController.h"
 
 namespace SemperEngine
 {
+	using namespace std;
+
 	TestWorldAction::~TestWorldAction()
 	{
 	}
@@ -17,7 +18,11 @@ namespace SemperEngine
 	{
 		if (Event::KeyAction(Keyboard::Key::number1, InputAction::Button::press))
 		{
-			Core::WorldManager::SetActive(2);
+			WorldController::SetActive("second");
+		}
+		else if (Event::KeyAction(Keyboard::Key::number3, InputAction::Button::press))
+		{
+			Debug::LogError("aaaa");
 		}
 	}
 	void TestWorldAction::End()

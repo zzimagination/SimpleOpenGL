@@ -16,8 +16,6 @@ namespace SemperEngine
 		{
 		public:
 
-			static std::vector<WorldFruit*> newWorldFruits;
-
 			static std::vector<WorldFruit*> worldFruits;
 
 		private:
@@ -32,15 +30,25 @@ namespace SemperEngine
 
 			static void RemoveWorld(int id);
 
-			static WorldContainer* FindContainer(std::string name);
+			static WorldFruit* FindWorld(std::string name);
+
+		public:
+
+			static void ExcuteWorlds();
+
+			static void EndWorlds();
 
 			static void Fall();
 
 		private:
 
-			static WorldFruit* FindWorld(std::string name);
+			static std::vector<WorldFruit*> GetWorlds();
 
 			static WorldFruit* FindWorld(int id);
+
+			static void ExcuteWorld(WorldFruit* fruit);
+
+			static void EndOfWorld(WorldFruit* fruit);
 
 		};
 	}

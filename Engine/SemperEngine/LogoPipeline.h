@@ -6,6 +6,7 @@
 #include <memory>
 #include "GraphicVertexData.h"
 #include "GraphicTextureData.h"
+#include "RenderScreenObject.h"
 
 namespace SemperEngine
 {
@@ -21,9 +22,7 @@ namespace SemperEngine
 
 		private:
 
-			static GraphicVertexData _graphicVertex;
-
-			static GraphicTextureData _graphicTexture;
+			static std::shared_ptr<RenderScreenObject> _renderObject;
 
 			static int _current;
 
@@ -35,6 +34,8 @@ namespace SemperEngine
 
 			static std::chrono::time_point<std::chrono::system_clock> _startTime;
 
+			static std::vector<std::shared_ptr<Texture>> _logoTextures;
+
 		public:
 
 			static void Start();
@@ -45,17 +46,12 @@ namespace SemperEngine
 
 		private:
 
-			static void Render();
+			static void Resource();
 
-			static bool Do();
+			static void Render();
 
 			static float Alpha(float time);
 
-			static bool Completed();
-
-			static GraphicVertexData GenerateScreenVertex();
-
-			static std::string FullPath(std::string file);
 		};
 	}
 }

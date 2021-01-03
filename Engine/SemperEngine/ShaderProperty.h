@@ -5,7 +5,6 @@
 #include <vector>
 #include <string>
 #include "Mathz.h"
-#include "Texture.h"
 
 namespace SemperEngine
 {

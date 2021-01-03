@@ -12,13 +12,11 @@ namespace SemperEngine
 
 			static void Initialize();
 
-			static void BeforeLoopEnd();
+			static void Render();
 
-			static void LoopEnd();
+			static void Resource();
 
-			static void Loop();
-
-			static void AfterLoop();
+			static void SwapCommands();
 
 			static void Dispose();
 		};

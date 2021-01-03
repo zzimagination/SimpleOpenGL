@@ -4,9 +4,9 @@
 #include <vector>
 #include <memory>
 #include <string>
+#include <typeindex>
 #include "Mathz.h"
 #include "LifeContainer.h"
-#include "ObjectIndex.h"
 #include "Transform.h"
 #include "GameObjectContainer.h"
 #include "Component.h"
@@ -15,26 +15,27 @@ namespace SemperEngine
 {
 	class GameObject
 	{
-
 	public:
 
-		std::string name;
+		std::string name = "NewGameObject";
 
 		Transform transform;
 
-		Core::LifeContainer<GameObject> life;
+		LifeContainer<GameObject> life;
 
 		Core::GameObjectContainer container;
-
-		int worldID;
 
 	public:
 
 		GameObject();
 
+		GameObject(std::string name);
+
 		virtual ~GameObject();
 
 		void AddComponent(Component* com);
+
+		Component* GetComponent(std::type_index type);
 
 	public:
 

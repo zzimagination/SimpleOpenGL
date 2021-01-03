@@ -3,10 +3,10 @@
 
 #include <memory>
 #include "Mathz.h"
-#include "Material.h"
-#include "Mesh.h"
 #include "LifeContainer.h"
 #include "RenderLayer.h"
+#include "Mesh.h"
+#include "Material.h"
 
 namespace SemperEngine {
 
@@ -16,22 +16,25 @@ namespace SemperEngine {
 		{
 		public:
 
-			std::shared_ptr<Mesh> vertexData;
-
-			Matrix4x4 modelMatrix;
-
-			std::shared_ptr<Material> material;
-
 			LifeContainer<RenderObject> mylife;
 
 			RenderLayer layer;
+
+			bool hasMesh;
+
+			bool hasMaterial;
 
 		public:
 
 			RenderObject();
 
-			~RenderObject();
+			virtual ~RenderObject();
 
+			virtual std::shared_ptr<Mesh> GetMesh() = 0;
+
+			virtual std::shared_ptr<Material> GetMaterial() = 0;
+
+			virtual Matrix4x4 GetModelMat() = 0;
 		};
 	}
 }

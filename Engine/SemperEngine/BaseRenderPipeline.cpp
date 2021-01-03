@@ -15,25 +15,34 @@ namespace SemperEngine
 			if (cameras.size() == 0)
 			{
 				GraphicRenderer::Clear(Float4(0, 0, 0, 1));
-				return;
 			}
-
-			for (int i = 0; i < cameras.size(); i++)
+			else
 			{
-				RenderCamera(cameras[i]);
-				RenderBatchManager::Clear();
+				for (int i = 0; i < cameras.size(); i++)
+				{
+					RenderCamera(cameras[i]);
+				}
 			}
+			RenderScreen();
 
+			RenderBatchManager::GenerateGraphicCommands();
+
+			RenderBatchManager::Clear();
 			RenderCollection::ClearRenders();
 			CameraCollection::ClearCameras();
+		}
+
+		void BaseRenderPipeline::RenderScreen()
+		{
+			auto renderObjects = RenderCollection::GetScreenObjects();
+			RenderBatchManager::GenerateBatchs(renderObjects);
 		}
 
 		void BaseRenderPipeline::RenderCamera(CameraObject* camera)
 		{
 			GraphicRenderer::Clear(camera->clearColor, camera->clearMode);
-			auto renderObjects = RenderCollection::GetRenderObjects(camera);
+			auto renderObjects = RenderCollection::GetCustomObjects(camera->renderLayer);
 			RenderBatchManager::GenerateBatchs(camera, renderObjects);
-			RenderBatchManager::GenerateGraphicCommands();
 		}
 
 	}

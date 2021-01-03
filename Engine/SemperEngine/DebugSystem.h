@@ -7,6 +7,7 @@
 #include <condition_variable>
 #include "DebugFile.h"
 #include "DebugOutput.h"
+#include "CompletedSignal.h"
 
 namespace SemperEngine {
 
@@ -26,13 +27,11 @@ namespace SemperEngine {
 
 			static void Initialization();
 
-			static void Start();
-
-			static void Update();
-
 			static void Close();
 
 		private:
+
+			static void DebugThread();
 
 			static void OutputItem(LogItem item);
 		};

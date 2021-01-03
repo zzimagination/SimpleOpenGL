@@ -3,8 +3,10 @@
 #define __TEXTURELIB__
 
 #define WIN32_LEAN_AND_MEAN 
+
 #include <string>
 #include <memory>
+#include <vector>
 
 namespace SemperEngine
 {
@@ -17,46 +19,47 @@ namespace SemperEngine
 			enum class ColorType
 			{
 				Grayscale,
+
 				Truecolor,
+
 				Indexed,
+
 				GrayscaleAlpha,
+
 				TruecolorAlpha
 			};
 
 		public:
 
-			std::shared_ptr<unsigned char> textureData;
+			std::unique_ptr<unsigned char> data;
 
-			std::string path;
+			int size = 0;
 
-			int width;
+			int width = 0;
 
-			int height;
+			int height = 0;
 
-			ColorType colorType;
+			ColorType colorType = ColorType::Truecolor;
 
-			int depth;
+			int depth = 0;
 
-			int compression;
+			int compression = 0;
 
-			int filter;
+			int filter = 0;
 
-			int interlace;
+			int interlace = 0;
 
-		public:
-
-			TextureFile(std::string file);
 		};
 
 		class TextureResource
 		{
 		public:
 
-			static TextureFile Load(std::string file);
+			static std::shared_ptr<TextureFile> Load(std::string path);
 
 		private:
 
-			static void LoadResource(TextureFile& tfile);
+			static std::shared_ptr<TextureFile> LoadResource(std::string path);
 		};
 	}
 }

@@ -3,11 +3,9 @@
 
 #include <vector>
 #include <string>
-#include "World.h"
 
 namespace SemperEngine
 {
-
 	namespace Core
 	{
 		class WorldConverter;
@@ -27,6 +25,10 @@ namespace SemperEngine
 		public:
 
 			static void Initialize();
+
+			static void ExcuteWorlds();
+
+			static void EndWorlds();
 
 			static std::string GetInside();
 

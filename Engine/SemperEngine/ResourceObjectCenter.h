@@ -4,10 +4,7 @@
 
 #include <memory>
 #include <vector>
-#include "TextureObject.h"
-#include "MeshObject.h"
-#include "ResourceObjectContainer.h"
-
+#include "ResourceObject.h"
 
 namespace SemperEngine
 {
@@ -15,37 +12,23 @@ namespace SemperEngine
 	{
 		class ResourceObjectCenter
 		{
-		private:
+		public:
 
-			static TextureObjectContainer textures;
+			static std::vector<ResourceObject*> _newObjects;
 
-			static MeshObjectContainer cubes;
+			static std::vector<ResourceObject*> _deleteObjects;
+
+			static std::vector<ResourceObject*> _modifyObjects;
 
 		public:
 
-			static void DeleteObjects();
+			static void EndProcess();
 
-			static void NewObjects();
+			static void Create(ResourceObject* obj);
 
-			static std::shared_ptr<TextureObject> CreateTexture();
+			static void Delete(ResourceObject* obj);
 
-			static std::shared_ptr<TextureObject> CreateTexture(TextureObject::Setting setting);
-
-			static std::shared_ptr<TextureObject> LoadTexture(std::string file, bool share = false);
-
-			static std::shared_ptr<TextureObject> LoadTexture(std::string file, bool share, TextureObject::Setting setting);
-
-			static std::shared_ptr<TextureObject> CopyTexture(std::shared_ptr<TextureObject> texture);
-
-			static void DeleteTexture(std::shared_ptr<TextureObject> tex);
-
-			static std::shared_ptr<MeshObject> CreateCube();
-
-			static std::shared_ptr<MeshObject> CreateCube(MeshObject::Setting setting);
-
-			static std::shared_ptr<MeshObject> CopyMesh(std::shared_ptr<MeshObject> mesh);
-
-			static void DeleteCube(std::shared_ptr<MeshObject> cube);
+			static void Modify(ResourceObject* obj);
 
 		};
 	}

@@ -4,6 +4,7 @@
 
 #include <vector>
 #include "GameObject.h"
+#include "GameCabin.h"
 #include "LifeContainer.h"
 
 namespace SemperEngine
@@ -14,9 +15,9 @@ namespace SemperEngine
 		{
 		public:
 
-			std::vector<LifeContainer<GameObject>> gameObjects;
+			std::vector<GameCabin*> cabins;
 
-			std::vector<LifeContainer<GameObject>> newGameObjects;
+			std::vector<GameCabin*> newCabins;
 
 		public:
 
@@ -24,13 +25,13 @@ namespace SemperEngine
 
 			~WorldContainer();
 
-			void AddGameObject(LifeContainer<GameObject> gameObject);
+			void Add(GameObject* gameObject);
 
-			void StartGameObjects();
+			void Start();
 
-			void UpdateGameObjects();
+			void Update();
 
-			void EndGameObjects();
+			void End();
 
 		};
 	}

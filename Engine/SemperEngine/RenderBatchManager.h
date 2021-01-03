@@ -3,8 +3,8 @@
 
 #include <vector>
 #include "RenderBatch.h"
-#include "RenderObject.h"
 #include "CameraObject.h"
+#include "RenderObject.h"
 #include "Graphic.h"
 #include "Material.h"
 
@@ -14,13 +14,15 @@ namespace SemperEngine {
 
 		class RenderBatchManager
 		{
+		private:
+
+			static std::vector<RenderBatch> _batchs;
+
 		public:
 
-			static std::vector<RenderBatch> batchs;
+			static void GenerateBatchs(CameraObject* camera, std::vector<RenderObject*> objects);
 
-		public:
-
-			static void GenerateBatchs(CameraObject* camera, std::vector<RenderObject*> renderObjects);
+			static void GenerateBatchs(std::vector<RenderObject*> objects);
 
 			static void GenerateGraphicCommands();
 
@@ -28,8 +30,13 @@ namespace SemperEngine {
 
 		private:
 
+			static RenderBatch GenerateBatch(RenderObject* object, CameraObject* camera);
+
 			static std::vector<GraphicTextureInfo> GetGraphicTextureInfos(std::shared_ptr<Material> material);
 
+			static void DrawCustom(RenderBatch batch);
+
+			static void DrawScreen(RenderBatch batch);
 		};
 	}
 }

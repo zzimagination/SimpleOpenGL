@@ -23,7 +23,7 @@ namespace SemperEngine
 			vector<CameraObject*> result;
 			for (int i = 0; i < _cameras.size(); i++)
 			{
-				if (_cameras[i].life)
+				if (*_cameras[i].life)
 				{
 					result.push_back(_cameras[i].self);
 				}

@@ -41,6 +41,8 @@ namespace SemperEngine
 			void WriteLine(std::wstring& log);
 
 			void WriteLine();
+
+			void Flush();
 		};
 	}
 }

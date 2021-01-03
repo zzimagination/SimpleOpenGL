@@ -2,7 +2,6 @@
 #ifndef __WORLD_MAP__
 #define __WORLD_MAP__
 
-#include "World.h"
 #include "WorldBuilder.h"
 #include "WorldBuilderList.h"
 

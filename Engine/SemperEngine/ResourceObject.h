@@ -2,57 +2,40 @@
 #define __RESOURCEOBJECT__
 
 #include <string>
+#include <memory>
 
 namespace SemperEngine
 {
 	namespace Core
 	{
+
 		class ResourceObject
 		{
 		public:
 
 			int id = 0;
 
-			std::string filePath;
+			std::string filePath = "";
 
 			int useCount = 0;
 
-		protected:
-
-			bool shared = false;
-
-			bool readOnly = false;
-
 		public:
 
-			ResourceObject() {}
+			ResourceObject();
 
-			ResourceObject(bool isShared) : shared(isShared)
-			{}
+			virtual ~ResourceObject();
 
-			virtual ~ResourceObject() {}
+			int Use();
 
-			int Use()
-			{
-				useCount++;
-				return useCount;
-			}
+			int Dispose();
 
-			int Dispose()
-			{
-				useCount--;
-				return useCount;
-			}
+			void Modify();
 
-			bool IsShared()
-			{
-				return shared;
-			}
+			virtual void EndCreate();
 
-			bool ReadOnly()
-			{
-				return readOnly;
-			}
+			virtual void EndDelete();
+
+			virtual void EndModify();
 		};
 	}
 }

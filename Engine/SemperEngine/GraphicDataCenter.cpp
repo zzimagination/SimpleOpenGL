@@ -1,7 +1,6 @@
 #include "GraphicDataCenter.h"
 #include "GraphicCommandManager.h"
 #include "GraphicResouceAPI.h"
-#include "ScreenTextureData.h"
 
 namespace SemperEngine
 {

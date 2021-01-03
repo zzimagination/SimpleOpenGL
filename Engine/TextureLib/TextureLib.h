@@ -3,8 +3,10 @@
 #define __TEXTURELIB__
 
 #define WIN32_LEAN_AND_MEAN 
+
 #include <string>
 #include <memory>
+#include <vector>
 
 namespace SemperEngine
 {
@@ -29,9 +31,9 @@ namespace SemperEngine
 
 		public:
 
-			unsigned char* textureData;
+			std::unique_ptr<unsigned char> data;
 
-			unsigned int size = 0;
+			int size = 0;
 
 			int width = 0;
 
@@ -47,21 +49,17 @@ namespace SemperEngine
 
 			int interlace = 0;
 
-		public:
-
-			void Dispose();
-
 		};
 
 		class TextureResource
 		{
 		public:
 
-			static TextureFile Load(std::string path);
+			static std::shared_ptr<TextureFile> Load(std::string path);
 
 		private:
 
-			static TextureFile LoadResource(std::string path);
+			static std::shared_ptr<TextureFile> LoadResource(std::string path);
 		};
 	}
 }

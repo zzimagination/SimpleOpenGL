@@ -17,20 +17,11 @@ namespace SemperEngine
 		TextureData* TextureData::Copy()
 		{
 			auto copy = new TextureData();
-			auto buffer = new vector<unsigned char>(*(this->data.get()));
-			auto copyData = shared_ptr<vector<unsigned char>>(buffer);
-			copy->data = copyData;
 			copy->width = this->width;
 			copy->height = this->height;
+			copy->pixels.Resize(pixels.Size());
+			copy->pixels.Copy(pixels.DataPtr());
 			return copy;
-		}
-		unsigned char* TextureData::SourceData()
-		{
-			if (data.get() != nullptr)
-			{
-				return data->data();
-			}
-			return nullptr;
 		}
 	}
 }

@@ -4,7 +4,7 @@
 
 #include <string>
 #include <memory>
-#include <vector>
+#include "ArrayList.h"
 #include "Mathz.h"
 #include "BaseData.h"
 
@@ -16,7 +16,7 @@ namespace SemperEngine
 		{
 		public:
 
-			std::shared_ptr<std::vector<unsigned char>> data;
+			ArrayList<ColorByte> pixels;
 
 			int width = 0;
 
@@ -29,8 +29,6 @@ namespace SemperEngine
 			virtual ~TextureData() override;
 
 			TextureData* Copy();
-
-			unsigned char* SourceData();
 		};
 	}
 }

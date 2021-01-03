@@ -1,7 +1,5 @@
 #include "GameLoop.h"
 #include <thread>
-#include <iostream>
-#include <string>
 #include "Mathz.h"
 #include "Debug.h"
 #include "WorldLoop.h"
@@ -9,7 +7,7 @@
 #include "EventManager.h"
 #include "FrameRuntime.h"
 #include "BaseRenderPipeline.h"
-#include "ResourceObjectManager.h"
+#include "ResourceObjectLoop.h"
 #include "GraphicManager.h"
 
 namespace SemperEngine
@@ -29,9 +27,10 @@ namespace SemperEngine
 		void GameLoop::BeforeLoop()
 		{
 			WorldLoop::BeforeLoop();
-			ResourceObjectManager::EndProcess();
+			ResourceObjectLoop::BeforeLoop();
 			BaseRenderPipeline::Render();
-			GraphicManager::BeforeLoopEnd();
+			GraphicManager::Resource();
+			GraphicManager::SwapCommands();
 			_isLooping = true;
 		}
 
@@ -41,41 +40,35 @@ namespace SemperEngine
 			while (_isLooping)
 			{
 				/*检测是否继续循环*/
-				if (ExitLoop())
+				if (IsExitLoop())
 				{
-					loopSignal.Send(Exit);
+					loopSignal.SendAll(Exit);
 					break;
 				}
 				else
 				{
-					loopSignal.Send();
+					loopSignal.SendAll();
 				}
 				/*帧前处理*/
-				FrameRuntime::BeginFrame();
+				FrameRuntime::Begin();
 				GameWindow::PollWindowEvent();
 
 				/*发送开始命令*/
-				mainSignal.Send();
+				mainSignal.SendAll();
 
 				/*主线程执行*/
-				GraphicManager::Loop();
+				GraphicManager::Render();
 				GameWindow::SwapFrameBuffers();
 
 				/*等待其他线程执行完毕*/
 				logicSignal.Wait();
 
 				/*帧后处理*/
-				GraphicManager::LoopEnd();
-				FrameRuntime::EndFrame();
+				GraphicManager::Resource();
+				GraphicManager::SwapCommands();
+				FrameRuntime::End();
 			}
 			logic.join();
-		}
-
-		void GameLoop::AfterLoop()
-		{
-			WorldLoop::AfterLoop();
-			ResourceObjectManager::Dispose();
-			GraphicManager::AfterLoop();
 		}
 
 		void GameLoop::LogicLoop()
@@ -93,7 +86,7 @@ namespace SemperEngine
 				/*处理游戏逻辑*/
 				EventManager::ProcessEvent();
 				WorldLoop::Loop();
-				ResourceObjectManager::EndProcess();
+				ResourceObjectLoop::Loop();
 				BaseRenderPipeline::Render();
 				EventManager::EndEvents();
 				/*发送完毕命令*/
@@ -101,7 +94,14 @@ namespace SemperEngine
 			}
 		}
 
-		bool GameLoop::ExitLoop()
+		void GameLoop::AfterLoop()
+		{
+			WorldLoop::AfterLoop();
+			ResourceObjectLoop::AfterLoop();
+			GraphicManager::Dispose();
+		}
+
+		bool GameLoop::IsExitLoop()
 		{
 			bool isExit = GameWindow::WindowShouldClose();
 			_isLooping = !isExit;

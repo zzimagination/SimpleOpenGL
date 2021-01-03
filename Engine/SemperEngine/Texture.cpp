@@ -1,6 +1,6 @@
 #include "Texture.h"
 #include "ResourceObjectCenter.h"
-
+#include "ResourceDataCenter.h"
 
 namespace SemperEngine {
 
@@ -9,27 +9,35 @@ namespace SemperEngine {
 
 	Texture::Texture()
 	{
-		object = ResourceObjectCenter::CreateTexture();
+		object = TextureObject::Create();
+		object->Use();
+	}
+
+	Texture::Texture(TextureObject* obj)
+	{
+		object = obj;
+		object->Use();
 	}
 
 	Texture::~Texture()
 	{
-		ResourceObjectCenter::DeleteTexture(object);
+		object->Dispose();
 	}
+
 	Texture* Texture::Copy()
 	{
-		auto obj = ResourceObjectCenter::CopyTexture(object);
-		auto texture = new Texture();
-		ResourceObjectCenter::DeleteTexture(texture->object);
-		texture->object = obj;
+		auto obj = object->Copy();
+		auto texture = new Texture(obj);
 		return texture;
 	}
-	void Texture::ColorBuffer(std::shared_ptr<unsigned char> buffer)
-	{
 
-	}
-	std::shared_ptr<unsigned char> Texture::ColorBuffer()
+	void Texture::SetColors(ArrayList<ColorByte> data)
 	{
-		return std::shared_ptr<unsigned char>();
+		object->ColorBytes(data);
+	}
+
+	ArrayList<ColorByte> Texture::GetColors()
+	{
+		return object->ColorBytes();
 	}
 }

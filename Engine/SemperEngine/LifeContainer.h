@@ -6,36 +6,48 @@
 
 namespace SemperEngine
 {
-	namespace Core
+	template<class T>
+	class LifeContainer
 	{
-		template<class T>
-		class LifeContainer
+	public:
+
+		T* self;
+
+		std::shared_ptr<bool> life;
+
+	public:
+
+		LifeContainer()
 		{
-		public:
+			life = std::shared_ptr<bool>(new bool(false));
+		}
 
-			T* self;
+		LifeContainer(T* self)
+		{
+			this->self = self;
+			this->life = std::shared_ptr<bool>(new bool(true));
+		}
+		~LifeContainer()
+		{}
 
-			std::shared_ptr<bool> life;
+		bool Life()
+		{
+			return *life;
+		}
 
-		public:
-
-			LifeContainer()
+		void Dispose()
+		{
+			if (*life == true)
 			{
-				life = std::shared_ptr<bool>(new bool(false));
+				*life = false;
+				delete self;
+				self = nullptr;
 			}
+		}
 
-			LifeContainer(T* self)
-			{
-				this->self = self;
-				this->life = std::shared_ptr<bool>(new bool(true));
-			}
-			~LifeContainer()
-			{}
+	private:
 
-		private:
-
-		};
-	}
+	};
 }
 
 

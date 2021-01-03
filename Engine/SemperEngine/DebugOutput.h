@@ -14,17 +14,37 @@ namespace SemperEngine
 		{
 		public:
 
+			enum class Type
+			{
+				Debug,
+
+				Error
+			};
+
+		public:
+
 			std::string info;
 
 			std::wstring winfo;
 
 			std::string time;
 
+			Type type;
+
 			LogItem(std::string time)
 			{
 				info = "";
 				winfo = L"";
 				this->time = time;
+				this->type = Type::Debug;
+			}
+
+			LogItem(std::string time, Type t)
+			{
+				info = "";
+				winfo = L"";
+				this->time = time;
+				this->type = t;
 			}
 		};
 
@@ -42,11 +62,13 @@ namespace SemperEngine
 
 		public:
 
-			static void InputLog(LogItem& log);
+			static void InputLog(LogItem log);
 
 			static LogItem OutputLog();
 
 			static bool HasLog();
+
+			static void Close();
 
 		private:
 

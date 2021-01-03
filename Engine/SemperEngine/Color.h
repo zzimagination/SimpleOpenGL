@@ -7,6 +7,8 @@
 
 namespace SemperEngine
 {
+	typedef unsigned char ColorByte;
+
 	class Color
 	{
 	public:
@@ -15,33 +17,67 @@ namespace SemperEngine
 
 		static Color FromHEX24(const long& hex);
 
+		static Color ColorFloat(const float& r = 1, const float& g = 1, const float& b = 1, const float& a = 1);
+
+		static Color Color32(const ColorByte& r = 255, const ColorByte& g = 255, const ColorByte& b = 255, const ColorByte& a = 255);
+
 	private:
 
-		Float4 _data;
+		ColorByte _r;
+
+		ColorByte _g;
+
+		ColorByte _b;
+
+		ColorByte _a;
 
 	public:
 
 		Color();
 
-		Color(Float4 value);
+		Color(const Float4& value);
 
-		Color(Float3 value);
-
-		Color(const float& r, const float& g, const float& b, const float& a = 1);
+		Color(const Float3& value);
 
 		float R();
 
+		ColorByte R32();
+
+		void SetR(const float& value);
+
+		void SetR32(const ColorByte& value);
+
 		float G();
+
+		ColorByte G32();
+
+		void SetG(const float& value);
+
+		void SetG32(const ColorByte& value);
 
 		float B();
 
+		ColorByte B32();
+
+		void SetB(const float& value);
+
+		void SetB32(const ColorByte& value);
+
 		float A();
+
+		ColorByte A32();
+
+		void SetA(const float& value);
+
+		void SetA32(const ColorByte& value);
 
 		Color& operator=(const Float4& right);
 
 		Color& operator=(const Float3& right);
 
 		Color& operator=(const Color& right);
+
+		bool operator == (const Color& right);
 	};
 }
 

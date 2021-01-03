@@ -8,91 +8,62 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		TextureObjectContainer ResourceObjectCenter::textures;
+		std::vector<ResourceObject*> ResourceObjectCenter::_newObjects;
 
-		MeshObjectContainer ResourceObjectCenter::cubes;
+		std::vector<ResourceObject*> ResourceObjectCenter::_deleteObjects;
 
-		void ResourceObjectCenter::DeleteObjects()
+		std::vector<ResourceObject*> ResourceObjectCenter::_modifyObjects;
+
+		void ResourceObjectCenter::EndProcess()
 		{
-			textures.DeleteObjects();
-			cubes.DeleteObjects();
-		}
-
-		void ResourceObjectCenter::NewObjects()
-		{
-			textures.NewObjects();
-			cubes.NewObjects();
-		}
-
-		std::shared_ptr<TextureObject> ResourceObjectCenter::CreateTexture()
-		{
-			return textures.Create();
-		}
-
-		std::shared_ptr<TextureObject> ResourceObjectCenter::CreateTexture(TextureObject::Setting setting)
-		{
-			textures.Setting(setting);
-			auto result = textures.Create();
-			textures.ResetSetting();
-			return result;
-		}
-
-		std::shared_ptr<TextureObject> ResourceObjectCenter::LoadTexture(std::string file, bool share)
-		{
-			if (share)
+			for (size_t i = 0; i < _deleteObjects.size(); i++)
 			{
-				auto obj = textures.Find(file);
-				if (obj != nullptr)
+				_deleteObjects[i]->EndDelete();
+				delete _deleteObjects[i];
+			}
+			_deleteObjects.clear();
+			for (size_t i = 0; i < _newObjects.size(); i++)
+			{
+				_newObjects[i]->EndCreate();
+			}
+			_newObjects.clear();
+			for (size_t i = 0; i < _modifyObjects.size(); i++)
+			{
+				_modifyObjects[i]->EndModify();
+			}
+			_modifyObjects.clear();
+		}
+
+		void ResourceObjectCenter::Create(ResourceObject* obj)
+		{
+			_newObjects.push_back(obj);
+		}
+
+		void ResourceObjectCenter::Delete(ResourceObject* obj)
+		{
+			for (int i = 0; i < _newObjects.size(); i++)
+			{
+				if (obj == _newObjects[i])
 				{
-					return obj;
+					delete _newObjects[i];
+					_newObjects.erase(_newObjects.begin() + i);
+					return;
 				}
-				return textures.LoadSave(file);
 			}
-			else
+			_deleteObjects.push_back(obj);
+		}
+
+		void ResourceObjectCenter::Modify(ResourceObject* obj)
+		{
+			for (size_t i = 0; i < _modifyObjects.size(); i++)
 			{
-				return textures.Load(file);
+				if (_modifyObjects[i] == obj)
+				{
+					return;
+				}
 			}
+			_modifyObjects.push_back(obj);
 		}
 
-		std::shared_ptr<TextureObject> ResourceObjectCenter::LoadTexture(std::string file, bool share, TextureObject::Setting setting)
-		{
-			textures.Setting(setting);
-			auto result = LoadTexture(file, share);
-			textures.ResetSetting();
-			return result;
-		}
-
-		std::shared_ptr<TextureObject> ResourceObjectCenter::CopyTexture(std::shared_ptr<TextureObject> texture)
-		{
-			return textures.Copy(texture);
-		}
-
-		void ResourceObjectCenter::DeleteTexture(std::shared_ptr<TextureObject> tex)
-		{
-			textures.Delete(tex);
-		}
-
-		std::shared_ptr<MeshObject> ResourceObjectCenter::CreateCube()
-		{
-			return cubes.CreateCube();
-		}
-
-		std::shared_ptr<MeshObject> ResourceObjectCenter::CreateCube(MeshObject::Setting setting)
-		{
-			cubes.Setting(setting);
-			auto result = CreateCube();
-			cubes.ResetSetting();
-			return result;
-		}
-
-		std::shared_ptr<MeshObject> ResourceObjectCenter::CopyMesh(std::shared_ptr<MeshObject> mesh)
-		{
-			return cubes.Copy(mesh);
-		}
-
-		void ResourceObjectCenter::DeleteCube(std::shared_ptr<MeshObject> cube)
-		{
-			cubes.Delete(cube);
-		}
 	}
 }

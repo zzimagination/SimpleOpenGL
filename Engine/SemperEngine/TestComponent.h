@@ -1,11 +1,19 @@
 #ifndef __TEST_COMPONENT__
 #define __TEST_COMPONENT__
 
-#include "BeautifulWorld.h"
+#include <vector>
+#include "GameObject.h"
+#include "Component.h"
 
 namespace SemperEngine
 {
-	class TestComponent : public SemperEngine::Component {
+	class TestComponent : public Component 
+	{
+	public:
+
+		float y = 0;
+
+		std::vector<GameObject*> objects;
 
 	public:
 

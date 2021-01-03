@@ -52,7 +52,7 @@ namespace SemperEngine {
 			GLRenderAPI::SetBlendFunc(0x0302, 0x0303);
 		}
 
-		void GraphicRenderAPI::SetVertexData(GraphicVertexData& data)
+		void GraphicRenderAPI::SetVertexData(GraphicVertexData data)
 		{
 			GLRenderAPI::BindVertexBuffer(data.VAO);
 			_vertexCount = data.pointCount;

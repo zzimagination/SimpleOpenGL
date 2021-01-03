@@ -18,13 +18,12 @@ namespace SemperEngine {
 		this->_aspect = (float)GameSetting::windowWidth / GameSetting::windowHeight;
 		this->projection = Projection::Perspective;
 		this->clearMode = ClearMode::Color;
-		this->clearColor = Color(0.8f, 0.8f, 0.8f);
+		this->clearColor = Color::ColorFloat(0.8f, 0.8f, 0.8f);
 		_cameraObject = unique_ptr<CameraObject>(new CameraObject());
 	}
 
 	Camera::~Camera()
 	{
-
 	}
 
 	void Camera::Start()
@@ -33,7 +32,6 @@ namespace SemperEngine {
 		Float3 lookp(look.x, 0, look.z);
 		_yaw = Math::ArcCos(Float3::Dot(lookp, Float3::forward) / lookp.Length());
 		_pitch = Math::ArcCos(Float3::Dot(lookp, look) / (look.Length(), lookp.Length()));
-		UpdateObject();
 	}
 
 	void Camera::Update()
@@ -42,6 +40,7 @@ namespace SemperEngine {
 		Move();
 		Rotate();
 		UpdateObject();
+		AddObject();
 	}
 
 	float Camera::GetSize()
@@ -255,6 +254,12 @@ namespace SemperEngine {
 			_cameraObject->clearMode = RenderEnum::ClearMode::Depth;
 			break;
 		}
+	}
+
+	void Camera::AddObject()
+	{
 		CameraCollection::AddCamera(_cameraObject->myLife);
 	}
+
+
 }

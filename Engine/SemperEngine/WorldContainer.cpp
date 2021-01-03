@@ -4,70 +4,210 @@ namespace SemperEngine
 {
 	namespace Core
 	{
+		using namespace std;
+
 		WorldContainer::WorldContainer()
 		{
 		}
 		WorldContainer::~WorldContainer()
 		{
 		}
-		void WorldContainer::AddGameObject(LifeContainer<GameObject> gameObject)
+		void WorldContainer::Add(GameObject* gameObject)
 		{
-			gameObject.self->worldID = (int)newGameObjects.size() + (int)gameObjects.size();
-			newGameObjects.push_back(gameObject);
+			auto cabin = new GameCabin();
+			cabin->objectLife = gameObject->life;
+			cabin->gameObject = gameObject;
+			newCabins.push_back(cabin);
 		}
 
-		void WorldContainer::StartGameObjects()
+		void WorldContainer::Start()
 		{
-			auto tempNew = newGameObjects;
-			newGameObjects.clear();
-			for (int i = 0; i < tempNew.size(); i++)
+			//for (size_t i = 0; i < newCabins.size(); i++)
+			//{
+			//	auto cabin = newCabins[i];
+			//	if (cabin->Dead())
+			//	{
+			//		continue;
+			//	}
+			//	cabin->gameObject->Start();
+			//}
+			int i = 0;
+			int size = (int)newCabins.size();
+			if (i < size) 
 			{
-				auto gameObject = tempNew[i];
-				if (!*gameObject.life)
+				do
 				{
-					continue;
-				}
-				gameObject.self->Start();
-				gameObject.self->container.StartComponents();
-				gameObjects.push_back(gameObject);
+					auto cabin = newCabins[i];
+					if (cabin->Dead())
+					{
+						i++;
+						continue;
+					}
+					cabin->gameObject->Start();
+					i++;
+				} while (i < size);
 			}
+
+			i = 0;
+			size = (int)newCabins.size();
+			vector<GameCabin*> nc;
+			nc.reserve(newCabins.size());
+			if (i < size) 
+			{
+				do
+				{
+					auto cabin = newCabins[i];
+					if (cabin->Dead())
+					{
+						delete cabin;
+						i++;
+						continue;
+					}
+					cabins.push_back(newCabins[i]);
+					i++;
+				} while (i < size);
+			}
+			//for (size_t i = 0; i < newCabins.size(); i++)
+			//{
+			//	auto cabin = newCabins[i];
+			//	if (cabin->Dead())
+			//	{
+			//		delete cabin;
+			//		continue;
+			//	}
+			//	cabins.push_back(newCabins[i]);
+			//}
+			newCabins = nc;
+
+			i = 0;
+			size = (int)cabins.size();
+			if (i < size)
+			{
+				do
+				{
+					auto cabin = cabins[i];
+					if (cabin->Dead())
+					{
+						i++;
+						continue;
+					}
+					cabin->gameObject->container.Start();
+					i++;
+				} while (i < size);
+			}
+			//for (size_t i = 0; i < cabins.size(); i++)
+			//{
+			//	auto cabin = cabins[i];
+			//	if (cabin->Dead())
+			//	{
+			//		continue;
+			//	}
+			//	cabin->gameObject->container.Start();
+			//}
 		}
 
-		void WorldContainer::UpdateGameObjects()
+		void WorldContainer::Update()
 		{
-			for (int i = 0; i < gameObjects.size(); i++)
-			{
-				auto gameObject = gameObjects[i];
-				if (!*gameObject.life)
+			//for (int i = 0; i < cabins.size(); i++)
+			//{
+			//	auto cabin = cabins[i];
+			//	if (cabin->Dead())
+			//	{
+			//		continue;
+			//	}
+			//	cabin->gameObject->Update();
+			//}
+			int i = 0;
+			int size = (int)cabins.size();
+			if (i < size) {
+				do
 				{
-					continue;
-				}
-				gameObject.self->Update();
-				gameObject.self->container.UpdateComponents();
+					auto cabin = cabins[i];
+					if (cabin->Dead())
+					{
+						i++;
+						continue;
+					}
+					cabin->gameObject->Update();
+					i++;
+				} while (i < size);
 			}
 
-			std::vector<LifeContainer<GameObject>> nextGameObjects;
-			for (int i = 0; i < gameObjects.size(); i++)
-			{
-				auto gameObject = gameObjects[i];
-				if (!*gameObject.life)
+			i = 0;
+			if (i < size) {
+				do
 				{
-					continue;
-				}
-				gameObject.self->worldID = (int)nextGameObjects.size();
-				nextGameObjects.push_back(gameObject);
+					auto cabin = cabins[i];
+					if (cabin->Dead())
+					{
+						i++;
+						continue;
+					}
+					cabin->gameObject->container.Update();
+					i++;
+				} while (i < size);
 			}
-			gameObjects = nextGameObjects;
+			//for (size_t i = 0; i < cabins.size(); i++)
+			//{
+			//	auto cabin = cabins[i];
+			//	if (cabin->Dead())
+			//	{
+			//		continue;
+			//	}
+			//	cabin->gameObject->container.Update();
+			//}
+
+			i = 0;
+			vector<GameCabin*> leftCabins;
+			leftCabins.reserve(cabins.size());
+			if (i < size) {
+				do
+				{
+					auto cabin = cabins[i];
+					if (cabin->Dead())
+					{
+						delete cabin;
+						i++;
+						continue;
+					}
+					leftCabins.push_back(cabin);
+					i++;
+				} while (i < size);
+			}
+			//for (size_t i = 0; i < cabins.size(); i++)
+			//{
+			//	auto cabin = cabins[i];
+			//	if (cabin->Dead())
+			//	{
+			//		delete cabin;
+			//		continue;
+			//	}
+			//	leftCabins.push_back(cabin);
+			//}
+			cabins = leftCabins;
 		}
 
-		void WorldContainer::EndGameObjects()
+		void WorldContainer::End()
 		{
-			for (int i = 0; i < gameObjects.size(); i++)
+			for (size_t i = 0; i < newCabins.size(); i++)
 			{
-				auto gameObject = gameObjects[i];
-				gameObject.self->container.EndComponents();
-				delete gameObject.self;
+				if (!newCabins[i]->Dead())
+				{
+					delete newCabins[i]->gameObject;
+				}
+				delete newCabins[i];
 			}
+			newCabins.clear();
+			for (int i = 0; i < cabins.size(); i++)
+			{
+				auto cabin = cabins[i];
+				if (!cabin->Dead())
+				{
+					delete cabin->gameObject;
+				}
+				delete cabin;
+			}
+			cabins.clear();
 		}
 	}
 }

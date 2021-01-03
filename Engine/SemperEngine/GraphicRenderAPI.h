@@ -39,7 +39,7 @@ namespace SemperEngine {
 
 			static void SetBlendFunc();
 
-			static void SetVertexData(GraphicVertexData& data);
+			static void SetVertexData(GraphicVertexData data);
 
 			static void SetShader(std::string shader);
 

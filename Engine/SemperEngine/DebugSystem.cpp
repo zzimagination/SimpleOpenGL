@@ -17,17 +17,12 @@ namespace SemperEngine
 		void DebugSystem::Initialization()
 		{
 			_isOpen = true;
-			_debugThread = thread(Start);
+			_debugThread = thread(DebugThread);
 		}
 
-		void DebugSystem::Start()
+		void DebugSystem::DebugThread()
 		{
 			_file = DebugFile::Open();
-			return Update();
-		}
-
-		void DebugSystem::Update()
-		{
 			while (_isOpen)
 			{
 				LogItem item = DebugOutput::OutputLog();
@@ -37,16 +32,22 @@ namespace SemperEngine
 
 		void DebugSystem::Close()
 		{
-			_isOpen = false;
 			LogItem item(Time::SystemTime());
 			item.info = "Game End.";
 			DebugOutput::InputLog(item);
+			_isOpen = false;
 			_debugThread.join();
-			while (DebugOutput::HasLog())
+
+			while (true)
 			{
-				LogItem item = DebugOutput::OutputLog();
-				OutputItem(item);
+				if (!DebugOutput::HasLog())
+				{
+					break;
+				}
+				auto log = DebugOutput::OutputLog();
+				OutputItem(log);
 			}
+
 			_file->Close();
 		}
 
@@ -63,6 +64,10 @@ namespace SemperEngine
 			else
 			{
 				_file->WriteLine(item.winfo);
+			}
+			if (item.type == LogItem::Type::Error)
+			{
+				_file->Flush();
 			}
 		}
 	}

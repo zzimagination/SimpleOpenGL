@@ -4,7 +4,6 @@
 
 #include <memory>
 #include "GameObject.h"
-#include "World.h"
 #include "WorldAction.h"
 
 namespace SemperEngine
