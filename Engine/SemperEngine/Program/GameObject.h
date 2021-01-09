@@ -5,8 +5,7 @@
 #include <memory>
 #include <string>
 #include <typeindex>
-#include "Mathz.h"
-#include "LifeContainer.h"
+#include "Common.h"
 #include "Transform.h"
 #include "GameObjectContainer.h"
 #include "Component.h"

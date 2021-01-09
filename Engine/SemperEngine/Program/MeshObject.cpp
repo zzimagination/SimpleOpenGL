@@ -20,6 +20,12 @@ namespace SemperEngine
 			object->resourcePackage = ResourceDataCenter::CreateCube();
 			return object;
 		}
+		MeshObject* MeshObject::CreateRectangle()
+		{
+			auto object = new MeshObject;
+			object->resourcePackage = ResourceDataCenter::CreateRectangle();
+			return object;
+		}
 		MeshObject::MeshObject()
 		{
 		}
@@ -30,19 +36,19 @@ namespace SemperEngine
 
 		void MeshObject::EndCreate()
 		{
-			graphicDataInfo = GraphicDataCenter::AddVertexData(resourcePackage.GetResource());
+			graphicDataInfo = GraphicResource::AddVertexData(resourcePackage.GetResource());
 		}
 
 		void MeshObject::EndDelete()
 		{
 			resourcePackage.Dispose();
-			GraphicDataCenter::RemoveVertexData(graphicDataInfo);
+			GraphicResource::RemoveVertexData(graphicDataInfo);
 		}
 
 		void MeshObject::EndModify()
 		{
-			GraphicDataCenter::RemoveVertexData(graphicDataInfo);
-			graphicDataInfo = GraphicDataCenter::AddVertexData(resourcePackage.GetResource());
+			GraphicResource::RemoveVertexData(graphicDataInfo);
+			graphicDataInfo = GraphicResource::AddVertexData(resourcePackage.GetResource());
 		}
 
 		MeshObject* MeshObject::Copy()

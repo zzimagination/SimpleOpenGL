@@ -1,5 +1,4 @@
 #include "VertexData.h"
-#include "Debug.h"
 
 namespace SemperEngine
 {
@@ -19,7 +18,7 @@ namespace SemperEngine
 			return cube;
 		}
 
-		VertexData* VertexData::CreateScreen()
+		VertexData* VertexData::CreateRectangle()
 		{
 			auto vert = new VertexData();
 			vert->vertices.Resize(ScreenTextureData::vertices.size());

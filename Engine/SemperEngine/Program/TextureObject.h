@@ -4,11 +4,10 @@
 
 #include <memory>
 #include <vector>
+#include "Common.h"
 #include "ResourcePackage.h"
 #include "ResourceObject.h"
-#include "TextureData.h"
 #include "Graphic.h"
-#include "ArrayList.h"
 
 namespace SemperEngine
 {

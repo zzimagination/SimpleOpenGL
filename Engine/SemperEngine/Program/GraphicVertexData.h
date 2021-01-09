@@ -3,7 +3,6 @@
 #define __GRAPHICVERTEXDATA__
 
 #include "GraphicData.h"
-#include "VertexData.h"
 
 namespace SemperEngine
 {

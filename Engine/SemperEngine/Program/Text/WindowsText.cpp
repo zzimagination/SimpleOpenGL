@@ -1,4 +1,4 @@
-#include "GWinText.h"
+#include "WindowsText.h"
 #include <codecvt>
 #include <memory>
 #include <Windows.h>

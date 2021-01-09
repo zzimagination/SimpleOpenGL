@@ -5,6 +5,9 @@ namespace SemperEngine
 {
 	namespace Core
 	{
+		ResourceTextureLibrary::~ResourceTextureLibrary()
+		{
+		}
 		TextureObject* ResourceTextureLibrary::Load(std::string path)
 		{
 			for (int i = 0; i < (int)_library.Size(); i++)

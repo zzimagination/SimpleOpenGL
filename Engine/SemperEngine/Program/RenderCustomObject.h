@@ -26,13 +26,6 @@ namespace SemperEngine
 			RenderCustomObject();
 
 			virtual ~RenderCustomObject() override;
-
-			virtual std::shared_ptr<Mesh> GetMesh() override;
-
-			virtual std::shared_ptr<Material> GetMaterial() override;
-
-			virtual Matrix4x4 GetModelMat() override;
-
 		};
 	}
 }

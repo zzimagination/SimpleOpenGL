@@ -159,15 +159,15 @@ namespace SemperEngine {
 	}
 	void Camera::AddRenderLayer(int layer)
 	{
-		_cameraObject->renderLayer.Add(layer);
+		_cameraObject->layer.Add(layer);
 	}
 	void Camera::RemoveRenderLayer(int layer)
 	{
-		_cameraObject->renderLayer.Remove(layer);
+		_cameraObject->layer.Remove(layer);
 	}
 	std::vector<int> Camera::GetRenderLayers()
 	{
-		return _cameraObject->renderLayer.GetLayers();
+		return _cameraObject->layer.GetLayers();
 	}
 	void Camera::Move()
 	{
@@ -245,20 +245,20 @@ namespace SemperEngine {
 		switch (clearMode)
 		{
 		case ClearMode::None:
-			_cameraObject->clearMode = RenderEnum::ClearMode::Color;
+			_cameraObject->clearMode = Graphic::ClearMode::Color;
 			break;
 		case ClearMode::Color:
 			_cameraObject->clearMode = ClearColorDepth;
 			break;
 		case ClearMode::DepthOnly:
-			_cameraObject->clearMode = RenderEnum::ClearMode::Depth;
+			_cameraObject->clearMode = Graphic::ClearMode::Depth;
 			break;
 		}
 	}
 
 	void Camera::AddObject()
 	{
-		CameraCollection::AddCamera(_cameraObject->myLife);
+		CameraCollection::AddCamera(_cameraObject.get());
 	}
 
 

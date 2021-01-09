@@ -19,9 +19,9 @@ namespace SemperEngine
 
 		void GTextureBufferClearCMD::Excute()
 		{
-			auto data = GraphicDataCenter::GetTextureData(dataInfo);
+			auto data = GraphicResource::GetTextureData(dataInfo);
 			GraphicResouceAPI::ClearTextureData(*data.get());
-			GraphicDataCenter::DeleteGraphicTextureData(dataInfo);
+			GraphicResource::DeleteGraphicTextureData(dataInfo);
 		}
 	}
 }

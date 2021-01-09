@@ -45,5 +45,10 @@ namespace SemperEngine
 			auto data = VertexData::CreateCube();
 			return vertexDataCetner.CreatePackage(data);
 		}
+		ResourcePackage<VertexData> ResourceDataCenter::CreateRectangle()
+		{
+			auto data = VertexData::CreateRectangle();
+			return vertexDataCetner.CreatePackage(data);
+		}
 	}
 }

@@ -19,7 +19,7 @@ namespace SemperEngine
 			vector<GraphicTextureInfo> textures)
 		{
 			GraphicVertexInfo vertex;
-			vertex.info = GraphicDataCenter::screenVertexData;
+			vertex.info = GraphicResource::screenVertexData;
 			RenderMatrix matrix = { Matrix4x4::Identity() ,Matrix4x4::Identity() ,Matrix4x4::Identity() };
 			GraphicCommandManager::Draw(vertex, operation, matrix, sproperty, textures);
 		}
@@ -34,7 +34,7 @@ namespace SemperEngine
 			GraphicCommandManager::Draw(vertex, operation, matrix, sproperty, textures);
 		}
 
-		void GraphicRenderer::Clear(Color color, RenderEnum::ClearMode mode)
+		void GraphicRenderer::Clear(Color color, Graphic::ClearMode mode)
 		{
 			GraphicCommandManager::Clear(color, mode);
 		}

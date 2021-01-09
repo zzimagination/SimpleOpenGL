@@ -2,10 +2,9 @@
 #ifndef __MESH_OBJECT__
 #define __MESH_OBJECT__
 
-#include "ArrayList.h"
+#include "Common.h"
 #include "ResourceObject.h"
 #include "ResourcePackage.h"
-#include "VertexData.h"
 #include "Graphic.h"
 
 namespace SemperEngine
@@ -26,6 +25,8 @@ namespace SemperEngine
 			static MeshObject* Create();
 
 			static MeshObject* CreateCube();
+
+			static MeshObject* CreateRectangle();
 
 		public:
 

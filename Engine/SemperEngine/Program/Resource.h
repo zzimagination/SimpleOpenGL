@@ -7,6 +7,7 @@
 #include "Mesh.h"
 #include "Texture.h"
 #include "ResourceTextureLibrary.h"
+#include "ResourceMeshLibrary.h"
 
 namespace SemperEngine
 {
@@ -15,6 +16,8 @@ namespace SemperEngine
 	private:
 
 		static Core::ResourceTextureLibrary textureLibrary;
+
+		static Core::ResourceMeshLibrary meshLibrary;
 
 	public:
 

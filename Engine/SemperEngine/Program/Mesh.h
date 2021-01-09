@@ -3,16 +3,16 @@
 #define __MESH__
 
 #include <memory>
+#include "Common.h"
 #include "MeshObject.h"
-#include "ArrayList.h"
 
 namespace SemperEngine
 {
 	class Mesh
 	{
-	public:
+	private:
 
-		Core::MeshObject* object;
+		Core::MeshObject* _object;
 
 	public:
 
@@ -21,6 +21,8 @@ namespace SemperEngine
 		Mesh(Core::MeshObject* obj);
 
 		~Mesh();
+
+		Core::MeshObject* GetObject();
 
 		Mesh* Copy();
 

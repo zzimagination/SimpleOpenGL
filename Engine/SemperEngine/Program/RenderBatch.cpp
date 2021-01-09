@@ -32,7 +32,7 @@ namespace SemperEngine
 				throw "VertexType is screen";
 			}
 			GraphicVertexInfo info;
-			info.info = _mesh->object->graphicDataInfo;
+			info.info = _mesh->GetObject()->graphicDataInfo;
 			return info;
 		}
 		void RenderBatch::SetModelMatrix(Matrix4x4 mat4)

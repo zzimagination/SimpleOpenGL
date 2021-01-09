@@ -51,7 +51,7 @@ namespace SemperEngine
 				ShaderProperty sproperty, 
 				std::vector<GraphicTextureInfo> textures);
 
-			static void Clear(Color color, RenderEnum::ClearMode mode);
+			static void Clear(Color color, Graphic::ClearMode mode);
 
 			static void SetWireframe(bool enable);
 

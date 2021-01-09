@@ -11,10 +11,11 @@ namespace SemperEngine
 	{
 		class ResourceTextureLibrary : public ResourceLibrary<TextureObject>
 		{
-		
 		public:
 
-			virtual TextureObject* Load(std::string path) override;
+			virtual ~ResourceTextureLibrary() override;
+
+			TextureObject* Load(std::string path);
 
 		};
 

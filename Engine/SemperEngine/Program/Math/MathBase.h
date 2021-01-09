@@ -3,6 +3,8 @@
 
 //#define MATH_GLM
 
+#include "../Collection.h"
+
 namespace SemperEngine {
 
 	class  Math

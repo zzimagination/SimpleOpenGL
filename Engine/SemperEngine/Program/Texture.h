@@ -11,9 +11,9 @@ namespace SemperEngine
 {
 	class Texture
 	{
-	public:
+	private:
 
-		Core::TextureObject* object;
+		Core::TextureObject* _object;
 
 	public:
 
@@ -22,6 +22,8 @@ namespace SemperEngine
 		Texture(Core::TextureObject* obj);
 
 		~Texture();
+
+		Core::TextureObject* GetObject();
 
 		Texture* Copy();
 

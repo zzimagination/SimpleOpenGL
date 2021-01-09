@@ -4,8 +4,6 @@
 
 #include <string>
 #include <memory>
-#include "ArrayList.h"
-#include "Mathz.h"
 #include "BaseData.h"
 
 namespace SemperEngine

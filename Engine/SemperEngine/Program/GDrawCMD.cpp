@@ -3,7 +3,6 @@
 #include "GraphicRenderAPI.h"
 #include "GraphicShaderManager.h"
 #include "GLRendererAPI.h"
-#include "ShaderProperty.h"
 
 namespace SemperEngine
 {
@@ -28,11 +27,11 @@ namespace SemperEngine
 			GraphicRenderAPI::SetBlend(operation.blend);
 			GraphicRenderAPI::SetBlendFunc();
 
-			auto vertexData = GraphicDataCenter::GetVertexData(vertex.info);
+			auto vertexData = GraphicResource::GetVertexData(vertex.info);
 			vector<shared_ptr<GraphicTextureData>> texturesData;
 			for (int i = 0; i < textures.size(); i++)
 			{
-				auto tex = GraphicDataCenter::GetTextureData(textures[i].info);
+				auto tex = GraphicResource::GetTextureData(textures[i].info);
 				texturesData.push_back(tex);
 			}
 

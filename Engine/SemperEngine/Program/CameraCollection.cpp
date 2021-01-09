@@ -1,5 +1,6 @@
 #include "CameraCollection.h"
 #include "WorldManager.h"
+#include "Debug.h"
 
 namespace SemperEngine
 {
@@ -7,15 +8,21 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		vector<LifeContainer<CameraObject>> CameraCollection::_cameras;
+		vector<LifeContainer<RenderObject>> CameraCollection::_cameras;
 
-		void CameraCollection::AddCamera(LifeContainer<CameraObject> camera)
+		void CameraCollection::AddCamera(CameraObject* camera)
 		{
+			if (camera == nullptr)
+			{
+				Debug::LogError("camera is null");
+				return;
+			}
 			if (WorldManager::Inside())
 			{
 				return;
 			}
-			_cameras.push_back(camera);
+			auto life = camera->mylife;
+			_cameras.push_back(life);
 		}
 
 		vector<CameraObject*> CameraCollection::GetCameras()
@@ -23,9 +30,10 @@ namespace SemperEngine
 			vector<CameraObject*> result;
 			for (int i = 0; i < _cameras.size(); i++)
 			{
-				if (*_cameras[i].life)
+				auto camera = _cameras[i];
+				if (camera.Life())
 				{
-					result.push_back(_cameras[i].self);
+					result.push_back((CameraObject*)camera.self);
 				}
 			}
 			return result;

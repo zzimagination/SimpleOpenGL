@@ -1,45 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Program\TextureData.cpp">
-      <Filter>Common\BaseData</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\VertexData.cpp">
-      <Filter>Common\BaseData</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\Color.cpp">
-      <Filter>Common\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\Float2.cpp">
-      <Filter>Common\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\Float3.cpp">
-      <Filter>Common\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\Float4.cpp">
-      <Filter>Common\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\MathBase.cpp">
-      <Filter>Common\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\Mathz.cpp">
-      <Filter>Common\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\Matrix4x4.cpp">
-      <Filter>Common\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\Quaternion.cpp">
-      <Filter>Common\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\CompletedSignal.cpp">
-      <Filter>Common\MultiThread</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GWinText.cpp">
-      <Filter>Common\Text</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\StringEncoding.cpp">
-      <Filter>Common\Text</Filter>
-    </ClCompile>
     <ClCompile Include="Program\Debug.cpp">
       <Filter>Debug</Filter>
     </ClCompile>
@@ -121,12 +82,6 @@
     <ClCompile Include="Program\TimeManager.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="Program\CameraCollection.cpp">
-      <Filter>Render\Game\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\CameraObject.cpp">
-      <Filter>Render\Game\Camera</Filter>
-    </ClCompile>
     <ClCompile Include="Program\RenderCustomObject.cpp">
       <Filter>Render\Game\RenderObject</Filter>
     </ClCompile>
@@ -143,9 +98,6 @@
       <Filter>Render\Game</Filter>
     </ClCompile>
     <ClCompile Include="Program\RenderBatchManager.cpp">
-      <Filter>Render\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\RenderCollection.cpp">
       <Filter>Render\Game</Filter>
     </ClCompile>
     <ClCompile Include="Program\RenderLayer.cpp">
@@ -241,20 +193,8 @@
     <ClCompile Include="Program\ResourceLoader.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
-    <ClCompile Include="Program\Mesh.cpp">
-      <Filter>ResourceObject\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\MeshObject.cpp">
-      <Filter>ResourceObject\Mesh</Filter>
-    </ClCompile>
     <ClCompile Include="Program\ResourceTextureLibrary.cpp">
       <Filter>ResourceObject\ResourceLibrary</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\Texture.cpp">
-      <Filter>ResourceObject\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\TextureObject.cpp">
-      <Filter>ResourceObject\Texture</Filter>
     </ClCompile>
     <ClCompile Include="Program\Resource.cpp">
       <Filter>ResourceObject</Filter>
@@ -329,59 +269,68 @@
       <Filter>World\World</Filter>
     </ClCompile>
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="Program\Math\Color.cpp">
+      <Filter>Common\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Math\Float2.cpp">
+      <Filter>Common\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Math\Float3.cpp">
+      <Filter>Common\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Math\Float4.cpp">
+      <Filter>Common\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Math\MathBase.cpp">
+      <Filter>Common\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Math\Matrix4x4.cpp">
+      <Filter>Common\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Math\Quaternion.cpp">
+      <Filter>Common\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\EngineData\TextureData.cpp">
+      <Filter>Common\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\EngineData\VertexData.cpp">
+      <Filter>Common\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\MeshObject.cpp">
+      <Filter>ResourceObject\ResourceObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\TextureObject.cpp">
+      <Filter>ResourceObject\ResourceObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Mesh.cpp">
+      <Filter>ResourceObject\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Texture.cpp">
+      <Filter>ResourceObject\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\CameraCollection.cpp">
+      <Filter>Render\Game\Collection</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\RenderCollection.cpp">
+      <Filter>Render\Game\Collection</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\CameraObject.cpp">
+      <Filter>Render\Game\RenderObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\ResourceMeshLibrary.cpp">
+      <Filter>ResourceObject\ResourceLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Text\StringEncoding.cpp">
+      <Filter>Common\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Text\WindowsText.cpp">
+      <Filter>Common\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Thread\CompletedSignal.cpp">
+      <Filter>Common\Thread</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Program\BaseData.h">
-      <Filter>Common\BaseData</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\TextureData.h">
-      <Filter>Common\BaseData</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\VertexData.h">
-      <Filter>Common\BaseData</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Color.h">
-      <Filter>Common\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Float2.h">
-      <Filter>Common\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Float3.h">
-      <Filter>Common\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Float4.h">
-      <Filter>Common\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\MathBase.h">
-      <Filter>Common\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Mathz.h">
-      <Filter>Common\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Matrix4x4.h">
-      <Filter>Common\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Quaternion.h">
-      <Filter>Common\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\LifeContainer.h">
-      <Filter>Common\Custom</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\ArrayList.h">
-      <Filter>Common\Collection</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\FillList.h">
-      <Filter>Common\Collection</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\CompletedSignal.h">
-      <Filter>Common\MultiThread</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\GWinText.h">
-      <Filter>Common\Text</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\StringEncoding.h">
-      <Filter>Common\Text</Filter>
-    </ClInclude>
     <ClInclude Include="Program\Debug.h">
       <Filter>Debug</Filter>
     </ClInclude>
@@ -472,18 +421,6 @@
     <ClInclude Include="Program\TimeManager.h">
       <Filter>Project</Filter>
     </ClInclude>
-    <ClInclude Include="Program\Graphic.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Render.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\CameraCollection.h">
-      <Filter>Render\Game\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\CameraObject.h">
-      <Filter>Render\Game\Camera</Filter>
-    </ClInclude>
     <ClInclude Include="Program\RenderCustomObject.h">
       <Filter>Render\Game\RenderObject</Filter>
     </ClInclude>
@@ -500,9 +437,6 @@
       <Filter>Render\Game</Filter>
     </ClInclude>
     <ClInclude Include="Program\RenderBatchManager.h">
-      <Filter>Render\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\RenderCollection.h">
       <Filter>Render\Game</Filter>
     </ClInclude>
     <ClInclude Include="Program\RenderLayer.h">
@@ -571,9 +505,6 @@
     <ClInclude Include="Program\LogoPipeline.h">
       <Filter>Render\Logo</Filter>
     </ClInclude>
-    <ClInclude Include="Program\ShaderProperty.h">
-      <Filter>Render\Graphic\Shader</Filter>
-    </ClInclude>
     <ClInclude Include="Program\DataCenter.h">
       <Filter>Resource</Filter>
     </ClInclude>
@@ -589,20 +520,8 @@
     <ClInclude Include="Program\ResourcePackage.h">
       <Filter>Resource</Filter>
     </ClInclude>
-    <ClInclude Include="Program\Mesh.h">
-      <Filter>ResourceObject\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\MeshObject.h">
-      <Filter>ResourceObject\Mesh</Filter>
-    </ClInclude>
     <ClInclude Include="Program\ResourceTextureLibrary.h">
       <Filter>ResourceObject\ResourceLibrary</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Texture.h">
-      <Filter>ResourceObject\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\TextureObject.h">
-      <Filter>ResourceObject\Texture</Filter>
     </ClInclude>
     <ClInclude Include="Program\Resource.h">
       <Filter>ResourceObject</Filter>
@@ -683,7 +602,96 @@
       <Filter>World</Filter>
     </ClInclude>
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Program\GameProject.h" />
+    <ClInclude Include="Program\Graphic.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render.h">
+      <Filter>Render\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Math\Color.h">
+      <Filter>Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Math\Float2.h">
+      <Filter>Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Math\Float3.h">
+      <Filter>Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Math\Float4.h">
+      <Filter>Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Math\MathBase.h">
+      <Filter>Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Math\Matrix4x4.h">
+      <Filter>Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Math\Quaternion.h">
+      <Filter>Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Mathz.h">
+      <Filter>Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Collection.h">
+      <Filter>Common\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Collection\FillList.h">
+      <Filter>Common\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Collection\ArrayList.h">
+      <Filter>Common\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Common.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\EngineData\BaseData.h">
+      <Filter>Common\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\EngineData\TextureData.h">
+      <Filter>Common\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\EngineData\VertexData.h">
+      <Filter>Common\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\MeshObject.h">
+      <Filter>ResourceObject\ResourceObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\TextureObject.h">
+      <Filter>ResourceObject\ResourceObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Mesh.h">
+      <Filter>ResourceObject\Target</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Texture.h">
+      <Filter>ResourceObject\Target</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GameProject.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\CameraCollection.h">
+      <Filter>Render\Game\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\CameraObject.h">
+      <Filter>Render\Game\RenderObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\RenderCollection.h">
+      <Filter>Render\Game\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ResourceMeshLibrary.h">
+      <Filter>ResourceObject\ResourceLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Text\StringEncoding.h">
+      <Filter>Common\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Text\WindowsText.h">
+      <Filter>Common\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Thread\CompletedSignal.h">
+      <Filter>Common\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\EngineData\LifeContainer.h">
+      <Filter>Common\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Project">
@@ -736,9 +744,6 @@
     <Filter Include="Common\Math">
       <UniqueIdentifier>{39606d9c-726b-4a51-abbe-cc3951ddabf9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Common\BaseData">
-      <UniqueIdentifier>{56a5d096-ca97-4abe-add5-369e130ae3d8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource">
       <UniqueIdentifier>{0cc2f298-98df-4ecb-ad7b-5226f98a010f}</UniqueIdentifier>
     </Filter>
@@ -780,26 +785,26 @@
     <Filter Include="Render\Game\RenderObject">
       <UniqueIdentifier>{c5e94f82-c03f-43f9-9548-19cd10769d4a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Render\Game\Camera">
-      <UniqueIdentifier>{6e0fe1f7-17b7-4ca1-a003-65b0c48df53a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Common\Collection">
       <UniqueIdentifier>{7a3d9c93-c102-4875-a804-5a778e89fc3b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Common\Custom">
-      <UniqueIdentifier>{022e4208-76a3-46a9-81ca-e0e9f6f86d2b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Common\MultiThread">
-      <UniqueIdentifier>{3868821b-476b-4570-a3be-8371f71fcccc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Common\Text">
       <UniqueIdentifier>{2137ed17-9cf9-427c-95ed-2681c264531d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ResourceObject\Mesh">
-      <UniqueIdentifier>{84560e57-2616-4c20-b0c3-133cc15194fe}</UniqueIdentifier>
+    <Filter Include="ResourceObject\ResourceObject">
+      <UniqueIdentifier>{7f78516d-fbb7-4c13-bfb9-c6618e99a44b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ResourceObject\Texture">
-      <UniqueIdentifier>{249a390d-587b-4d12-b97c-0a53ef9ab8c0}</UniqueIdentifier>
+    <Filter Include="ResourceObject\Target">
+      <UniqueIdentifier>{afa65102-81e0-45ce-88df-81555975f910}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Data">
+      <UniqueIdentifier>{56a5d096-ca97-4abe-add5-369e130ae3d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Thread">
+      <UniqueIdentifier>{3868821b-476b-4570-a3be-8371f71fcccc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render\Game\Collection">
+      <UniqueIdentifier>{dfdc439a-96be-4e79-8653-67f64447e715}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

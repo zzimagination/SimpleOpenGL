@@ -29,8 +29,5 @@
     <ClCompile Include="spng.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="TextureFile.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

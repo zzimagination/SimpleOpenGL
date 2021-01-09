@@ -3,6 +3,7 @@
 #include "RendererGenerator.h"
 #include "RenderLayer.h"
 #include "WorldManager.h"
+#include "Debug.h"
 
 namespace SemperEngine
 {
@@ -24,32 +25,32 @@ namespace SemperEngine
 			_screenObjects.push_back(object->mylife);
 		}
 
-		std::vector<RenderObject*> RenderCollection::GetCustomObjects(RenderLayer layer)
+		std::vector<RenderCustomObject*> RenderCollection::GetCustomObjects(RenderLayer layer)
 		{
-			vector<RenderObject*> result;
+			vector<RenderCustomObject*> result;
 			for (size_t i = 0; i < _customObjects.size(); i++)
 			{
-				if (!*_customObjects[i].life)
+				if (!_customObjects[i].Life())
 				{
 					continue;
 				}
 				if (layer == _customObjects[i].self->layer)
 				{
-					result.push_back(_customObjects[i].self);
+					result.push_back((RenderCustomObject*) _customObjects[i].self);
 				}
 			}
 			return result;
 		}
-		std::vector<RenderObject*> RenderCollection::GetScreenObjects()
+		std::vector<RenderScreenObject*> RenderCollection::GetScreenObjects()
 		{
-			vector<RenderObject*> result;
+			vector<RenderScreenObject*> result;
 			for (size_t i = 0; i < _screenObjects.size(); i++)
 			{
-				if (!*_screenObjects[i].life)
+				if (!_screenObjects[i].Life())
 				{
 					continue;
 				}
-				result.push_back(_screenObjects[i].self);
+				result.push_back((RenderScreenObject*)_screenObjects[i].self);
 			}
 			return result;
 		}

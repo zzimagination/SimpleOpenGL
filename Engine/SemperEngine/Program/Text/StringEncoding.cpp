@@ -1,5 +1,5 @@
 #include "StringEncoding.h"
-#include "GWinText.h"
+#include "WindowsText.h"
 
 namespace SemperEngine
 {

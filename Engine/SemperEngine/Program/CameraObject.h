@@ -4,15 +4,14 @@
 
 #include <vector>
 #include "Mathz.h"
-#include "LifeContainer.h"
-#include "RenderLayer.h"
+#include "RenderObject.h"
 #include "Render.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
-		class CameraObject
+		class CameraObject : public RenderObject
 		{
 		public:
 
@@ -22,17 +21,13 @@ namespace SemperEngine
 
 			Color clearColor;
 
-			RenderEnum::ClearMode clearMode;
-
-			LifeContainer<CameraObject> myLife;
-
-			RenderLayer renderLayer;
+			Graphic::ClearMode clearMode;
 
 		public:
 
 			CameraObject();
 
-			~CameraObject();
+			virtual ~CameraObject() override;
 		};
 	}
 }

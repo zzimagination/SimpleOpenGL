@@ -1,7 +1,6 @@
 #include "GraphicRenderAPI.h"
 #include "GraphicShaderManager.h"
 #include "GraphicShader.h"
-#include "VertexData.h"
 #include "Texture.h"
 #include "GraphicDataCenter.h"
 #include "GLRendererAPI.h"
@@ -17,11 +16,13 @@ namespace SemperEngine {
 
 		int GraphicRenderAPI::_vertexCount = 0;
 
+		GraphicRenderAPI::DrawType GraphicRenderAPI::_drawType = GraphicRenderAPI::DrawType::Nomal;
+
 		void GraphicRenderAPI::SetClearColor(Color color)
 		{
 			GLRenderAPI::SetClearColor(color);
 		}
-		void GraphicRenderAPI::SetClear(RenderEnum::ClearMode mode)
+		void GraphicRenderAPI::SetClear(Graphic::ClearMode mode)
 		{
 			GLRenderAPI::SetClear(mode);
 		}
@@ -29,7 +30,7 @@ namespace SemperEngine {
 		{
 			GLRenderAPI::SetDepthTest(enable);
 		}
-		void GraphicRenderAPI::SetDepthTestFunc(RenderEnum::DepthFunc func)
+		void GraphicRenderAPI::SetDepthTestFunc(Graphic::DepthFunc func)
 		{
 			GLRenderAPI::SetDepthTestFunc(func);
 		}
@@ -37,7 +38,7 @@ namespace SemperEngine {
 		{
 			GLRenderAPI::SetCullFace(enable);
 		}
-		void GraphicRenderAPI::SetCullMode(RenderEnum::CullFace face)
+		void GraphicRenderAPI::SetCullMode(Graphic::CullFace face)
 		{
 			GLRenderAPI::SetCullMode(face);
 		}
@@ -56,6 +57,14 @@ namespace SemperEngine {
 		{
 			GLRenderAPI::BindVertexBuffer(data.VAO);
 			_vertexCount = data.pointCount;
+			if (data.EBO == 0)
+			{
+				_drawType = DrawType::Nomal;
+			}
+			else
+			{
+				_drawType = DrawType::Index;
+			}
 		}
 
 		void GraphicRenderAPI::SetShader(std::string shader)
@@ -96,7 +105,19 @@ namespace SemperEngine {
 
 		void GraphicRenderAPI::Draw()
 		{
-			GraphicAPI::GLRenderAPI::DrawElements(_vertexCount);
+			switch (_drawType)
+			{
+			case DrawType::Nomal:
+				GLRenderAPI::DrawTriangles(_vertexCount);
+				break;
+			case DrawType::Index:
+				GLRenderAPI::DrawElements(_vertexCount);
+				break;
+			default:
+				break;
+			}
+			_vertexCount = 0;
+			_drawType = DrawType::Nomal;
 		}
 
 		void GraphicRenderAPI::SetWireframe(bool enable)

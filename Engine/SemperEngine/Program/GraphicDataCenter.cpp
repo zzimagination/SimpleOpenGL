@@ -8,19 +8,19 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		GraphicDataInfo GraphicDataCenter::screenVertexData;
+		GraphicDataInfo GraphicResource::screenVertexData;
 
-		FillList<shared_ptr<GraphicTextureData>> GraphicDataCenter::_textureData;
+		FillList<shared_ptr<GraphicTextureData>> GraphicResource::_textureData;
 
-		FillList<shared_ptr<GraphicVertexData>> GraphicDataCenter::_vertexData;
+		FillList<shared_ptr<GraphicVertexData>> GraphicResource::_vertexData;
 
-		void GraphicDataCenter::Initialize()
+		void GraphicResource::Initialize()
 		{
-			auto data = VertexData::CreateScreen();
+			auto data = VertexData::CreateRectangle();
 			screenVertexData = AddVertexData(data);
 		}
 
-		GraphicDataInfo GraphicDataCenter::AddVertexData(VertexData* data)
+		GraphicDataInfo GraphicResource::AddVertexData(VertexData* data)
 		{
 			auto gdata = shared_ptr<GraphicVertexData>(new GraphicVertexData());
 			gdata->SetSource(data);
@@ -30,22 +30,22 @@ namespace SemperEngine
 			return info;
 		}
 
-		void GraphicDataCenter::RemoveVertexData(GraphicDataInfo info)
+		void GraphicResource::RemoveVertexData(GraphicDataInfo info)
 		{
 			GraphicCommandManager::ClearVertexBuffer(info);
 		}
 
-		void GraphicDataCenter::DeleteGraphicVertexData(GraphicDataInfo info)
+		void GraphicResource::DeleteGraphicVertexData(GraphicDataInfo info)
 		{
 			_vertexData.Remove(info.index);
 		}
 
-		std::shared_ptr<GraphicVertexData> GraphicDataCenter::GetVertexData(GraphicDataInfo info)
+		std::shared_ptr<GraphicVertexData> GraphicResource::GetVertexData(GraphicDataInfo info)
 		{
 			return _vertexData[info.index].value;
 		}
 
-		GraphicDataInfo GraphicDataCenter::AddTextureData(TextureData* data)
+		GraphicDataInfo GraphicResource::AddTextureData(TextureData* data)
 		{
 			auto gdata = shared_ptr<GraphicTextureData>(new GraphicTextureData());
 			gdata->SetSource(data);
@@ -55,17 +55,17 @@ namespace SemperEngine
 			return info;
 		}
 
-		void GraphicDataCenter::RemoveTextureData(GraphicDataInfo info)
+		void GraphicResource::RemoveTextureData(GraphicDataInfo info)
 		{
 			GraphicCommandManager::ClearTextureBuffer(info);
 		}
 
-		void GraphicDataCenter::DeleteGraphicTextureData(GraphicDataInfo info)
+		void GraphicResource::DeleteGraphicTextureData(GraphicDataInfo info)
 		{
 			_textureData.Remove(info.index);
 		}
 
-		std::shared_ptr<GraphicTextureData> GraphicDataCenter::GetTextureData(GraphicDataInfo info)
+		std::shared_ptr<GraphicTextureData> GraphicResource::GetTextureData(GraphicDataInfo info)
 		{
 			if (_textureData[info.index].usable)
 			{

@@ -9,7 +9,7 @@ namespace SemperEngine
 		{
 			GLVertexData GLResourceAPI::AddVertexData(Float3* vertices, Float2* uv, int* index, int count)
 			{
-				unsigned int VAO = 0, VBO = 0, EBO = 0, pointCount = 0;
+				GLuint VAO = 0, VBO = 0, EBO = 0, pointCount = 0;
 
 				if (count >= 4)
 				{
@@ -46,15 +46,12 @@ namespace SemperEngine
 				GLintptr voffset = 0;
 				glBufferSubData(GL_ARRAY_BUFFER, voffset, verticesSize, vertices);
 				GLintptr uvoffset = verticesSize;
-				if (uvSize > 0) {
-					glBufferSubData(GL_ARRAY_BUFFER, uvoffset, uvSize, uv);
-				}
+				glBufferSubData(GL_ARRAY_BUFFER, uvoffset, uvSize, uv);
 
 				glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexSize, index, GL_STATIC_DRAW);
 
 				glEnableVertexAttribArray(0);
 				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Float3), (void*)voffset);
-
 				glEnableVertexAttribArray(1);
 				glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Float2), (void*)uvoffset);
 
@@ -88,6 +85,37 @@ namespace SemperEngine
 				return result;
 			}
 
+			GLVertexData GLResourceAPI::AddVertexData(Float3* vertices, Float2* uv, int count)
+			{
+				GLuint VAO = 0, VBO = 0, pointCount = 0;
+				int verticesSize = count * sizeof(Float3);
+				int uvSize = count * sizeof(Float2);
+				int totalSize = verticesSize + uvSize;
+
+				glGenVertexArrays(1, &VAO);
+				glGenBuffers(1, &VBO);
+				glBindVertexArray(VAO);
+				glBindBuffer(GL_ARRAY_BUFFER, VBO);
+				glBufferData(GL_ARRAY_BUFFER, totalSize, 0, GL_STATIC_DRAW);
+				GLintptr voffset = 0;
+				glBufferSubData(GL_ARRAY_BUFFER, voffset, verticesSize, vertices);
+				GLintptr uvoffset = verticesSize;
+				glBufferSubData(GL_ARRAY_BUFFER, uvoffset, uvSize, uv);
+
+				glEnableVertexAttribArray(0);
+				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Float3), (void*)voffset);
+				glEnableVertexAttribArray(1);
+				glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Float2), (void*)uvoffset);
+
+				glBindBuffer(GL_ARRAY_BUFFER, 0);
+				glBindVertexArray(0);
+
+				GLVertexData result;
+				result.VAO = VAO;
+				result.VBO = VBO;
+				return result;
+			}
+
 			void GLResourceAPI::ClearVertexData(GLVertexData data)
 			{
 				auto VAO = data.VAO;
@@ -103,6 +131,7 @@ namespace SemperEngine
 				glDeleteBuffers(1, &VBO);
 				glDeleteVertexArrays(1, &VAO);
 			}
+
 			GLTextureData GLResourceAPI::AddTextureData(unsigned char* data, int width, int height)
 			{
 				unsigned int texture = 0;
@@ -120,6 +149,7 @@ namespace SemperEngine
 				result.texture = texture;
 				return result;
 			}
+
 			void GLResourceAPI::ClearTextureData(unsigned int texture)
 			{
 				glDeleteTextures(1, &texture);

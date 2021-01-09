@@ -7,33 +7,38 @@ namespace SemperEngine
 
 	Mesh::Mesh()
 	{
-		object = MeshObject::Create();
-		object->Use();
+		_object = MeshObject::Create();
+		_object->Use();
 	}
 
 	Mesh::Mesh(Core::MeshObject* obj)
 	{
-		object = obj;
-		object->Use();
+		_object = obj;
+		_object->Use();
 	}
 
 	Mesh::~Mesh()
 	{
-		object->Dispose();
+		_object->Dispose();
+	}
+
+	Core::MeshObject* Mesh::GetObject()
+	{
+		return _object;
 	}
 
 	Mesh* Mesh::Copy()
 	{
-		auto obj = object->Copy();
+		auto obj = _object->Copy();
 		auto copy = new Mesh(obj);
 		return copy;
 	}
 	ArrayList<Float3> Mesh::GetVertices()
 	{
-		return object->GetVertex();
+		return _object->GetVertex();
 	}
 	void Mesh::SetVertices(ArrayList<Float3> vertices)
 	{
-		object->SetVertex(vertices);
+		_object->SetVertex(vertices);
 	}
 }

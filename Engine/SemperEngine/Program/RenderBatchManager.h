@@ -4,7 +4,8 @@
 #include <vector>
 #include "RenderBatch.h"
 #include "CameraObject.h"
-#include "RenderObject.h"
+#include "RenderCustomObject.h"
+#include "RenderScreenObject.h"
 #include "Graphic.h"
 #include "Material.h"
 
@@ -20,17 +21,15 @@ namespace SemperEngine {
 
 		public:
 
-			static void GenerateBatchs(CameraObject* camera, std::vector<RenderObject*> objects);
+			static void GenerateBatchs(CameraObject* camera, std::vector<RenderCustomObject*> objects);
 
-			static void GenerateBatchs(std::vector<RenderObject*> objects);
+			static void GenerateBatchs(std::vector<RenderScreenObject*> objects);
 
 			static void GenerateGraphicCommands();
 
 			static void Clear();
 
 		private:
-
-			static RenderBatch GenerateBatch(RenderObject* object, CameraObject* camera);
 
 			static std::vector<GraphicTextureInfo> GetGraphicTextureInfos(std::shared_ptr<Material> material);
 

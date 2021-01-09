@@ -1,7 +1,7 @@
 #ifndef __GAME_LOOP__
 #define __GAME_LOOP__
 
-#include "CompletedSignal.h"
+#include "Common.h"
 
 namespace SemperEngine {
 

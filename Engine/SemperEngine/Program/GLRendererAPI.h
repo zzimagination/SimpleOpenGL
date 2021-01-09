@@ -5,8 +5,7 @@
 #include <vector>
 #include <memory>
 #include <string>
-#include "Mathz.h"
-#include "Render.h"
+#include "Graphic.h"
 
 namespace SemperEngine
 {
@@ -26,15 +25,15 @@ namespace SemperEngine
 
 				static void SetClearColor(Color color);
 
-				static void SetClear(RenderEnum::ClearMode mode);
+				static void SetClear(Graphic::ClearMode mode);
 
 				static void SetDepthTest(bool enable);
 
-				static void SetDepthTestFunc(RenderEnum::DepthFunc func);
+				static void SetDepthTestFunc(Graphic::DepthFunc func);
 
 				static void SetCullFace(bool enable);
 
-				static void SetCullMode(RenderEnum::CullFace face);
+				static void SetCullMode(Graphic::CullFace face);
 
 				static void SetBlendFunc(int source, int dest);
 
@@ -63,6 +62,8 @@ namespace SemperEngine
 				static void DrawElements(int count);
 
 				static void DrawLines(int count);
+
+				static void DrawTriangles(int count);
 			};
 		}
 	}

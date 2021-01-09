@@ -4,7 +4,7 @@
 
 #include <string>
 #include <memory>
-#include "BaseData.h"
+#include "Common.h"
 
 namespace SemperEngine
 {

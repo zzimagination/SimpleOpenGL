@@ -10,7 +10,7 @@ namespace SemperEngine
 		void GraphicManager::Initialize()
 		{
 			ShaderCompiler::Compile();
-			GraphicDataCenter::Initialize();
+			GraphicResource::Initialize();
 			GraphicCommandManager::Resource();
 		}
 		void GraphicManager::Render()

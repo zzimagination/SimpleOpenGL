@@ -25,9 +25,9 @@ namespace SemperEngine {
 
 			static void AddScreenObject(RenderScreenObject* object);
 
-			static std::vector<RenderObject*> GetCustomObjects(RenderLayer layer);
+			static std::vector<RenderCustomObject*> GetCustomObjects(RenderLayer layer);
 
-			static std::vector<RenderObject*> GetScreenObjects();
+			static std::vector<RenderScreenObject*> GetScreenObjects();
 
 			static void ClearRenders();
 

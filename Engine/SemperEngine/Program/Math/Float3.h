@@ -1,6 +1,7 @@
 #ifndef __MATHZ_VECTOR3__
 #define __MATHZ_VECTOR3__
 
+#include "MathBase.h"
 #include "Float2.h"
 
 namespace SemperEngine {

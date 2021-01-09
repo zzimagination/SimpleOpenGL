@@ -27,18 +27,18 @@ namespace SemperEngine
 			{
 				glClearColor(color.R(), color.G(), color.B(), color.A());
 			}
-			void GLRenderAPI::SetClear(RenderEnum::ClearMode mode)
+			void GLRenderAPI::SetClear(Graphic::ClearMode mode)
 			{
 				int m = 0;
-				if ((int)mode & 1<<0 )
+				if ((int)mode & 1 << 0)
 				{
 					m |= GL_COLOR_BUFFER_BIT;
 				}
-				if ((int)mode & 1<<1)
+				if ((int)mode & 1 << 1)
 				{
 					m |= GL_DEPTH_BUFFER_BIT;
 				}
-				if ((int)mode & 1<<2)
+				if ((int)mode & 1 << 2)
 				{
 					m |= GL_STENCIL_BUFFER_BIT;
 				}
@@ -56,15 +56,15 @@ namespace SemperEngine
 					glDisable(GL_DEPTH_TEST);
 				}
 			}
-			void GLRenderAPI::SetDepthTestFunc(RenderEnum::DepthFunc func)
+			void GLRenderAPI::SetDepthTestFunc(Graphic::DepthFunc func)
 			{
-				typedef RenderEnum::DepthFunc DepthFunc;
+				typedef Graphic::DepthFunc DepthFunc;
 				switch (func)
 				{
 				case DepthFunc::Never:
 					glDepthFunc(GL_NEVER);
 					break;
-				case DepthFunc::Less :
+				case DepthFunc::Less:
 					glDepthFunc(GL_LESS);
 					break;
 				case DepthFunc::Equal:
@@ -102,9 +102,9 @@ namespace SemperEngine
 					glDisable(GL_CULL_FACE);
 				}
 			}
-			void GLRenderAPI::SetCullMode(RenderEnum::CullFace face)
+			void GLRenderAPI::SetCullMode(Graphic::CullFace face)
 			{
-				typedef RenderEnum::CullFace CullFace;
+				typedef Graphic::CullFace CullFace;
 				switch (face)
 				{
 				case CullFace::Front:
@@ -215,9 +215,14 @@ namespace SemperEngine
 			{
 				glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, 0);
 			}
+
 			void GLRenderAPI::DrawLines(int count)
 			{
 				glDrawArrays(GL_LINES, 0, count);
+			}
+			void GLRenderAPI::DrawTriangles(int count)
+			{
+				glDrawArrays(GL_TRIANGLES, 0, count);
 			}
 		}
 	}

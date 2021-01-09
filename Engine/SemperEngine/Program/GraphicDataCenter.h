@@ -3,10 +3,6 @@
 #define __GRAPHIC_DATACENTER__
 
 #include <memory>
-#include "FillList.h"
-#include "VertexData.h"
-#include "TextureData.h"
-#include "ShaderProperty.h"
 #include "GraphicTextureData.h"
 #include "GraphicVertexData.h"
 #include "GraphicCommand.h"
@@ -16,7 +12,7 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		class GraphicDataCenter
+		class GraphicResource
 		{
 		public:
 

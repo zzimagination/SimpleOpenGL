@@ -6,7 +6,7 @@
 #include <string>
 #include <list>
 #include <type_traits>
-#include "FillList.h"
+#include "Common.h"
 #include "ResourceObject.h"
 
 namespace SemperEngine
@@ -25,11 +25,6 @@ namespace SemperEngine
 			ResourceLibrary() {}
 
 			virtual ~ResourceLibrary() {}
-
-			virtual T* Load(std::string path)
-			{
-				return nullptr;
-			}
 
 			void DisposeUnuse()
 			{

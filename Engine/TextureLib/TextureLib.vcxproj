@@ -80,8 +80,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\CPP\OpenGL\SemperOpenGL\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\CPP\OpenGL\SemperOpenGL\Library;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\Library;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -164,7 +164,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="spng.c" />
-    <ClCompile Include="TextureFile.cpp" />
     <ClCompile Include="TextureLib.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

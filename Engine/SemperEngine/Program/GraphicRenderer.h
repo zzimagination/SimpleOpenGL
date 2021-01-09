@@ -3,8 +3,6 @@
 #define __GRAPHICBATCH_MANAGER__
 
 #include <vector>
-#include "ShaderProperty.h"
-#include "Render.h"
 #include "Graphic.h"
 
 namespace SemperEngine
@@ -29,7 +27,7 @@ namespace SemperEngine
 				ShaderProperty sproperty, 
 				std::vector<GraphicTextureInfo> textures);
 
-			static void Clear(Color color, RenderEnum::ClearMode mode);
+			static void Clear(Color color, Graphic::ClearMode mode);
 
 			static void Clear(Color color);
 

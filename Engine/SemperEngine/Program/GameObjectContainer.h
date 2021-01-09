@@ -6,7 +6,7 @@
 #include <memory>
 #include <typeIndex>
 #include "Component.h"
-#include "LifeContainer.h"
+#include "Common.h"
 #include "GameSlot.h"
 
 namespace SemperEngine

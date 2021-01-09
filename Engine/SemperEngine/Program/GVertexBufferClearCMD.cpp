@@ -18,9 +18,9 @@ namespace SemperEngine
 
 		void GVertexBufferClearCMD::Excute()
 		{
-			auto data = GraphicDataCenter::GetVertexData(dataInfo);
+			auto data = GraphicResource::GetVertexData(dataInfo);
 			GraphicResouceAPI::ClearVertexData(*data.get());
-			GraphicDataCenter::DeleteGraphicVertexData(dataInfo);
+			GraphicResource::DeleteGraphicVertexData(dataInfo);
 		}
 	}
 }

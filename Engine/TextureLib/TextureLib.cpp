@@ -11,23 +11,18 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		shared_ptr<TextureFile> TextureResource::Load(std::string path)
-		{
-			return LoadResource(path);;
-		}
-
-		shared_ptr<TextureFile> TextureResource::LoadResource(string path)
+		shared_ptr<Texture> LoadResource(string path)
 		{
 			if (path == "")
 			{
-				return shared_ptr<TextureFile>();
+				return shared_ptr<Texture>();
 			}
 
-			auto texFile = shared_ptr<TextureFile>(new TextureFile);
+			auto texFile = shared_ptr<Texture>(new Texture);
 			struct stat buf;
 			if (stat(path.c_str(), &buf))
 			{
-				return shared_ptr<TextureFile>();
+				return shared_ptr<Texture>();
 			}
 			ifstream file(path, ios::binary);
 			auto inputSize = (unsigned int)buf.st_size;
@@ -58,25 +53,26 @@ namespace SemperEngine
 			switch (ihdr.color_type)
 			{
 			case SPNG_COLOR_TYPE_GRAYSCALE:
-				texFile->colorType = TextureFile::ColorType::Grayscale;
+				texFile->colorType = Texture::PixelType::Grayscale;
 				break;
 			case SPNG_COLOR_TYPE_TRUECOLOR:
-				texFile->colorType = TextureFile::ColorType::Truecolor;
+				texFile->colorType = Texture::PixelType::Truecolor;
 				break;
 			case SPNG_COLOR_TYPE_INDEXED:
-				texFile->colorType = TextureFile::ColorType::Indexed;
+				texFile->colorType = Texture::PixelType::Indexed;
 				break;
 			case SPNG_COLOR_TYPE_GRAYSCALE_ALPHA:
-				texFile->colorType = TextureFile::ColorType::GrayscaleAlpha;
+				texFile->colorType = Texture::PixelType::GrayscaleAlpha;
 				break;
 			case SPNG_COLOR_TYPE_TRUECOLOR_ALPHA:
-				texFile->colorType = TextureFile::ColorType::TruecolorAlpha;
+				texFile->colorType = Texture::PixelType::TruecolorAlpha;
 				break;
 			}
 			texFile->depth = ihdr.bit_depth;
 			texFile->compression = ihdr.compression_method;
 			texFile->filter = ihdr.filter_method;
 			texFile->interlace = ihdr.interlace_method;
+
 			////const char *clr_type_str;
 			////if (ihdr.color_type == SPNG_COLOR_TYPE_GRAYSCALE)
 			////	clr_type_str = "grayscale";
@@ -88,8 +84,6 @@ namespace SemperEngine
 			////	clr_type_str = "grayscale with alpha";
 			////else
 			////	clr_type_str = "truecolor with alpha";
-
-
 			///*printf("width: %" PRIu32 "\nheight: %" PRIu32 "\n"
 			//	"bit depth: %" PRIu8 "\ncolor type: %" PRIu8 " - %s\n",
 			//	ihdr.width, ihdr.height,
@@ -118,5 +112,9 @@ namespace SemperEngine
 			return texFile;
 		}
 
+		shared_ptr<Texture> LoadTexture(std::string path)
+		{
+			return LoadResource(path);;
+		}
 	}
 }

@@ -18,7 +18,7 @@ namespace SemperEngine
 
 		void GVertexBufferCMD::Excute()
 		{
-			auto data = GraphicDataCenter::GetVertexData(dataInfo);
+			auto data = GraphicResource::GetVertexData(dataInfo);
 			auto tmp = GraphicResouceAPI::AddVertexData(data->GetSource());
 			data->VAO = tmp.VAO;
 			data->VBO = tmp.EBO;

@@ -5,7 +5,7 @@
 #include <vector>
 #include "GameObject.h"
 #include "GameCabin.h"
-#include "LifeContainer.h"
+#include "Common.h"
 
 namespace SemperEngine
 {

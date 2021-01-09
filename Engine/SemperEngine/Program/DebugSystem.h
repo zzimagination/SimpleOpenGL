@@ -7,7 +7,7 @@
 #include <condition_variable>
 #include "DebugFile.h"
 #include "DebugOutput.h"
-#include "CompletedSignal.h"
+#include "Common.h"
 
 namespace SemperEngine {
 

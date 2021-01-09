@@ -2,8 +2,7 @@
 #ifndef __GRAPHIC_RESOURCECALL__
 #define __GRAPHIC_RESOURCECALL__
 
-#include "VertexData.h"
-#include "TextureData.h"
+#include "Common.h"
 #include "GraphicVertexData.h"
 #include "GraphicTextureData.h"
 

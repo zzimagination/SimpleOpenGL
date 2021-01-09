@@ -2,7 +2,7 @@
 #ifndef __GAMESLOT__
 #define __GAMESLOT__
 
-#include "LifeContainer.h"
+#include "Common.h"
 #include "Component.h"
 
 namespace SemperEngine

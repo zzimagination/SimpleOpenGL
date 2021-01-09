@@ -26,19 +26,19 @@ namespace SemperEngine
 
 		void TextureObject::EndCreate()
 		{
-			graphicDataInfo = GraphicDataCenter::AddTextureData(resourcePackage.GetResource());
+			graphicDataInfo = GraphicResource::AddTextureData(resourcePackage.GetResource());
 		}
 
 		void TextureObject::EndDelete()
 		{
 			resourcePackage.Dispose();
-			GraphicDataCenter::RemoveTextureData(graphicDataInfo);
+			GraphicResource::RemoveTextureData(graphicDataInfo);
 		}
 
 		void TextureObject::EndModify()
 		{
-			GraphicDataCenter::RemoveTextureData(graphicDataInfo);
-			graphicDataInfo = GraphicDataCenter::AddTextureData(resourcePackage.GetResource());
+			GraphicResource::RemoveTextureData(graphicDataInfo);
+			graphicDataInfo = GraphicResource::AddTextureData(resourcePackage.GetResource());
 		}
 
 		void TextureObject::ColorBytes(ArrayList<ColorByte> data)

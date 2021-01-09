@@ -4,14 +4,8 @@
 #include <fstream>
 #include "MyWindow.h"
 #include <glad/glad.h>
-#include "../SemperEngine/GLShaderAPI.h"
-#include "../SemperEngine/GLRendererAPI.h"
-#include "../SemperEngine/GLResourceAPI.h"
-#include "../SemperEngine/Float3.h"
 #include "GLHelper.h"
 
-using namespace SemperEngine::Core::GraphicAPI;
-using namespace SemperEngine;
 
 int main()
 {

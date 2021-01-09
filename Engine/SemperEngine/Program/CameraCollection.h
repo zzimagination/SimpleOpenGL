@@ -12,11 +12,11 @@ namespace SemperEngine
 		{
 		private:
 
-			static std::vector<LifeContainer<CameraObject>> _cameras;
+			static std::vector<LifeContainer<RenderObject>> _cameras;
 
 		public:
 
-			static void AddCamera(LifeContainer<CameraObject> camera);
+			static void AddCamera(CameraObject* camera);
 
 			static std::vector<CameraObject*> GetCameras();
 

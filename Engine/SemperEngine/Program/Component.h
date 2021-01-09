@@ -1,7 +1,7 @@
 #ifndef __COMPONENT__
 #define __COMPONENT__
 
-#include "LifeContainer.h"
+#include "Common.h"
 
 namespace SemperEngine {
 

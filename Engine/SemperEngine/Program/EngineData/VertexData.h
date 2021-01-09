@@ -4,8 +4,6 @@
 
 #include <memory>
 #include <array>
-#include "ArrayList.h"
-#include "Mathz.h"
 #include "BaseData.h"
 
 namespace SemperEngine
@@ -44,7 +42,7 @@ namespace SemperEngine
 
 			static VertexData* CreateCube();
 
-			static VertexData* CreateScreen();
+			static VertexData* CreateRectangle();
 
 		public:
 

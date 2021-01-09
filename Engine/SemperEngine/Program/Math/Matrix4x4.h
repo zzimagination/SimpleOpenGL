@@ -1,6 +1,7 @@
 #ifndef __MATHZ_MATRIX4X4__
 #define __MATHZ_MATRIX4X4__
 
+#include "MathBase.h"
 #include "Float3.h"
 #include "Float4.h"
 

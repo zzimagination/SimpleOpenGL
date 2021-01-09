@@ -74,7 +74,7 @@ namespace SemperEngine
 			back_DrawCommands.push_back(cmd);
 		}
 
-		void GraphicCommandManager::Clear(Color color, RenderEnum::ClearMode mode)
+		void GraphicCommandManager::Clear(Color color, Graphic::ClearMode mode)
 		{
 			auto cmd = new GClearCMD(color, mode);
 			back_DrawCommands.push_back(cmd);

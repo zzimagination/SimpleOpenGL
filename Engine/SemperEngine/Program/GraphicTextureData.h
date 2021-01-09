@@ -5,7 +5,6 @@
 #include <map>
 #include <memory>
 #include "GraphicData.h"
-#include "TextureData.h"
 
 namespace SemperEngine
 {

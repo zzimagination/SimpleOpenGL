@@ -9,6 +9,8 @@ namespace SemperEngine
 
 	ResourceTextureLibrary Resource::textureLibrary;
 
+	ResourceMeshLibrary Resource::meshLibrary;
+
 	shared_ptr<Texture> Resource::LoadTexture(string path)
 	{
 		auto fullPath = ExternalFile(path);
@@ -27,6 +29,7 @@ namespace SemperEngine
 	void Resource::DisposeUnuse()
 	{
 		textureLibrary.DisposeUnuse();
+		meshLibrary.DisposeUnuse();
 	}
 
 	std::string Resource::ExternalFile(std::string file)

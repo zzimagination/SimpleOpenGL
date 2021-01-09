@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __GWIN32_TEXT__
-#define __GWIN32_TEXT__
+#ifndef __WINDOWS_TEXT__
+#define __WINDOWS_TEXT__
 
 #include <string>
 

@@ -3,6 +3,7 @@
 #define __GL_RESOURCEAPI__
 
 #include "Mathz.h"
+#include <array>
 
 namespace SemperEngine
 {
@@ -24,7 +25,7 @@ namespace SemperEngine
 
 			struct GLTextureData
 			{
-				unsigned int texture;
+				unsigned int texture = 0;
 			};
 
 			class GLResourceAPI
@@ -34,6 +35,8 @@ namespace SemperEngine
 				static GLVertexData AddVertexData(Float3* vertices, Float2* uv, int* index, int count);
 
 				static GLVertexData AddVertexData(Float3* vertices, int count);
+
+				static GLVertexData AddVertexData(Float3* vertices, Float2* uv, int count);
 
 				static void ClearVertexData(GLVertexData data);
 

@@ -5,8 +5,7 @@
 #include <map>
 #include <string>
 #include "Mathz.h"
-#include "Render.h"
-#include "ShaderProperty.h"
+#include "Graphic.h"
 #include "Texture.h"
 
 namespace SemperEngine

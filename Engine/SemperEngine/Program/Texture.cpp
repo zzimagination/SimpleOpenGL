@@ -9,35 +9,40 @@ namespace SemperEngine {
 
 	Texture::Texture()
 	{
-		object = TextureObject::Create();
-		object->Use();
+		_object = TextureObject::Create();
+		_object->Use();
 	}
 
 	Texture::Texture(TextureObject* obj)
 	{
-		object = obj;
-		object->Use();
+		_object = obj;
+		_object->Use();
 	}
 
 	Texture::~Texture()
 	{
-		object->Dispose();
+		_object->Dispose();
+	}
+
+	Core::TextureObject* Texture::GetObject()
+	{
+		return _object;
 	}
 
 	Texture* Texture::Copy()
 	{
-		auto obj = object->Copy();
+		auto obj = _object->Copy();
 		auto texture = new Texture(obj);
 		return texture;
 	}
 
 	void Texture::SetColors(ArrayList<ColorByte> data)
 	{
-		object->ColorBytes(data);
+		_object->ColorBytes(data);
 	}
 
 	ArrayList<ColorByte> Texture::GetColors()
 	{
-		return object->ColorBytes();
+		return _object->ColorBytes();
 	}
 }

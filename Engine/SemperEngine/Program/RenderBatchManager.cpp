@@ -12,22 +12,38 @@ namespace SemperEngine {
 
 		vector<RenderBatch> RenderBatchManager::_batchs;
 
-		void RenderBatchManager::GenerateBatchs(CameraObject* camera, std::vector<RenderObject*> objects)
+		void RenderBatchManager::GenerateBatchs(CameraObject* camera, std::vector<RenderCustomObject*> objects)
 		{
 			for (size_t i = 0; i < objects.size(); i++)
 			{
-				auto batch = GenerateBatch(objects[i], camera);
+				auto object = objects[i];
+				RenderBatch batch;
+				batch.SetVertexType(RenderBatch::VertexType::Custom);
+				batch.SetMesh(object->mesh);
+				batch.SetMaterial(object->material);
+				batch.SetModelMatrix(object->modelMat);
+				batch.SetViewMatrix(camera->viewMatrix);
+				batch.SetProjectionMatrix(camera->projectMatrix);
+
 				_batchs.push_back(batch);
 			}
 		}
 
-		void RenderBatchManager::GenerateBatchs(std::vector<RenderObject*> objects)
+		void RenderBatchManager::GenerateBatchs(std::vector<RenderScreenObject*> objects)
 		{
 			for (size_t i = 0; i < objects.size(); i++)
 			{
-				auto batch = GenerateBatch(objects[i], nullptr);
+				auto object = objects[i];
+				RenderBatch batch;
+				batch.SetVertexType(RenderBatch::VertexType::Screen);
+				batch.SetMaterial(object->material);
 				_batchs.push_back(batch);
 			}
+		}
+
+		void RenderBatchManager::Clear()
+		{
+			_batchs.clear();
 		}
 
 		void RenderBatchManager::GenerateGraphicCommands()
@@ -45,63 +61,6 @@ namespace SemperEngine {
 					DrawScreen(batch);
 				}
 			}
-		}
-
-		void RenderBatchManager::Clear()
-		{
-			_batchs.clear();
-		}
-
-		RenderBatch RenderBatchManager::GenerateBatch(RenderObject* object, CameraObject* camera)
-		{
-			RenderBatch batch;
-
-			if (camera == nullptr)
-			{
-				batch.SetVertexType(RenderBatch::VertexType::Screen);
-			}
-			else
-			{
-				batch.SetVertexType(RenderBatch::VertexType::Custom);
-			}
-
-			if (object->hasMesh)
-			{
-				batch.SetMesh(object->GetMesh());
-			}
-
-			if (object->hasMaterial)
-			{
-				batch.SetMaterial(object->GetMaterial());
-			}
-
-			if (batch.GetVertexType() == RenderBatch::VertexType::Screen)
-			{
-				return batch;
-			}
-
-			if (camera != nullptr)
-			{
-				batch.SetModelMatrix(object->GetModelMat());
-				batch.SetViewMatrix(camera->viewMatrix);
-				batch.SetProjectionMatrix(camera->projectMatrix);
-			}
-			return batch;
-		}
-
-		std::vector<GraphicTextureInfo> RenderBatchManager::GetGraphicTextureInfos(std::shared_ptr<Material> material)
-		{
-			vector<GraphicTextureInfo> textures;
-			for (int j = 0; j < material->textures.size(); j++)
-			{
-				auto index = material->textures[j].index;
-				auto info = material->textures[j].texture->object->graphicDataInfo;
-				GraphicTextureInfo tmp;
-				tmp.index = index;
-				tmp.info = info;
-				textures.push_back(tmp);
-			}
-			return textures;
 		}
 
 		void RenderBatchManager::DrawCustom(RenderBatch batch)
@@ -125,6 +84,21 @@ namespace SemperEngine {
 			auto textures = GetGraphicTextureInfos(material);
 
 			GraphicRenderer::RenderScreen(operation, sproperty, textures);
+		}
+
+		std::vector<GraphicTextureInfo> RenderBatchManager::GetGraphicTextureInfos(std::shared_ptr<Material> material)
+		{
+			vector<GraphicTextureInfo> textures;
+			for (int j = 0; j < material->textures.size(); j++)
+			{
+				auto index = material->textures[j].index;
+				auto info = material->textures[j].texture->GetObject()->graphicDataInfo;
+				GraphicTextureInfo tmp;
+				tmp.index = index;
+				tmp.info = info;
+				textures.push_back(tmp);
+			}
+			return textures;
 		}
 
 	}

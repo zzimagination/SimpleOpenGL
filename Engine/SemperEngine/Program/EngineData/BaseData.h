@@ -2,6 +2,9 @@
 #ifndef __BASEDATA__
 #define __BASEDATA__
 
+#include "../Collection.h"
+#include "../Mathz.h"
+
 namespace SemperEngine
 {
 	namespace Core

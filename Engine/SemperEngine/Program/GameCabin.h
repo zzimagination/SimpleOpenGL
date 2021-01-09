@@ -2,7 +2,7 @@
 #ifndef __GAMECABIN__
 #define __GAMECABIN__
 
-#include "LifeContainer.h"
+#include "Common.h"
 #include "GameObject.h"
 #include "GameObjectContainer.h"
 

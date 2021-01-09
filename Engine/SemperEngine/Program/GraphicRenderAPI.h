@@ -2,9 +2,8 @@
 #define __GRAPHIC_RENDERAPI__
 
 #include <vector>
-#include "Mathz.h"
+#include "Common.h"
 #include "Material.h"
-#include "VertexData.h"
 #include "GraphicDataCenter.h"
 #include "GraphicShader.h"
 #include "Render.h"
@@ -17,23 +16,34 @@ namespace SemperEngine {
 		{
 		private:
 
+			enum class DrawType
+			{
+				Nomal,
+
+				Index
+			};
+
+		private:
+
 			static GraphicShader _shader;
 
 			static int _vertexCount;
+
+			static DrawType _drawType;
 
 		public:
 
 			static void SetClearColor(Color color);
 
-			static void SetClear(RenderEnum::ClearMode mode);
+			static void SetClear(Graphic::ClearMode mode);
 
 			static void SetDepthTest(bool enable);
 
-			static void SetDepthTestFunc(RenderEnum::DepthFunc func);
+			static void SetDepthTestFunc(Graphic::DepthFunc func);
 
 			static void SetCullFace(bool enable);
 
-			static void SetCullMode(RenderEnum::CullFace face);
+			static void SetCullMode(Graphic::CullFace face);
 
 			static void SetBlend(bool enable);
 

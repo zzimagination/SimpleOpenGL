@@ -1,7 +1,7 @@
 #include "DebugFile.h"
 #include <iostream>
 #include <filesystem>
-#include "StringEncoding.h"
+#include "Common.h"
 
 namespace SemperEngine {
 

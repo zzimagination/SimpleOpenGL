@@ -4,9 +4,8 @@
 
 #include <string>
 #include <map>
+#include "Common.h"
 #include "DataCenter.h"
-#include "TextureData.h"
-#include "VertexData.h"
 
 namespace SemperEngine
 {
@@ -39,6 +38,8 @@ namespace SemperEngine
 			static ResourcePackage<VertexData> CopyVertexData(ResourcePackage<VertexData> package);
 
 			static ResourcePackage<VertexData> CreateCube();
+
+			static ResourcePackage<VertexData> CreateRectangle();
 
 		};
 	}

@@ -1,5 +1,4 @@
 #include "Color.h"
-#include "Debug.h"
 
 namespace SemperEngine
 {

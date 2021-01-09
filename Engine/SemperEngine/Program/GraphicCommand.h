@@ -5,11 +5,6 @@
 #include <vector>
 #include <map>
 #include <memory>
-#include "Mathz.h"
-#include "ShaderProperty.h"
-#include "VertexData.h"
-#include "TextureData.h"
-#include "Render.h"
 #include "Graphic.h"
 #include "GraphicDataCenter.h"
 
@@ -123,11 +118,11 @@ namespace SemperEngine
 
 			Color color;
 
-			RenderEnum::ClearMode mode;
+			Graphic::ClearMode mode;
 
 		public:
 
-			GClearCMD(Color color, RenderEnum::ClearMode mode);
+			GClearCMD(Color color, Graphic::ClearMode mode);
 
 			virtual ~GClearCMD() override;
 

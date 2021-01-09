@@ -6,11 +6,10 @@ namespace SemperEngine
 	{
 		CameraObject::CameraObject()
 		{
-			myLife = LifeContainer<CameraObject>(this);
+			clearMode = ClearColorDepth;
 		}
 		CameraObject::~CameraObject()
 		{
-			*myLife.life = false;
 		}
 	}
 }

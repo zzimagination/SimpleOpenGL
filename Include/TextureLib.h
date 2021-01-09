@@ -12,11 +12,11 @@ namespace SemperEngine
 {
 	namespace TextureLib
 	{
-		class TextureFile
+		class Texture
 		{
 		public:
 
-			enum class ColorType
+			enum class PixelType
 			{
 				Grayscale,
 
@@ -39,7 +39,7 @@ namespace SemperEngine
 
 			int height = 0;
 
-			ColorType colorType = ColorType::Truecolor;
+			PixelType colorType = PixelType::Truecolor;
 
 			int depth = 0;
 
@@ -51,16 +51,8 @@ namespace SemperEngine
 
 		};
 
-		class TextureResource
-		{
-		public:
+		 std::shared_ptr<Texture> LoadTexture(std::string path);
 
-			static std::shared_ptr<TextureFile> Load(std::string path);
-
-		private:
-
-			static std::shared_ptr<TextureFile> LoadResource(std::string path);
-		};
 	}
 }
 #endif // !__TEXTURELIB__

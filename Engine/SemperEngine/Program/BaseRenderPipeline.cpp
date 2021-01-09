@@ -41,7 +41,7 @@ namespace SemperEngine
 		void BaseRenderPipeline::RenderCamera(CameraObject* camera)
 		{
 			GraphicRenderer::Clear(camera->clearColor, camera->clearMode);
-			auto renderObjects = RenderCollection::GetCustomObjects(camera->renderLayer);
+			auto renderObjects = RenderCollection::GetCustomObjects(camera->layer);
 			RenderBatchManager::GenerateBatchs(camera, renderObjects);
 		}
 
