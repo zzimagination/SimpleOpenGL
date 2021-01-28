@@ -1,10 +1,13 @@
 #include "RenderBatch.h"
 #include "GraphicDataCenter.h"
+#include "Debug.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
+		using namespace std;
+
 		void RenderBatch::SetVertexType(VertexType type)
 		{
 			this->_vertexType = type;
@@ -21,7 +24,7 @@ namespace SemperEngine
 		{
 			if (_vertexType == VertexType::Screen)
 			{
-				throw "VertexType is screen";
+				Debug::LogError("VertexType is screen");
 			}
 			_mesh = mesh;
 		}
@@ -29,8 +32,9 @@ namespace SemperEngine
 		{
 			if (_vertexType == VertexType::Screen)
 			{
-				throw "VertexType is screen";
+				Debug::LogError("VertexType is screen");
 			}
+
 			GraphicVertexInfo info;
 			info.info = _mesh->GetObject()->graphicDataInfo;
 			return info;
@@ -39,7 +43,7 @@ namespace SemperEngine
 		{
 			if (_vertexType == VertexType::Screen)
 			{
-				throw "VertexType is screen";
+				Debug::LogError("VertexType is screen");
 			}
 			_renderMatrix.model = mat4;
 		}
@@ -48,7 +52,7 @@ namespace SemperEngine
 		{
 			if (_vertexType == VertexType::Screen)
 			{
-				throw "VertexType is screen";
+				Debug::LogError("VertexType is screen");
 			}
 			_renderMatrix.view = mat4;
 		}
@@ -57,7 +61,7 @@ namespace SemperEngine
 		{
 			if (_vertexType == VertexType::Screen)
 			{
-				throw "VertexType is screen";
+				Debug::LogError("VertexType is screen");
 			}
 			_renderMatrix.projection = mat4;
 		}
@@ -65,7 +69,7 @@ namespace SemperEngine
 		{
 			if (_vertexType == VertexType::Screen)
 			{
-				throw "VertexType is screen";
+				Debug::LogError("VertexType is screen");
 			}
 			return _renderMatrix;
 		}
@@ -77,6 +81,20 @@ namespace SemperEngine
 		std::shared_ptr<Material> RenderBatch::GetMaterial()
 		{
 			return _material;
+		}
+		std::vector<GraphicTextureInfo> RenderBatch::GetGraphicTextureInfos()
+		{
+			vector<GraphicTextureInfo> textures;
+			for (int j = 0; j < _material->textures.size(); j++)
+			{
+				auto index = _material->textures[j].index;
+				auto info = _material->textures[j].texture->GetObject()->graphicDataInfo;
+				GraphicTextureInfo tmp;
+				tmp.index = index;
+				tmp.info = info;
+				textures.push_back(tmp);
+			}
+			return textures;
 		}
 	}
 }

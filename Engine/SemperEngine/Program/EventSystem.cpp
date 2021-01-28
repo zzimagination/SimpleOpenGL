@@ -1,4 +1,4 @@
-#include "EventManager.h"
+#include "EventSystem.h"
 #include "EventRecorder.h"
 #include "GameSetting.h"
 #include "Time.h"
@@ -9,15 +9,15 @@ namespace SemperEngine {
 	{
 		using namespace std;
 
-		float EventManager::keepInterval = 0.01f;
+		float EventSystem::keepInterval = 0.01f;
 
-		void EventManager::ProcessEvent()
+		void EventSystem::ProcessEvent()
 		{
 			EventRecorder::keepInterval = keepInterval;
 			EventRecorder::Keep();
 		}
 
-		void EventManager::EndEvents()
+		void EventSystem::EndEvents()
 		{
 			EventRecorder::Clear();
 		}

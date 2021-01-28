@@ -1,5 +1,6 @@
 #include "ResourceObject.h"
 #include "ResourceObjectCenter.h"
+#include "Debug.h"
 
 namespace SemperEngine
 {
@@ -14,18 +15,29 @@ namespace SemperEngine
 		int ResourceObject::Use()
 		{
 			useCount++;
-			if (useCount == 1)
+			if (used == false)
 			{
+				used = true;
 				ResourceObjectCenter::Create(this);
 			}
+			OnUse();
 			return useCount;
 		}
 
 		int ResourceObject::Dispose()
 		{
-			useCount--;
-			if (useCount == 0)
+			if (!used)
 			{
+				Debug::LogError("Haven't used");
+				return 0;
+			}
+
+			useCount--;
+			OnDispose();
+			if (useCount <= 0)
+			{
+				used = false;
+				Delete();
 				ResourceObjectCenter::Delete(this);
 			}
 			return useCount;
@@ -34,6 +46,18 @@ namespace SemperEngine
 		void ResourceObject::Modify()
 		{
 			ResourceObjectCenter::Modify(this);
+		}
+
+		void ResourceObject::OnUse()
+		{
+		}
+
+		void ResourceObject::OnDispose()
+		{
+		}
+
+		void ResourceObject::Delete()
+		{
 		}
 
 		void ResourceObject::EndCreate()

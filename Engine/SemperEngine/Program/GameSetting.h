@@ -28,9 +28,8 @@ namespace SemperEngine {
 
 		static Vsync vsync;
 
-	public:
+		static bool logo;
 
-		static void LoadConfig();
 	};
 }
 #endif // !PROJECT_SETTING

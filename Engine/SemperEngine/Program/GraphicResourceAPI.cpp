@@ -12,12 +12,15 @@ namespace SemperEngine
 
 		GraphicVertexData GraphicResouceAPI::AddVertexData(VertexData* data)
 		{
+			if (data->index.Size() == 0)
+			{
+				auto deliver = GLResourceAPI::AddVertexData(data->vertices.DataPtr(), data->uv.DataPtr(), (int)data->vertices.Size());
+				GraphicVertexData result(deliver.VAO, deliver.VBO, deliver.pointCount);
+				return result;
+			}
+
 			auto deliver = GLResourceAPI::AddVertexData(data->vertices.DataPtr(), data->uv.DataPtr(), data->index.DataPtr(), (int)data->vertices.Size());
-			GraphicVertexData result;
-			result.VAO = deliver.VAO;
-			result.VBO = deliver.VBO;
-			result.EBO = deliver.EBO;
-			result.pointCount = deliver.pointCount;
+			GraphicVertexData result(deliver.VAO, deliver.VBO, deliver.EBO, deliver.pointCount);
 			return result;
 		}
 
@@ -26,7 +29,15 @@ namespace SemperEngine
 			GLVertexData glData;
 			glData.VAO = data.VAO;
 			glData.VBO = data.VBO;
-			glData.EBO = data.EBO;
+			if (data.indexDraw)
+			{
+				glData.EBO = data.EBO;
+				glData.hasEBO = true;
+			}
+			else
+			{
+				glData.hasEBO = true;
+			}
 			GLResourceAPI::ClearVertexData(glData);
 		}
 

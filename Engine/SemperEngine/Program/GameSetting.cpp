@@ -12,7 +12,5 @@ namespace SemperEngine {
 
 	GameSetting::Vsync GameSetting::vsync = GameSetting::Vsync::vsync;
 
-	void GameSetting::LoadConfig()
-	{
-	}
+	bool GameSetting::logo = true;
 }

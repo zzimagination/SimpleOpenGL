@@ -31,13 +31,13 @@ namespace SemperEngine
 				static_assert(std::is_base_of<ResourceObject, T>().value);
 				for (int i = 0; i < (int)_library.Size(); i++)
 				{
-					if (!_library[i].usable)
+					if (_library.IsEmpty(i))
 					{
 						continue;
 					}
-					if (_library[i].value->useCount == 1)
+					if (_library[i]->useCount == 1)
 					{
-						_library[i].value->Dispose();
+						_library[i]->Dispose();
 						_library.Remove(i);
 					}
 				}

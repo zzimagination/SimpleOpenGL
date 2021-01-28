@@ -1,5 +1,4 @@
 #include "ResourceObjectCenter.h"
-#include "ResourceDataCenter.h"
 #include "GraphicDataCenter.h"
 
 namespace SemperEngine
@@ -16,12 +15,6 @@ namespace SemperEngine
 
 		void ResourceObjectCenter::EndProcess()
 		{
-			for (size_t i = 0; i < _deleteObjects.size(); i++)
-			{
-				_deleteObjects[i]->EndDelete();
-				delete _deleteObjects[i];
-			}
-			_deleteObjects.clear();
 			for (size_t i = 0; i < _newObjects.size(); i++)
 			{
 				_newObjects[i]->EndCreate();
@@ -32,6 +25,12 @@ namespace SemperEngine
 				_modifyObjects[i]->EndModify();
 			}
 			_modifyObjects.clear();
+			for (size_t i = 0; i < _deleteObjects.size(); i++)
+			{
+				_deleteObjects[i]->EndDelete();
+				delete _deleteObjects[i];
+			}
+			_deleteObjects.clear();
 		}
 
 		void ResourceObjectCenter::Create(ResourceObject* obj)
@@ -41,15 +40,6 @@ namespace SemperEngine
 
 		void ResourceObjectCenter::Delete(ResourceObject* obj)
 		{
-			for (int i = 0; i < _newObjects.size(); i++)
-			{
-				if (obj == _newObjects[i])
-				{
-					delete _newObjects[i];
-					_newObjects.erase(_newObjects.begin() + i);
-					return;
-				}
-			}
 			_deleteObjects.push_back(obj);
 		}
 
@@ -64,6 +54,5 @@ namespace SemperEngine
 			}
 			_modifyObjects.push_back(obj);
 		}
-
 	}
 }

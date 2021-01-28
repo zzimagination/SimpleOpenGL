@@ -17,6 +17,9 @@ namespace SemperEngine {
 			for (size_t i = 0; i < objects.size(); i++)
 			{
 				auto object = objects[i];
+
+				BindResource(object);
+
 				RenderBatch batch;
 				batch.SetVertexType(RenderBatch::VertexType::Custom);
 				batch.SetMesh(object->mesh);
@@ -24,7 +27,6 @@ namespace SemperEngine {
 				batch.SetModelMatrix(object->modelMat);
 				batch.SetViewMatrix(camera->viewMatrix);
 				batch.SetProjectionMatrix(camera->projectMatrix);
-
 				_batchs.push_back(batch);
 			}
 		}
@@ -34,6 +36,9 @@ namespace SemperEngine {
 			for (size_t i = 0; i < objects.size(); i++)
 			{
 				auto object = objects[i];
+
+				BindResource(object);
+
 				RenderBatch batch;
 				batch.SetVertexType(RenderBatch::VertexType::Screen);
 				batch.SetMaterial(object->material);
@@ -44,6 +49,38 @@ namespace SemperEngine {
 		void RenderBatchManager::Clear()
 		{
 			_batchs.clear();
+		}
+
+		void RenderBatchManager::BindResource(RenderCustomObject* obj)
+		{
+			if (!obj->mesh->GetObject()->graphicBind)
+			{
+				obj->mesh->GetObject()->graphicBind = true;
+				obj->mesh->GetObject()->graphicDataInfo = GraphicResource::AddVertexData(obj->mesh->GetObject()->data.get());
+			}
+
+			auto textures = obj->material->textures;
+			for (size_t i = 0; i < textures.size(); i++)
+			{
+				if (!textures[i].texture->GetObject()->graphicBind)
+				{
+					textures[i].texture->GetObject()->graphicBind = true;
+					textures[i].texture->GetObject()->graphicDataInfo = GraphicResource::AddTextureData(textures[i].texture->GetObject()->data.get());
+				}
+			}
+		}
+
+		void RenderBatchManager::BindResource(RenderScreenObject* obj)
+		{
+			auto textures = obj->material->textures;
+			for (size_t i = 0; i < textures.size(); i++)
+			{
+				if (!textures[i].texture->GetObject()->graphicBind)
+				{
+					textures[i].texture->GetObject()->graphicBind = true;
+					textures[i].texture->GetObject()->graphicDataInfo = GraphicResource::AddTextureData(textures[i].texture->GetObject()->data.get());
+				}
+			}
 		}
 
 		void RenderBatchManager::GenerateGraphicCommands()
@@ -67,39 +104,19 @@ namespace SemperEngine {
 		{
 			auto vertex = batch.GetGraphicVertexInfo();
 			auto matrix = batch.GetRenderMatrix();
-
-			auto material = batch.GetMaterial();
-			auto operation = material->renderOperation;
-			ShaderProperty sproperty = material->shaderProperty;
-			auto textures = GetGraphicTextureInfos(material);
+			auto operation = batch.GetMaterial()->renderOperation;
+			ShaderProperty sproperty = batch.GetMaterial()->shaderProperty;
+			auto textures = batch.GetGraphicTextureInfos();
 
 			GraphicRenderer::Render(vertex, operation, matrix, sproperty, textures);
 		}
 
 		void RenderBatchManager::DrawScreen(RenderBatch batch)
 		{
-			auto material = batch.GetMaterial();
-			auto operation = material->renderOperation;
-			ShaderProperty sproperty = material->shaderProperty;
-			auto textures = GetGraphicTextureInfos(material);
-
+			auto operation = batch.GetMaterial()->renderOperation;
+			ShaderProperty sproperty = batch.GetMaterial()->shaderProperty;
+			auto textures = batch.GetGraphicTextureInfos();
 			GraphicRenderer::RenderScreen(operation, sproperty, textures);
 		}
-
-		std::vector<GraphicTextureInfo> RenderBatchManager::GetGraphicTextureInfos(std::shared_ptr<Material> material)
-		{
-			vector<GraphicTextureInfo> textures;
-			for (int j = 0; j < material->textures.size(); j++)
-			{
-				auto index = material->textures[j].index;
-				auto info = material->textures[j].texture->GetObject()->graphicDataInfo;
-				GraphicTextureInfo tmp;
-				tmp.index = index;
-				tmp.info = info;
-				textures.push_back(tmp);
-			}
-			return textures;
-		}
-
 	}
 }

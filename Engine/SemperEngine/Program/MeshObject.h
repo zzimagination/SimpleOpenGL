@@ -4,7 +4,6 @@
 
 #include "Common.h"
 #include "ResourceObject.h"
-#include "ResourcePackage.h"
 #include "Graphic.h"
 
 namespace SemperEngine
@@ -30,9 +29,13 @@ namespace SemperEngine
 
 		public:
 
-			ResourcePackage<VertexData> resourcePackage;
+			std::string name;
+
+			std::unique_ptr<VertexData> data;
 
 			GraphicDataInfo graphicDataInfo;
+
+			bool graphicBind = false;
 
 		public:
 
@@ -40,17 +43,18 @@ namespace SemperEngine
 
 			virtual ~MeshObject() override;
 
-			virtual void EndCreate() override;
-
-			virtual void EndDelete() override;
-
-			virtual void EndModify() override;
-
 			MeshObject* Copy();
 
 			void SetVertex(ArrayList<Float3> vertices);
 
 			ArrayList<Float3> GetVertex();
+
+		protected:
+
+			virtual void EndDelete() override;
+
+			virtual void EndModify() override;
+
 		};
 	}
 }

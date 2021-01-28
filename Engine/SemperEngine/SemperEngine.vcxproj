@@ -151,6 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Program\GameSystem.h" />
+    <ClInclude Include="Program\MaterialObject.h" />
+    <ClInclude Include="Program\Model.h" />
+    <ClInclude Include="Program\ModelObject.h" />
+    <ClInclude Include="Program\NativeResource.h" />
     <ClInclude Include="Program\Collection\ArrayList.h" />
     <ClInclude Include="Program\EngineData\BaseData.h" />
     <ClInclude Include="Program\BaseRenderPipeline.h" />
@@ -164,8 +169,6 @@
     <ClInclude Include="Program\Math\Color.h" />
     <ClInclude Include="Program\Thread\CompletedSignal.h" />
     <ClInclude Include="Program\Cube.h" />
-    <ClInclude Include="Program\DataCenter.h" />
-    <ClInclude Include="Program\DataCenterClerk.h" />
     <ClInclude Include="Program\Debug.h" />
     <ClInclude Include="Program\DebugFile.h" />
     <ClInclude Include="Program\DebugOutput.h" />
@@ -173,7 +176,7 @@
     <ClInclude Include="Program\Event.h" />
     <ClInclude Include="Program\EventDef.h" />
     <ClInclude Include="Program\EventRecorder.h" />
-    <ClInclude Include="Program\EventManager.h" />
+    <ClInclude Include="Program\EventSystem.h" />
     <ClInclude Include="Program\Collection\FillList.h" />
     <ClInclude Include="Program\GameCabin.h" />
     <ClInclude Include="Program\GameEnd.h" />
@@ -185,7 +188,7 @@
     <ClInclude Include="Program\GLResourceAPI.h" />
     <ClInclude Include="Program\GLShaderAPI.h" />
     <ClInclude Include="Program\Graphic.h" />
-    <ClInclude Include="Program\GraphicManager.h" />
+    <ClInclude Include="Program\GraphicSystem.h" />
     <ClInclude Include="Program\GraphicRenderer.h" />
     <ClInclude Include="Program\GraphicCommandManager.h" />
     <ClInclude Include="Program\GraphicResouceAPI.h" />
@@ -197,7 +200,7 @@
     <ClInclude Include="Program\GLWindow.h" />
     <ClInclude Include="Program\InsideWorld.h" />
     <ClInclude Include="Program\InsideWorldAction.h" />
-    <ClInclude Include="Program\EngineData\LifeContainer.h" />
+    <ClInclude Include="Program\Tool\LifeContainer.h" />
     <ClInclude Include="Program\LogicThread.h" />
     <ClInclude Include="Program\LogoCollection.h" />
     <ClInclude Include="Program\LogoPipeline.h" />
@@ -212,14 +215,13 @@
     <ClInclude Include="Program\RenderBatchManager.h" />
     <ClInclude Include="Program\Camera.h" />
     <ClInclude Include="Program\Component.h" />
-    <ClInclude Include="Program\FrameRuntime.h" />
+    <ClInclude Include="Program\FrameManager.h" />
     <ClInclude Include="Program\GameLoop.h" />
     <ClInclude Include="Program\GameObject.h" />
     <ClInclude Include="Program\GameStart.h" />
     <ClInclude Include="Program\GameWindow.h" />
     <ClInclude Include="Program\Mathz.h" />
     <ClInclude Include="Program\Math\Matrix4x4.h" />
-    <ClInclude Include="pch.h" />
     <ClInclude Include="Program\GameSetting.h" />
     <ClInclude Include="Program\RenderBatch.h" />
     <ClInclude Include="Program\GraphicRenderAPI.h" />
@@ -228,15 +230,13 @@
     <ClInclude Include="Program\RenderObject.h" />
     <ClInclude Include="Program\RenderSetting.h" />
     <ClInclude Include="Program\Resource.h" />
-    <ClInclude Include="Program\ResourceDataCenter.h" />
     <ClInclude Include="Program\ResourceInternal.h" />
     <ClInclude Include="Program\ResourceLibrary.h" />
     <ClInclude Include="Program\ResourceLoader.h" />
-    <ClInclude Include="Program\ResourceMeshLibrary.h" />
+    <ClInclude Include="Program\ResourceModelLibrary.h" />
     <ClInclude Include="Program\ResourceObject.h" />
     <ClInclude Include="Program\ResourceObjectCenter.h" />
-    <ClInclude Include="Program\ResourceObjectLoop.h" />
-    <ClInclude Include="Program\ResourcePackage.h" />
+    <ClInclude Include="Program\ResourceSystem.h" />
     <ClInclude Include="Program\ResourceTextureLibrary.h" />
     <ClInclude Include="Program\RenderScreenObject.h" />
     <ClInclude Include="Program\SecondWorld.h" />
@@ -267,13 +267,18 @@
     <ClInclude Include="Program\WorldContainer.h" />
     <ClInclude Include="Program\WorldConverter.h" />
     <ClInclude Include="Program\WorldFruit.h" />
-    <ClInclude Include="Program\WorldLoop.h" />
+    <ClInclude Include="Program\WorldSystem.h" />
     <ClInclude Include="Program\WorldManager.h" />
     <ClInclude Include="Program\WorldMap.h" />
     <ClInclude Include="Program\WorldBuilder.h" />
     <ClInclude Include="Program\WorldTree.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Program\GameSystem.cpp" />
+    <ClCompile Include="Program\MaterialObject.cpp" />
+    <ClCompile Include="Program\Model.cpp" />
+    <ClCompile Include="Program\ModelObject.cpp" />
+    <ClCompile Include="Program\NativeResource.cpp" />
     <ClCompile Include="Program\BaseRenderPipeline.cpp" />
     <ClCompile Include="Program\CameraCollection.cpp" />
     <ClCompile Include="Program\CameraObject.cpp" />
@@ -283,15 +288,13 @@
     <ClCompile Include="Program\Thread\CompletedSignal.cpp" />
     <ClCompile Include="Program\Component.cpp" />
     <ClCompile Include="Program\Cube.cpp" />
-    <ClCompile Include="Program\DataCenter.cpp" />
-    <ClCompile Include="Program\DataCenterClerk.cpp" />
     <ClCompile Include="Program\Debug.cpp" />
     <ClCompile Include="Program\DebugFile.cpp" />
     <ClCompile Include="Program\DebugOutput.cpp" />
     <ClCompile Include="Program\DebugSystem.cpp" />
     <ClCompile Include="Program\Event.cpp" />
     <ClCompile Include="Program\EventRecorder.cpp" />
-    <ClCompile Include="Program\EventManager.cpp" />
+    <ClCompile Include="Program\EventSystem.cpp" />
     <ClCompile Include="Program\GameCabin.cpp" />
     <ClCompile Include="Program\GameEnd.cpp" />
     <ClCompile Include="Program\GameObjectContainer.cpp" />
@@ -301,7 +304,7 @@
     <ClCompile Include="Program\GLRendererAPI.cpp" />
     <ClCompile Include="Program\GLResourceAPI.cpp" />
     <ClCompile Include="Program\GLShaderAPI.cpp" />
-    <ClCompile Include="Program\GraphicManager.cpp" />
+    <ClCompile Include="Program\GraphicSystem.cpp" />
     <ClCompile Include="Program\GraphicRenderer.cpp" />
     <ClCompile Include="Program\GraphicCommandManager.cpp" />
     <ClCompile Include="Program\GraphicResourceAPI.cpp" />
@@ -326,7 +329,7 @@
     <ClCompile Include="Program\Math\Quaternion.cpp" />
     <ClCompile Include="Program\RenderBatchManager.cpp" />
     <ClCompile Include="Program\Camera.cpp" />
-    <ClCompile Include="Program\FrameRuntime.cpp" />
+    <ClCompile Include="Program\FrameManager.cpp" />
     <ClCompile Include="Program\GameLoop.cpp" />
     <ClCompile Include="Program\GameObject.cpp" />
     <ClCompile Include="Program\GameStart.cpp" />
@@ -346,12 +349,11 @@
     <ClCompile Include="Program\RenderScreenObject.cpp" />
     <ClCompile Include="Program\RenderSetting.cpp" />
     <ClCompile Include="Program\Resource.cpp" />
-    <ClCompile Include="Program\ResourceDataCenter.cpp" />
     <ClCompile Include="Program\ResourceInternal.cpp" />
     <ClCompile Include="Program\ResourceLoader.cpp" />
     <ClCompile Include="Program\ResourceObject.cpp" />
     <ClCompile Include="Program\ResourceObjectCenter.cpp" />
-    <ClCompile Include="Program\ResourceObjectLoop.cpp" />
+    <ClCompile Include="Program\ResourceSystem.cpp" />
     <ClCompile Include="Program\ResourceTextureLibrary.cpp" />
     <ClCompile Include="Program\SecondWorld.cpp" />
     <ClCompile Include="Program\SecondWorldAction.cpp" />
@@ -379,13 +381,16 @@
     <ClCompile Include="Program\WorldContainer.cpp" />
     <ClCompile Include="Program\WorldConverter.cpp" />
     <ClCompile Include="Program\WorldFruit.cpp" />
-    <ClCompile Include="Program\WorldLoop.cpp" />
+    <ClCompile Include="Program\WorldSystem.cpp" />
     <ClCompile Include="Program\WorldManager.cpp" />
     <ClCompile Include="Program\WorldMap.cpp" />
     <ClCompile Include="Program\WorldTree.cpp" />
-    <ClCompile Include="Program\ResourceMeshLibrary.cpp" />
+    <ClCompile Include="Program\ResourceModelLibrary.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ModelLib\ModelLib.vcxproj">
+      <Project>{4e8968b8-80d5-4c1c-be55-7193800e7b7e}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\TextureLib\TextureLib.vcxproj">
       <Project>{3ca74659-4f52-4c2c-acf2-6ec88e7b837a}</Project>
     </ProjectReference>

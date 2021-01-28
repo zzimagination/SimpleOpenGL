@@ -1,15 +1,14 @@
 #include "Texture.h"
 #include "ResourceObjectCenter.h"
-#include "ResourceDataCenter.h"
 
 namespace SemperEngine {
 
 	using namespace std;
 	using namespace Core;
 
-	Texture::Texture()
+	Texture::Texture(int width, int height)
 	{
-		_object = TextureObject::Create();
+		_object = TextureObject::Create(width, height);
 		_object->Use();
 	}
 

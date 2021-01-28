@@ -11,6 +11,16 @@ namespace SemperEngine
 	{
 	private:
 
+		struct deleter
+		{
+			void operator()(T* ptr)
+			{
+				delete[] ptr;
+			}
+		};
+
+	private:
+
 		std::shared_ptr<T> _data;
 
 		std::size_t _size = 0;
@@ -22,7 +32,13 @@ namespace SemperEngine
 		ArrayList(std::size_t s)
 		{
 			_size = s;
-			_data = std::shared_ptr<T>(new T[s]);
+			_data = std::shared_ptr<T>(new T[s], deleter());
+		}
+
+		ArrayList(T* data, std::size_t s)
+		{
+			_size = s;
+			_data = std::shared_ptr<T>(data, deleter());
 		}
 
 		std::shared_ptr<T> Data()

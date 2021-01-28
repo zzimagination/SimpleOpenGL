@@ -1,4 +1,4 @@
-#include "GraphicManager.h"
+#include "GraphicSystem.h"
 #include "GraphicDataCenter.h"
 #include "GraphicCommandManager.h"
 #include "ShaderCompiler.h"
@@ -7,25 +7,25 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		void GraphicManager::Initialize()
+		void GraphicSystem::Initialize()
 		{
 			ShaderCompiler::Compile();
 			GraphicResource::Initialize();
 			GraphicCommandManager::Resource();
 		}
-		void GraphicManager::Render()
+		void GraphicSystem::Render()
 		{
 			GraphicCommandManager::Render();
 		}
-		void GraphicManager::Resource()
+		void GraphicSystem::Resource()
 		{
 			GraphicCommandManager::Resource();
 		}
-		void GraphicManager::SwapCommands()
+		void GraphicSystem::SwapCommands()
 		{
 			GraphicCommandManager::SwapCommands();
 		}
-		void GraphicManager::Dispose()
+		void GraphicSystem::Dispose()
 		{
 			GraphicCommandManager::Resource();
 		}

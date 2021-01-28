@@ -1,10 +1,12 @@
 #include "ResourceTextureLibrary.h"
-#include "ResourceDataCenter.h"
+#include "NativeResource.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
+		using namespace std;
+
 		ResourceTextureLibrary::~ResourceTextureLibrary()
 		{
 		}
@@ -12,22 +14,24 @@ namespace SemperEngine
 		{
 			for (int i = 0; i < (int)_library.Size(); i++)
 			{
-				if (!_library[i].usable)
+				if (_library.IsEmpty(i))
 				{
 					continue;
 				}
-				if (_library[i].value->filePath == path)
+				if (_library[i]->filePath == path)
 				{
-					return _library[i].value;
+					return _library[i];
 				}
 			}
 
-			auto package = ResourceDataCenter::LoadTexture(path);
+			auto resource = NativeResource::LoadTexture(path);
 			auto object = new TextureObject;
-			object->filePath = path;
-			object->resourcePackage = package;
+			object->data = unique_ptr<TextureData>(new TextureData);
+			object->data->pixels = ArrayList<ColorByte>(resource.data, resource.size);
+			object->data->width = resource.width;
+			object->data->height = resource.height;
+			object->id = _library.Add(object);
 			object->Use();
-			_library.Add(object);
 			return object;
 		}
 	}

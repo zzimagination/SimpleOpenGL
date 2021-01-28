@@ -42,7 +42,7 @@ namespace SemperEngine
 
 		std::shared_ptr<GraphicVertexData> GraphicResource::GetVertexData(GraphicDataInfo info)
 		{
-			return _vertexData[info.index].value;
+			return _vertexData[info.index];
 		}
 
 		GraphicDataInfo GraphicResource::AddTextureData(TextureData* data)
@@ -67,14 +67,7 @@ namespace SemperEngine
 
 		std::shared_ptr<GraphicTextureData> GraphicResource::GetTextureData(GraphicDataInfo info)
 		{
-			if (_textureData[info.index].usable)
-			{
-				return _textureData[info.index].value;
-			}
-			else
-			{
-				return shared_ptr<GraphicTextureData>();
-			}
+			return _textureData[info.index];
 		}
 	}
 }

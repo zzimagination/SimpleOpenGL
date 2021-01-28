@@ -57,14 +57,7 @@ namespace SemperEngine {
 		{
 			GLRenderAPI::BindVertexBuffer(data.VAO);
 			_vertexCount = data.pointCount;
-			if (data.EBO == 0)
-			{
-				_drawType = DrawType::Nomal;
-			}
-			else
-			{
-				_drawType = DrawType::Index;
-			}
+			_drawType = data.indexDraw ? DrawType::Index : DrawType::Nomal;
 		}
 
 		void GraphicRenderAPI::SetShader(std::string shader)

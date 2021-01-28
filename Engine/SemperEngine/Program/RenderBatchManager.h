@@ -31,7 +31,9 @@ namespace SemperEngine {
 
 		private:
 
-			static std::vector<GraphicTextureInfo> GetGraphicTextureInfos(std::shared_ptr<Material> material);
+			static void BindResource(RenderCustomObject* obj);
+
+			static void BindResource(RenderScreenObject* obj);
 
 			static void DrawCustom(RenderBatch batch);
 

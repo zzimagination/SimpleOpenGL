@@ -64,7 +64,12 @@ namespace SemperEngine
 				// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 				glBindVertexArray(0);
 
-				GLVertexData result = { VAO, VBO, EBO, pointCount };
+				GLVertexData result;
+				result.VAO = VAO;
+				result.VBO = VBO;
+				result.EBO = EBO;
+				result.pointCount = pointCount;
+				result.hasEBO = true;
 				return result;
 			}
 
@@ -88,6 +93,7 @@ namespace SemperEngine
 			GLVertexData GLResourceAPI::AddVertexData(Float3* vertices, Float2* uv, int count)
 			{
 				GLuint VAO = 0, VBO = 0, pointCount = 0;
+				pointCount = count;
 				int verticesSize = count * sizeof(Float3);
 				int uvSize = count * sizeof(Float2);
 				int totalSize = verticesSize + uvSize;
@@ -113,17 +119,19 @@ namespace SemperEngine
 				GLVertexData result;
 				result.VAO = VAO;
 				result.VBO = VBO;
+				result.pointCount = pointCount;
+				result.hasEBO = false;
 				return result;
 			}
 
 			void GLResourceAPI::ClearVertexData(GLVertexData data)
 			{
-				auto VAO = data.VAO;
-				auto VBO = data.VBO;
-				auto EBO = data.EBO;
-				glDeleteBuffers(1, &EBO);//×¢ÒâË³Ðò
-				glDeleteBuffers(1, &VBO);
-				glDeleteVertexArrays(1, &VAO);
+				if (data.hasEBO)
+				{
+					glDeleteBuffers(1, &data.EBO);//×¢ÒâË³Ðò
+				}
+				glDeleteBuffers(1, &data.VBO);
+				glDeleteVertexArrays(1, &data.VAO);
 			}
 
 			void GLResourceAPI::ClearVertexData(unsigned int VAO, unsigned int VBO)

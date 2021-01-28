@@ -3,9 +3,9 @@
 #define __RESOURCELOADER__
 
 #include <string>
-#include <vector>
-#include <map>
 #include "Common.h"
+#include <Engine/TextureLib.h>
+#include <Engine/ModelLib.h>
 
 namespace SemperEngine
 {
@@ -13,10 +13,20 @@ namespace SemperEngine
 	{
 		class ResourceLoader
 		{
+		};
+
+		class TextureLoader : public ResourceLoader
+		{
 		public:
 
-			static TextureData* LoadTexture(std::string file);
+			TextureLib::Texture Load(std::string path);
+		};
 
+		class ModelLoader : public ResourceLoader
+		{
+		public:
+
+			ModelLib::Model Load(std::string path);
 		};
 	}
 }

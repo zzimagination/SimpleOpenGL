@@ -22,7 +22,7 @@ namespace SemperEngine
 
 		private:
 
-			friend class FrameRuntime;
+			friend class FrameManager;
 
 		public:
 

@@ -1,6 +1,5 @@
 #include "Event.h"
 #include "EventRecorder.h"
-#include "EventManager.h"
 
 
 namespace SemperEngine

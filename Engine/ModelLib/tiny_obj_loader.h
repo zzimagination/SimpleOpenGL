@@ -2476,7 +2476,7 @@ bool LoadObj(attrib_t *attrib, std::vector<shape_t> *shapes,
       } else {
         // { error!! material not found }
         if (warn) {
-          (*warn) += "material [ '" + namebuf + "' ] not found in .mtl\n";
+          //(*warn) += "material [ '" + namebuf + "' ] not found in .mtl\n";
         }
       }
 
@@ -2886,7 +2886,7 @@ bool LoadObjWithCallback(std::istream &inStream, const callback_t &callback,
       } else {
         // { warn!! material not found }
         if (warn && (!callback.usemtl_cb)) {
-          (*warn) += "material [ " + namebuf + " ] not found in .mtl\n";
+          //(*warn) += "material [ " + namebuf + " ] not found in .mtl\n";
         }
       }
 

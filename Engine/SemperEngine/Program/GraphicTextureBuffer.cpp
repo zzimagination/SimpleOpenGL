@@ -2,7 +2,6 @@
 #include "GraphicResouceAPI.h"
 #include "GraphicDataCenter.h"
 #include "GraphicCommandManager.h"
-#include "DataCenterClerk.h"
 
 namespace SemperEngine
 {

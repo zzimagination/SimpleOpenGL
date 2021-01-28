@@ -13,8 +13,6 @@ namespace SemperEngine
 
 		private:
 
-			static void SetLocale();
-
 			static void Logo();
 		};
 	}

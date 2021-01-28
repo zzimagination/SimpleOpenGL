@@ -3,6 +3,7 @@
 #include "Debug.h"
 #include "Cube.h"
 #include "WorldController.h"
+#include "Resource.h"
 
 namespace SemperEngine
 {
@@ -14,6 +15,7 @@ namespace SemperEngine
 	void TestWorldAction::Start()
 	{
 	}
+
 	void TestWorldAction::Update()
 	{
 		if (Event::KeyAction(Keyboard::Key::number1, InputAction::Button::press))

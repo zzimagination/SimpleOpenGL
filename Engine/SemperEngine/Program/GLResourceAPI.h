@@ -19,6 +19,8 @@ namespace SemperEngine
 
 				unsigned int EBO = 0;
 
+				bool hasEBO = false;
+
 				unsigned int pointCount = 0;
 
 			};

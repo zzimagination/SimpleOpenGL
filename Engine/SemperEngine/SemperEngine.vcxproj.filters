@@ -14,13 +14,10 @@
       <Filter>Debug</Filter>
     </ClCompile>
     <ClCompile Include="Program\Event.cpp">
-      <Filter>EventSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\EventManager.cpp">
-      <Filter>EventSystem</Filter>
+      <Filter>Event</Filter>
     </ClCompile>
     <ClCompile Include="Program\EventRecorder.cpp">
-      <Filter>EventSystem</Filter>
+      <Filter>Event</Filter>
     </ClCompile>
     <ClCompile Include="Program\ChangeColor.cpp">
       <Filter>GameLogic\Components</Filter>
@@ -70,9 +67,6 @@
     <ClCompile Include="Program\LogicThread.cpp">
       <Filter>Project\Loop</Filter>
     </ClCompile>
-    <ClCompile Include="Program\FrameRuntime.cpp">
-      <Filter>Project</Filter>
-    </ClCompile>
     <ClCompile Include="Program\GameSetting.cpp">
       <Filter>Project</Filter>
     </ClCompile>
@@ -89,9 +83,6 @@
       <Filter>Render\Game\RenderObject</Filter>
     </ClCompile>
     <ClCompile Include="Program\BaseRenderPipeline.cpp">
-      <Filter>Render\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\Material.cpp">
       <Filter>Render\Game</Filter>
     </ClCompile>
     <ClCompile Include="Program\RenderBatch.cpp">
@@ -169,9 +160,6 @@
     <ClCompile Include="Program\GraphicDataCenter.cpp">
       <Filter>Render\Graphic</Filter>
     </ClCompile>
-    <ClCompile Include="Program\GraphicManager.cpp">
-      <Filter>Render\Graphic</Filter>
-    </ClCompile>
     <ClCompile Include="Program\GraphicRenderer.cpp">
       <Filter>Render\Graphic</Filter>
     </ClCompile>
@@ -181,17 +169,8 @@
     <ClCompile Include="Program\LogoPipeline.cpp">
       <Filter>Render\Logo</Filter>
     </ClCompile>
-    <ClCompile Include="Program\DataCenter.cpp">
-      <Filter>Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\DataCenterClerk.cpp">
-      <Filter>Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\ResourceDataCenter.cpp">
-      <Filter>Resource</Filter>
-    </ClCompile>
     <ClCompile Include="Program\ResourceLoader.cpp">
-      <Filter>Resource</Filter>
+      <Filter>NativeResource</Filter>
     </ClCompile>
     <ClCompile Include="Program\ResourceTextureLibrary.cpp">
       <Filter>ResourceObject\ResourceLibrary</Filter>
@@ -206,9 +185,6 @@
       <Filter>ResourceObject</Filter>
     </ClCompile>
     <ClCompile Include="Program\ResourceObjectCenter.cpp">
-      <Filter>ResourceObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\ResourceObjectLoop.cpp">
       <Filter>ResourceObject</Filter>
     </ClCompile>
     <ClCompile Include="Program\GameWindow.cpp">
@@ -256,9 +232,6 @@
     <ClCompile Include="Program\WorldFruit.cpp">
       <Filter>World\World</Filter>
     </ClCompile>
-    <ClCompile Include="Program\WorldLoop.cpp">
-      <Filter>World\World</Filter>
-    </ClCompile>
     <ClCompile Include="Program\WorldManager.cpp">
       <Filter>World\World</Filter>
     </ClCompile>
@@ -291,10 +264,10 @@
       <Filter>Common\Math</Filter>
     </ClCompile>
     <ClCompile Include="Program\EngineData\TextureData.cpp">
-      <Filter>Common\Data</Filter>
+      <Filter>Common\EngineData</Filter>
     </ClCompile>
     <ClCompile Include="Program\EngineData\VertexData.cpp">
-      <Filter>Common\Data</Filter>
+      <Filter>Common\EngineData</Filter>
     </ClCompile>
     <ClCompile Include="Program\MeshObject.cpp">
       <Filter>ResourceObject\ResourceObject</Filter>
@@ -317,9 +290,6 @@
     <ClCompile Include="Program\CameraObject.cpp">
       <Filter>Render\Game\RenderObject</Filter>
     </ClCompile>
-    <ClCompile Include="Program\ResourceMeshLibrary.cpp">
-      <Filter>ResourceObject\ResourceLibrary</Filter>
-    </ClCompile>
     <ClCompile Include="Program\Text\StringEncoding.cpp">
       <Filter>Common\Text</Filter>
     </ClCompile>
@@ -328,6 +298,42 @@
     </ClCompile>
     <ClCompile Include="Program\Thread\CompletedSignal.cpp">
       <Filter>Common\Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\NativeResource.cpp">
+      <Filter>NativeResource</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\ModelObject.cpp">
+      <Filter>ResourceObject\ResourceObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\ResourceModelLibrary.cpp">
+      <Filter>ResourceObject\ResourceLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Model.cpp">
+      <Filter>ResourceObject\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\MaterialObject.cpp">
+      <Filter>ResourceObject\ResourceObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Material.cpp">
+      <Filter>ResourceObject\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GameSystem.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\GraphicSystem.cpp">
+      <Filter>Render\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\ResourceSystem.cpp">
+      <Filter>ResourceObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\WorldSystem.cpp">
+      <Filter>World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\EventSystem.cpp">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\FrameManager.cpp">
+      <Filter>Project</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -344,16 +350,13 @@
       <Filter>Debug</Filter>
     </ClInclude>
     <ClInclude Include="Program\Event.h">
-      <Filter>EventSystem</Filter>
+      <Filter>Event</Filter>
     </ClInclude>
     <ClInclude Include="Program\EventDef.h">
-      <Filter>EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\EventManager.h">
-      <Filter>EventSystem</Filter>
+      <Filter>Event</Filter>
     </ClInclude>
     <ClInclude Include="Program\EventRecorder.h">
-      <Filter>EventSystem</Filter>
+      <Filter>Event</Filter>
     </ClInclude>
     <ClInclude Include="Program\ChangeColor.h">
       <Filter>GameLogic\Components</Filter>
@@ -409,9 +412,6 @@
     <ClInclude Include="Program\LogicThread.h">
       <Filter>Project\Loop</Filter>
     </ClInclude>
-    <ClInclude Include="Program\FrameRuntime.h">
-      <Filter>Project</Filter>
-    </ClInclude>
     <ClInclude Include="Program\GameSetting.h">
       <Filter>Project</Filter>
     </ClInclude>
@@ -428,9 +428,6 @@
       <Filter>Render\Game\RenderObject</Filter>
     </ClInclude>
     <ClInclude Include="Program\BaseRenderPipeline.h">
-      <Filter>Render\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Material.h">
       <Filter>Render\Game</Filter>
     </ClInclude>
     <ClInclude Include="Program\RenderBatch.h">
@@ -493,9 +490,6 @@
     <ClInclude Include="Program\GraphicDataCenter.h">
       <Filter>Render\Graphic</Filter>
     </ClInclude>
-    <ClInclude Include="Program\GraphicManager.h">
-      <Filter>Render\Graphic</Filter>
-    </ClInclude>
     <ClInclude Include="Program\GraphicRenderer.h">
       <Filter>Render\Graphic</Filter>
     </ClInclude>
@@ -505,20 +499,8 @@
     <ClInclude Include="Program\LogoPipeline.h">
       <Filter>Render\Logo</Filter>
     </ClInclude>
-    <ClInclude Include="Program\DataCenter.h">
-      <Filter>Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\DataCenterClerk.h">
-      <Filter>Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\ResourceDataCenter.h">
-      <Filter>Resource</Filter>
-    </ClInclude>
     <ClInclude Include="Program\ResourceLoader.h">
-      <Filter>Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\ResourcePackage.h">
-      <Filter>Resource</Filter>
+      <Filter>NativeResource</Filter>
     </ClInclude>
     <ClInclude Include="Program\ResourceTextureLibrary.h">
       <Filter>ResourceObject\ResourceLibrary</Filter>
@@ -536,9 +518,6 @@
       <Filter>ResourceObject</Filter>
     </ClInclude>
     <ClInclude Include="Program\ResourceObjectCenter.h">
-      <Filter>ResourceObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\ResourceObjectLoop.h">
       <Filter>ResourceObject</Filter>
     </ClInclude>
     <ClInclude Include="Program\GameWindow.h">
@@ -586,9 +565,6 @@
     <ClInclude Include="Program\WorldFruit.h">
       <Filter>World\World</Filter>
     </ClInclude>
-    <ClInclude Include="Program\WorldLoop.h">
-      <Filter>World\World</Filter>
-    </ClInclude>
     <ClInclude Include="Program\WorldManager.h">
       <Filter>World\World</Filter>
     </ClInclude>
@@ -601,7 +577,6 @@
     <ClInclude Include="Program\BeautifulWorld.h">
       <Filter>World</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h" />
     <ClInclude Include="Program\Graphic.h">
       <Filter>Render\Graphic</Filter>
     </ClInclude>
@@ -645,13 +620,13 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="Program\EngineData\BaseData.h">
-      <Filter>Common\Data</Filter>
+      <Filter>Common\EngineData</Filter>
     </ClInclude>
     <ClInclude Include="Program\EngineData\TextureData.h">
-      <Filter>Common\Data</Filter>
+      <Filter>Common\EngineData</Filter>
     </ClInclude>
     <ClInclude Include="Program\EngineData\VertexData.h">
-      <Filter>Common\Data</Filter>
+      <Filter>Common\EngineData</Filter>
     </ClInclude>
     <ClInclude Include="Program\MeshObject.h">
       <Filter>ResourceObject\ResourceObject</Filter>
@@ -677,9 +652,6 @@
     <ClInclude Include="Program\RenderCollection.h">
       <Filter>Render\Game\Collection</Filter>
     </ClInclude>
-    <ClInclude Include="Program\ResourceMeshLibrary.h">
-      <Filter>ResourceObject\ResourceLibrary</Filter>
-    </ClInclude>
     <ClInclude Include="Program\Text\StringEncoding.h">
       <Filter>Common\Text</Filter>
     </ClInclude>
@@ -689,8 +661,44 @@
     <ClInclude Include="Program\Thread\CompletedSignal.h">
       <Filter>Common\Thread</Filter>
     </ClInclude>
-    <ClInclude Include="Program\EngineData\LifeContainer.h">
-      <Filter>Common\Data</Filter>
+    <ClInclude Include="Program\NativeResource.h">
+      <Filter>NativeResource</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ModelObject.h">
+      <Filter>ResourceObject\ResourceObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ResourceModelLibrary.h">
+      <Filter>ResourceObject\ResourceLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Model.h">
+      <Filter>ResourceObject\Target</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\MaterialObject.h">
+      <Filter>ResourceObject\ResourceObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Material.h">
+      <Filter>ResourceObject\Target</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Tool\LifeContainer.h">
+      <Filter>Common\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GameSystem.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GraphicSystem.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ResourceSystem.h">
+      <Filter>ResourceObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\WorldSystem.h">
+      <Filter>World\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\EventSystem.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\FrameManager.h">
+      <Filter>Project</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -701,9 +709,6 @@
     </Filter>
     <Filter Include="GameLogic">
       <UniqueIdentifier>{ee4e0d89-ced1-4bc5-9fac-ec48b34404cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EventSystem">
-      <UniqueIdentifier>{f5075df4-7f92-45ad-b858-dadb4bf028f4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Project\Loop">
       <UniqueIdentifier>{26a0ad8a-dcf3-4edf-89aa-cd978117fc51}</UniqueIdentifier>
@@ -743,9 +748,6 @@
     </Filter>
     <Filter Include="Common\Math">
       <UniqueIdentifier>{39606d9c-726b-4a51-abbe-cc3951ddabf9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource">
-      <UniqueIdentifier>{0cc2f298-98df-4ecb-ad7b-5226f98a010f}</UniqueIdentifier>
     </Filter>
     <Filter Include="ResourceObject">
       <UniqueIdentifier>{da4d47d4-7ba2-46b1-ab75-09edd381913f}</UniqueIdentifier>
@@ -797,14 +799,23 @@
     <Filter Include="ResourceObject\Target">
       <UniqueIdentifier>{afa65102-81e0-45ce-88df-81555975f910}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Common\Data">
-      <UniqueIdentifier>{56a5d096-ca97-4abe-add5-369e130ae3d8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Common\Thread">
       <UniqueIdentifier>{3868821b-476b-4570-a3be-8371f71fcccc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Render\Game\Collection">
       <UniqueIdentifier>{dfdc439a-96be-4e79-8653-67f64447e715}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NativeResource">
+      <UniqueIdentifier>{0cc2f298-98df-4ecb-ad7b-5226f98a010f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Tool">
+      <UniqueIdentifier>{fbbbc5a2-8959-4110-b5cd-943850dbd522}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\EngineData">
+      <UniqueIdentifier>{56a5d096-ca97-4abe-add5-369e130ae3d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{f5075df4-7f92-45ad-b858-dadb4bf028f4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

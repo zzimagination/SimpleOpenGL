@@ -1,4 +1,4 @@
-#include "ResourceObjectLoop.h"
+#include "ResourceSystem.h"
 #include "ResourceObjectCenter.h"
 #include "ResourceInternal.h"
 #include "Resource.h"
@@ -7,25 +7,25 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		void ResourceObjectLoop::Start()
+		void ResourceSystem::Start()
 		{
 			ResourceInternal::PreLoad();
 			ResourceObjectCenter::EndProcess();
 		}
 
-		void ResourceObjectLoop::BeforeLoop()
+		void ResourceSystem::BeforeLoop()
 		{
 			Resource::DisposeUnuse();
 			ResourceObjectCenter::EndProcess();
 		}
 
-		void ResourceObjectLoop::Loop()
+		void ResourceSystem::Loop()
 		{
 			Resource::DisposeUnuse();
 			ResourceObjectCenter::EndProcess();
 		}
 
-		void ResourceObjectLoop::AfterLoop()
+		void ResourceSystem::AfterLoop()
 		{
 			ResourceInternal::Dispose();
 			Resource::DisposeUnuse();

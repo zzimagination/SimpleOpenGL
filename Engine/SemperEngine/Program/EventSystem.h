@@ -5,7 +5,7 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		class EventManager
+		class EventSystem
 		{
 		public:
 

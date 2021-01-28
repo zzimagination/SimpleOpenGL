@@ -1,5 +1,4 @@
 #include "TextureObject.h"
-#include "ResourceDataCenter.h"
 #include "ResourceObjectCenter.h"
 #include "GraphicDataCenter.h"
 
@@ -9,10 +8,13 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		TextureObject* TextureObject::Create()
+		TextureObject* TextureObject::Create(int width, int height)
 		{
 			auto obj = new TextureObject;
-			obj->resourcePackage = ResourceDataCenter::CreateTexture();
+			obj->data = unique_ptr<TextureData>(new TextureData);
+			obj->data->width = width;
+			obj->data->height = height;
+			obj->data->pixels = ArrayList<ColorByte>((size_t)width * height * 4);
 			return obj;
 		}
 
@@ -24,40 +26,41 @@ namespace SemperEngine
 		{
 		}
 
-		void TextureObject::EndCreate()
-		{
-			graphicDataInfo = GraphicResource::AddTextureData(resourcePackage.GetResource());
-		}
-
 		void TextureObject::EndDelete()
 		{
-			resourcePackage.Dispose();
-			GraphicResource::RemoveTextureData(graphicDataInfo);
+			if (graphicBind)
+			{
+				graphicBind = false;
+				GraphicResource::RemoveTextureData(graphicDataInfo);
+			}
 		}
 
 		void TextureObject::EndModify()
 		{
-			GraphicResource::RemoveTextureData(graphicDataInfo);
-			graphicDataInfo = GraphicResource::AddTextureData(resourcePackage.GetResource());
+			if (graphicBind)
+			{
+				graphicBind = false;
+				GraphicResource::RemoveTextureData(graphicDataInfo);
+			}
 		}
 
 		void TextureObject::ColorBytes(ArrayList<ColorByte> data)
 		{
-			resourcePackage.GetResource()->pixels = data;
+			this->data->pixels = data;
 			Modify();
 		}
 
 		TextureObject* TextureObject::Copy()
 		{
-			auto package = ResourceDataCenter::CopyTexture(resourcePackage);
 			auto obj = new TextureObject;
-			obj->resourcePackage = package;
+			auto data = this->data->Copy();
+			obj->data = unique_ptr<TextureData>(data);
 			return obj;
 		}
 
 		ArrayList<ColorByte> TextureObject::ColorBytes()
 		{
-			return resourcePackage.GetResource()->pixels;
+			return data->pixels;
 		}
 	}
 }

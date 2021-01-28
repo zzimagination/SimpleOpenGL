@@ -26,7 +26,7 @@ namespace SemperEngine {
 
 		private:
 
-			VertexType _vertexType;
+			VertexType _vertexType = VertexType::Custom;
 
 			std::shared_ptr<Mesh> _mesh;
 
@@ -55,6 +55,8 @@ namespace SemperEngine {
 			void SetMaterial(std::shared_ptr<Material> material);
 
 			std::shared_ptr<Material> GetMaterial();
+
+			std::vector<GraphicTextureInfo> GetGraphicTextureInfos();
 		};
 	}
 }

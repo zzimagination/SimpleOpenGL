@@ -5,7 +5,7 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		class FrameRuntime
+		class FrameManager
 		{
 		public:
 

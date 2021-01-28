@@ -10,6 +10,17 @@ namespace SemperEngine
 			this->VBO = 0;
 			this->EBO = 0;
 			this->pointCount = 0;
+			this->indexDraw = false;
+			_source = nullptr;
+		}
+
+		GraphicVertexData::GraphicVertexData(unsigned int vao, unsigned int vbo, int pointCount)
+		{
+			this->VAO = vao;
+			this->VBO = vbo;
+			this->EBO = 0;
+			this->pointCount = pointCount;
+			this->indexDraw = false;
 			_source = nullptr;
 		}
 
@@ -19,6 +30,7 @@ namespace SemperEngine
 			this->VBO = vbo;
 			this->EBO = ebo;
 			this->pointCount = count;
+			this->indexDraw = true;
 			_source = nullptr;
 		}
 

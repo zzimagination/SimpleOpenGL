@@ -6,7 +6,7 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		class GraphicManager
+		class GraphicSystem
 		{
 		public:
 

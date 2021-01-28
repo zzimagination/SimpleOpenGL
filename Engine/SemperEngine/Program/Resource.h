@@ -4,10 +4,10 @@
 
 #include <string>
 #include <memory>
-#include "Mesh.h"
 #include "Texture.h"
+#include "Model.h"
 #include "ResourceTextureLibrary.h"
-#include "ResourceMeshLibrary.h"
+#include "ResourceModelLibrary.h"
 
 namespace SemperEngine
 {
@@ -17,13 +17,15 @@ namespace SemperEngine
 
 		static Core::ResourceTextureLibrary textureLibrary;
 
-		static Core::ResourceMeshLibrary meshLibrary;
+		static Core::ResourceModelLibrary modelLibrary;
 
 	public:
 
 		static std::shared_ptr<Texture> LoadTexture(std::string path);
 
 		static std::shared_ptr<Mesh> CreateCube();
+
+		static std::shared_ptr<Model> LoadModel(std::string path);
 
 		static void DisposeUnuse();
 

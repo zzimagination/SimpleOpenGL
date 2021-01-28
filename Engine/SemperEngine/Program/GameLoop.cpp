@@ -1,14 +1,13 @@
 #include "GameLoop.h"
 #include <thread>
-#include "Mathz.h"
 #include "Debug.h"
-#include "WorldLoop.h"
 #include "GameWindow.h"
-#include "EventManager.h"
-#include "FrameRuntime.h"
+#include "FrameManager.h"
+#include "EventSystem.h"
+#include "WorldSystem.h"
+#include "GraphicSystem.h"
+#include "ResourceSystem.h"
 #include "BaseRenderPipeline.h"
-#include "ResourceObjectLoop.h"
-#include "GraphicManager.h"
 
 namespace SemperEngine
 {
@@ -26,11 +25,11 @@ namespace SemperEngine
 
 		void GameLoop::BeforeLoop()
 		{
-			WorldLoop::BeforeLoop();
-			ResourceObjectLoop::BeforeLoop();
+			WorldSystem::BeforeLoop();
+			ResourceSystem::BeforeLoop();
 			BaseRenderPipeline::Render();
-			GraphicManager::Resource();
-			GraphicManager::SwapCommands();
+			GraphicSystem::Resource();
+			GraphicSystem::SwapCommands();
 			_isLooping = true;
 		}
 
@@ -50,23 +49,23 @@ namespace SemperEngine
 					loopSignal.SendAll();
 				}
 				/*帧前处理*/
-				FrameRuntime::Begin();
+				FrameManager::Begin();
 				GameWindow::PollWindowEvent();
 
 				/*发送开始命令*/
 				mainSignal.SendAll();
 
 				/*主线程执行*/
-				GraphicManager::Render();
+				GraphicSystem::Render();
 				GameWindow::SwapFrameBuffers();
 
 				/*等待其他线程执行完毕*/
 				logicSignal.Wait();
 
 				/*帧后处理*/
-				GraphicManager::Resource();
-				GraphicManager::SwapCommands();
-				FrameRuntime::End();
+				GraphicSystem::Resource();
+				GraphicSystem::SwapCommands();
+				FrameManager::End();
 			}
 			logic.join();
 		}
@@ -84,11 +83,11 @@ namespace SemperEngine
 				mainSignal.Wait();
 
 				/*处理游戏逻辑*/
-				EventManager::ProcessEvent();
-				WorldLoop::Loop();
-				ResourceObjectLoop::Loop();
+				EventSystem::ProcessEvent();
+				WorldSystem::Loop();
+				ResourceSystem::Loop();
 				BaseRenderPipeline::Render();
-				EventManager::EndEvents();
+				EventSystem::EndEvents();
 				/*发送完毕命令*/
 				logicSignal.Send();
 			}
@@ -96,9 +95,9 @@ namespace SemperEngine
 
 		void GameLoop::AfterLoop()
 		{
-			WorldLoop::AfterLoop();
-			ResourceObjectLoop::AfterLoop();
-			GraphicManager::Dispose();
+			WorldSystem::AfterLoop();
+			ResourceSystem::AfterLoop();
+			GraphicSystem::Dispose();
 		}
 
 		bool GameLoop::IsExitLoop()

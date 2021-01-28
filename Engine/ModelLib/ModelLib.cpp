@@ -4,44 +4,52 @@
 #include <string>
 #include <fstream>
 
+#pragma warning(disable:6386)
+#pragma warning(disable:26451)
+
 namespace SemperEngine
 {
 	namespace ModelLib
 	{
 		using namespace std;
 
-		void SetFace(Model& model, tinyobj::attrib_t& attr, vector<tinyobj::index_t>& indices)
+		void SetFace(Node& node, tinyobj::attrib_t& attr, vector<tinyobj::index_t>& indices)
 		{
-			for (auto i = indices.begin(); i != indices.end(); i++)
+			node.size = indices.size();
+			node.vertices = new Float3[indices.size()];
+			node.uv = new Float2[indices.size()];
+			for (auto i = 0; i < indices.size(); i++)
 			{
-				auto v = i->vertex_index;
-				auto t = i->texcoord_index;
+				auto v = indices[i].vertex_index;
+				auto t = indices[i].texcoord_index;
 				v = v >= 0 ? v : 0;
 				t = t >= 0 ? t : 0;
-				model.vertices.push_back(attr.vertices[v]);
-				model.uv.push_back(attr.texcoords[t]);
+				node.vertices[i].x = attr.vertices[v * 3];
+				node.vertices[i].y = attr.vertices[v * 3 + 1];
+				node.vertices[i].z = attr.vertices[v * 3 + 2];
+				node.uv[i].x = attr.texcoords[t * 2];
+				node.uv[i].y = attr.texcoords[t * 2 + 1];
 			}
 		}
 
 		void SetShape(Model& model, tinyobj::attrib_t& attr, tinyobj::shape_t& shape)
 		{
-			Model child;
+			Node child;
 			child.name = shape.name;
 			SetFace(child, attr, shape.mesh.indices);
-			model.children.push_back(child);
+			model.root.children.push_back(child);
 		}
 
 		Model LoadObject(string path)
 		{
+			Model model;
 			std::string warn;
 			std::string err;
-			std::ifstream file(path);
 
+			std::ifstream file(path);
 			if (file.fail())
 			{
-				Model model;
-				model.error.append("Can't find the file ");
-				model.error.append(path);
+				model.error = "Can't load file";
 				return model;
 			}
 
@@ -51,18 +59,13 @@ namespace SemperEngine
 			auto result = tinyobj::LoadObj(&attribute, &shapes, &materials, &warn, &err, &file);
 			if (!result)
 			{
-				Model model;
+				model.warning = warn;
 				model.error = err;
 				return model;
 			}
 
-			Model model;
-			if (shapes.size() == 1)
-			{
-				model.name = shapes[0].name;
-				SetFace(model, attribute, shapes[0].mesh.indices);
-				return model;
-			}
+			model.error = err;
+			model.warning = warn;
 
 			for (auto sp = shapes.begin(); sp != shapes.end(); sp++)
 			{

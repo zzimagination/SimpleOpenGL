@@ -1,4 +1,4 @@
-#include "WorldLoop.h"
+#include "WorldSystem.h"
 #include "WorldMap.h"
 #include "WorldManager.h"
 #include "WorldTree.h"
@@ -8,7 +8,7 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		void WorldLoop::BeforeLoop()
+		void WorldSystem::BeforeLoop()
 		{
 			WorldMap::Initialize();
 			WorldManager::Initialize();
@@ -17,14 +17,14 @@ namespace SemperEngine
 			WorldTree::Fall();
 		}
 
-		void WorldLoop::Loop()
+		void WorldSystem::Loop()
 		{
 			WorldTree::ExcuteWorlds();
 			WorldConverter::Convert();
 			WorldTree::Fall();
 		}
 
-		void WorldLoop::AfterLoop()
+		void WorldSystem::AfterLoop()
 		{
 			WorldTree::EndWorlds();
 		}

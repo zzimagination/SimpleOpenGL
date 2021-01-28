@@ -9,7 +9,7 @@ namespace SemperEngine
 
 	ResourceTextureLibrary Resource::textureLibrary;
 
-	ResourceMeshLibrary Resource::meshLibrary;
+	ResourceModelLibrary Resource::modelLibrary;
 
 	shared_ptr<Texture> Resource::LoadTexture(string path)
 	{
@@ -26,10 +26,18 @@ namespace SemperEngine
 		return mesh;
 	}
 
+	std::shared_ptr<Model> Resource::LoadModel(std::string path)
+	{
+		auto fullPath = ExternalFile(path);
+		auto object = modelLibrary.Load(fullPath);
+		auto model = shared_ptr<Model>(new Model(object));
+		return model;
+	}
+
 	void Resource::DisposeUnuse()
 	{
 		textureLibrary.DisposeUnuse();
-		meshLibrary.DisposeUnuse();
+		modelLibrary.DisposeUnuse();
 	}
 
 	std::string Resource::ExternalFile(std::string file)

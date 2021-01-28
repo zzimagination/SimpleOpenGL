@@ -1,5 +1,5 @@
 #include "ResourceLoader.h"
-#include <TextureLib.h>
+#include "Debug.h"
 
 namespace SemperEngine
 {
@@ -7,15 +7,30 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		TextureData* ResourceLoader::LoadTexture(std::string file)
+		TextureLib::Texture TextureLoader::Load(std::string path)
 		{
-			auto texfile = TextureLib::LoadTexture(file);
-			auto data = new TextureData();
-			data->width = texfile->width;
-			data->height = texfile->height;
-			data->pixels.Resize(texfile->size);
-			memcpy(data->pixels.DataPtr(), texfile->data.get(), texfile->size * sizeof(ColorByte));
-			return data;
+			auto file = TextureLib::LoadTexture(path);
+			if (file.error == "")
+			{
+				return file;
+			}
+			Debug::LogError(file.error);
+			return file;
+		}
+
+		ModelLib::Model ModelLoader::Load(std::string path)
+		{
+			auto file = ModelLib::LoadObject(path);
+			if (file.error == "")
+			{
+				if (file.warning != "")
+				{
+					Debug::Log(file.warning);
+				}
+				return file;
+			}
+			Debug::LogError(file.error);
+			return file;
 		}
 	}
 }

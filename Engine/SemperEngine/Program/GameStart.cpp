@@ -2,10 +2,11 @@
 #include <locale>
 #include "DebugSystem.h"
 #include "GameSetting.h"
+#include "GameSystem.h"
 #include "GameWindow.h"
 #include "LogoPipeline.h"
-#include "GraphicManager.h"
-#include "ResourceObjectLoop.h"
+#include "GraphicSystem.h"
+#include "ResourceSystem.h"
 #include "Debug.h"
 
 namespace SemperEngine
@@ -16,18 +17,17 @@ namespace SemperEngine
 
 		void GameStart::Start()
 		{
-			SetLocale();
+			GameSystem::LoadConfig();
+			GameSystem::Initialized();
 			DebugSystem::Initialization();
-			GameSetting::LoadConfig();
 			GameWindow::CreateGameWindow();
-			GraphicManager::Initialize();
-			ResourceObjectLoop::Start();
-			Logo();
-		}
+			GraphicSystem::Initialize();
+			ResourceSystem::Start();
 
-		void GameStart::SetLocale()
-		{
-			setlocale(LC_CTYPE, "");
+			if (GameSetting::logo)
+			{
+				Logo();
+			}
 		}
 
 		void GameStart::Logo()

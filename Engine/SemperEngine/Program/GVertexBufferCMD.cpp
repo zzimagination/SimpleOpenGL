@@ -21,8 +21,9 @@ namespace SemperEngine
 			auto data = GraphicResource::GetVertexData(dataInfo);
 			auto tmp = GraphicResouceAPI::AddVertexData(data->GetSource());
 			data->VAO = tmp.VAO;
-			data->VBO = tmp.EBO;
+			data->VBO = tmp.VBO;
 			data->EBO = tmp.EBO;
+			data->indexDraw = tmp.indexDraw;
 			data->pointCount = tmp.pointCount;
 			data->Complete();
 		}

@@ -1,5 +1,4 @@
 #include "MeshObject.h"
-#include "ResourceDataCenter.h"
 #include "GraphicDataCenter.h"
 
 namespace SemperEngine
@@ -11,21 +10,22 @@ namespace SemperEngine
 		MeshObject* MeshObject::Create()
 		{
 			auto object = new MeshObject;
-			object->resourcePackage = ResourceDataCenter::CreateVertexData();
+			object->data = unique_ptr<VertexData>(new VertexData);
 			return object;
 		}
 		MeshObject* MeshObject::CreateCube()
 		{
 			auto object = new MeshObject;
-			object->resourcePackage = ResourceDataCenter::CreateCube();
+			object->data = unique_ptr<VertexData>(VertexData::CreateCube());
 			return object;
 		}
 		MeshObject* MeshObject::CreateRectangle()
 		{
 			auto object = new MeshObject;
-			object->resourcePackage = ResourceDataCenter::CreateRectangle();
+			object->data = unique_ptr<VertexData>(VertexData::CreateRectangle());
 			return object;
 		}
+
 		MeshObject::MeshObject()
 		{
 		}
@@ -34,40 +34,38 @@ namespace SemperEngine
 		{
 		}
 
-		void MeshObject::EndCreate()
-		{
-			graphicDataInfo = GraphicResource::AddVertexData(resourcePackage.GetResource());
-		}
-
 		void MeshObject::EndDelete()
 		{
-			resourcePackage.Dispose();
-			GraphicResource::RemoveVertexData(graphicDataInfo);
+			if (graphicBind)
+			{
+				graphicBind = false;
+				GraphicResource::RemoveVertexData(graphicDataInfo);
+			}
 		}
 
 		void MeshObject::EndModify()
 		{
-			GraphicResource::RemoveVertexData(graphicDataInfo);
-			graphicDataInfo = GraphicResource::AddVertexData(resourcePackage.GetResource());
+			if (graphicBind)
+			{
+				graphicBind = false;
+				GraphicResource::RemoveVertexData(graphicDataInfo);
+			}
 		}
 
 		MeshObject* MeshObject::Copy()
 		{
-			auto package = ResourceDataCenter::CopyVertexData(resourcePackage);
-			auto obj = new MeshObject;
-			obj->resourcePackage = package;
-			return obj;
+			return nullptr;
 		}
 
 		void MeshObject::SetVertex(ArrayList<Float3> vertices)
 		{
-			resourcePackage.GetResource()->vertices = vertices;
+			data->vertices = vertices;
 			Modify();
 		}
 
 		ArrayList<Float3> MeshObject::GetVertex()
 		{
-			return resourcePackage.GetResource()->vertices;
+			return data->vertices;
 		}
 	}
 }

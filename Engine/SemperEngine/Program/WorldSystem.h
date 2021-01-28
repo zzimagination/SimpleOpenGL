@@ -1,16 +1,14 @@
 #pragma once
-#ifndef __RESOURCEOBJECT_MANAGER__
-#define __RESOURCEOBJECT_MANAGER__
+#ifndef __WORLD_LOOP__
+#define __WORLD_LOOP__
 
 namespace SemperEngine
 {
 	namespace Core
 	{
-		class ResourceObjectLoop
+		class WorldSystem
 		{
 		public:
-
-			static void Start();
 
 			static void BeforeLoop();
 
@@ -22,4 +20,4 @@ namespace SemperEngine
 	}
 }
 
-#endif // !__RESOURCEOBJECT_MANAGER__
+#endif // !WORLD_LOOP

@@ -5,7 +5,6 @@
 #include <memory>
 #include <vector>
 #include "Common.h"
-#include "ResourcePackage.h"
 #include "ResourceObject.h"
 #include "Graphic.h"
 
@@ -25,13 +24,15 @@ namespace SemperEngine
 
 		public:
 
-			ResourcePackage<TextureData> resourcePackage;
+			std::unique_ptr<TextureData> data;
 
 			GraphicDataInfo graphicDataInfo;
 
+			bool graphicBind = false;
+
 		public:
 
-			static TextureObject* Create();
+			static TextureObject* Create(int width, int height);
 
 		public:
 
@@ -39,17 +40,18 @@ namespace SemperEngine
 
 			virtual ~TextureObject() override;
 
-			virtual void EndCreate() override;
-
-			virtual void EndDelete() override;
-
-			virtual void EndModify() override;
-
 			void ColorBytes(ArrayList<ColorByte> data);
 
 			TextureObject* Copy();
 
 			ArrayList<ColorByte> ColorBytes();
+
+		protected:
+
+			virtual void EndDelete() override;
+
+			virtual void EndModify() override;
+
 		};
 	}
 }

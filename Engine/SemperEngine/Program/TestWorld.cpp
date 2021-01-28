@@ -90,5 +90,12 @@ namespace SemperEngine
 		cube3->transform.position = Float3(-2.0f, 0.5f, 1.f);
 		cube3->material->AddProperty("_color", Color::ColorFloat(0, 0, 1));
 		AddGameObject(cube3);
+
+		auto cube4 = new Cube();
+		cube4->name = "cube4";
+		cube4->mesh = Resource::LoadModel("Sphere.obj")->GetMesh();
+		cube4->transform.position = Float3(-4.0f, 0.5f, 0.f);
+		cube4->material = wall_1->material;
+		AddGameObject(cube4);
 	}
 }

@@ -16,7 +16,9 @@ namespace SemperEngine
 
 			unsigned int VBO;
 
-			unsigned int EBO;
+			unsigned int EBO ;
+
+			bool indexDraw;
 
 			int pointCount;
 
@@ -27,6 +29,8 @@ namespace SemperEngine
 		public:
 
 			GraphicVertexData();
+
+			GraphicVertexData(unsigned int vao, unsigned int vbo, int pointCount);
 
 			GraphicVertexData(unsigned int vao, unsigned int vbo, unsigned int ebo, int pointCount);
 

@@ -1,8 +1,6 @@
 #include "GameEnd.h"
-#include "DebugSystem.h"
 #include "GameWindow.h"
-#include "ResourceObjectLoop.h"
-#include "GraphicManager.h"
+#include "DebugSystem.h"
 
 namespace SemperEngine 
 {
