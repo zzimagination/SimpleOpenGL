@@ -157,14 +157,8 @@
     <ClCompile Include="Program\GraphicCommandManager.cpp">
       <Filter>Render\Graphic</Filter>
     </ClCompile>
-    <ClCompile Include="Program\GraphicDataCenter.cpp">
-      <Filter>Render\Graphic</Filter>
-    </ClCompile>
     <ClCompile Include="Program\GraphicRenderer.cpp">
       <Filter>Render\Graphic</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\LogoCollection.cpp">
-      <Filter>Render\Logo</Filter>
     </ClCompile>
     <ClCompile Include="Program\LogoPipeline.cpp">
       <Filter>Render\Logo</Filter>
@@ -335,6 +329,9 @@
     <ClCompile Include="Program\FrameManager.cpp">
       <Filter>Project</Filter>
     </ClCompile>
+    <ClCompile Include="Program\GraphicResource.cpp">
+      <Filter>Render\Graphic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program\Debug.h">
@@ -487,9 +484,6 @@
     <ClInclude Include="Program\GraphicCommandManager.h">
       <Filter>Render\Graphic</Filter>
     </ClInclude>
-    <ClInclude Include="Program\GraphicDataCenter.h">
-      <Filter>Render\Graphic</Filter>
-    </ClInclude>
     <ClInclude Include="Program\GraphicRenderer.h">
       <Filter>Render\Graphic</Filter>
     </ClInclude>
@@ -604,12 +598,6 @@
     <ClInclude Include="Program\Math\Quaternion.h">
       <Filter>Common\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Program\Mathz.h">
-      <Filter>Common\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Collection.h">
-      <Filter>Common\Collection</Filter>
-    </ClInclude>
     <ClInclude Include="Program\Collection\FillList.h">
       <Filter>Common\Collection</Filter>
     </ClInclude>
@@ -699,6 +687,18 @@
     </ClInclude>
     <ClInclude Include="Program\FrameManager.h">
       <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\EngineData\EngineData.h">
+      <Filter>Common\EngineData</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Collection\Collection.h">
+      <Filter>Common\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Math\Math.h">
+      <Filter>Common\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GraphicResource.h">
+      <Filter>Render\Graphic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

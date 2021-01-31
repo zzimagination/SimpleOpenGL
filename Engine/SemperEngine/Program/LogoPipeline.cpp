@@ -4,7 +4,7 @@
 #include "RenderCollection.h"
 #include "RenderBatchManager.h"
 #include "GraphicCommandManager.h"
-#include "ResourceObjectCenter.h"
+#include "ResourceSystem.h"
 #include "GraphicRenderer.h"
 #include "Debug.h"
 
@@ -15,11 +15,13 @@ namespace SemperEngine
 		using namespace std;
 		using namespace chrono;
 
+		shared_ptr<RenderScreenObject> LogoPipeline::_renderObject;
+
 		float LogoPipeline::logoTime = 3000;
 
 		int LogoPipeline::_current = -1;
 
-		shared_ptr<RenderScreenObject> LogoPipeline::_renderObject = shared_ptr<RenderScreenObject>(new RenderScreenObject);
+		int LogoPipeline::_total;
 
 		int LogoPipeline::_next = 0;
 
@@ -35,67 +37,66 @@ namespace SemperEngine
 
 		void LogoPipeline::Start()
 		{
-			for (size_t i = 0; i < LogoCollection::files.size(); i++)
-			{
-				auto tex = Resource::LoadTexture(LogoCollection::files[i]);
-				_logoTextures.push_back(tex);
-			}
-			_renderObject->material = shared_ptr<Material>(new Material("ScreenTexture"));
-			_renderObject->material->renderOperation.blend = true;
-			RenderCollection::AddScreenObject(_renderObject.get());
+			LoadResource();
 			_startTime = system_clock::now();
+			_current = 0;
+			_renderObject->material->AddProperty("_color", Color::ColorFloat(1, 1, 1, _alpha));
+			_renderObject->material->AddProperty(0, _logoTextures[_current]);
 		}
 
 		void LogoPipeline::Update()
 		{
-			if (_next != _current)
+			auto interval = chrono::duration_cast<milliseconds>(system_clock::now() - _startTime).count();
+			auto base = logoTime * _current;
+			if (interval > base + logoTime)
 			{
-				_current = _next;
-				_renderObject->material->AddProperty(0, _logoTextures[_current]);
+				_current++;
+				if (_current == _total)
+				{
+					isCompleted = true;
+					return;
+				}
 				_alpha = 0;
-			}
-			else
-			{
-				_alpha = Alpha((float)_time.count());
-			}
-
-			_renderObject->material->AddProperty("_color", Color::ColorFloat(1, 1, 1, _alpha));
-			Resource();
-			Render();
-
-			auto now = system_clock::now();
-			_time = duration_cast<milliseconds>(system_clock::now() - _startTime);
-			if (_time.count() > (_current + 1) * logoTime)
-			{
-				_next = _current + 1;
-			}
-			if (_next >= LogoCollection::files.size())
-			{
-				isCompleted = true;
+				_renderObject->material->AddProperty("_color", Color::ColorFloat(1, 1, 1, _alpha));
+				_renderObject->material->AddProperty(0, _logoTextures[_current]);
+				_startTime = system_clock::now();
 				return;
 			}
+
+			auto t = (interval - base) / logoTime;
+			_alpha = Alpha(t);
+			_renderObject->material->AddProperty("_color", Color::ColorFloat(1, 1, 1, _alpha));
+			Render();
 		}
 
 		void LogoPipeline::End()
 		{
 			_logoTextures.clear();
 			_renderObject.reset();
-			RenderCollection::ClearRenders();
-			Resource();
-			Render();
+			ResourceSystem::DisposeUnused();
 		}
 
-		void LogoPipeline::Resource()
+		void LogoPipeline::LoadResource()
 		{
-			Resource::DisposeUnuse();
-			ResourceObjectCenter::EndProcess();
+			LogoCollection collection;
+			_total = (int)collection.files.size();
+			for (size_t i = 0; i < collection.files.size(); i++)
+			{
+				auto tex = Resource::LoadTexture(collection.files[i]);
+				_logoTextures.push_back(tex);
+			}
+
+			_renderObject = shared_ptr<RenderScreenObject>(new RenderScreenObject);
+			_renderObject->material = shared_ptr<Material>(new Material("ScreenTexture"));
+			_renderObject->material->renderOperation.blend = true;
+
+			ResourceSystem::EndProcess();
 		}
 
 		void LogoPipeline::Render()
 		{
 			GraphicRenderer::Clear(Color(Float4(0, 0, 0, 1)));
-			auto renderObjects = RenderCollection::GetScreenObjects();
-			RenderBatchManager::GenerateBatchs(renderObjects);
+			RenderBatchManager::GenerateBatch(_renderObject.get());
 			RenderBatchManager::GenerateGraphicCommands();
 			RenderBatchManager::Clear();
 
@@ -106,22 +107,19 @@ namespace SemperEngine
 
 		float LogoPipeline::Alpha(float time)
 		{
-			auto t = time - logoTime * _current;
-
-			if (t <= (0.5f * logoTime))
+			if (time < 0.3f)
 			{
-				auto a = t / 1000.f;
-				return a < 1 ? a : 1;
+				time = time / 0.3f;
+				return Math::SinR(time * Math::pi / 2);
 			}
-			else if (t > (0.5f * logoTime) && t <= (2.f / 3.f * logoTime))
+			else if (time < 0.7f)
 			{
 				return 1;
 			}
-			else if (t > (2.f / 3.f * logoTime) && t <= logoTime)
+			else if (time <= 1)
 			{
-				auto t1 = t - 2.f / 3.f * logoTime;
-				auto t2 = 1 - t1 / (1.f / 3.f * logoTime);
-				return t2 > 0 ? t2 : 0;
+				time = 1 - (time - 0.7f) / 0.3f;
+				return Math::SinR(time * Math::pi / 2 - Math::pi / 2);
 			}
 			return 0.0f;
 		}

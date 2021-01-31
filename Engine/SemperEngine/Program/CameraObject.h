@@ -3,7 +3,7 @@
 #define __CAMERAOBJECT__
 
 #include <vector>
-#include "Mathz.h"
+#include "Common.h"
 #include "RenderObject.h"
 #include "Render.h"
 

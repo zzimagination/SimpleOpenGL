@@ -4,8 +4,9 @@
 #include <vector>
 #include "Common.h"
 #include "Material.h"
-#include "GraphicDataCenter.h"
 #include "GraphicShader.h"
+#include "GraphicVertexData.h"
+#include "GraphicTextureData.h"
 #include "Render.h"
 
 namespace SemperEngine {

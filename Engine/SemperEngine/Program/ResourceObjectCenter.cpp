@@ -1,5 +1,4 @@
 #include "ResourceObjectCenter.h"
-#include "GraphicDataCenter.h"
 
 namespace SemperEngine
 {

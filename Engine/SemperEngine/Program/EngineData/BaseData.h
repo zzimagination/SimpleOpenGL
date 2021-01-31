@@ -2,8 +2,8 @@
 #ifndef __BASEDATA__
 #define __BASEDATA__
 
-#include "../Collection.h"
-#include "../Mathz.h"
+#include "../Collection/Collection.h"
+#include "../Math/Math.h"
 
 namespace SemperEngine
 {

@@ -1,6 +1,6 @@
 #include "GraphicCommand.h"
 #include "GraphicResouceAPI.h"
-#include "GraphicDataCenter.h"
+#include "GraphicResource.h"
 #include "GraphicCommandManager.h"
 
 namespace SemperEngine

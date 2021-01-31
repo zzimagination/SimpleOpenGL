@@ -1,5 +1,4 @@
 #include "RenderBatch.h"
-#include "GraphicDataCenter.h"
 #include "Debug.h"
 
 namespace SemperEngine

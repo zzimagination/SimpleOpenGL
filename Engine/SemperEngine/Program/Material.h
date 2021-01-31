@@ -4,7 +4,7 @@
 #include <vector>
 #include <map>
 #include <string>
-#include "Mathz.h"
+#include "Common.h"
 #include "Graphic.h"
 #include "Texture.h"
 
@@ -31,18 +31,6 @@ namespace SemperEngine
 			}
 			~MaterialTexture()
 			{}
-
-			bool operator==(const MaterialTexture& right)
-			{
-				if (this->index == right.index)
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
 		};
 
 	public:

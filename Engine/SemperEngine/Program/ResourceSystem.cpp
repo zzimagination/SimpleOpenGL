@@ -32,5 +32,16 @@ namespace SemperEngine
 			ResourceObjectCenter::EndProcess();
 		}
 
+		void ResourceSystem::EndProcess()
+		{
+			ResourceObjectCenter::EndProcess();
+		}
+
+		void ResourceSystem::DisposeUnused()
+		{
+			Resource::DisposeUnuse();
+			ResourceObjectCenter::EndProcess();
+		}
+
 	}
 }

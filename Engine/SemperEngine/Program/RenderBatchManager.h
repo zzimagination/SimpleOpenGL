@@ -25,6 +25,8 @@ namespace SemperEngine {
 
 			static void GenerateBatchs(std::vector<RenderScreenObject*> objects);
 
+			static void GenerateBatch(RenderScreenObject* object);
+
 			static void GenerateGraphicCommands();
 
 			static void Clear();

@@ -1,5 +1,5 @@
 #include "MeshObject.h"
-#include "GraphicDataCenter.h"
+#include "GraphicResource.h"
 
 namespace SemperEngine
 {

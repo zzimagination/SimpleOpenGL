@@ -2,7 +2,7 @@
 #include "GraphicShaderManager.h"
 #include "GraphicShader.h"
 #include "Texture.h"
-#include "GraphicDataCenter.h"
+#include "GraphicResource.h"
 #include "GLRendererAPI.h"
 
 namespace SemperEngine {

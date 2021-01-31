@@ -1,6 +1,6 @@
 #include "RenderBatchManager.h"
 #include "GraphicRenderer.h"
-#include "GraphicDataCenter.h"
+#include "GraphicResource.h"
 #include "Camera.h"
 #include "Graphic.h"
 
@@ -44,6 +44,16 @@ namespace SemperEngine {
 				batch.SetMaterial(object->material);
 				_batchs.push_back(batch);
 			}
+		}
+
+		void RenderBatchManager::GenerateBatch(RenderScreenObject* object)
+		{
+			BindResource(object);
+
+			RenderBatch batch;
+			batch.SetVertexType(RenderBatch::VertexType::Screen);
+			batch.SetMaterial(object->material);
+			_batchs.push_back(batch);
 		}
 
 		void RenderBatchManager::Clear()

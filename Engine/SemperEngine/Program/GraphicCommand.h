@@ -6,7 +6,7 @@
 #include <map>
 #include <memory>
 #include "Graphic.h"
-#include "GraphicDataCenter.h"
+#include "GraphicResource.h"
 
 namespace SemperEngine
 {

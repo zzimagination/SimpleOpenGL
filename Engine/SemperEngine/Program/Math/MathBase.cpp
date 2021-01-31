@@ -51,14 +51,29 @@ namespace SemperEngine {
 		return cosf(a * pi / 180);
 	}
 
+	float Math::CosR(const float& r)
+	{
+		return cosf(r);
+	}
+
 	float Math::Sin(const float& a)
 	{
 		return sinf(a * pi / 180);
 	}
 
+	float Math::SinR(const float& r)
+	{
+		return sinf(r);
+	}
+
 	float Math::Tan(const float& a)
 	{
 		return tanf(a * pi / 180);
+	}
+
+	float Math::TanR(const float& r)
+	{
+		return tanf(r);
 	}
 
 	float Math::Cot(const float& a)

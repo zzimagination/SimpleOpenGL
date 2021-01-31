@@ -1,9 +1,7 @@
 #ifndef __MATHZ_BASE__
 #define __MATHZ_BASE__
 
-//#define MATH_GLM
-
-#include "../Collection.h"
+#include "../Collection/Collection.h"
 
 namespace SemperEngine {
 
@@ -17,9 +15,15 @@ namespace SemperEngine {
 
 		static float Cos(const float& a);
 
+		static float CosR(const float& r);
+
 		static float Sin(const float& a);
 
+		static float SinR(const float& r);
+
 		static float Tan(const float& a);
+
+		static float TanR(const float& r);
 
 		static float Cot(const float& a);
 

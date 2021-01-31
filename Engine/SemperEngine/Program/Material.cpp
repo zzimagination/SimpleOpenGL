@@ -50,9 +50,9 @@ namespace SemperEngine {
 		MaterialTexture tex(id, value);
 		for (int i = 0; i < textures.size(); i++)
 		{
-			if (textures[i] == tex)
+			if (textures[i].index == tex.index)
 			{
-				textures[i] == tex;
+				textures[i] = tex;
 				return;
 			}
 		}

@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <memory>
-#include "Mathz.h"
+#include "Common.h"
 #include "Mesh.h"
 #include "Material.h"
 #include "Graphic.h"

@@ -1,4 +1,4 @@
-#include "GraphicDataCenter.h"
+#include "GraphicResource.h"
 #include "GraphicCommandManager.h"
 #include "GraphicResouceAPI.h"
 

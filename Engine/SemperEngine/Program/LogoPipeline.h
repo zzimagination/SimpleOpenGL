@@ -4,6 +4,7 @@
 
 #include <chrono>
 #include <memory>
+#include "LogoCollection.h"
 #include "GraphicVertexData.h"
 #include "GraphicTextureData.h"
 #include "RenderScreenObject.h"
@@ -23,6 +24,8 @@ namespace SemperEngine
 		private:
 
 			static std::shared_ptr<RenderScreenObject> _renderObject;
+
+			static int _total;
 
 			static int _current;
 
@@ -45,6 +48,8 @@ namespace SemperEngine
 			static void End();
 
 		private:
+
+			static void LoadResource();
 
 			static void Resource();
 

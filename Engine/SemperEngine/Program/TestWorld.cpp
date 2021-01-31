@@ -35,7 +35,7 @@ namespace SemperEngine
 		floor->transform.position = Float3(0, -0.1f, 0);
 		floor->transform.scale = Float3(50, 0.2f, 50);
 		floor->material.reset(new Material("Texture"));
-		auto tex = Resource::LoadTexture("Textures/test.png");
+		auto tex = Resource::LoadTexture("Textures/pic_1.png");
 		floor->material->AddProperty(0, tex);
 		floor->material->AddProperty("_color", Color::ColorFloat(1, 1, 1));
 		AddGameObject(floor);
@@ -46,7 +46,7 @@ namespace SemperEngine
 		wall_1->transform.scale = Float3(10, 10, 1);
 		wall_1->transform.rotation = Quaternion::AngleAxis(-45, Float3::up);
 		wall_1->material.reset(new Material("Texture"));
-		auto tex1 = Resource::LoadTexture("Textures/bg1.png");
+		auto tex1 = Resource::LoadTexture("Textures/pic_2.png");
 		wall_1->material->AddProperty(0, tex1);
 		wall_1->material->AddProperty("_color", Color::ColorFloat(1, 1, 1));
 		AddGameObject(wall_1);
@@ -57,7 +57,7 @@ namespace SemperEngine
 		wall_2->transform.scale = Float3(10, 10, 1);
 		wall_2->transform.rotation = Quaternion::AngleAxis(45, Float3::up);
 		wall_2->material.reset(new Material("Texture"));
-		auto tex2 = Resource::LoadTexture("Textures/test.png");
+		auto tex2 = Resource::LoadTexture("Textures/pic_2.png");
 		wall_2->material->AddProperty(0, tex2);
 		wall_2->material->AddProperty("_color", Color::ColorFloat(1, 1, 1));
 		AddGameObject(wall_2);
@@ -95,7 +95,8 @@ namespace SemperEngine
 		cube4->name = "cube4";
 		cube4->mesh = Resource::LoadModel("Sphere.obj")->GetMesh();
 		cube4->transform.position = Float3(-4.0f, 0.5f, 0.f);
-		cube4->material = wall_1->material;
+		cube4->material.reset(new Material("Texture"));
+		cube4->material->AddProperty(0, Resource::LoadTexture("Textures/pic_3.png"));
 		AddGameObject(cube4);
 	}
 }

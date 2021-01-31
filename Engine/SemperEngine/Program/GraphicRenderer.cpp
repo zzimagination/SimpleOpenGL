@@ -1,6 +1,6 @@
 #include "GraphicRenderer.h"
 #include "GraphicCommandManager.h"
-#include "GraphicDataCenter.h"
+#include "GraphicResource.h"
 
 namespace SemperEngine
 {

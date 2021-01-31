@@ -11,7 +11,7 @@ namespace SemperEngine
 	{
 	public:
 
-		static std::vector<std::string> files;
+		std::vector<std::string> files = { "Logo/logo2.png" };
 	};
 }
 

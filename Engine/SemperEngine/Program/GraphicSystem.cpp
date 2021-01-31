@@ -1,5 +1,5 @@
 #include "GraphicSystem.h"
-#include "GraphicDataCenter.h"
+#include "GraphicResource.h"
 #include "GraphicCommandManager.h"
 #include "ShaderCompiler.h"
 

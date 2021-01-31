@@ -2,7 +2,7 @@
 #ifndef __GL_RESOURCEAPI__
 #define __GL_RESOURCEAPI__
 
-#include "Mathz.h"
+#include "Math/Math.h"
 #include <array>
 
 namespace SemperEngine

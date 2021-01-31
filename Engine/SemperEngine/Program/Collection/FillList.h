@@ -82,8 +82,6 @@ namespace SemperEngine
 			Item item;
 			item.value = value;
 			item.empty = false;
-			//_data.push_back(value);
-			//_empty.push_back(false);
 			_items.push_back(item);
 			return id;
 		}
@@ -99,79 +97,29 @@ namespace SemperEngine
 			_items[index].empty = true;
 			_items[index].value = T();
 			_unused.push_back(index);
-			//if (!_empty[index])
-			//{
-			//	_empty[index] = true;
-			//	_unused.push_back(index);
-			//	_data[index] = T();
-			//}
 		}
 		template<class T>
 		inline bool FillList<T>::IsEmpty(int index)
 		{
 			return _items[index].empty;
 		}
-		//template<class T>
-		//T FillList<T>::Pop(int index)
-		//{
-		//	if (index >= _data.size())
-		//	{
-		//		throw "out of range";
-		//	}
-		//	if (!_empty[index])
-		//	{
-		//		_empty[index] = true;
-		//		_unused.push_back(index);
-		//		auto result = _data[index];
-		//		_data[index] = T();
-		//		return result;
-		//	}
-		//	return _data[index];
-		//}
+
 		template<class T>
 		inline size_t FillList<T>::Size()
 		{
 			return _items.size();
 		}
-		//template<class T>
-		//inline size_t FillList<T>::UseSize()
-		//{
-		//	return _data.size() - _unused.size();
-		//}
+
 		template<class T>
 		inline size_t FillList<T>::UnuseSize()
 		{
 			return _unused.size();
 		}
-		//template<class T>
-		//int FillList<T>::AvailableId()
-		//{
-		//	if (_unused.size() > 0)
-		//	{
-		//		return *(_unused.end() - 1);
-		//	}
-		//	else
-		//	{
-		//		return _data.size();
-		//	}
-		//}
+
 		template<class T>
 		T FillList<T>::operator[](const int& index)
 		{
 			return _items[index].value;
-			//if (_empty[index])
-			//{
-			//	FillPair<T> result;
-			//	result.usable = false;
-			//	return result;
-			//}
-			//else
-			//{
-			//	FillPair<T> result;
-			//	result.usable = true;
-			//	result.value = _data[index];
-			//	return result;
-			//}
 		}
 	}
 }

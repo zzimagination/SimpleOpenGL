@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include <memory>
-#include "Mathz.h"
+#include "Common.h"
 #include "TextureObject.h"
 
 namespace SemperEngine

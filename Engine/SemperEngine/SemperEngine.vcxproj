@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Program\EngineData\EngineData.h" />
     <ClInclude Include="Program\GameSystem.h" />
     <ClInclude Include="Program\MaterialObject.h" />
     <ClInclude Include="Program\Model.h" />
@@ -164,7 +165,7 @@
     <ClInclude Include="Program\CameraObject.h" />
     <ClInclude Include="Program\ChangeColor.h" />
     <ClInclude Include="Program\ChangeTexture.h" />
-    <ClInclude Include="Program\Collection.h" />
+    <ClInclude Include="Program\Collection\Collection.h" />
     <ClInclude Include="Program\Common.h" />
     <ClInclude Include="Program\Math\Color.h" />
     <ClInclude Include="Program\Thread\CompletedSignal.h" />
@@ -194,7 +195,7 @@
     <ClInclude Include="Program\GraphicResouceAPI.h" />
     <ClInclude Include="Program\GraphicData.h" />
     <ClInclude Include="Program\GraphicCommand.h" />
-    <ClInclude Include="Program\GraphicDataCenter.h" />
+    <ClInclude Include="Program\GraphicResource.h" />
     <ClInclude Include="Program\GraphicTextureData.h" />
     <ClInclude Include="Program\GraphicVertexData.h" />
     <ClInclude Include="Program\GLWindow.h" />
@@ -220,7 +221,7 @@
     <ClInclude Include="Program\GameObject.h" />
     <ClInclude Include="Program\GameStart.h" />
     <ClInclude Include="Program\GameWindow.h" />
-    <ClInclude Include="Program\Mathz.h" />
+    <ClInclude Include="Program\Math\Math.h" />
     <ClInclude Include="Program\Math\Matrix4x4.h" />
     <ClInclude Include="Program\GameSetting.h" />
     <ClInclude Include="Program\RenderBatch.h" />
@@ -311,7 +312,7 @@
     <ClCompile Include="Program\GraphicTextureBuffer.cpp" />
     <ClCompile Include="Program\GraphicTextureBufferClear.cpp" />
     <ClCompile Include="Program\GVertexBufferCMD.cpp" />
-    <ClCompile Include="Program\GraphicDataCenter.cpp" />
+    <ClCompile Include="Program\GraphicResource.cpp" />
     <ClCompile Include="Program\GDrawCMD.cpp" />
     <ClCompile Include="Program\GVertexBufferClearCMD.cpp" />
     <ClCompile Include="Program\GLWindow.cpp" />
@@ -319,7 +320,6 @@
     <ClCompile Include="Program\InsideWorld.cpp" />
     <ClCompile Include="Program\InsideWorldAction.cpp" />
     <ClCompile Include="Program\LogicThread.cpp" />
-    <ClCompile Include="Program\LogoCollection.cpp" />
     <ClCompile Include="Program\LogoPipeline.cpp" />
     <ClCompile Include="Program\Material.cpp" />
     <ClCompile Include="Program\Math\MathBase.cpp" />

@@ -151,7 +151,7 @@
 #define MOUSE_BUTTON_MIDDLE    GLFW_MOUSE_BUTTON_3
 
 #include <vector>
-#include "Mathz.h"
+#include "Math/Math.h"
 
 namespace SemperEngine
 {

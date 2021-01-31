@@ -18,6 +18,9 @@ namespace SemperEngine
 
 			static void AfterLoop();
 
+			static void EndProcess();
+
+			static void DisposeUnused();
 		};
 	}
 }
