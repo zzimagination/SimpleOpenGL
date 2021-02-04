@@ -8,14 +8,6 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		template<class TValue>
-		struct FillPair
-		{
-			bool usable = false;
-
-			TValue value = TValue();
-		};
-
 		template<class T>
 		class FillList
 		{
@@ -46,17 +38,11 @@ namespace SemperEngine
 
 			void Remove(int index);
 
-			//T Pop(int index);
-
 			bool IsEmpty(int index);
 
 			size_t Size();
 
-			//size_t UseSize();
-
 			size_t UnuseSize();
-
-			//int AvailableId();
 
 			T operator[](const int& index);
 		};
@@ -73,8 +59,6 @@ namespace SemperEngine
 				_unused.pop_back();
 				_items[last].value = value;
 				_items[last].empty = false;
-				//_data[last] = value;
-				//_empty[last] = false;
 				return last;
 			}
 

@@ -3,10 +3,41 @@
 namespace SemperEngine {
 
 	using namespace std;
+	using namespace Core;
 
 	Material::Material(string shader)
 	{
-		shaderProperty.name = shader;
+		_object = MaterialObject::Create(shader);
+		_object->Use();
+	}
+
+	void Material::Blend(bool enable, Graphic::BlendFunc src, Graphic::BlendFunc dest)
+	{
+		_object->renderOperation.blend = enable;
+		_object->renderOperation.source = src;
+		_object->renderOperation.destination = dest;
+	}
+
+	void Material::CullFace(bool enable, Graphic::CullFace face)
+	{
+		_object->renderOperation.cull = enable;
+		_object->renderOperation.cullFace = face;
+	}
+
+	void Material::Depth(bool enable, Graphic::DepthFunc func)
+	{
+		_object->renderOperation.depth = enable;
+		_object->renderOperation.depthFunc = func;
+	}
+
+	vector<shared_ptr<Texture>> Material::GetTextures()
+	{
+		return _object->textures;
+	}
+
+	Core::MaterialObject* Material::GetObject()
+	{
+		return _object;
 	}
 
 	Material::Material() :Material("Unlit")
@@ -16,46 +47,43 @@ namespace SemperEngine {
 
 	void Material::AddProperty(std::string name, float value)
 	{
-		shaderProperty.Add(name, value);
+		_object->shaderProperty.Add(name, value);
 	}
 
 	void Material::AddProperty(std::string name, Float2 value)
 	{
-		shaderProperty.Add(name, value);
+		_object->shaderProperty.Add(name, value);
 	}
 
 	void Material::AddProperty(std::string name, Float3 value)
 	{
-		shaderProperty.Add(name, value);
+		_object->shaderProperty.Add(name, value);
 	}
 
 	void Material::AddProperty(std::string name, Float4 value)
 	{
-		shaderProperty.Add(name, value);
+		_object->shaderProperty.Add(name, value);
 	}
 
 	void Material::AddProperty(std::string name, Matrix4x4 value)
 	{
-		shaderProperty.Add(name, value);
+		_object->shaderProperty.Add(name, value);
 	}
-	
+
 	void Material::AddProperty(std::string name, Color value)
 	{
-		auto f = Float4(value.R(), value.G(), value.B(), value.A());
-		shaderProperty.Add(name, f);
+		_object->shaderProperty.Add(name, value);
 	}
 
 	void Material::AddProperty(int id, std::shared_ptr<Texture> value)
 	{
-		MaterialTexture tex(id, value);
-		for (int i = 0; i < textures.size(); i++)
+		if (_object->textures.size() > id)
 		{
-			if (textures[i].index == tex.index)
-			{
-				textures[i] = tex;
-				return;
-			}
+			_object->textures[id] = value;
 		}
-		textures.push_back(tex);
+		else
+		{
+			_object->textures.push_back(value);
+		}
 	}
 }

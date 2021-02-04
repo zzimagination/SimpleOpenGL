@@ -69,26 +69,26 @@ namespace SemperEngine {
 				obj->mesh->GetObject()->graphicDataInfo = GraphicResource::AddVertexData(obj->mesh->GetObject()->data.get());
 			}
 
-			auto textures = obj->material->textures;
+			auto textures = obj->material->GetTextures();
 			for (size_t i = 0; i < textures.size(); i++)
 			{
-				if (!textures[i].texture->GetObject()->graphicBind)
+				if (!textures[i]->GetObject()->graphicBind)
 				{
-					textures[i].texture->GetObject()->graphicBind = true;
-					textures[i].texture->GetObject()->graphicDataInfo = GraphicResource::AddTextureData(textures[i].texture->GetObject()->data.get());
+					textures[i]->GetObject()->graphicBind = true;
+					textures[i]->GetObject()->graphicDataInfo = GraphicResource::AddTextureData(textures[i]->GetObject()->data.get());
 				}
 			}
 		}
 
 		void RenderBatchManager::BindResource(RenderScreenObject* obj)
 		{
-			auto textures = obj->material->textures;
+			auto textures = obj->material->GetTextures();
 			for (size_t i = 0; i < textures.size(); i++)
 			{
-				if (!textures[i].texture->GetObject()->graphicBind)
+				if (!textures[i]->GetObject()->graphicBind)
 				{
-					textures[i].texture->GetObject()->graphicBind = true;
-					textures[i].texture->GetObject()->graphicDataInfo = GraphicResource::AddTextureData(textures[i].texture->GetObject()->data.get());
+					textures[i]->GetObject()->graphicBind = true;
+					textures[i]->GetObject()->graphicDataInfo = GraphicResource::AddTextureData(textures[i]->GetObject()->data.get());
 				}
 			}
 		}
@@ -114,8 +114,8 @@ namespace SemperEngine {
 		{
 			auto vertex = batch.GetGraphicVertexInfo();
 			auto matrix = batch.GetRenderMatrix();
-			auto operation = batch.GetMaterial()->renderOperation;
-			ShaderProperty sproperty = batch.GetMaterial()->shaderProperty;
+			auto operation = batch.GetMaterial()->GetObject()->renderOperation;
+			ShaderProperty sproperty = batch.GetMaterial()->GetObject()->shaderProperty;
 			auto textures = batch.GetGraphicTextureInfos();
 
 			GraphicRenderer::Render(vertex, operation, matrix, sproperty, textures);
@@ -123,8 +123,8 @@ namespace SemperEngine {
 
 		void RenderBatchManager::DrawScreen(RenderBatch batch)
 		{
-			auto operation = batch.GetMaterial()->renderOperation;
-			ShaderProperty sproperty = batch.GetMaterial()->shaderProperty;
+			auto operation = batch.GetMaterial()->GetObject()->renderOperation;
+			ShaderProperty sproperty = batch.GetMaterial()->GetObject()->shaderProperty;
 			auto textures = batch.GetGraphicTextureInfos();
 			GraphicRenderer::RenderScreen(operation, sproperty, textures);
 		}

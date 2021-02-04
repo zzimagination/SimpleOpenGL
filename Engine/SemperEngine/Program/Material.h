@@ -7,45 +7,31 @@
 #include "Common.h"
 #include "Graphic.h"
 #include "Texture.h"
+#include "MaterialObject.h"
 
 namespace SemperEngine
 {
 	class Material
 	{
-	public:
+	private:
 
-		class MaterialTexture
-		{
-		public:
-
-			int index;
-
-			std::shared_ptr<Texture> texture;
-
-		public:
-
-			MaterialTexture(int i, std::shared_ptr<Texture> tex)
-			{
-				this->index = i;
-				this->texture = tex;
-			}
-			~MaterialTexture()
-			{}
-		};
-
-	public:
-
-		Core::RenderOperation renderOperation;
-
-		Core::ShaderProperty shaderProperty;
-
-		std::vector<MaterialTexture> textures;
+		Core::MaterialObject* _object;
 
 	public:
 
 		Material();
 
 		Material(std::string shader);
+
+		void Blend(bool enable, Graphic::BlendFunc src = Graphic::BlendFunc::Zero, Graphic::BlendFunc dest = Graphic::BlendFunc::One);
+
+		void CullFace(bool enable, Graphic::CullFace face = Graphic::CullFace::Back);
+
+		void Depth(bool enable, Graphic::DepthFunc func = Graphic::DepthFunc::Always);
+
+		std::vector<std::shared_ptr<Texture>> GetTextures();
+
+		Core::MaterialObject* GetObject();
 
 		void AddProperty(std::string name, float value);
 

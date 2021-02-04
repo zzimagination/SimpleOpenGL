@@ -83,17 +83,18 @@ namespace SemperEngine
 		}
 		std::vector<GraphicTextureInfo> RenderBatch::GetGraphicTextureInfos()
 		{
-			vector<GraphicTextureInfo> textures;
-			for (int j = 0; j < _material->textures.size(); j++)
+			vector<GraphicTextureInfo> gtextures;
+			auto textures = _material->GetTextures();
+			for (int j = 0; j < textures.size(); j++)
 			{
-				auto index = _material->textures[j].index;
-				auto info = _material->textures[j].texture->GetObject()->graphicDataInfo;
+				auto index = j;
+				auto info = textures[j]->GetObject()->graphicDataInfo;
 				GraphicTextureInfo tmp;
 				tmp.index = index;
 				tmp.info = info;
-				textures.push_back(tmp);
+				gtextures.push_back(tmp);
 			}
-			return textures;
+			return gtextures;
 		}
 	}
 }

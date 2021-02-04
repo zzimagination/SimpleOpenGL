@@ -137,6 +137,16 @@ namespace SemperEngine
 		_a = value;
 	}
 
+	Float4 Color::ToFloat4()
+	{
+		Float4 f;
+		f.x = R();
+		f.y = G();
+		f.z = B();
+		f.w = A();
+		return f;
+	}
+
 	Color& Color::operator=(const Float4& right)
 	{
 		_r = (unsigned char)(right.x * 255);

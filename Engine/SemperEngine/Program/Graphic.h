@@ -8,44 +8,44 @@
 
 namespace SemperEngine
 {
-	namespace Core
+	class Graphic
 	{
-		class Graphic
+	public:
+		enum class ClearMode
 		{
-		public:
-			enum class ClearMode
-			{
-				Color = 0b0001,
-				Depth = 0b0010,
-				Stencil = 0b0100
-			};
-
-			enum class DepthFunc
-			{
-				Never,
-				Less,
-				LEqual,
-				Equal,
-				GEqual,
-				Greater,
-				NotEqual,
-				Always
-			};
-
-			enum class CullFace
-			{
-				Back,
-				Front
-			};
-
-			enum class BlendFunc
-			{
-				One,
-				Zero
-			};
+			Color = 0b0001,
+			Depth = 0b0010,
+			Stencil = 0b0100
 		};
 
+		enum class DepthFunc
+		{
+			Never,
+			Less,
+			LEqual,
+			Equal,
+			GEqual,
+			Greater,
+			NotEqual,
+			Always
+		};
+
+		enum class CullFace
+		{
+			Back,
+			Front
+		};
+
+		enum class BlendFunc
+		{
+			One,
+			Zero
+		};
+	};
+
 #define ClearColorDepth (Graphic::ClearMode)((int)(Graphic::ClearMode::Color) |(int)(Graphic::ClearMode::Depth))
+
+	namespace Core {
 
 		struct RenderOperation
 		{
@@ -95,6 +95,8 @@ namespace SemperEngine
 
 			std::map<std::string, Float4> vector4Property;
 
+			std::map<std::string, Color> colorProperty;
+
 			std::map<std::string, Matrix4x4> matrix4x4Property;
 
 		public:
@@ -123,6 +125,11 @@ namespace SemperEngine
 			void Add(std::string name, Float4 value)
 			{
 				vector4Property[name] = value;
+			}
+
+			void Add(std::string name, Color value)
+			{
+				colorProperty[name] = value;
 			}
 
 			void Add(std::string name, Matrix4x4 value)

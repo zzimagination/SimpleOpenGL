@@ -71,6 +71,8 @@ namespace SemperEngine
 
 		void SetA32(const ColorByte& value);
 
+		Float4 ToFloat4();
+
 		Color& operator=(const Float4& right);
 
 		Color& operator=(const Float3& right);

@@ -88,7 +88,7 @@ namespace SemperEngine
 
 			_renderObject = shared_ptr<RenderScreenObject>(new RenderScreenObject);
 			_renderObject->material = shared_ptr<Material>(new Material("ScreenTexture"));
-			_renderObject->material->renderOperation.blend = true;
+			_renderObject->material->Blend(true);
 
 			ResourceSystem::EndProcess();
 		}

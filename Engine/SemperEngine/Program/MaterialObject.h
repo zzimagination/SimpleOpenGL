@@ -18,6 +18,8 @@ namespace SemperEngine
 
 			static MaterialObject* Create();
 
+			static MaterialObject* Create(std::string shader);
+
 		public:
 
 			std::vector<std::shared_ptr<Texture>> textures;

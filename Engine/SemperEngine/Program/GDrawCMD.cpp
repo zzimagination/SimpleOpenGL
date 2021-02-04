@@ -71,6 +71,12 @@ namespace SemperEngine
 			{
 				GraphicRenderAPI::SetShaderProperty(i->first, i->second);
 			}
+			auto c = sproperty.colorProperty;
+			for (auto i = c.begin(); i !=c.end() ; i++)
+			{
+				auto f = i->second.ToFloat4();
+				GraphicRenderAPI::SetShaderProperty(i->first, f);
+			}
 			auto m4p = sproperty.matrix4x4Property;
 			for (auto i = m4p.begin(); i != m4p.end(); i++)
 			{
