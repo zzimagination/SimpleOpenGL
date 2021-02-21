@@ -10,7 +10,7 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		class MeshObject : public ResourceObject
+		class MeshObject : public ResourceObject, public IGraphicResource
 		{
 		public:
 
@@ -54,6 +54,13 @@ namespace SemperEngine
 			virtual void EndDelete() override;
 
 			virtual void EndModify() override;
+
+		public:
+
+			// Í¨¹ý IGraphicResource ¼Ì³Ð
+			virtual void CreateGraphicResource() override;
+
+			virtual void DeleteGraphicResource() override;
 
 		};
 	}

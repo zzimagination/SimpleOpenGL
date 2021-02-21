@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 #include "Common.h"
+#include "IGraphicResource.h"
 
 namespace SemperEngine
 {
@@ -85,7 +86,7 @@ namespace SemperEngine
 		{
 		public:
 
-			std::string name = "Unlit";
+			std::string name = "Color";
 
 			std::map<std::string, float> floatProperty;
 
@@ -144,7 +145,7 @@ namespace SemperEngine
 				vector3Property.clear();
 				vector4Property.clear();
 				matrix4x4Property.clear();
-				name = "Unlit";
+				name = "Color";
 			}
 		};
 

@@ -332,6 +332,9 @@
     <ClCompile Include="Program\GraphicResource.cpp">
       <Filter>Render\Graphic</Filter>
     </ClCompile>
+    <ClCompile Include="Program\Renderer.cpp">
+      <Filter>GameLogic\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program\Debug.h">
@@ -699,6 +702,12 @@
     </ClInclude>
     <ClInclude Include="Program\GraphicResource.h">
       <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\IGraphicResource.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Renderer.h">
+      <Filter>GameLogic\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

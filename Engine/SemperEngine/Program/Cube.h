@@ -5,17 +5,12 @@
 #include "GameObject.h"
 #include "Mesh.h"
 #include "RenderCustomObject.h"
+#include "Material.h"
 
 namespace SemperEngine
 {
 	class Cube : public GameObject
 	{
-	public:
-
-		std::shared_ptr<Material> material;
-
-		std::shared_ptr<Mesh> mesh;
-
 	private:
 
 		std::unique_ptr<Core::RenderCustomObject> _renderObject;
@@ -35,6 +30,10 @@ namespace SemperEngine
 		void AddRenderLayer(int layer);
 
 		std::shared_ptr<Mesh> GetMesh();
+
+		std::shared_ptr<Material> GetMaterial();
+
+		void SetMaterial(std::shared_ptr<Material> mat);
 	};
 }
 

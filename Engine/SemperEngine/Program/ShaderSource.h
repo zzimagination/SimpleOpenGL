@@ -34,9 +34,9 @@ namespace SemperEngine
 		};
 
 		const std::vector<Shaderfile> shaderfiles = {
-			Shaderfile("Unlit","Shader/Unlit.vs", "Shader/Unlit.fs"),
+			Shaderfile("Color","Shader/Color.vs", "Shader/Color.fs"),
 			Shaderfile("Debug", "Shader/Debug.vs", "Shader/Debug.fs"),
-			Shaderfile("Texture", "Shader/Unlit.vs", "Shader/Texture.fs"),
+			Shaderfile("Texture", "Shader/Texture.vs", "Shader/Texture.fs"),
 			Shaderfile("ScreenTexture", "Shader/ScreenTexture.vs", "Shader/ScreenTexture.fs")
 		};
 	}

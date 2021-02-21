@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "Component.h"
 #include "Debug.h"
 #include <typeinfo>
 #include <typeindex>
@@ -26,6 +27,7 @@ namespace SemperEngine {
 
 	void GameObject::AddComponent(Component* com)
 	{
+		com->gameObject = this;
 		this->container.AddComponent(com);
 	}
 

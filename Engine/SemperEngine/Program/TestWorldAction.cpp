@@ -22,10 +22,6 @@ namespace SemperEngine
 		{
 			WorldController::SetActive("second");
 		}
-		else if (Event::KeyAction(Keyboard::Key::number3, InputAction::Button::press))
-		{
-			Debug::LogError("aaaa");
-		}
 	}
 	void TestWorldAction::End()
 	{

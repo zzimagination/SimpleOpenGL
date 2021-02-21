@@ -11,6 +11,15 @@ namespace SemperEngine
 {
 	class Texture
 	{
+	public:
+
+		enum class Filter
+		{
+			Nearest,
+
+			Linear
+		};
+
 	private:
 
 		Core::TextureObject* _object;
@@ -30,6 +39,10 @@ namespace SemperEngine
 		void SetColors(ArrayList<ColorByte> pixels);
 
 		ArrayList<ColorByte> GetColors();
+
+		void SetFilter(Filter filter);
+
+		Filter GetFilter();
 	};
 }
 #endif // !TEXTURE

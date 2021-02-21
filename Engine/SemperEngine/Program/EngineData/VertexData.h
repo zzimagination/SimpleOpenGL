@@ -19,7 +19,7 @@ namespace SemperEngine
 			static std::array<int, 36> indices;
 		};
 
-		struct ScreenTextureData
+		struct ScreenVertexData
 		{
 			static std::array<Float3, 4> vertices;
 

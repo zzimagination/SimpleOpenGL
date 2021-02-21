@@ -43,7 +43,17 @@ namespace SemperEngine
 
 		GraphicTextureData GraphicResouceAPI::AddTextureData(TextureData* data)
 		{
-			auto mid = GLResourceAPI::AddTextureData(data->pixels.DataPtr(), data->width, data->height);
+			int filter = 0x2600;
+			switch (data->filter)
+			{
+			case TextureData::Filter::Nearest:
+				filter = GLResourceAPI::texNearest;
+				break;
+			case TextureData::Filter::Linear:
+				filter = GLResourceAPI::texLinear;
+				break;
+			}
+			auto mid = GLResourceAPI::AddTextureData(data->pixels.DataPtr(), data->width, data->height, filter);
 			GraphicTextureData resource;
 			resource.glid = mid.texture;
 			return resource;

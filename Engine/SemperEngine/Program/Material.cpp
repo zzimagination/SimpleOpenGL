@@ -40,7 +40,7 @@ namespace SemperEngine {
 		return _object;
 	}
 
-	Material::Material() :Material("Unlit")
+	Material::Material() :Material("Color")
 	{
 		AddProperty("_color", Float4(1, 1, 1, 1));
 	}

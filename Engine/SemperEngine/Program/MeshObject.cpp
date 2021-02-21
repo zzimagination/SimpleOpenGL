@@ -36,20 +36,33 @@ namespace SemperEngine
 
 		void MeshObject::EndDelete()
 		{
-			if (graphicBind)
-			{
-				graphicBind = false;
-				GraphicResource::RemoveVertexData(graphicDataInfo);
-			}
+			DeleteGraphicResource();
 		}
 
 		void MeshObject::EndModify()
 		{
+			DeleteGraphicResource();
+		}
+
+		void MeshObject::CreateGraphicResource()
+		{
 			if (graphicBind)
 			{
-				graphicBind = false;
-				GraphicResource::RemoveVertexData(graphicDataInfo);
+				return;
 			}
+			graphicBind = true;
+			graphicDataInfo = GraphicResource::AddVertexData(this->data.get());
+		}
+
+		void MeshObject::DeleteGraphicResource()
+		{
+			if (!graphicBind)
+			{
+				return;
+			}
+			graphicBind = false;
+			GraphicResource::RemoveVertexData(graphicDataInfo);
+			graphicDataInfo = GraphicDataInfo();
 		}
 
 		MeshObject* MeshObject::Copy()

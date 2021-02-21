@@ -44,4 +44,12 @@ namespace SemperEngine {
 	{
 		return _object->ColorBytes();
 	}
+	void Texture::SetFilter(Filter filter)
+	{
+		_object->data->filter = (TextureData::Filter)filter;
+	}
+	Texture::Filter Texture::GetFilter()
+	{
+		return (Filter)_object->data->filter;
+	}
 }

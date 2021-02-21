@@ -21,12 +21,12 @@ namespace SemperEngine
 		VertexData* VertexData::CreateRectangle()
 		{
 			auto vert = new VertexData();
-			vert->vertices.Resize(ScreenTextureData::vertices.size());
-			vert->vertices.Copy(ScreenTextureData::vertices.data());
-			vert->uv.Resize(ScreenTextureData::uv.size());
-			vert->uv.Copy(ScreenTextureData::uv.data());
-			vert->index.Resize(ScreenTextureData::indices.size());
-			vert->index.Copy(ScreenTextureData::indices.data());
+			vert->vertices.Resize(ScreenVertexData::vertices.size());
+			vert->vertices.Copy(ScreenVertexData::vertices.data());
+			vert->uv.Resize(ScreenVertexData::uv.size());
+			vert->uv.Copy(ScreenVertexData::uv.data());
+			vert->index.Resize(ScreenVertexData::indices.size());
+			vert->index.Copy(ScreenVertexData::indices.data());
 			return vert;
 		}
 
@@ -82,11 +82,11 @@ namespace SemperEngine
 
 #pragma region ScreenVertex
 
-		array<Float3, 4> ScreenTextureData::vertices = { Float3(-1,-1,0), Float3(1,-1,0), Float3(1,1,0), Float3(-1,1,0) };
+		array<Float3, 4> ScreenVertexData::vertices = { Float3(-1,-1,0), Float3(1,-1,0), Float3(1,1,0), Float3(-1,1,0) };
 
-		array<Float2, 4> ScreenTextureData::uv = { Float2(0,1), Float2(1,1),Float2(1,0), Float2(0,0) };
+		array<Float2, 4> ScreenVertexData::uv = { Float2(0,1), Float2(1,1),Float2(1,0), Float2(0,0) };
 
-		array<int, 6> ScreenTextureData::indices = { 0,1,3,1,2,3 };
+		array<int, 6> ScreenVertexData::indices = { 0,1,3,1,2,3 };
 #pragma endregion
 
 	}

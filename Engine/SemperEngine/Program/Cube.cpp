@@ -10,10 +10,10 @@ namespace SemperEngine
 
 	Cube::Cube()
 	{
-		material = shared_ptr<Material>(new Material("Unlit"));
-		material->AddProperty("_color", Float4(1, 1, 1, 1));
-		mesh = Resource::CreateCube();
 		_renderObject = unique_ptr<RenderCustomObject>(new RenderCustomObject());
+		_renderObject->material = shared_ptr<Material>(new Material());
+		_renderObject->material->AddProperty("_color", Float4(1, 1, 1, 1));
+		_renderObject->mesh = Resource::CreateCube();
 	}
 
 	Cube::~Cube()
@@ -22,9 +22,6 @@ namespace SemperEngine
 
 	void Cube::Start()
 	{
-		_renderObject->modelMat = transform.GetModelMatrix();
-		_renderObject->material = material;
-		_renderObject->mesh = mesh;
 	}
 
 	void Cube::Update()
@@ -46,6 +43,16 @@ namespace SemperEngine
 	std::shared_ptr<Mesh> Cube::GetMesh()
 	{
 		return _renderObject->mesh;
+	}
+
+	std::shared_ptr<Material> Cube::GetMaterial()
+	{
+		return _renderObject->material;
+	}
+
+	void Cube::SetMaterial(std::shared_ptr<Material> mat)
+	{
+		_renderObject->material = mat;
 	}
 
 }

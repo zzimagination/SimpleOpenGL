@@ -6,6 +6,7 @@
 #include "ResourceInternal.h"
 #include "ChangeColor.h"
 #include "ChangeTexture.h"
+#include "Renderer.h"
 
 namespace SemperEngine
 {
@@ -34,10 +35,10 @@ namespace SemperEngine
 		floor->name = "floor";
 		floor->transform.position = Float3(0, -0.1f, 0);
 		floor->transform.scale = Float3(50, 0.2f, 50);
-		floor->material.reset(new Material("Texture"));
+		floor->SetMaterial(shared_ptr<Material>(new Material("Texture")));
 		auto tex = Resource::LoadTexture("Textures/pic_1.png");
-		floor->material->AddProperty(0, tex);
-		floor->material->AddProperty("_color", Color::ColorFloat(1, 1, 1));
+		floor->GetMaterial()->AddProperty(0, tex);
+		floor->GetMaterial()->AddProperty("_color", Color::ColorFloat(1, 1, 1));
 		AddGameObject(floor);
 
 		auto wall_1 = new Cube();
@@ -45,10 +46,10 @@ namespace SemperEngine
 		wall_1->transform.position = Float3(10, 5, -10);
 		wall_1->transform.scale = Float3(10, 10, 1);
 		wall_1->transform.rotation = Quaternion::AngleAxis(-45, Float3::up);
-		wall_1->material.reset(new Material("Texture"));
+		wall_1->SetMaterial(shared_ptr<Material>(new Material("Texture")));
 		auto tex1 = Resource::LoadTexture("Textures/pic_2.png");
-		wall_1->material->AddProperty(0, tex1);
-		wall_1->material->AddProperty("_color", Color::ColorFloat(1, 1, 1));
+		wall_1->GetMaterial()->AddProperty(0, tex1);
+		wall_1->GetMaterial()->AddProperty("_color", Color::ColorFloat(1, 1, 1));
 		AddGameObject(wall_1);
 
 		auto wall_2 = new Cube();
@@ -56,20 +57,21 @@ namespace SemperEngine
 		wall_2->transform.position = Float3(-10, 5, -10);
 		wall_2->transform.scale = Float3(10, 10, 1);
 		wall_2->transform.rotation = Quaternion::AngleAxis(45, Float3::up);
-		wall_2->material.reset(new Material("Texture"));
+		wall_2->SetMaterial(shared_ptr<Material>(new Material("Texture")));
 		auto tex2 = Resource::LoadTexture("Textures/pic_2.png");
-		wall_2->material->AddProperty(0, tex2);
-		wall_2->material->AddProperty("_color", Color::ColorFloat(1, 1, 1));
+		wall_2->GetMaterial()->AddProperty(0, tex2);
+		wall_2->GetMaterial()->AddProperty("_color", Color::ColorFloat(1, 1, 1));
 		AddGameObject(wall_2);
 
 		auto cube1 = new Cube();
 		cube1->name = "cube1";
 		cube1->transform.position = Float3(0, 0.5f, 0);
 		cube1->transform.rotation = (Quaternion::AngleAxis(45, Float3(0, 1, 0)) * Quaternion::AngleAxis(45, Float3(0, 0, 1)));
-		cube1->material.reset(new Material("Texture"));
-		cube1->material->AddProperty("_color", Color::ColorFloat(1, 1, 1));
+		cube1->SetMaterial(shared_ptr<Material>(new Material("Texture")));
+		cube1->GetMaterial()->AddProperty("_color", Color::ColorFloat(1, 1, 1));
 		tex = shared_ptr<Texture>(Core::ResourceInternal::WhiteTex()->Copy());
-		cube1->material->AddProperty(0, tex);
+		tex->SetFilter(Texture::Filter::Linear);
+		cube1->GetMaterial()->AddProperty(0, tex);
 		auto changeTexture = new ChangeTexture();
 		changeTexture->texture = tex;
 		cube1->AddComponent(changeTexture);
@@ -78,25 +80,24 @@ namespace SemperEngine
 		auto cube2 = new Cube();
 		cube2->name = "cube2";
 		cube2->transform.position = Float3(1.0f, 0.5f, -1.5f);
-		cube2->material->AddProperty("_color", Color::ColorFloat(0, 1, 0));
+		cube2->GetMaterial()->AddProperty("_color", Color::ColorFloat(0, 1, 0));
 		auto changeColor = new ChangeColor();
 		changeColor->color = Color::ColorFloat(0, 0, 0);
-		changeColor->material = cube2->material;
+		changeColor->material = cube2->GetMaterial();
 		cube2->AddComponent(changeColor);
 		AddGameObject(cube2);
 
 		auto cube3 = new Cube();
 		cube3->name = "cube3";
 		cube3->transform.position = Float3(-2.0f, 0.5f, 1.f);
-		cube3->material->AddProperty("_color", Color::ColorFloat(0, 0, 1));
+		cube3->GetMaterial()->AddProperty("_color", Color::ColorFloat(0, 0, 1));
 		AddGameObject(cube3);
 
-		auto cube4 = new Cube();
-		cube4->name = "cube4";
-		cube4->mesh = Resource::LoadModel("Sphere.obj")->GetMesh();
-		cube4->transform.position = Float3(-4.0f, 0.5f, 0.f);
-		cube4->material.reset(new Material("Texture"));
-		cube4->material->AddProperty(0, Resource::LoadTexture("Textures/pic_3.png"));
-		AddGameObject(cube4);
+		auto sphere = new GameObject("sphere");
+		auto renderer = new Renderer();
+		renderer->SetMesh(Resource::LoadModel("Sphere.obj")->GetMesh());
+		sphere->AddComponent(renderer);
+		sphere->transform.position = Float3(-4.0f, 0.5f, 0.f);
+		AddGameObject(sphere);
 	}
 }

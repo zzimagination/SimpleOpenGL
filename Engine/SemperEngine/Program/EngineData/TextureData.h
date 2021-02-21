@@ -14,11 +14,22 @@ namespace SemperEngine
 		{
 		public:
 
+			enum class Filter
+			{
+				Nearest,
+
+				Linear
+			};
+
+		public:
+
 			ArrayList<ColorByte> pixels;
 
 			int width = 0;
 
 			int height = 0;
+
+			Filter filter = Filter::Nearest;
 
 		public:
 

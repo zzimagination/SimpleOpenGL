@@ -8,10 +8,11 @@
 #include "Common.h"
 #include "Transform.h"
 #include "GameObjectContainer.h"
-#include "Component.h"
 
 namespace SemperEngine
 {
+	class Component;
+
 	class GameObject
 	{
 	public:

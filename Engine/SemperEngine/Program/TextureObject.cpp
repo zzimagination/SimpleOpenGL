@@ -28,20 +28,33 @@ namespace SemperEngine
 
 		void TextureObject::EndDelete()
 		{
-			if (graphicBind)
-			{
-				graphicBind = false;
-				GraphicResource::RemoveTextureData(graphicDataInfo);
-			}
+			DeleteGraphicResource();
 		}
 
 		void TextureObject::EndModify()
 		{
+			DeleteGraphicResource();
+		}
+
+		void TextureObject::CreateGraphicResource()
+		{
 			if (graphicBind)
 			{
-				graphicBind = false;
-				GraphicResource::RemoveTextureData(graphicDataInfo);
+				return;
 			}
+			graphicBind = true;
+			graphicDataInfo = GraphicResource::AddTextureData(this->data.get());
+		}
+
+		void TextureObject::DeleteGraphicResource()
+		{
+			if (!graphicBind)
+			{
+				return;
+			}
+			graphicBind = false;
+			GraphicResource::RemoveTextureData(graphicDataInfo);
+			graphicDataInfo = GraphicDataInfo();
 		}
 
 		void TextureObject::ColorBytes(ArrayList<ColorByte> data)

@@ -3,6 +3,7 @@
 #include "GraphicResource.h"
 #include "Camera.h"
 #include "Graphic.h"
+#include <type_traits>
 
 namespace SemperEngine {
 
@@ -63,20 +64,12 @@ namespace SemperEngine {
 
 		void RenderBatchManager::BindResource(RenderCustomObject* obj)
 		{
-			if (!obj->mesh->GetObject()->graphicBind)
-			{
-				obj->mesh->GetObject()->graphicBind = true;
-				obj->mesh->GetObject()->graphicDataInfo = GraphicResource::AddVertexData(obj->mesh->GetObject()->data.get());
-			}
+			obj->mesh->GetObject()->CreateGraphicResource();
 
 			auto textures = obj->material->GetTextures();
 			for (size_t i = 0; i < textures.size(); i++)
 			{
-				if (!textures[i]->GetObject()->graphicBind)
-				{
-					textures[i]->GetObject()->graphicBind = true;
-					textures[i]->GetObject()->graphicDataInfo = GraphicResource::AddTextureData(textures[i]->GetObject()->data.get());
-				}
+				textures[i]->GetObject()->CreateGraphicResource();
 			}
 		}
 

@@ -34,6 +34,12 @@ namespace SemperEngine
 			{
 			public:
 
+				static int texNearest;
+
+				static int texLinear;
+
+			public:
+
 				static GLVertexData AddVertexData(Float3* vertices, Float2* uv, int* index, int count);
 
 				static GLVertexData AddVertexData(Float3* vertices, int count);
@@ -44,7 +50,7 @@ namespace SemperEngine
 
 				static void ClearVertexData(unsigned int VAO, unsigned int VBO);
 
-				static GLTextureData AddTextureData(unsigned char* data, int width, int height);
+				static GLTextureData AddTextureData(unsigned char* data, int width, int height, int filter);
 
 				static void ClearTextureData(unsigned int texture);
 			};

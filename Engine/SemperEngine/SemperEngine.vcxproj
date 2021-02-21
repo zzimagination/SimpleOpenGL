@@ -105,7 +105,8 @@
       <AdditionalDependencies>glfw3.lib;opengl32.lib;zlibwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>生成后.cmd</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -155,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Program\IGraphicResource.h" />
     <ClInclude Include="Program\EngineData\EngineData.h" />
     <ClInclude Include="Program\GameSystem.h" />
     <ClInclude Include="Program\MaterialObject.h" />
@@ -277,6 +279,7 @@
     <ClInclude Include="Program\WorldMap.h" />
     <ClInclude Include="Program\WorldBuilder.h" />
     <ClInclude Include="Program\WorldTree.h" />
+    <ClInclude Include="Program\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program\GameSystem.cpp" />
@@ -390,6 +393,7 @@
     <ClCompile Include="Program\WorldMap.cpp" />
     <ClCompile Include="Program\WorldTree.cpp" />
     <ClCompile Include="Program\ResourceModelLibrary.cpp" />
+    <ClCompile Include="Program\Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelLib\ModelLib.vcxproj">

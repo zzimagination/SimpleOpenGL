@@ -23,15 +23,6 @@ namespace SemperEngine
 
 		void GameObjectContainer::Start()
 		{
-			//for (int i = 0; i < _newSlots.size(); i++)
-			//{
-			//	auto com = _newSlots[i];
-			//	if (com->Dead())
-			//	{
-			//		continue;
-			//	}
-			//	com->component->Start();
-			//}
 			int i = 0;
 			int size = (int)_newSlots.size();
 			if (i < size) {
@@ -65,29 +56,11 @@ namespace SemperEngine
 					i++;
 				} while (i < size);
 			}
-			//for (size_t i = 0; i < _newSlots.size(); i++)
-			//{
-			//	auto slot = _newSlots[i];
-			//	if (slot->Dead())
-			//	{
-			//		delete slot;
-			//		continue;
-			//	}
-			//}
 			_newSlots = ns;
 		}
 
 		void GameObjectContainer::Update()
 		{
-			//for (int i = 0; i < _slots.size(); i++)
-			//{
-			//	auto com = _slots[i];
-			//	if (com->Dead())
-			//	{
-			//		continue;
-			//	}
-			//	com->component->Update();
-			//}
 			int i = 0;
 			int size = (int)_slots.size();
 			if (i < size) {
@@ -122,16 +95,6 @@ namespace SemperEngine
 					i++;
 				} while (i < size);
 			}
-			//for (size_t i = 0; i < _slots.size(); i++)
-			//{
-			//	auto slot = _slots[i];
-			//	if (slot->Dead())
-			//	{
-			//		delete slot;
-			//		continue;
-			//	}
-			//	ns.push_back(slot);
-			//}
 			_slots = ns;
 		}
 

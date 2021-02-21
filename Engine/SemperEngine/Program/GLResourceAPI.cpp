@@ -7,6 +7,11 @@ namespace SemperEngine
 	{
 		namespace GraphicAPI
 		{
+			int GLResourceAPI::texNearest = GL_NEAREST;
+
+			int GLResourceAPI::texLinear = GL_LINEAR;
+
+
 			GLVertexData GLResourceAPI::AddVertexData(Float3* vertices, Float2* uv, int* index, int count)
 			{
 				GLuint VAO = 0, VBO = 0, EBO = 0, pointCount = 0;
@@ -140,7 +145,7 @@ namespace SemperEngine
 				glDeleteVertexArrays(1, &VAO);
 			}
 
-			GLTextureData GLResourceAPI::AddTextureData(unsigned char* data, int width, int height)
+			GLTextureData GLResourceAPI::AddTextureData(unsigned char* data, int width, int height, int filter)
 			{
 				unsigned int texture = 0;
 				glGenTextures(1, &texture);
@@ -148,8 +153,8 @@ namespace SemperEngine
 				format = GL_RGBA;
 				internalFormal = GL_RGBA;
 				glBindTexture(GL_TEXTURE_2D, texture);
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filter);
 				//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
 				//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
 				glTexImage2D(GL_TEXTURE_2D, 0, internalFormal, width, height, 0, format, GL_UNSIGNED_BYTE, data);
