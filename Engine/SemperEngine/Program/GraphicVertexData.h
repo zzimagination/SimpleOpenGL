@@ -3,6 +3,7 @@
 #define __GRAPHICVERTEXDATA__
 
 #include "GraphicData.h"
+#include "Graphic.h"
 
 namespace SemperEngine
 {
@@ -12,19 +13,17 @@ namespace SemperEngine
 		{
 		public:
 
-			unsigned int VAO;
+			unsigned int VAO = 0;
 
-			unsigned int VBO;
+			unsigned int VBO = 0;
 
-			unsigned int EBO ;
+			unsigned int EBO = 0;
 
-			bool indexDraw;
+			bool indexDraw = false;
 
-			int pointCount;
+			int pointCount = 0;
 
-		private:
-
-			VertexData* _source = nullptr;
+			GraphicVertexResource source;
 
 		public:
 
@@ -35,12 +34,6 @@ namespace SemperEngine
 			GraphicVertexData(unsigned int vao, unsigned int vbo, unsigned int ebo, int pointCount);
 
 			virtual ~GraphicVertexData() override;
-
-			void SetSource(VertexData* source);
-
-			VertexData* GetSource();
-
-			virtual void Complete() override;
 		};
 	}
 }

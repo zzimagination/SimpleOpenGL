@@ -1,6 +1,7 @@
 #include "RenderBatchManager.h"
 #include "GraphicRenderer.h"
 #include "GraphicResource.h"
+#include "ResourceInternal.h"
 #include "Camera.h"
 #include "Graphic.h"
 #include <type_traits>
@@ -42,6 +43,7 @@ namespace SemperEngine {
 
 				RenderBatch batch;
 				batch.SetVertexType(RenderBatch::VertexType::Screen);
+				batch.SetMesh(ResourceInternal::ScreenMesh());
 				batch.SetMaterial(object->material);
 				_batchs.push_back(batch);
 			}
@@ -53,6 +55,7 @@ namespace SemperEngine {
 
 			RenderBatch batch;
 			batch.SetVertexType(RenderBatch::VertexType::Screen);
+			batch.SetMesh(ResourceInternal::ScreenMesh());
 			batch.SetMaterial(object->material);
 			_batchs.push_back(batch);
 		}
@@ -78,11 +81,7 @@ namespace SemperEngine {
 			auto textures = obj->material->GetTextures();
 			for (size_t i = 0; i < textures.size(); i++)
 			{
-				if (!textures[i]->GetObject()->graphicBind)
-				{
-					textures[i]->GetObject()->graphicBind = true;
-					textures[i]->GetObject()->graphicDataInfo = GraphicResource::AddTextureData(textures[i]->GetObject()->data.get());
-				}
+				textures[i]->GetObject()->CreateGraphicResource();
 			}
 		}
 
@@ -116,10 +115,11 @@ namespace SemperEngine {
 
 		void RenderBatchManager::DrawScreen(RenderBatch batch)
 		{
+			auto vertex = batch.GetGraphicVertexInfo();
 			auto operation = batch.GetMaterial()->GetObject()->renderOperation;
 			ShaderProperty sproperty = batch.GetMaterial()->GetObject()->shaderProperty;
 			auto textures = batch.GetGraphicTextureInfos();
-			GraphicRenderer::RenderScreen(operation, sproperty, textures);
+			GraphicRenderer::RenderScreen(vertex, operation, sproperty, textures);
 		}
 	}
 }

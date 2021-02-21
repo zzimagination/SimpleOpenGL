@@ -42,6 +42,13 @@ namespace SemperEngine
 			One,
 			Zero
 		};
+
+		enum class TextureFilter
+		{
+			Nearest,
+
+			Linear
+		};
 	};
 
 #define ClearColorDepth (Graphic::ClearMode)((int)(Graphic::ClearMode::Color) |(int)(Graphic::ClearMode::Depth))
@@ -151,11 +158,15 @@ namespace SemperEngine
 
 		struct GraphicDataInfo
 		{
+			std::string name;
+
 			int index = -1;
 		};
 
 		struct GraphicTextureInfo
 		{
+			std::string name;
+
 			int index = -1;
 
 			GraphicDataInfo info;
@@ -163,7 +174,29 @@ namespace SemperEngine
 
 		struct GraphicVertexInfo
 		{
+			std::string name;
+
 			GraphicDataInfo info;
+		};
+
+		struct GraphicVertexResource
+		{
+			ArrayList<Float3>* vertices = nullptr;
+
+			ArrayList<Float2>* uv = nullptr;
+
+			ArrayList<int>* index = nullptr;
+		};
+
+		struct GraphicTextureResource
+		{
+			ArrayList<ColorByte>* pixels = nullptr;
+
+			int width = 0;
+
+			int height = 0;
+
+			Graphic::TextureFilter filter = Graphic::TextureFilter::Nearest;
 		};
 	}
 }

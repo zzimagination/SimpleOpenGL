@@ -17,6 +17,8 @@ namespace SemperEngine
 
 			int id = 0;
 
+			std::string name = "";
+
 			std::string filePath = "";
 
 			int useCount = 0;
@@ -35,9 +37,9 @@ namespace SemperEngine
 
 			int Dispose();
 
-		protected:
-
 			void Modify();
+
+		protected:
 
 			virtual void OnUse();
 

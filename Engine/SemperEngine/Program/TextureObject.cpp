@@ -11,10 +11,9 @@ namespace SemperEngine
 		TextureObject* TextureObject::Create(int width, int height)
 		{
 			auto obj = new TextureObject;
-			obj->data = unique_ptr<TextureData>(new TextureData);
-			obj->data->width = width;
-			obj->data->height = height;
-			obj->data->pixels = ArrayList<ColorByte>((size_t)width * height * 4);
+			obj->width = width;
+			obj->height = height;
+			obj->pixels = ArrayList<ColorByte>((size_t)width * height * 4);
 			return obj;
 		}
 
@@ -43,7 +42,20 @@ namespace SemperEngine
 				return;
 			}
 			graphicBind = true;
-			graphicDataInfo = GraphicResource::AddTextureData(this->data.get());
+			GraphicTextureResource resource;
+			resource.pixels = &pixels;
+			resource.width = width;
+			resource.height = height;
+			switch (filter)
+			{
+			case ResourceConfig::TextureFilter::Linear:
+				resource.filter = Graphic::TextureFilter::Linear;
+				break;
+			case ResourceConfig::TextureFilter::Nearest:
+				resource.filter = Graphic::TextureFilter::Nearest;
+				break;
+			}
+			graphicDataInfo = GraphicResource::AddTextureData(resource);
 		}
 
 		void TextureObject::DeleteGraphicResource()
@@ -57,23 +69,15 @@ namespace SemperEngine
 			graphicDataInfo = GraphicDataInfo();
 		}
 
-		void TextureObject::ColorBytes(ArrayList<ColorByte> data)
-		{
-			this->data->pixels = data;
-			Modify();
-		}
 
 		TextureObject* TextureObject::Copy()
 		{
 			auto obj = new TextureObject;
-			auto data = this->data->Copy();
-			obj->data = unique_ptr<TextureData>(data);
+			obj->width = this->width;
+			obj->height = this->height;
+			obj->pixels.Resize(pixels.Size());
+			obj->pixels.Copy(pixels.DataPtr());
 			return obj;
-		}
-
-		ArrayList<ColorByte> TextureObject::ColorBytes()
-		{
-			return data->pixels;
 		}
 	}
 }

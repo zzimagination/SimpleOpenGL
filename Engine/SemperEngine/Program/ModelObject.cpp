@@ -9,18 +9,10 @@ namespace SemperEngine
 		}
 		void ModelObject::OnUse()
 		{
-			if (root.mesh != nullptr)
-			{
-				root.mesh->Use();
-			}
 			UseMesh(root);
 		}
 		void ModelObject::OnDispose()
 		{
-			if (root.mesh != nullptr)
-			{
-				root.mesh->Dispose();
-			}
 			DisposeMesh(root);
 		}
 		MeshObject* ModelObject::GetMeshObject()
@@ -42,17 +34,23 @@ namespace SemperEngine
 		}
 		void ModelObject::UseMesh(Node& node)
 		{
+			if (node.mesh != nullptr)
+			{
+				node.mesh->Use();
+			}
 			for (size_t i = 0; i < node.children.size(); i++)
 			{
-				node.children[i].mesh->Use();
 				UseMesh(node.children[i]);
 			}
 		}
 		void ModelObject::DisposeMesh(Node& node)
 		{
+			if (node.mesh != nullptr)
+			{
+				node.mesh->Dispose();
+			}
 			for (size_t i = 0; i < node.children.size(); i++)
 			{
-				node.children[i].mesh->Dispose();
 				DisposeMesh(node.children[i]);
 			}
 		}

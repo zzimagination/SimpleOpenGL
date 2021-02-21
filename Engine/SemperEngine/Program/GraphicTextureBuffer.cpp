@@ -21,7 +21,7 @@ namespace SemperEngine
 		void GTextureBufferCMD::Excute()
 		{
 			auto data = GraphicResource::GetTextureData(dataInfo);
-			auto tmp = GraphicResouceAPI::AddTextureData(data->GetSource());
+			auto tmp = GraphicResouceAPI::AddTextureData(data->source);
 			data->glid = tmp.glid;
 			data->Complete();
 		}

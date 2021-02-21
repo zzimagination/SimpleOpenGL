@@ -3,6 +3,7 @@
 #define __GRAPHIC_DATACENTER__
 
 #include <memory>
+#include "Common.h"
 #include "GraphicTextureData.h"
 #include "GraphicVertexData.h"
 #include "GraphicCommand.h"
@@ -14,10 +15,6 @@ namespace SemperEngine
 	{
 		class GraphicResource
 		{
-		public:
-
-			static GraphicDataInfo screenVertexData;
-
 		private:
 
 			static FillList<std::shared_ptr<GraphicTextureData>> _textureData;
@@ -29,7 +26,7 @@ namespace SemperEngine
 			static void Initialize();
 
 
-			static GraphicDataInfo AddVertexData(VertexData* data);
+			static GraphicDataInfo AddVertexData(GraphicVertexResource resource);
 
 			static void RemoveVertexData(GraphicDataInfo info);
 
@@ -38,7 +35,7 @@ namespace SemperEngine
 			static std::shared_ptr<GraphicVertexData> GetVertexData(GraphicDataInfo info);
 
 
-			static GraphicDataInfo AddTextureData(TextureData* data);
+			static GraphicDataInfo AddTextureData(GraphicTextureResource resource);
 
 			static void RemoveTextureData(GraphicDataInfo info);
 

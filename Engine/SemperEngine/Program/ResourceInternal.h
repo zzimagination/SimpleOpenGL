@@ -8,6 +8,7 @@
 #include "Texture.h"
 #include "Mesh.h"
 #include "ResourceTextureLibrary.h"
+#include "ResourceConfig.h"
 
 namespace SemperEngine
 {
@@ -25,6 +26,8 @@ namespace SemperEngine
 
 			static ResourceTextureLibrary textureLibrary;
 
+			static std::shared_ptr<Mesh> _screenMesh;
+
 		public:
 
 			static std::shared_ptr<Texture> WhiteTex();
@@ -33,11 +36,15 @@ namespace SemperEngine
 
 			static std::shared_ptr<Texture> BumpTex();
 
+			static std::shared_ptr<Mesh> ScreenMesh();
+			
 			static void PreLoad();
 
 			static void Dispose();
 
 			static std::shared_ptr<Texture> GetTexture(std::string name);
+
+
 
 		private:
 

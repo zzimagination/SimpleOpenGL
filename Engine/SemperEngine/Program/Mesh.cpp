@@ -35,10 +35,11 @@ namespace SemperEngine
 	}
 	ArrayList<Float3> Mesh::GetVertices()
 	{
-		return _object->GetVertex();
+		return _object->vertices;
 	}
 	void Mesh::SetVertices(ArrayList<Float3> vertices)
 	{
-		_object->SetVertex(vertices);
+		_object->vertices = vertices;
+		_object->Modify();
 	}
 }

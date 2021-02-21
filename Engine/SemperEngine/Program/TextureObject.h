@@ -7,6 +7,8 @@
 #include "Common.h"
 #include "ResourceObject.h"
 #include "Graphic.h"
+#include "ResourceConfig.h"
+
 
 namespace SemperEngine
 {
@@ -24,7 +26,13 @@ namespace SemperEngine
 
 		public:
 
-			std::unique_ptr<TextureData> data;
+			ArrayList<ColorByte> pixels;
+
+			int width = 0;
+
+			int height = 0;
+
+			ResourceConfig::TextureFilter filter = ResourceConfig::TextureFilter::Nearest;
 
 			GraphicDataInfo graphicDataInfo;
 
@@ -40,13 +48,7 @@ namespace SemperEngine
 
 			virtual ~TextureObject() override;
 
-			void ColorBytes(ArrayList<ColorByte> data);
-
 			TextureObject* Copy();
-
-			ArrayList<ColorByte> ColorBytes();
-
-		
 
 		protected:
 

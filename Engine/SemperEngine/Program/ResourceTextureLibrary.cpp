@@ -27,10 +27,10 @@ namespace SemperEngine
 			auto resource = NativeResource::LoadTexture(path);
 			auto object = new TextureObject;
 			object->filePath = path;
-			object->data = unique_ptr<TextureData>(new TextureData);
-			object->data->pixels = ArrayList<ColorByte>(resource.data, resource.size);
-			object->data->width = resource.width;
-			object->data->height = resource.height;
+			object->name = resource.path;
+			object->pixels = ArrayList<ColorByte>(resource.data, resource.size);
+			object->width = resource.width;
+			object->height = resource.height;
 			object->id = _library.Add(object);
 			object->Use();
 			return object;

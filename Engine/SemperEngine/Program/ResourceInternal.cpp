@@ -10,6 +10,8 @@ namespace SemperEngine
 
 #define PNG_EXTEND(name) string(name).append(".png") 
 
+		shared_ptr<Mesh> ResourceInternal::_screenMesh;
+
 		std::map<std::string, std::shared_ptr<Texture>> ResourceInternal::textureMap;
 
 		ResourceTextureLibrary ResourceInternal::textureLibrary;
@@ -29,6 +31,11 @@ namespace SemperEngine
 			return GetTexture(BUMP_TEXTURE);
 		}
 
+		std::shared_ptr<Mesh> ResourceInternal::ScreenMesh()
+		{
+			return _screenMesh;
+		}
+
 		void ResourceInternal::PreLoad()
 		{
 			TextureObject::Setting setting;
@@ -36,6 +43,9 @@ namespace SemperEngine
 			textureMap[WHITE_TEXTURE] = LoadTexture(PNG_EXTEND(WHITE_TEXTURE));
 			textureMap[BLACK_TEXTURE] = LoadTexture(PNG_EXTEND(BLACK_TEXTURE));
 			textureMap[BUMP_TEXTURE] = LoadTexture(PNG_EXTEND(BUMP_TEXTURE));
+
+			_screenMesh = shared_ptr<Mesh>(new Mesh(MeshObject::CreateRectangle()));
+			_screenMesh->GetObject()->CreateGraphicResource();
 		}
 
 		std::shared_ptr<Texture> ResourceInternal::GetTexture(std::string name)
@@ -56,11 +66,13 @@ namespace SemperEngine
 			auto fullPath = InternalFile(name);
 			auto obj = textureLibrary.Load(fullPath);
 			auto texture = shared_ptr<Texture>(new Texture(obj));
+			texture->GetObject()->CreateGraphicResource();
 			return texture;
 		}
 		 
 		void ResourceInternal::Dispose()
 		{
+			_screenMesh.reset();
 			textureMap.clear();
 			textureLibrary.DisposeUnuse();
 		}

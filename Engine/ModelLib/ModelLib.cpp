@@ -53,6 +53,7 @@ namespace SemperEngine
 				return model;
 			}
 
+			model.path = path;
 			tinyobj::attrib_t attribute;
 			std::vector<tinyobj::shape_t> shapes;
 			std::vector<tinyobj::material_t> materials;

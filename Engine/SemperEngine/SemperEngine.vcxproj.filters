@@ -260,9 +260,6 @@
     <ClCompile Include="Program\EngineData\TextureData.cpp">
       <Filter>Common\EngineData</Filter>
     </ClCompile>
-    <ClCompile Include="Program\EngineData\VertexData.cpp">
-      <Filter>Common\EngineData</Filter>
-    </ClCompile>
     <ClCompile Include="Program\MeshObject.cpp">
       <Filter>ResourceObject\ResourceObject</Filter>
     </ClCompile>
@@ -616,9 +613,6 @@
     <ClInclude Include="Program\EngineData\TextureData.h">
       <Filter>Common\EngineData</Filter>
     </ClInclude>
-    <ClInclude Include="Program\EngineData\VertexData.h">
-      <Filter>Common\EngineData</Filter>
-    </ClInclude>
     <ClInclude Include="Program\MeshObject.h">
       <Filter>ResourceObject\ResourceObject</Filter>
     </ClInclude>
@@ -708,6 +702,9 @@
     </ClInclude>
     <ClInclude Include="Program\Renderer.h">
       <Filter>GameLogic\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ResourceConfig.h">
+      <Filter>ResourceObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

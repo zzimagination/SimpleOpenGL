@@ -14,12 +14,13 @@ namespace SemperEngine
 		}
 
 		void GraphicRenderer::RenderScreen(
+			GraphicVertexInfo vertex,
 			RenderOperation operation,
 			ShaderProperty sproperty,
 			vector<GraphicTextureInfo> textures)
 		{
-			GraphicVertexInfo vertex;
-			vertex.info = GraphicResource::screenVertexData;
+			GraphicVertexInfo vertexInfo;
+			vertexInfo.info = vertex.info;
 			RenderMatrix matrix = { Matrix4x4::Identity() ,Matrix4x4::Identity() ,Matrix4x4::Identity() };
 			GraphicCommandManager::Draw(vertex, operation, matrix, sproperty, textures);
 		}

@@ -1,5 +1,4 @@
 #include "ResourceModelLibrary.h"
-#include "NativeResource.h"
 
 namespace SemperEngine
 {
@@ -12,25 +11,31 @@ namespace SemperEngine
 		}
 
 
-		void AddMesh(ModelLib::Node& n1, ModelObject::Node& n2)
+		void ResourceModelLibrary::AddMesh(ModelLib::Node& native, ModelObject::Node& game, std::string path)
 		{
+			if (native.size == 0)
+			{
+				return;
+			}
 			auto meshObject = new MeshObject();
-			meshObject->name = n1.name;
-			meshObject->data = unique_ptr<VertexData>(new VertexData);
-			auto size = n1.size;
-			meshObject->data->vertices = ArrayList<Float3>((Float3*)n1.vertices, size);
-			meshObject->data->uv = ArrayList<Float2>((Float2*)n1.uv, size);
-			n2.mesh = meshObject;
+			meshObject->name = native.name;
+			meshObject->filePath = path;
+			auto size = native.size;
+			meshObject->vertices = ArrayList<Float3>((Float3*)native.vertices, size);
+			meshObject->uv = ArrayList<Float2>((Float2*)native.uv, size);
+			game.mesh = meshObject;
 		}
 
-		void AddNode(ModelLib::Node& n1, ModelObject::Node& n2)
+		void ResourceModelLibrary::AddNode(ModelLib::Node& native, ModelObject::Node& game, std::string path)
 		{
-			for (size_t i = 0; i < n1.children.size(); i++)
+			AddMesh(native, game, path);
+			for (size_t i = 0; i < native.children.size(); i++)
 			{
 				ModelObject::Node node;
-				AddMesh(n1.children[i], node);
-				AddNode(n1.children[i], node);
-				n2.children.push_back(node);
+				auto newPath = path + "/";
+				newPath += native.children[i].name;
+				AddNode(native.children[i], node, newPath);
+				game.children.push_back(node);
 			}
 		}
 
@@ -50,12 +55,8 @@ namespace SemperEngine
 
 			auto resource = NativeResource::LoadModel(path);
 			auto object = new ModelObject();
-			object->filePath = path;
-			if (resource.root.size != 0)
-			{
-				AddMesh(resource.root, object->root);
-			}
-			AddNode(resource.root, object->root);
+			object->filePath = resource.path;
+			AddNode(resource.root, object->root, resource.path);
 			object->id = _library.Add(object);
 			object->Use();
 			return object;

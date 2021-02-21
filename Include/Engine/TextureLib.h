@@ -21,7 +21,7 @@ namespace SemperEngine
 
 			std::string error = "";
 
-			unsigned char* data;
+			unsigned char* data = nullptr;
 
 			size_t size = 0;
 

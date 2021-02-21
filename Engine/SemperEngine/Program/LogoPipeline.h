@@ -2,7 +2,6 @@
 #ifndef __LOGO_PIPELINE__
 #define __LOGO_PIPELINE__
 
-#include <chrono>
 #include <memory>
 #include "LogoCollection.h"
 #include "GraphicVertexData.h"
@@ -17,7 +16,7 @@ namespace SemperEngine
 		{
 		public:
 
-			static float logoTime;
+			static float logoFrame;
 
 			static bool isCompleted;
 
@@ -33,9 +32,7 @@ namespace SemperEngine
 
 			static float _alpha;
 
-			static std::chrono::milliseconds _time;
-
-			static std::chrono::time_point<std::chrono::system_clock> _startTime;
+			static int _frame;
 
 			static std::vector<std::shared_ptr<Texture>> _logoTextures;
 

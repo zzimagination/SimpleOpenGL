@@ -3,6 +3,7 @@
 
 #include "ResourceLibrary.h"
 #include "ModelObject.h"
+#include "NativeResource.h"
 
 namespace SemperEngine
 {
@@ -16,6 +17,11 @@ namespace SemperEngine
 
 			ModelObject* Load(std::string path);
 
+		private:
+
+			void AddMesh(ModelLib::Node& native, ModelObject::Node& game, std::string path);
+
+			void AddNode(ModelLib::Node& native, ModelObject::Node& game, std::string path);
 		};
 	}
 }

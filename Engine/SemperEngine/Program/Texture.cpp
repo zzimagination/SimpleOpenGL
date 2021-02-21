@@ -37,19 +37,21 @@ namespace SemperEngine {
 
 	void Texture::SetColors(ArrayList<ColorByte> data)
 	{
-		_object->ColorBytes(data);
+		_object->pixels = data;
+		_object->Modify();
 	}
 
 	ArrayList<ColorByte> Texture::GetColors()
 	{
-		return _object->ColorBytes();
+		return _object->pixels;
 	}
-	void Texture::SetFilter(Filter filter)
+	void Texture::SetFilter(ResourceConfig::TextureFilter filter)
 	{
-		_object->data->filter = (TextureData::Filter)filter;
+		_object->filter = filter;
+		_object->Modify();
 	}
-	Texture::Filter Texture::GetFilter()
+	ResourceConfig::TextureFilter Texture::GetFilter()
 	{
-		return (Filter)_object->data->filter;
+		return _object->filter;
 	}
 }

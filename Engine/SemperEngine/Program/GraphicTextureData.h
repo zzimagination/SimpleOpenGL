@@ -5,6 +5,7 @@
 #include <map>
 #include <memory>
 #include "GraphicData.h"
+#include "Graphic.h"
 
 namespace SemperEngine
 {
@@ -14,11 +15,9 @@ namespace SemperEngine
 		{
 		public:
 
-			unsigned int glid;
+			unsigned int glid = 0;
 
-		private:
-
-			TextureData* _source = nullptr;
+			GraphicTextureResource source;
 
 		public:
 
@@ -27,12 +26,6 @@ namespace SemperEngine
 			GraphicTextureData(int id);
 
 			virtual ~GraphicTextureData() override;
-
-			void SetSource(TextureData* source);
-
-			TextureData* GetSource();
-
-			virtual void Complete() override;
 
 		};
 	}

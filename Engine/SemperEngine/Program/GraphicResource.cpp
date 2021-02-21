@@ -8,22 +8,18 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		GraphicDataInfo GraphicResource::screenVertexData;
-
 		FillList<shared_ptr<GraphicTextureData>> GraphicResource::_textureData;
 
 		FillList<shared_ptr<GraphicVertexData>> GraphicResource::_vertexData;
 
 		void GraphicResource::Initialize()
 		{
-			auto data = VertexData::CreateRectangle();
-			screenVertexData = AddVertexData(data);
 		}
 
-		GraphicDataInfo GraphicResource::AddVertexData(VertexData* data)
+		GraphicDataInfo GraphicResource::AddVertexData(GraphicVertexResource resource)
 		{
 			auto gdata = shared_ptr<GraphicVertexData>(new GraphicVertexData());
-			gdata->SetSource(data);
+			gdata->source = resource;
 			GraphicDataInfo info;
 			info.index = _vertexData.Add(gdata);
 			GraphicCommandManager::AddVertexBuffer(info);
@@ -45,10 +41,10 @@ namespace SemperEngine
 			return _vertexData[info.index];
 		}
 
-		GraphicDataInfo GraphicResource::AddTextureData(TextureData* data)
+		GraphicDataInfo GraphicResource::AddTextureData(GraphicTextureResource resource)
 		{
 			auto gdata = shared_ptr<GraphicTextureData>(new GraphicTextureData());
-			gdata->SetSource(data);
+			gdata->source = resource;
 			GraphicDataInfo info;
 			info.index = _textureData.Add(gdata);
 			GraphicCommandManager::AddTextureBuffer(info);

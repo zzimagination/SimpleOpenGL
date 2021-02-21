@@ -14,6 +14,8 @@ namespace SemperEngine
 		{
 		public:
 
+			std::string name;
+
 			bool isPrimitived = true;
 
 		public:
@@ -22,7 +24,7 @@ namespace SemperEngine
 
 			virtual ~GraphicData() {};
 
-			virtual void Complete() {};
+			virtual void Complete() { isPrimitived = false; };
 		};
 	}
 }

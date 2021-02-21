@@ -2,6 +2,7 @@
 #ifndef __MESH_OBJECT__
 #define __MESH_OBJECT__
 
+#include <array>
 #include "Common.h"
 #include "ResourceObject.h"
 #include "Graphic.h"
@@ -10,6 +11,24 @@ namespace SemperEngine
 {
 	namespace Core
 	{
+		struct CubeData
+		{
+			static std::array<Float3, 24> vertices;
+
+			static std::array<Float2, 24> uv;
+
+			static std::array<int, 36> indices;
+		};
+
+		struct ScreenVertexData
+		{
+			static std::array<Float3, 4> vertices;
+
+			static std::array<Float2, 4> uv;
+
+			static std::array<int, 6> indices;
+		};
+
 		class MeshObject : public ResourceObject, public IGraphicResource
 		{
 		public:
@@ -29,9 +48,11 @@ namespace SemperEngine
 
 		public:
 
-			std::string name;
+			ArrayList<Float3> vertices;
 
-			std::unique_ptr<VertexData> data;
+			ArrayList<Float2> uv;
+
+			ArrayList<int> index;
 
 			GraphicDataInfo graphicDataInfo;
 
@@ -44,10 +65,6 @@ namespace SemperEngine
 			virtual ~MeshObject() override;
 
 			MeshObject* Copy();
-
-			void SetVertex(ArrayList<Float3> vertices);
-
-			ArrayList<Float3> GetVertex();
 
 		protected:
 

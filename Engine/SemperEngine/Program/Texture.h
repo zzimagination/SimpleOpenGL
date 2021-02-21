@@ -5,6 +5,7 @@
 #include <string>
 #include <memory>
 #include "Common.h"
+#include "ResourceConfig.h"
 #include "TextureObject.h"
 
 namespace SemperEngine
@@ -40,9 +41,9 @@ namespace SemperEngine
 
 		ArrayList<ColorByte> GetColors();
 
-		void SetFilter(Filter filter);
+		void SetFilter(ResourceConfig::TextureFilter filter);
 
-		Filter GetFilter();
+		ResourceConfig::TextureFilter GetFilter();
 	};
 }
 #endif // !TEXTURE

@@ -265,7 +265,6 @@
     <ClInclude Include="Program\Math\Float2.h" />
     <ClInclude Include="Program\Math\Float3.h" />
     <ClInclude Include="Program\Math\Float4.h" />
-    <ClInclude Include="Program\EngineData\VertexData.h" />
     <ClInclude Include="Program\Text\WindowsText.h" />
     <ClInclude Include="Program\WorldController.h" />
     <ClInclude Include="Program\WorldAction.h" />
@@ -280,6 +279,7 @@
     <ClInclude Include="Program\WorldBuilder.h" />
     <ClInclude Include="Program\WorldTree.h" />
     <ClInclude Include="Program\Renderer.h" />
+    <ClInclude Include="Program\ResourceConfig.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program\GameSystem.cpp" />
@@ -380,7 +380,6 @@
     <ClCompile Include="Program\Math\Float3.cpp" />
     <ClCompile Include="Program\Math\Float4.cpp" />
     <ClCompile Include="Program\GraphicVertexData.cpp" />
-    <ClCompile Include="Program\EngineData\VertexData.cpp" />
     <ClCompile Include="Program\Text\WindowsText.cpp" />
     <ClCompile Include="Program\WorldController.cpp" />
     <ClCompile Include="Program\WorldAction.cpp" />

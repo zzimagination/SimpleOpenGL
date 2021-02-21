@@ -70,7 +70,7 @@ namespace SemperEngine
 		cube1->SetMaterial(shared_ptr<Material>(new Material("Texture")));
 		cube1->GetMaterial()->AddProperty("_color", Color::ColorFloat(1, 1, 1));
 		tex = shared_ptr<Texture>(Core::ResourceInternal::WhiteTex()->Copy());
-		tex->SetFilter(Texture::Filter::Linear);
+		tex->SetFilter(ResourceConfig::TextureFilter::Linear);
 		cube1->GetMaterial()->AddProperty(0, tex);
 		auto changeTexture = new ChangeTexture();
 		changeTexture->texture = tex;

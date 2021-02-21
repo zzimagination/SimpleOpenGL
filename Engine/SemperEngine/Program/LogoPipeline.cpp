@@ -17,7 +17,7 @@ namespace SemperEngine
 
 		shared_ptr<RenderScreenObject> LogoPipeline::_renderObject;
 
-		float LogoPipeline::logoTime = 3000;
+		float LogoPipeline::logoFrame = 180;
 
 		int LogoPipeline::_current = -1;
 
@@ -27,9 +27,7 @@ namespace SemperEngine
 
 		float LogoPipeline::_alpha = 0;
 
-		milliseconds LogoPipeline::_time;
-
-		time_point<system_clock> LogoPipeline::_startTime;
+		int LogoPipeline::_frame = 0;
 
 		bool LogoPipeline::isCompleted = false;
 
@@ -38,7 +36,6 @@ namespace SemperEngine
 		void LogoPipeline::Start()
 		{
 			LoadResource();
-			_startTime = system_clock::now();
 			_current = 0;
 			_renderObject->material->AddProperty("_color", Color::ColorFloat(1, 1, 1, _alpha));
 			_renderObject->material->AddProperty(0, _logoTextures[_current]);
@@ -46,9 +43,7 @@ namespace SemperEngine
 
 		void LogoPipeline::Update()
 		{
-			auto interval = chrono::duration_cast<milliseconds>(system_clock::now() - _startTime).count();
-			auto base = logoTime * _current;
-			if (interval > base + logoTime)
+			if (_frame > logoFrame)
 			{
 				_current++;
 				if (_current == _total)
@@ -59,11 +54,12 @@ namespace SemperEngine
 				_alpha = 0;
 				_renderObject->material->AddProperty("_color", Color::ColorFloat(1, 1, 1, _alpha));
 				_renderObject->material->AddProperty(0, _logoTextures[_current]);
-				_startTime = system_clock::now();
+				_frame = 0;
 				return;
 			}
 
-			auto t = (interval - base) / logoTime;
+			float t = (float)_frame / (float)logoFrame;
+			_frame++;
 			_alpha = Alpha(t);
 			_renderObject->material->AddProperty("_color", Color::ColorFloat(1, 1, 1, _alpha));
 			Render();
@@ -119,7 +115,7 @@ namespace SemperEngine
 			else if (time <= 1)
 			{
 				time = 1 - (time - 0.7f) / 0.3f;
-				return Math::SinR(time * Math::pi / 2 - Math::pi / 2);
+				return Math::SinR(time * Math::pi / 2);
 			}
 			return 0.0f;
 		}

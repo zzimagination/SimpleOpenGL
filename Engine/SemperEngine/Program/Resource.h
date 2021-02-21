@@ -8,6 +8,7 @@
 #include "Model.h"
 #include "ResourceTextureLibrary.h"
 #include "ResourceModelLibrary.h"
+#include "ResourceConfig.h"
 
 namespace SemperEngine
 {

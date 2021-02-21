@@ -16,6 +16,7 @@ namespace SemperEngine
 			static void Wireframe(bool enable);
 
 			static void RenderScreen(
+				GraphicVertexInfo vertex,
 				RenderOperation operation, 
 				ShaderProperty sproperty, 
 				std::vector<GraphicTextureInfo> textures);

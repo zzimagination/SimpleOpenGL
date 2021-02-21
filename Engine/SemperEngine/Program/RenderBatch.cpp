@@ -21,19 +21,10 @@ namespace SemperEngine
 		}
 		void RenderBatch::SetMesh(std::shared_ptr<Mesh> mesh)
 		{
-			if (_vertexType == VertexType::Screen)
-			{
-				Debug::LogError("VertexType is screen");
-			}
 			_mesh = mesh;
 		}
 		GraphicVertexInfo RenderBatch::GetGraphicVertexInfo()
 		{
-			if (_vertexType == VertexType::Screen)
-			{
-				Debug::LogError("VertexType is screen");
-			}
-
 			GraphicVertexInfo info;
 			info.info = _mesh->GetObject()->graphicDataInfo;
 			return info;
