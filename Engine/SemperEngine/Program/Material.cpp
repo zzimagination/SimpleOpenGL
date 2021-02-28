@@ -11,6 +11,11 @@ namespace SemperEngine {
 		_object->Use();
 	}
 
+	Material::~Material()
+	{
+		_object->Dispose();
+	}
+
 	void Material::Blend(bool enable, Graphic::BlendFunc src, Graphic::BlendFunc dest)
 	{
 		_object->renderOperation.blend = enable;

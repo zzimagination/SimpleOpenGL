@@ -157,14 +157,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Program\IGraphicResource.h" />
-    <ClInclude Include="Program\EngineData\EngineData.h" />
     <ClInclude Include="Program\GameSystem.h" />
     <ClInclude Include="Program\MaterialObject.h" />
     <ClInclude Include="Program\Model.h" />
     <ClInclude Include="Program\ModelObject.h" />
     <ClInclude Include="Program\NativeResource.h" />
     <ClInclude Include="Program\Collection\ArrayList.h" />
-    <ClInclude Include="Program\EngineData\BaseData.h" />
     <ClInclude Include="Program\BaseRenderPipeline.h" />
     <ClInclude Include="Program\BeautifulWorld.h" />
     <ClInclude Include="Program\CameraCollection.h" />
@@ -257,7 +255,6 @@
     <ClInclude Include="Program\TestWorld.h" />
     <ClInclude Include="Program\TestWorldAction.h" />
     <ClInclude Include="Program\Texture.h" />
-    <ClInclude Include="Program\EngineData\TextureData.h" />
     <ClInclude Include="Program\TextureObject.h" />
     <ClInclude Include="Program\Time.h" />
     <ClInclude Include="Program\TimeManager.h" />
@@ -371,7 +368,6 @@
     <ClCompile Include="Program\TestWorldAction.cpp" />
     <ClCompile Include="Program\Texture.cpp" />
     <ClCompile Include="Program\GraphicTextureData.cpp" />
-    <ClCompile Include="Program\EngineData\TextureData.cpp" />
     <ClCompile Include="Program\TextureObject.cpp" />
     <ClCompile Include="Program\Time.cpp" />
     <ClCompile Include="Program\TimeManager.cpp" />

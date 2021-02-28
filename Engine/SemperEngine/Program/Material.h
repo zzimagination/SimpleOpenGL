@@ -21,6 +21,8 @@ namespace SemperEngine
 
 		Material();
 
+		~Material();
+
 		Material(std::string shader);
 
 		void Blend(bool enable, Graphic::BlendFunc src = Graphic::BlendFunc::Zero, Graphic::BlendFunc dest = Graphic::BlendFunc::One);

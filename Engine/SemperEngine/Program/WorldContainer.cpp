@@ -22,15 +22,6 @@ namespace SemperEngine
 
 		void WorldContainer::Start()
 		{
-			//for (size_t i = 0; i < newCabins.size(); i++)
-			//{
-			//	auto cabin = newCabins[i];
-			//	if (cabin->Dead())
-			//	{
-			//		continue;
-			//	}
-			//	cabin->gameObject->Start();
-			//}
 			int i = 0;
 			int size = (int)newCabins.size();
 			if (i < size) 
@@ -67,16 +58,6 @@ namespace SemperEngine
 					i++;
 				} while (i < size);
 			}
-			//for (size_t i = 0; i < newCabins.size(); i++)
-			//{
-			//	auto cabin = newCabins[i];
-			//	if (cabin->Dead())
-			//	{
-			//		delete cabin;
-			//		continue;
-			//	}
-			//	cabins.push_back(newCabins[i]);
-			//}
 			newCabins = nc;
 
 			i = 0;
@@ -95,28 +76,10 @@ namespace SemperEngine
 					i++;
 				} while (i < size);
 			}
-			//for (size_t i = 0; i < cabins.size(); i++)
-			//{
-			//	auto cabin = cabins[i];
-			//	if (cabin->Dead())
-			//	{
-			//		continue;
-			//	}
-			//	cabin->gameObject->container.Start();
-			//}
 		}
 
 		void WorldContainer::Update()
 		{
-			//for (int i = 0; i < cabins.size(); i++)
-			//{
-			//	auto cabin = cabins[i];
-			//	if (cabin->Dead())
-			//	{
-			//		continue;
-			//	}
-			//	cabin->gameObject->Update();
-			//}
 			int i = 0;
 			int size = (int)cabins.size();
 			if (i < size) {
@@ -147,15 +110,6 @@ namespace SemperEngine
 					i++;
 				} while (i < size);
 			}
-			//for (size_t i = 0; i < cabins.size(); i++)
-			//{
-			//	auto cabin = cabins[i];
-			//	if (cabin->Dead())
-			//	{
-			//		continue;
-			//	}
-			//	cabin->gameObject->container.Update();
-			//}
 
 			i = 0;
 			vector<GameCabin*> leftCabins;
@@ -174,16 +128,6 @@ namespace SemperEngine
 					i++;
 				} while (i < size);
 			}
-			//for (size_t i = 0; i < cabins.size(); i++)
-			//{
-			//	auto cabin = cabins[i];
-			//	if (cabin->Dead())
-			//	{
-			//		delete cabin;
-			//		continue;
-			//	}
-			//	leftCabins.push_back(cabin);
-			//}
 			cabins = leftCabins;
 		}
 

@@ -257,9 +257,6 @@
     <ClCompile Include="Program\Math\Quaternion.cpp">
       <Filter>Common\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Program\EngineData\TextureData.cpp">
-      <Filter>Common\EngineData</Filter>
-    </ClCompile>
     <ClCompile Include="Program\MeshObject.cpp">
       <Filter>ResourceObject\ResourceObject</Filter>
     </ClCompile>
@@ -607,12 +604,6 @@
     <ClInclude Include="Program\Common.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Program\EngineData\BaseData.h">
-      <Filter>Common\EngineData</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\EngineData\TextureData.h">
-      <Filter>Common\EngineData</Filter>
-    </ClInclude>
     <ClInclude Include="Program\MeshObject.h">
       <Filter>ResourceObject\ResourceObject</Filter>
     </ClInclude>
@@ -684,9 +675,6 @@
     </ClInclude>
     <ClInclude Include="Program\FrameManager.h">
       <Filter>Project</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\EngineData\EngineData.h">
-      <Filter>Common\EngineData</Filter>
     </ClInclude>
     <ClInclude Include="Program\Collection\Collection.h">
       <Filter>Common\Collection</Filter>
@@ -816,9 +804,6 @@
     </Filter>
     <Filter Include="Common\Tool">
       <UniqueIdentifier>{fbbbc5a2-8959-4110-b5cd-943850dbd522}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Common\EngineData">
-      <UniqueIdentifier>{56a5d096-ca97-4abe-add5-369e130ae3d8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Event">
       <UniqueIdentifier>{f5075df4-7f92-45ad-b858-dadb4bf028f4}</UniqueIdentifier>
