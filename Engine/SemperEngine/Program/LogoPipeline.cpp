@@ -70,6 +70,7 @@ namespace SemperEngine
 			_logoTextures.clear();
 			_renderObject.reset();
 			ResourceSystem::DisposeUnused();
+			GraphicCommandManager::ClearCommands();
 		}
 
 		void LogoPipeline::LoadResource()

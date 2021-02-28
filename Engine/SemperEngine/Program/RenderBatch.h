@@ -8,6 +8,7 @@
 #include "Material.h"
 #include "Graphic.h"
 #include "Render.h"
+#include "CameraObject.h"
 
 namespace SemperEngine {
 
@@ -15,6 +16,27 @@ namespace SemperEngine {
 	{
 		class RenderBatch
 		{
+		public:
+
+			static GraphicVertexInfo GetVertexInfo(Mesh* mesh);
+
+			static RenderMatrix GetRenderMatrix(Matrix4x4 model, CameraObject* camera);
+
+			static RenderOperation GetOperation(Material* material);
+
+			static ShaderProperty GetShaderProperty(Material* material);
+
+			static std::vector<GraphicTextureInfo> GetTextures(Material* material);
+
+		public:
+
+			virtual ~RenderBatch();
+
+			virtual void GenerateGraphicResource();
+
+			virtual void RenderGraphicObject();
+
+
 		public:
 
 			enum class VertexType
@@ -57,6 +79,44 @@ namespace SemperEngine {
 			std::shared_ptr<Material> GetMaterial();
 
 			std::vector<GraphicTextureInfo> GetGraphicTextureInfos();
+		};
+
+		class ClearBatch : public RenderBatch
+		{
+		public:
+
+			Color clearColor;
+
+			Graphic::ClearMode clearMode;
+
+		public:
+
+			ClearBatch(Color color, Graphic::ClearMode mode);
+
+			virtual ~ClearBatch() override;
+
+			virtual void RenderGraphicObject() override;
+		};
+
+		class CustomRenderBatch : public RenderBatch
+		{
+		public:
+
+			Mesh* mesh;
+
+			CameraObject* camera;
+
+			Material* material;
+
+			Matrix4x4 model;
+
+		public:
+
+			virtual ~CustomRenderBatch() override;
+
+			virtual void RenderGraphicObject() override;
+
+			virtual void GenerateGraphicResource() override;
 		};
 	}
 }

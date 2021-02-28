@@ -34,6 +34,17 @@ namespace SemperEngine
 			back_setting.clear();
 		}
 
+		void GraphicCommandManager::ClearCommands()
+		{
+			front_DrawCommands.clear();
+			front_Setting.clear();
+			back_DrawCommands.clear();
+			back_setting.clear();
+			resources.clear();
+		}
+
+		
+
 		void GraphicCommandManager::AddVertexBuffer(GraphicDataInfo info)
 		{
 			auto cmd = new  GVertexBufferCMD(info);

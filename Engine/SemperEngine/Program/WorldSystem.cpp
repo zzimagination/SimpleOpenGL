@@ -12,8 +12,8 @@ namespace SemperEngine
 		{
 			WorldMap::Initialize();
 			WorldManager::Initialize();
-			WorldTree::ExcuteWorlds();
-			WorldConverter::Convert();
+			//WorldTree::ExcuteWorlds();
+			//WorldConverter::Convert();
 			WorldTree::Fall();
 		}
 

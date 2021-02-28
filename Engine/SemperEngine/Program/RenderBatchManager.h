@@ -2,6 +2,7 @@
 #define __RENDERBATCH_MANAGER__
 
 #include <vector>
+#include <memory>
 #include "RenderBatch.h"
 #include "CameraObject.h"
 #include "RenderCustomObject.h"
@@ -20,6 +21,14 @@ namespace SemperEngine {
 			static std::vector<RenderBatch> _batchs;
 
 		public:
+
+			static std::vector<std::shared_ptr<RenderBatch>> batchList;
+
+		public:
+
+			static void AddBatch(std::shared_ptr<RenderBatch> batch);
+
+			static void ExecuteBatchs();
 
 			static void GenerateBatchs(CameraObject* camera, std::vector<RenderCustomObject*> objects);
 

@@ -16,7 +16,7 @@ namespace SemperEngine
 			obj->pixels = ArrayList<ColorByte>((size_t)width * height * 4);
 			return obj;
 		}
-
+ 
 		TextureObject::TextureObject()
 		{
 		}

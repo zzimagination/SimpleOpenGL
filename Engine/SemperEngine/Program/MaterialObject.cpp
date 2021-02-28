@@ -22,5 +22,15 @@ namespace SemperEngine
 		{
 			return nullptr;
 		}
+		void MaterialObject::CreateGraphicResource()
+		{
+			for (auto tex = textures.begin(); tex != textures.end(); tex++)
+			{
+				tex->get()->GetObject()->CreateGraphicResource();
+			}
+		}
+		void MaterialObject::DeleteGraphicResource()
+		{
+		}
 	}
 }

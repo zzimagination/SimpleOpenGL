@@ -36,6 +36,8 @@ namespace SemperEngine
 
 			static void SwapCommands();
 
+			static void ClearCommands();
+
 			static void AddVertexBuffer(GraphicDataInfo info);
 
 			static void ClearVertexBuffer(GraphicDataInfo info);

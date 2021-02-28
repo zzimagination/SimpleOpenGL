@@ -5,7 +5,6 @@
 #include <vector>
 #include "Common.h"
 #include "RenderObject.h"
-#include "Render.h"
 
 namespace SemperEngine
 {

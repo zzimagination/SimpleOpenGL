@@ -12,7 +12,7 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		class MaterialObject : public ResourceObject
+		class MaterialObject : public ResourceObject, public IGraphicResource
 		{
 		public:
 
@@ -33,6 +33,13 @@ namespace SemperEngine
 			virtual ~MaterialObject() override;
 
 			MaterialObject* Copy();
+
+		public:
+
+			// Í¨¹ý IGraphicResource ¼Ì³Ð
+			virtual void CreateGraphicResource() override;
+
+			virtual void DeleteGraphicResource() override;
 		};
 	}
 }

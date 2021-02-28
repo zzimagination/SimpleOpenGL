@@ -8,6 +8,7 @@
 #include "GraphicSystem.h"
 #include "ResourceSystem.h"
 #include "BaseRenderPipeline.h"
+#include "Render/Pipeline/RenderPipeline.h"
 
 namespace SemperEngine
 {
@@ -27,9 +28,10 @@ namespace SemperEngine
 		{
 			WorldSystem::BeforeLoop();
 			ResourceSystem::BeforeLoop();
-			BaseRenderPipeline::Render();
-			GraphicSystem::Resource();
-			GraphicSystem::SwapCommands();
+			RenderPipeline::PreRender();
+			//BaseRenderPipeline::Render();
+			//GraphicSystem::Resource();
+			//GraphicSystem::SwapCommands();
 			_isLooping = true;
 		}
 
@@ -86,7 +88,8 @@ namespace SemperEngine
 				EventSystem::ProcessEvent();
 				WorldSystem::Loop();
 				ResourceSystem::Loop();
-				BaseRenderPipeline::Render();
+				//BaseRenderPipeline::Render();
+				RenderPipeline::Render();
 				EventSystem::EndEvents();
 				/*∑¢ÀÕÕÍ±œ√¸¡Ó*/
 				logicSignal.Send();
