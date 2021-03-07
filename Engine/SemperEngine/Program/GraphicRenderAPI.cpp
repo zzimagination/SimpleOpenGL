@@ -122,11 +122,21 @@ namespace SemperEngine {
 		{
 			record->glFrameBuffer = GLRenderAPI::CreateFrameBuffer();
 			GLRenderAPI::BindFrameBuffer(record->glFrameBuffer);
-			record->glRenderBuffer = GLRenderAPI::AttachDepthStencil(record->width, record->height);
-			auto tex = GLRenderAPI::AttachTexture(record->width, record->height, GLRenderAPI::ColorType::RGB, 0);
 			GraphicTextureData textureData;
+			auto tex = GLRenderAPI::AttachTexture(record->width, record->height, GLRenderAPI::ColorType::RGB, 0);
 			textureData.SetGLTexture(tex);
 			record->textures.push_back(textureData);
+
+			if (record->attach == GraphicRecord::Attach::DepthStencil)
+			{
+				GraphicTextureData attachTex;
+				attachTex.SetGLTexture(GLRenderAPI::AttachDepthStencil(record->width, record->height, true));
+				record->textures.push_back(attachTex);
+			}
+			else
+			{
+				record->glRenderBuffer = GLRenderAPI::AttachDepthStencil(record->width, record->height);
+			}
 			GLRenderAPI::CheckFrameBuffer(record->glFrameBuffer);
 		}
 

@@ -1,7 +1,7 @@
 #include "RenderPipeline.h"
-#include "../../RenderBatchManager.h"
-#include "../../CameraCollection.h"
-#include "../../RenderCollection.h"
+#include "../RenderBatchManager.h"
+#include "../CameraCollection.h"
+#include "../RenderCollection.h"
 #include <memory>
 
 namespace SemperEngine

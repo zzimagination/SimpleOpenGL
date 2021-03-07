@@ -9,8 +9,6 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		bool GraphicRenderer::useRecord = false;
-
 		void GraphicRenderer::Wireframe(bool enable)
 		{
 			auto cmd = shared_ptr<GWireframeCMD>(new GWireframeCMD(enable));
@@ -22,7 +20,9 @@ namespace SemperEngine
 			RenderOperation operation,
 			RenderMatrix matrix,
 			ShaderProperty sproperty,
-			vector<GraphicTextureInfo> textures)
+			vector<GraphicTextureInfo> textures,
+			bool useRecord,
+			std::vector<int> records)
 		{
 			auto cmd = shared_ptr<GDrawCMD>(new GDrawCMD());
 			cmd->vertex = vertex;
@@ -33,11 +33,17 @@ namespace SemperEngine
 			cmd->shaderProperty.Add(PROJECTION_MARIX, matrix.projection);
 			cmd->textures = textures;
 			cmd->useRecord = useRecord;
-			useRecord = false;
+			cmd->recordID = records;
 			GraphicCommandManager::AddRender(cmd);
 		}
 
-		void GraphicRenderer::Render(GraphicVertexInfo vertex, RenderOperation operation, ShaderProperty sproperty, std::vector<GraphicTextureInfo> textures)
+		void GraphicRenderer::Render(
+			GraphicVertexInfo vertex, 
+			RenderOperation operation, 
+			ShaderProperty sproperty, 
+			std::vector<GraphicTextureInfo> textures,
+			bool useRecord,
+			std::vector<int> records)
 		{
 			auto cmd = shared_ptr<GDrawCMD>(new GDrawCMD());
 			cmd->vertex = vertex;
@@ -45,11 +51,16 @@ namespace SemperEngine
 			cmd->shaderProperty = sproperty;
 			cmd->textures = textures;
 			cmd->useRecord = useRecord;
-			useRecord = false;
+			cmd->recordID = records;
 			GraphicCommandManager::AddRender(cmd);
 		}
 
-		void GraphicRenderer::Render(GraphicVertexInfo vertex, ShaderProperty sproperty, std::vector<GraphicTextureInfo> textures)
+		void GraphicRenderer::Render(
+			GraphicVertexInfo vertex,
+			ShaderProperty sproperty,
+			std::vector<GraphicTextureInfo> textures,
+			bool useRecord,
+			std::vector<int> records)
 		{
 			auto cmd = shared_ptr<GDrawCMD>(new GDrawCMD());
 			cmd->vertex = vertex;
@@ -59,7 +70,7 @@ namespace SemperEngine
 			cmd->shaderProperty = sproperty;
 			cmd->textures = textures;
 			cmd->useRecord = useRecord;
-			useRecord = false;
+			cmd->recordID = records;
 			GraphicCommandManager::AddRender(cmd);
 		}
 
@@ -85,10 +96,7 @@ namespace SemperEngine
 			auto cmd = shared_ptr<GCMD_StopRecord>(new GCMD_StopRecord);
 			GraphicCommandManager::AddRender(cmd);
 		}
-		void GraphicRenderer::UseRecord()
-		{
-			useRecord = true;
-		}
+
 		void GraphicRenderer::RenderRecord(GraphicVertexInfo vertex, RenderOperation operation ,ShaderProperty sproperty)
 		{
 			auto cmd = shared_ptr<GCMD_DrawRecord>(new GCMD_DrawRecord());

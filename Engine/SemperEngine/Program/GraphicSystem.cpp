@@ -1,6 +1,7 @@
 #include "GraphicSystem.h"
 #include "GraphicResource.h"
 #include "GraphicCommandManager.h"
+#include "Graphic/GraphicRecordManager.h"
 #include "ShaderCompiler.h"
 #include <memory>
 
@@ -19,6 +20,7 @@ namespace SemperEngine
 		void GraphicSystem::Render()
 		{
 			GraphicCommandManager::Render();
+			GraphicRecordManager::Clear();
 		}
 		void GraphicSystem::Resource()
 		{
@@ -26,8 +28,7 @@ namespace SemperEngine
 		}
 		void GraphicSystem::SwapCommands()
 		{
-			auto clearRecords = shared_ptr<GCMD_ClearRecords>(new GCMD_ClearRecords());
-			GraphicCommandManager::AddRender(clearRecords);
+			GraphicRecordManager::Swap();
 			GraphicCommandManager::SwapCommands();
 		}
 		void GraphicSystem::Dispose()

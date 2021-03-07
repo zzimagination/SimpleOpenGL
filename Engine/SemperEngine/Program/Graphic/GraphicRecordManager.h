@@ -36,6 +36,8 @@ namespace SemperEngine
 			static std::vector<GraphicRecord*> GetExecuteList();
 
 			static void Clear();
+
+			static void Swap();
 		};
 	}
 }

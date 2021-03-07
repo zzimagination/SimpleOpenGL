@@ -13,10 +13,6 @@ namespace SemperEngine
 		{
 		public:
 
-			static bool useRecord;
-
-		public:
-
 			static void Wireframe(bool enable);
 
 			static void Render(
@@ -24,19 +20,25 @@ namespace SemperEngine
 				RenderOperation operation,
 				RenderMatrix matrix,
 				ShaderProperty sproperty,
-				std::vector<GraphicTextureInfo> textures);
+				std::vector<GraphicTextureInfo> textures,
+				bool useRecord = false,
+				std::vector<int> records = {});
 
 			static void Render(
 				GraphicVertexInfo vertex,
 				RenderOperation operation,
 				ShaderProperty sproperty,
-				std::vector<GraphicTextureInfo> textures
+				std::vector<GraphicTextureInfo> textures,
+				bool useRecord = false,
+				std::vector<int> records = {}
 			);
 
 			static void Render(
 				GraphicVertexInfo vertex,
 				ShaderProperty sproperty,
-				std::vector<GraphicTextureInfo> textures
+				std::vector<GraphicTextureInfo> textures,
+				bool useRecord = false,
+				std::vector<int> records = {}
 			);
 
 			static void Clear(Color color, Graphic::ClearMode mode);
@@ -46,8 +48,6 @@ namespace SemperEngine
 			static void CreateRecord(std::string name);
 
 			static void StopRecord();
-
-			static void UseRecord();
 
 			static void RenderRecord(GraphicVertexInfo vertex, RenderOperation operation , ShaderProperty sproperty);
 		};

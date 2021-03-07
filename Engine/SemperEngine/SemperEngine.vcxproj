@@ -157,6 +157,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_ClearRecord.h" />
     <ClInclude Include="Program\Graphic\GraphicRecord.h" />
     <ClInclude Include="Program\Graphic\GraphicRecordManager.h" />
     <ClInclude Include="Program\IGraphicResource.h" />
@@ -174,8 +175,8 @@
     <ClInclude Include="Program\Collection\Collection.h" />
     <ClInclude Include="Program\Common.h" />
     <ClInclude Include="Program\Math\Color.h" />
-    <ClInclude Include="Program\Render\Pipeline\RenderPipeline.h" />
-    <ClInclude Include="Program\Render\Pipeline\RenderSection.h" />
+    <ClInclude Include="Program\Render\RenderPipeline.h" />
+    <ClInclude Include="Program\Render\RenderSection.h" />
     <ClInclude Include="Program\Render\RenderRecordManager.h" />
     <ClInclude Include="Program\Thread\CompletedSignal.h" />
     <ClInclude Include="Program\Cube.h" />
@@ -286,6 +287,7 @@
   <ItemGroup>
     <ClCompile Include="Program\GameSystem.cpp" />
     <ClCompile Include="Program\Graphic\GraphicCommand.cpp" />
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_ClearRecord.cpp" />
     <ClCompile Include="Program\Graphic\GraphicRecord.cpp" />
     <ClCompile Include="Program\Graphic\GraphicRecordManager.cpp" />
     <ClCompile Include="Program\MaterialObject.cpp" />
@@ -297,8 +299,8 @@
     <ClCompile Include="Program\ChangeColor.cpp" />
     <ClCompile Include="Program\ChangeTexture.cpp" />
     <ClCompile Include="Program\Math\Color.cpp" />
-    <ClCompile Include="Program\Render\Pipeline\RenderPipeline.cpp" />
-    <ClCompile Include="Program\Render\Pipeline\RenderSection.cpp" />
+    <ClCompile Include="Program\Render\RenderPipeline.cpp" />
+    <ClCompile Include="Program\Render\RenderSection.cpp" />
     <ClCompile Include="Program\Render\RenderRecordManager.cpp" />
     <ClCompile Include="Program\Thread\CompletedSignal.cpp" />
     <ClCompile Include="Program\Component.cpp" />

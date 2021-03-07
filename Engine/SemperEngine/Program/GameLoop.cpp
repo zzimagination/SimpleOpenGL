@@ -7,7 +7,7 @@
 #include "WorldSystem.h"
 #include "GraphicSystem.h"
 #include "ResourceSystem.h"
-#include "Render/Pipeline/RenderPipeline.h"
+#include "Render/RenderPipeline.h"
 
 namespace SemperEngine
 {

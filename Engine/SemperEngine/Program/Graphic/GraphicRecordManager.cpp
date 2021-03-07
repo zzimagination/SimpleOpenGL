@@ -1,4 +1,5 @@
 #include "GraphicRecordManager.h"
+#include "../GraphicCommand.h"
 
 namespace SemperEngine
 {
@@ -20,15 +21,16 @@ namespace SemperEngine
 			auto record = std::shared_ptr<GraphicRecord>(new GraphicRecord(name));
 			if (_isRenderA)
 			{
-				record->managerID = _recordListB.size();
+				record->managerID = (int)_recordListB.size();
 				_recordListB.push_back(record);
 			}
 			else
 			{
-				record->managerID = _recordListA.size();
+				record->managerID = (int)_recordListA.size();
 				_recordListA.push_back(record);
 			}
-			return record.get();
+			auto result = record.get();
+			return result;
 		}
 		GraphicRecord* GraphicRecordManager::GetRecord(int id)
 		{
@@ -89,14 +91,31 @@ namespace SemperEngine
 
 		void GraphicRecordManager::Clear()
 		{
+
 			if (_isRenderA)
 			{
+				for (size_t i = 0; i < _recordListA.size(); i++)
+				{
+					GCMD_ClearRecord cmd;
+					cmd.record = _recordListA[i].get();
+					cmd.Excute();
+				}
 				_recordListA.clear();
 			}
 			else
 			{
+				for (size_t i = 0; i < _recordListB.size(); i++)
+				{
+					GCMD_ClearRecord cmd;
+					cmd.record = _recordListB[i].get();
+					cmd.Excute();
+				}
 				_recordListB.clear();
 			}
+		}
+
+		void GraphicRecordManager::Swap()
+		{
 			_isRenderA = !_isRenderA;
 		}
 	}

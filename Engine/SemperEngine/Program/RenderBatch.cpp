@@ -89,7 +89,7 @@ namespace SemperEngine
 			auto matrix = GetRenderMatrix(model, camera);
 			auto shaderProperty = GetShaderProperty(material);
 			auto textures = GetTextures(material);
-			GraphicRenderer::Render(v, operation, matrix, shaderProperty, textures);
+			GraphicRenderer::Render(v, operation, matrix, shaderProperty, textures, useRecord, recordIDs);
 		}
 		void CustomRenderBatch::GenerateGraphicResource()
 		{
@@ -107,7 +107,7 @@ namespace SemperEngine
 			auto operation = GetOperation(material);
 			auto shaderPorperty = GetShaderProperty(material);
 			auto textures = GetTextures(material);
-			GraphicRenderer::Render(v, operation, shaderPorperty, textures);
+			GraphicRenderer::Render(v, operation, shaderPorperty, textures, useRecord, recordIDs);
 		}
 	}
 }

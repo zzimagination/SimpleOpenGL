@@ -326,12 +326,6 @@
     <ClCompile Include="Program\Renderer.cpp">
       <Filter>GameLogic\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Program\Render\Pipeline\RenderPipeline.cpp">
-      <Filter>Render\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\Render\Pipeline\RenderSection.cpp">
-      <Filter>Render\Game</Filter>
-    </ClCompile>
     <ClCompile Include="Program\Render\RenderRecordManager.cpp">
       <Filter>Render\Game</Filter>
     </ClCompile>
@@ -343,6 +337,15 @@
     </ClCompile>
     <ClCompile Include="Program\Graphic\GraphicRecord.cpp">
       <Filter>Render\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_ClearRecord.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Render\RenderSection.cpp">
+      <Filter>Render\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Render\RenderPipeline.cpp">
+      <Filter>Render\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -700,12 +703,6 @@
     <ClInclude Include="Program\ResourceConfig.h">
       <Filter>ResourceObject</Filter>
     </ClInclude>
-    <ClInclude Include="Program\Render\Pipeline\RenderPipeline.h">
-      <Filter>Render\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Render\Pipeline\RenderSection.h">
-      <Filter>Render\Game</Filter>
-    </ClInclude>
     <ClInclude Include="Program\Tool\OS.h">
       <Filter>Common\Tool</Filter>
     </ClInclude>
@@ -720,6 +717,15 @@
     </ClInclude>
     <ClInclude Include="Program\Graphic\GraphicRecord.h">
       <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_ClearRecord.h">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\RenderSection.h">
+      <Filter>Render\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\RenderPipeline.h">
+      <Filter>Render\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -23,6 +23,8 @@ namespace SemperEngine
 
 			virtual void Excute() = 0;
 
+		protected:
+
 			void SetShaderProperty(ShaderProperty p);
 		};
 
@@ -100,6 +102,12 @@ namespace SemperEngine
 
 			bool useRecord = false;
 
+			std::vector<int> recordID = {};
+
+		private:
+
+			int _setTextureCount = 0;
+
 		public:
 
 			GDrawCMD();
@@ -109,6 +117,8 @@ namespace SemperEngine
 			virtual void Excute() override;
 
 		private:
+
+			void SetRecord(int ID);
 
 			void SetShaderProperty(ShaderProperty shaderP);
 		};
@@ -208,3 +218,5 @@ namespace SemperEngine
 }
 
 #endif
+
+#include "Graphic/GraphicCommand/GCMD_ClearRecord.h"

@@ -27,7 +27,7 @@ namespace SemperEngine
 					RGB = 0x1907,
 
 					RGBA = 0x1908
-				}; 
+				};
 
 			public:
 
@@ -87,7 +87,7 @@ namespace SemperEngine
 
 				static TextureID AttachTexture(int width, int height, ColorType colorType, int index);
 
-				static unsigned int AttachDepthStencil(int width, int height);
+				static unsigned int AttachDepthStencil(int width, int height, bool texture = false);
 
 				static void DeleteRenderBuffer(FrameBufferID rbo);
 			};

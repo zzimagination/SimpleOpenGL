@@ -1,10 +1,8 @@
-#include "RenderSection.h"
+#include "UnlitSection.h"
 #include "../../CameraCollection.h"
 #include "../../RenderCollection.h"
-
 #include "../../RenderBatchManager.h"
 #include "../RenderRecordManager.h"
-#include "../../ResourceInternal.h"
 
 namespace SemperEngine
 {
@@ -46,43 +44,6 @@ namespace SemperEngine
 			batch->model = object->modelMat;
 			batch->mesh = object->mesh.get();
 			batch->material = object->material.get();
-			RenderBatchManager::AddBatch(batch);
-		}
-		CreateRecordSection::~CreateRecordSection()
-		{
-		}
-		void CreateRecordSection::Prepare()
-		{
-			RenderRecordManager::CreateRecord("Unlit");
-		}
-		void CreateRecordSection::Start()
-		{
-		}
-		StopRecordSection::~StopRecordSection()
-		{
-		}
-		void StopRecordSection::Prepare()
-		{
-			RenderRecordManager::StopRecord();
-		}
-		void StopRecordSection::Start()
-		{
-		}
-
-		ScreenRecordSection::~ScreenRecordSection()
-		{
-		}
-		void ScreenRecordSection::Prepare()
-		{
-			auto batch = shared_ptr<ClearBatch>(new ClearBatch());
-			RenderBatchManager::AddBatch(batch);
-		}
-		void ScreenRecordSection::Start()
-		{
-			auto batch = shared_ptr<ScreenRenderBatch>(new ScreenRenderBatch);
-			batch->useRecord = true;
-			auto mat = ResourceInternal::ScreenViewMat();
-			batch->material = mat.get();
 			RenderBatchManager::AddBatch(batch);
 		}
 	}

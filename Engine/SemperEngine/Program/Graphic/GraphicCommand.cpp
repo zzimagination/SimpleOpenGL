@@ -42,6 +42,7 @@ namespace SemperEngine
 			record = GraphicRecordManager::CreateRecord(name);
 			record->width = GameSetting::windowWidth;
 			record->height = GameSetting::windowHeight;
+			record->attach = GraphicRecord::Attach::DepthStencil;
 		}
 
 		GCMD_CreateRecord::~GCMD_CreateRecord()

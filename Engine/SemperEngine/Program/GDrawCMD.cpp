@@ -39,26 +39,36 @@ namespace SemperEngine
 			GraphicRenderAPI::SetVertexData(*vertexData);
 			SetShaderProperty(shaderProperty);
 
-			int textureIndex = 0;
+			_setTextureCount = 0;
 
-			auto record = GraphicRecordManager::lastRecord;
-			if (record != nullptr)
+			if (useRecord)
 			{
-				for (auto i = 0; i < record->textures.size(); i++)
+				for (size_t i = 0; i < recordID.size(); i++)
 				{
-					GraphicTextureData tex;
-					tex.SetGLTexture(record->textures[i].glID);
-					GraphicRenderAPI::SetShaderProperty(i + textureIndex, tex);
+					SetRecord(recordID[i]);
 				}
-				textureIndex += record->textures.size();
 			}
 
 			for (size_t i = 0; i < texturesData.size(); i++)
 			{
-				GraphicRenderAPI::SetShaderProperty(textures[i].index + textureIndex, *(texturesData[i]));
+				GraphicRenderAPI::SetShaderProperty(textures[i].index + _setTextureCount, *(texturesData[i]));
 			}
 
 			GraphicRenderAPI::Draw();
+		}
+
+		void GDrawCMD::SetRecord(int ID)
+		{
+			auto record = GraphicRecordManager::GetRecord(ID);
+			if (record == nullptr)
+			{
+				return;
+			}
+			for (size_t i = 0; i < record->textures.size(); i++)
+			{
+				GraphicRenderAPI::SetShaderProperty(_setTextureCount, record->textures[i]);
+				_setTextureCount++;
+			}
 		}
 
 		void GDrawCMD::SetShaderProperty(ShaderProperty sproperty)

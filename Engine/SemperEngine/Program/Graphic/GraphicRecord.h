@@ -12,11 +12,26 @@ namespace SemperEngine
 		{
 		public:
 
+			enum class Attach
+			{
+				None,
+
+				Depth,
+
+				Stencil,
+
+				DepthStencil
+			};
+
+		public:
+
 			std::string name;
 
 			int width = 0;
 
 			int height = 0;
+
+			Attach attach = Attach::None;
 
 		public:
 
