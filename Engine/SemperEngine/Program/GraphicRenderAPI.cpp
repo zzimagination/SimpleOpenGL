@@ -1,9 +1,10 @@
 #include "GraphicRenderAPI.h"
 #include "GraphicShaderManager.h"
 #include "GraphicShader.h"
-#include "Texture.h"
 #include "GraphicResource.h"
 #include "GLRendererAPI.h"
+#include "GLResourceAPI.h"
+#include "GameSetting.h"
 
 namespace SemperEngine {
 
@@ -68,32 +69,32 @@ namespace SemperEngine {
 
 		void GraphicRenderAPI::SetShaderProperty(std::string name, float& value)
 		{
-			GLRenderAPI::SetShaderValue(name, value);
+			GLRenderAPI::SetShaderValue(_shader.opengl_id, name, value);
 		}
 
 		void GraphicRenderAPI::SetShaderProperty(std::string name, Float2& value)
 		{
-			GLRenderAPI::SetShaderValue(name, value);
+			GLRenderAPI::SetShaderValue(_shader.opengl_id, name, value);
 		}
 
 		void GraphicRenderAPI::SetShaderProperty(std::string name, Float3& value)
 		{
-			GLRenderAPI::SetShaderValue(name, value);
+			GLRenderAPI::SetShaderValue(_shader.opengl_id, name, value);
 		}
 
 		void GraphicRenderAPI::SetShaderProperty(std::string name, Float4& value)
 		{
-			GLRenderAPI::SetShaderValue(name, value);
+			GLRenderAPI::SetShaderValue(_shader.opengl_id, name, value);
 		}
 
 		void GraphicRenderAPI::SetShaderProperty(std::string name, Matrix4x4& value)
 		{
-			GLRenderAPI::SetShaderValue(name, value);
+			GLRenderAPI::SetShaderValue(_shader.opengl_id, name, value);
 		}
 
 		void GraphicRenderAPI::SetShaderProperty(int id, GraphicTextureData& data)
 		{
-			GLRenderAPI::BindTexture2D(id, data.glid);
+			GLRenderAPI::BindTexture2D(id, data.glID);
 		}
 
 		void GraphicRenderAPI::Draw()
@@ -116,6 +117,34 @@ namespace SemperEngine {
 		void GraphicRenderAPI::SetWireframe(bool enable)
 		{
 			GLRenderAPI::SetWireframe(enable);
+		}
+		void GraphicRenderAPI::CreateRecord(GraphicRecord* record)
+		{
+			record->glFrameBuffer = GLRenderAPI::CreateFrameBuffer();
+			GLRenderAPI::BindFrameBuffer(record->glFrameBuffer);
+			record->glRenderBuffer = GLRenderAPI::AttachDepthStencil(record->width, record->height);
+			auto tex = GLRenderAPI::AttachTexture(record->width, record->height, GLRenderAPI::ColorType::RGB, 0);
+			GraphicTextureData textureData;
+			textureData.SetGLTexture(tex);
+			record->textures.push_back(textureData);
+			GLRenderAPI::CheckFrameBuffer(record->glFrameBuffer);
+		}
+
+		void GraphicRenderAPI::StopRecord(GraphicRecord* record)
+		{
+			GLRenderAPI::CloseFrameBuffer();
+		}
+		void GraphicRenderAPI::DeleteRecord(GraphicRecord* record)
+		{
+			for (auto tex = record->textures.begin(); tex != record->textures.end(); tex++)
+			{
+				GLResourceAPI::ClearTextureData(tex->glID);
+			}
+			if (record->glRenderBuffer >= 0)
+			{
+				GLRenderAPI::DeleteRenderBuffer(record->glRenderBuffer);
+			}
+			GLRenderAPI::DeleteFrameBuffer(record->glFrameBuffer);
 		}
 	}
 }

@@ -7,7 +7,6 @@
 #include "Mesh.h"
 #include "Material.h"
 #include "Graphic.h"
-#include "Render.h"
 #include "CameraObject.h"
 
 namespace SemperEngine {
@@ -30,55 +29,20 @@ namespace SemperEngine {
 
 		public:
 
+			bool useRecord = false;
+
+			std::vector<int> recordIDs;
+
+			std::vector<std::string> recordNames;
+
+		public:
+
 			virtual ~RenderBatch();
 
-			virtual void GenerateGraphicResource();
+			virtual void GenerateGraphicResource() = 0;
 
-			virtual void RenderGraphicObject();
+			virtual void RenderGraphicObject() = 0;
 
-
-		public:
-
-			enum class VertexType
-			{
-				Custom,
-
-				Screen
-			};
-
-		private:
-
-			VertexType _vertexType = VertexType::Custom;
-
-			std::shared_ptr<Mesh> _mesh;
-
-			RenderMatrix _renderMatrix;
-
-			std::shared_ptr<Material> _material;
-
-		public:
-
-			void SetVertexType(VertexType type);
-
-			VertexType GetVertexType();
-
-			void SetMesh(std::shared_ptr<Mesh> mesh);
-
-			GraphicVertexInfo GetGraphicVertexInfo();
-
-			void SetModelMatrix(Matrix4x4 mat4);
-
-			void SetViewMatrix(Matrix4x4 mat4);
-
-			void SetProjectionMatrix(Matrix4x4 mat4);
-
-			RenderMatrix GetRenderMatrix();
-
-			void SetMaterial(std::shared_ptr<Material> material);
-
-			std::shared_ptr<Material> GetMaterial();
-
-			std::vector<GraphicTextureInfo> GetGraphicTextureInfos();
 		};
 
 		class ClearBatch : public RenderBatch
@@ -91,22 +55,26 @@ namespace SemperEngine {
 
 		public:
 
+			ClearBatch();
+
 			ClearBatch(Color color, Graphic::ClearMode mode);
 
 			virtual ~ClearBatch() override;
 
 			virtual void RenderGraphicObject() override;
+
+			virtual void GenerateGraphicResource() override;
 		};
 
 		class CustomRenderBatch : public RenderBatch
 		{
 		public:
 
-			Mesh* mesh;
+			Mesh* mesh = nullptr;
 
-			CameraObject* camera;
+			CameraObject* camera = nullptr;
 
-			Material* material;
+			Material* material = nullptr;
 
 			Matrix4x4 model;
 
@@ -117,6 +85,19 @@ namespace SemperEngine {
 			virtual void RenderGraphicObject() override;
 
 			virtual void GenerateGraphicResource() override;
+		};
+
+		class ScreenRenderBatch : public RenderBatch
+		{
+		public:
+
+			Material* material = nullptr;
+
+		public:
+			// Í¨¹ý RenderBatch ¼Ì³Ð
+			virtual void GenerateGraphicResource() override;
+
+			virtual void RenderGraphicObject() override;
 		};
 	}
 }

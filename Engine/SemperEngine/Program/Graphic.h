@@ -181,6 +181,8 @@ namespace SemperEngine
 
 		struct GraphicVertexResource
 		{
+			std::string name = "";
+
 			ArrayList<Float3>* vertices = nullptr;
 
 			ArrayList<Float2>* uv = nullptr;
@@ -190,11 +192,13 @@ namespace SemperEngine
 
 		struct GraphicTextureResource
 		{
+			std::string name = "";
+
 			ArrayList<ColorByte>* pixels = nullptr;
 
-			int width = 0;
+			int width = -1;
 
-			int height = 0;
+			int height = -1;
 
 			Graphic::TextureFilter filter = Graphic::TextureFilter::Nearest;
 		};

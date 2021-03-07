@@ -82,9 +82,6 @@
     <ClCompile Include="Program\RenderScreenObject.cpp">
       <Filter>Render\Game\RenderObject</Filter>
     </ClCompile>
-    <ClCompile Include="Program\BaseRenderPipeline.cpp">
-      <Filter>Render\Game</Filter>
-    </ClCompile>
     <ClCompile Include="Program\RenderBatch.cpp">
       <Filter>Render\Game</Filter>
     </ClCompile>
@@ -335,6 +332,18 @@
     <ClCompile Include="Program\Render\Pipeline\RenderSection.cpp">
       <Filter>Render\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Program\Render\RenderRecordManager.cpp">
+      <Filter>Render\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicRecordManager.cpp">
+      <Filter>Render\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicRecord.cpp">
+      <Filter>Render\Graphic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program\Debug.h">
@@ -427,9 +436,6 @@
     <ClInclude Include="Program\RenderScreenObject.h">
       <Filter>Render\Game\RenderObject</Filter>
     </ClInclude>
-    <ClInclude Include="Program\BaseRenderPipeline.h">
-      <Filter>Render\Game</Filter>
-    </ClInclude>
     <ClInclude Include="Program\RenderBatch.h">
       <Filter>Render\Game</Filter>
     </ClInclude>
@@ -480,9 +486,6 @@
     </ClInclude>
     <ClInclude Include="Program\ShaderSource.h">
       <Filter>Render\Graphic\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\GraphicCommand.h">
-      <Filter>Render\Graphic</Filter>
     </ClInclude>
     <ClInclude Include="Program\GraphicCommandManager.h">
       <Filter>Render\Graphic</Filter>
@@ -576,9 +579,6 @@
     </ClInclude>
     <ClInclude Include="Program\Graphic.h">
       <Filter>Render\Graphic</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Render.h">
-      <Filter>Render\Game</Filter>
     </ClInclude>
     <ClInclude Include="Program\Math\Color.h">
       <Filter>Common\Math</Filter>
@@ -705,6 +705,21 @@
     </ClInclude>
     <ClInclude Include="Program\Render\Pipeline\RenderSection.h">
       <Filter>Render\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Tool\OS.h">
+      <Filter>Common\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\RenderRecordManager.h">
+      <Filter>Render\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\GraphicCommand.h">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicRecordManager.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicRecord.h">
+      <Filter>Render\Graphic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

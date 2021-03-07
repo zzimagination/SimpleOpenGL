@@ -37,7 +37,8 @@ namespace SemperEngine
 			Shaderfile("Color","Shader/Color.vs", "Shader/Color.fs"),
 			Shaderfile("Debug", "Shader/Debug.vs", "Shader/Debug.fs"),
 			Shaderfile("Texture", "Shader/Texture.vs", "Shader/Texture.fs"),
-			Shaderfile("ScreenTexture", "Shader/ScreenTexture.vs", "Shader/ScreenTexture.fs")
+			Shaderfile("ScreenTexture", "Shader/ScreenTexture.vs", "Shader/ScreenTexture.fs"),
+			Shaderfile("ScreenView", "Shader/ScreenView.vs", "Shader/ScreenView.fs")
 		};
 	}
 }

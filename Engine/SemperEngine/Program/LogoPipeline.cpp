@@ -13,7 +13,6 @@ namespace SemperEngine
 	namespace Core
 	{
 		using namespace std;
-		using namespace chrono;
 
 		shared_ptr<RenderScreenObject> LogoPipeline::_renderObject;
 
@@ -92,9 +91,14 @@ namespace SemperEngine
 
 		void LogoPipeline::Render()
 		{
-			GraphicRenderer::Clear(Color(Float4(0, 0, 0, 1)));
-			RenderBatchManager::GenerateBatch(_renderObject.get());
-			RenderBatchManager::GenerateGraphicCommands();
+			auto clear = shared_ptr<ClearBatch>(new ClearBatch(Color(Float4(0, 0, 0, 1)), ClearColorDepth));
+			RenderBatchManager::AddBatch(clear);
+			
+			auto screen = shared_ptr<ScreenRenderBatch>(new ScreenRenderBatch);
+			screen->material = _renderObject->material.get();
+			RenderBatchManager::AddBatch(screen);
+
+			RenderBatchManager::ExecuteBatchs();
 			RenderBatchManager::Clear();
 
 			GraphicCommandManager::Resource();

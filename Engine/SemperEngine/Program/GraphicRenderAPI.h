@@ -7,11 +7,12 @@
 #include "GraphicShader.h"
 #include "GraphicVertexData.h"
 #include "GraphicTextureData.h"
-#include "Render.h"
+#include "Graphic/GraphicRecord.h"
 
 namespace SemperEngine {
 
-	namespace Core {
+	namespace Core 
+	{
 
 		class GraphicRenderAPI
 		{
@@ -65,6 +66,11 @@ namespace SemperEngine {
 
 			static void SetWireframe(bool enable);
 
+			static void CreateRecord(GraphicRecord* record);
+
+			static void StopRecord(GraphicRecord* record);
+
+			static void DeleteRecord(GraphicRecord* record);
 		};
 	}
 }

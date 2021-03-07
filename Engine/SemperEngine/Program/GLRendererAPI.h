@@ -13,11 +13,21 @@ namespace SemperEngine
 	{
 		namespace GraphicAPI
 		{
+			typedef unsigned int FrameBufferID;
+			typedef unsigned int RenderBufferID;
+			typedef unsigned int TextureID;
+			typedef unsigned int ShaderPrograme;
+
 			class GLRenderAPI
 			{
-			private:
+			public:
 
-				static unsigned int _shader;
+				enum class ColorType
+				{
+					RGB = 0x1907,
+
+					RGBA = 0x1908
+				}; 
 
 			public:
 
@@ -43,27 +53,43 @@ namespace SemperEngine
 
 				static void BindTexture2D(int id, unsigned int tex);
 
-				static void SetShader(unsigned int program);
+				static void SetShader(ShaderPrograme shader);
 
-				static void SetShaderValue(const std::string& name, bool value);
+				static void SetShaderValue(ShaderPrograme shader, const std::string& name, bool value);
 
-				static void SetShaderValue(const std::string& name, int value);
+				static void SetShaderValue(ShaderPrograme shader, const std::string& name, int value);
 
-				static void SetShaderValue(const std::string& name, float value);
+				static void SetShaderValue(ShaderPrograme shader, const std::string& name, float value);
 
-				static void SetShaderValue(const std::string& name, const Float2& value);
+				static void SetShaderValue(ShaderPrograme shader, const std::string& name, const Float2& value);
 
-				static void SetShaderValue(const std::string& name, const Float3& value);
+				static void SetShaderValue(ShaderPrograme shader, const std::string& name, const Float3& value);
 
-				static void SetShaderValue(const std::string& name, const Float4& value);
+				static void SetShaderValue(ShaderPrograme shader, const std::string& name, const Float4& value);
 
-				static void SetShaderValue(const std::string& name, const Matrix4x4& mat);
+				static void SetShaderValue(ShaderPrograme shader, const std::string& name, const Matrix4x4& mat);
 
 				static void DrawElements(int count);
 
 				static void DrawLines(int count);
 
 				static void DrawTriangles(int count);
+
+				static FrameBufferID CreateFrameBuffer();
+
+				static void DeleteFrameBuffer(FrameBufferID fbo);
+
+				static void BindFrameBuffer(FrameBufferID fbo);
+
+				static void CloseFrameBuffer();
+
+				static void CheckFrameBuffer(FrameBufferID fbo);
+
+				static TextureID AttachTexture(int width, int height, ColorType colorType, int index);
+
+				static unsigned int AttachDepthStencil(int width, int height);
+
+				static void DeleteRenderBuffer(FrameBufferID rbo);
 			};
 		}
 	}

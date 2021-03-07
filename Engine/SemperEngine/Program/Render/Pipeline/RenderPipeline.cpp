@@ -2,6 +2,7 @@
 #include "../../RenderBatchManager.h"
 #include "../../CameraCollection.h"
 #include "../../RenderCollection.h"
+#include <memory>
 
 namespace SemperEngine
 {
@@ -11,8 +12,14 @@ namespace SemperEngine
 
 		void RenderPipeline::PreRender()
 		{
-			UnlitSection* section = new UnlitSection();
+			auto record = new CreateRecordSection();
+			sectionList.push_back(record);
+			auto section = new UnlitSection();
 			sectionList.push_back(section);
+			auto stop = new StopRecordSection();
+			sectionList.push_back(stop);
+			auto render = new ScreenRecordSection();
+			sectionList.push_back(render);
 		}
 		void RenderPipeline::Render()
 		{

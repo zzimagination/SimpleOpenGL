@@ -18,15 +18,15 @@ namespace SemperEngine
 		{
 		public:
 
-			static std::vector<GraphicCommand*> resources;
+			static std::vector<std::shared_ptr<GraphicCommand>> resources;
 
-			static std::vector<GraphicCommand*> front_DrawCommands;
+			static std::vector<std::shared_ptr<GraphicCommand>> front_DrawCommands;
 
-			static std::vector<GraphicCommand*> front_Setting;
+			static std::vector<std::shared_ptr<GraphicCommand>> front_Setting;
 
-			static std::vector<GraphicCommand*> back_DrawCommands;
+			static std::vector<std::shared_ptr<GraphicCommand>> back_DrawCommands;
 
-			static std::vector<GraphicCommand*> back_setting;
+			static std::vector<std::shared_ptr<GraphicCommand>> back_setting;
 
 		public:
 
@@ -38,28 +38,13 @@ namespace SemperEngine
 
 			static void ClearCommands();
 
-			static void AddVertexBuffer(GraphicDataInfo info);
+			static void AddResource(std::shared_ptr<GraphicCommand> command);
 
-			static void ClearVertexBuffer(GraphicDataInfo info);
-
-			static void AddTextureBuffer(GraphicDataInfo info);
-
-			static void ClearTextureBuffer(GraphicDataInfo info);
-
-			static void Draw(
-				GraphicVertexInfo vertex, 
-				RenderOperation operation, 
-				RenderMatrix matrix, 
-				ShaderProperty sproperty, 
-				std::vector<GraphicTextureInfo> textures);
-
-			static void Clear(Color color, Graphic::ClearMode mode);
-
-			static void SetWireframe(bool enable);
+			static void AddRender(std::shared_ptr<GraphicCommand> command);
 
 		private:
 
-			static void Excute(std::vector<GraphicCommand*>& cmds);
+			static void Excute(std::vector<std::shared_ptr<GraphicCommand>>& cmds);
 		};
 	}
 }

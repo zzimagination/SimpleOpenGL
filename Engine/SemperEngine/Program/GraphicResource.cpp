@@ -22,13 +22,15 @@ namespace SemperEngine
 			gdata->source = resource;
 			GraphicDataInfo info;
 			info.index = _vertexData.Add(gdata);
-			GraphicCommandManager::AddVertexBuffer(info);
+			auto cmd = shared_ptr<GVertexBufferCMD>(new GVertexBufferCMD(info));
+			GraphicCommandManager::AddResource(cmd);
 			return info;
 		}
 
 		void GraphicResource::RemoveVertexData(GraphicDataInfo info)
 		{
-			GraphicCommandManager::ClearVertexBuffer(info);
+			auto cmd = shared_ptr<GVertexBufferClearCMD>(new GVertexBufferClearCMD(info));
+			GraphicCommandManager::AddResource(cmd);
 		}
 
 		void GraphicResource::DeleteGraphicVertexData(GraphicDataInfo info)
@@ -45,15 +47,19 @@ namespace SemperEngine
 		{
 			auto gdata = shared_ptr<GraphicTextureData>(new GraphicTextureData());
 			gdata->source = resource;
+			gdata->name = resource.name;
 			GraphicDataInfo info;
+			info.name = gdata->name;
 			info.index = _textureData.Add(gdata);
-			GraphicCommandManager::AddTextureBuffer(info);
+			auto cmd = shared_ptr<GTextureBufferCMD>(new GTextureBufferCMD(info));
+			GraphicCommandManager::AddResource(cmd);
 			return info;
 		}
 
 		void GraphicResource::RemoveTextureData(GraphicDataInfo info)
 		{
-			GraphicCommandManager::ClearTextureBuffer(info);
+			auto cmd = shared_ptr<GTextureBufferClearCMD>(new GTextureBufferClearCMD(info));
+			GraphicCommandManager::AddResource(cmd);
 		}
 
 		void GraphicResource::DeleteGraphicTextureData(GraphicDataInfo info)

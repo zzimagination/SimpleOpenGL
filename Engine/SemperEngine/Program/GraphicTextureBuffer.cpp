@@ -22,8 +22,7 @@ namespace SemperEngine
 		{
 			auto data = GraphicResource::GetTextureData(dataInfo);
 			auto tmp = GraphicResouceAPI::AddTextureData(data->source);
-			data->glid = tmp.glid;
-			data->Complete();
+			data->SetGLTexture(tmp.glID);
 		}
 	}
 }

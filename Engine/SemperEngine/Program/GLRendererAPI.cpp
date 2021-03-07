@@ -1,6 +1,6 @@
 #include "GLRendererAPI.h"
 #include <glad/glad.h>
-
+#include "Debug.h"
 
 namespace SemperEngine
 {
@@ -9,8 +9,6 @@ namespace SemperEngine
 		namespace GraphicAPI
 		{
 			using namespace std;
-
-			unsigned int GLRenderAPI::_shader = 0;
 
 			void GLRenderAPI::SetWireframe(bool enable)
 			{
@@ -140,53 +138,56 @@ namespace SemperEngine
 			{
 				glBindVertexArray(VAO);
 			}
+
 			void GLRenderAPI::BindTexture2D(int id, unsigned int tex)
 			{
 				glActiveTexture(GL_TEXTURE0 + id);
 				glBindTexture(GL_TEXTURE_2D, tex);
 			}
 
-			void GLRenderAPI::SetShader(unsigned int program)
+#pragma region Shader
+
+			void GLRenderAPI::SetShader(ShaderPrograme shader)
 			{
-				glUseProgram(program);
-				_shader = program;
+				glUseProgram(shader);
 			}
-			void GLRenderAPI::SetShaderValue(const string& name, bool value)
+
+			void GLRenderAPI::SetShaderValue(ShaderPrograme shader, const string& name, bool value)
 			{
-				auto local = glGetUniformLocation(_shader, name.c_str());
+				auto local = glGetUniformLocation(shader, name.c_str());
 				glUniform1i(local, (int)value);
 			}
-			void GLRenderAPI::SetShaderValue(const string& name, int value)
+			void GLRenderAPI::SetShaderValue(ShaderPrograme shader, const string& name, int value)
 			{
-				auto local = glGetUniformLocation(_shader, name.c_str());
+				auto local = glGetUniformLocation(shader, name.c_str());
 				glUniform1i(local, value);
 			}
-			void GLRenderAPI::SetShaderValue(const string& name, float value)
+			void GLRenderAPI::SetShaderValue(ShaderPrograme shader, const string& name, float value)
 			{
-				auto local = glGetUniformLocation(_shader, name.c_str());
+				auto local = glGetUniformLocation(shader, name.c_str());
 				glUniform1f(local, value);
 			}
-			void GLRenderAPI::SetShaderValue(const string& name, const Float2& value)
+			void GLRenderAPI::SetShaderValue(ShaderPrograme shader, const string& name, const Float2& value)
 			{
 				float data[2] = { value.x,value.y };
-				auto local = glGetUniformLocation(_shader, name.c_str());
+				auto local = glGetUniformLocation(shader, name.c_str());
 				glUniform2fv(local, 1, data);
 			}
-			void GLRenderAPI::SetShaderValue(const string& name, const Float3& value)
+			void GLRenderAPI::SetShaderValue(ShaderPrograme shader, const string& name, const Float3& value)
 			{
 				float data[3] = { value.x, value.y,value.z };
-				auto local = glGetUniformLocation(_shader, name.c_str());
+				auto local = glGetUniformLocation(shader, name.c_str());
 				glUniform3fv(local, 1, data);
 			}
-			void GLRenderAPI::SetShaderValue(const string& name, const Float4& value)
+			void GLRenderAPI::SetShaderValue(ShaderPrograme shader, const string& name, const Float4& value)
 			{
 				float data[4] = { value.x,value.y,value.z,value.w };
-				auto local = glGetUniformLocation(_shader, name.c_str());
+				auto local = glGetUniformLocation(shader, name.c_str());
 				glUniform4fv(local, 1, data);
 			}
-			void GLRenderAPI::SetShaderValue(const string& name, const Matrix4x4& mat)
+			void GLRenderAPI::SetShaderValue(ShaderPrograme shader, const string& name, const Matrix4x4& mat)
 			{
-				float data[4][4];
+				float data[4][4]{};
 
 				data[0][0] = mat.x0;
 				data[0][1] = mat.x1;
@@ -207,9 +208,11 @@ namespace SemperEngine
 				data[3][1] = mat.w1;
 				data[3][2] = mat.w2;
 				data[3][3] = mat.w3;
-				auto local = glGetUniformLocation(_shader, name.c_str());
+				auto local = glGetUniformLocation(shader, name.c_str());
 				glUniformMatrix4fv(local, 1, GL_FALSE, &data[0][0]);
 			}
+
+#pragma endregion
 
 			void GLRenderAPI::DrawElements(int count)
 			{
@@ -223,6 +226,60 @@ namespace SemperEngine
 			void GLRenderAPI::DrawTriangles(int count)
 			{
 				glDrawArrays(GL_TRIANGLES, 0, count);
+			}
+			FrameBufferID GLRenderAPI::CreateFrameBuffer()
+			{
+				FrameBufferID fbo = 0;
+				glGenFramebuffers(1, &fbo);
+				return fbo;
+			}
+			void GLRenderAPI::DeleteFrameBuffer(FrameBufferID fbo)
+			{
+				glDeleteFramebuffers(1, &fbo);
+			}
+			void GLRenderAPI::BindFrameBuffer(FrameBufferID fbo)
+			{
+				glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+			}
+			void GLRenderAPI::CheckFrameBuffer(FrameBufferID fbo)
+			{
+				if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+				{
+					glBindFramebuffer(GL_FRAMEBUFFER, 0);
+					Debug::LogError({ "FrameBuffer error: " , to_string(fbo) });
+					return;
+				}
+			}
+			void GLRenderAPI::CloseFrameBuffer()
+			{
+				glBindFramebuffer(GL_FRAMEBUFFER, 0);
+			}
+
+			TextureID GLRenderAPI::AttachTexture(int width, int height, ColorType colorType, int index)
+			{
+				TextureID texture;
+				glGenTextures(1, &texture);
+				glBindTexture(GL_TEXTURE_2D, texture);
+				glTexImage2D(GL_TEXTURE_2D, 0, (int)colorType, width, height, 0, (int)colorType, GL_UNSIGNED_BYTE, NULL);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + index, GL_TEXTURE_2D, texture, 0);
+				return texture;
+			}
+
+			unsigned int GLRenderAPI::AttachDepthStencil(int width, int height)
+			{
+				unsigned int rbo;
+				glGenRenderbuffers(1, &rbo);
+				glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+				glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
+				glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
+				return rbo;
+			}
+
+			void GLRenderAPI::DeleteRenderBuffer(FrameBufferID rbo)
+			{
+				glDeleteRenderbuffers(1, &rbo);
 			}
 		}
 	}

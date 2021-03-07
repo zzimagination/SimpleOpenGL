@@ -1,6 +1,7 @@
 #include "RenderBatch.h"
 #include "Debug.h"
 #include "GraphicRenderer.h"
+#include "ResourceInternal.h"
 
 namespace SemperEngine
 {
@@ -55,93 +56,10 @@ namespace SemperEngine
 		{
 		}
 
-		void RenderBatch::GenerateGraphicResource()
+		ClearBatch::ClearBatch()
 		{
-		}
-
-		void RenderBatch::RenderGraphicObject()
-		{
-		}
-
-		void RenderBatch::SetVertexType(VertexType type)
-		{
-			this->_vertexType = type;
-			if (type == VertexType::Screen)
-			{
-				_mesh.reset();
-			}
-		}
-		RenderBatch::VertexType RenderBatch::GetVertexType()
-		{
-			return this->_vertexType;
-		}
-		void RenderBatch::SetMesh(std::shared_ptr<Mesh> mesh)
-		{
-			_mesh = mesh;
-		}
-		GraphicVertexInfo RenderBatch::GetGraphicVertexInfo()
-		{
-			GraphicVertexInfo info;
-			info.info = _mesh->GetObject()->graphicDataInfo;
-			return info;
-		}
-		void RenderBatch::SetModelMatrix(Matrix4x4 mat4)
-		{
-			if (_vertexType == VertexType::Screen)
-			{
-				Debug::LogError("VertexType is screen");
-			}
-			_renderMatrix.model = mat4;
-		}
-
-		void RenderBatch::SetViewMatrix(Matrix4x4 mat4)
-		{
-			if (_vertexType == VertexType::Screen)
-			{
-				Debug::LogError("VertexType is screen");
-			}
-			_renderMatrix.view = mat4;
-		}
-
-		void RenderBatch::SetProjectionMatrix(Matrix4x4 mat4)
-		{
-			if (_vertexType == VertexType::Screen)
-			{
-				Debug::LogError("VertexType is screen");
-			}
-			_renderMatrix.projection = mat4;
-		}
-		RenderMatrix RenderBatch::GetRenderMatrix()
-		{
-			if (_vertexType == VertexType::Screen)
-			{
-				Debug::LogError("VertexType is screen");
-			}
-			return _renderMatrix;
-		}
-
-		void RenderBatch::SetMaterial(std::shared_ptr<Material> material)
-		{
-			_material = material;
-		}
-		std::shared_ptr<Material> RenderBatch::GetMaterial()
-		{
-			return _material;
-		}
-		std::vector<GraphicTextureInfo> RenderBatch::GetGraphicTextureInfos()
-		{
-			vector<GraphicTextureInfo> gtextures;
-			auto textures = _material->GetTextures();
-			for (int j = 0; j < textures.size(); j++)
-			{
-				auto index = j;
-				auto info = textures[j]->GetObject()->graphicDataInfo;
-				GraphicTextureInfo tmp;
-				tmp.index = index;
-				tmp.info = info;
-				gtextures.push_back(tmp);
-			}
-			return gtextures;
+			clearColor = Color(Float3(1, 1, 1));
+			clearMode = ClearColorDepth;
 		}
 
 		ClearBatch::ClearBatch(Color color, Graphic::ClearMode mode) : clearColor(color), clearMode(mode)
@@ -155,6 +73,10 @@ namespace SemperEngine
 		void ClearBatch::RenderGraphicObject()
 		{
 			GraphicRenderer::Clear(clearColor, clearMode);
+		}
+
+		void ClearBatch::GenerateGraphicResource()
+		{
 		}
 
 		CustomRenderBatch::~CustomRenderBatch()
@@ -173,6 +95,19 @@ namespace SemperEngine
 		{
 			mesh->GetObject()->CreateGraphicResource();
 			material->GetObject()->CreateGraphicResource();
+		}
+		void ScreenRenderBatch::GenerateGraphicResource()
+		{
+			material->GetObject()->CreateGraphicResource();
+		}
+		void ScreenRenderBatch::RenderGraphicObject()
+		{
+			RenderMatrix matrix;
+			auto v = GetVertexInfo(ResourceInternal::ScreenMesh().get());
+			auto operation = GetOperation(material);
+			auto shaderPorperty = GetShaderProperty(material);
+			auto textures = GetTextures(material);
+			GraphicRenderer::Render(v, operation, shaderPorperty, textures);
 		}
 	}
 }

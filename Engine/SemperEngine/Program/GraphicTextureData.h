@@ -15,7 +15,7 @@ namespace SemperEngine
 		{
 		public:
 
-			unsigned int glid = 0;
+			unsigned int glID = -1;
 
 			GraphicTextureResource source;
 
@@ -23,9 +23,9 @@ namespace SemperEngine
 
 			GraphicTextureData();
 
-			GraphicTextureData(int id);
-
 			virtual ~GraphicTextureData() override;
+
+			void SetGLTexture(unsigned int glId);
 
 		};
 	}

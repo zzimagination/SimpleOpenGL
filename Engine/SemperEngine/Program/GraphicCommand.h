@@ -7,6 +7,7 @@
 #include <memory>
 #include "Graphic.h"
 #include "GraphicResource.h"
+#include "Graphic/GraphicRecord.h"
 
 namespace SemperEngine
 {
@@ -21,6 +22,8 @@ namespace SemperEngine
 			virtual ~GraphicCommand() {};
 
 			virtual void Excute() = 0;
+
+			void SetShaderProperty(ShaderProperty p);
 		};
 
 		class GVertexBufferCMD : public GraphicCommand
@@ -91,11 +94,11 @@ namespace SemperEngine
 
 			GraphicVertexInfo vertex;
 
-			RenderMatrix matrix;
-
 			ShaderProperty shaderProperty;
 
 			std::vector<GraphicTextureInfo> textures;
+
+			bool useRecord = false;
 
 		public:
 
@@ -141,6 +144,64 @@ namespace SemperEngine
 
 			virtual ~GWireframeCMD() override;
 
+			virtual void Excute() override;
+		};
+
+		class GCMD_CreateRecord : public GraphicCommand
+		{
+		public:
+
+			GraphicRecord* record = nullptr;
+
+			std::string name;
+
+		public:
+
+			GCMD_CreateRecord();
+
+			virtual ~GCMD_CreateRecord() override;
+
+			virtual void Excute() override;
+		};
+
+		class GCMD_StopRecord : public GraphicCommand
+		{
+		public:
+
+			GraphicRecord* record = nullptr;
+
+		public:
+
+			GCMD_StopRecord();
+
+			virtual ~GCMD_StopRecord() override;
+
+			virtual void Excute() override;
+		};
+
+		class GCMD_ClearRecords : public GraphicCommand
+		{
+		public:
+			virtual ~GCMD_ClearRecords() override;
+
+			virtual void Excute() override;
+		};
+
+		class GCMD_DrawRecord : public GraphicCommand
+		{
+		public:
+
+			GraphicVertexInfo vertex;
+
+			RenderOperation operation;
+
+			ShaderProperty shaderProperty;
+
+		public:
+
+			virtual ~GCMD_DrawRecord() override;
+
+			// Í¨¹ý GraphicCommand ¼Ì³Ð
 			virtual void Excute() override;
 		};
 	}

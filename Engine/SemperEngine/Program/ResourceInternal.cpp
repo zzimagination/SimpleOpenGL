@@ -8,11 +8,17 @@ namespace SemperEngine
 	{
 		using namespace std;
 
+		constexpr const char* WHITE_TEXTURE = "white";
+		constexpr const char* BLACK_TEXTURE = "black";
+		constexpr const char* BUMP_TEXTURE = "bump";
+		constexpr const char* SCREENVIEW_MATERIAL = "ScreenView";
+
 #define PNG_EXTEND(name) string(name).append(".png") 
 
 		shared_ptr<Mesh> ResourceInternal::_screenMesh;
 
 		std::map<std::string, std::shared_ptr<Texture>> ResourceInternal::textureMap;
+		std::map<std::string, std::shared_ptr<Material>> ResourceInternal::materialMap;
 
 		ResourceTextureLibrary ResourceInternal::textureLibrary;
 
@@ -36,6 +42,11 @@ namespace SemperEngine
 			return _screenMesh;
 		}
 
+		std::shared_ptr<Material> ResourceInternal::ScreenViewMat()
+		{
+			return materialMap[SCREENVIEW_MATERIAL];
+		}
+
 		void ResourceInternal::PreLoad()
 		{
 			TextureObject::Setting setting;
@@ -46,6 +57,9 @@ namespace SemperEngine
 
 			_screenMesh = shared_ptr<Mesh>(new Mesh(MeshObject::CreateRectangle()));
 			_screenMesh->GetObject()->CreateGraphicResource();
+
+			auto screenViewMat = shared_ptr<Material>(new Material(SCREENVIEW_MATERIAL));
+			materialMap.insert(pair<string, shared_ptr<Material>>(SCREENVIEW_MATERIAL, screenViewMat));
 		}
 
 		std::shared_ptr<Texture> ResourceInternal::GetTexture(std::string name)
@@ -55,10 +69,8 @@ namespace SemperEngine
 			{
 				return target->second;
 			}
-			string log = "can't find texture";
-			log.append(name);
-			Debug::Log(log);
-			throw log;
+			Debug::LogError({ "can't find texture", name });
+			abort();
 		}
 
 		shared_ptr<Texture> ResourceInternal::LoadTexture(std::string name)
@@ -66,10 +78,9 @@ namespace SemperEngine
 			auto fullPath = InternalFile(name);
 			auto obj = textureLibrary.Load(fullPath);
 			auto texture = shared_ptr<Texture>(new Texture(obj));
-			texture->GetObject()->CreateGraphicResource();
 			return texture;
 		}
-		 
+
 		void ResourceInternal::Dispose()
 		{
 			_screenMesh.reset();

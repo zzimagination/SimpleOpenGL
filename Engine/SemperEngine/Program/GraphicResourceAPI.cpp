@@ -54,13 +54,14 @@ namespace SemperEngine
 				break;
 			}
 			auto deliver = GLResourceAPI::AddTextureData(resource.pixels->DataPtr(), resource.width, resource.height, filter);
-			GraphicTextureData result(deliver.texture);
+			GraphicTextureData result;
+			result.SetGLTexture(deliver.texture);
 			return result;
 		}
 
 		void GraphicResouceAPI::ClearTextureData(GraphicTextureData data)
 		{
-			GLResourceAPI::ClearTextureData(data.glid);
+			GLResourceAPI::ClearTextureData(data.glID);
 		}
 	}
 }

@@ -43,6 +43,7 @@ namespace SemperEngine
 			}
 			graphicBind = true;
 			GraphicTextureResource resource;
+			resource.name = this->name;
 			resource.pixels = &pixels;
 			resource.width = width;
 			resource.height = height;
@@ -56,6 +57,7 @@ namespace SemperEngine
 				break;
 			}
 			graphicDataInfo = GraphicResource::AddTextureData(resource);
+
 		}
 
 		void TextureObject::DeleteGraphicResource()

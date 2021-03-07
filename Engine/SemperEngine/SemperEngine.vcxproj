@@ -157,6 +157,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Program\Graphic\GraphicRecord.h" />
+    <ClInclude Include="Program\Graphic\GraphicRecordManager.h" />
     <ClInclude Include="Program\IGraphicResource.h" />
     <ClInclude Include="Program\GameSystem.h" />
     <ClInclude Include="Program\MaterialObject.h" />
@@ -164,7 +166,6 @@
     <ClInclude Include="Program\ModelObject.h" />
     <ClInclude Include="Program\NativeResource.h" />
     <ClInclude Include="Program\Collection\ArrayList.h" />
-    <ClInclude Include="Program\BaseRenderPipeline.h" />
     <ClInclude Include="Program\BeautifulWorld.h" />
     <ClInclude Include="Program\CameraCollection.h" />
     <ClInclude Include="Program\CameraObject.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="Program\Math\Color.h" />
     <ClInclude Include="Program\Render\Pipeline\RenderPipeline.h" />
     <ClInclude Include="Program\Render\Pipeline\RenderSection.h" />
+    <ClInclude Include="Program\Render\RenderRecordManager.h" />
     <ClInclude Include="Program\Thread\CompletedSignal.h" />
     <ClInclude Include="Program\Cube.h" />
     <ClInclude Include="Program\Debug.h" />
@@ -219,7 +221,6 @@
     <ClInclude Include="Program\RenderCustomObject.h" />
     <ClInclude Include="Program\NextWorld.h" />
     <ClInclude Include="Program\Math\Quaternion.h" />
-    <ClInclude Include="Program\Render.h" />
     <ClInclude Include="Program\RenderBatchManager.h" />
     <ClInclude Include="Program\Camera.h" />
     <ClInclude Include="Program\Component.h" />
@@ -261,6 +262,7 @@
     <ClInclude Include="Program\TextureObject.h" />
     <ClInclude Include="Program\Time.h" />
     <ClInclude Include="Program\TimeManager.h" />
+    <ClInclude Include="Program\Tool\OS.h" />
     <ClInclude Include="Program\Transform.h" />
     <ClInclude Include="Program\Math\Float2.h" />
     <ClInclude Include="Program\Math\Float3.h" />
@@ -283,11 +285,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program\GameSystem.cpp" />
+    <ClCompile Include="Program\Graphic\GraphicCommand.cpp" />
+    <ClCompile Include="Program\Graphic\GraphicRecord.cpp" />
+    <ClCompile Include="Program\Graphic\GraphicRecordManager.cpp" />
     <ClCompile Include="Program\MaterialObject.cpp" />
     <ClCompile Include="Program\Model.cpp" />
     <ClCompile Include="Program\ModelObject.cpp" />
     <ClCompile Include="Program\NativeResource.cpp" />
-    <ClCompile Include="Program\BaseRenderPipeline.cpp" />
     <ClCompile Include="Program\CameraCollection.cpp" />
     <ClCompile Include="Program\CameraObject.cpp" />
     <ClCompile Include="Program\ChangeColor.cpp" />
@@ -295,6 +299,7 @@
     <ClCompile Include="Program\Math\Color.cpp" />
     <ClCompile Include="Program\Render\Pipeline\RenderPipeline.cpp" />
     <ClCompile Include="Program\Render\Pipeline\RenderSection.cpp" />
+    <ClCompile Include="Program\Render\RenderRecordManager.cpp" />
     <ClCompile Include="Program\Thread\CompletedSignal.cpp" />
     <ClCompile Include="Program\Component.cpp" />
     <ClCompile Include="Program\Cube.cpp" />

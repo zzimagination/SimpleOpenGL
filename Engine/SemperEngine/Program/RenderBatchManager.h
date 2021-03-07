@@ -30,25 +30,8 @@ namespace SemperEngine {
 
 			static void ExecuteBatchs();
 
-			static void GenerateBatchs(CameraObject* camera, std::vector<RenderCustomObject*> objects);
-
-			static void GenerateBatchs(std::vector<RenderScreenObject*> objects);
-
-			static void GenerateBatch(RenderScreenObject* object);
-
-			static void GenerateGraphicCommands();
-
 			static void Clear();
 
-		private:
-
-			static void BindResource(RenderCustomObject* obj);
-
-			static void BindResource(RenderScreenObject* obj);
-
-			static void DrawCustom(RenderBatch batch);
-
-			static void DrawScreen(RenderBatch batch);
 		};
 	}
 }

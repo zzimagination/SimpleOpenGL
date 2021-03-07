@@ -7,6 +7,7 @@
 #include <memory>
 #include "Texture.h"
 #include "Mesh.h"
+#include "Material.h"
 #include "ResourceTextureLibrary.h"
 #include "ResourceConfig.h"
 
@@ -14,10 +15,6 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		constexpr const char* WHITE_TEXTURE = "white";
-		constexpr const char* BLACK_TEXTURE = "black";
-		constexpr const char* BUMP_TEXTURE = "bump";
-
 		class ResourceInternal
 		{
 		private:
@@ -27,6 +24,8 @@ namespace SemperEngine
 			static ResourceTextureLibrary textureLibrary;
 
 			static std::shared_ptr<Mesh> _screenMesh;
+
+			static std::map<std::string, std::shared_ptr<Material>> materialMap;
 
 		public:
 
@@ -38,6 +37,10 @@ namespace SemperEngine
 
 			static std::shared_ptr<Mesh> ScreenMesh();
 			
+			static std::shared_ptr<Material> ScreenViewMat();
+
+		public:
+
 			static void PreLoad();
 
 			static void Dispose();

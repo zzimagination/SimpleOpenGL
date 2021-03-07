@@ -40,7 +40,7 @@ namespace SemperEngine
 
 		array<Float3, 4> ScreenVertexData::vertices = { Float3(-1,-1,0), Float3(1,-1,0), Float3(1,1,0), Float3(-1,1,0) };
 
-		array<Float2, 4> ScreenVertexData::uv = { Float2(0,1), Float2(1,1),Float2(1,0), Float2(0,0) };
+		array<Float2, 4> ScreenVertexData::uv = { Float2(0,0), Float2(1,0),Float2(1,1), Float2(0,1) };
 
 		array<int, 6> ScreenVertexData::indices = { 0,1,3,1,2,3 };
 #pragma endregion

@@ -3,6 +3,7 @@
 #include "GraphicRenderAPI.h"
 #include "GraphicShaderManager.h"
 #include "GLRendererAPI.h"
+#include "Graphic/GraphicRecordManager.h"
 
 namespace SemperEngine
 {
@@ -37,12 +38,24 @@ namespace SemperEngine
 
 			GraphicRenderAPI::SetVertexData(*vertexData);
 			SetShaderProperty(shaderProperty);
-			GraphicRenderAPI::SetShaderProperty(MODEL_MATRIX, matrix.model);
-			GraphicRenderAPI::SetShaderProperty(VIEW_MATRIX, matrix.view);
-			GraphicRenderAPI::SetShaderProperty(PROJECTION_MARIX, matrix.projection);
+
+			int textureIndex = 0;
+
+			auto record = GraphicRecordManager::lastRecord;
+			if (record != nullptr)
+			{
+				for (auto i = 0; i < record->textures.size(); i++)
+				{
+					GraphicTextureData tex;
+					tex.SetGLTexture(record->textures[i].glID);
+					GraphicRenderAPI::SetShaderProperty(i + textureIndex, tex);
+				}
+				textureIndex += record->textures.size();
+			}
+
 			for (size_t i = 0; i < texturesData.size(); i++)
 			{
-				GraphicRenderAPI::SetShaderProperty(textures[i].index, *(texturesData[i]));
+				GraphicRenderAPI::SetShaderProperty(textures[i].index + textureIndex, *(texturesData[i]));
 			}
 
 			GraphicRenderAPI::Draw();
@@ -72,7 +85,7 @@ namespace SemperEngine
 				GraphicRenderAPI::SetShaderProperty(i->first, i->second);
 			}
 			auto c = sproperty.colorProperty;
-			for (auto i = c.begin(); i !=c.end() ; i++)
+			for (auto i = c.begin(); i != c.end(); i++)
 			{
 				auto f = i->second.ToFloat4();
 				GraphicRenderAPI::SetShaderProperty(i->first, f);

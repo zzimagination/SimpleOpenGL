@@ -8,13 +8,13 @@ namespace SemperEngine {
 		{
 		}
 
-		GraphicTextureData::GraphicTextureData(int id)
-		{
-			glid = id;
-		}
-
 		GraphicTextureData::~GraphicTextureData()
 		{
+		}
+		void GraphicTextureData::SetGLTexture(unsigned int glID)
+		{
+			this->glID = glID;
+			Complete();
 		}
 	}
 }
