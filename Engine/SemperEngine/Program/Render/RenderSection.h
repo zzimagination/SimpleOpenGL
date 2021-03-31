@@ -18,67 +18,12 @@ namespace SemperEngine
 
 			virtual void Start() = 0;
 		};
-
-		class UnlitSection : public RenderSection
-		{
-		private:
-
-			std::vector<CameraObject*> _cameras;
-
-			std::vector<RenderCustomObject*> _objects;
-
-		public:
-
-			virtual ~UnlitSection() override;
-
-			virtual void Prepare() override;
-
-			virtual void Start() override;
-
-		private:
-
-			void RenderCamera(CameraObject* camera);
-
-			void RenderObject(RenderCustomObject* object, CameraObject* camera);
-		};
-
-		class CreateRecordSection : public RenderSection
-		{
-		public:
-
-			virtual ~CreateRecordSection() override;
-
-			// 通过 RenderSection 继承
-			virtual void Prepare() override;
-			virtual void Start() override;
-		};
-
-		class StopRecordSection : public RenderSection
-		{
-		public:
-
-			virtual ~StopRecordSection() override;
-
-			// 通过 RenderSection 继承
-			virtual void Prepare() override;
-			virtual void Start() override;
-		};
-
-		class ScreenRecordSection : public RenderSection
-		{
-		public:
-
-			virtual ~ScreenRecordSection() override;
-
-			// 通过 RenderSection 继承
-			virtual void Prepare() override;
-			virtual void Start() override;
-		};
-
-
 	}
 }
 
 #include "RenderSection/UnlitSection.h"
+#include "RenderSection/CreateRecordSection.h"
+#include "RenderSection/StopRecordSection.h"
+#include "RenderSection/ScreenRecordSection.h"
 
 #endif // !__RENDER_SECTION__

@@ -7,7 +7,7 @@
 #include "CameraObject.h"
 #include "RenderCustomObject.h"
 #include "RenderScreenObject.h"
-#include "Graphic.h"
+#include "Graphic/Graphic.h"
 #include "Material.h"
 
 namespace SemperEngine {

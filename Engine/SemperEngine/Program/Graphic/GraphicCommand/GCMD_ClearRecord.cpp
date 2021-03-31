@@ -1,5 +1,4 @@
 #include "GCMD_ClearRecord.h"
-#include "../../GraphicRenderAPI.h"
 
 namespace SemperEngine
 {

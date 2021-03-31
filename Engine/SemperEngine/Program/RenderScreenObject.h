@@ -1,4 +1,3 @@
-#pragma once
 #ifndef __RENDERSCREENOBJECT__
 #define __RENDERSCREENOBJECT__
 

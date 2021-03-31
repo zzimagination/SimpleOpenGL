@@ -2,7 +2,7 @@
 #define __GRAPHIC_RECORD__
 
 #include <vector>
-#include "../GraphicTextureData.h"
+#include "GraphicData.h"
 
 namespace SemperEngine
 {

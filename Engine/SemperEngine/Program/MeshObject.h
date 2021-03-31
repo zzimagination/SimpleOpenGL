@@ -1,16 +1,17 @@
-#pragma once
 #ifndef __MESH_OBJECT__
 #define __MESH_OBJECT__
 
 #include <array>
 #include "Common.h"
 #include "ResourceObject.h"
-#include "Graphic.h"
+#include "Graphic/Graphic.h"
 
 namespace SemperEngine
 {
 	namespace Core
 	{
+		class ModelObject;
+
 		struct CubeData
 		{
 			static std::array<Float3, 24> vertices;
@@ -78,9 +79,7 @@ namespace SemperEngine
 			virtual void CreateGraphicResource() override;
 
 			virtual void DeleteGraphicResource() override;
-
 		};
 	}
 }
-
 #endif // !__MESHOBJECT__

@@ -1,5 +1,5 @@
 #include "RenderSetting.h"
-#include "GraphicRenderer.h"
+#include "Graphic/GraphicRenderer.h"
 
 namespace SemperEngine
 {

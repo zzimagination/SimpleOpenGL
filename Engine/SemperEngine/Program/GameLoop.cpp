@@ -5,9 +5,9 @@
 #include "FrameManager.h"
 #include "EventSystem.h"
 #include "WorldSystem.h"
-#include "GraphicSystem.h"
 #include "ResourceSystem.h"
 #include "Render/RenderPipeline.h"
+#include "Graphic/GraphicSystem.h"
 
 namespace SemperEngine
 {

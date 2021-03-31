@@ -1,7 +1,7 @@
 #ifndef __GRAPHIC_RECORDMANAGER__
 #define __GRAPHIC_RECORDMANAGER__
 
-#include "../Common.h"
+#include "Graphic.h"
 #include "GraphicRecord.h"
 #include <memory>
 

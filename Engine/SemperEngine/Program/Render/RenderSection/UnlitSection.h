@@ -1,3 +1,5 @@
+#ifndef __UNLIT_SECTION__
+#define __UNLIT_SECTION__
 #include "../RenderSection.h"
 
 namespace SemperEngine
@@ -27,3 +29,4 @@ namespace SemperEngine
 		};
 	}
 }
+#endif // !__UNLIT_SECTION__

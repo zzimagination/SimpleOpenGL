@@ -6,7 +6,7 @@
 #include "Common.h"
 #include "Mesh.h"
 #include "Material.h"
-#include "Graphic.h"
+#include "Graphic/Graphic.h"
 #include "CameraObject.h"
 
 namespace SemperEngine {

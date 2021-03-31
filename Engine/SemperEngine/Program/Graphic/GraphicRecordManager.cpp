@@ -1,5 +1,5 @@
 #include "GraphicRecordManager.h"
-#include "../GraphicCommand.h"
+#include "GraphicCommand.h"
 
 namespace SemperEngine
 {

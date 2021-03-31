@@ -5,7 +5,7 @@
 #include <map>
 #include <string>
 #include "Common.h"
-#include "Graphic.h"
+#include "Graphic/Graphic.h"
 #include "Texture.h"
 #include "MaterialObject.h"
 

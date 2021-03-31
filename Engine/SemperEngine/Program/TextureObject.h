@@ -6,8 +6,8 @@
 #include <vector>
 #include "Common.h"
 #include "ResourceObject.h"
-#include "Graphic.h"
 #include "ResourceConfig.h"
+#include "Graphic/Graphic.h"
 
 
 namespace SemperEngine

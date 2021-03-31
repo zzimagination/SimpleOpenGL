@@ -1,6 +1,6 @@
 #include "TextureObject.h"
 #include "ResourceObjectCenter.h"
-#include "GraphicResource.h"
+#include "Graphic/GraphicResource.h"
 
 namespace SemperEngine
 {

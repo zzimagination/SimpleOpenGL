@@ -1,6 +1,8 @@
 #ifndef __GCMD_CLEARRECORD__
 #define __GCMD_CLEARRECORD__
-#include "../../GraphicCommand.h"
+
+#include "../GraphicCommand.h"
+
 namespace SemperEngine
 {
 	namespace Core

@@ -3,10 +3,10 @@
 #include "Resource.h"
 #include "RenderCollection.h"
 #include "RenderBatchManager.h"
-#include "GraphicCommandManager.h"
 #include "ResourceSystem.h"
-#include "GraphicRenderer.h"
 #include "Debug.h"
+#include "Graphic/GraphicCommandManager.h"
+#include "Graphic/GraphicRenderer.h"
 
 namespace SemperEngine
 {

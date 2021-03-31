@@ -1,7 +1,6 @@
-#include "../GraphicCommand.h"
-#include "../GraphicRenderAPI.h"
-#include "GraphicRecordManager.h"
-#include "../GameSetting.h"
+#include "GraphicCommand.h"
+#include <vector>
+#include <map>
 
 namespace SemperEngine
 {
@@ -35,66 +34,6 @@ namespace SemperEngine
 			{
 				GraphicRenderAPI::SetShaderProperty(i->first, i->second);
 			}
-		}
-
-		GCMD_CreateRecord::GCMD_CreateRecord()
-		{
-			record = GraphicRecordManager::CreateRecord(name);
-			record->width = GameSetting::windowWidth;
-			record->height = GameSetting::windowHeight;
-			record->attach = GraphicRecord::Attach::DepthStencil;
-		}
-
-		GCMD_CreateRecord::~GCMD_CreateRecord()
-		{
-		}
-
-		void GCMD_CreateRecord::Excute()
-		{
-			GraphicRecordManager::currentRecord = record;
-			GraphicRenderAPI::CreateRecord(record);
-		}
-		GCMD_StopRecord::GCMD_StopRecord()
-		{
-		}
-		GCMD_StopRecord::~GCMD_StopRecord()
-		{
-		}
-		void GCMD_StopRecord::Excute()
-		{
-			GraphicRenderAPI::StopRecord(GraphicRecordManager::currentRecord);
-			GraphicRecordManager::lastRecord = GraphicRecordManager::currentRecord;
-			GraphicRecordManager::currentRecord = nullptr;
-		}
-		GCMD_ClearRecords::~GCMD_ClearRecords()
-		{
-			GraphicRecordManager::Clear();
-		}
-		void GCMD_ClearRecords::Excute()
-		{
-			auto list = GraphicRecordManager::GetExecuteList();
-			for (auto r = list.begin(); r != list.end(); r++)
-			{
-				GraphicRenderAPI::DeleteRecord((*r));
-			}
-		}
-		GCMD_DrawRecord::~GCMD_DrawRecord()
-		{
-		}
-		void GCMD_DrawRecord::Excute()
-		{
-			GraphicRenderAPI::SetCullFace(operation.cull);
-			GraphicRenderAPI::SetCullMode(operation.cullFace);
-			GraphicRenderAPI::SetDepthTest(operation.depth);
-			GraphicRenderAPI::SetDepthTestFunc(operation.depthFunc);
-			GraphicRenderAPI::SetBlend(operation.blend);
-			GraphicRenderAPI::SetBlendFunc();
-
-			auto vertexData = GraphicResource::GetVertexData(vertex.info);
-			GraphicRenderAPI::SetVertexData(*vertexData);
-			SetShaderProperty(shaderProperty);
-			GraphicRenderAPI::SetShaderProperty(0, GraphicRecordManager::lastRecord->textures[0]);
-			GraphicRenderAPI::Draw();
 		}
 	}
 }

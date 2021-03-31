@@ -97,66 +97,6 @@
     <ClCompile Include="Program\RenderSetting.cpp">
       <Filter>Render\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Program\GClearCMD.cpp">
-      <Filter>Render\Graphic\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GDrawCMD.cpp">
-      <Filter>Render\Graphic\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GraphicTextureBuffer.cpp">
-      <Filter>Render\Graphic\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GraphicTextureBufferClear.cpp">
-      <Filter>Render\Graphic\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GVertexBufferClearCMD.cpp">
-      <Filter>Render\Graphic\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GWireframeCMD.cpp">
-      <Filter>Render\Graphic\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GVertexBufferCMD.cpp">
-      <Filter>Render\Graphic\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GraphicTextureData.cpp">
-      <Filter>Render\Graphic\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GraphicVertexData.cpp">
-      <Filter>Render\Graphic\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\glad.c">
-      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GLRendererAPI.cpp">
-      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GLResourceAPI.cpp">
-      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GLShaderAPI.cpp">
-      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GraphicRenderAPI.cpp">
-      <Filter>Render\Graphic\GraphicAPI</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GraphicResourceAPI.cpp">
-      <Filter>Render\Graphic\GraphicAPI</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GraphicShader.cpp">
-      <Filter>Render\Graphic\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GraphicShaderManager.cpp">
-      <Filter>Render\Graphic\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\ShaderCompiler.cpp">
-      <Filter>Render\Graphic\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GraphicCommandManager.cpp">
-      <Filter>Render\Graphic</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\GraphicRenderer.cpp">
-      <Filter>Render\Graphic</Filter>
-    </ClCompile>
     <ClCompile Include="Program\LogoPipeline.cpp">
       <Filter>Render\Logo</Filter>
     </ClCompile>
@@ -305,9 +245,6 @@
     <ClCompile Include="Program\GameSystem.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="Program\GraphicSystem.cpp">
-      <Filter>Render\Graphic</Filter>
-    </ClCompile>
     <ClCompile Include="Program\ResourceSystem.cpp">
       <Filter>ResourceObject</Filter>
     </ClCompile>
@@ -320,17 +257,11 @@
     <ClCompile Include="Program\FrameManager.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="Program\GraphicResource.cpp">
-      <Filter>Render\Graphic</Filter>
-    </ClCompile>
     <ClCompile Include="Program\Renderer.cpp">
       <Filter>GameLogic\Components</Filter>
     </ClCompile>
     <ClCompile Include="Program\Render\RenderRecordManager.cpp">
       <Filter>Render\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\Graphic\GraphicCommand.cpp">
-      <Filter>Render\Graphic\Command</Filter>
     </ClCompile>
     <ClCompile Include="Program\Graphic\GraphicRecordManager.cpp">
       <Filter>Render\Graphic</Filter>
@@ -346,6 +277,93 @@
     </ClCompile>
     <ClCompile Include="Program\Render\RenderPipeline.cpp">
       <Filter>Render\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Render\RenderSection\UnlitSection.cpp">
+      <Filter>Render\Game\RenderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Render\RenderSection\CreateRecordSection.cpp">
+      <Filter>Render\Game\RenderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Render\RenderSection\StopRecordSection.cpp">
+      <Filter>Render\Game\RenderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Render\RenderSection\ScreenRecordSection.cpp">
+      <Filter>Render\Game\RenderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_VertexBuffer.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_VertexBufferClear.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_TextureBuffer.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_TextureBufferClear.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_Draw.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_Clear.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_Wireframe.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_CreateRecord.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_StopRecord.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand.cpp">
+      <Filter>Render\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GL\GLRendererAPI.cpp">
+      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GL\GLResourceAPI.cpp">
+      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicRenderAPI.cpp">
+      <Filter>Render\Graphic\GraphicAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicResourceAPI.cpp">
+      <Filter>Render\Graphic\GraphicAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommandManager.cpp">
+      <Filter>Render\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicRenderer.cpp">
+      <Filter>Render\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicResource.cpp">
+      <Filter>Render\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicSystem.cpp">
+      <Filter>Render\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GL\GLShaderAPI.cpp">
+      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicShader.cpp">
+      <Filter>Render\Graphic\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicShaderManager.cpp">
+      <Filter>Render\Graphic\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\ShaderCompiler.cpp">
+      <Filter>Render\Graphic\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\Data\GraphicTextureData.cpp">
+      <Filter>Render\Graphic\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\Data\GraphicVertexData.cpp">
+      <Filter>Render\Graphic\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GL\glad.c">
+      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -454,48 +472,6 @@
     <ClInclude Include="Program\RenderSetting.h">
       <Filter>Render\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Program\GraphicData.h">
-      <Filter>Render\Graphic\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\GraphicTextureData.h">
-      <Filter>Render\Graphic\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\GraphicVertexData.h">
-      <Filter>Render\Graphic\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\GLRendererAPI.h">
-      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\GLResourceAPI.h">
-      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\GLShaderAPI.h">
-      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\GraphicRenderAPI.h">
-      <Filter>Render\Graphic\GraphicAPI</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\GraphicResouceAPI.h">
-      <Filter>Render\Graphic\GraphicAPI</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\GraphicShader.h">
-      <Filter>Render\Graphic\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\GraphicShaderManager.h">
-      <Filter>Render\Graphic\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\ShaderCompiler.h">
-      <Filter>Render\Graphic\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\ShaderSource.h">
-      <Filter>Render\Graphic\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\GraphicCommandManager.h">
-      <Filter>Render\Graphic</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\GraphicRenderer.h">
-      <Filter>Render\Graphic</Filter>
-    </ClInclude>
     <ClInclude Include="Program\LogoCollection.h">
       <Filter>Render\Logo</Filter>
     </ClInclude>
@@ -579,9 +555,6 @@
     </ClInclude>
     <ClInclude Include="Program\BeautifulWorld.h">
       <Filter>World</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Graphic.h">
-      <Filter>Render\Graphic</Filter>
     </ClInclude>
     <ClInclude Include="Program\Math\Color.h">
       <Filter>Common\Math</Filter>
@@ -670,9 +643,6 @@
     <ClInclude Include="Program\GameSystem.h">
       <Filter>Project</Filter>
     </ClInclude>
-    <ClInclude Include="Program\GraphicSystem.h">
-      <Filter>Render\Graphic</Filter>
-    </ClInclude>
     <ClInclude Include="Program\ResourceSystem.h">
       <Filter>ResourceObject</Filter>
     </ClInclude>
@@ -691,12 +661,6 @@
     <ClInclude Include="Program\Math\Math.h">
       <Filter>Common\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Program\GraphicResource.h">
-      <Filter>Render\Graphic</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\IGraphicResource.h">
-      <Filter>Render\Graphic</Filter>
-    </ClInclude>
     <ClInclude Include="Program\Renderer.h">
       <Filter>GameLogic\Components</Filter>
     </ClInclude>
@@ -708,9 +672,6 @@
     </ClInclude>
     <ClInclude Include="Program\Render\RenderRecordManager.h">
       <Filter>Render\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\GraphicCommand.h">
-      <Filter>Render\Graphic\Command</Filter>
     </ClInclude>
     <ClInclude Include="Program\Graphic\GraphicRecordManager.h">
       <Filter>Render\Graphic</Filter>
@@ -726,6 +687,105 @@
     </ClInclude>
     <ClInclude Include="Program\Render\RenderPipeline.h">
       <Filter>Render\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\RenderSection\UnlitSection.h">
+      <Filter>Render\Game\RenderSection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\RenderSection\CreateRecordSection.h">
+      <Filter>Render\Game\RenderSection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\RenderSection\StopRecordSection.h">
+      <Filter>Render\Game\RenderSection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\RenderSection\ScreenRecordSection.h">
+      <Filter>Render\Game\RenderSection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_VertexBuffer.h">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_VertexBufferClear.h">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_TextureBuffer.h">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_TextureBufferClear.h">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_Draw.h">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_Clear.h">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_Wireframe.h">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_CreateRecord.h">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_StopRecord.h">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommand.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GL\GLRendererAPI.h">
+      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GL\GLResourceAPI.h">
+      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicRenderAPI.h">
+      <Filter>Render\Graphic\GraphicAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicResouceAPI.h">
+      <Filter>Render\Graphic\GraphicAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GL\GLCommon.h">
+      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommandManager.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\Graphic.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicRenderer.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicResource.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicSystem.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\IGraphicResource.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GL\GLShaderAPI.h">
+      <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicShader.h">
+      <Filter>Render\Graphic\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicShaderManager.h">
+      <Filter>Render\Graphic\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\ShaderCompiler.h">
+      <Filter>Render\Graphic\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\ShaderSource.h">
+      <Filter>Render\Graphic\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\Data\GraphicTextureData.h">
+      <Filter>Render\Graphic\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\Data\GraphicVertexData.h">
+      <Filter>Render\Graphic\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicData.h">
+      <Filter>Render\Graphic\GraphicAPI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -840,6 +900,9 @@
     </Filter>
     <Filter Include="Event">
       <UniqueIdentifier>{f5075df4-7f92-45ad-b858-dadb4bf028f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render\Game\RenderSection">
+      <UniqueIdentifier>{e125835f-6226-4e3a-96a0-a74371ae6c71}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

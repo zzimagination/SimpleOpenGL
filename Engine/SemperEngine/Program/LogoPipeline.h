@@ -4,9 +4,8 @@
 
 #include <memory>
 #include "LogoCollection.h"
-#include "GraphicVertexData.h"
-#include "GraphicTextureData.h"
 #include "RenderScreenObject.h"
+#include "Graphic/GraphicData.h"
 
 namespace SemperEngine
 {

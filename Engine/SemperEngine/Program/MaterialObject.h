@@ -5,7 +5,7 @@
 #include <memory>
 #include "ResourceObject.h"
 #include "Texture.h"
-#include "Graphic.h"
+#include "Graphic/Graphic.h"
 
 
 namespace SemperEngine

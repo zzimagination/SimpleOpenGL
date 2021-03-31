@@ -1,6 +1,6 @@
 #include "RenderBatch.h"
 #include "Debug.h"
-#include "GraphicRenderer.h"
+#include "Graphic/GraphicRenderer.h"
 #include "ResourceInternal.h"
 
 namespace SemperEngine

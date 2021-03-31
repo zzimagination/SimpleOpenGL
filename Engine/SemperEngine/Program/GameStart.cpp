@@ -5,7 +5,7 @@
 #include "GameSystem.h"
 #include "GameWindow.h"
 #include "LogoPipeline.h"
-#include "GraphicSystem.h"
+#include "Graphic/GraphicSystem.h"
 #include "ResourceSystem.h"
 #include "Debug.h"
 

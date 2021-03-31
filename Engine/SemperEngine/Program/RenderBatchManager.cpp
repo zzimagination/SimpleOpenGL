@@ -1,9 +1,9 @@
 #include "RenderBatchManager.h"
-#include "GraphicRenderer.h"
-#include "GraphicResource.h"
+#include "Graphic/GraphicRenderer.h"
+#include "Graphic/GraphicResource.h"
+#include "Graphic/Graphic.h"
 #include "ResourceInternal.h"
 #include "Camera.h"
-#include "Graphic.h"
 #include <type_traits>
 
 namespace SemperEngine {

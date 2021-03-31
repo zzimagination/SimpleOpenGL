@@ -27,4 +27,10 @@ namespace SemperEngine {
 		};
 	}
 }
+
+#include "CameraObject.h"
+#include "RenderCustomObject.h"
+#include "RenderScreenObject.h"
+
+
 #endif // !RRENDEROBJECT

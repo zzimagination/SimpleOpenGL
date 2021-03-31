@@ -1,4 +1,3 @@
-#pragma once
 #ifndef __RENDERCUSTOMOBJECT__
 #define __RENDERCUSTOMOBJECT__
 
