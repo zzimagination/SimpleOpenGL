@@ -87,8 +87,7 @@ namespace SemperEngine
 		}
 		void GraphicRenderer::CreateRecord(std::string name)
 		{
-			auto cmd = shared_ptr<GCMD_CreateRecord>(new GCMD_CreateRecord);
-			cmd->name = name;
+			auto cmd = shared_ptr<GCMD_CreateRecord>(new GCMD_CreateRecord(name));
 			GraphicCommandManager::AddRender(cmd);
 		}
 		void GraphicRenderer::StopRecord()

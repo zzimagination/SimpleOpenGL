@@ -365,6 +365,9 @@
     <ClCompile Include="Program\Graphic\GL\glad.c">
       <Filter>Render\Graphic\GraphicAPI\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="Program\ProjectState.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program\Debug.h">
@@ -786,6 +789,9 @@
     </ClInclude>
     <ClInclude Include="Program\Graphic\GraphicData.h">
       <Filter>Render\Graphic\GraphicAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\ProjectState.h">
+      <Filter>Project</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

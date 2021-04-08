@@ -51,6 +51,13 @@ namespace SemperEngine {
 		return l2;
 	}
 
+	Float3 Float3::ProjectionXZ()
+	{
+		Float3 x = Dot(*this, Float3::right) * Float3::right;
+		Float3 z = Dot(*this, Float3::forward) * Float3::forward;
+		return x + z;
+	}
+
 	Float3 Float3::operator-()
 	{
 		return Float3(-x, -y, -z);

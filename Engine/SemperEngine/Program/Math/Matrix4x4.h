@@ -5,8 +5,11 @@
 #include "Float3.h"
 #include "Float4.h"
 
-namespace SemperEngine 
+namespace SemperEngine
 {
+	/// <summary>
+	/// ––æÿ’Û
+	/// </summary>
 	struct Matrix4x4
 	{
 	public:

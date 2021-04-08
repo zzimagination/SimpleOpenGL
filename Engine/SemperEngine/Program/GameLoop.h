@@ -32,6 +32,8 @@ namespace SemperEngine {
 			static void LogicLoop();
 
 			static bool IsExitLoop();
+
+			static bool Skip();
 		};
 	}
 }

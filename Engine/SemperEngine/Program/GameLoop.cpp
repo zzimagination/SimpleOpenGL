@@ -8,6 +8,7 @@
 #include "ResourceSystem.h"
 #include "Render/RenderPipeline.h"
 #include "Graphic/GraphicSystem.h"
+#include "ProjectState.h"
 
 namespace SemperEngine
 {
@@ -25,16 +26,25 @@ namespace SemperEngine
 
 		void GameLoop::BeforeLoop()
 		{
+			if (Skip())
+			{
+				return;
+			}
+
+			ProjectState::state = ProjectState::State::Loop;
 			WorldSystem::BeforeLoop();
 			ResourceSystem::BeforeLoop();
 			RenderPipeline::PreRender();
-			//GraphicSystem::Resource();
-			//GraphicSystem::SwapCommands();
 			_isLooping = true;
 		}
 
 		void GameLoop::MainLoop()
 		{
+			if (Skip())
+			{
+				return;
+			}
+
 			thread logic(LogicLoop);
 			while (_isLooping)
 			{
@@ -95,6 +105,10 @@ namespace SemperEngine
 
 		void GameLoop::AfterLoop()
 		{
+			if (Skip())
+			{
+				return;
+			}
 			WorldSystem::AfterLoop();
 			ResourceSystem::AfterLoop();
 			GraphicSystem::Dispose();
@@ -105,6 +119,14 @@ namespace SemperEngine
 			bool isExit = GameWindow::WindowShouldClose();
 			_isLooping = !isExit;
 			return isExit;
+		}
+		bool GameLoop::Skip()
+		{
+			if (ProjectState::close)
+			{
+				return true;
+			}
+			return false;
 		}
 	}
 }

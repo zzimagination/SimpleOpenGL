@@ -17,7 +17,7 @@ namespace SemperEngine
 
 		public:
 
-			GCMD_CreateRecord();
+			GCMD_CreateRecord(std::string name);
 
 			virtual ~GCMD_CreateRecord() override;
 

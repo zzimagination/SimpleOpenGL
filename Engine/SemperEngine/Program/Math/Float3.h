@@ -42,6 +42,8 @@ namespace SemperEngine {
 
 		float Length();
 
+		Float3 ProjectionXZ();
+
 	public:
 
 		Float3 operator-();

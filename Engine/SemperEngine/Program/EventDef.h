@@ -1,4 +1,3 @@
-#pragma once
 #ifndef __EVENT_DEF__
 #define __EVENT_DEF__
 

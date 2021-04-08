@@ -8,6 +8,7 @@
 #include "Graphic/GraphicSystem.h"
 #include "ResourceSystem.h"
 #include "Debug.h"
+#include "ProjectState.h"
 
 namespace SemperEngine
 {
@@ -17,6 +18,7 @@ namespace SemperEngine
 
 		void GameStart::Start()
 		{
+			ProjectState::state = ProjectState::State::Start;
 			GameSystem::LoadConfig();
 			GameSystem::Initialized();
 			DebugSystem::Initialization();
@@ -33,8 +35,17 @@ namespace SemperEngine
 		void GameStart::Logo()
 		{
 			LogoPipeline::Start();
-			while (!GameWindow::WindowShouldClose() && !LogoPipeline::isCompleted)
+			while (true)
 			{
+				if (GameWindow::WindowShouldClose())
+				{
+					ProjectState::close = true;
+					break;
+				}
+				if (LogoPipeline::isCompleted)
+				{
+					break;
+				}
 				GameWindow::PollWindowEvent();
 				LogoPipeline::Update();
 				GameWindow::SwapFrameBuffers();
