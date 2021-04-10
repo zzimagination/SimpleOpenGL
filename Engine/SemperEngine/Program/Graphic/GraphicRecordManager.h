@@ -4,6 +4,7 @@
 #include "Graphic.h"
 #include "GraphicRecord.h"
 #include <memory>
+#include <map>
 
 namespace SemperEngine
 {
@@ -11,12 +12,6 @@ namespace SemperEngine
 	{
 		class GraphicRecordManager
 		{
-		public:
-
-			static GraphicRecord* lastRecord;
-
-			static GraphicRecord* currentRecord;
-
 		private:
 
 			static std::vector<std::shared_ptr<GraphicRecord>> _recordListA;
@@ -24,6 +19,8 @@ namespace SemperEngine
 			static std::vector<std::shared_ptr<GraphicRecord>> _recordListB;
 
 			static bool _isRenderA;
+
+			//static std::map<std::string, GraphicRecord> 
 
 		public:
 

@@ -16,11 +16,11 @@ namespace SemperEngine
 
 		void UnlitSection::Prepare()
 		{
-			_cameras = CameraCollection::GetCameras();
 		}
 
 		void UnlitSection::Start()
 		{
+			auto _cameras = CameraCollection::GetCameras();
 			for (auto c = _cameras.begin(); c < _cameras.end(); c++)
 			{
 				RenderCamera(*c);

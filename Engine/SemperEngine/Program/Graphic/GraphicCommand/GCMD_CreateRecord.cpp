@@ -21,7 +21,6 @@ namespace SemperEngine
 
 		void GCMD_CreateRecord::Excute()
 		{
-			GraphicRecordManager::currentRecord = record;
 			GraphicRenderAPI::CreateRecord(record);
 		}
 	}

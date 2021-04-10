@@ -14,11 +14,12 @@ namespace SemperEngine
 		}
 		void ScreenRecordSection::Prepare()
 		{
-			auto batch = shared_ptr<ClearBatch>(new ClearBatch());
-			RenderBatchManager::AddBatch(batch);
 		}
 		void ScreenRecordSection::Start()
 		{
+			auto clearBatch = shared_ptr<ClearBatch>(new ClearBatch());
+			RenderBatchManager::AddBatch(clearBatch);
+
 			auto batch = shared_ptr<ScreenRenderBatch>(new ScreenRenderBatch);
 			batch->useRecord = true;
 			batch->recordIDs.push_back(0);

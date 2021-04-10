@@ -368,6 +368,9 @@
     <ClCompile Include="Program\ProjectState.cpp">
       <Filter>Project</Filter>
     </ClCompile>
+    <ClCompile Include="Program\Render\RenderSection\DepthSection.cpp">
+      <Filter>Render\Game\RenderSection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program\Debug.h">
@@ -792,6 +795,9 @@
     </ClInclude>
     <ClInclude Include="Program\ProjectState.h">
       <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\RenderSection\DepthSection.h">
+      <Filter>Render\Game\RenderSection</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

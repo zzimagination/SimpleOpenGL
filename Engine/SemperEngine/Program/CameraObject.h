@@ -13,6 +13,10 @@ namespace SemperEngine
 		{
 		public:
 
+			float near;
+
+			float far;
+
 			Matrix4x4 viewMatrix;
 
 			Matrix4x4 projectMatrix;

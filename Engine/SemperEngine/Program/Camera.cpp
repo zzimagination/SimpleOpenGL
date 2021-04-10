@@ -40,7 +40,6 @@ namespace SemperEngine {
 		Move();
 		Rotate();
 		UpdateObject();
-		AddObject();
 	}
 
 	float Camera::GetSize()
@@ -239,6 +238,8 @@ namespace SemperEngine {
 
 	void Camera::UpdateObject()
 	{
+		_cameraObject->near = _nearPlane;
+		_cameraObject->far = _farPlane;
 		_cameraObject->viewMatrix = CalculateViewMatrix();
 		_cameraObject->projectMatrix = CalculateProjectionMatrix();
 		_cameraObject->clearColor = clearColor;
@@ -254,12 +255,6 @@ namespace SemperEngine {
 			_cameraObject->clearMode = Graphic::ClearMode::Depth;
 			break;
 		}
-	}
-
-	void Camera::AddObject()
-	{
 		CameraCollection::AddCamera(_cameraObject.get());
 	}
-
-
 }

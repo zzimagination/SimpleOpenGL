@@ -13,7 +13,7 @@ namespace SemperEngine
 		}
 		void GCMD_StopRecord::Excute()
 		{
-			GraphicRenderAPI::StopRecord(GraphicRecordManager::currentRecord);
+			GraphicRenderAPI::StopRecord();
 		}
 	}
 }

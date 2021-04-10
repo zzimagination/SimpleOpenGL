@@ -7,12 +7,6 @@ namespace SemperEngine
 	namespace Core {
 		class UnlitSection : public RenderSection
 		{
-		private:
-
-			std::vector<CameraObject*> _cameras;
-
-			std::vector<RenderCustomObject*> _objects;
-
 		public:
 
 			virtual ~UnlitSection() override;

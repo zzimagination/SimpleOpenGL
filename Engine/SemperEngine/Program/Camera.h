@@ -110,7 +110,6 @@ namespace SemperEngine {
 
 		void UpdateObject();
 
-		void AddObject();
 	};
 }
 #endif

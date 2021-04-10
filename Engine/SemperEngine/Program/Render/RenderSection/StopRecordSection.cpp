@@ -12,10 +12,10 @@ namespace SemperEngine
 		}
 		void StopRecordSection::Prepare()
 		{
-			RenderRecordManager::StopRecord();
 		}
 		void StopRecordSection::Start()
 		{
+			RenderRecordManager::StopRecord();
 		}
 	}
 }

@@ -67,7 +67,7 @@ namespace SemperEngine {
 
 			static void CreateRecord(GraphicRecord* record);
 
-			static void StopRecord(GraphicRecord* record);
+			static void StopRecord();
 
 			static void DeleteRecord(GraphicRecord* record);
 		};

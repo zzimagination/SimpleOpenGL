@@ -12,25 +12,33 @@ namespace SemperEngine
 
 		void RenderPipeline::PreRender()
 		{
-			auto record = new CreateRecordSection();
+			auto record = new CreateRecordSection("Depth");
 			sectionList.push_back(record);
-			auto section = new UnlitSection();
-			sectionList.push_back(section);
+			auto depthSection = new DepthSection();
+			sectionList.push_back(depthSection);
 			auto stop = new StopRecordSection();
+			sectionList.push_back(stop);
+			record = new CreateRecordSection("Unlit");
+			sectionList.push_back(record);
+			auto unlitSection = new UnlitSection();
+			sectionList.push_back(unlitSection);
+			stop = new StopRecordSection();
 			sectionList.push_back(stop);
 			auto render = new ScreenRecordSection();
 			sectionList.push_back(render);
 		}
 		void RenderPipeline::Render()
 		{
-			for (auto s = sectionList.begin(); s != sectionList.end(); s++)
+			for (auto section = sectionList.begin(); section != sectionList.end(); section++)
 			{
-				(*s)->Prepare();
-				(*s)->Start();
+				(*section)->Prepare();
+			}
+			for (auto section = sectionList.begin(); section != sectionList.end(); section++)
+			{
+				(*section)->Start();
 				RenderBatchManager::ExecuteBatchs();
 				RenderBatchManager::Clear();
 			}
-
 			CameraCollection::ClearCameras();
 			RenderCollection::ClearRenders();
 		}

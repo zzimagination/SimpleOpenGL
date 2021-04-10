@@ -190,6 +190,7 @@
     <ClInclude Include="Program\Render\RenderSection.h" />
     <ClInclude Include="Program\Render\RenderRecordManager.h" />
     <ClInclude Include="Program\Render\RenderSection\CreateRecordSection.h" />
+    <ClInclude Include="Program\Render\RenderSection\DepthSection.h" />
     <ClInclude Include="Program\Render\RenderSection\ScreenRecordSection.h" />
     <ClInclude Include="Program\Render\RenderSection\StopRecordSection.h" />
     <ClInclude Include="Program\Render\RenderSection\UnlitSection.h" />
@@ -328,6 +329,7 @@
     <ClCompile Include="Program\Render\RenderSection.cpp" />
     <ClCompile Include="Program\Render\RenderRecordManager.cpp" />
     <ClCompile Include="Program\Render\RenderSection\CreateRecordSection.cpp" />
+    <ClCompile Include="Program\Render\RenderSection\DepthSection.cpp" />
     <ClCompile Include="Program\Render\RenderSection\ScreenRecordSection.cpp" />
     <ClCompile Include="Program\Render\RenderSection\StopRecordSection.cpp" />
     <ClCompile Include="Program\Render\RenderSection\UnlitSection.cpp" />

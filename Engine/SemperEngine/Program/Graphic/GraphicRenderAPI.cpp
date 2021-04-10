@@ -139,7 +139,7 @@ namespace SemperEngine {
 			GLRenderAPI::CheckFrameBuffer(record->glFrameBuffer);
 		}
 
-		void GraphicRenderAPI::StopRecord(GraphicRecord* record)
+		void GraphicRenderAPI::StopRecord()
 		{
 			GLRenderAPI::CloseFrameBuffer();
 		}

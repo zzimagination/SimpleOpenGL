@@ -7,15 +7,19 @@ namespace SemperEngine
 	{
 		using namespace std;
 
+		CreateRecordSection::CreateRecordSection(std::string name) : name(name)
+		{
+		}
+
 		CreateRecordSection::~CreateRecordSection()
 		{
 		}
 		void CreateRecordSection::Prepare()
 		{
-			RenderRecordManager::CreateRecord("Unlit");
 		}
 		void CreateRecordSection::Start()
 		{
+			RenderRecordManager::CreateRecord(name);
 		}
 	}
 }

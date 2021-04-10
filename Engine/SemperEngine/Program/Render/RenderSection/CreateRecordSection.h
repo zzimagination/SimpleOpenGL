@@ -10,6 +10,12 @@ namespace SemperEngine
 		{
 		public:
 
+			std::string name;
+
+		public:
+
+			CreateRecordSection(std::string name);
+
 			virtual ~CreateRecordSection() override;
 
 			// Í¨¹ý RenderSection ¼Ì³Ð
