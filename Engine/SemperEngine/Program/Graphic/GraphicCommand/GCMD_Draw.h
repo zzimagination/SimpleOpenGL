@@ -19,8 +19,6 @@ namespace SemperEngine
 
 			std::vector<GraphicTextureInfo> textures;
 
-			bool useRecord = false;
-
 			std::vector<int> recordID = {};
 
 		private:

@@ -40,11 +40,6 @@ namespace SemperEngine {
 		return _object->textures;
 	}
 
-	Core::MaterialObject* Material::GetObject()
-	{
-		return _object;
-	}
-
 	Material::Material() :Material("Color")
 	{
 		AddProperty("_color", Float4(1, 1, 1, 1));
@@ -90,5 +85,9 @@ namespace SemperEngine {
 		{
 			_object->textures.push_back(value);
 		}
+	}
+	ResourceObject* Material::GetObject()
+	{
+		return _object;
 	}
 }

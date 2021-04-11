@@ -14,23 +14,17 @@ namespace SemperEngine
 		{
 		private:
 
-			static std::vector<std::shared_ptr<GraphicRecord>> _recordListA;
+			static std::vector<GraphicRecord*> _tempRecords;
 
-			static std::vector<std::shared_ptr<GraphicRecord>> _recordListB;
-
-			static bool _isRenderA;
-
-			//static std::map<std::string, GraphicRecord> 
+			static std::vector<GraphicRecord*> _inUseRecords;
 
 		public:
 
-			static GraphicRecord* CreateRecord(std::string name);
+			static int CreateRecord(std::string name);
 
-			static GraphicRecord* GetRecord(int id);
+			static void StopRecord();
 
-			static GraphicRecord* GetRecord(std::string name);
-
-			static std::vector<GraphicRecord*> GetExecuteList();
+			static GraphicRecord* UseRecord(int id);
 
 			static void Clear();
 

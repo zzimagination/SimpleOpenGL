@@ -1,5 +1,6 @@
 #include "GraphicRecordManager.h"
-#include "GraphicCommand.h"
+#include "GraphicCommandManager.h"
+#include "../GameSetting.h"
 
 namespace SemperEngine
 {
@@ -7,61 +8,51 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		vector<std::shared_ptr<GraphicRecord>> GraphicRecordManager::_recordListA;
-		vector<std::shared_ptr<GraphicRecord>> GraphicRecordManager::_recordListB;
+		std::vector<GraphicRecord*> GraphicRecordManager::_tempRecords;
+		std::vector<GraphicRecord*> GraphicRecordManager::_inUseRecords;
 
-		bool GraphicRecordManager::_isRenderA = true;
-
-		GraphicRecord* GraphicRecordManager::CreateRecord(std::string name)
+		int GraphicRecordManager::CreateRecord(string name)
 		{
-			auto record = std::shared_ptr<GraphicRecord>(new GraphicRecord(name));
-			record->managerID = (int)_recordListA.size();
-			_recordListA.push_back(record);
-			auto result = record.get();
-			return result;
-		}
-		GraphicRecord* GraphicRecordManager::GetRecord(int id)
-		{
-			return _recordListB[id].get();
+			auto record = new GraphicRecord();
+			record->name = name;
+			record->width = GameSetting::windowWidth;
+			record->height = GameSetting::windowHeight;
+			record->attach = GraphicRecord::Attach::Depth;
+			_tempRecords.push_back(record);
+			auto cmd = shared_ptr<GCMD_CreateRecord>(new GCMD_CreateRecord(record));
+			GraphicCommandManager::AddRender(cmd);
+			return (int)_tempRecords.size() - 1;
 		}
 
-		GraphicRecord* GraphicRecordManager::GetRecord(std::string name)
+		void GraphicRecordManager::StopRecord()
 		{
-			for (auto i = _recordListB.begin(); i != _recordListB.end(); i++)
-			{
-				if (i->get()->name == name)
-				{
-					return i->get();
-				}
-			}
-			return nullptr;
+			auto cmd = shared_ptr<GCMD_StopRecord>(new GCMD_StopRecord);
+			GraphicCommandManager::AddRender(cmd);
 		}
 
-		vector<GraphicRecord*> GraphicRecordManager::GetExecuteList()
+		GraphicRecord* GraphicRecordManager::UseRecord(int id)
 		{
-			vector<GraphicRecord*> result;
-			for (auto i = _recordListB.begin(); i != _recordListB.end(); i++)
-			{
-				result.push_back(i->get());
-			}
-			return result;
+			return _inUseRecords[id];
 		}
 
 		void GraphicRecordManager::Clear()
 		{
+			for (size_t i = 0; i < _inUseRecords.size(); i++)
+			{
+				auto cmd = shared_ptr<GCMD_ClearRecord>(new GCMD_ClearRecord);
+				cmd->record = _inUseRecords[i];
+				GraphicCommandManager::AddResource(cmd);
+			}
 		}
 
 		void GraphicRecordManager::Swap()
 		{
-			for (size_t i = 0; i < _recordListB.size(); i++)
+			for (size_t i = 0; i < _inUseRecords.size(); i++)
 			{
-				GCMD_ClearRecord cmd;
-				cmd.record = _recordListB[i].get();
-				cmd.Excute();
+				delete _inUseRecords[i];
 			}
-			_recordListB.clear();
-			_recordListB = _recordListA;
-			_recordListA.clear();
+			_inUseRecords = _tempRecords;
+			_tempRecords.clear();
 		}
 	}
 }

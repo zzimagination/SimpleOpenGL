@@ -3,6 +3,7 @@
 namespace SemperEngine
 {
 	using namespace std;
+	using namespace Core;
 
 	Model::Model(Core::ModelObject* object)
 	{
@@ -15,7 +16,7 @@ namespace SemperEngine
 	}
 	std::shared_ptr<Mesh> Model::GetMesh()
 	{
-		auto mesh = object->GetMeshObject();
+		auto mesh = (MeshObject*)object->GetMeshObject();
 		if (mesh == nullptr)
 		{
 			return shared_ptr<Mesh>();

@@ -4,7 +4,8 @@
 
 namespace SemperEngine
 {
-	namespace Core {
+	namespace Core 
+	{
 		class UnlitSection : public RenderSection
 		{
 		public:
@@ -15,11 +16,6 @@ namespace SemperEngine
 
 			virtual void Start() override;
 
-		private:
-
-			void RenderCamera(CameraObject* camera);
-
-			void RenderObject(RenderCustomObject* object, CameraObject* camera);
 		};
 	}
 }

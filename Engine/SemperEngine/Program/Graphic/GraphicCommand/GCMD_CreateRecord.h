@@ -13,11 +13,9 @@ namespace SemperEngine
 
 			GraphicRecord* record = nullptr;
 
-			std::string name;
-
 		public:
 
-			GCMD_CreateRecord(std::string name);
+			GCMD_CreateRecord(GraphicRecord* record);
 
 			virtual ~GCMD_CreateRecord() override;
 

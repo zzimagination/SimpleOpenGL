@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -76,7 +76,7 @@
     <LibraryPath>..\..\Library;$(LibraryPath)</LibraryPath>
     <ReferencePath>$(ReferencePath)</ReferencePath>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
-    <SourcePath>..\Program\Render\Pipeline;$(SourcePath)</SourcePath>
+    <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -186,6 +186,12 @@
     <ClInclude Include="Program\Common.h" />
     <ClInclude Include="Program\Math\Color.h" />
     <ClInclude Include="Program\ProjectState.h" />
+    <ClInclude Include="Program\Render\Render.h" />
+    <ClInclude Include="Program\Render\RenderBatch.h" />
+    <ClInclude Include="Program\Render\RenderBatchManager.h" />
+    <ClInclude Include="Program\Render\RenderBatch\ClearBatch.h" />
+    <ClInclude Include="Program\Render\RenderBatch\CustomRenderBatch.h" />
+    <ClInclude Include="Program\Render\RenderBatch\ScreenRenderBatch.h" />
     <ClInclude Include="Program\Render\RenderPipeline.h" />
     <ClInclude Include="Program\Render\RenderSection.h" />
     <ClInclude Include="Program\Render\RenderRecordManager.h" />
@@ -238,7 +244,6 @@
     <ClInclude Include="Program\RenderCustomObject.h" />
     <ClInclude Include="Program\NextWorld.h" />
     <ClInclude Include="Program\Math\Quaternion.h" />
-    <ClInclude Include="Program\RenderBatchManager.h" />
     <ClInclude Include="Program\Camera.h" />
     <ClInclude Include="Program\Component.h" />
     <ClInclude Include="Program\FrameManager.h" />
@@ -249,7 +254,6 @@
     <ClInclude Include="Program\Math\Math.h" />
     <ClInclude Include="Program\Math\Matrix4x4.h" />
     <ClInclude Include="Program\GameSetting.h" />
-    <ClInclude Include="Program\RenderBatch.h" />
     <ClInclude Include="Program\Graphic\GraphicRenderAPI.h" />
     <ClInclude Include="Program\RenderCollection.h" />
     <ClInclude Include="Program\RenderLayer.h" />
@@ -325,6 +329,11 @@
     <ClCompile Include="Program\ChangeTexture.cpp" />
     <ClCompile Include="Program\Math\Color.cpp" />
     <ClCompile Include="Program\ProjectState.cpp" />
+    <ClCompile Include="Program\Render\RenderBatch.cpp" />
+    <ClCompile Include="Program\Render\RenderBatchManager.cpp" />
+    <ClCompile Include="Program\Render\RenderBatch\ClearBatch.cpp" />
+    <ClCompile Include="Program\Render\RenderBatch\CustomRenderBatch.cpp" />
+    <ClCompile Include="Program\Render\RenderBatch\ScreenRenderBatch.cpp" />
     <ClCompile Include="Program\Render\RenderPipeline.cpp" />
     <ClCompile Include="Program\Render\RenderSection.cpp" />
     <ClCompile Include="Program\Render\RenderRecordManager.cpp" />
@@ -367,7 +376,6 @@
     <ClCompile Include="Program\MeshObject.cpp" />
     <ClCompile Include="Program\NextWorld.cpp" />
     <ClCompile Include="Program\Math\Quaternion.cpp" />
-    <ClCompile Include="Program\RenderBatchManager.cpp" />
     <ClCompile Include="Program\Camera.cpp" />
     <ClCompile Include="Program\FrameManager.cpp" />
     <ClCompile Include="Program\GameLoop.cpp" />
@@ -378,7 +386,6 @@
     <ClCompile Include="Program\Math\Matrix4x4.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Program\GameSetting.cpp" />
-    <ClCompile Include="Program\RenderBatch.cpp" />
     <ClCompile Include="Program\Graphic\GraphicRenderAPI.cpp" />
     <ClCompile Include="Program\RenderCollection.cpp" />
     <ClCompile Include="Program\RenderCustomObject.cpp" />

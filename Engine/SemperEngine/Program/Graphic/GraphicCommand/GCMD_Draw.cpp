@@ -38,12 +38,9 @@ namespace SemperEngine
 
 			_setTextureCount = 0;
 
-			if (useRecord)
+			for (size_t i = 0; i < recordID.size(); i++)
 			{
-				for (size_t i = 0; i < recordID.size(); i++)
-				{
-					SetRecord(recordID[i]);
-				}
+				SetRecord(recordID[i]);
 			}
 
 			for (size_t i = 0; i < texturesData.size(); i++)
@@ -56,11 +53,8 @@ namespace SemperEngine
 
 		void GDrawCMD::SetRecord(int ID)
 		{
-			auto record = GraphicRecordManager::GetRecord(ID);
-			if (record == nullptr)
-			{
-				return;
-			}
+			auto record = GraphicRecordManager::UseRecord(ID);
+
 			for (size_t i = 0; i < record->textures.size(); i++)
 			{
 				GraphicRenderAPI::SetShaderProperty(_setTextureCount, record->textures[i]);

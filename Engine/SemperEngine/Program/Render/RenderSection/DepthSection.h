@@ -9,9 +9,9 @@ namespace SemperEngine
 	{
 		class DepthSection : public RenderSection
 		{
-		public:
+		private:
 
-			 std::vector<Material*> _materials;
+			Material* _material;
 
 		public:
 
@@ -21,11 +21,6 @@ namespace SemperEngine
 			virtual void Prepare() override;
 			virtual void Start() override;
 
-		private:
-
-			void RenderCamera(CameraObject* camera);
-
-			void RenderObject(RenderCustomObject* object, CameraObject* camera, Material* material);
 		};
 	}
 }

@@ -24,6 +24,7 @@ namespace SemperEngine
 		}
 		void GraphicSystem::Resource()
 		{
+			GraphicRecordManager::Clear();
 			GraphicCommandManager::Resource();
 		}
 		void GraphicSystem::SwapCommands()

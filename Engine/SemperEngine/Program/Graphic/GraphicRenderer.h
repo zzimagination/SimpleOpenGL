@@ -20,7 +20,6 @@ namespace SemperEngine
 				RenderMatrix matrix,
 				ShaderProperty sproperty,
 				std::vector<GraphicTextureInfo> textures,
-				bool useRecord = false,
 				std::vector<int> records = {});
 
 			static void Render(
@@ -28,7 +27,6 @@ namespace SemperEngine
 				RenderOperation operation,
 				ShaderProperty sproperty,
 				std::vector<GraphicTextureInfo> textures,
-				bool useRecord = false,
 				std::vector<int> records = {}
 			);
 
@@ -36,18 +34,12 @@ namespace SemperEngine
 				GraphicVertexInfo vertex,
 				ShaderProperty sproperty,
 				std::vector<GraphicTextureInfo> textures,
-				bool useRecord = false,
 				std::vector<int> records = {}
 			);
 
 			static void Clear(Color color, Graphic::ClearMode mode);
 
 			static void Clear(Color color);
-
-			static void CreateRecord(std::string name);
-
-			static void StopRecord();
-
 		};
 	}
 }

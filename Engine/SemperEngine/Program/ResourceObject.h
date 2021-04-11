@@ -57,6 +57,12 @@ namespace SemperEngine
 
 			friend class ResourceObjectCenter;
 		};
+
+		class IResourceTarget
+		{
+		public:
+			virtual ResourceObject* GetObject() = 0;
+		};
 	}
 }
 

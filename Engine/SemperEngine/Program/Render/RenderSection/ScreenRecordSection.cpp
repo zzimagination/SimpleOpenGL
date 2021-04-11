@@ -1,6 +1,6 @@
 #include "ScreenRecordSection.h"
 #include "../RenderRecordManager.h"
-#include "../../RenderBatchManager.h"
+#include "../RenderBatchManager.h"
 #include "../../ResourceInternal.h"
 
 namespace SemperEngine
@@ -17,14 +17,12 @@ namespace SemperEngine
 		}
 		void ScreenRecordSection::Start()
 		{
-			auto clearBatch = shared_ptr<ClearBatch>(new ClearBatch());
-			RenderBatchManager::AddBatch(clearBatch);
-
+			auto clear = shared_ptr<ClearBatch>(new ClearBatch(Color::Black(), ClearColorDepth));
+			RenderBatchManager::AddBatch(clear);
 			auto batch = shared_ptr<ScreenRenderBatch>(new ScreenRenderBatch);
-			batch->useRecord = true;
-			batch->recordIDs.push_back(0);
-			auto mat = ResourceInternal::ScreenViewMat();
-			batch->material = mat.get();
+			batch->records.push_back(RenderRecord(camera, "Depth"));
+			auto m = ResourceInternal::ScreenViewMaterial();
+			batch->material = m.get();
 			RenderBatchManager::AddBatch(batch);
 		}
 	}

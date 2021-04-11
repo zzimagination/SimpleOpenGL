@@ -23,7 +23,7 @@ namespace SemperEngine
 		Camera* camera = new Camera();
 		camera->transform.position = Float3(0, 1, 5);
 		camera->clearColor = Color::ColorFloat(0.1f, 0.1f, 0.1f);
-		camera->SetFar(20);
+		camera->SetFar(50);
 		AddGameObject(camera);
 
 		auto A = new GameObject();

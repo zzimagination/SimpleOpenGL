@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <list>
+#include <vector>
+#include "Render.h"
 #include "RenderSection.h"
 
 namespace SemperEngine
@@ -11,15 +13,23 @@ namespace SemperEngine
 	{
 		class RenderPipeline
 		{
-		public:
+		private:
 
-			static std::list<RenderSection*> sectionList;
+			static std::vector<RenderSection*> _cameraSections;
+
+			static std::vector<RenderSection*> _sections;
 
 		public:
 
 			static void PreRender();
 
 			static void Render();
+
+		private:
+
+			static void RenderCamera(CameraObject* camera);
+
+			static void RenderEnd();
 		};
 	}
 }

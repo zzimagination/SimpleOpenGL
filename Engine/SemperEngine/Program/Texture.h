@@ -10,7 +10,7 @@
 
 namespace SemperEngine
 {
-	class Texture
+	class Texture : public Core::IResourceTarget
 	{
 	public:
 
@@ -33,8 +33,6 @@ namespace SemperEngine
 
 		~Texture();
 
-		Core::TextureObject* GetObject();
-
 		Texture* Copy();
 
 		void SetColors(ArrayList<ColorByte> pixels);
@@ -44,6 +42,9 @@ namespace SemperEngine
 		void SetFilter(ResourceConfig::TextureFilter filter);
 
 		ResourceConfig::TextureFilter GetFilter();
+
+		// Í¨¹ý IResourceTarget ¼Ì³Ð
+		virtual Core::ResourceObject* GetObject() override;
 	};
 }
 #endif // !TEXTURE

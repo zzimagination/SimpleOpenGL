@@ -42,7 +42,7 @@ namespace SemperEngine
 			return _screenMesh;
 		}
 
-		std::shared_ptr<Material> ResourceInternal::ScreenViewMat()
+		std::shared_ptr<Material> ResourceInternal::ScreenViewMaterial()
 		{
 			return materialMap[SCREENVIEW_MATERIAL];
 		}
@@ -56,7 +56,7 @@ namespace SemperEngine
 			textureMap[BUMP_TEXTURE] = LoadTexture(PNG_EXTEND(BUMP_TEXTURE));
 
 			_screenMesh = shared_ptr<Mesh>(new Mesh(MeshObject::CreateRectangle()));
-			_screenMesh->GetObject()->CreateGraphicResource();
+			((MeshObject*)_screenMesh->GetObject())->CreateGraphicResource();
 
 			auto screenViewMat = shared_ptr<Material>(new Material(SCREENVIEW_MATERIAL));
 			materialMap.insert(pair<string, shared_ptr<Material>>(SCREENVIEW_MATERIAL, screenViewMat));

@@ -37,7 +37,7 @@ namespace SemperEngine
 
 			static std::shared_ptr<Mesh> ScreenMesh();
 			
-			static std::shared_ptr<Material> ScreenViewMat();
+			static std::shared_ptr<Material> ScreenViewMaterial();
 
 		public:
 

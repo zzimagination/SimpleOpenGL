@@ -1,7 +1,7 @@
 #include "UnlitSection.h"
 #include "../../CameraCollection.h"
 #include "../../RenderCollection.h"
-#include "../../RenderBatchManager.h"
+#include "../RenderBatchManager.h"
 #include "../RenderRecordManager.h"
 
 namespace SemperEngine
@@ -20,31 +20,21 @@ namespace SemperEngine
 
 		void UnlitSection::Start()
 		{
-			auto _cameras = CameraCollection::GetCameras();
-			for (auto c = _cameras.begin(); c < _cameras.end(); c++)
-			{
-				RenderCamera(*c);
-			}
-		}
+			auto clear = shared_ptr<ClearBatch>(new ClearBatch(Color::Black(), ClearColorDepth));
+			RenderBatchManager::AddBatch(clear);
 
-		void UnlitSection::RenderCamera(CameraObject* camera)
-		{
-			auto batch = shared_ptr<ClearBatch>(new ClearBatch(camera->clearColor, camera->clearMode));
-			RenderBatchManager::AddBatch(batch);
 			auto objects = RenderCollection::GetCustomObjects(camera->layer);
-			for (auto o = objects.begin(); o != objects.end(); o++)
+			for (auto object = objects.begin(); object != objects.end(); object++)
 			{
-				RenderObject(*o, camera);
+				auto RO = (*object);
+				auto batch = shared_ptr<CustomRenderBatch>(new CustomRenderBatch);
+				batch->camera = camera;
+				batch->model = RO->modelMat;
+				batch->mesh = RO->mesh.get();
+				batch->material = RO->material.get();
+				batch->records.push_back(RenderRecord(camera, DEPTHSECTION));
+				RenderBatchManager::AddBatch(batch);
 			}
-		}
-		void UnlitSection::RenderObject(RenderCustomObject* object, CameraObject* camera)
-		{
-			auto batch = shared_ptr<CustomRenderBatch>(new CustomRenderBatch);
-			batch->camera = camera;
-			batch->model = object->modelMat;
-			batch->mesh = object->mesh.get();
-			batch->material = object->material.get();
-			RenderBatchManager::AddBatch(batch);
 		}
 	}
 }

@@ -11,5 +11,6 @@ out vec2 TexCoords;
 void main()
 {
 	TexCoords = aTexCoords;
+	TexCoords.y = 1 - TexCoords.y;
     gl_Position =_projection* _view *_model* vec4(aPos, 1);
 }

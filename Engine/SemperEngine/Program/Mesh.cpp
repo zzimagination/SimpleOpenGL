@@ -22,11 +22,6 @@ namespace SemperEngine
 		_object->Dispose();
 	}
 
-	Core::MeshObject* Mesh::GetObject()
-	{
-		return _object;
-	}
-
 	Mesh* Mesh::Copy()
 	{
 		auto obj = _object->Copy();
@@ -41,5 +36,9 @@ namespace SemperEngine
 	{
 		_object->vertices = vertices;
 		_object->Modify();
+	}
+	ResourceObject* Mesh::GetObject()
+	{
+		return _object;
 	}
 }

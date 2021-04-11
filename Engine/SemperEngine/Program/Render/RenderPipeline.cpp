@@ -1,5 +1,5 @@
 #include "RenderPipeline.h"
-#include "../RenderBatchManager.h"
+#include "RenderBatchManager.h"
 #include "../CameraCollection.h"
 #include "../RenderCollection.h"
 #include <memory>
@@ -8,39 +8,61 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		std::list<RenderSection*> RenderPipeline::sectionList;
+		std::vector<RenderSection*> RenderPipeline::_cameraSections;
+		std::vector<RenderSection*> RenderPipeline::_sections;
 
 		void RenderPipeline::PreRender()
 		{
-			auto record = new CreateRecordSection("Depth");
-			sectionList.push_back(record);
+			auto record = new CreateRecordSection(DEPTHSECTION);
+			_cameraSections.push_back(record);
 			auto depthSection = new DepthSection();
-			sectionList.push_back(depthSection);
+			_cameraSections.push_back(depthSection);
 			auto stop = new StopRecordSection();
-			sectionList.push_back(stop);
-			record = new CreateRecordSection("Unlit");
-			sectionList.push_back(record);
+			_cameraSections.push_back(stop);
 			auto unlitSection = new UnlitSection();
-			sectionList.push_back(unlitSection);
-			stop = new StopRecordSection();
-			sectionList.push_back(stop);
-			auto render = new ScreenRecordSection();
-			sectionList.push_back(render);
+			_cameraSections.push_back(unlitSection);
 		}
 		void RenderPipeline::Render()
 		{
-			for (auto section = sectionList.begin(); section != sectionList.end(); section++)
+			auto cameras = CameraCollection::GetCameras();
+			for (auto i = 0; i < cameras.size(); i++)
 			{
-				(*section)->Prepare();
+				RenderCamera(cameras[i]);
 			}
-			for (auto section = sectionList.begin(); section != sectionList.end(); section++)
+			RenderEnd();
+			CameraCollection::ClearCameras();
+			RenderCollection::ClearRenders();
+		}
+		void RenderPipeline::RenderCamera(CameraObject* camera)
+		{
+			for (auto i = 0; i < _cameraSections.size(); i++)
 			{
-				(*section)->Start();
+				auto section = _cameraSections[i];
+				section->camera = camera;
+				section->Prepare();
+			}
+			for (auto i = 0; i < _cameraSections.size(); i++)
+			{
+				auto section = _cameraSections[i];
+				section->Start();
 				RenderBatchManager::ExecuteBatchs();
 				RenderBatchManager::Clear();
 			}
-			CameraCollection::ClearCameras();
-			RenderCollection::ClearRenders();
+		}
+		void RenderPipeline::RenderEnd()
+		{
+			for (auto i = 0; i < _sections.size(); i++)
+			{
+				auto section = _sections[i];
+				section->Prepare();
+			}
+			for (auto i = 0; i < _sections.size(); i++)
+			{
+				auto section = _sections[i];
+				section->Start();
+				RenderBatchManager::ExecuteBatchs();
+				RenderBatchManager::Clear();
+			}
 		}
 	}
 }

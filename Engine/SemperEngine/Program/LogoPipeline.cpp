@@ -2,7 +2,7 @@
 #include "LogoCollection.h"
 #include "Resource.h"
 #include "RenderCollection.h"
-#include "RenderBatchManager.h"
+#include "Render/RenderBatchManager.h"
 #include "ResourceSystem.h"
 #include "Debug.h"
 #include "Graphic/GraphicCommandManager.h"

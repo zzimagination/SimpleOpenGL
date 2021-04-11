@@ -34,6 +34,16 @@ namespace SemperEngine
 		return c;
 	}
 
+	Color Color::Black()
+	{
+		return Color::Color32(0,0,0);
+	}
+
+	Color Color::White()
+	{
+		return Color::Color32();
+	}
+
 	Color::Color()
 	{
 		_r = 255;

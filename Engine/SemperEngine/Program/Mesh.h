@@ -8,7 +8,7 @@
 
 namespace SemperEngine
 {
-	class Mesh
+	class Mesh : public Core::IResourceTarget
 	{
 	private:
 
@@ -22,13 +22,16 @@ namespace SemperEngine
 
 		~Mesh();
 
-		Core::MeshObject* GetObject();
-
 		Mesh* Copy();
 
 		ArrayList<Float3> GetVertices();
 
 		void SetVertices(ArrayList<Float3> vertices);
+
+
+		// Í¨¹ý IResourceTarget ¼Ì³Ð
+		virtual Core::ResourceObject* GetObject() override;
+
 	};
 }
 

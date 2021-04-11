@@ -4,11 +4,6 @@
 #include <vector>
 #include <memory>
 #include "RenderBatch.h"
-#include "CameraObject.h"
-#include "RenderCustomObject.h"
-#include "RenderScreenObject.h"
-#include "Graphic/Graphic.h"
-#include "Material.h"
 
 namespace SemperEngine {
 

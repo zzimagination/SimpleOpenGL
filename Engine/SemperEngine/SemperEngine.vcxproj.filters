@@ -82,12 +82,6 @@
     <ClCompile Include="Program\RenderScreenObject.cpp">
       <Filter>Render\Game\RenderObject</Filter>
     </ClCompile>
-    <ClCompile Include="Program\RenderBatch.cpp">
-      <Filter>Render\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\RenderBatchManager.cpp">
-      <Filter>Render\Game</Filter>
-    </ClCompile>
     <ClCompile Include="Program\RenderLayer.cpp">
       <Filter>Render\Game</Filter>
     </ClCompile>
@@ -371,6 +365,21 @@
     <ClCompile Include="Program\Render\RenderSection\DepthSection.cpp">
       <Filter>Render\Game\RenderSection</Filter>
     </ClCompile>
+    <ClCompile Include="Program\Render\RenderBatch\ScreenRenderBatch.cpp">
+      <Filter>Render\Game\RenderBatch</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Render\RenderBatch\CustomRenderBatch.cpp">
+      <Filter>Render\Game\RenderBatch</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Render\RenderBatch\ClearBatch.cpp">
+      <Filter>Render\Game\RenderBatch</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Render\RenderBatchManager.cpp">
+      <Filter>Render\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Render\RenderBatch.cpp">
+      <Filter>Render\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Program\Debug.h">
@@ -462,12 +471,6 @@
     </ClInclude>
     <ClInclude Include="Program\RenderScreenObject.h">
       <Filter>Render\Game\RenderObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\RenderBatch.h">
-      <Filter>Render\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\RenderBatchManager.h">
-      <Filter>Render\Game</Filter>
     </ClInclude>
     <ClInclude Include="Program\RenderLayer.h">
       <Filter>Render\Game</Filter>
@@ -799,6 +802,24 @@
     <ClInclude Include="Program\Render\RenderSection\DepthSection.h">
       <Filter>Render\Game\RenderSection</Filter>
     </ClInclude>
+    <ClInclude Include="Program\Render\RenderBatch\ScreenRenderBatch.h">
+      <Filter>Render\Game\RenderBatch</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\RenderBatch\CustomRenderBatch.h">
+      <Filter>Render\Game\RenderBatch</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\RenderBatch\ClearBatch.h">
+      <Filter>Render\Game\RenderBatch</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\RenderBatchManager.h">
+      <Filter>Render\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\RenderBatch.h">
+      <Filter>Render\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\Render.h">
+      <Filter>Render\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Project">
@@ -915,6 +936,9 @@
     </Filter>
     <Filter Include="Render\Game\RenderSection">
       <UniqueIdentifier>{e125835f-6226-4e3a-96a0-a74371ae6c71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render\Game\RenderBatch">
+      <UniqueIdentifier>{94b280f4-368b-441c-b865-4ce8ba6da0a3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

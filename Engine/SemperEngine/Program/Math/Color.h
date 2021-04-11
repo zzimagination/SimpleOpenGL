@@ -21,6 +21,10 @@ namespace SemperEngine
 
 		static Color Color32(const ColorByte& r = 255, const ColorByte& g = 255, const ColorByte& b = 255, const ColorByte& a = 255);
 
+		static Color Black();
+
+		static Color White();
+
 	private:
 
 		ColorByte _r;

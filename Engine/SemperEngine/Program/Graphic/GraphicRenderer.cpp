@@ -21,7 +21,6 @@ namespace SemperEngine
 			RenderMatrix matrix,
 			ShaderProperty sproperty,
 			vector<GraphicTextureInfo> textures,
-			bool useRecord,
 			std::vector<int> records)
 		{
 			auto cmd = shared_ptr<GDrawCMD>(new GDrawCMD());
@@ -32,7 +31,6 @@ namespace SemperEngine
 			cmd->shaderProperty.Add(VIEW_MATRIX, matrix.view);
 			cmd->shaderProperty.Add(PROJECTION_MARIX, matrix.projection);
 			cmd->textures = textures;
-			cmd->useRecord = useRecord;
 			cmd->recordID = records;
 			GraphicCommandManager::AddRender(cmd);
 		}
@@ -42,7 +40,6 @@ namespace SemperEngine
 			RenderOperation operation, 
 			ShaderProperty sproperty, 
 			std::vector<GraphicTextureInfo> textures,
-			bool useRecord,
 			std::vector<int> records)
 		{
 			auto cmd = shared_ptr<GDrawCMD>(new GDrawCMD());
@@ -50,7 +47,6 @@ namespace SemperEngine
 			cmd->operation = operation;
 			cmd->shaderProperty = sproperty;
 			cmd->textures = textures;
-			cmd->useRecord = useRecord;
 			cmd->recordID = records;
 			GraphicCommandManager::AddRender(cmd);
 		}
@@ -59,7 +55,6 @@ namespace SemperEngine
 			GraphicVertexInfo vertex,
 			ShaderProperty sproperty,
 			std::vector<GraphicTextureInfo> textures,
-			bool useRecord,
 			std::vector<int> records)
 		{
 			auto cmd = shared_ptr<GDrawCMD>(new GDrawCMD());
@@ -69,7 +64,6 @@ namespace SemperEngine
 			cmd->operation = operation;
 			cmd->shaderProperty = sproperty;
 			cmd->textures = textures;
-			cmd->useRecord = useRecord;
 			cmd->recordID = records;
 			GraphicCommandManager::AddRender(cmd);
 		}
@@ -83,16 +77,6 @@ namespace SemperEngine
 		void GraphicRenderer::Clear(Color color)
 		{
 			auto cmd = shared_ptr<GClearCMD>(new GClearCMD(color, ClearColorDepth));
-			GraphicCommandManager::AddRender(cmd);
-		}
-		void GraphicRenderer::CreateRecord(std::string name)
-		{
-			auto cmd = shared_ptr<GCMD_CreateRecord>(new GCMD_CreateRecord(name));
-			GraphicCommandManager::AddRender(cmd);
-		}
-		void GraphicRenderer::StopRecord()
-		{
-			auto cmd = shared_ptr<GCMD_StopRecord>(new GCMD_StopRecord);
 			GraphicCommandManager::AddRender(cmd);
 		}
 	}

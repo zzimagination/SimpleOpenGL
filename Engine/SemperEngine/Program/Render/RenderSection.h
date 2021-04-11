@@ -7,6 +7,7 @@
 #include "../CameraObject.h"
 #include "../RenderCustomObject.h"
 #include "../Material.h"
+#include "Render.h"
 
 namespace SemperEngine
 {
@@ -14,6 +15,10 @@ namespace SemperEngine
 	{
 		class RenderSection
 		{
+		public:
+
+			CameraObject* camera;
+
 		public:
 
 			virtual ~RenderSection() {}

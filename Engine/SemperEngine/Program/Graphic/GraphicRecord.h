@@ -35,8 +35,6 @@ namespace SemperEngine
 
 		public:
 
-			int managerID = -1;
-
 			unsigned int glFrameBuffer = -1;
 
 			unsigned int glRenderBuffer = -1;

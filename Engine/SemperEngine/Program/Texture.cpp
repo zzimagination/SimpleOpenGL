@@ -23,11 +23,6 @@ namespace SemperEngine {
 		_object->Dispose();
 	}
 
-	Core::TextureObject* Texture::GetObject()
-	{
-		return _object;
-	}
-
 	Texture* Texture::Copy()
 	{
 		auto obj = _object->Copy();
@@ -53,5 +48,9 @@ namespace SemperEngine {
 	ResourceConfig::TextureFilter Texture::GetFilter()
 	{
 		return _object->filter;
+	}
+	ResourceObject* Texture::GetObject()
+	{
+		return _object;
 	}
 }

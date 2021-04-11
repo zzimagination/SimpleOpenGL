@@ -8,10 +8,11 @@
 #include "Graphic/Graphic.h"
 #include "Texture.h"
 #include "MaterialObject.h"
+#include "Graphic/IGraphicResource.h"
 
 namespace SemperEngine
 {
-	class Material
+	class Material : public Core::IResourceTarget
 	{
 	private:
 
@@ -33,8 +34,6 @@ namespace SemperEngine
 
 		std::vector<std::shared_ptr<Texture>> GetTextures();
 
-		Core::MaterialObject* GetObject();
-
 		void AddProperty(std::string name, float value);
 
 		void AddProperty(std::string name, Float2 value);
@@ -48,6 +47,12 @@ namespace SemperEngine
 		void AddProperty(std::string name, Color value);
 
 		void AddProperty(int id, std::shared_ptr<Texture> value);
+
+
+
+		// Í¨¹ý IResourceTarget ¼Ì³Ð
+		virtual Core::ResourceObject* GetObject() override;
+
 	};
 }
 #endif // !MATERIAL

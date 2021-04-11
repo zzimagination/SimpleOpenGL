@@ -6,13 +6,9 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		GCMD_CreateRecord::GCMD_CreateRecord(std::string name)
+		GCMD_CreateRecord::GCMD_CreateRecord(GraphicRecord* record)
 		{
-			record = GraphicRecordManager::CreateRecord(name);
-			record->name = name;
-			record->width = GameSetting::windowWidth;
-			record->height = GameSetting::windowHeight;
-			record->attach = GraphicRecord::Attach::None;
+			this->record = record;
 		}
 
 		GCMD_CreateRecord::~GCMD_CreateRecord()
