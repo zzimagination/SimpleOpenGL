@@ -275,9 +275,6 @@
     <ClCompile Include="Program\Render\RenderSection\UnlitSection.cpp">
       <Filter>Render\Game\RenderSection</Filter>
     </ClCompile>
-    <ClCompile Include="Program\Render\RenderSection\CreateRecordSection.cpp">
-      <Filter>Render\Game\RenderSection</Filter>
-    </ClCompile>
     <ClCompile Include="Program\Render\RenderSection\StopRecordSection.cpp">
       <Filter>Render\Game\RenderSection</Filter>
     </ClCompile>
@@ -384,6 +381,15 @@
       <Filter>Render\Game\RenderSection</Filter>
     </ClCompile>
     <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_DefaultFrameBuffer.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Render\RenderSection\StartRecordSection.cpp">
+      <Filter>Render\Game\RenderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_StartRecord.cpp">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_DeleteRecord.cpp">
       <Filter>Render\Graphic\Command</Filter>
     </ClCompile>
   </ItemGroup>
@@ -706,9 +712,6 @@
     <ClInclude Include="Program\Render\RenderSection\UnlitSection.h">
       <Filter>Render\Game\RenderSection</Filter>
     </ClInclude>
-    <ClInclude Include="Program\Render\RenderSection\CreateRecordSection.h">
-      <Filter>Render\Game\RenderSection</Filter>
-    </ClInclude>
     <ClInclude Include="Program\Render\RenderSection\StopRecordSection.h">
       <Filter>Render\Game\RenderSection</Filter>
     </ClInclude>
@@ -830,6 +833,15 @@
       <Filter>Render\Game\RenderSection</Filter>
     </ClInclude>
     <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_DefaultFrameBuffer.h">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\RenderSection\StartRecordSection.h">
+      <Filter>Render\Game\RenderSection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_StartRecord.h">
+      <Filter>Render\Graphic\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_DeleteRecord.h">
       <Filter>Render\Graphic\Command</Filter>
     </ClInclude>
   </ItemGroup>

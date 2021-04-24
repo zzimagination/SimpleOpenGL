@@ -41,7 +41,8 @@ namespace SemperEngine
 
 			static void Clear(Color color);
 
-			static void DefaultFrameBuffer(int record);
+			static void DefaultFrameBuffer(int recordID);
+
 		};
 	}
 }

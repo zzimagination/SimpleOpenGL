@@ -11,7 +11,11 @@ namespace SemperEngine
 		{
 		public:
 
-			GCMD_StopRecord();
+			GraphicRecord* record = nullptr;
+
+		public:
+
+			GCMD_StopRecord(GraphicRecord* record);
 
 			virtual ~GCMD_StopRecord() override;
 

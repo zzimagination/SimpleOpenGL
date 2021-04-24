@@ -103,6 +103,11 @@ namespace SemperEngine
 		template<class T>
 		T FillList<T>::operator[](const int& index)
 		{
+			if (IsEmpty(index))
+			{
+				throw "index out of range";
+				return T();
+			}
 			return _items[index].value;
 		}
 	}

@@ -121,39 +121,40 @@ namespace SemperEngine {
 		void GraphicRenderAPI::CreateRecord(GraphicRecord* record)
 		{
 			record->glFrameBuffer = GLRenderAPI::CreateFrameBuffer();
-			if (record->msaa)
+			if (record->msaa > 0)
 			{
 				GLRenderAPI::SetMSAA(true);
 				GLRenderAPI::BindFrameBuffer(record->glFrameBuffer);
 				GraphicTextureData textureData;
-				textureData.SetGLTexture(GLRenderAPI::AttachTexture(record->width, record->height, GLRenderAPI::ColorType::RGB, 0, record->msaa, record->sample));
+				auto msTexID = GLRenderAPI::AttachMSTexture(record->width, record->height, 0, record->msaa);
+				textureData.SetGLTexture(msTexID);
 				record->textures.push_back(textureData);
-				record->glRenderBuffer = GLRenderAPI::AttachDepthStencil(record->width, record->height, false, record->msaa, record->sample);
+				record->glRenderBuffer = GLRenderAPI::AttachMSDepth(record->width, record->height, record->msaa);
 				GLRenderAPI::CheckFrameBuffer(record->glFrameBuffer);
+				GLRenderAPI::CloseFrameBuffer(); //optimize
 				return;
 			}
 
 			GLRenderAPI::BindFrameBuffer(record->glFrameBuffer);
 			GraphicTextureData textureData;
-			textureData.SetGLTexture(GLRenderAPI::AttachTexture(record->width, record->height, GLRenderAPI::ColorType::RGB, 0));
+			auto texID = GLRenderAPI::AttachTexture(record->width, record->height, GLRenderAPI::ColorType::RGB, 0);
+			textureData.SetGLTexture(texID);
 			record->textures.push_back(textureData);
-			if (record->attach == GraphicRecord::Attach::DepthStencil)
-			{
-				GraphicTextureData attachTex;
-				attachTex.SetGLTexture(GLRenderAPI::AttachDepthStencil(record->width, record->height, true));
-				record->textures.push_back(attachTex);
-				GLRenderAPI::CheckFrameBuffer(record->glFrameBuffer);
-				return;
-			}
-
-			record->glRenderBuffer = GLRenderAPI::AttachDepthStencil(record->width, record->height);
+			record->glRenderBuffer = GLRenderAPI::AttachDepth(record->width, record->height);
 			GLRenderAPI::CheckFrameBuffer(record->glFrameBuffer);
+			GLRenderAPI::CloseFrameBuffer(); //optimize
 		}
 
-		void GraphicRenderAPI::StopRecord()
+		void GraphicRenderAPI::StartRecord(GraphicRecord* record)
+		{
+			GLRenderAPI::SetMSAA(record->MSAAEnable());
+			GLRenderAPI::BindFrameBuffer(record->glFrameBuffer);
+		}
+
+		void GraphicRenderAPI::StopRecord(GraphicRecord* record)
 		{
 			GLRenderAPI::CloseFrameBuffer();
-			GLRenderAPI::SetMSAA(false);
+			GLRenderAPI::SetMSAA(record->MSAAEnable());
 		}
 
 		void GraphicRenderAPI::DeleteRecord(GraphicRecord* record)

@@ -20,18 +20,18 @@ namespace SemperEngine
 		void GraphicSystem::Render()
 		{
 			GraphicCommandManager::Render();
-			//GraphicRecordManager::Clear();
 		}
+
 		void GraphicSystem::Resource()
 		{
-			GraphicRecordManager::Clear();
 			GraphicCommandManager::Resource();
 		}
+
 		void GraphicSystem::SwapCommands()
 		{
-			GraphicRecordManager::Swap();
 			GraphicCommandManager::SwapCommands();
 		}
+
 		void GraphicSystem::Dispose()
 		{
 			GraphicCommandManager::Resource();

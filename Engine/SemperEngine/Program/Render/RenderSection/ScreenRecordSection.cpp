@@ -33,10 +33,7 @@ namespace SemperEngine
 		void ScreenRecordSection::Start()
 		{
 			auto batch = shared_ptr<ScreenRenderBatch>(new ScreenRenderBatch);
-			for (size_t i = 0; i < records.size(); i++)
-			{
-				batch->records.push_back(RenderRecord(camera, records[i]));
-			}
+
 			auto m = ResourceInternal::ScreenViewMaterial();
 			batch->material = m.get();
 			RenderBatchManager::AddBatch(batch);

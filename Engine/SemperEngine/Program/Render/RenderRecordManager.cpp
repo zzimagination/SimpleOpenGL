@@ -8,78 +8,88 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		std::vector<RenderRecord> RenderRecordManager::_records;
+#pragma region RenderRecordManager
 
-		void RenderRecordManager::CreateRecord(string name, CameraObject* camera, bool msaa, Render::MSAA sample)
+		map<CameraObject*, map<string, RenderRecord>> RenderRecordManager::_recordMap;
+
+		RenderRecord* RenderRecordManager::_current = nullptr;
+
+		void RenderRecordManager::CreateRecord(std::string key, CameraObject* camera)
 		{
-			int sampleNumber = 4;
-			switch (sample)
+			CreateRecord(key, camera, Render::MSAA::None);
+		}
+
+		void RenderRecordManager::CreateRecord(std::string key, CameraObject* camera, Render::MSAA msaa)
+		{
+			if (camera == nullptr)
 			{
-			case Render::MSAA::m4:
-				sampleNumber = 4;
+				Debug::LogError("camera can`t be null");
+				return;
+			}
+			RenderRecord record;
+			int m = 0;
+			switch (msaa)
+			{
+			case Render::MSAA::Four:
+				m = 4;
 				break;
-			case Render::MSAA::m8:
-				sampleNumber = 8;
+			case Render::MSAA::Eight:
+				m = 8;
 				break;
-			case Render::MSAA::m16:
-				sampleNumber = 16;
+			case Render::MSAA::Sixteen:
+				m = 16;
 				break;
 			}
-			auto id = GraphicRecordManager::CreateRecord(name, msaa, sampleNumber);
-			RenderRecord record;
-			record.graphicID = id;
-			record.name = name;
-			record.camera = camera;
-			_records.push_back(record);
+			record.graphicID = GraphicRecordManager::CreateRecord(m);
+			_recordMap[camera][key] = record;
+		}
+
+		void RenderRecordManager::StartRecord(std::string key, CameraObject* camera)
+		{
+			auto c = _recordMap.find(camera);
+			if (c == _recordMap.end())
+			{
+				Debug::LogError({ "Don`t have the record." });
+				return;
+			}
+			auto i = (*c).second.find(key);
+			if (i == (*c).second.end())
+			{
+				Debug::LogError({ "Don`t have the record." });
+				return;
+			}
+			GraphicRecordManager::StartRecord(i->second.graphicID);
+			_current = &(i->second);
 		}
 
 		void RenderRecordManager::StopRecord()
 		{
-			GraphicRecordManager::StopRecord();
-		}
-
-		int RenderRecordManager::GetGraphicRecord(RenderRecord record)
-		{
-			auto id = FindRecord(record);
-			return _records[id].graphicID;
-		}
-
-		std::vector<int> RenderRecordManager::GetGraphicRecords(std::vector<RenderRecord> records)
-		{
-			vector<int> result;
-			for (size_t i = 0; i < records.size(); i++)
+			if (_current == nullptr)
 			{
-				auto id = FindRecord(records[i]);
-				result.push_back(_records[id].graphicID);
+				return;
 			}
-			return result;
+			GraphicRecordManager::StopRecord(_current->graphicID);
+			_current = nullptr;
 		}
 
-		int RenderRecordManager::FindRecord(RenderRecord record)
+		RenderRecord RenderRecordManager::GetRecord(std::string key, CameraObject* camera)
 		{
-			for (size_t j = 0; j < _records.size(); j++)
+			auto c = _recordMap.find(camera);
+			if (c == _recordMap.end())
 			{
-				if (_records[j] == record)
-				{
-					return (int)j;
-				}
+				Debug::LogError({ "Don`t have the record." });
+				return RenderRecord();
 			}
-			Debug::LogError({ "don't have the record", record.name });
-			abort();
+			auto i = (*c).second.find(key);
+			if (i == (*c).second.end())
+			{
+				Debug::LogError({ "Don`t have the record." });
+				return RenderRecord();
+			}
+			return (*i).second;
 		}
 
+#pragma endregion
 
-		RenderRecord::RenderRecord()
-		{
-		}
-
-		RenderRecord::RenderRecord(CameraObject* camera, std::string name) : camera(camera), name(name)
-		{
-		}
-
-		bool RenderRecord::operator==(const RenderRecord& record)
-		{
-			return this->name == record.name && this->camera == record.camera;
-		}
 	}
 }

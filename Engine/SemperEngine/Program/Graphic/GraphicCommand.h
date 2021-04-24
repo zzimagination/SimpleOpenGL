@@ -32,13 +32,14 @@ namespace SemperEngine
 #include "GraphicCommand/GCMD_VertexBufferClear.h"
 #include "GraphicCommand/GCMD_TextureBuffer.h"
 #include "GraphicCommand/GCMD_TextureBufferClear.h"
-#include "GraphicCommand/GCMD_ClearRecord.h"
 #include "GraphicCommand/GCMD_Draw.h"
 #include "GraphicCommand/GCMD_Clear.h"
 #include "GraphicCommand/GCMD_Wireframe.h"
 #include "GraphicCommand/GCMD_CreateRecord.h"
+#include "GraphicCommand/GCMD_StartRecord.h"
 #include "GraphicCommand/GCMD_StopRecord.h"
 #include "GraphicCommand/GCMD_ClearRecord.h"
+#include "GraphicCommand/GCMD_DeleteRecord.h"
 #include "GraphicCommand/GCMD_DefaultFrameBuffer.h"
 
 #endif

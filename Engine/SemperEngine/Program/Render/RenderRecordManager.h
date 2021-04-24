@@ -1,6 +1,7 @@
 #ifndef __RENDERRECORDMANAGER__
 #define __RENDERRECORDMANAGER__
 
+#include <map>
 #include "../CameraObject.h"
 #include "Render.h"
 
@@ -8,44 +9,33 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		class RenderRecord
+		struct RenderRecord
 		{
-		public:
-
-			CameraObject* camera = nullptr;
-
-			std::string name;
-
-			int graphicID = 0;
-
-		public:
-
-			RenderRecord();
-
-			RenderRecord(CameraObject* camera, std::string name);
-
-			bool operator==(const RenderRecord& record);
+			int graphicID = -1;
 		};
 
 		class RenderRecordManager
 		{
 		private:
 
-			static std::vector<RenderRecord> _records;
+			static std::map<CameraObject*, std::map<std::string, RenderRecord>> _recordMap;
+
+			static RenderRecord* _current;
 
 		public:
 
-			static void CreateRecord(std::string name, CameraObject* camera, bool msaa = false, Render::MSAA sample = Render::MSAA::m4);
+			static void CreateRecord(std::string key, CameraObject* camera);
+
+			static void CreateRecord(std::string key, CameraObject* camera, Render::MSAA msaa);
+
+			static void StartRecord(std::string key, CameraObject* camera);
 
 			static void StopRecord();
 
-			static int GetGraphicRecord(RenderRecord record);
-
-			static std::vector<int> GetGraphicRecords(std::vector<RenderRecord> records);
+			static RenderRecord GetRecord(std::string key, CameraObject* camera);
 
 		private:
 
-			static int FindRecord(RenderRecord record);
 		};
 	}
 }

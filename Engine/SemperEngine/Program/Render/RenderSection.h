@@ -23,18 +23,19 @@ namespace SemperEngine
 
 			virtual ~RenderSection() {}
 
-			virtual void Prepare() = 0;
+			virtual void Prepare();
 
 			virtual void Start() = 0;
 		};
 	}
 }
 
+#endif // !__RENDER_SECTION__
+
+
 #include "RenderSection/UnlitSection.h"
-#include "RenderSection/CreateRecordSection.h"
+#include "RenderSection/StartRecordSection.h"
 #include "RenderSection/StopRecordSection.h"
 #include "RenderSection/ScreenRecordSection.h"
 #include "RenderSection/DepthSection.h"
 #include "RenderSection/DefaultFrameBufferSection.h"
-
-#endif // !__RENDER_SECTION__

@@ -162,7 +162,9 @@
     <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_ClearRecord.h" />
     <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_CreateRecord.h" />
     <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_DefaultFrameBuffer.h" />
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_DeleteRecord.h" />
     <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_Draw.h" />
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_StartRecord.h" />
     <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_StopRecord.h" />
     <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_TextureBuffer.h" />
     <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_TextureBufferClear.h" />
@@ -196,10 +198,10 @@
     <ClInclude Include="Program\Render\RenderPipeline.h" />
     <ClInclude Include="Program\Render\RenderSection.h" />
     <ClInclude Include="Program\Render\RenderRecordManager.h" />
-    <ClInclude Include="Program\Render\RenderSection\CreateRecordSection.h" />
     <ClInclude Include="Program\Render\RenderSection\DefaultFrameBufferSection.h" />
     <ClInclude Include="Program\Render\RenderSection\DepthSection.h" />
     <ClInclude Include="Program\Render\RenderSection\ScreenRecordSection.h" />
+    <ClInclude Include="Program\Render\RenderSection\StartRecordSection.h" />
     <ClInclude Include="Program\Render\RenderSection\StopRecordSection.h" />
     <ClInclude Include="Program\Render\RenderSection\UnlitSection.h" />
     <ClInclude Include="Program\Thread\CompletedSignal.h" />
@@ -313,7 +315,9 @@
     <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_ClearRecord.cpp" />
     <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_CreateRecord.cpp" />
     <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_DefaultFrameBuffer.cpp" />
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_DeleteRecord.cpp" />
     <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_Draw.cpp" />
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_StartRecord.cpp" />
     <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_StopRecord.cpp" />
     <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_TextureBuffer.cpp" />
     <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_TextureBufferClear.cpp" />
@@ -340,10 +344,10 @@
     <ClCompile Include="Program\Render\RenderPipeline.cpp" />
     <ClCompile Include="Program\Render\RenderSection.cpp" />
     <ClCompile Include="Program\Render\RenderRecordManager.cpp" />
-    <ClCompile Include="Program\Render\RenderSection\CreateRecordSection.cpp" />
     <ClCompile Include="Program\Render\RenderSection\DefaultFrameBufferSection.cpp" />
     <ClCompile Include="Program\Render\RenderSection\DepthSection.cpp" />
     <ClCompile Include="Program\Render\RenderSection\ScreenRecordSection.cpp" />
+    <ClCompile Include="Program\Render\RenderSection\StartRecordSection.cpp" />
     <ClCompile Include="Program\Render\RenderSection\StopRecordSection.cpp" />
     <ClCompile Include="Program\Render\RenderSection\UnlitSection.cpp" />
     <ClCompile Include="Program\Thread\CompletedSignal.cpp" />

@@ -53,13 +53,7 @@ namespace SemperEngine
 
 		void GDrawCMD::SetRecords(int ID)
 		{
-			auto record = GraphicRecordManager::UseRecord(ID);
 
-			for (size_t i = 0; i < record->textures.size(); i++)
-			{
-				GraphicRenderAPI::SetShaderProperty(_setTextureCount, record->textures[i]);
-				_setTextureCount++;
-			}
 		}
 	}
 }

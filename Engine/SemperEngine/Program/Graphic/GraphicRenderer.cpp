@@ -80,10 +80,12 @@ namespace SemperEngine
 			GraphicCommandManager::AddRender(cmd);
 		}
 
-		void GraphicRenderer::DefaultFrameBuffer(int record)
+		void GraphicRenderer::DefaultFrameBuffer(int recordID)
 		{
-			auto cmd = shared_ptr<GCMD_DefaultFrameBuffer>(new GCMD_DefaultFrameBuffer(record));
+			auto r = GraphicRecordManager::GetRecord(recordID);
+			auto cmd = shared_ptr<GCMD_DefaultFrameBuffer>(new GCMD_DefaultFrameBuffer(r));
 			GraphicCommandManager::AddRender(cmd);
 		}
+
 	}
 }

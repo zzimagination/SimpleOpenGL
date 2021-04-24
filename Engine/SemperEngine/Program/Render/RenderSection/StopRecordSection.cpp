@@ -7,12 +7,6 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		StopRecordSection::~StopRecordSection()
-		{
-		}
-		void StopRecordSection::Prepare()
-		{
-		}
 		void StopRecordSection::Start()
 		{
 			RenderRecordManager::StopRecord();

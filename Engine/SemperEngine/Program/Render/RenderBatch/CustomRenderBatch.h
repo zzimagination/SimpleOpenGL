@@ -1,6 +1,7 @@
 #ifndef __CUSTOM_RENDERBATCH__
 #define __CUSTOM_RENDERBATCH__
 
+#include <vector>
 #include "../RenderBatch.h"
 
 namespace SemperEngine

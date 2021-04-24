@@ -4,11 +4,9 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		GraphicRecord::GraphicRecord()
+		bool GraphicRecord::MSAAEnable()
 		{
-		}
-		GraphicRecord::GraphicRecord(std::string name): name(name)
-		{
+			return this->msaa > 0;
 		}
 	}
 }

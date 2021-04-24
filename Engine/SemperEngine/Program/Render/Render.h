@@ -11,9 +11,10 @@ namespace SemperEngine
 	public:
 		enum class MSAA
 		{
-			m4,
-			m8,
-			m16
+			None,
+			Four,
+			Eight,
+			Sixteen,
 		};
 	};
 }

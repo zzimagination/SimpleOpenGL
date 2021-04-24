@@ -11,11 +11,11 @@ namespace SemperEngine
 		{
 		public:
 
-			int recordID = 0;
+			GraphicRecord* record = nullptr;
 
 		public:
 
-			GCMD_DefaultFrameBuffer(int recordID);
+			GCMD_DefaultFrameBuffer(GraphicRecord* record);
 
 			virtual ~GCMD_DefaultFrameBuffer() override;
 

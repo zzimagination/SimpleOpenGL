@@ -98,9 +98,13 @@ namespace SemperEngine
 
 				static void CheckFrameBuffer(FrameBufferID fbo);
 
-				static TextureID AttachTexture(int width, int height, ColorType colorType, int index, bool msaa = false, int sample = 4);
+				static TextureID AttachTexture(int width, int height, ColorType colorType, int index);
 
-				static unsigned int AttachDepthStencil(int width, int height, bool texture = false, bool msaa = false, int sample = 4);
+				static TextureID AttachMSTexture(int width, int height, int index, int sample);
+
+				static unsigned int AttachDepth(int width, int height);
+
+				static unsigned int AttachMSDepth(int width, int height, int sample);
 
 				static void DeleteRenderBuffer(FrameBufferID rbo);
 

@@ -5,7 +5,7 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		GCMD_StopRecord::GCMD_StopRecord()
+		GCMD_StopRecord::GCMD_StopRecord(GraphicRecord* record) :record(record)
 		{
 		}
 		GCMD_StopRecord::~GCMD_StopRecord()
@@ -13,7 +13,7 @@ namespace SemperEngine
 		}
 		void GCMD_StopRecord::Excute()
 		{
-			GraphicRenderAPI::StopRecord();
+			GraphicRenderAPI::StopRecord(record);
 		}
 	}
 }

@@ -10,10 +10,6 @@ namespace SemperEngine
 		{
 		public:
 
-			virtual ~StopRecordSection() override;
-
-			// Í¨¹ý RenderSection ¼Ì³Ð
-			virtual void Prepare() override;
 			virtual void Start() override;
 		};
 	}

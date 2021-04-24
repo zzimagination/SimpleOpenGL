@@ -1,6 +1,7 @@
 #ifndef __GRAPHIC_RECORDMANAGER__
 #define __GRAPHIC_RECORDMANAGER__
 
+#include "../Collection/Collection.h"
 #include "Graphic.h"
 #include "GraphicRecord.h"
 #include <memory>
@@ -14,21 +15,23 @@ namespace SemperEngine
 		{
 		private:
 
-			static std::vector<GraphicRecord*> _tempRecords;
-
-			static std::vector<GraphicRecord*> _inUseRecords;
+			static FillList<GraphicRecord*> _records;
 
 		public:
 
-			static int CreateRecord(std::string name, bool msaa = false, int sample = 4);
+			static int CreateRecord(int msaa);
 
-			static void StopRecord();
+			static void StartRecord(int id);
 
-			static GraphicRecord* UseRecord(int id);
+			static void StopRecord(int id);
 
-			static void Clear();
+			static void DeleteRecord(int id);
 
-			static void Swap();
+			static GraphicRecord* GetRecord(int id);
+
+		private:
+
+			static void DeleteRecordFunc(GraphicRecord* record);
 		};
 	}
 }

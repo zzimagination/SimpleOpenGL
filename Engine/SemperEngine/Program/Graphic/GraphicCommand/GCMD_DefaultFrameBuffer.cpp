@@ -5,9 +5,9 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		GCMD_DefaultFrameBuffer::GCMD_DefaultFrameBuffer(int recordID)
+		GCMD_DefaultFrameBuffer::GCMD_DefaultFrameBuffer(GraphicRecord* record)
 		{
-			this->recordID = recordID;
+			this->record = record;
 		}
 		
 		GCMD_DefaultFrameBuffer::~GCMD_DefaultFrameBuffer()
@@ -16,7 +16,6 @@ namespace SemperEngine
 		
 		void GCMD_DefaultFrameBuffer::Excute()
 		{
-			auto record = GraphicRecordManager::UseRecord(recordID);
 			GraphicRenderAPI::DefaultFrameBuffer(record);
 		}
 	}

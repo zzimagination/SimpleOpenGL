@@ -25,17 +25,13 @@ namespace SemperEngine
 
 		public:
 
-			std::string name;
-
 			int width = 0;
 
 			int height = 0;
 
 			Attach attach = Attach::None;
 
-			bool msaa = false;
-
-			int sample = 4;
+			int msaa = 0;
 
 		public:
 
@@ -47,9 +43,8 @@ namespace SemperEngine
 
 		public:
 
-			GraphicRecord();
+			bool MSAAEnable();
 
-			GraphicRecord(std::string name);
 		};
 	}
 }

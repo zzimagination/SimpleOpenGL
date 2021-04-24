@@ -10,5 +10,9 @@ namespace SemperEngine
 	namespace Core
 	{
 		using namespace std;
+		
+		void RenderSection::Prepare()
+		{
+		}
 	}
 }

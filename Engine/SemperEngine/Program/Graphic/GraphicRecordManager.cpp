@@ -8,53 +8,51 @@ namespace SemperEngine
 	{
 		using namespace std;
 
-		std::vector<GraphicRecord*> GraphicRecordManager::_tempRecords;
-		std::vector<GraphicRecord*> GraphicRecordManager::_inUseRecords;
+		FillList<GraphicRecord*> GraphicRecordManager::_records;
 
-		int GraphicRecordManager::CreateRecord(string name, bool msaa, int sample)
+		int GraphicRecordManager::CreateRecord(int msaa)
 		{
 			auto record = new GraphicRecord();
-			record->name = name;
 			record->width = GameSetting::windowWidth;
 			record->height = GameSetting::windowHeight;
 			record->attach = GraphicRecord::Attach::Depth;
 			record->msaa = msaa;
-			record->sample = sample;
-			_tempRecords.push_back(record);
+			auto id = _records.Add(record);
+
 			auto cmd = shared_ptr<GCMD_CreateRecord>(new GCMD_CreateRecord(record));
+			GraphicCommandManager::AddResource(cmd);
+			return id;
+		}
+
+		void GraphicRecordManager::StartRecord(int id)
+		{
+			auto record = _records[id];
+			auto cmd = shared_ptr<GCMD_StartRecord>(new GCMD_StartRecord(record));
 			GraphicCommandManager::AddRender(cmd);
-			return (int)_tempRecords.size() - 1;
 		}
 
-		void GraphicRecordManager::StopRecord()
+		void GraphicRecordManager::StopRecord(int id)
 		{
-			auto cmd = shared_ptr<GCMD_StopRecord>(new GCMD_StopRecord);
+			auto record = _records[id];
+			auto cmd = shared_ptr<GCMD_StopRecord>(new GCMD_StopRecord(record));
 			GraphicCommandManager::AddRender(cmd);
 		}
 
-		GraphicRecord* GraphicRecordManager::UseRecord(int id)
+		void GraphicRecordManager::DeleteRecord(int id)
 		{
-			return _inUseRecords[id];
+			auto record = _records[id];
+			_records.Remove(id);
+			auto cmd = shared_ptr<GCMD_DeleteRecord>(new GCMD_DeleteRecord(record, DeleteRecordFunc));
 		}
 
-		void GraphicRecordManager::Clear()
+		GraphicRecord* GraphicRecordManager::GetRecord(int id)
 		{
-			for (size_t i = 0; i < _inUseRecords.size(); i++)
-			{
-				auto cmd = shared_ptr<GCMD_ClearRecord>(new GCMD_ClearRecord);
-				cmd->record = _inUseRecords[i];
-				GraphicCommandManager::AddResource(cmd);
-			}
+			return _records[id];
 		}
 
-		void GraphicRecordManager::Swap()
+		void GraphicRecordManager::DeleteRecordFunc(GraphicRecord* record)
 		{
-			for (size_t i = 0; i < _inUseRecords.size(); i++)
-			{
-				delete _inUseRecords[i];
-			}
-			_inUseRecords = _tempRecords;
-			_tempRecords.clear();
+			delete record;
 		}
 	}
 }

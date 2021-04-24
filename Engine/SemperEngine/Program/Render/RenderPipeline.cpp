@@ -20,18 +20,17 @@ namespace SemperEngine
 			//auto stop = new StopRecordSection();
 			//_cameraSections.push_back(stop);
 
-			/*auto record = new CreateRecordSection(UNLITSECTION);
-			record->MSAA = true;
-			record->MSAASample = Render::MSAA::m8;
-			_cameraSections.push_back(record);*/
+			auto record = new StartRecordSection(UNLITSECTION);
+			record->msaa = Render::MSAA::Sixteen;
+			_cameraSections.push_back(record);
 			auto unlitSection = new UnlitSection();
 			_cameraSections.push_back(unlitSection);
-			/*auto stop = new StopRecordSection();
-			_cameraSections.push_back(stop);*/
+			auto stop = new StopRecordSection();
+			_cameraSections.push_back(stop);
 
-			/*auto defaultFB = new DefaultFramebufferSection();
-			defaultFB->record = UNLITSECTION;
-			_cameraSections.push_back(defaultFB);*/
+			auto defaultFB = new DefaultFramebufferSection();
+			defaultFB->key = UNLITSECTION;
+			_cameraSections.push_back(defaultFB);
 			//auto screen = new ScreenRecordSection({UNLITSECTION});
 			//_cameraSections.push_back(screen);
 		}

@@ -4,6 +4,8 @@ namespace SemperEngine
 {
 	namespace Core
 	{
+		using namespace std;
+
 		CustomRenderBatch::~CustomRenderBatch()
 		{
 		}
@@ -23,7 +25,7 @@ namespace SemperEngine
 			auto matrix = GetRenderMatrix(model, camera);
 			auto shaderProperty = GetShaderProperty(material);
 			auto textures = GetTextures(material);
-			auto records = RenderRecordManager::GetGraphicRecords(this->records);
+			vector<int> records = {};
 			GraphicRenderer::Render(vertex, operation, matrix, shaderProperty, textures, records);
 		}
 	}

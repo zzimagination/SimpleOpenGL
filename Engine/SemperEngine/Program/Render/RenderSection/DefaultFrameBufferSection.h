@@ -11,12 +11,9 @@ namespace SemperEngine
 		{
 		public:
 
-			std::string record;
+			std::string key;
 
 		public:
-
-			// Í¨¹ý RenderSection ¼Ì³Ð
-			virtual void Prepare() override;
 
 			virtual void Start() override;
 

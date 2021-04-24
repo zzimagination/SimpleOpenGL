@@ -27,7 +27,7 @@ namespace SemperEngine
 			auto operation = GetOperation(material);
 			auto shaderPorperty = GetShaderProperty(material);
 			auto textures = GetTextures(material);
-			auto records = RenderRecordManager::GetGraphicRecords(this->records);
+			vector<int> records = {};
 			GraphicRenderer::Render(vertex, operation, shaderPorperty, textures, records);
 		}
 	}

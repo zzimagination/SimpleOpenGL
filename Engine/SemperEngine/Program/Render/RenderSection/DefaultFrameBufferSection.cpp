@@ -6,14 +6,12 @@ namespace SemperEngine
 {
 	namespace Core
 	{
-		void DefaultFramebufferSection::Prepare()
-		{
-		}
+		using namespace std;
 
 		void DefaultFramebufferSection::Start()
 		{
-			auto r = RenderRecordManager::GetGraphicRecord(RenderRecord(camera, record));
-			GraphicRenderer::DefaultFrameBuffer(r);
+			auto record = RenderRecordManager::GetRecord(key, camera);
+			GraphicRenderer::DefaultFrameBuffer(record.graphicID);
 		}
 	}
 }
