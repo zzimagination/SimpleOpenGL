@@ -17,7 +17,7 @@ namespace SemperEngine
 		{
 		public:
 
-			CameraObject* camera;
+			CameraObject* camera = nullptr;
 
 		public:
 
@@ -35,5 +35,6 @@ namespace SemperEngine
 #include "RenderSection/StopRecordSection.h"
 #include "RenderSection/ScreenRecordSection.h"
 #include "RenderSection/DepthSection.h"
+#include "RenderSection/DefaultFrameBufferSection.h"
 
 #endif // !__RENDER_SECTION__

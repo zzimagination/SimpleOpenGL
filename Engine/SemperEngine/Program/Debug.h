@@ -54,6 +54,5 @@ namespace SemperEngine {
 
 
 	};
-
 }
 #endif // !DEBUG_TOOL

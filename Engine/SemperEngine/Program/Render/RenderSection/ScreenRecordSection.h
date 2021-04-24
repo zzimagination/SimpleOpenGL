@@ -1,6 +1,10 @@
 #ifndef __SCREEN_RECORD_SECTION__
 #define __SCREEN_RECORD_SECTION__
+
 #include "../RenderSection.h"
+#include "../Render.h"
+#include <string>
+#include <initializer_list>
 
 namespace SemperEngine
 {
@@ -9,6 +13,14 @@ namespace SemperEngine
 		class ScreenRecordSection : public RenderSection
 		{
 		public:
+
+			std::vector<std::string> records;
+
+		public:
+
+			ScreenRecordSection();
+
+			ScreenRecordSection(std::initializer_list<std::string> records);
 
 			virtual ~ScreenRecordSection() override;
 

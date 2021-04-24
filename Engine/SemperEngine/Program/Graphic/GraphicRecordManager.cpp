@@ -11,13 +11,15 @@ namespace SemperEngine
 		std::vector<GraphicRecord*> GraphicRecordManager::_tempRecords;
 		std::vector<GraphicRecord*> GraphicRecordManager::_inUseRecords;
 
-		int GraphicRecordManager::CreateRecord(string name)
+		int GraphicRecordManager::CreateRecord(string name, bool msaa, int sample)
 		{
 			auto record = new GraphicRecord();
 			record->name = name;
 			record->width = GameSetting::windowWidth;
 			record->height = GameSetting::windowHeight;
 			record->attach = GraphicRecord::Attach::Depth;
+			record->msaa = msaa;
+			record->sample = sample;
 			_tempRecords.push_back(record);
 			auto cmd = shared_ptr<GCMD_CreateRecord>(new GCMD_CreateRecord(record));
 			GraphicCommandManager::AddRender(cmd);

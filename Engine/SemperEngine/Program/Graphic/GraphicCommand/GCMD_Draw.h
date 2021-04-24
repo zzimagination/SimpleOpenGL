@@ -35,7 +35,7 @@ namespace SemperEngine
 
 		private:
 
-			void SetRecord(int ID);
+			void SetRecords(int ID);
 		};
 	}
 }

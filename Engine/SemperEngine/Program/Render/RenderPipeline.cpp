@@ -13,15 +13,29 @@ namespace SemperEngine
 
 		void RenderPipeline::PreRender()
 		{
-			auto record = new CreateRecordSection(DEPTHSECTION);
-			_cameraSections.push_back(record);
-			auto depthSection = new DepthSection();
-			_cameraSections.push_back(depthSection);
-			auto stop = new StopRecordSection();
-			_cameraSections.push_back(stop);
+			//auto record = new CreateRecordSection(DEPTHSECTION);
+			//_cameraSections.push_back(record);
+			//auto depthSection = new DepthSection();
+			//_cameraSections.push_back(depthSection);
+			//auto stop = new StopRecordSection();
+			//_cameraSections.push_back(stop);
+
+			/*auto record = new CreateRecordSection(UNLITSECTION);
+			record->MSAA = true;
+			record->MSAASample = Render::MSAA::m8;
+			_cameraSections.push_back(record);*/
 			auto unlitSection = new UnlitSection();
 			_cameraSections.push_back(unlitSection);
+			/*auto stop = new StopRecordSection();
+			_cameraSections.push_back(stop);*/
+
+			/*auto defaultFB = new DefaultFramebufferSection();
+			defaultFB->record = UNLITSECTION;
+			_cameraSections.push_back(defaultFB);*/
+			//auto screen = new ScreenRecordSection({UNLITSECTION});
+			//_cameraSections.push_back(screen);
 		}
+
 		void RenderPipeline::Render()
 		{
 			auto cameras = CameraCollection::GetCameras();
@@ -33,6 +47,7 @@ namespace SemperEngine
 			CameraCollection::ClearCameras();
 			RenderCollection::ClearRenders();
 		}
+
 		void RenderPipeline::RenderCamera(CameraObject* camera)
 		{
 			for (auto i = 0; i < _cameraSections.size(); i++)

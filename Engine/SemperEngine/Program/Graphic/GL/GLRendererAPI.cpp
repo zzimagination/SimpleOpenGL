@@ -24,6 +24,7 @@ namespace SemperEngine
 			{
 				glClearColor(color.R(), color.G(), color.B(), color.A());
 			}
+
 			void GLRenderAPI::SetClear(Graphic::ClearMode mode)
 			{
 				int m = 0;
@@ -53,6 +54,7 @@ namespace SemperEngine
 					glDisable(GL_DEPTH_TEST);
 				}
 			}
+
 			void GLRenderAPI::SetDepthTestFunc(Graphic::DepthFunc func)
 			{
 				typedef Graphic::DepthFunc DepthFunc;
@@ -133,6 +135,20 @@ namespace SemperEngine
 				}
 			}
 
+
+			void GLRenderAPI::SetMSAA(bool enable)
+			{
+				if (enable)
+				{
+					glEnable(GL_MULTISAMPLE);
+				}
+				else
+				{
+					glDisable(GL_MULTISAMPLE);
+				}
+			}
+
+
 			void GLRenderAPI::BindVertexBuffer(unsigned int VAO)
 			{
 				glBindVertexArray(VAO);
@@ -156,34 +172,40 @@ namespace SemperEngine
 				auto local = glGetUniformLocation(shader, name.c_str());
 				glUniform1i(local, (int)value);
 			}
+
 			void GLRenderAPI::SetShaderValue(ShaderPrograme shader, const string& name, int value)
 			{
 				auto local = glGetUniformLocation(shader, name.c_str());
 				glUniform1i(local, value);
 			}
+
 			void GLRenderAPI::SetShaderValue(ShaderPrograme shader, const string& name, float value)
 			{
 				auto local = glGetUniformLocation(shader, name.c_str());
 				glUniform1f(local, value);
 			}
+
 			void GLRenderAPI::SetShaderValue(ShaderPrograme shader, const string& name, const Float2& value)
 			{
 				float data[2] = { value.x,value.y };
 				auto local = glGetUniformLocation(shader, name.c_str());
 				glUniform2fv(local, 1, data);
 			}
+
 			void GLRenderAPI::SetShaderValue(ShaderPrograme shader, const string& name, const Float3& value)
 			{
 				float data[3] = { value.x, value.y,value.z };
 				auto local = glGetUniformLocation(shader, name.c_str());
 				glUniform3fv(local, 1, data);
 			}
+
 			void GLRenderAPI::SetShaderValue(ShaderPrograme shader, const string& name, const Float4& value)
 			{
 				float data[4] = { value.x,value.y,value.z,value.w };
 				auto local = glGetUniformLocation(shader, name.c_str());
 				glUniform4fv(local, 1, data);
 			}
+
 			void GLRenderAPI::SetShaderValue(ShaderPrograme shader, const string& name, const Matrix4x4& mat)
 			{
 				float data[4][4]{};
@@ -222,53 +244,81 @@ namespace SemperEngine
 			{
 				glDrawArrays(GL_LINES, 0, count);
 			}
+
 			void GLRenderAPI::DrawTriangles(int count)
 			{
 				glDrawArrays(GL_TRIANGLES, 0, count);
 			}
+
 			FrameBufferID GLRenderAPI::CreateFrameBuffer()
 			{
 				FrameBufferID fbo = 0;
 				glGenFramebuffers(1, &fbo);
 				return fbo;
 			}
+
 			void GLRenderAPI::DeleteFrameBuffer(FrameBufferID fbo)
 			{
 				glDeleteFramebuffers(1, &fbo);
 			}
+
 			void GLRenderAPI::BindFrameBuffer(FrameBufferID fbo)
 			{
 				glBindFramebuffer(GL_FRAMEBUFFER, fbo);
 			}
+
 			void GLRenderAPI::CheckFrameBuffer(FrameBufferID fbo)
 			{
-				if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+				auto code = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+				if (code != GL_FRAMEBUFFER_COMPLETE)
 				{
 					glBindFramebuffer(GL_FRAMEBUFFER, 0);
-					Debug::LogError({ "FrameBuffer error: " , to_string(fbo) });
+					Debug::LogError({ "FrameBuffer error: " , to_string(fbo), " error code:" , to_string(code) });
 					return;
 				}
 			}
+
 			void GLRenderAPI::CloseFrameBuffer()
 			{
 				glBindFramebuffer(GL_FRAMEBUFFER, 0);
 			}
 
-			TextureID GLRenderAPI::AttachTexture(int width, int height, ColorType colorType, int index)
+			TextureID GLRenderAPI::AttachTexture(int width, int height, ColorType colorType, int index, bool msaa, int sample)
 			{
 				TextureID texture;
 				glGenTextures(1, &texture);
-				glBindTexture(GL_TEXTURE_2D, texture);
-				glTexImage2D(GL_TEXTURE_2D, 0, (int)colorType, width, height, 0, (int)colorType, GL_UNSIGNED_BYTE, NULL);
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + index, GL_TEXTURE_2D, texture, 0);
+				if (msaa)
+				{
+					glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, texture);
+					glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, sample, GL_RGB, width, height, GL_TRUE);
+					//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+					//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+					glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + index, GL_TEXTURE_2D_MULTISAMPLE, texture, 0);
+				}
+				else
+				{
+					glBindTexture(GL_TEXTURE_2D, texture);
+					glTexImage2D(GL_TEXTURE_2D, 0, (int)colorType, width, height, 0, (int)colorType, GL_UNSIGNED_BYTE, NULL);
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+					glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + index, GL_TEXTURE_2D, texture, 0);
+				}
 				return texture;
 			}
 
-			unsigned int GLRenderAPI::AttachDepthStencil(int width, int height, bool texture)
+			unsigned int GLRenderAPI::AttachDepthStencil(int width, int height, bool texture, bool msaa, int sample)
 			{
-				if (!texture) 
+				if (msaa)
+				{
+					unsigned int rbo;
+					glGenRenderbuffers(1, &rbo);
+					glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+					glRenderbufferStorageMultisample(GL_RENDERBUFFER, sample, GL_DEPTH24_STENCIL8, width, height);
+					glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
+					return rbo;
+				}
+
+				if (!texture)
 				{
 					unsigned int rbo;
 					glGenRenderbuffers(1, &rbo);
@@ -281,11 +331,18 @@ namespace SemperEngine
 				{
 					unsigned int texture;
 					glGenTextures(1, &texture);
-					glBindTexture(GL_TEXTURE_2D, texture);
-					glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_STENCIL, width, height, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL);
-					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-					glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, texture, 0);
+					if (msaa)
+					{
+						Debug::LogError("error");
+					}
+					else
+					{
+						glBindTexture(GL_TEXTURE_2D, texture);
+						glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_STENCIL, width, height, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL);
+						glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+						glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+						glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, texture, 0);
+					}
 					return texture;
 				}
 			}
@@ -294,6 +351,14 @@ namespace SemperEngine
 			{
 				glDeleteRenderbuffers(1, &rbo);
 			}
+
+			void GLRenderAPI::BlitFrameBuffer(FrameBufferID read, FrameBufferID draw, int width, int height, int mask, int filter)
+			{
+				glBindFramebuffer(GL_READ_FRAMEBUFFER, read);
+				glBindFramebuffer(GL_DRAW_FRAMEBUFFER, draw);
+				glBlitFramebuffer(0, 0, width, height, 0, 0, width, height, mask, filter);
+			}
+
 		}
 	}
 }

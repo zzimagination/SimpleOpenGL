@@ -29,6 +29,10 @@ namespace SemperEngine
 
 		std::shared_ptr<Mesh> GetMesh();
 
+		void SetMaterial(std::shared_ptr<Material> material);
+
+		std::shared_ptr<Material> GetMaterial();
+
 		void AddRenderLayer(int layer);
 
 		RenderLayer GetRenderLayer();

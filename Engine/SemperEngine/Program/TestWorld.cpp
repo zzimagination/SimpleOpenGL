@@ -100,5 +100,17 @@ namespace SemperEngine
 		sphere->AddComponent(renderer);
 		sphere->transform.position = Float3(-4.0f, 0.5f, 0.f);
 		AddGameObject(sphere);
+
+
+		auto cross = new GameObject("Cross");
+		renderer = new Renderer();
+		renderer->SetMesh(Resource::LoadModel("CrossCube.obj")->GetMesh());
+		auto crossTexture = Resource::LoadTexture("Textures/pic_3.png");
+		auto crossMat = shared_ptr<Material>(new Material("Texture"));
+		crossMat->AddProperty(0, crossTexture);
+		renderer->SetMaterial(crossMat);
+		cross->AddComponent(renderer);
+		cross->transform.position = Float3(4, 1, 0);
+		AddGameObject(cross);
 	}
 }

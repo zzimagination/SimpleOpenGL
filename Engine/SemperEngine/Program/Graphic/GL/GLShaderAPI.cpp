@@ -1,6 +1,5 @@
 #include "GLShaderAPI.h"
 #include <glad/glad.h>
-#include "../../Debug.h"
 
 namespace SemperEngine
 {

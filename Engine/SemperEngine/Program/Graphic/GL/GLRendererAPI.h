@@ -24,8 +24,20 @@ namespace SemperEngine
 				enum class ColorType
 				{
 					RGB = 0x1907,
-
 					RGBA = 0x1908
+				};
+
+				enum class Mask
+				{
+					Depth = 0x00000100,
+					Stencil = 0x00000400,
+					Color = 0x00004000,
+				};
+
+				enum class Filter
+				{
+					Nearst = 0x2600,
+					Linear = 0x2601
 				};
 
 			public:
@@ -47,6 +59,8 @@ namespace SemperEngine
 				static void SetBlendFunc(int source, int dest);
 
 				static void SetBlend(bool enable);
+
+				static void SetMSAA(bool enable);
 
 				static void BindVertexBuffer(unsigned int VAO);
 
@@ -84,11 +98,14 @@ namespace SemperEngine
 
 				static void CheckFrameBuffer(FrameBufferID fbo);
 
-				static TextureID AttachTexture(int width, int height, ColorType colorType, int index);
+				static TextureID AttachTexture(int width, int height, ColorType colorType, int index, bool msaa = false, int sample = 4);
 
-				static unsigned int AttachDepthStencil(int width, int height, bool texture = false);
+				static unsigned int AttachDepthStencil(int width, int height, bool texture = false, bool msaa = false, int sample = 4);
 
 				static void DeleteRenderBuffer(FrameBufferID rbo);
+
+				static void BlitFrameBuffer(FrameBufferID read, FrameBufferID draw, int width, int height, int mask, int filter);
+
 			};
 		}
 	}

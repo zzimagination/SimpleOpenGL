@@ -6,7 +6,7 @@
 namespace SemperEngine
 {
 	namespace Core
-	{		
+	{
 		class GraphicCommand
 		{
 		public:
@@ -26,6 +26,7 @@ namespace SemperEngine
 
 #include "GraphicResouceAPI.h"
 #include "GraphicRenderAPI.h"
+#include "GraphicRecord.h"
 
 #include "GraphicCommand/GCMD_VertexBuffer.h"
 #include "GraphicCommand/GCMD_VertexBufferClear.h"
@@ -38,5 +39,6 @@ namespace SemperEngine
 #include "GraphicCommand/GCMD_CreateRecord.h"
 #include "GraphicCommand/GCMD_StopRecord.h"
 #include "GraphicCommand/GCMD_ClearRecord.h"
+#include "GraphicCommand/GCMD_DefaultFrameBuffer.h"
 
 #endif

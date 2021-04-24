@@ -1,7 +1,7 @@
 #ifndef __GRAPHICVERTEXDATA__
 #define __GRAPHICVERTEXDATA__
 
-#include "../GraphicData.h"
+#include "GraphicData.h"
 
 namespace SemperEngine
 {

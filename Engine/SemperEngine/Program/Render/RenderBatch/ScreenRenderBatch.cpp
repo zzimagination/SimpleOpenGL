@@ -21,6 +21,7 @@ namespace SemperEngine
 
 		void ScreenRenderBatch::RenderGraphicObject()
 		{
+			GraphicRenderer::Clear(Color::Black(), ClearColorDepth);
 			auto mesh = ResourceInternal::ScreenMesh();
 			auto vertex = GetVertexInfo(mesh.get());
 			auto operation = GetOperation(material);

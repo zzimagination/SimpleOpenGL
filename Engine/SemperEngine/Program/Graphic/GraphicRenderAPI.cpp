@@ -117,34 +117,48 @@ namespace SemperEngine {
 		{
 			GLRenderAPI::SetWireframe(enable);
 		}
+
 		void GraphicRenderAPI::CreateRecord(GraphicRecord* record)
 		{
 			record->glFrameBuffer = GLRenderAPI::CreateFrameBuffer();
+			if (record->msaa)
+			{
+				GLRenderAPI::SetMSAA(true);
+				GLRenderAPI::BindFrameBuffer(record->glFrameBuffer);
+				GraphicTextureData textureData;
+				textureData.SetGLTexture(GLRenderAPI::AttachTexture(record->width, record->height, GLRenderAPI::ColorType::RGB, 0, record->msaa, record->sample));
+				record->textures.push_back(textureData);
+				record->glRenderBuffer = GLRenderAPI::AttachDepthStencil(record->width, record->height, false, record->msaa, record->sample);
+				GLRenderAPI::CheckFrameBuffer(record->glFrameBuffer);
+				return;
+			}
+
 			GLRenderAPI::BindFrameBuffer(record->glFrameBuffer);
 			GraphicTextureData textureData;
-			auto tex = GLRenderAPI::AttachTexture(record->width, record->height, GLRenderAPI::ColorType::RGB, 0);
-			textureData.SetGLTexture(tex);
+			textureData.SetGLTexture(GLRenderAPI::AttachTexture(record->width, record->height, GLRenderAPI::ColorType::RGB, 0));
 			record->textures.push_back(textureData);
-
 			if (record->attach == GraphicRecord::Attach::DepthStencil)
 			{
 				GraphicTextureData attachTex;
 				attachTex.SetGLTexture(GLRenderAPI::AttachDepthStencil(record->width, record->height, true));
 				record->textures.push_back(attachTex);
+				GLRenderAPI::CheckFrameBuffer(record->glFrameBuffer);
+				return;
 			}
-			else
-			{
-				record->glRenderBuffer = GLRenderAPI::AttachDepthStencil(record->width, record->height);
-			}
+
+			record->glRenderBuffer = GLRenderAPI::AttachDepthStencil(record->width, record->height);
 			GLRenderAPI::CheckFrameBuffer(record->glFrameBuffer);
 		}
 
 		void GraphicRenderAPI::StopRecord()
 		{
 			GLRenderAPI::CloseFrameBuffer();
+			GLRenderAPI::SetMSAA(false);
 		}
+
 		void GraphicRenderAPI::DeleteRecord(GraphicRecord* record)
 		{
+			GLRenderAPI::DeleteFrameBuffer(record->glFrameBuffer);
 			for (auto tex = record->textures.begin(); tex != record->textures.end(); tex++)
 			{
 				GLResourceAPI::ClearTextureData(tex->glID);
@@ -153,7 +167,12 @@ namespace SemperEngine {
 			{
 				GLRenderAPI::DeleteRenderBuffer(record->glRenderBuffer);
 			}
-			GLRenderAPI::DeleteFrameBuffer(record->glFrameBuffer);
+		}
+
+		void GraphicRenderAPI::DefaultFrameBuffer(GraphicRecord* record)
+		{
+			GLRenderAPI::BlitFrameBuffer(record->glFrameBuffer, 0, record->width, record->height, (int)GLRenderAPI::Mask::Color, (int)GLRenderAPI::Filter::Linear);
+			GLRenderAPI::BindFrameBuffer(0);
 		}
 	}
 }

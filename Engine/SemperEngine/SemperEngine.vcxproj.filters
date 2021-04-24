@@ -350,10 +350,10 @@
     <ClCompile Include="Program\Graphic\ShaderCompiler.cpp">
       <Filter>Render\Graphic\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="Program\Graphic\Data\GraphicTextureData.cpp">
+    <ClCompile Include="Program\Graphic\GraphicTextureData.cpp">
       <Filter>Render\Graphic\Data</Filter>
     </ClCompile>
-    <ClCompile Include="Program\Graphic\Data\GraphicVertexData.cpp">
+    <ClCompile Include="Program\Graphic\GraphicVertexData.cpp">
       <Filter>Render\Graphic\Data</Filter>
     </ClCompile>
     <ClCompile Include="Program\Graphic\GL\glad.c">
@@ -379,6 +379,12 @@
     </ClCompile>
     <ClCompile Include="Program\Render\RenderBatch.cpp">
       <Filter>Render\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Render\RenderSection\DefaultFrameBufferSection.cpp">
+      <Filter>Render\Game\RenderSection</Filter>
+    </ClCompile>
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_DefaultFrameBuffer.cpp">
+      <Filter>Render\Graphic\Command</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -787,14 +793,11 @@
     <ClInclude Include="Program\Graphic\ShaderSource.h">
       <Filter>Render\Graphic\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="Program\Graphic\Data\GraphicTextureData.h">
+    <ClInclude Include="Program\Graphic\GraphicTextureData.h">
       <Filter>Render\Graphic\Data</Filter>
     </ClInclude>
-    <ClInclude Include="Program\Graphic\Data\GraphicVertexData.h">
+    <ClInclude Include="Program\Graphic\GraphicVertexData.h">
       <Filter>Render\Graphic\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Graphic\GraphicData.h">
-      <Filter>Render\Graphic\GraphicAPI</Filter>
     </ClInclude>
     <ClInclude Include="Program\ProjectState.h">
       <Filter>Project</Filter>
@@ -819,6 +822,15 @@
     </ClInclude>
     <ClInclude Include="Program\Render\Render.h">
       <Filter>Render\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicData.h">
+      <Filter>Render\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Render\RenderSection\DefaultFrameBufferSection.h">
+      <Filter>Render\Game\RenderSection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_DefaultFrameBuffer.h">
+      <Filter>Render\Graphic\Command</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -32,7 +32,6 @@ namespace SemperEngine
 				batch->model = RO->modelMat;
 				batch->mesh = RO->mesh.get();
 				batch->material = RO->material.get();
-				batch->records.push_back(RenderRecord(camera, DEPTHSECTION));
 				RenderBatchManager::AddBatch(batch);
 			}
 		}

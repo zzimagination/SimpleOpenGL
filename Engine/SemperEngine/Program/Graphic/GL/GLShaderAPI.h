@@ -2,6 +2,7 @@
 #define __GL_SHADERAPI__
 
 #include <string>
+#include "GLCommon.h"
 #include "../GraphicShader.h"
 
 namespace SemperEngine

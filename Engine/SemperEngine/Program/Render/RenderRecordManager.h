@@ -2,6 +2,7 @@
 #define __RENDERRECORDMANAGER__
 
 #include "../CameraObject.h"
+#include "Render.h"
 
 namespace SemperEngine
 {
@@ -34,11 +35,17 @@ namespace SemperEngine
 
 		public:
 
-			static void CreateRecord(std::string name, CameraObject* camera);
+			static void CreateRecord(std::string name, CameraObject* camera, bool msaa = false, Render::MSAA sample = Render::MSAA::m4);
 
 			static void StopRecord();
 
+			static int GetGraphicRecord(RenderRecord record);
+
 			static std::vector<int> GetGraphicRecords(std::vector<RenderRecord> records);
+
+		private:
+
+			static int FindRecord(RenderRecord record);
 		};
 	}
 }

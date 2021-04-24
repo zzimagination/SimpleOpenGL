@@ -36,9 +36,9 @@ namespace SemperEngine
 		}
 
 		void GraphicRenderer::Render(
-			GraphicVertexInfo vertex, 
-			RenderOperation operation, 
-			ShaderProperty sproperty, 
+			GraphicVertexInfo vertex,
+			RenderOperation operation,
+			ShaderProperty sproperty,
 			std::vector<GraphicTextureInfo> textures,
 			std::vector<int> records)
 		{
@@ -77,6 +77,12 @@ namespace SemperEngine
 		void GraphicRenderer::Clear(Color color)
 		{
 			auto cmd = shared_ptr<GClearCMD>(new GClearCMD(color, ClearColorDepth));
+			GraphicCommandManager::AddRender(cmd);
+		}
+
+		void GraphicRenderer::DefaultFrameBuffer(int record)
+		{
+			auto cmd = shared_ptr<GCMD_DefaultFrameBuffer>(new GCMD_DefaultFrameBuffer(record));
 			GraphicCommandManager::AddRender(cmd);
 		}
 	}

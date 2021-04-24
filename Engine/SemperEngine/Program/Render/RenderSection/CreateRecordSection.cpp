@@ -19,7 +19,7 @@ namespace SemperEngine
 		}
 		void CreateRecordSection::Start()
 		{
-			RenderRecordManager::CreateRecord(name, camera);
+			RenderRecordManager::CreateRecord(name, camera, MSAA , MSAASample);
 		}
 	}
 }

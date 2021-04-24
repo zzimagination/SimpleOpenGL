@@ -20,7 +20,7 @@ namespace SemperEngine
 
 		public:
 
-			static int CreateRecord(std::string name);
+			static int CreateRecord(std::string name, bool msaa = false, int sample = 4);
 
 			static void StopRecord();
 

@@ -27,8 +27,7 @@ namespace SemperEngine
 		};
 	}
 }
-
-#include "Data/GraphicVertexData.h"
-#include "Data/GraphicTextureData.h"
-
 #endif // !__GRAPHIC_RESOURCE__
+
+#include "GraphicVertexData.h"
+#include "GraphicTextureData.h"

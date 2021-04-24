@@ -32,6 +32,14 @@ namespace SemperEngine
 	{
 		return _object->mesh;
 	}
+	void Renderer::SetMaterial(std::shared_ptr<Material> material)
+	{
+		_object->material = material;
+	}
+	std::shared_ptr<Material> Renderer::GetMaterial()
+	{
+		return _object->material;
+	}
 	void Renderer::AddRenderLayer(int layer)
 	{
 		_object->layer.Add(layer);

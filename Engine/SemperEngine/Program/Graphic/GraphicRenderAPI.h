@@ -70,6 +70,9 @@ namespace SemperEngine {
 			static void StopRecord();
 
 			static void DeleteRecord(GraphicRecord* record);
+
+			static void DefaultFrameBuffer(GraphicRecord* record);
+
 		};
 	}
 }

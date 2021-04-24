@@ -40,6 +40,8 @@ namespace SemperEngine
 			static void Clear(Color color, Graphic::ClearMode mode);
 
 			static void Clear(Color color);
+
+			static void DefaultFrameBuffer(int record);
 		};
 	}
 }

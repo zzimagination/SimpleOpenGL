@@ -40,7 +40,7 @@ namespace SemperEngine
 
 			for (size_t i = 0; i < recordID.size(); i++)
 			{
-				SetRecord(recordID[i]);
+				SetRecords(recordID[i]);
 			}
 
 			for (size_t i = 0; i < texturesData.size(); i++)
@@ -51,7 +51,7 @@ namespace SemperEngine
 			GraphicRenderAPI::Draw();
 		}
 
-		void GDrawCMD::SetRecord(int ID)
+		void GDrawCMD::SetRecords(int ID)
 		{
 			auto record = GraphicRecordManager::UseRecord(ID);
 

@@ -33,6 +33,10 @@ namespace SemperEngine
 
 			Attach attach = Attach::None;
 
+			bool msaa = false;
+
+			int sample = 4;
+
 		public:
 
 			unsigned int glFrameBuffer = -1;

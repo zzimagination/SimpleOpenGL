@@ -3,7 +3,7 @@
 
 #include <map>
 #include <memory>
-#include "../GraphicData.h"
+#include "GraphicData.h"
 
 namespace SemperEngine
 {
@@ -23,7 +23,7 @@ namespace SemperEngine
 
 			virtual ~GraphicTextureData() override;
 
-			void SetGLTexture(unsigned int glId);
+			void SetGLTexture(unsigned int glID);
 
 		};
 	}
