@@ -4,7 +4,7 @@
 
 #include <vector>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
@@ -15,7 +15,7 @@ namespace SemperEngine
 
 			struct Item
 			{
-				T value;
+				T value = T();
 
 				bool empty = true;
 			};

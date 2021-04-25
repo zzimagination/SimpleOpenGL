@@ -8,7 +8,7 @@
 #include "Graphic/GraphicCommandManager.h"
 #include "Graphic/GraphicRenderer.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

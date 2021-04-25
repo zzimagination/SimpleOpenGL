@@ -9,7 +9,7 @@
 #include "DebugOutput.h"
 #include "Common.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	namespace Core
 	{

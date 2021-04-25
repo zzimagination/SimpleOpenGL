@@ -6,7 +6,7 @@
 #include "Material.h"
 #include <memory>
 
-using namespace SemperEngine;
+using namespace Semper;
 
 class ChangeColor : public Component
 {

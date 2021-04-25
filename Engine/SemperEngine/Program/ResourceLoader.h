@@ -7,7 +7,7 @@
 #include <Engine/TextureLib.h>
 #include <Engine/ModelLib.h>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

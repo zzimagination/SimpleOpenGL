@@ -1,26 +1,25 @@
 #include "GCMD_TextureBuffer.h"
 #include "../GraphicResource.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
 		using namespace std;
 
-		GTextureBufferCMD::GTextureBufferCMD(GraphicDataInfo info)
+		GCMD_CreateTexture::GCMD_CreateTexture(GraphicTextureData* data)
 		{
-			this->dataInfo = info;
+			this->textureData = data;
 		}
 
-		GTextureBufferCMD::~GTextureBufferCMD()
+		GCMD_CreateTexture::~GCMD_CreateTexture()
 		{
 		}
 
-		void GTextureBufferCMD::Excute()
+		void GCMD_CreateTexture::Excute()
 		{
-			auto data = GraphicResource::GetTextureData(dataInfo);
-			auto tmp = GraphicResouceAPI::AddTextureData(data->source);
-			data->SetGLTexture(tmp.glID);
+			auto tmp = GraphicResouceAPI::AddTextureData(textureData);
+			textureData->SetGLTexture(tmp.glID);
 		}
 	}
 }

@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

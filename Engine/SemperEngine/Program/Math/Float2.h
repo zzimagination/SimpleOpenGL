@@ -1,7 +1,7 @@
 #ifndef __MATHZ_VECTOR2__
 #define __MATHZ_VECTOR2__
 
-namespace SemperEngine 
+namespace Semper 
 {
 	class Float2
 	{

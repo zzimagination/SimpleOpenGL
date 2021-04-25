@@ -5,7 +5,7 @@
 #include "RenderRecordManager.h"
 #include "../ResourceInternal.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

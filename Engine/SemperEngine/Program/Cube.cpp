@@ -3,7 +3,7 @@
 #include "RenderCollection.h"
 #include "Debug.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	using namespace std;
 	using namespace Core;

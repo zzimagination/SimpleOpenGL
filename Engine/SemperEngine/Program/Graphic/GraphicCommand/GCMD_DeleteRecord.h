@@ -3,7 +3,7 @@
 
 #include "../GraphicCommand.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

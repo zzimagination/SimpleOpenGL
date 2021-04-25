@@ -2,7 +2,7 @@
 #include <iostream>
 #include "Time.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

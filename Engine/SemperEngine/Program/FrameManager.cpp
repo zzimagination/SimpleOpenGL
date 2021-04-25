@@ -1,7 +1,7 @@
 #include "FrameManager.h"
 #include "TimeManager.h"
 
-namespace SemperEngine 
+namespace Semper 
 {
 	namespace Core
 	{

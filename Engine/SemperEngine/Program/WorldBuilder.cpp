@@ -1,7 +1,7 @@
 #include "WorldBuilder.h"
 #include "Debug.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	WorldBuilder::WorldBuilder(std::string name, int id)
 	{

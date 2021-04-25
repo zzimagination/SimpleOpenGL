@@ -2,7 +2,7 @@
 #include "../../GameSetting.h"
 #include "../GraphicRecordManager.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

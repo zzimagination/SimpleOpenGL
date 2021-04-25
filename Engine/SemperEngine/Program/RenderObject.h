@@ -7,7 +7,7 @@
 #include "Mesh.h"
 #include "Material.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	namespace Core
 	{

@@ -2,7 +2,7 @@
 #ifndef __RENDER_SETTING__
 #define __RENDER_SETTING__
 
-namespace SemperEngine
+namespace Semper
 {
 	class RenderSetting
 	{

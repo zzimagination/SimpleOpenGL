@@ -4,7 +4,7 @@
 
 #include "CameraObject.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

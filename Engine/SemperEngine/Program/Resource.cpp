@@ -2,7 +2,7 @@
 #include "ResourceObjectCenter.h"
 #include "ResourceInternal.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	using namespace std;
 	using namespace Core;

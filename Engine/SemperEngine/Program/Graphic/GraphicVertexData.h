@@ -3,12 +3,16 @@
 
 #include "GraphicData.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
 		class GraphicVertexData : public GraphicData
 		{
+		public:
+
+			GraphicVertexResource source;
+
 		public:
 
 			unsigned int VAO = 0;
@@ -17,21 +21,17 @@ namespace SemperEngine
 
 			unsigned int EBO = 0;
 
-			bool indexDraw = false;
-
 			int pointCount = 0;
-
-			GraphicVertexResource source;
 
 		public:
 
 			GraphicVertexData();
 
-			GraphicVertexData(unsigned int vao, unsigned int vbo, int pointCount);
-
-			GraphicVertexData(unsigned int vao, unsigned int vbo, unsigned int ebo, int pointCount);
-
 			virtual ~GraphicVertexData() override;
+
+			void SetGL(unsigned int VAO, unsigned int VBO, int pointCount);
+
+			void SetGL(unsigned int VAO, unsigned int VBO, unsigned int EBO, int pointCount);
 		};
 	}
 }

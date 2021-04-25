@@ -6,7 +6,7 @@
 #include <string>
 #include <memory>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

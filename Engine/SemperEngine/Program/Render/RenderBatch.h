@@ -10,7 +10,7 @@
 #include "../RenderObject.h"
 #include "RenderRecordManager.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	namespace Core
 	{
@@ -28,9 +28,9 @@ namespace SemperEngine {
 
 			static std::vector<GraphicTextureInfo> GetTextures(Material* material);
 
-		public:
+		protected:
 
-			std::vector<RenderRecord> records;
+			std::vector<int> _graphicRecords;
 
 		public:
 
@@ -39,6 +39,8 @@ namespace SemperEngine {
 			virtual void GenerateGraphicResource() = 0;
 
 			virtual void RenderGraphicObject() = 0;
+
+			void SetRecord(std::string key, CameraObject* camera);
 
 		};
 	}

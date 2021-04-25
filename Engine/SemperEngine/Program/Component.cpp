@@ -1,7 +1,7 @@
 #include "Component.h"
 #include "GameObject.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	void Component::Start()
 	{

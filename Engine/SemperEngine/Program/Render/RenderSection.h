@@ -9,7 +9,7 @@
 #include "../Material.h"
 #include "Render.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

@@ -9,7 +9,7 @@
 #include "Transform.h"
 #include "GameObjectContainer.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class Component;
 

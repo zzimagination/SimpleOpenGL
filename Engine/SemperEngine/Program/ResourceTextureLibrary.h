@@ -5,7 +5,7 @@
 #include "ResourceLibrary.h"
 #include "TextureObject.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

@@ -1,6 +1,6 @@
 #include "LogicThread.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

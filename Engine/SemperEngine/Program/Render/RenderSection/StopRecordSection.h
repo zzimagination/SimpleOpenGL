@@ -2,7 +2,7 @@
 #define __STOP_RECORD_SECTION__
 #include "../RenderSection.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

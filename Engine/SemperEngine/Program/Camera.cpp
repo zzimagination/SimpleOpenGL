@@ -4,7 +4,7 @@
 #include "Event.h"
 #include "Time.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	using namespace std;
 	using namespace Core;

@@ -3,7 +3,7 @@
 #include <string>
 #include "GameSetting.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	namespace Core
 	{

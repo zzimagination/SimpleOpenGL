@@ -5,7 +5,7 @@
 #include "WorldController.h"
 #include "Resource.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	using namespace std;
 

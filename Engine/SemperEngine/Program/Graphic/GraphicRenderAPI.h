@@ -8,7 +8,7 @@
 #include "GraphicData.h"
 #include "GraphicRecord.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	namespace Core 
 	{
@@ -19,6 +19,8 @@ namespace SemperEngine {
 
 			enum class DrawType
 			{
+				Unknow,
+
 				Nomal,
 
 				Index
@@ -27,10 +29,6 @@ namespace SemperEngine {
 		private:
 
 			static GraphicShader _shader;
-
-			static int _vertexCount;
-
-			static DrawType _drawType;
 
 		public:
 
@@ -50,7 +48,7 @@ namespace SemperEngine {
 
 			static void SetBlendFunc();
 
-			static void SetVertexData(GraphicVertexData data);
+			static void SetVertexData(GraphicVertexData* data);
 
 			static void SetShader(std::string shader);
 
@@ -59,9 +57,9 @@ namespace SemperEngine {
 			static void SetShaderProperty(std::string name, Float3& value);
 			static void SetShaderProperty(std::string name, Float4& value);
 			static void SetShaderProperty(std::string name, Matrix4x4& value);
-			static void SetShaderProperty(int id, GraphicTextureData& data);
+			static void SetShaderProperty(int id, GraphicTextureData* data);
 
-			static void Draw();
+			static void Draw(GraphicVertexData* data);
 
 			static void SetWireframe(bool enable);
 

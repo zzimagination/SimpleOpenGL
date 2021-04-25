@@ -1,7 +1,7 @@
 #include "Texture.h"
 #include "ResourceObjectCenter.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	using namespace std;
 	using namespace Core;

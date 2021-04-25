@@ -7,7 +7,7 @@
 #include "InsideWorld.h"
 #include "SecondWorld.h"
 
-namespace SemperEngine 
+namespace Semper 
 {
 	class WorldBuilderList
 	{

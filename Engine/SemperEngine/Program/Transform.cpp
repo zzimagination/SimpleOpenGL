@@ -1,6 +1,6 @@
 #include "Transform.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	Transform::Transform()
 	{

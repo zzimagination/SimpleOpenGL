@@ -4,7 +4,7 @@
 
 #include <string>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Text
 	{

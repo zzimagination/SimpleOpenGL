@@ -4,7 +4,7 @@
 #include <typeinfo>
 #include <typeindex>
 
-namespace SemperEngine {
+namespace Semper {
 
 	using namespace std;
 

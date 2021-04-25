@@ -4,7 +4,7 @@
 #include "GameSetting.h"
 #include "RenderSetting.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	InsideWorldAction::~InsideWorldAction()
 	{

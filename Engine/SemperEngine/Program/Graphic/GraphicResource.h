@@ -6,40 +6,53 @@
 #include "GraphicData.h"
 #include "GraphicCommand.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
 		class GraphicResource
 		{
-		private:
-
-			static FillList<std::shared_ptr<GraphicTextureData>> _textureData;
-
-			static FillList<std::shared_ptr<GraphicVertexData>> _vertexData;
-
 		public:
 
 			static void Initialize();
 
+#pragma region VertexData
+		private:
+
+			static FillList<GraphicVertexData*> _vertexData;
+
+		public:
 
 			static GraphicDataInfo AddVertexData(GraphicVertexResource resource);
 
 			static void RemoveVertexData(GraphicDataInfo info);
 
-			static void DeleteGraphicVertexData(GraphicDataInfo info);
+			static GraphicVertexData* GetVertexData(GraphicDataInfo info);
 
-			static std::shared_ptr<GraphicVertexData> GetVertexData(GraphicDataInfo info);
+		private:
 
+			static void DeleteVertexFunc(GraphicVertexData* data);
+
+#pragma endregion
+
+#pragma region Texture
+		private:
+
+			static FillList<GraphicTextureData*> _textureData;
+
+		public:
 
 			static GraphicDataInfo AddTextureData(GraphicTextureResource resource);
 
 			static void RemoveTextureData(GraphicDataInfo info);
 
-			static void DeleteGraphicTextureData(GraphicDataInfo info);
+			static GraphicTextureData* GetTexture(GraphicDataInfo info);
 
-			static std::shared_ptr<GraphicTextureData> GetTextureData(GraphicDataInfo info);
+		private:
 
+			static void DeleteTextureFunc(GraphicTextureData* data);
+
+#pragma endregion
 		};
 	}
 }

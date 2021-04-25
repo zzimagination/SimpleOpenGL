@@ -3,48 +3,49 @@
 #include <vector>
 #include "GL\GLResourceAPI.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
 		using namespace std;
 		using namespace GraphicAPI;
 
-		GraphicVertexData GraphicResouceAPI::AddVertexData(GraphicVertexResource resource)
+		GraphicVertexData GraphicResouceAPI::AddVertexData(GraphicVertexData* data)
 		{
-			if (resource.index->Size() == 0)
+			if (data->source.index->Size() == 0)
 			{
-				auto deliver = GLResourceAPI::AddVertexData(resource.vertices->DataPtr(), resource.uv->DataPtr(), (int)resource.vertices->Size());
-				GraphicVertexData result(deliver.VAO, deliver.VBO, deliver.pointCount);
+				auto deliver = GLResourceAPI::AddVertexData(
+					data->source.vertices->DataPtr(), 
+					data->source.uv->DataPtr(), 
+					(int)data->source.vertices->Size());
+				GraphicVertexData result;
+				result.SetGL(deliver.VAO, deliver.VBO, deliver.pointCount);
 				return result;
 			}
 
-			auto deliver = GLResourceAPI::AddVertexData(resource.vertices->DataPtr(), resource.uv->DataPtr(), resource.index->DataPtr(), (int)resource.vertices->Size());
-			GraphicVertexData result(deliver.VAO, deliver.VBO, deliver.EBO, deliver.pointCount);
+			auto deliver = GLResourceAPI::AddVertexData(
+				data->source.vertices->DataPtr(), 
+				data->source.uv->DataPtr(), 
+				data->source.index->DataPtr(), 
+				(int)data->source.vertices->Size());
+			GraphicVertexData result;
+			result.SetGL(deliver.VAO, deliver.VBO, deliver.EBO, deliver.pointCount);
 			return result;
 		}
 
-		void GraphicResouceAPI::ClearVertexData(GraphicVertexData data)
+		void GraphicResouceAPI::ClearVertexData(GraphicVertexData* data)
 		{
 			GLVertexData glData;
-			glData.VAO = data.VAO;
-			glData.VBO = data.VBO;
-			if (data.indexDraw)
-			{
-				glData.EBO = data.EBO;
-				glData.hasEBO = true;
-			}
-			else
-			{
-				glData.hasEBO = true;
-			}
+			glData.VAO = data->VAO;
+			glData.VBO = data->VBO;
+			glData.EBO = data->EBO;
 			GLResourceAPI::ClearVertexData(glData);
 		}
 
-		GraphicTextureData GraphicResouceAPI::AddTextureData(GraphicTextureResource resource)
+		GraphicTextureData GraphicResouceAPI::AddTextureData(GraphicTextureData* data)
 		{
 			int filter = 0x2600;
-			switch (resource.filter)
+			switch (data->source.filter)
 			{
 			case Graphic::TextureFilter::Nearest:
 				filter = GLResourceAPI::texNearest;
@@ -53,15 +54,15 @@ namespace SemperEngine
 				filter = GLResourceAPI::texLinear;
 				break;
 			}
-			auto deliver = GLResourceAPI::AddTextureData(resource.pixels->DataPtr(), resource.width, resource.height, filter);
+			auto deliver = GLResourceAPI::AddTextureData(data->source.pixels->DataPtr(), data->source.width, data->source.height, filter);
 			GraphicTextureData result;
 			result.SetGLTexture(deliver.texture);
 			return result;
 		}
 
-		void GraphicResouceAPI::ClearTextureData(GraphicTextureData data)
+		void GraphicResouceAPI::ClearTextureData(GraphicTextureData* data)
 		{
-			GLResourceAPI::ClearTextureData(data.glID);
+			GLResourceAPI::ClearTextureData(data->glID);
 		}
 	}
 }

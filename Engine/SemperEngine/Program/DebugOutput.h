@@ -6,7 +6,7 @@
 #include <queue>
 #include <condition_variable>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

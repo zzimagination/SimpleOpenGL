@@ -3,21 +3,21 @@
 
 #include "../GraphicCommand.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
-		class GVertexBufferCMD : public GraphicCommand
+		class GCMD_CreateVertex : public GraphicCommand
 		{
 		public:
 
-			GraphicDataInfo dataInfo;
+			GraphicVertexData* vertexData = nullptr;
 
 		public:
 
-			GVertexBufferCMD(GraphicDataInfo info);
+			GCMD_CreateVertex(GraphicVertexData* data);
 
-			virtual ~GVertexBufferCMD() override;
+			virtual ~GCMD_CreateVertex() override;
 
 			virtual void Excute() override;
 		};

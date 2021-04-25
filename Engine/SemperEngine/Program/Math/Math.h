@@ -9,7 +9,7 @@
 #include "Quaternion.h"
 #include "Matrix4x4.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	constexpr int Left = 1;
 	constexpr int Right = -1;

@@ -1,7 +1,7 @@
 #ifndef __RESOURCE_CONFIG__
 #define __RESOURCE_CONFIG__
 
-namespace SemperEngine
+namespace Semper
 {
 	class ResourceConfig
 	{

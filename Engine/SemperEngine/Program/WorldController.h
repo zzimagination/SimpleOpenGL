@@ -5,7 +5,7 @@
 #include <string>
 #include "GameObject.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class WorldController
 	{

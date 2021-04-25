@@ -4,7 +4,7 @@
 #include "Camera.h"
 #include "Cube.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	SecondWorld::SecondWorld() : WorldBuilder("second", 2)
 	{

@@ -5,7 +5,7 @@
 #include <thread>
 #include "GameThread.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

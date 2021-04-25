@@ -1,7 +1,7 @@
 #include "Time.h"
 #include "TimeManager.h"
 
-namespace SemperEngine 
+namespace Semper 
 {
 	using namespace std;
 	using namespace Core;

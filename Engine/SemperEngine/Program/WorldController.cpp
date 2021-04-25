@@ -2,27 +2,27 @@
 #include "WorldManager.h"
 #include "WorldTree.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	using namespace std;
 	using namespace Core;
 
-	std::string SemperEngine::WorldController::GetInside()
+	std::string Semper::WorldController::GetInside()
 	{
 		return WorldManager::GetInside();
 	}
 
-	std::string SemperEngine::WorldController::GetActive()
+	std::string Semper::WorldController::GetActive()
 	{
 		return WorldManager::GetActive();
 	}
 
-	void SemperEngine::WorldController::SetActive(std::string name)
+	void Semper::WorldController::SetActive(std::string name)
 	{
 		WorldManager::SetActive(name);
 	}
 
-	bool SemperEngine::WorldController::Inside()
+	bool Semper::WorldController::Inside()
 	{
 		return WorldManager::Inside();
 	}

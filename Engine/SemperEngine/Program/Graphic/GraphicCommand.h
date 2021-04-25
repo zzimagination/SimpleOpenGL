@@ -3,7 +3,7 @@
 
 #include "Graphic.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
@@ -19,7 +19,7 @@ namespace SemperEngine
 
 		protected:
 
-			void SetShaderProperty(ShaderProperty p);
+			void SetShaderProperty(ShaderProperty& p);
 		};
 	}
 }
@@ -38,7 +38,6 @@ namespace SemperEngine
 #include "GraphicCommand/GCMD_CreateRecord.h"
 #include "GraphicCommand/GCMD_StartRecord.h"
 #include "GraphicCommand/GCMD_StopRecord.h"
-#include "GraphicCommand/GCMD_ClearRecord.h"
 #include "GraphicCommand/GCMD_DeleteRecord.h"
 #include "GraphicCommand/GCMD_DefaultFrameBuffer.h"
 

@@ -4,7 +4,7 @@
 #include "Debug.h"
 
 
-namespace SemperEngine
+namespace Semper
 {
 	using namespace std;
 

@@ -1,7 +1,7 @@
 #include "Mesh.h"
 #include "ResourceObjectCenter.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	using namespace Core;
 

@@ -4,7 +4,7 @@
 
 #include "EventDef.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class Event
 	{

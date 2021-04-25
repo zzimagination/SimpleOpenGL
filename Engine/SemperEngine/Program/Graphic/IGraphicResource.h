@@ -1,7 +1,7 @@
 #ifndef __IGRAPHICRESOURCE__
 #define __IGRAPHICRESOURCE__
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

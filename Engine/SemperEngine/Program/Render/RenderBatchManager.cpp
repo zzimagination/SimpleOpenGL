@@ -6,7 +6,7 @@
 #include "../Camera.h"
 #include <type_traits>
 
-namespace SemperEngine {
+namespace Semper {
 
 	namespace Core
 	{

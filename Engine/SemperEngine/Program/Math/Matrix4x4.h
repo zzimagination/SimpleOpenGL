@@ -5,7 +5,7 @@
 #include "Float3.h"
 #include "Float4.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	/// <summary>
 	/// ––æÿ’Û

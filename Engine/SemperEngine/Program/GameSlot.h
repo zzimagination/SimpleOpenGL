@@ -5,7 +5,7 @@
 #include "Common.h"
 #include "Component.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

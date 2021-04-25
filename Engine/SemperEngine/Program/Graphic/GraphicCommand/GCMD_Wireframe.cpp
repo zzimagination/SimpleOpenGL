@@ -1,6 +1,6 @@
 #include "GCMD_Wireframe.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

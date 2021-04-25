@@ -1,6 +1,6 @@
 #include "Material.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	using namespace std;
 	using namespace Core;

@@ -3,7 +3,7 @@
 
 #include "../GraphicCommand.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
@@ -13,13 +13,13 @@ namespace SemperEngine
 
 			RenderOperation operation;
 
-			GraphicVertexInfo vertex;
-
 			ShaderProperty shaderProperty;
 
-			std::vector<GraphicTextureInfo> textures;
+			GraphicVertexData* vertexData = nullptr;
 
-			std::vector<int> recordID = {};
+			std::vector<GraphicTextureData*> textureData;
+
+			std::vector<GraphicRecord*> records;
 
 		private:
 
@@ -35,7 +35,10 @@ namespace SemperEngine
 
 		private:
 
-			void SetRecords(int ID);
+			void SetTextures();
+
+			void UseRecords(int &count);
+
 		};
 	}
 }

@@ -1,6 +1,6 @@
 #include "ResourceModelLibrary.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

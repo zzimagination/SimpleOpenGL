@@ -1,6 +1,6 @@
 #include "GraphicShaderManager.h"
 
-namespace SemperEngine 
+namespace Semper 
 {
 	namespace Core
 	{

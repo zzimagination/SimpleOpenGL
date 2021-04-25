@@ -6,7 +6,7 @@
 #include "ResourceObject.h"
 #include "Graphic/Graphic.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

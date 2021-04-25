@@ -10,7 +10,7 @@
 #include "MaterialObject.h"
 #include "Graphic/IGraphicResource.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class Material : public Core::IResourceTarget
 	{

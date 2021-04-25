@@ -1,7 +1,7 @@
 #ifndef __FRAMERUNTIME__
 #define __FRAMERUNTIME__
 
-namespace SemperEngine 
+namespace Semper 
 {
 	namespace Core
 	{

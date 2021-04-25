@@ -7,7 +7,7 @@
 #include "GameCabin.h"
 #include "Common.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

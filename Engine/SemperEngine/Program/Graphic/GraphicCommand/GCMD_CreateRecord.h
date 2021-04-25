@@ -1,9 +1,9 @@
-#ifndef __GCMD_CREATE_RECORD__
-#define __GCMD_CREATE_RECORD__
+#ifndef __GCMD_CREATERECORD__
+#define __GCMD_CREATERECORD__
 
 #include "../GraphicCommand.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
@@ -23,4 +23,4 @@ namespace SemperEngine
 		};
 	}
 }
-#endif // !__GCMD_CREATE_RECORD__
+#endif // !__GCMD_CREATERECORD__

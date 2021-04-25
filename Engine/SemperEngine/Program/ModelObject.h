@@ -5,7 +5,7 @@
 #include "ResourceObject.h"
 #include "MeshObject.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

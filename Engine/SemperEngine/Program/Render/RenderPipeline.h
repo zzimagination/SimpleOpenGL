@@ -7,7 +7,7 @@
 #include "Render.h"
 #include "RenderSection.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

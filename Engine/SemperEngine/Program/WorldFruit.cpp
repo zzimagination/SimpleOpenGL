@@ -1,6 +1,6 @@
 #include "WorldFruit.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

@@ -6,7 +6,7 @@
 #include "WorldAction.h"
 #include "WorldContainer.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

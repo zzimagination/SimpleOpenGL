@@ -1,6 +1,6 @@
 #include "DebugOutput.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

@@ -5,7 +5,7 @@
 #include "GameObject.h"
 #include "Component.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class TestComponent : public Component 
 	{

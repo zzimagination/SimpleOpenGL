@@ -7,7 +7,7 @@
 #include "RenderScreenObject.h"
 #include "Graphic/GraphicData.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

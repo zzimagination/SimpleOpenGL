@@ -5,7 +5,7 @@
 #include "GL/GLResourceAPI.h"
 #include "../GameSetting.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	namespace Core {
 
@@ -13,10 +13,6 @@ namespace SemperEngine {
 		using namespace GraphicAPI;
 
 		GraphicShader GraphicRenderAPI::_shader;
-
-		int GraphicRenderAPI::_vertexCount = 0;
-
-		GraphicRenderAPI::DrawType GraphicRenderAPI::_drawType = GraphicRenderAPI::DrawType::Nomal;
 
 		void GraphicRenderAPI::SetClearColor(Color color)
 		{
@@ -53,11 +49,9 @@ namespace SemperEngine {
 			GLRenderAPI::SetBlendFunc(0x0302, 0x0303);
 		}
 
-		void GraphicRenderAPI::SetVertexData(GraphicVertexData data)
+		void GraphicRenderAPI::SetVertexData(GraphicVertexData* data)
 		{
-			GLRenderAPI::BindVertexBuffer(data.VAO);
-			_vertexCount = data.pointCount;
-			_drawType = data.indexDraw ? DrawType::Index : DrawType::Nomal;
+			GLRenderAPI::BindVertexBuffer(data->VAO);
 		}
 
 		void GraphicRenderAPI::SetShader(std::string shader)
@@ -91,26 +85,21 @@ namespace SemperEngine {
 			GLRenderAPI::SetShaderValue(_shader.opengl_id, name, value);
 		}
 
-		void GraphicRenderAPI::SetShaderProperty(int id, GraphicTextureData& data)
+		void GraphicRenderAPI::SetShaderProperty(int id, GraphicTextureData* data)
 		{
-			GLRenderAPI::BindTexture2D(id, data.glID);
+			GLRenderAPI::BindTexture2D(id, data->glID);
 		}
 
-		void GraphicRenderAPI::Draw()
+		void GraphicRenderAPI::Draw(GraphicVertexData* data)
 		{
-			switch (_drawType)
+			if (data->EBO == 0)
 			{
-			case DrawType::Nomal:
-				GLRenderAPI::DrawTriangles(_vertexCount);
-				break;
-			case DrawType::Index:
-				GLRenderAPI::DrawElements(_vertexCount);
-				break;
-			default:
-				break;
+				GLRenderAPI::DrawTriangles(data->pointCount);
 			}
-			_vertexCount = 0;
-			_drawType = DrawType::Nomal;
+			else 
+			{
+				GLRenderAPI::DrawElements(data->pointCount);
+			}
 		}
 
 		void GraphicRenderAPI::SetWireframe(bool enable)

@@ -1,6 +1,6 @@
 #include "TimeManager.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

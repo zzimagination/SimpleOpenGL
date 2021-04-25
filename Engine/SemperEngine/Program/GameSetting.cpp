@@ -1,6 +1,6 @@
 #include "GameSetting.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	using namespace std;
 

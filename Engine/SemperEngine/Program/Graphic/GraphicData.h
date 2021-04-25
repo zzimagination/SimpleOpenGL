@@ -5,7 +5,7 @@
 #include <memory>
 #include "Graphic.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

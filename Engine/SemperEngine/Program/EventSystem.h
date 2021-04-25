@@ -1,7 +1,7 @@
 #ifndef __EVENT_MANAGER__
 #define __EVENT_MANAGER__
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

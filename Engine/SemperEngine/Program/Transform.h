@@ -2,7 +2,7 @@
 #define __TRANSFORM__
 #include "Common.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	class Transform
 	{

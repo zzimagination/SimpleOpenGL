@@ -4,7 +4,7 @@
 #include <array>
 #include "GLCommon.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

@@ -1,7 +1,7 @@
 #include "GCMD_StopRecord.h"
 #include "../GraphicRecordManager.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

@@ -1,6 +1,6 @@
 #include "Quaternion.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	Quaternion Quaternion::AngleAxis(const float &angle, const Float3 &axis)
 	{

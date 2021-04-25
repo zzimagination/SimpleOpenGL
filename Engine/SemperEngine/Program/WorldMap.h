@@ -5,7 +5,7 @@
 #include "WorldBuilder.h"
 #include "WorldBuilderList.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

@@ -10,7 +10,7 @@
 #include "ResourceModelLibrary.h"
 #include "ResourceConfig.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class Resource
 	{

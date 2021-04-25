@@ -1,26 +1,33 @@
 #include "GCMD_VertexBufferClear.h"
 #include "../GraphicResource.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
 		using namespace std;
 
-		GVertexBufferClearCMD::GVertexBufferClearCMD(GraphicDataInfo info)
+		GCMD_DeleteVertex::GCMD_DeleteVertex(GraphicVertexData* data, DeleteFunc func)
 		{
-			this->dataInfo = info;
+			this->vertexData = data;
+			this->deleteFunc = func;
 		}
 
-		GVertexBufferClearCMD::~GVertexBufferClearCMD()
+		GCMD_DeleteVertex::~GCMD_DeleteVertex()
 		{
 		}
 
-		void GVertexBufferClearCMD::Excute()
+		void GCMD_DeleteVertex::Excute()
 		{
-			auto data = GraphicResource::GetVertexData(dataInfo);
-			GraphicResouceAPI::ClearVertexData(*data.get());
-			GraphicResource::DeleteGraphicVertexData(dataInfo);
+			GraphicResouceAPI::ClearVertexData(vertexData);
+			if (deleteFunc == nullptr)
+			{
+				delete vertexData;
+			}
+			else
+			{
+				deleteFunc(vertexData);
+			}
 		}
 	}
 }

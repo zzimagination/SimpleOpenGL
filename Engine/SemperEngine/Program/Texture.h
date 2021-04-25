@@ -8,7 +8,7 @@
 #include "ResourceConfig.h"
 #include "TextureObject.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class Texture : public Core::IResourceTarget
 	{

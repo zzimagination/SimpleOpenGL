@@ -1,7 +1,7 @@
 #include "MathBase.h"
 #include <math.h>
 
-namespace SemperEngine {
+namespace Semper {
 
 	const float Math::pi = 3.1415926f;		//3.14159265358979323846264338327950288
 

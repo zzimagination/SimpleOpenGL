@@ -1,7 +1,7 @@
 #include "GraphicCommandManager.h"
 #include "GraphicResource.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

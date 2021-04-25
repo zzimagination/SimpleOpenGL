@@ -6,7 +6,7 @@
 #include "Common.h"
 #include "MeshObject.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class Mesh : public Core::IResourceTarget
 	{

@@ -1,7 +1,7 @@
 #include "RenderSetting.h"
 #include "Graphic/GraphicRenderer.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	using namespace Core;
 

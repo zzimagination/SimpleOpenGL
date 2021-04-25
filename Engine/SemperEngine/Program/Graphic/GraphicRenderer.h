@@ -3,8 +3,10 @@
 
 #include <vector>
 #include "Graphic.h"
+#include "GraphicRecord.h"
+#include "GraphicTextureData.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
@@ -30,19 +32,18 @@ namespace SemperEngine
 				std::vector<int> records = {}
 			);
 
-			static void Render(
-				GraphicVertexInfo vertex,
-				ShaderProperty sproperty,
-				std::vector<GraphicTextureInfo> textures,
-				std::vector<int> records = {}
-			);
-
 			static void Clear(Color color, Graphic::ClearMode mode);
 
 			static void Clear(Color color);
 
 			static void DefaultFrameBuffer(int recordID);
 
+
+		private:
+
+			static std::vector<GraphicTextureData*> GetTextureDataList(std::vector<GraphicTextureInfo> textures);
+
+			static std::vector<GraphicRecord*> GetRecords(std::vector<int> idList);
 		};
 	}
 }

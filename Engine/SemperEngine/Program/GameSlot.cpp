@@ -1,6 +1,6 @@
 #include "GameSlot.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

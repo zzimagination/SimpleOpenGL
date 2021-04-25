@@ -2,7 +2,7 @@
 #ifndef __WORLD_LOOP__
 #define __WORLD_LOOP__
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

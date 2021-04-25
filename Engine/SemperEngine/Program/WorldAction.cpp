@@ -1,7 +1,7 @@
 #include "WorldAction.h"
 #include "Debug.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	WorldAction::~WorldAction()
 	{

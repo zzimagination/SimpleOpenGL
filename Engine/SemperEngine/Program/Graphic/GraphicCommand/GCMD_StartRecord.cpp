@@ -1,6 +1,6 @@
 #include "GCMD_StartRecord.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

@@ -4,7 +4,7 @@
 #ifndef __RENDER__
 #define __RENDER__
 
-namespace SemperEngine
+namespace Semper
 {
 	class Render
 	{

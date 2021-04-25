@@ -4,7 +4,7 @@
 #include "ModelObject.h"
 #include "Mesh.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class Model
 	{

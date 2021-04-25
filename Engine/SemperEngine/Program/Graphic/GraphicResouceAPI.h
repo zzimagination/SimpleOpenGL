@@ -4,7 +4,7 @@
 #include "Graphic.h"
 #include "GraphicData.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
@@ -12,13 +12,13 @@ namespace SemperEngine
 		{
 		public:
 
-			static GraphicVertexData AddVertexData(GraphicVertexResource source);
+			static GraphicVertexData AddVertexData(GraphicVertexData* data);
 
-			static void ClearVertexData(GraphicVertexData data);
+			static void ClearVertexData(GraphicVertexData* data);
 
-			static GraphicTextureData AddTextureData(GraphicTextureResource source);
+			static GraphicTextureData AddTextureData(GraphicTextureData* data);
 
-			static void ClearTextureData(GraphicTextureData data);
+			static void ClearTextureData(GraphicTextureData* data);
 		};
 	}
 }

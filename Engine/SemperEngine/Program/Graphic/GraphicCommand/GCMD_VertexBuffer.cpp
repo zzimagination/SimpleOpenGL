@@ -1,31 +1,32 @@
 #include "GCMD_VertexBuffer.h"
 #include "../GraphicResource.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
 		using namespace std;
 
-		GVertexBufferCMD::GVertexBufferCMD(GraphicDataInfo info)
+		GCMD_CreateVertex::GCMD_CreateVertex(GraphicVertexData* data)
 		{
-			this->dataInfo = info;
+			this->vertexData = data;
 		}
 
-		GVertexBufferCMD::~GVertexBufferCMD()
+		GCMD_CreateVertex::~GCMD_CreateVertex()
 		{
 		}
 
-		void GVertexBufferCMD::Excute()
+		void GCMD_CreateVertex::Excute()
 		{
-			auto data = GraphicResource::GetVertexData(dataInfo);
-			auto tmp = GraphicResouceAPI::AddVertexData(data->source);
-			data->VAO = tmp.VAO;
-			data->VBO = tmp.VBO;
-			data->EBO = tmp.EBO;
-			data->indexDraw = tmp.indexDraw;
-			data->pointCount = tmp.pointCount;
-			data->Complete();
+			auto tmp = GraphicResouceAPI::AddVertexData(vertexData);
+			if (tmp.EBO == 0)
+			{
+				this->vertexData->SetGL(tmp.VAO, tmp.VBO, tmp.pointCount);
+			}
+			else
+			{
+				this->vertexData->SetGL(tmp.VAO, tmp.VBO, tmp.EBO, tmp.pointCount);
+			}
 		}
 	}
 }

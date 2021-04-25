@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace SemperEngine 
+namespace Semper 
 {
 	class Time
 	{

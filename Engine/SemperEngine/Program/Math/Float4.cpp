@@ -1,6 +1,6 @@
 #include "Float4.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	Float4::Float4()
 	{

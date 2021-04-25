@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-namespace SemperEngine
+namespace Semper
 {
 	class LogoCollection
 	{

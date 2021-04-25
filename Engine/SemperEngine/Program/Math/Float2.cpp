@@ -1,6 +1,6 @@
 #include "Float2.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	float Float2::Dot(const Float2& a, const Float2& b)
 	{

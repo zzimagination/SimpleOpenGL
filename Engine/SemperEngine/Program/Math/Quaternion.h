@@ -7,7 +7,7 @@
 #include "Float4.h"
 #include "Matrix4x4.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class Quaternion
 	{

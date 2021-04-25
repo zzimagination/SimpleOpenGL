@@ -3,7 +3,7 @@
 #include "ResourceInternal.h"
 #include "Resource.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

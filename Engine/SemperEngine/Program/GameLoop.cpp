@@ -10,7 +10,7 @@
 #include "Graphic/GraphicSystem.h"
 #include "ProjectState.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
@@ -51,7 +51,7 @@ namespace SemperEngine
 				/*检测是否继续循环*/
 				if (IsExitLoop())
 				{
-					loopSignal.SendAll(Exit);
+					loopSignal.SendAll(CompletedSignal::WaitCode::Exit);
 					break;
 				}
 				else
@@ -85,7 +85,7 @@ namespace SemperEngine
 			while (_isLooping)
 			{
 				/*检测是否继续循环*/
-				if (loopSignal.Wait() == Exit)
+				if (loopSignal.Wait() == CompletedSignal::WaitCode::Exit)
 				{
 					break;
 				}

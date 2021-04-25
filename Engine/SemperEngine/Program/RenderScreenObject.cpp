@@ -1,6 +1,6 @@
 #include "RenderScreenObject.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

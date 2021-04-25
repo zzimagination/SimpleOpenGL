@@ -4,7 +4,7 @@
 #include "WorldController.h"
 #include "Cube.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	using namespace std;
 

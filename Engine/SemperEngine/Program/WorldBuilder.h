@@ -6,7 +6,7 @@
 #include "GameObject.h"
 #include "WorldAction.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class WorldBuilder
 	{

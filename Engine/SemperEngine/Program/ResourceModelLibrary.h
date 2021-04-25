@@ -5,7 +5,7 @@
 #include "ModelObject.h"
 #include "NativeResource.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

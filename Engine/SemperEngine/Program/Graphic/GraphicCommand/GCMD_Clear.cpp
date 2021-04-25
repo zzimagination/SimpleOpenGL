@@ -1,20 +1,20 @@
 #include "GCMD_Clear.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
-		GClearCMD::GClearCMD(Color color, Graphic::ClearMode mode)
+		GCMD_Clear::GCMD_Clear(Color color, Graphic::ClearMode mode)
 		{
 			this->color = color;
 			this->mode = mode;
 		}
 
-		GClearCMD::~GClearCMD()
+		GCMD_Clear::~GCMD_Clear()
 		{
 		}
 
-		void GClearCMD::Excute()
+		void GCMD_Clear::Excute()
 		{
 			GraphicRenderAPI::SetClearColor(color);
 			GraphicRenderAPI::SetClear(mode);

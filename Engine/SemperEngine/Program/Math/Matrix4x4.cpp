@@ -1,6 +1,6 @@
 #include "Matrix4x4.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	Matrix4x4 Matrix4x4::Translate(const Float3& v)
 	{

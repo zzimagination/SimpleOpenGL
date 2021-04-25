@@ -4,7 +4,7 @@
 #include "Debug.h"
 #include "Resource.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	SecondWorldAction::~SecondWorldAction()
 	{

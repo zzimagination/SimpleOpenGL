@@ -1,7 +1,7 @@
 #ifndef __PROJECT_STATE__
 #define __PROJECT_STATE__
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

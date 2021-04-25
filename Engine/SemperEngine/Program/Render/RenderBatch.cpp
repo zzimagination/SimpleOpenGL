@@ -1,9 +1,10 @@
 #include "RenderBatch.h"
-#include "../Debug.h"
+#include "RenderRecordManager.h"
 #include "../Graphic/GraphicRenderer.h"
 #include "../ResourceInternal.h"
+#include "../Debug.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
@@ -55,6 +56,11 @@ namespace SemperEngine
 		}
 		RenderBatch::~RenderBatch()
 		{
+		}
+		void RenderBatch::SetRecord(std::string key, CameraObject* camera)
+		{
+			auto record = RenderRecordManager::GetRecord(key, camera);
+			_graphicRecords.push_back(record.graphicID);
 		}
 	}
 }

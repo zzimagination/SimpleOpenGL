@@ -263,9 +263,6 @@
     <ClCompile Include="Program\Graphic\GraphicRecord.cpp">
       <Filter>Render\Graphic</Filter>
     </ClCompile>
-    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_ClearRecord.cpp">
-      <Filter>Render\Graphic\Command</Filter>
-    </ClCompile>
     <ClCompile Include="Program\Render\RenderSection.cpp">
       <Filter>Render\Game</Filter>
     </ClCompile>
@@ -699,9 +696,6 @@
     </ClInclude>
     <ClInclude Include="Program\Graphic\GraphicRecord.h">
       <Filter>Render\Graphic</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_ClearRecord.h">
-      <Filter>Render\Graphic\Command</Filter>
     </ClInclude>
     <ClInclude Include="Program\Render\RenderSection.h">
       <Filter>Render\Game</Filter>

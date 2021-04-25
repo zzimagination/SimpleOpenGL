@@ -2,7 +2,7 @@
 #ifndef __RESOURCEOBJECT_MANAGER__
 #define __RESOURCEOBJECT_MANAGER__
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

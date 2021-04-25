@@ -4,7 +4,7 @@
 #include "Time.h"
 #include "DebugSystem.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	using namespace std;
 	using namespace Core;

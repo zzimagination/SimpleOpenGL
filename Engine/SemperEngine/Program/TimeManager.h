@@ -6,7 +6,7 @@
 #include <ctime>
 #include <chrono>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

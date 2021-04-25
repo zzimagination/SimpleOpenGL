@@ -1,7 +1,7 @@
 #include "MeshObject.h"
 #include "Graphic/GraphicResource.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

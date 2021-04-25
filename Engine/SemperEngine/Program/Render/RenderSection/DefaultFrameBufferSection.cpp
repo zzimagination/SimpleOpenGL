@@ -2,7 +2,7 @@
 #include "../RenderRecordManager.h"
 #include "../../Graphic/GraphicRenderer.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

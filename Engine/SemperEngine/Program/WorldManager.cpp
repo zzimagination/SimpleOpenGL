@@ -3,7 +3,7 @@
 #include "WorldTree.h"
 #include "WorldConverter.h"
 
-namespace SemperEngine 
+namespace Semper 
 {
 	namespace Core
 	{

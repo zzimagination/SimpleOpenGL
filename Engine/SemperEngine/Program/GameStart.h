@@ -1,7 +1,7 @@
 #ifndef __GAME_START__
 #define __GAME_START__
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

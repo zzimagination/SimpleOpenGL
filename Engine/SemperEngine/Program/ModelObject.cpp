@@ -1,6 +1,6 @@
 #include "ModelObject.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

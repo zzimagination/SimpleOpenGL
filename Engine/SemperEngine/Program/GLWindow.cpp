@@ -3,7 +3,7 @@
 #include "GameWindow.h"
 #include "EventRecorder.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	namespace Core
 	{

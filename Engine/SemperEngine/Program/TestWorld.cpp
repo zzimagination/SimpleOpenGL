@@ -8,7 +8,7 @@
 #include "ChangeTexture.h"
 #include "Renderer.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	using namespace std;
 

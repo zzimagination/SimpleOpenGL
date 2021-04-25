@@ -1,7 +1,7 @@
 #include "ResourceTextureLibrary.h"
 #include "NativeResource.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

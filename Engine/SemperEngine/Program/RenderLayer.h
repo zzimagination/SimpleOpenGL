@@ -4,7 +4,7 @@
 
 #include <vector>
 
-namespace SemperEngine
+namespace Semper
 {
 	class RenderLayer
 	{

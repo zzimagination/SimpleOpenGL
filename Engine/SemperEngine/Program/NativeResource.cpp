@@ -2,7 +2,7 @@
 #include "ResourceLoader.h"
 
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

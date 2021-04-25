@@ -3,35 +3,32 @@
 
 #include <string>
 
-namespace SemperEngine
+namespace Semper
 {
-	namespace Core
+	class OS
 	{
-		class OS
-		{
-		public:
+	public:
 
-			static std::string FileName(std::string fullPath)
+		static std::string FileName(std::string fullPath)
+		{
+			auto start = fullPath.rfind('/');
+			if (start < 0)
 			{
-				auto start = fullPath.rfind('/');
-				if (start < 0)
-				{
-					start = fullPath.rfind('\\');
-				}
-				if (start < 0)
-				{
-					throw "Format error.";
-				}
-				start = start + 1;
-				auto end = fullPath.rfind('.');
-				if (end < 0)
-				{
-					return fullPath.substr(start);
-				}
-				return fullPath.substr(start, end - start);
+				start = fullPath.rfind('\\');
 			}
-		};
-	}
+			if (start < 0)
+			{
+				throw "Format error.";
+			}
+			start = start + 1;
+			auto end = fullPath.rfind('.');
+			if (end < 0)
+			{
+				return fullPath.substr(start);
+			}
+			return fullPath.substr(start, end - start);
+		}
+	};
 }
 
 #endif // !__OS__

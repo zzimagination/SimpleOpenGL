@@ -2,7 +2,7 @@
 #ifndef __NEXTWORLD__
 #define __NEXTWORLD__
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

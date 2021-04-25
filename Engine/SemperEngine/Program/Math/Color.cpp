@@ -1,6 +1,6 @@
 #include "Color.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	Color Color::FromHEX32(const long& hex)
 	{

@@ -7,7 +7,7 @@
 #include "RenderCustomObject.h"
 #include "Material.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class Cube : public GameObject
 	{

@@ -6,7 +6,7 @@
 #include "IGraphicResource.h"
 #include "../Common.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class Graphic
 	{
@@ -69,6 +69,12 @@ namespace SemperEngine
 			bool cull = true;
 
 			Graphic::CullFace cullFace = Graphic::CullFace::Back;
+
+			static RenderOperation ScreenRender() {
+				RenderOperation operation;
+				operation.blend = true;
+				operation.depth = false;
+			}
 		};
 
 		struct RenderMatrix

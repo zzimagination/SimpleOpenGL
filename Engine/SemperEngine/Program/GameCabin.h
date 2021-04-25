@@ -6,7 +6,7 @@
 #include "GameObject.h"
 #include "GameObjectContainer.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

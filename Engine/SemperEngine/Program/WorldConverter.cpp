@@ -4,7 +4,7 @@
 #include "WorldManager.h"
 #include "Debug.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

@@ -6,7 +6,7 @@
 #include "Texture.h"
 #include <memory>
 
-using namespace SemperEngine;
+using namespace Semper;
 
 class ChangeTexture : public Component
 {

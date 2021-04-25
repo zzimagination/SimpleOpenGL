@@ -3,7 +3,7 @@
 #include <memory>
 #include <Windows.h>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Text
 	{

@@ -1,7 +1,7 @@
 #include "StringEncoding.h"
 #include "WindowsText.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	using namespace std;
 	using namespace Text;

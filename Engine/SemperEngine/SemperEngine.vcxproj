@@ -159,7 +159,6 @@
   <ItemGroup>
     <ClInclude Include="Program\Graphic\GL\GLCommon.h" />
     <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_Clear.h" />
-    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_ClearRecord.h" />
     <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_CreateRecord.h" />
     <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_DefaultFrameBuffer.h" />
     <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_DeleteRecord.h" />
@@ -312,7 +311,6 @@
     <ClCompile Include="Program\GameSystem.cpp" />
     <ClCompile Include="Program\Graphic\GraphicCommand.cpp" />
     <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_Clear.cpp" />
-    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_ClearRecord.cpp" />
     <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_CreateRecord.cpp" />
     <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_DefaultFrameBuffer.cpp" />
     <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_DeleteRecord.cpp" />

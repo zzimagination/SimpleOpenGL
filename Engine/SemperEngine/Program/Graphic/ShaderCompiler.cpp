@@ -6,7 +6,7 @@
 #include "GraphicShaderManager.h"
 #include "GL/GLShaderAPI.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

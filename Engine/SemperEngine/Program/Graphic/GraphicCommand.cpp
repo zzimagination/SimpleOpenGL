@@ -2,11 +2,11 @@
 #include <vector>
 #include <map>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
-		void GraphicCommand::SetShaderProperty(ShaderProperty p)
+		void GraphicCommand::SetShaderProperty(ShaderProperty& p)
 		{
 			GraphicRenderAPI::SetShader(p.name);
 			for (auto i = p.floatProperty.begin(); i != p.floatProperty.end(); i++)

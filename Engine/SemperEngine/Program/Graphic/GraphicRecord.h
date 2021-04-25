@@ -4,7 +4,7 @@
 #include <vector>
 #include "GraphicData.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

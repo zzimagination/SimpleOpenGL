@@ -5,7 +5,7 @@
 #include "ShaderCompiler.h"
 #include <memory>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

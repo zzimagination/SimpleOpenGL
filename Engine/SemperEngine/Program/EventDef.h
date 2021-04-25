@@ -152,7 +152,7 @@
 #include <vector>
 #include "Math/Math.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	struct Keyboard
 	{

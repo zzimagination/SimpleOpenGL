@@ -1,6 +1,6 @@
 #include "Float3.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	const Float3 Float3::right = Float3(1, 0, 0);
 

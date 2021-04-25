@@ -7,7 +7,7 @@
 #include "WorldAction.h"
 #include "GameObject.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class TestWorldAction : public WorldAction
 	{

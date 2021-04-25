@@ -4,7 +4,7 @@
 
 #include "WorldAction.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class InsideWorldAction : public WorldAction
 	{

@@ -4,7 +4,7 @@
 #include "../RenderCollection.h"
 #include <memory>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
@@ -21,7 +21,7 @@ namespace SemperEngine
 			//_cameraSections.push_back(stop);
 
 			auto record = new StartRecordSection(UNLITSECTION);
-			record->msaa = Render::MSAA::Sixteen;
+			record->msaa = Render::MSAA::Eight;
 			_cameraSections.push_back(record);
 			auto unlitSection = new UnlitSection();
 			_cameraSections.push_back(unlitSection);

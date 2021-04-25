@@ -4,7 +4,7 @@
 #include "GameObject.h"
 #include "CameraObject.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	class Camera : public GameObject
 	{

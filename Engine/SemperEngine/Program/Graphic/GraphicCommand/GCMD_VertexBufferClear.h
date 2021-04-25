@@ -3,21 +3,24 @@
 
 #include "../GraphicCommand.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
-		class GVertexBufferClearCMD : public GraphicCommand
+		class GCMD_DeleteVertex : public GraphicCommand
 		{
 		public:
 
-			GraphicDataInfo dataInfo;
+			GraphicVertexData* vertexData = nullptr;
+
+			typedef void(*DeleteFunc)(GraphicVertexData* data);
+			DeleteFunc deleteFunc = nullptr;
 
 		public:
 
-			GVertexBufferClearCMD(GraphicDataInfo info);
+			GCMD_DeleteVertex(GraphicVertexData* data, DeleteFunc func);
 
-			virtual ~GVertexBufferClearCMD() override;
+			virtual ~GCMD_DeleteVertex() override;
 
 			virtual void Excute() override;
 		};

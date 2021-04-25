@@ -4,7 +4,7 @@
 
 #include <memory>
 
-namespace SemperEngine
+namespace Semper
 {
 	template<class T>
 	class LifeContainer

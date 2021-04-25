@@ -1,7 +1,7 @@
 #include "EventRecorder.h"
 #include "Time.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	namespace Core
 	{

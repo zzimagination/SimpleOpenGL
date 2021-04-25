@@ -3,7 +3,7 @@
 #include "DebugSystem.h"
 #include "ProjectState.h"
 
-namespace SemperEngine 
+namespace Semper 
 {
 	namespace Core
 	{

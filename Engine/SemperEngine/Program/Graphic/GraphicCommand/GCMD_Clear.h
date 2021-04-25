@@ -3,23 +3,23 @@
 
 #include "../GraphicCommand.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
-		class GClearCMD : public GraphicCommand
+		class GCMD_Clear : public GraphicCommand
 		{
 		public:
 
 			Color color;
 
-			Graphic::ClearMode mode;
+			Graphic::ClearMode mode = ClearColorDepth;
 
 		public:
 
-			GClearCMD(Color color, Graphic::ClearMode mode);
+			GCMD_Clear(Color color, Graphic::ClearMode mode);
 
-			virtual ~GClearCMD() override;
+			virtual ~GCMD_Clear() override;
 
 			virtual void Excute() override;
 		};

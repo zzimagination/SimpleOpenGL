@@ -4,7 +4,7 @@
 #include "../RenderBatchManager.h"
 #include "../RenderRecordManager.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

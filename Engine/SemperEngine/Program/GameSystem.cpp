@@ -3,7 +3,7 @@
 #include <locale>
 
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

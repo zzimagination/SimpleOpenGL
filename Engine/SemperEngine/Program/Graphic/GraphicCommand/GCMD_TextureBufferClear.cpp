@@ -1,26 +1,33 @@
 #include "GCMD_TextureBufferClear.h"
 #include "../GraphicResource.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
 		using namespace std;
 
-		GTextureBufferClearCMD::GTextureBufferClearCMD(GraphicDataInfo info)
+		GCMD_DeleteTexture::GCMD_DeleteTexture(GraphicTextureData* data, DeleteFunc func)
 		{
-			this->dataInfo = info;
+			this->textureData = data;
+			this->deleteFunc = func;
 		}
 
-		GTextureBufferClearCMD::~GTextureBufferClearCMD()
+		GCMD_DeleteTexture::~GCMD_DeleteTexture()
 		{
 		}
 
-		void GTextureBufferClearCMD::Excute()
+		void GCMD_DeleteTexture::Excute()
 		{
-			auto data = GraphicResource::GetTextureData(dataInfo);
-			GraphicResouceAPI::ClearTextureData(*data.get());
-			GraphicResource::DeleteGraphicTextureData(dataInfo);
+			GraphicResouceAPI::ClearTextureData(textureData);
+			if (deleteFunc == nullptr)
+			{
+				delete textureData;
+			}
+			else
+			{
+				deleteFunc(textureData);
+			}
 		}
 	}
 }

@@ -7,7 +7,7 @@
 #include "Mesh.h"
 #include "RenderLayer.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class Renderer : public Component
 	{

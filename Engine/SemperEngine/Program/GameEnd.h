@@ -1,7 +1,7 @@
 #ifndef __GAME_END__
 #define __GAME_END__
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

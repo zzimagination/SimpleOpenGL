@@ -1,7 +1,7 @@
 #include "GLResourceAPI.h"
 #include <glad/glad.h>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
@@ -131,7 +131,7 @@ namespace SemperEngine
 
 			void GLResourceAPI::ClearVertexData(GLVertexData data)
 			{
-				if (data.hasEBO)
+				if (data.EBO != 0)
 				{
 					glDeleteBuffers(1, &data.EBO);//×¢ÒâË³Ðò
 				}

@@ -1,6 +1,6 @@
 #include "GraphicVertexData.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
@@ -8,24 +8,25 @@ namespace SemperEngine
 		{
 		}
 
-		GraphicVertexData::GraphicVertexData(unsigned int vao, unsigned int vbo, int pointCount)
-		{
-			this->VAO = vao;
-			this->VBO = vbo;
-			this->pointCount = pointCount;
-		}
-
-		GraphicVertexData::GraphicVertexData(unsigned int vao, unsigned int vbo, unsigned int ebo, int count)
-		{
-			this->VAO = vao;
-			this->VBO = vbo;
-			this->EBO = ebo;
-			this->pointCount = count;
-			this->indexDraw = true;
-		}
-
 		GraphicVertexData::~GraphicVertexData()
 		{
+		}
+
+		void GraphicVertexData::SetGL(unsigned int VAO, unsigned int VBO, int pointCount)
+		{
+			this->VAO = VAO;
+			this->VBO = VBO;
+			this->pointCount = pointCount;
+			this->Complete();
+		}
+
+		void GraphicVertexData::SetGL(unsigned int VAO, unsigned int VBO, unsigned int EBO, int pointCount)
+		{
+			this->VAO = VAO;
+			this->VBO = VBO;
+			this->EBO = EBO;
+			this->pointCount = pointCount;
+			this->Complete();
 		}
 	}
 }

@@ -3,7 +3,7 @@
 
 #include "Common.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	class GameObject;
 

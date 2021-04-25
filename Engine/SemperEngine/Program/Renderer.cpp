@@ -2,7 +2,7 @@
 #include "RenderCollection.h"
 #include "GameObject.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	using namespace std;
 	using namespace Core;

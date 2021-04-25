@@ -3,7 +3,7 @@
 #include <filesystem>
 #include "Common.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	namespace Core
 	{

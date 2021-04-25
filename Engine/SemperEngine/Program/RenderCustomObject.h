@@ -6,7 +6,7 @@
 #include "Material.h"
 #include "RenderObject.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

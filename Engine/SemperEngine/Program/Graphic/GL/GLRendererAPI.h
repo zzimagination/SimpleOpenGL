@@ -6,7 +6,7 @@
 #include <string>
 #include "GLCommon.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

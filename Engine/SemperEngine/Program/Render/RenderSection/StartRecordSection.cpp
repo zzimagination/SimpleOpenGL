@@ -1,7 +1,7 @@
 #include "StartRecordSection.h"
 #include "../RenderRecordManager.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

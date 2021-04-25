@@ -9,7 +9,7 @@
 #include "Common.h"
 #include "ResourceObject.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

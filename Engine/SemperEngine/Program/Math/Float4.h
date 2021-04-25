@@ -4,7 +4,7 @@
 #include "Float2.h"
 #include "Float3.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	class Float4
 	{

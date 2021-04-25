@@ -2,7 +2,7 @@
 #ifndef __WORLD_ACTION__
 #define __WORLD_ACTION__
 
-namespace SemperEngine
+namespace Semper
 {
 	class WorldAction
 	{

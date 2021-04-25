@@ -1,7 +1,7 @@
 #include "RenderObject.h"
 #include "RenderCollection.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	namespace Core
 	{

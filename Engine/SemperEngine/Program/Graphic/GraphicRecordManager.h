@@ -7,7 +7,7 @@
 #include <memory>
 #include <map>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

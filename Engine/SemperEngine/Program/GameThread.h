@@ -2,7 +2,7 @@
 #ifndef __GAMETHREAD__
 #define __GAMETHREAD__
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

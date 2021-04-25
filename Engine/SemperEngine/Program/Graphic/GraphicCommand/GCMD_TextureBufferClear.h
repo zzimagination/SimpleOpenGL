@@ -3,21 +3,24 @@
 
 #include "../GraphicCommand.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
-		class GTextureBufferClearCMD : public GraphicCommand
+		class GCMD_DeleteTexture : public GraphicCommand
 		{
 		public:
 
-			GraphicDataInfo dataInfo;
+			GraphicTextureData* textureData = nullptr;
+
+			typedef void (*DeleteFunc)(GraphicTextureData*);
+			DeleteFunc deleteFunc = nullptr;
 
 		public:
 
-			GTextureBufferClearCMD(GraphicDataInfo info);
+			GCMD_DeleteTexture(GraphicTextureData* data, DeleteFunc func = nullptr);
 
-			virtual ~GTextureBufferClearCMD() override;
+			virtual ~GCMD_DeleteTexture() override;
 
 			virtual void Excute() override;
 		};

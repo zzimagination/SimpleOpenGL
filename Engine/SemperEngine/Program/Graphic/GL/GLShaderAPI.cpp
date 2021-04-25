@@ -1,7 +1,7 @@
 #include "GLShaderAPI.h"
 #include <glad/glad.h>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{ 

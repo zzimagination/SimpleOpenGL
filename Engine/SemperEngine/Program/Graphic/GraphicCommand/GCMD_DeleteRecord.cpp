@@ -1,6 +1,6 @@
 #include "GCMD_DeleteRecord.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

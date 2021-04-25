@@ -3,21 +3,21 @@
 
 #include "../GraphicCommand.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
-		class GTextureBufferCMD :public GraphicCommand
+		class GCMD_CreateTexture :public GraphicCommand
 		{
 		public:
 
-			GraphicDataInfo dataInfo;
+			GraphicTextureData* textureData = nullptr;
 
 		public:
 
-			GTextureBufferCMD(GraphicDataInfo info);
+			GCMD_CreateTexture(GraphicTextureData* data);
 
-			virtual ~GTextureBufferCMD() override;
+			virtual ~GCMD_CreateTexture() override;
 
 			virtual void Excute() override;
 		};

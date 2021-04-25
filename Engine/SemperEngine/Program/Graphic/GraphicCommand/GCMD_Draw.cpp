@@ -2,7 +2,7 @@
 #include "../GraphicResource.h"
 #include "../GraphicRecordManager.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{
@@ -25,35 +25,26 @@ namespace SemperEngine
 			GraphicRenderAPI::SetBlend(operation.blend);
 			GraphicRenderAPI::SetBlendFunc();
 
-			auto vertexData = GraphicResource::GetVertexData(vertex.info);
-			vector<shared_ptr<GraphicTextureData>> texturesData;
-			for (int i = 0; i < textures.size(); i++)
-			{
-				auto tex = GraphicResource::GetTextureData(textures[i].info);
-				texturesData.push_back(tex);
-			}
-
-			GraphicRenderAPI::SetVertexData(*vertexData);
+			GraphicRenderAPI::SetVertexData(vertexData);
 			SetShaderProperty(shaderProperty);
-
-			_setTextureCount = 0;
-
-			for (size_t i = 0; i < recordID.size(); i++)
-			{
-				SetRecords(recordID[i]);
-			}
-
-			for (size_t i = 0; i < texturesData.size(); i++)
-			{
-				GraphicRenderAPI::SetShaderProperty(textures[i].index + _setTextureCount, *(texturesData[i]));
-			}
-
-			GraphicRenderAPI::Draw();
+			SetTextures();
+			GraphicRenderAPI::Draw(vertexData);
 		}
 
-		void GDrawCMD::SetRecords(int ID)
+		void GDrawCMD::SetTextures()
 		{
-
+			int count = 0;
+			UseRecords(count);
+			for (size_t i = 0; i < textureData.size(); i++)
+			{
+				auto tex = textureData[i];
+				GraphicRenderAPI::SetShaderProperty((int)i + count, tex);
+			}
 		}
+
+		void GDrawCMD::UseRecords(int &count)
+		{
+		}
+
 	}
 }

@@ -4,7 +4,7 @@
 #include <string>
 #include <initializer_list>
 
-namespace SemperEngine {
+namespace Semper {
 
 	class Debug
 	{
@@ -49,9 +49,6 @@ namespace SemperEngine {
 		static void LogError(const wchar_t* message);
 
 		static void LogError(std::initializer_list<std::string> messages);
-
-	private:
-
 
 	};
 }

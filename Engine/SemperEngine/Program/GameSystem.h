@@ -1,7 +1,7 @@
 #ifndef __GAMESYSTEM__
 #define __GAMESYSTEM__
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

@@ -1,7 +1,7 @@
 #ifndef __GRAPHICMANAGER__
 #define __GRAPHICMANAGER__
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

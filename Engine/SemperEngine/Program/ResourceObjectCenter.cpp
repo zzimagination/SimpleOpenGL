@@ -1,6 +1,6 @@
 #include "ResourceObjectCenter.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace Core
 	{

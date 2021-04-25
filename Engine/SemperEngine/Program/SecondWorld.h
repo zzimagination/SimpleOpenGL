@@ -4,7 +4,7 @@
 
 #include "WorldBuilder.h"
 
-namespace SemperEngine
+namespace Semper
 {
 	class SecondWorld : public WorldBuilder
 	{

@@ -3,7 +3,7 @@
 
 #include "../Collection/Collection.h"
 
-namespace SemperEngine {
+namespace Semper {
 
 	class  Math
 	{
