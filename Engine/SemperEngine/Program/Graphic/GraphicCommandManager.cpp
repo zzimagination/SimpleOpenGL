@@ -11,20 +11,19 @@ namespace Semper
 		std::vector<std::shared_ptr<GraphicCommand>> GraphicCommandManager::front_Setting;
 		std::vector<std::shared_ptr<GraphicCommand>> GraphicCommandManager::back_DrawCommands;
 		std::vector<std::shared_ptr<GraphicCommand>> GraphicCommandManager::back_setting;
-
 		std::vector<std::shared_ptr<GraphicCommand>> GraphicCommandManager::resources;
 
 		void GraphicCommandManager::Render()
 		{
-			Excute(front_Setting);
-			Excute(front_DrawCommands);
+			Execute(front_Setting);
+			Execute(front_DrawCommands);
 			front_Setting.clear();
 			front_DrawCommands.clear();
 		}
 
 		void GraphicCommandManager::Resource()
 		{
-			Excute(resources);
+			Execute(resources);
 			resources.clear();
 		}
 
@@ -55,11 +54,11 @@ namespace Semper
 			back_DrawCommands.push_back(command);
 		}
 
-		void GraphicCommandManager::Excute(std::vector<std::shared_ptr<GraphicCommand>> &cmds)
+		void GraphicCommandManager::Execute(std::vector<std::shared_ptr<GraphicCommand>> &cmds)
 		{
 			for (int i = 0; i < cmds.size(); i++)
 			{
-				cmds[i]->Excute();
+				cmds[i]->Execute();
 			}
 		}
 	}

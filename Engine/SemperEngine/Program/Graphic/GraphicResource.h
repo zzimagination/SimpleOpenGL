@@ -12,10 +12,6 @@ namespace Semper
 	{
 		class GraphicResource
 		{
-		public:
-
-			static void Initialize();
-
 #pragma region VertexData
 		private:
 

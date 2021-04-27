@@ -11,25 +11,17 @@ namespace Semper
 	namespace Core
 	{
 		using namespace std;
-		using namespace GraphicAPI;
+		using namespace GL;
 
-		void ShaderCompiler::Compile()
+		GraphicShader* ShaderCompiler::Compile(Shaderfile& file)
 		{
-			for (int i = 0; i < shaderfiles.size(); i++)
-			{
-				GraphicShaderManager::shaderMap[shaderfiles[i].name] = Shader(shaderfiles[i]);
-			}
-		}
-
-		GraphicShader ShaderCompiler::Shader(Shaderfile file)
-		{
+			GraphicShader* shader = new GraphicShader();
 			auto codev = ReadCode(file.vertex);
 			auto codef = ReadCode(file.fragment);
 			auto codeg = ReadCode(file.geometry);
 			auto sliver = GLShaderCompiler::Compile(codev, codef, codeg);
-			GraphicShader result;
-			result.opengl_id = sliver.program;
-			return result;
+			shader->ConstructGL(sliver.program);
+			return shader;
 		}
 
 		std::string ShaderCompiler::ReadCode(string fileName)

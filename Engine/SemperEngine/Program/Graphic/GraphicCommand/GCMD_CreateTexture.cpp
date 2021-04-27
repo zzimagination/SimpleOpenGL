@@ -1,5 +1,4 @@
-#include "GCMD_TextureBuffer.h"
-#include "../GraphicResource.h"
+#include "GCMD_CreateTexture.h"
 
 namespace Semper
 {
@@ -16,7 +15,7 @@ namespace Semper
 		{
 		}
 
-		void GCMD_CreateTexture::Excute()
+		void GCMD_CreateTexture::Execute()
 		{
 			auto tmp = GraphicResouceAPI::AddTextureData(textureData);
 			textureData->SetGLTexture(tmp.glID);

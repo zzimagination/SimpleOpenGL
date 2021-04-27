@@ -12,8 +12,11 @@ namespace Semper
 		{
 		public:
 
-			unsigned int opengl_id;
+			unsigned int glPrograme = 0;
 
+		public:
+
+			void ConstructGL(unsigned int program);
 		};
 	}
 }

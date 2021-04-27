@@ -7,7 +7,7 @@ namespace Semper
 {
 	namespace Core
 	{
-		class GWireframeCMD : public GraphicCommand
+		class GCMD_Wireframe : public GraphicCommand
 		{
 		public:
 
@@ -15,11 +15,11 @@ namespace Semper
 
 		public:
 
-			GWireframeCMD(bool enable);
+			GCMD_Wireframe(bool enable);
 
-			virtual ~GWireframeCMD() override;
+			virtual ~GCMD_Wireframe() override;
 
-			virtual void Excute() override;
+			virtual void Execute() override;
 		};
 	}
 }

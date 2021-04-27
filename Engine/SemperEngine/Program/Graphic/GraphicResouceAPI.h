@@ -12,13 +12,21 @@ namespace Semper
 		{
 		public:
 
+#pragma region Vertex
+
 			static GraphicVertexData AddVertexData(GraphicVertexData* data);
 
 			static void ClearVertexData(GraphicVertexData* data);
 
+#pragma endregion
+
+#pragma region Texture
+
 			static GraphicTextureData AddTextureData(GraphicTextureData* data);
 
 			static void ClearTextureData(GraphicTextureData* data);
+
+#pragma endregion
 		};
 	}
 }

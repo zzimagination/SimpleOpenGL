@@ -2,6 +2,10 @@
 #define __GRAPHICCOMMAND__
 
 #include "Graphic.h"
+#include "GraphicData.h"
+#include "GraphicRecord.h"
+#include "GraphicResouceAPI.h"
+#include "GraphicRenderAPI.h"
 
 namespace Semper
 {
@@ -15,7 +19,7 @@ namespace Semper
 
 			virtual ~GraphicCommand() {};
 
-			virtual void Excute() = 0;
+			virtual void Execute() = 0;
 
 		protected:
 
@@ -24,14 +28,10 @@ namespace Semper
 	}
 }
 
-#include "GraphicResouceAPI.h"
-#include "GraphicRenderAPI.h"
-#include "GraphicRecord.h"
-
-#include "GraphicCommand/GCMD_VertexBuffer.h"
-#include "GraphicCommand/GCMD_VertexBufferClear.h"
-#include "GraphicCommand/GCMD_TextureBuffer.h"
-#include "GraphicCommand/GCMD_TextureBufferClear.h"
+#include "GraphicCommand/GCMD_CreateVertex.h"
+#include "GraphicCommand/GCMD_DeleteVertex.h"
+#include "GraphicCommand/GCMD_CreateTexture.h"
+#include "GraphicCommand/GCMD_DeleteTexture.h"
 #include "GraphicCommand/GCMD_Draw.h"
 #include "GraphicCommand/GCMD_Clear.h"
 #include "GraphicCommand/GCMD_Wireframe.h"

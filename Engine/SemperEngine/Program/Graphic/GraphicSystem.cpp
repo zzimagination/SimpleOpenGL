@@ -2,6 +2,7 @@
 #include "GraphicResource.h"
 #include "GraphicCommandManager.h"
 #include "GraphicRecordManager.h"
+#include "GraphicShaderManager.h"
 #include "ShaderCompiler.h"
 #include <memory>
 
@@ -13,10 +14,9 @@ namespace Semper
 
 		void GraphicSystem::Initialize()
 		{
-			ShaderCompiler::Compile();
-			GraphicResource::Initialize();
-			GraphicCommandManager::Resource();
+			GraphicShaderManager::Initialize();
 		}
+
 		void GraphicSystem::Render()
 		{
 			GraphicCommandManager::Render();

@@ -1,5 +1,5 @@
-#ifndef __GCMD_TEXTUREBUFFER_CLEAR__
-#define __GCMD_TEXTUREBUFFER_CLEAR__
+#ifndef __GCMD_DELETE_TEXTUREBUFFER__
+#define __GCMD_DELETE_TEXTUREBUFFER__
 
 #include "../GraphicCommand.h"
 
@@ -14,6 +14,7 @@ namespace Semper
 			GraphicTextureData* textureData = nullptr;
 
 			typedef void (*DeleteFunc)(GraphicTextureData*);
+
 			DeleteFunc deleteFunc = nullptr;
 
 		public:
@@ -22,8 +23,8 @@ namespace Semper
 
 			virtual ~GCMD_DeleteTexture() override;
 
-			virtual void Excute() override;
+			virtual void Execute() override;
 		};
 	}
 }
-#endif // !__GCMD_TEXTUREBUFFER_CLEAR__
+#endif // !__GCMD_DELETE_TEXTUREBUFFER__

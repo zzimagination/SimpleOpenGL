@@ -50,6 +50,7 @@ namespace Semper
 			auto object = new MeshObject;
 			return object;
 		}
+
 		MeshObject* MeshObject::CreateCube()
 		{
 			auto object = new MeshObject;
@@ -61,6 +62,7 @@ namespace Semper
 			object->index.Copy(CubeData::indices.data());
 			return object;
 		}
+
 		MeshObject* MeshObject::CreateRectangle()
 		{
 			auto object = new MeshObject;

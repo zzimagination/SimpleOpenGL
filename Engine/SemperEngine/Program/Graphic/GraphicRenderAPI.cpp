@@ -10,9 +10,7 @@ namespace Semper {
 	namespace Core {
 
 		using namespace std;
-		using namespace GraphicAPI;
-
-		GraphicShader GraphicRenderAPI::_shader;
+		using namespace GL;
 
 		void GraphicRenderAPI::SetClearColor(Color color)
 		{
@@ -54,38 +52,37 @@ namespace Semper {
 			GLRenderAPI::BindVertexBuffer(data->VAO);
 		}
 
-		void GraphicRenderAPI::SetShader(std::string shader)
+		void GraphicRenderAPI::UseShader(GraphicShader* shader)
 		{
-			_shader = GraphicShaderManager::FindShader(shader);
-			GLRenderAPI::SetShader(_shader.opengl_id);
+			GLRenderAPI::SetShader(shader->glPrograme);
 		}
 
-		void GraphicRenderAPI::SetShaderProperty(std::string name, float& value)
+		void GraphicRenderAPI::SetShaderProperty(GraphicShader* shader, std::string name, float& value)
 		{
-			GLRenderAPI::SetShaderValue(_shader.opengl_id, name, value);
+			GLRenderAPI::SetShaderValue(shader->glPrograme, name, value);
 		}
 
-		void GraphicRenderAPI::SetShaderProperty(std::string name, Float2& value)
+		void GraphicRenderAPI::SetShaderProperty(GraphicShader* shader, std::string name, Float2& value)
 		{
-			GLRenderAPI::SetShaderValue(_shader.opengl_id, name, value);
+			GLRenderAPI::SetShaderValue(shader->glPrograme, name, value);
 		}
 
-		void GraphicRenderAPI::SetShaderProperty(std::string name, Float3& value)
+		void GraphicRenderAPI::SetShaderProperty(GraphicShader* shader, std::string name, Float3& value)
 		{
-			GLRenderAPI::SetShaderValue(_shader.opengl_id, name, value);
+			GLRenderAPI::SetShaderValue(shader->glPrograme, name, value);
 		}
 
-		void GraphicRenderAPI::SetShaderProperty(std::string name, Float4& value)
+		void GraphicRenderAPI::SetShaderProperty(GraphicShader* shader, std::string name, Float4& value)
 		{
-			GLRenderAPI::SetShaderValue(_shader.opengl_id, name, value);
+			GLRenderAPI::SetShaderValue(shader->glPrograme, name, value);
 		}
 
-		void GraphicRenderAPI::SetShaderProperty(std::string name, Matrix4x4& value)
+		void GraphicRenderAPI::SetShaderProperty(GraphicShader* shader, std::string name, Matrix4x4& value)
 		{
-			GLRenderAPI::SetShaderValue(_shader.opengl_id, name, value);
+			GLRenderAPI::SetShaderValue(shader->glPrograme, name, value);
 		}
 
-		void GraphicRenderAPI::SetShaderProperty(int id, GraphicTextureData* data)
+		void GraphicRenderAPI::SetShaderProperty(GraphicShader* shader, int id, GraphicTextureData* data)
 		{
 			GLRenderAPI::BindTexture2D(id, data->glID);
 		}
@@ -96,7 +93,7 @@ namespace Semper {
 			{
 				GLRenderAPI::DrawTriangles(data->pointCount);
 			}
-			else 
+			else
 			{
 				GLRenderAPI::DrawElements(data->pointCount);
 			}

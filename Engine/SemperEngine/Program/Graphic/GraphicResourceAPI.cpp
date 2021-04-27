@@ -8,15 +8,17 @@ namespace Semper
 	namespace Core
 	{
 		using namespace std;
-		using namespace GraphicAPI;
+		using namespace GL;
+
+#pragma region Vertex
 
 		GraphicVertexData GraphicResouceAPI::AddVertexData(GraphicVertexData* data)
 		{
 			if (data->source.index->Size() == 0)
 			{
 				auto deliver = GLResourceAPI::AddVertexData(
-					data->source.vertices->DataPtr(), 
-					data->source.uv->DataPtr(), 
+					data->source.vertices->DataPtr(),
+					data->source.uv->DataPtr(),
 					(int)data->source.vertices->Size());
 				GraphicVertexData result;
 				result.SetGL(deliver.VAO, deliver.VBO, deliver.pointCount);
@@ -24,9 +26,9 @@ namespace Semper
 			}
 
 			auto deliver = GLResourceAPI::AddVertexData(
-				data->source.vertices->DataPtr(), 
-				data->source.uv->DataPtr(), 
-				data->source.index->DataPtr(), 
+				data->source.vertices->DataPtr(),
+				data->source.uv->DataPtr(),
+				data->source.index->DataPtr(),
 				(int)data->source.vertices->Size());
 			GraphicVertexData result;
 			result.SetGL(deliver.VAO, deliver.VBO, deliver.EBO, deliver.pointCount);
@@ -41,6 +43,10 @@ namespace Semper
 			glData.EBO = data->EBO;
 			GLResourceAPI::ClearVertexData(glData);
 		}
+
+#pragma endregion
+
+#pragma region Texture
 
 		GraphicTextureData GraphicResouceAPI::AddTextureData(GraphicTextureData* data)
 		{
@@ -64,5 +70,7 @@ namespace Semper
 		{
 			GLResourceAPI::ClearTextureData(data->glID);
 		}
+
+#pragma endregion
 	}
 }

@@ -23,7 +23,7 @@ namespace Semper
 
 			virtual ~GCMD_DeleteRecord() override;
 
-			virtual void Excute() override;
+			virtual void Execute() override;
 		};
 	}
 }

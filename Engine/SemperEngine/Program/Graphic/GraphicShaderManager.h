@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include "GraphicShader.h"
+#include "ShaderSource.h"
 
 namespace Semper 
 {
@@ -11,14 +12,25 @@ namespace Semper
 	{
 		class GraphicShaderManager
 		{
+		private:
+
+			static std::vector<std::string> _shaderNameList;
+
+			static std::vector<GraphicShader*> _shaderList;
+			
 		public:
 
-			static std::map<std::string, GraphicShader> shaderMap;
+			static void Initialize();
 
-		public:
+			static GraphicShader* GetShader(std::string name);
 
-			static GraphicShader FindShader(std::string name);
+			static GraphicShader* GetShader(int id);
 
+			static int GetShaderID(std::string name);
+
+		private:
+
+			static void AddShader(Shaderfile &&file);
 		};
 	}
 }

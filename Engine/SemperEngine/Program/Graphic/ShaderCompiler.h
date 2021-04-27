@@ -13,11 +13,9 @@ namespace Semper
 		{
 		public:
 
-			static void Compile();
+			static GraphicShader* Compile(Shaderfile &file);
 
 		private:
-
-			static GraphicShader Shader(Shaderfile file);
 
 			static std::string ReadCode(std::string fileName);
 

@@ -11,7 +11,7 @@ namespace Semper
 
 		void GraphicRenderer::Wireframe(bool enable)
 		{
-			auto cmd = shared_ptr<GWireframeCMD>(new GWireframeCMD(enable));
+			auto cmd = shared_ptr<GCMD_Wireframe>(new GCMD_Wireframe(enable));
 			GraphicCommandManager::AddRender(cmd);
 		}
 

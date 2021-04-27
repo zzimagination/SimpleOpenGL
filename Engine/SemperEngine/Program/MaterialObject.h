@@ -16,8 +16,6 @@ namespace Semper
 		{
 		public:
 
-			static MaterialObject* Create();
-
 			static MaterialObject* Create(std::string shader);
 
 		public:

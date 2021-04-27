@@ -8,10 +8,6 @@ namespace Semper
 	{
 		using namespace std;
 
-		void GraphicResource::Initialize()
-		{
-		}
-
 #pragma region VertexData
 
 		FillList<GraphicVertexData*> GraphicResource::_vertexData;

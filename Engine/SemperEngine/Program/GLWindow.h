@@ -1,5 +1,5 @@
-#ifndef __GWINDOW__
-#define __GWINDOW__
+#ifndef __GL_WINDOW__
+#define __GL_WINDOW__
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -50,4 +50,4 @@ namespace Semper {
 		};
 	}
 }
-#endif // !GWINDOW
+#endif // !__GL_WINDOW__

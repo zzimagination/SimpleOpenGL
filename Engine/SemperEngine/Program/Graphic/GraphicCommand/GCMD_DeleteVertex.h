@@ -1,5 +1,5 @@
-#ifndef __GCMD_VERTEX_BUFFER_CLEAR__
-#define __GCMD_VERTEX_BUFFER_CLEAR__
+#ifndef __GCMD_DELETE_VERTEX__
+#define __GCMD_DELETE_VERTEX__
 
 #include "../GraphicCommand.h"
 
@@ -14,6 +14,7 @@ namespace Semper
 			GraphicVertexData* vertexData = nullptr;
 
 			typedef void(*DeleteFunc)(GraphicVertexData* data);
+
 			DeleteFunc deleteFunc = nullptr;
 
 		public:
@@ -22,7 +23,7 @@ namespace Semper
 
 			virtual ~GCMD_DeleteVertex() override;
 
-			virtual void Excute() override;
+			virtual void Execute() override;
 		};
 	}
 }

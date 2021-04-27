@@ -1,6 +1,7 @@
 #include "GCMD_Draw.h"
 #include "../GraphicResource.h"
 #include "../GraphicRecordManager.h"
+#include "../GraphicShaderManager.h"
 
 namespace Semper
 {
@@ -16,7 +17,7 @@ namespace Semper
 		{
 		}
 
-		void GDrawCMD::Excute()
+		void GDrawCMD::Execute()
 		{
 			GraphicRenderAPI::SetCullFace(operation.cull);
 			GraphicRenderAPI::SetCullMode(operation.cullFace);
@@ -33,12 +34,13 @@ namespace Semper
 
 		void GDrawCMD::SetTextures()
 		{
+			auto shader = GraphicShaderManager::GetShader(shaderProperty.shaderID);
 			int count = 0;
 			UseRecords(count);
 			for (size_t i = 0; i < textureData.size(); i++)
 			{
 				auto tex = textureData[i];
-				GraphicRenderAPI::SetShaderProperty((int)i + count, tex);
+				GraphicRenderAPI::SetShaderProperty(shader, (int)i + count, tex);
 			}
 		}
 

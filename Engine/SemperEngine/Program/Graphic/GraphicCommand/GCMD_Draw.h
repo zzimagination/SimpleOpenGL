@@ -31,7 +31,7 @@ namespace Semper
 
 			virtual ~GDrawCMD() override;
 
-			virtual void Excute() override;
+			virtual void Execute() override;
 
 		private:
 

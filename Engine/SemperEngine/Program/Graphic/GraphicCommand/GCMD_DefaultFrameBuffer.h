@@ -20,7 +20,7 @@ namespace Semper
 			virtual ~GCMD_DefaultFrameBuffer() override;
 
 			// Í¨¹ý GraphicCommand ¼Ì³Ð
-			virtual void Excute() override;
+			virtual void Execute() override;
 
 		};
 	}

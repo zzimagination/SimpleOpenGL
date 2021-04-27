@@ -14,7 +14,7 @@ namespace Semper
 		{
 		}
 		
-		void GCMD_DefaultFrameBuffer::Excute()
+		void GCMD_DefaultFrameBuffer::Execute()
 		{
 			GraphicRenderAPI::DefaultFrameBuffer(record);
 		}

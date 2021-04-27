@@ -12,7 +12,7 @@ namespace Semper
 		{
 		}
 		
-		void GCMD_StartRecord::Excute()
+		void GCMD_StartRecord::Execute()
 		{
 			GraphicRenderAPI::StartRecord(record);
 		}

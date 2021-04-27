@@ -14,7 +14,7 @@ namespace Semper
 		{
 		}
 
-		void GCMD_Clear::Excute()
+		void GCMD_Clear::Execute()
 		{
 			GraphicRenderAPI::SetClearColor(color);
 			GraphicRenderAPI::SetClear(mode);

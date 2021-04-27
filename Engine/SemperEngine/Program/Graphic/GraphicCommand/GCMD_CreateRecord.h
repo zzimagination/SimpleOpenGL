@@ -19,7 +19,7 @@ namespace Semper
 
 			virtual ~GCMD_CreateRecord() override;
 
-			virtual void Excute() override;
+			virtual void Execute() override;
 		};
 	}
 }

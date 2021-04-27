@@ -15,21 +15,6 @@ namespace Semper {
 
 		class GraphicRenderAPI
 		{
-		private:
-
-			enum class DrawType
-			{
-				Unknow,
-
-				Nomal,
-
-				Index
-			};
-
-		private:
-
-			static GraphicShader _shader;
-
 		public:
 
 			static void SetClearColor(Color color);
@@ -50,14 +35,19 @@ namespace Semper {
 
 			static void SetVertexData(GraphicVertexData* data);
 
-			static void SetShader(std::string shader);
+			static void UseShader(GraphicShader* shader);
 
-			static void SetShaderProperty(std::string name, float& value);
-			static void SetShaderProperty(std::string name, Float2& value);
-			static void SetShaderProperty(std::string name, Float3& value);
-			static void SetShaderProperty(std::string name, Float4& value);
-			static void SetShaderProperty(std::string name, Matrix4x4& value);
-			static void SetShaderProperty(int id, GraphicTextureData* data);
+			static void SetShaderProperty(GraphicShader* shader, std::string name, float& value);
+
+			static void SetShaderProperty(GraphicShader* shader, std::string name, Float2& value);
+
+			static void SetShaderProperty(GraphicShader* shader, std::string name, Float3& value);
+
+			static void SetShaderProperty(GraphicShader* shader, std::string name, Float4& value);
+
+			static void SetShaderProperty(GraphicShader* shader, std::string name, Matrix4x4& value);
+
+			static void SetShaderProperty(GraphicShader* shader, int id, GraphicTextureData* data);
 
 			static void Draw(GraphicVertexData* data);
 

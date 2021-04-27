@@ -12,7 +12,7 @@ namespace Semper
 		{
 		}
 
-		void GCMD_DeleteRecord::Excute()
+		void GCMD_DeleteRecord::Execute()
 		{
 			GraphicRenderAPI::DeleteRecord(record);
 			if (deleteFunc == nullptr)

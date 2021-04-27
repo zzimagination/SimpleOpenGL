@@ -42,7 +42,7 @@ namespace Semper
 
 		private:
 
-			static void Excute(std::vector<std::shared_ptr<GraphicCommand>>& cmds);
+			static void Execute(std::vector<std::shared_ptr<GraphicCommand>>& cmds);
 		};
 	}
 }

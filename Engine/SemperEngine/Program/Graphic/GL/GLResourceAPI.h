@@ -6,54 +6,51 @@
 
 namespace Semper
 {
-	namespace Core
+	namespace GL
 	{
-		namespace GraphicAPI
+		struct GLVertexData
 		{
-			struct GLVertexData
-			{
-				unsigned int VAO = 0;
+			unsigned int VAO = 0;
 
-				unsigned int VBO = 0;
+			unsigned int VBO = 0;
 
-				unsigned int EBO = 0;
+			unsigned int EBO = 0;
 
-				bool hasEBO = false;
+			bool hasEBO = false;
 
-				unsigned int pointCount = 0;
+			unsigned int pointCount = 0;
 
-			};
+		};
 
-			struct GLTextureData
-			{
-				unsigned int texture = 0;
-			};
+		struct GLTextureData
+		{
+			unsigned int texture = 0;
+		};
 
-			class GLResourceAPI
-			{
-			public:
+		class GLResourceAPI
+		{
+		public:
 
-				static int texNearest;
+			static int texNearest;
 
-				static int texLinear;
+			static int texLinear;
 
-			public:
+		public:
 
-				static GLVertexData AddVertexData(Float3* vertices, Float2* uv, int* index, int count);
+			static GLVertexData AddVertexData(Float3* vertices, Float2* uv, int* index, int count);
 
-				static GLVertexData AddVertexData(Float3* vertices, int count);
+			static GLVertexData AddVertexData(Float3* vertices, int count);
 
-				static GLVertexData AddVertexData(Float3* vertices, Float2* uv, int count);
+			static GLVertexData AddVertexData(Float3* vertices, Float2* uv, int count);
 
-				static void ClearVertexData(GLVertexData data);
+			static void ClearVertexData(GLVertexData data);
 
-				static void ClearVertexData(unsigned int VAO, unsigned int VBO);
+			static void ClearVertexData(unsigned int VAO, unsigned int VBO);
 
-				static GLTextureData AddTextureData(unsigned char* data, int width, int height, int filter);
+			static GLTextureData AddTextureData(unsigned char* data, int width, int height, int filter);
 
-				static void ClearTextureData(unsigned int texture);
-			};
-		}
+			static void ClearTextureData(unsigned int texture);
+		};
 	}
 }
 #endif // !GLRESOURCE

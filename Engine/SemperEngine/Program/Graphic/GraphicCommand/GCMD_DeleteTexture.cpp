@@ -1,5 +1,4 @@
-#include "GCMD_TextureBufferClear.h"
-#include "../GraphicResource.h"
+#include "GCMD_DeleteTexture.h"
 
 namespace Semper
 {
@@ -17,7 +16,7 @@ namespace Semper
 		{
 		}
 
-		void GCMD_DeleteTexture::Excute()
+		void GCMD_DeleteTexture::Execute()
 		{
 			GraphicResouceAPI::ClearTextureData(textureData);
 			if (deleteFunc == nullptr)

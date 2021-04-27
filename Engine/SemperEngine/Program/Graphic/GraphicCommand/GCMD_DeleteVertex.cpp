@@ -1,5 +1,4 @@
-#include "GCMD_VertexBufferClear.h"
-#include "../GraphicResource.h"
+#include "GCMD_DeleteVertex.h"
 
 namespace Semper
 {
@@ -17,7 +16,7 @@ namespace Semper
 		{
 		}
 
-		void GCMD_DeleteVertex::Excute()
+		void GCMD_DeleteVertex::Execute()
 		{
 			GraphicResouceAPI::ClearVertexData(vertexData);
 			if (deleteFunc == nullptr)

@@ -11,7 +11,7 @@ namespace Semper
 		GCMD_StopRecord::~GCMD_StopRecord()
 		{
 		}
-		void GCMD_StopRecord::Excute()
+		void GCMD_StopRecord::Execute()
 		{
 			GraphicRenderAPI::StopRecord(record);
 		}

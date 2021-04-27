@@ -278,16 +278,16 @@
     <ClCompile Include="Program\Render\RenderSection\ScreenRecordSection.cpp">
       <Filter>Render\Game\RenderSection</Filter>
     </ClCompile>
-    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_VertexBuffer.cpp">
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_CreateVertex.cpp">
       <Filter>Render\Graphic\Command</Filter>
     </ClCompile>
-    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_VertexBufferClear.cpp">
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_DeleteVertex.cpp">
       <Filter>Render\Graphic\Command</Filter>
     </ClCompile>
-    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_TextureBuffer.cpp">
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_CreateTexture.cpp">
       <Filter>Render\Graphic\Command</Filter>
     </ClCompile>
-    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_TextureBufferClear.cpp">
+    <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_DeleteTexture.cpp">
       <Filter>Render\Graphic\Command</Filter>
     </ClCompile>
     <ClCompile Include="Program\Graphic\GraphicCommand\GCMD_Draw.cpp">
@@ -712,16 +712,16 @@
     <ClInclude Include="Program\Render\RenderSection\ScreenRecordSection.h">
       <Filter>Render\Game\RenderSection</Filter>
     </ClInclude>
-    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_VertexBuffer.h">
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_CreateVertex.h">
       <Filter>Render\Graphic\Command</Filter>
     </ClInclude>
-    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_VertexBufferClear.h">
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_DeleteVertex.h">
       <Filter>Render\Graphic\Command</Filter>
     </ClInclude>
-    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_TextureBuffer.h">
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_CreateTexture.h">
       <Filter>Render\Graphic\Command</Filter>
     </ClInclude>
-    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_TextureBufferClear.h">
+    <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_DeleteTexture.h">
       <Filter>Render\Graphic\Command</Filter>
     </ClInclude>
     <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_Draw.h">

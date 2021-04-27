@@ -1,5 +1,4 @@
-#include "GCMD_VertexBuffer.h"
-#include "../GraphicResource.h"
+#include "GCMD_CreateVertex.h"
 
 namespace Semper
 {
@@ -16,7 +15,7 @@ namespace Semper
 		{
 		}
 
-		void GCMD_CreateVertex::Excute()
+		void GCMD_CreateVertex::Execute()
 		{
 			auto tmp = GraphicResouceAPI::AddVertexData(vertexData);
 			if (tmp.EBO == 0)

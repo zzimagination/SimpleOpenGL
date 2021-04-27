@@ -1,5 +1,5 @@
-#ifndef __GCMD_VERTEX_BUFFER__
-#define __GCMD_VERTEX_BUFFER__
+#ifndef __GCMD_CREATE_VERTEX__
+#define __GCMD_CREATE_VERTEX__
 
 #include "../GraphicCommand.h"
 
@@ -19,8 +19,8 @@ namespace Semper
 
 			virtual ~GCMD_CreateVertex() override;
 
-			virtual void Excute() override;
+			virtual void Execute() override;
 		};
 	}
 }
-#endif // !__GCMD_VERTEX_BUFFER__
+#endif // !__GCMD_CREATE_VERTEX__

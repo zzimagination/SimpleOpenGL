@@ -4,7 +4,8 @@
 #include <map>
 #include <string>
 #include "IGraphicResource.h"
-#include "../Common.h"
+#include "../Collection/Collection.h"
+#include "../Math/Math.h"
 
 namespace Semper
 {
@@ -99,6 +100,7 @@ namespace Semper
 		public:
 
 			std::string name = "Color";
+			int shaderID = 0;
 
 			std::map<std::string, float> floatProperty;
 

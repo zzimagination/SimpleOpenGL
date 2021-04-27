@@ -7,28 +7,25 @@
 
 namespace Semper
 {
-	namespace Core
+	namespace GL
 	{
-		namespace GraphicAPI
+		class GLShader
 		{
-			class GLShader
-			{
-			public:
+		public:
 
-				unsigned int program;
-			};
+			unsigned int program;
+		};
 
-			class GLShaderCompiler
-			{
-			public:
+		class GLShaderCompiler
+		{
+		public:
 
-				static GLShader Compile(std::string vertexCode, std::string fragmentCode, std::string geometryCode);
+			static GLShader Compile(std::string vertexCode, std::string fragmentCode, std::string geometryCode);
 
-			private:
+		private:
 
-				static unsigned int CompileOne(std::string code, unsigned int type);
-			};
-		}
+			static unsigned int CompileOne(std::string code, unsigned int type);
+		};
 	}
 }
 #endif // !GL_SHADERAPI

@@ -4,16 +4,16 @@ namespace Semper
 {
 	namespace Core
 	{
-		GWireframeCMD::GWireframeCMD(bool enable)
+		GCMD_Wireframe::GCMD_Wireframe(bool enable)
 		{
 			this->enable = enable;
 		}
 
-		GWireframeCMD::~GWireframeCMD()
+		GCMD_Wireframe::~GCMD_Wireframe()
 		{
 		}
 
-		void GWireframeCMD::Excute()
+		void GCMD_Wireframe::Execute()
 		{
 			GraphicRenderAPI::SetWireframe(enable);
 		}

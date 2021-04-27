@@ -1,5 +1,5 @@
-#ifndef __GCMD_TEXTUREBUFFER__
-#define __GCMD_TEXTUREBUFFER__
+#ifndef __GCMD_CREATE_TEXTURE__
+#define __GCMD_CREATE_TEXTURE__
 
 #include "../GraphicCommand.h"
 
@@ -19,8 +19,8 @@ namespace Semper
 
 			virtual ~GCMD_CreateTexture() override;
 
-			virtual void Excute() override;
+			virtual void Execute() override;
 		};
 	}
 }
-#endif // !__GCMD_TEXTUREBUFFER__
+#endif // !__GCMD_CREATE_TEXTURE__
