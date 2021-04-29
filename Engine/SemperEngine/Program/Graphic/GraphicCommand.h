@@ -1,6 +1,7 @@
 #ifndef __GRAPHICCOMMAND__
 #define __GRAPHICCOMMAND__
 
+#include <memory>
 #include "Graphic.h"
 #include "GraphicData.h"
 #include "GraphicRecord.h"
@@ -23,7 +24,6 @@ namespace Semper
 
 		protected:
 
-			void SetShaderProperty(ShaderProperty& p);
 		};
 	}
 }

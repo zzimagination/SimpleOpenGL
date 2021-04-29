@@ -16,76 +16,81 @@ namespace Semper {
 		_object->Dispose();
 	}
 
-	void Material::Blend(bool enable, Graphic::BlendFunc src, Graphic::BlendFunc dest)
+	void Material::SetDepth(Depth mode)
 	{
-		_object->renderOperation.blend = enable;
-		_object->renderOperation.source = src;
-		_object->renderOperation.destination = dest;
+		_object->depth = (int)mode;
 	}
 
-	void Material::CullFace(bool enable, Graphic::CullFace face)
+	void Material::SetBlend(bool enable, Source source, Destination destination)
 	{
-		_object->renderOperation.cull = enable;
-		_object->renderOperation.cullFace = face;
+		_object->blend = enable;
+		_object->source = (int)source;
+		_object->destination = (int)destination;
 	}
 
-	void Material::Depth(bool enable, Graphic::DepthFunc func)
+	void Material::SetCull(Cull mode)
 	{
-		_object->renderOperation.depth = enable;
-		_object->renderOperation.depthFunc = func;
-	}
-
-	vector<shared_ptr<Texture>> Material::GetTextures()
-	{
-		return _object->textures;
-	}
-
-	Material::Material() :Material("Color")
-	{
-		AddProperty("_color", Float4(1, 1, 1, 1));
+		_object->cull = (int)mode;
 	}
 
 	void Material::AddProperty(std::string name, float value)
 	{
-		_object->shaderProperty.Add(name, value);
+		_object->floatProperties[name] = value;
 	}
 
 	void Material::AddProperty(std::string name, Float2 value)
 	{
-		_object->shaderProperty.Add(name, value);
+		_object->float2Properties[name] = value;
 	}
 
 	void Material::AddProperty(std::string name, Float3 value)
 	{
-		_object->shaderProperty.Add(name, value);
+		_object->float3Properties[name] = value;
 	}
 
 	void Material::AddProperty(std::string name, Float4 value)
 	{
-		_object->shaderProperty.Add(name, value);
+		_object->float4Properties[name] = value;
 	}
 
 	void Material::AddProperty(std::string name, Matrix4x4 value)
 	{
-		_object->shaderProperty.Add(name, value);
+		_object->matrix4x4Properties[name] = value;
 	}
 
 	void Material::AddProperty(std::string name, Color value)
 	{
-		_object->shaderProperty.Add(name, value);
+		AddProperty(name, value.ToFloat4());
 	}
 
-	void Material::AddProperty(int id, std::shared_ptr<Texture> value)
+	void Material::AddProperty(std::string name, std::shared_ptr<Texture> value)
 	{
-		if (_object->textures.size() > id)
+		auto i = _object->textureProperties.find(name);
+		if (i == _object->textureProperties.end())
 		{
-			_object->textures[id] = value;
+			_object->textureProperties.insert(std::pair<std::string, std::shared_ptr<Texture>>(name, value));
+			_object->textureList.Add(name);
+			return;
 		}
-		else
-		{
-			_object->textures.push_back(value);
-		}
+		i->second = value;
+		_object->textureList.Remove(name);
+		_object->textureList.Add(name);
 	}
+
+	void Material::AddProperty(std::string name, std::shared_ptr<Texture> value, int order)
+	{
+		auto i = _object->textureProperties.find(name);
+		if (i == _object->textureProperties.end())
+		{
+			_object->textureProperties.insert(std::pair<std::string, std::shared_ptr<Texture>>(name, value));
+			_object->textureList.Add(name, order);
+			return;
+		}
+		i->second = value;
+		_object->textureList.Remove(name);
+		_object->textureList.Add(name, order);
+	}
+
 	ResourceObject* Material::GetObject()
 	{
 		return _object;

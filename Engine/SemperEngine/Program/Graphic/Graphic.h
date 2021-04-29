@@ -95,73 +95,6 @@ namespace Semper
 
 		constexpr const char* MAINCOLOR = "_color";
 
-		class ShaderProperty
-		{
-		public:
-
-			std::string name = "Color";
-			int shaderID = 0;
-
-			std::map<std::string, float> floatProperty;
-
-			std::map<std::string, Float2> vector2Property;
-
-			std::map<std::string, Float3> vector3Property;
-
-			std::map<std::string, Float4> vector4Property;
-
-			std::map<std::string, Color> colorProperty;
-
-			std::map<std::string, Matrix4x4> matrix4x4Property;
-
-		public:
-
-			ShaderProperty() {
-			};
-
-			~ShaderProperty() {
-			};
-
-			void Add(std::string name, float value)
-			{
-				floatProperty[name] = value;
-			}
-
-			void Add(std::string name, Float2 value)
-			{
-				vector2Property[name] = value;
-			}
-
-			void Add(std::string name, Float3 value)
-			{
-				vector3Property[name] = value;
-			}
-
-			void Add(std::string name, Float4 value)
-			{
-				vector4Property[name] = value;
-			}
-
-			void Add(std::string name, Color value)
-			{
-				colorProperty[name] = value;
-			}
-
-			void Add(std::string name, Matrix4x4 value)
-			{
-				matrix4x4Property[name] = value;
-			}
-
-			void Clear()
-			{
-				floatProperty.clear();
-				vector2Property.clear();
-				vector3Property.clear();
-				vector4Property.clear();
-				matrix4x4Property.clear();
-				name = "Color";
-			}
-		};
 
 		struct GraphicDataInfo
 		{
@@ -208,6 +141,65 @@ namespace Semper
 			int height = -1;
 
 			Graphic::TextureFilter filter = Graphic::TextureFilter::Nearest;
+		};
+
+		class ShaderProperty
+		{
+		public:
+
+			int shaderID = 0;
+
+			std::map<std::string, float> floatProperty;
+
+			std::map<std::string, Float2> vector2Property;
+
+			std::map<std::string, Float3> vector3Property;
+
+			std::map<std::string, Float4> vector4Property;
+
+			std::map<std::string, Color> colorProperty;
+
+			std::map<std::string, Matrix4x4> matrix4x4Property;
+
+			std::vector<GraphicDataInfo> textureProperty;
+
+		public:
+
+			ShaderProperty() {
+			};
+
+			~ShaderProperty() {
+			};
+
+			void Add(std::string name, float value)
+			{
+				floatProperty[name] = value;
+			}
+
+			void Add(std::string name, Float2 value)
+			{
+				vector2Property[name] = value;
+			}
+
+			void Add(std::string name, Float3 value)
+			{
+				vector3Property[name] = value;
+			}
+
+			void Add(std::string name, Float4 value)
+			{
+				vector4Property[name] = value;
+			}
+
+			void Add(std::string name, Color value)
+			{
+				colorProperty[name] = value;
+			}
+
+			void Add(std::string name, Matrix4x4 value)
+			{
+				matrix4x4Property[name] = value;
+			}
 		};
 	}
 }

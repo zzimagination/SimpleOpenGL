@@ -15,39 +15,16 @@ namespace Semper
 			GraphicCommandManager::AddRender(cmd);
 		}
 
-		void GraphicRenderer::Render(
-			GraphicVertexInfo vertex,
-			RenderOperation operation,
-			RenderMatrix matrix,
-			ShaderProperty sproperty,
-			vector<GraphicTextureInfo> textures,
-			std::vector<int> records)
+		void GraphicRenderer::Render(GraphicVertexInfo v, RenderOperation o, RenderMatrix m, shared_ptr<ShaderProperty> s, std::vector<int> r)
 		{
 			auto cmd = shared_ptr<GDrawCMD>(new GDrawCMD());
-			cmd->vertexData = GraphicResource::GetVertexData(vertex.info);
-			cmd->operation = operation;
-			cmd->shaderProperty = sproperty;
-			cmd->shaderProperty.Add(MODEL_MATRIX, matrix.model);
-			cmd->shaderProperty.Add(VIEW_MATRIX, matrix.view);
-			cmd->shaderProperty.Add(PROJECTION_MARIX, matrix.projection);
-			cmd->textureData = GetTextureDataList(textures);
-			cmd->records = GetRecords(records);
-			GraphicCommandManager::AddRender(cmd);
-		}
-
-		void GraphicRenderer::Render(
-			GraphicVertexInfo vertex,
-			RenderOperation operation,
-			ShaderProperty sproperty,
-			std::vector<GraphicTextureInfo> textures,
-			std::vector<int> records)
-		{
-			auto cmd = shared_ptr<GDrawCMD>(new GDrawCMD());
-			cmd->vertexData = GraphicResource::GetVertexData(vertex.info);
-			cmd->operation = operation;
-			cmd->shaderProperty = sproperty;
-			cmd->textureData = GetTextureDataList(textures);
-			cmd->records = GetRecords(records);
+			cmd->vertexData = GraphicResource::GetVertexData(v.info);
+			cmd->operation = o;
+			cmd->shaderProperty = s;
+			cmd->shaderProperty->Add(MODEL_MATRIX, m.model);
+			cmd->shaderProperty->Add(VIEW_MATRIX, m.view);
+			cmd->shaderProperty->Add(PROJECTION_MARIX, m.projection);
+			cmd->records = GetRecords(r);
 			GraphicCommandManager::AddRender(cmd);
 		}
 

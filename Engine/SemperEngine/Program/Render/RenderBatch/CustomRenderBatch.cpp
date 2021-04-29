@@ -1,4 +1,5 @@
 #include "CustomRenderBatch.h"
+#include <memory>
 
 namespace Semper
 {
@@ -24,8 +25,7 @@ namespace Semper
 			auto operation = GetOperation(material);
 			auto matrix = GetRenderMatrix(model, camera);
 			auto shaderProperty = GetShaderProperty(material);
-			auto textures = GetTextures(material);
-			GraphicRenderer::Render(vertex, operation, matrix, shaderProperty, textures, this->_graphicRecords);
+			GraphicRenderer::Render(vertex, operation, matrix, shaderProperty, this->_graphicRecords);
 		}
 	}
 }

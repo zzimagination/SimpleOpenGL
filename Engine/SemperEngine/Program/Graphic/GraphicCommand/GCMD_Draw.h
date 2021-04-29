@@ -13,11 +13,9 @@ namespace Semper
 
 			RenderOperation operation;
 
-			ShaderProperty shaderProperty;
+			std::shared_ptr<ShaderProperty> shaderProperty;
 
 			GraphicVertexData* vertexData = nullptr;
-
-			std::vector<GraphicTextureData*> textureData;
 
 			std::vector<GraphicRecord*> records;
 
@@ -35,7 +33,7 @@ namespace Semper
 
 		private:
 
-			void SetTextures();
+			void SetShaderProperty();
 
 			void UseRecords(int &count);
 

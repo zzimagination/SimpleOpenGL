@@ -17,19 +17,11 @@ namespace Semper
 			static void Wireframe(bool enable);
 
 			static void Render(
-				GraphicVertexInfo vertex,
-				RenderOperation operation,
-				RenderMatrix matrix,
-				ShaderProperty sproperty,
-				std::vector<GraphicTextureInfo> textures,
-				std::vector<int> records = {});
-
-			static void Render(
-				GraphicVertexInfo vertex,
-				RenderOperation operation,
-				ShaderProperty sproperty,
-				std::vector<GraphicTextureInfo> textures,
-				std::vector<int> records = {}
+				GraphicVertexInfo v,
+				RenderOperation o,
+				RenderMatrix m,
+				std::shared_ptr<ShaderProperty> s,
+				std::vector<int> r = {}
 			);
 
 			static void Clear(Color color, Graphic::ClearMode mode);

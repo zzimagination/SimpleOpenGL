@@ -31,8 +31,6 @@ namespace Semper
 			auto defaultFB = new DefaultFramebufferSection();
 			defaultFB->key = UNLITSECTION;
 			_cameraSections.push_back(defaultFB);
-			//auto screen = new ScreenRecordSection({UNLITSECTION});
-			//_cameraSections.push_back(screen);
 		}
 
 		void RenderPipeline::Render()

@@ -1,6 +1,7 @@
 #include "Renderer.h"
 #include "RenderCollection.h"
 #include "GameObject.h"
+#include "Debug.h"
 
 namespace Semper
 {
@@ -11,7 +12,6 @@ namespace Semper
 	{
 		_object = unique_ptr<RenderCustomObject>(new RenderCustomObject);
 		_object->mesh = shared_ptr<Mesh>(new Mesh());
-		_object->material = shared_ptr<Material>(new Material());
 	}
 	Renderer::~Renderer()
 	{

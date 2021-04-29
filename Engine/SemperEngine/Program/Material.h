@@ -14,25 +14,51 @@ namespace Semper
 {
 	class Material : public Core::IResourceTarget
 	{
+	public:
+
+		enum class Depth
+		{
+			None,
+			LEqual,
+			GEqual,
+			Always,
+			Never,
+		};
+
+		enum class Cull
+		{
+			None,
+			Back,
+			Front,
+		};
+
+		enum class Source
+		{
+			Zero,
+			One,
+		};
+
+		enum class Destination
+		{
+			Zero,
+			One
+		};
+
 	private:
 
 		Core::MaterialObject* _object;
 
 	public:
 
-		Material();
+		Material(std::string shader);
 
 		~Material();
 
-		Material(std::string shader);
+		void SetDepth(Depth mode);
 
-		void Blend(bool enable, Graphic::BlendFunc src = Graphic::BlendFunc::Zero, Graphic::BlendFunc dest = Graphic::BlendFunc::One);
+		void SetBlend(bool enable, Source source = Source::Zero, Destination destination = Destination::One);
 
-		void CullFace(bool enable, Graphic::CullFace face = Graphic::CullFace::Back);
-
-		void Depth(bool enable, Graphic::DepthFunc func = Graphic::DepthFunc::Always);
-
-		std::vector<std::shared_ptr<Texture>> GetTextures();
+		void SetCull(Cull mode);
 
 		void AddProperty(std::string name, float value);
 
@@ -46,9 +72,9 @@ namespace Semper
 
 		void AddProperty(std::string name, Color value);
 
-		void AddProperty(int id, std::shared_ptr<Texture> value);
+		void AddProperty(std::string name, std::shared_ptr<Texture> value);
 
-
+		void AddProperty(std::string name, std::shared_ptr<Texture> value, int order);
 
 		// Í¨¹ý IResourceTarget ¼Ì³Ð
 		virtual Core::ResourceObject* GetObject() override;

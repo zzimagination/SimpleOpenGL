@@ -838,6 +838,9 @@
     <ClInclude Include="Program\Graphic\GraphicCommand\GCMD_DeleteRecord.h">
       <Filter>Render\Graphic\Command</Filter>
     </ClInclude>
+    <ClInclude Include="Program\Collection\SequenceList.h">
+      <Filter>Common\Collection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Project">

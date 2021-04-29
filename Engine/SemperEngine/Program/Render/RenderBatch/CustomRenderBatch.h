@@ -27,6 +27,7 @@ namespace Semper
 			virtual void RenderGraphicObject() override;
 
 			virtual void GenerateGraphicResource() override;
+
 		};
 	}
 }

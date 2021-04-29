@@ -38,7 +38,7 @@ namespace Semper
 		floor->transform.scale = Float3(50, 0.2f, 50);
 		floor->SetMaterial(shared_ptr<Material>(new Material("Texture")));
 		auto tex = Resource::LoadTexture("Textures/pic_1.png");
-		floor->GetMaterial()->AddProperty(0, tex);
+		floor->GetMaterial()->AddProperty("MainTex", tex);
 		floor->GetMaterial()->AddProperty("_color", Color::ColorFloat(1, 1, 1));
 		AddGameObject(floor);
 
@@ -49,7 +49,7 @@ namespace Semper
 		wall_1->transform.rotation = Quaternion::AngleAxis(-45, Float3::up);
 		wall_1->SetMaterial(shared_ptr<Material>(new Material("Texture")));
 		auto tex1 = Resource::LoadTexture("Textures/pic_2.png");
-		wall_1->GetMaterial()->AddProperty(0, tex1);
+		wall_1->GetMaterial()->AddProperty("MainTex", tex1);
 		wall_1->GetMaterial()->AddProperty("_color", Color::ColorFloat(1, 1, 1));
 		AddGameObject(wall_1);
 
@@ -60,7 +60,7 @@ namespace Semper
 		wall_2->transform.rotation = Quaternion::AngleAxis(45, Float3::up);
 		wall_2->SetMaterial(shared_ptr<Material>(new Material("Texture")));
 		auto tex2 = Resource::LoadTexture("Textures/pic_2.png");
-		wall_2->GetMaterial()->AddProperty(0, tex2);
+		wall_2->GetMaterial()->AddProperty("MainTex", tex2);
 		wall_2->GetMaterial()->AddProperty("_color", Color::ColorFloat(1, 1, 1));
 		AddGameObject(wall_2);
 
@@ -72,7 +72,7 @@ namespace Semper
 		cube1->GetMaterial()->AddProperty("_color", Color::ColorFloat(1, 1, 1));
 		tex = shared_ptr<Texture>(Core::ResourceInternal::WhiteTex()->Copy());
 		tex->SetFilter(ResourceConfig::TextureFilter::Linear);
-		cube1->GetMaterial()->AddProperty(0, tex);
+		cube1->GetMaterial()->AddProperty("MainTex", tex);
 		auto changeTexture = new ChangeTexture();
 		changeTexture->texture = tex;
 		cube1->AddComponent(changeTexture);
@@ -97,6 +97,7 @@ namespace Semper
 		auto sphere = new GameObject("sphere");
 		auto renderer = new Renderer();
 		renderer->SetMesh(Resource::LoadModel("Sphere.obj")->GetMesh());
+		renderer->SetMaterial(std::shared_ptr<Material>(new Material("Color")));
 		sphere->AddComponent(renderer);
 		sphere->transform.position = Float3(-4.0f, 0.5f, 0.f);
 		AddGameObject(sphere);
@@ -107,7 +108,7 @@ namespace Semper
 		renderer->SetMesh(Resource::LoadModel("CrossCube.obj")->GetMesh());
 		auto crossTexture = Resource::LoadTexture("Textures/pic_3.png");
 		auto crossMat = shared_ptr<Material>(new Material("Texture"));
-		crossMat->AddProperty(0, crossTexture);
+		crossMat->AddProperty("MainTex", crossTexture);
 		renderer->SetMaterial(crossMat);
 		cross->AddComponent(renderer);
 		cross->transform.position = Float3(4, 1, 0);

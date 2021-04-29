@@ -37,7 +37,7 @@ namespace Semper
 			LoadResource();
 			_current = 0;
 			_renderObject->material->AddProperty("_color", Color::ColorFloat(1, 1, 1, _alpha));
-			_renderObject->material->AddProperty(0, _logoTextures[_current]);
+			_renderObject->material->AddProperty("mainTex", _logoTextures[_current]);
 		}
 
 		void LogoPipeline::Update()
@@ -52,7 +52,7 @@ namespace Semper
 				}
 				_alpha = 0;
 				_renderObject->material->AddProperty("_color", Color::ColorFloat(1, 1, 1, _alpha));
-				_renderObject->material->AddProperty(0, _logoTextures[_current]);
+				_renderObject->material->AddProperty("mainTex", _logoTextures[_current]);
 				_frame = 0;
 				return;
 			}
@@ -84,7 +84,7 @@ namespace Semper
 
 			_renderObject = shared_ptr<RenderScreenObject>(new RenderScreenObject);
 			_renderObject->material = shared_ptr<Material>(new Material("ScreenTexture"));
-			_renderObject->material->Blend(true);
+			_renderObject->material->SetBlend(true);
 
 			ResourceSystem::EndProcess();
 		}

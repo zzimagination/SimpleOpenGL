@@ -2,7 +2,10 @@
 #define __MATERIALOBJECT__
 
 #include <vector>
+#include <map>
+#include <list>
 #include <memory>
+#include "Collection/Collection.h"
 #include "ResourceObject.h"
 #include "Texture.h"
 #include "Graphic/Graphic.h"
@@ -20,11 +23,33 @@ namespace Semper
 
 		public:
 
-			std::vector<std::shared_ptr<Texture>> textures;
+			std::string shaderName = "";
 
-			RenderOperation renderOperation;
+			int shaderID = -1;
 
-			ShaderProperty shaderProperty;
+			bool blend = false;
+
+			int source = 0;
+
+			int destination = 0;
+
+			int depth = 1;
+
+			int cull = 0;
+
+			std::map<std::string, float> floatProperties;
+
+			std::map<std::string, Float2> float2Properties;
+
+			std::map<std::string, Float3> float3Properties;
+
+			std::map<std::string, Float4> float4Properties;
+
+			std::map<std::string, Matrix4x4> matrix4x4Properties;
+
+			std::map<std::string, std::shared_ptr<Texture>> textureProperties;
+
+			SequenceList<std::string> textureList;
 
 		public:
 

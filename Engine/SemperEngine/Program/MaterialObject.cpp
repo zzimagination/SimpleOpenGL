@@ -8,7 +8,8 @@ namespace Semper
 		MaterialObject* MaterialObject::Create(std::string shader)
 		{
 			auto object = new MaterialObject;
-			object->shaderProperty.shaderID = GraphicShaderManager::GetShaderID(shader);
+			object->shaderName = shader;
+			object->shaderID = GraphicShaderManager::GetShaderID(shader);
 			return object;
 		}
 
@@ -23,10 +24,10 @@ namespace Semper
 
 		void MaterialObject::CreateGraphicResource()
 		{
-			for (auto tex = textures.begin(); tex != textures.end(); tex++)
+			for (auto i = textureProperties.begin(); i != textureProperties.end(); i++)
 			{
-				auto graphicResource = (TextureObject*)tex->get()->GetObject();
-				graphicResource->CreateGraphicResource();
+				auto obj = (TextureObject*)i->second->GetObject();
+				obj->CreateGraphicResource();
 			}
 		}
 

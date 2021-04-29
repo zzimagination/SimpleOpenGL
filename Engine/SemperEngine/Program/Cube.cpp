@@ -11,7 +11,7 @@ namespace Semper
 	Cube::Cube()
 	{
 		_renderObject = unique_ptr<RenderCustomObject>(new RenderCustomObject());
-		_renderObject->material = shared_ptr<Material>(new Material());
+		_renderObject->material = shared_ptr<Material>(new Material("Color"));
 		_renderObject->material->AddProperty("_color", Float4(1, 1, 1, 1));
 		_renderObject->mesh = Resource::CreateCube();
 	}

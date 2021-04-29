@@ -21,14 +21,12 @@ namespace Semper
 
 		void ScreenRenderBatch::RenderGraphicObject()
 		{
-			GraphicRenderer::Clear(Color::Black(), ClearColorDepth);
 			auto mesh = ResourceInternal::ScreenMesh();
 			auto vertex = GetVertexInfo(mesh.get());
 			auto operation = GetOperation(material);
+			auto matrix = RenderMatrix();
 			auto shaderPorperty = GetShaderProperty(material);
-			auto textures = GetTextures(material);
-			vector<int> records = {};
-			GraphicRenderer::Render(vertex, operation, shaderPorperty, textures, records);
+			GraphicRenderer::Render(vertex, operation, matrix, shaderPorperty, this->_graphicRecords);
 		}
 	}
 }

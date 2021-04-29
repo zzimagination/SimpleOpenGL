@@ -24,9 +24,9 @@ namespace Semper {
 
 			static RenderOperation GetOperation(Material* material);
 
-			static ShaderProperty GetShaderProperty(Material* material);
+			static GraphicDataInfo TextureConvert(std::shared_ptr<Texture> tex);
 
-			static std::vector<GraphicTextureInfo> GetTextures(Material* material);
+			static std::shared_ptr<ShaderProperty> GetShaderProperty(Material* material);
 
 		protected:
 
