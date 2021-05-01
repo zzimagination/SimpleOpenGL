@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace TextureLib
 	{

@@ -7,7 +7,7 @@
 #pragma warning(disable:6386)
 #pragma warning(disable:26451)
 
-namespace SemperEngine
+namespace Semper
 {
 	namespace ModelLib
 	{
