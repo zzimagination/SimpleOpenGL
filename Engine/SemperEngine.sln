@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SemperEngine", "SemperEngine\SemperEngine.vcxproj", "{749E1D81-A35C-45C3-972B-C9141950CC30}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.vcxproj", "{75773CFB-DFDC-4D96-AF3A-E34E863742F6}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Win32Windows", "Win32Windows\Win32Windows.vcxproj", "{B6850D16-E772-474E-898A-0F6FD5671DB8}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextureLib", "TextureLib\TextureLib.vcxproj", "{3CA74659-4F52-4C2C-ACF2-6EC88E7B837A}"
@@ -29,14 +27,6 @@ Global
 		{749E1D81-A35C-45C3-972B-C9141950CC30}.Release|x64.Build.0 = Release|x64
 		{749E1D81-A35C-45C3-972B-C9141950CC30}.Release|x86.ActiveCfg = Release|Win32
 		{749E1D81-A35C-45C3-972B-C9141950CC30}.Release|x86.Build.0 = Release|Win32
-		{75773CFB-DFDC-4D96-AF3A-E34E863742F6}.Debug|x64.ActiveCfg = Debug|x64
-		{75773CFB-DFDC-4D96-AF3A-E34E863742F6}.Debug|x64.Build.0 = Debug|x64
-		{75773CFB-DFDC-4D96-AF3A-E34E863742F6}.Debug|x86.ActiveCfg = Debug|Win32
-		{75773CFB-DFDC-4D96-AF3A-E34E863742F6}.Debug|x86.Build.0 = Debug|Win32
-		{75773CFB-DFDC-4D96-AF3A-E34E863742F6}.Release|x64.ActiveCfg = Release|x64
-		{75773CFB-DFDC-4D96-AF3A-E34E863742F6}.Release|x64.Build.0 = Release|x64
-		{75773CFB-DFDC-4D96-AF3A-E34E863742F6}.Release|x86.ActiveCfg = Release|Win32
-		{75773CFB-DFDC-4D96-AF3A-E34E863742F6}.Release|x86.Build.0 = Release|Win32
 		{B6850D16-E772-474E-898A-0F6FD5671DB8}.Debug|x64.ActiveCfg = Debug|x64
 		{B6850D16-E772-474E-898A-0F6FD5671DB8}.Debug|x64.Build.0 = Debug|x64
 		{B6850D16-E772-474E-898A-0F6FD5671DB8}.Debug|x86.ActiveCfg = Debug|Win32

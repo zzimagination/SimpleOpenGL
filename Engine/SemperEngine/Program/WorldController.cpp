@@ -19,7 +19,7 @@ namespace Semper
 
 	void Semper::WorldController::SetActive(std::string name)
 	{
-		WorldManager::SetActive(name);
+		WorldManager::SetNextWorld(name);
 	}
 
 	bool Semper::WorldController::Inside()

@@ -1,7 +1,8 @@
 #include "WorldManager.h"
 #include "WorldMap.h"
 #include "WorldTree.h"
-#include "WorldConverter.h"
+
+#include "Debug.h"
 
 namespace Semper 
 {
@@ -16,12 +17,33 @@ namespace Semper
 
 		string WorldManager::_inside;
 
+		string WorldManager::_next;
+
+		string WorldManager::_primitive;
+
+		bool WorldManager::_changed;
+
 		void WorldManager::Initialize()
 		{
-			_inside = WorldMap::WorldName(0);
-			WorldMap::BuildWorld(0);
-			_active = WorldMap::WorldName(1);
-			WorldMap::BuildWorld(1);
+			WorldMap::BuildWorld(WorldMap::inside);
+			WorldMap::BuildWorld(WorldMap::start);
+			_inside = WorldMap::inside;
+			_active = WorldMap::start;
+		}
+
+		void WorldManager::ConvertWorld()
+		{
+			if (!_changed)
+			{
+				return;
+			}
+
+			auto last = WorldManager::GetActive();
+			WorldTree::RemoveWorld(last);
+			WorldMap::BuildWorld(_next);
+			WorldManager::_active = _next;
+			_primitive = _next;
+			_next = "";
 		}
 
 		string WorldManager::GetInside()
@@ -34,19 +56,32 @@ namespace Semper
 			return _active;
 		}
 
-		void WorldManager::SetActive(string name)
-		{
-			WorldConverter::SetNext(name);
-		}
-
-		void WorldManager::SetActive(int id)
-		{
-			WorldConverter::SetNext(id);
-		}
-
 		bool WorldManager::Inside()
 		{
 			return currentWorld == _inside;
+		}
+
+		void WorldManager::SetNextWorld(string name)
+		{
+			if (name == "")
+			{
+				Debug::LogError("world name don`t be null");
+				return;
+			}
+			if (!WorldMap::Contain(name))
+			{
+				Debug::LogError({ "don't have the world " , name });
+				return;
+			}
+			if (_next == name)
+			{
+				return;
+			}
+			if (_primitive == name)
+			{
+				return;
+			}
+			_next = name;
 		}
 	}
 }

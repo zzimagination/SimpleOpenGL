@@ -8,8 +8,6 @@ namespace Semper
 {
 	namespace Core
 	{
-		class WorldConverter;
-
 		class WorldManager
 		{
 		public:
@@ -22,25 +20,25 @@ namespace Semper
 
 			static std::string _inside;
 
+			static std::string _next;
+
+			static std::string _primitive;
+
+			static bool _changed;
+
 		public:
 
 			static void Initialize();
 
-			static void ExcuteWorlds();
-
-			static void EndWorlds();
+			static void ConvertWorld();
 
 			static std::string GetInside();
 
 			static std::string GetActive();
 
-			static void SetActive(std::string name);
-
-			static void SetActive(int id);
+			static void SetNextWorld(std::string key);
 
 			static bool Inside();
-
-			friend class WorldConverter;
 		};
 	}
 }

@@ -136,9 +136,6 @@
     <ClCompile Include="Program\Transform.cpp">
       <Filter>World\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="Program\NextWorld.cpp">
-      <Filter>World\World</Filter>
-    </ClCompile>
     <ClCompile Include="Program\WorldAction.cpp">
       <Filter>World\World</Filter>
     </ClCompile>
@@ -149,9 +146,6 @@
       <Filter>World\World</Filter>
     </ClCompile>
     <ClCompile Include="Program\WorldController.cpp">
-      <Filter>World\World</Filter>
-    </ClCompile>
-    <ClCompile Include="Program\WorldConverter.cpp">
       <Filter>World\World</Filter>
     </ClCompile>
     <ClCompile Include="Program\WorldFruit.cpp">
@@ -541,9 +535,6 @@
     <ClInclude Include="Program\Transform.h">
       <Filter>World\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="Program\NextWorld.h">
-      <Filter>World\World</Filter>
-    </ClInclude>
     <ClInclude Include="Program\WorldAction.h">
       <Filter>World\World</Filter>
     </ClInclude>
@@ -554,9 +545,6 @@
       <Filter>World\World</Filter>
     </ClInclude>
     <ClInclude Include="Program\WorldController.h">
-      <Filter>World\World</Filter>
-    </ClInclude>
-    <ClInclude Include="Program\WorldConverter.h">
       <Filter>World\World</Filter>
     </ClInclude>
     <ClInclude Include="Program\WorldFruit.h">
@@ -840,6 +828,9 @@
     </ClInclude>
     <ClInclude Include="Program\Collection\SequenceList.h">
       <Filter>Common\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="Program\Logic\CustomObjects.h">
+      <Filter>GameLogic\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

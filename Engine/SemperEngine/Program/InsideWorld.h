@@ -3,6 +3,7 @@
 #define __INSIDE_WORLD__
 
 #include "WorldBuilder.h"
+#include "Logic/CustomObjects.h"
 
 namespace Semper
 {

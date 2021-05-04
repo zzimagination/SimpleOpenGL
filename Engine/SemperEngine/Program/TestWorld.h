@@ -3,6 +3,7 @@
 #define __TEST_WORLD__
 
 #include "WorldBuilder.h"
+#include "Logic/CustomObjects.h"
 
 namespace Semper
 {

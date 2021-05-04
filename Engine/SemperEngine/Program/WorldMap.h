@@ -2,8 +2,8 @@
 #ifndef __WORLD_MAP__
 #define __WORLD_MAP__
 
+#include <map>
 #include "WorldBuilder.h"
-#include "WorldBuilderList.h"
 
 namespace Semper
 {
@@ -11,9 +11,13 @@ namespace Semper
 	{
 		class WorldMap
 		{
-		private:
+		public:
 
-			static WorldBuilderList builderList;
+			static std::map<std::string, WorldBuilder*> builders;
+
+			static std::string start;
+
+			static std::string inside;
 
 		public:
 
@@ -21,23 +25,12 @@ namespace Semper
 
 			static void BuildWorld(std::string name);
 
-			static void BuildWorld(int id);
-
 			static bool Contain(std::string name);
-
-			static bool Contain(int id);
-
-			static int WorldId(std::string name);
-
-			static std::string WorldName(int id);
 
 		private:
 
-			static void CheckRepeat(std::string name, int id, int listId);
-
 			static WorldBuilder* GetBuilder(std::string name);
 
-			static WorldBuilder* GetBuilder(int id);
 		};
 	}
 }

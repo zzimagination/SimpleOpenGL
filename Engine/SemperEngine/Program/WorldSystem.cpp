@@ -2,7 +2,6 @@
 #include "WorldMap.h"
 #include "WorldManager.h"
 #include "WorldTree.h"
-#include "WorldConverter.h"
 
 namespace Semper
 {
@@ -12,15 +11,12 @@ namespace Semper
 		{
 			WorldMap::Initialize();
 			WorldManager::Initialize();
-			//WorldTree::ExcuteWorlds();
-			//WorldConverter::Convert();
-			WorldTree::Fall();
 		}
 
 		void WorldSystem::Loop()
 		{
 			WorldTree::ExcuteWorlds();
-			WorldConverter::Convert();
+			WorldManager::ConvertWorld();
 			WorldTree::Fall();
 		}
 
